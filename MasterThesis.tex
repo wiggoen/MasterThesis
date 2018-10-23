@@ -1,0 +1,226 @@
+\documentclass[twoside,english]{uiofysmaster/uiofysmaster}
+
+\usepackage[toc,titletoc,title,page]{appendix} %to add appendices (and have them in toc)
+\usepackage[utf8]{inputenc}
+%\usepackage{mhchem} %latex chemistry symbols
+\usepackage{blindtext} %to fill in dummy text
+%\usepackage{cite} %to have multiple citations in one \cite{key1,key2,..} -do not use with natbib!!
+\usepackage{tcolorbox} %to have boxes w color around text and math mode
+\usepackage{enumitem} %to reduce vertical spacing in enumerate
+\usepackage{tabu} % to set tables to page width
+%\usepackage{aas_macros}
+
+\usepackage[sort&compress,square,comma,numbers]{natbib} %to use \citet, now mixed with [nr]
+\usepackage[nottoc]{tocbibind}
+
+\interfootnotelinepenalty=10000 % to force footnotes to NOT run over to the next page
+
+%---
+% to reduce space around table of contents (to fit everything into one page): 
+\usepackage{tocloft}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0pt}
+%---
+
+\usepackage{epigraph}
+\setlength\epigraphwidth{11cm}
+\setlength\epigraphrule{0pt}
+
+%---
+\newcommand{\Sm}{${}^{140}$Sm} % making it faster to write Sm140
+%\newcommand{\Osreac}{${}^{192}$Os$(\alpha$, $\alpha ' \gamma){}^{192}$Os}
+%\newcommand{\Osreacto}{${}^{191}$Os$(n$, $\gamma){}^{192}$Os}
+\newcommand{\betadecay}{$\beta$-decay} % making it faster to write 
+%\newcommand{\bref}{B$^2$FH} % making it faster to write 
+%\newcommand{\gsf}{$\gamma$-strength function}
+\newcommand{\ga}{$\gamma$}
+
+%---
+% modifying color in code listings and some style
+\usepackage{color}
+ 
+%\definecolor{codegreen}{rgb}{0,0.6,0} % too flashy
+\definecolor{codegreen}{rgb}{0.0, 0.42, 0.24} % less flashy so comments not take all attention
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+%\definecolor{codepurple}{rgb}{1.0, 0.0, 0.22} %carminered, could try it 
+%\definecolor{backcolour}{rgb}{0.95,0.95,0.92} % original suggestion
+\definecolor{backcolour}{rgb}{0.94, 0.97, 1.0}% aliceblue, not so flashy and not as ugly
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    %commentstyle=\color{codegray},    
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    %numbers=left,     %removing line numbers in the code snippets               
+    %numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    %float=tp,
+    %floatplacement=tbp
+}
+ 
+\lstset{style=mystyle}
+\renewcommand{\lstlistingname}{Code}
+%---
+
+%---
+% new tcolorbox environment
+% #1: tcolorbox options
+% #2: color
+% #3: box title
+\newtcolorbox{mybox}[3][]
+{
+  colframe = #2!25,
+  colback  = #2!10,
+  coltitle = #2!20!black,  
+  title    = #3,
+  #1,
+}
+
+%---
+
+
+%\bibliography{references}
+
+\author{Trond Wiggo Johansen}
+\title{I did something cool at CERN - ISOLDE
+}
+\date{May 2019}
+ 
+% ----------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------
+%Equations
+%
+%The command \eqref{} works exactly like \ref{}, but it adds parantheses to a plain number.
+%
+%Figures and tables
+%
+%\autoref{} is a usefull command when refering to to figures and tables. The command creates a reference with additional text corresponding to the target's type. For example, the command \autoref{fig:myfigure} would create a hyperlink to the \label{fig:myfigure} command, wherever it is. Assuming that this label is pointing to a figure, the hyperlink would contain the text "Figure 1.1", or similar.
+
+%Two basic citation commands, \citet and \citep for textual and parenthetical citations, respectively. …
+%\citet{jon90} --> Jones et al. (1990)
+%\citep{jon90} --> (Jones et al., 1990)
+%\citet*{jon90} --> Jones, Baker, and Williams (1990)
+%\citep*{jon90} --> (Jones, Baker, and Williams, 1990)
+
+
+\begin{document}
+
+% set space around equations
+\setlength{\belowdisplayskip}{12pt} \setlength{\belowdisplayshortskip}{12pt}
+\setlength{\abovedisplayskip}{12pt} \setlength{\abovedisplayshortskip}{12pt}
+
+\maketitle
+
+%Centering the front page, see: https://github.com/ComputationalPhysics/uiofysmaster
+
+%%% ABSTRACT
+\begin{abstract}
+
+
+\end{abstract}
+
+
+\begin{dedication}
+To my family, for all their support and encouragement!
+
+\end{dedication}
+
+\begin{acknowledgements}
+Supervisors Andreas Görgen and Katarzyna Hady\'nska-Kl\c ek
+
+Nuclear Physics Group
+
+Computational Physics Group, Morten Hjorth-Jensen
+
+CERN-ISOLDE, Liam Gaffney
+
+Lillefy, FFU, Fysikkforeningen
+
+My family
+
+Morten, Alex og Astrid
+
+Ina, I love you.
+
+\subsection*{Collaboration details}
+The sorting and analysis code used in this thesis has been developed at CERN-ISOLDE and can be found at \url{https://github.com/Miniball/MiniballCoulexSort}
+
+Other code/scripts have been written by the author. C++ / Python.
+
+  \vspace{1.5cm}
+  
+  \noindent\textit{Trond Wiggo Johansen}\\
+  
+  \noindent September, 2019
+  
+\end{acknowledgements}
+
+
+\tableofcontents
+
+
+% ----------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------
+
+\chapter{Introduction}
+Test \cite{Clement2016}
+
+% ----------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------
+
+\chapter{Experimental setup and data calibration} 
+\label{ch: exp_setup_calib}
+
+
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
+
+
+\chapter{Experimental results}
+
+
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
+
+
+\chapter{Discussion}
+
+
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
+
+\chapter{Summary and outlook}
+
+
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
+
+\begin{appendices}
+\chapter{Some Appendix}
+
+
+\chapter{Some other appendix...}
+
+\end{appendices}
+
+
+
+%\bibliographystyle{unsrtnat}
+\bibliographystyle{mybibstyle} %my own bibstyle to set first names to one letter + unsrtnat
+
+\bibliography{/Users/trondwj/Documents/Mendeley/test.bib}
+
+
+\end{document}
