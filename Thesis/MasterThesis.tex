@@ -13,6 +13,8 @@
 \usepackage[sort&compress,square,comma,numbers]{natbib} %to use \citet, now mixed with [nr]
 \usepackage[nottoc]{tocbibind}
 
+\usepackage{float} 
+
 \interfootnotelinepenalty=10000 % to force footnotes to NOT run over to the next page
 
 %---
@@ -28,11 +30,8 @@
 
 %---
 \newcommand{\Sm}{$^{140}$Sm} % making it faster to write Sm140
-%\newcommand{\Osreac}{${}^{192}$Os$(\alpha$, $\alpha ' \gamma){}^{192}$Os}
-%\newcommand{\Osreacto}{${}^{191}$Os$(n$, $\gamma){}^{192}$Os}
+\newcommand{\Pb}{$^{208}$Pb} 
 \newcommand{\bd}{$\beta$-decay} % making it faster to write 
-%\newcommand{\bref}{B$^2$FH} % making it faster to write 
-%\newcommand{\gsf}{$\gamma$-strength function}
 \newcommand{\ga}{$\gamma$}
 
 %---
@@ -156,6 +155,10 @@ Ina, I love you.
 \subsection*{Collaboration details}
 The sorting and analysis code used in this thesis has been developed at CERN-ISOLDE and can be found at \url{https://github.com/Miniball/MiniballCoulexSort}
 
+The code for theoretical predictions of energy used in the calibration was developed by Liam Gaffney who is working at ISOLDE and has to do with analysis of data from Miniball and ISS. kinsim can be found here \url{https://github.com/lpgaff/kinsim}
+
+Some calibration code is based on the codes of Ville Virtanen and Liam Gaffney. 
+
 Other code/scripts have been written by the author. C++ / Python.
 
   \vspace{1.5cm}
@@ -176,6 +179,10 @@ Other code/scripts have been written by the author. C++ / Python.
 \chapter{Introduction}
 Test \cite{Clement2016}
 
+Test 2 \cite{OCLweb}
+
+kinsim \cite{kinsim}
+
 The experiment has been done before, with lower energy (and another target), Malin Klintefjord.
  
 % ----------------------------------------------------------------------------------------------------------------------
@@ -188,23 +195,118 @@ The experiment has been done before, with lower energy (and another target), Mal
 
 
 \chapter{Coulomb excitation experiment} 
+
+\begin{table}[H]
+  \centering
+  \caption{Acronyms.}
+    \begin{tabular}{ll}
+        \hline
+        PSB & Proton Synchrotron Booster \\
+        ISOLDE & Isotope Separator On-Line DEvice \\
+        GPS & General Purpose Separator \\
+        HRS & High Resolution Separator \\
+        EBIS & Electron Beam Ion Source \\
+        REX-EBIS & Radioactive beam EXperiment EBIS \\
+        RILIS & Resonance Ionization Laser Ion Source \\
+        HIE-ISOLDE & High Intensity and Energy upgrade \\
+        RIB & Radioactive Ion Beams \\
+        ENSAR2 & European Nuclear Science and Applications Research - 2 \\
+        ISOL & Isotope Separator On-Line \\
+        \hline
+    \end{tabular}
+    \label{tab:acro}
+\end{table}
+
 \section{ISOLDE}
+
+ISOLDE \url{http://isolde.web.cern.ch}
+
+REX-ISOLDE \url{http://rex-isolde.web.cern.ch}
+
+RILIS \url{http://rilis.web.cern.ch}
+
+HIE-ISOLDE \url{http://hie-isolde-project.web.cern.ch}
+
+MINIBALL \url{http://isolde.web.cern.ch/experiments/miniball} and \url{https://www.miniball.york.ac.uk/wiki/Main_Page}
+
+ENSAR2 \url{http://www.ensarfp7.eu}
+
+
+Coulex: Coulomb excitation
+
+Ebis: charge breader: release beam with certain energy
+
+
+
+
 \subsection{Miniball}
+
+
 \subsection{DSSSD}
 
 \section{Experimental setup}
 \Sm ~Coulomb excitation experiment.
+
+Beam: \Sm (4.65 MeV/$u$, 651 MeV)
+
+Target: \Pb
+
+
+ISOLDE experimental hall:
+\begin{align*}
+	\text{p}^+ \rightarrow~ &\text{Ta} \rightarrow \text{Produces the chart of nuclides up to Ta} \rightarrow \text{GPS} \rightarrow \\
+	&\text{RILIS} \rightarrow \text{REX-EBIS} \rightarrow \text{HIE ISOLDE} \rightarrow \text{MINIBALL}
+\end{align*}
+
+GPS: Selects mass 140
+
+RILIS: Selects Sm with laser
+
+REX-EBIS: Excites nucleus in three steps ionizing the atom $\rightarrow$ nucleus in high charge state
+
+HIE-ISOLDE: Linear accelerator
+
+Small angle: Forward scattering: Larger distance, weaker \textcolor{red}{EM}-field, less excitation probability.
+
+Large angle: Backward scattering: Closer distance, stronger \textcolor{red}{EM}-field, higher excitation probability. 
+
+
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 
 
 \chapter{Data analysis} 
+
+ROOT: analysere data
+
+kinsim3 + SRIM
+
+
 \section{Calibration}
 \subsection{Particle detector}
+ADC: Analog to digital converter (Mesytec)
+
+TDC: Time to digital converter
+
 DSSSD: Double-Sided Silicon Strip Detector $\implies$ CD
 
+must remove the inner ring from data analysis because of damage
+
+\begin{align*}
+	gain = \frac{E_{Sm} - E_{Pb ~or~ Ni}}{Ch_{Sm} - Ch_{Pb ~or~ Ni}}
+\end{align*}
+
+\begin{align*}
+	offset = E_{Sm} - gain \cdot Ch_{Sm}
+\end{align*}
+in keV.
+
+
+
 \subsection{Gamma detectors}
+
+DGF: Digital \ga~ finder
 
 \section{Doppler correction}
 
@@ -245,7 +347,7 @@ DSSSD: Double-Sided Silicon Strip Detector $\implies$ CD
 %\bibliographystyle{unsrtnat}
 \bibliographystyle{mybibstyle} %my own bibstyle to set first names to one letter + unsrtnat
 
-\bibliography{/Users/trondwj/Documents/Mendeley/test.bib}
+\bibliography{/Users/trondwj/GitHub/MasterThesis/Thesis/Mendeley/test.bib,/Users/trondwj/GitHub/MasterThesis/Thesis/References/web_references.bib}
 
 
 \end{document}
