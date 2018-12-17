@@ -15,6 +15,11 @@
 
 \usepackage{float} 
 
+\hypersetup{
+    colorlinks = true,
+    citecolor = blue
+}
+
 \interfootnotelinepenalty=10000 % to force footnotes to NOT run over to the next page
 
 %---
@@ -183,12 +188,18 @@ Test 2 \cite{OCLweb}
 
 kinsim \cite{kinsim}
 
-The experiment has been done before, with lower energy (and another target), Malin Klintefjord.
+The experiment has been done before, with lower energy (and another target), Malin Klintefjord. \url{http://urn.nb.no/URN:NBN:no-56121} \newline
  
+ 
+Experiment conducted 8th - 14th of August 2017.
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 
 \chapter{Theory?}
+
+Deformation. \newline
+
+Shape coexistence?
 
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
@@ -198,7 +209,7 @@ The experiment has been done before, with lower energy (and another target), Mal
 
 \begin{table}[H]
   \centering
-  \caption{Acronyms.}
+  \caption{Acronyms and abbreviations.}
     \begin{tabular}{ll}
         \hline
         PSB & Proton Synchrotron Booster \\
@@ -206,18 +217,49 @@ The experiment has been done before, with lower energy (and another target), Mal
         GPS & General Purpose Separator \\
         HRS & High Resolution Separator \\
         EBIS & Electron Beam Ion Source \\
-        REX-EBIS & Radioactive beam EXperiment EBIS \\
+        REXEBIS & Radioactive beam EXperiment EBIS \\
         RILIS & Resonance Ionization Laser Ion Source \\
         HIE-ISOLDE & High Intensity and Energy upgrade \\
-        RIB & Radioactive Ion Beams \\
+        RIB & Radioactive Ion Beam \\
         ENSAR2 & European Nuclear Science and Applications Research - 2 \\
         ISOL & Isotope Separator On-Line \\
+        Linac & Linear accelerator \\
+        ADC & Analog-to-Digital Converter \\
+        TDC & Time-to-Digital Converter (or time digitizer) \\
+        Coulex & Coulomb excitation \\
         \hline
     \end{tabular}
     \label{tab:acro}
 \end{table}
 
+
+\textcolor{red}{---------} \newline
+\textcolor{red}{Oppgavens mål:} \newline
+The ISOLDE facility at CERN has been upgraded to provide higher energies and intensities for radioactive ion beams. A new experiment to study 140Sm was performed in the summer of 2017. The goal of the experiment was to measure electromagnetic transition probabilities and electric quadrupole moments for several excited states in 140Sm by measuring Coulomb excitation probabilities. A large data set was obtained using silicon detectors to determine the energies and angles of scattered particles, and germanium detectors to measure gamma rays from excited states in 140Sm. \newline
+
+The goal of the master thesis is to analyze the data from this experiment. The required tasks include development and improvement of data analysis software to determine Coulomb excitation yields. These yields will then, in a second step, be compared to theoretical calculations and transition probabilities and quadrupole moments will be extracted using chi-square minimization procedures. \newline
+
+
+\textcolor{red}{Prosjektbeskrivelse (omfang 60 studiepoeng):} \newline
+The shape of an atomic nucleus is determined by a delicate interplay between macroscopic (liquid drop) properties and microscopic shell effects. Nuclei with filled proton or neutron shells (i.e. magic nuclei) are generally spherical in shape, whereas nuclei with open shells gain energy by assuming a deformed shape. Depending on the occupation of specific orbitals, the nuclear shape can change drastically by adding or removing protons or neutrons. Certain nuclei exhibit shape coexistence, i.e. the coexistence of quantum states that correspond to different shapes. Because the shape of a nucleus is so sensitive to the underlying nuclear structure and to changes of the proton and neutron numbers, the excitation energy, or the angular momentum, observables related to the nuclear shape are used as benchmarks for theoretical models. 
+
+Nuclei in the rare earth region, and in particular the chain of samarium isotopes, exhibit a variety of shape effects. The Sm isotope with closed neutron shell at N=82, 144Sm, is spherical in shape. Adding neutrons to 144Sm changes the deformation to an elongated (prolate) quadrupole shape. The transition from spherical to prolate shape, which occurs for 152Sm at N=90, can be interpreted as a shape-phase transition. Flattened (oblate) quadrupole shapes are predicted by theory to occur below the N=82 shell closure. An earlier experiment studying 140Sm at CERN-ISOLDE found triaxial shape for this isotope, i.e. a shape where all three principal axes of the ellipsoid have different lengths. 140Sm can therefore be considered to lie at the critical point of a phase transition from spherical to deformed, and from prolate to oblate shape. \newline
+
+\textcolor{red}{Foreløpig tittel:} \newline
+Coulomb excitation of 140Sm \newline
+
+
+\textcolor{red}{Metoder som tenkes benyttet:} \newline
+Multi-step Coulomb excitation with radioactive beam, isotope separation on-line technique, nuclear spectroscopy, particle-gamma and particle gamma-gamma coincidence analysis, advanced chi-square minimization procedures. \newline
+\textcolor{red}{---------} \newline
+
+
 \section{ISOLDE}
+
+The ISOLDE Radioactive Ion Beam facility \newline
+
+Nuclear physics facility at CERN.
+
 
 ISOLDE \url{http://isolde.web.cern.ch}
 
@@ -225,50 +267,104 @@ REX-ISOLDE \url{http://rex-isolde.web.cern.ch}
 
 RILIS \url{http://rilis.web.cern.ch}
 
-HIE-ISOLDE \url{http://hie-isolde-project.web.cern.ch}
+HIE-ISOLDE \url{http://hie-isolde-project.web.cern.ch}, technical design \url{http://cds.cern.ch/record/2635892?ln=en}, direct to doc: \url{http://cds.cern.ch/record/2635892/files/HIE-ISOLDE_TDR.pdf}
 
 MINIBALL \url{http://isolde.web.cern.ch/experiments/miniball} and \url{https://www.miniball.york.ac.uk/wiki/Main_Page}
 
 ENSAR2 \url{http://www.ensarfp7.eu}
 
 
-Coulex: Coulomb excitation
+Test \cite{CERN-AC}, copyright: \url{https://copyright.web.cern.ch}
 
-Ebis: charge breader: release beam with certain energy
+CERN Document Server  \url{https://cds.cern.ch}
+
+\subsection{Beam production}
+
+ISOLDE experimental hall:
+\begin{align*}
+	\text{p}^+ \rightarrow~ &\text{Ta} \rightarrow (\text{Produces the chart of nuclides up to Ta}) \rightarrow \text{GPS} \rightarrow \\
+	&\text{RILIS} \rightarrow \text{REXEBIS} \rightarrow \text{HIE-ISOLDE} \rightarrow \text{MINIBALL}
+\end{align*}
 
 
+Protons from the PSB comes into the ISOLDE facility and hit a production target of tantalum, producing the elements in the chart of nuclides up to tantalum. The fragments travels onward to the GPS where the mass of $A = 140$ is selected. RILIS selects samarium with laser. REXEBIS excites the nucleus in three steps ionizing the atom, which leaves the nucleus in a high charge state. The HIE-linac accelerates the beam through the beam line and magnets bend the beam into MINIBALL. 
+
+
+Magnets....
+
+\bigskip
+
+Ebis: charge breader: release beam with certain energy.
+
+
+
+high-performance charge breeder (CB). CB based on the Electron Beam Ion Source (EBIS) technology – an EBIS Charge Breeder (ECB)
+
+
+\bigskip
+
+\textcolor{red}{HRS not in use for this experiment?}
+
+
+HIE-ISOLDE (Superconducting Linac Upgrade): Linear accelerator, HIE-linac \newline
+
+Post-accelerated beams ISOLDE \url{http://iopscience.iop.org/article/10.1088/1361-6471/aa78ca}
+
+
+ISOLDE actually uses the most protons at CERN [\textcolor{red}{ref?}].
+
+
+Very pure beam
+
+\subsection{Target}
+
+\Pb\ was chosen as a target. Want high $Z$ so that the probability of excitation is high. Not enough beam energy to excite \Pb. \newline
+
+
+Contamination... finger print [\textcolor{red}{picture}]
 
 
 \subsection{Miniball}
 
+Pictures \url{https://cds.cern.ch/record/844871?ln=en}
 
-\subsection{DSSSD}
+\subsection{Particle detector, DSSSD}
+
+16 rings, 12 strips effectively (24 strips, 12 pairs with two strips making a pair)
+
+
+\subsection{\ga\ detectors, HPGe}
+
+24 six-fold segmented
+
+\bigskip
+
+Cryo-modules
 
 \section{Experimental setup}
 \Sm ~Coulomb excitation experiment.
+
+Experiment code: IS558 
+
+Ta: tantalum (Z = 73)
+
+Sm: samarium (Z = 62)
+
+Pb: lead (Z = 82) \newline
+
+
 
 Beam: \Sm (4.65 MeV/$u$, 651 MeV)
 
 Target: \Pb
 
 
-ISOLDE experimental hall:
-\begin{align*}
-	\text{p}^+ \rightarrow~ &\text{Ta} \rightarrow \text{Produces the chart of nuclides up to Ta} \rightarrow \text{GPS} \rightarrow \\
-	&\text{RILIS} \rightarrow \text{REX-EBIS} \rightarrow \text{HIE ISOLDE} \rightarrow \text{MINIBALL}
-\end{align*}
-
-GPS: Selects mass 140
-
-RILIS: Selects Sm with laser
-
-REX-EBIS: Excites nucleus in three steps ionizing the atom $\rightarrow$ nucleus in high charge state
-
-HIE-ISOLDE: Linear accelerator
-
 Small angle: Forward scattering: Larger distance, weaker \textcolor{red}{EM}-field, less excitation probability.
 
-Large angle: Backward scattering: Closer distance, stronger \textcolor{red}{EM}-field, higher excitation probability. 
+Large angle: Backward scattering: Closer distance, stronger \textcolor{red}{EM}-field, higher excitation probability. \newline
+
+
+
 
 
 
@@ -282,6 +378,16 @@ ROOT: analysere data
 
 kinsim3 + SRIM
 
+ +Experiment code: IS553
+
+Ni: nickel (Z = 28)
+
+Ba: barium (Z = 56)
+
+
+\bigskip
+
+particle-gamma and particle-gamma-gamma coincidence
 
 \section{Calibration}
 \subsection{Particle detector}
