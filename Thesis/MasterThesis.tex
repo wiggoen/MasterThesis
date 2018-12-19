@@ -17,7 +17,8 @@
 
 \hypersetup{
     colorlinks = true,
-    citecolor = blue
+    citecolor = blue,
+    linkcolor=blue
 }
 
 \interfootnotelinepenalty=10000 % to force footnotes to NOT run over to the next page
@@ -42,6 +43,9 @@
 %---
 % modifying color in code listings and some style
 \usepackage{color}
+
+% The predefined color names are: 
+% black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow.
  
 %\definecolor{codegreen}{rgb}{0,0.6,0} % too flashy
 \definecolor{codegreen}{rgb}{0.0, 0.42, 0.24} % less flashy so comments not take all attention
@@ -153,7 +157,7 @@ Lillefy, FFU, Fysikkforeningen
 
 My family
 
-Morten, Alex and Astrid
+Morten, Alex and Astrid.
 
 Ina, I love you.
 
@@ -197,23 +201,34 @@ Experiment conducted 8th - 14th of August 2017.
 
 \chapter{Theory?}
 
-Deformation. \newline
+Quadrupole deformation of nuclei. \newline
 
-Shape coexistence?
+Shape coexistence possible for certain regions of $N$ and $Z$.
+
+\bigskip
+
+- triaxial shape / shape coexistence \newline
+- benchmark for theoretical models \newline
+- transition probabilities and quadrupole moments between several excited states are not known \newline
+- fundamental research
 
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 
 
 \chapter{Coulomb excitation experiment} 
+\textcolor{red}{Table of abbreviations and symbols?}
 
 \begin{table}[H]
   \centering
   \caption{Acronyms and abbreviations.}
     \begin{tabular}{ll}
         \hline
+        CERN & European Council for Nuclear Research \\ 
+         & (in French Conseil Européen pour la Recherche Nucléaire) \\
+        ISOL & Isotope Separator On Line \\
+        ISOLDE & Isotope Separator On Line DEvice \\
         PSB & Proton Synchrotron Booster \\
-        ISOLDE & Isotope Separator On-Line DEvice \\
         GPS & General Purpose Separator \\
         HRS & High Resolution Separator \\
         EBIS & Electron Beam Ion Source \\
@@ -222,7 +237,6 @@ Shape coexistence?
         HIE-ISOLDE & High Intensity and Energy upgrade \\
         RIB & Radioactive Ion Beam \\
         ENSAR2 & European Nuclear Science and Applications Research - 2 \\
-        ISOL & Isotope Separator On-Line \\
         Linac & Linear accelerator \\
         ADC & Analog-to-Digital Converter \\
         TDC & Time-to-Digital Converter (or time digitizer) \\
@@ -231,6 +245,15 @@ Shape coexistence?
     \end{tabular}
     \label{tab:acro}
 \end{table}
+
+
+Why CoulEx? \url{https://iks32.fys.kuleuven.be/wiki/brix/images/5/58/10_20151123_Illana_BriX15_web.pdf}
+
+\bigskip
+
+- nucleus excited by electromagnetic interaction. \newline
+- de-excitation $\rightarrow$ gamma
+
 
 
 \textcolor{red}{---------} \newline
@@ -254,41 +277,56 @@ Multi-step Coulomb excitation with radioactive beam, isotope separation on-line 
 \textcolor{red}{---------} \newline
 
 
-\section{ISOLDE}
-
-The ISOLDE Radioactive Ion Beam facility \newline
-
-Nuclear physics facility at CERN.
+\section{ISOLDE at CERN}
+ISOLDE is a radioactive ion beam facility at CERN in Meyrin, Switzerland. The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated radioactive ion beams (RIBs) have been conducted. \textcolor{red}{New / moved facility in 1992, to the place as we know it today.} The high intensity and energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{Borge2018}. 
+ \textcolor{red}{Cite: \url{http://iopscience.iop.org/article/10.1088/1361-6471/aa990f} and \url{http://www.scholarpedia.org/article/The_ISOLDE_facility}}  
 
 
-ISOLDE \url{http://isolde.web.cern.ch}
+\bigskip
 
-REX-ISOLDE \url{http://rex-isolde.web.cern.ch}
+ISOLDE \url{http://isolde.web.cern.ch} and \url{http://isolde.web.cern.ch/sites/isolde.web.cern.ch/files/NuclPhysNew-ISOLDE_0.pdf} and \url{http://www.scholarpedia.org/article/The_ISOLDE_facility}  and \url{http://iopscience.iop.org/article/10.1088/1361-6471/aa5f03/pdf}
 
-RILIS \url{http://rilis.web.cern.ch}
 
 HIE-ISOLDE \url{http://hie-isolde-project.web.cern.ch}, technical design \url{http://cds.cern.ch/record/2635892?ln=en}, direct to doc: \url{http://cds.cern.ch/record/2635892/files/HIE-ISOLDE_TDR.pdf}
 
-MINIBALL \url{http://isolde.web.cern.ch/experiments/miniball} and \url{https://www.miniball.york.ac.uk/wiki/Main_Page}
-
-ENSAR2 \url{http://www.ensarfp7.eu}
-
-
-Test \cite{CERN-AC}, copyright: \url{https://copyright.web.cern.ch}
-
-CERN Document Server  \url{https://cds.cern.ch}
 
 \subsection{Beam production}
 
-ISOLDE experimental hall:
+ISOLDE experimental hall (\textcolor{red}{make flow chart or show overview over the hall}):
 \begin{align*}
-	\text{p}^+ \rightarrow~ &\text{Ta} \rightarrow (\text{Produces the chart of nuclides up to Ta}) \rightarrow \text{GPS} \rightarrow \\
-	&\text{RILIS} \rightarrow \text{REXEBIS} \rightarrow \text{HIE-ISOLDE} \rightarrow \text{MINIBALL}
+	\text{p}^+ ~(\text{from PSB}) \rightarrow~ &\text{Production target} \rightarrow \text{GPS} \rightarrow \text{RILIS} \rightarrow \text{\textcolor{red}{REXTRAP?}} \rightarrow \\
+ &\text{REXEBIS} \rightarrow \text{HIE-ISOLDE} \rightarrow \text{MINIBALL}
 \end{align*}
 
+A proton beam of 1.4 GeV ($\sim 10^{18}$ protons) from the PSB comes into the ISOLDE facility and collide with a production target \textcolor{purple}{of tantalum, producing the elements in the chart of nuclides up to tantalum. The proton beam can collide in one of the two target stations, the general purpose separator (GPS) or the high resolution separator (HRS). The GPS has one bending magnet and can deliver beams of different mass simultaneously into three beam lines, while the HRS has two bending magnets with high mass resolving power and deliver the beam into the main \textcolor{teal}{(or common)} beam line. In this experiment, the GPS was used.} The fragments travels in the beam line onward to the GPS where the mass of $A = 140$ is selected (\textcolor{red}{separated from the rest}). RILIS selects samarium with laser. \textcolor{red}{REXTRAP}. REXEBIS excites the nucleus in three steps ionizing the atom, which leaves the nucleus in a high charge state. The HIE-linac accelerates the beam through the beam line and magnets bend the beam into MINIBALL. 
 
-Protons from the PSB comes into the ISOLDE facility and hit a production target of tantalum, producing the elements in the chart of nuclides up to tantalum. The fragments travels onward to the GPS where the mass of $A = 140$ is selected. RILIS selects samarium with laser. REXEBIS excites the nucleus in three steps ionizing the atom, which leaves the nucleus in a high charge state. The HIE-linac accelerates the beam through the beam line and magnets bend the beam into MINIBALL. 
+\textcolor{red}{Cite: \url{https://ac.els-cdn.com/0168583X92959079/1-s2.0-0168583X92959079-main.pdf?_tid=0ccb0647-5870-48f9-ac38-df8c0077981c&acdnat=1545216224_d359ddcc40ea1f94369c85a141edba63} and \url{https://cds.cern.ch/record/2025701/files/epjconf_inpc2013_11005.pdf} and \url{http://isolde.web.cern.ch/targets-and-separators}}
 
+\bigskip
+
+\textcolor{red}{"The General Purpose Separator (GPS) has one bending magnet and an electrostatic switchyard allowing the simultaneous extraction of three mass separated beams." \url{http://isolde.web.cern.ch/targets-and-separators}}
+
+\bigskip
+
+ISOLDE GPS++ \url{https://cds.cern.ch/record/2025701/files/epjconf_inpc2013_11005.pdf}
+
+\bigskip
+
+\textcolor{red}{"The RILIS is a chemically selective ion source which relies on resonant excitation of atomic transitions using tunable laser radiation." \url{http://rilis.web.cern.ch}} 
+
+\bigskip
+
+\autoref{fig:accelerators} shows the CERN accelerator complex \cite{CERN-AC}. ISOLDE is located beside the PSB.
+
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\textwidth]{images/0812015.pdf}
+	\caption{The CERN accelerator complex. ISOLDE gets accelerated protons from LINAC 2 and the PS BOOSTER.}
+	\label{fig:accelerators}
+\end{figure}
+
+\bigskip
 
 Magnets....
 
@@ -297,45 +335,83 @@ Magnets....
 Ebis: charge breader: release beam with certain energy.
 
 
-
 high-performance charge breeder (CB). CB based on the Electron Beam Ion Source (EBIS) technology – an EBIS Charge Breeder (ECB)
 
 
 \bigskip
 
-\textcolor{red}{HRS not in use for this experiment?}
-
-
 HIE-ISOLDE (Superconducting Linac Upgrade): Linear accelerator, HIE-linac \newline
+
+\bigskip
 
 Post-accelerated beams ISOLDE \url{http://iopscience.iop.org/article/10.1088/1361-6471/aa78ca}
 
+\bigskip
 
 ISOLDE actually uses the most protons at CERN [\textcolor{red}{ref?}].
 
+\bigskip
 
-Very pure beam
+Very pure beam (\textcolor{red}{did we have statistics of this?})
+
+\bigskip
+
+PSB \url{https://home.cern/science/accelerators/proton-synchrotron-booster}
+
+\bigskip
+
+REX-ISOLDE \url{http://rex-isolde.web.cern.ch}
+
+\bigskip
+
+RILIS \url{http://rilis.web.cern.ch} and \url{http://iopscience.iop.org/article/10.1088/1361-6471/aa78e0/meta} and \url{https://www.research.manchester.ac.uk/portal/files/60831252/FULL_TEXT.PDF}
+
+\bigskip
+
+MINIBALL \url{http://isolde.web.cern.ch/experiments/miniball} and \url{https://www.miniball.york.ac.uk/wiki/Main_Page}
+
+\bigskip
+
+ENSAR2 \url{http://www.ensarfp7.eu}
+
+\bigskip
+
+Beam production \url{http://tuprints.ulb.tu-darmstadt.de/4599/1/TUDthesis_Christoph%20Seiffert.pdf}
+
+\bigskip
+
+Test \cite{CERN-AC}, copyright: \url{https://copyright.web.cern.ch}
+
+\bigskip
+
+CERN Document Server  \url{https://cds.cern.ch}
+
 
 \subsection{Target}
 
 \Pb\ was chosen as a target. Want high $Z$ so that the probability of excitation is high. Not enough beam energy to excite \Pb. \newline
 
+Highest $Z$ for maximum excitation probability.
+
 
 Contamination... finger print [\textcolor{red}{picture}]
 
 
-\subsection{Miniball}
+\section{Miniball}
 
 Pictures \url{https://cds.cern.ch/record/844871?ln=en}
 
-\subsection{Particle detector, DSSSD}
+\subsection{Particle detector, DSSSD (CD)}
 
 16 rings, 12 strips effectively (24 strips, 12 pairs with two strips making a pair)
+
+Angle coverage: [18.4$^\circ$, 56.7$^\circ$]
 
 
 \subsection{\ga\ detectors, HPGe}
 
-24 six-fold segmented
+24 six-fold segmented. 8 clusters of 3 crystals each. Each crystal segmented in 6 parts (144 segments in total).
+
 
 \bigskip
 
@@ -354,9 +430,9 @@ Pb: lead (Z = 82) \newline
 
 
 
-Beam: \Sm (4.65 MeV/$u$, 651 MeV)
+Beam: \Sm (T$_{1/2} \approx 15$ min, 4.65 MeV/$u$, total 651 MeV), excellent purity
 
-Target: \Pb
+Target: \Pb (Thickness: 1.4 mg/cm$^2$)
 
 
 Small angle: Forward scattering: Larger distance, weaker \textcolor{red}{EM}-field, less excitation probability.
@@ -364,9 +440,13 @@ Small angle: Forward scattering: Larger distance, weaker \textcolor{red}{EM}-fie
 Large angle: Backward scattering: Closer distance, stronger \textcolor{red}{EM}-field, higher excitation probability. \newline
 
 
+\bigskip
 
+Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclear deformation). 
 
+\bigskip
 
+Level scheme (from Klintefjord?)
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
@@ -376,7 +456,7 @@ Large angle: Backward scattering: Closer distance, stronger \textcolor{red}{EM}-
 
 ROOT: analysere data
 
-kinsim3 + SRIM
+kinsim3 \url{https://github.com/lpgaff/kinsim} + SRIM \url{http://www.srim.org}
 
  +Experiment code: IS553
 
