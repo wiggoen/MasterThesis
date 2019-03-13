@@ -15,12 +15,6 @@
 
 \usepackage{float} 
 
-\hypersetup{
-    colorlinks = true,
-    citecolor = blue,
-    linkcolor=blue
-}
-
 \interfootnotelinepenalty=10000 % to force footnotes to NOT run over to the next page
 
 %---
@@ -42,7 +36,7 @@
 
 %---
 % modifying color in code listings and some style
-\usepackage{color}
+%\usepackage{color}
 
 % The predefined color names are: 
 % black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow.
@@ -54,6 +48,7 @@
 %\definecolor{codepurple}{rgb}{1.0, 0.0, 0.22} %carminered, could try it 
 %\definecolor{backcolour}{rgb}{0.95,0.95,0.92} % original suggestion
 \definecolor{backcolour}{rgb}{0.94, 0.97, 1.0}% aliceblue, not so flashy and not as ugly
+\definecolor{LightGray}{gray}{0.95}
  
 \lstdefinestyle{mystyle}{
     backgroundcolor=\color{backcolour},   
@@ -427,7 +422,6 @@ Angle coverage: [18.4$^\circ$, 56.7$^\circ$]
 
 24 six-fold segmented. 8 clusters of 3 crystals each. Each crystal segmented in 6 parts (144 segments in total).
 
-
 \bigskip
 
 Cryo-modules
@@ -484,6 +478,40 @@ Ba: barium (Z = 56)
 
 particle-gamma and particle-gamma-gamma coincidence
 
+\section{Simulation}
+Simulation done by kinsim3
+
+
+Terminal: Simulation: 140Sm on 208Pb:
+\begin{lstlisting}[language=sh]
+$ cd GitHub/Miniball/kinsim
+$ root
+root [0] .L kinsim3.cc+
+root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 26.98, false, 1e6, "../SRIM")
+\end{lstlisting}
+
+similarly for Ni
+
+\begin{lstlisting}[language=sh]
+root [2] kinsim3(56, 28, 144, 58, 1.8, 3.395, 0.02, 1.0, 0.6, 26.98, false, 1e6, "../SRIM")
+\end{lstlisting}
+
+kinsim3 function:
+\begin{lstlisting}[language=c++]
+void kinsim3( int Zb, int Zt, double Ab, double At, double thick /* mg/cm^2 */, double Eb /* MeV/u */,
+    double dEb = 0.1 /* MeV/u */, double Ex = 1.0 /* MeV */, double res = 0.6 /* % */,
+	double cd_dist = 28.0 /* mm */, bool flat = false /* angular distribution? */,
+	long Nevts = 1E6, string srim_dir = "../srim" )
+\end{lstlisting}
+
+\bigskip
+
+\textcolor{red}{Say something about SRIM files.}
+
+\bigskip
+
+
+
 \section{Calibration}
 \subsection{Particle detector}
 ADC: Analog to digital converter (Mesytec)
@@ -504,10 +532,18 @@ must remove the inner ring from data analysis because of damage
 in keV.
 
 
+Threshold: The code has a default threshold of 100, but in some cases this is too much and some cases this is not enough. So for each adc channel, the threshold can be set. We don't want to include the "pedestal". Charge sharing.
+Won't cut too much or too little..
+
+Sjekk hva Liam skrev i mailen. 
+
 
 \subsection{Gamma detectors}
 
 DGF: Digital \ga~ finder
+
+addback, singles, ...
+
 
 \section{Doppler correction}
 
