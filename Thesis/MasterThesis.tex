@@ -482,6 +482,12 @@ particle-gamma and particle-gamma-gamma coincidence
 Simulation done by kinsim3
 
 
+
+\textcolor{red}{Mail fra Liam:} \newline
+"the source has a thickness of 1.23 mm, which needs to be factored in so that the CD to target distance is the CD to source distance PLUS the source thickness, i.e. 25.78 mm + 1.23 mm =  27.01 mm. This is very close to the 26.98 mm you got from us in August. \textcolor{red}{I think that the source data was reanalysed since the original blog entry, giving the 0.03 mm difference!}" \newline
+
+
+
 Terminal: Simulation: 140Sm on 208Pb:
 \begin{lstlisting}[language=sh]
 $ cd GitHub/Miniball/kinsim
@@ -513,6 +519,17 @@ void kinsim3( int Zb, int Zt, double Ab, double At, double thick /* mg/cm^2 */, 
 
 
 \section{Calibration}
+
+* Threshold (forskjellig i log/ikke-log skala.
+
+
+Skriv om scriptene som er lagd, og at det var litt vanskelig å automatisere kalibreringen. Hvis det skulle vært gjort måtte vi funnet en "left skewed function". 
+
+
+I log-skala ser dette mer Gaussisk ut, men det er ikke det i non-log skala. 
+
+
+
 \subsection{Particle detector}
 ADC: Analog to digital converter (Mesytec)
 
@@ -531,6 +548,7 @@ must remove the inner ring from data analysis because of damage
 \end{align*}
 in keV.
 
+\textcolor{red}{Hvis man har flere sentroider bruker man bare lineær regresjon. Gjelder for baksiden!}
 
 Threshold: The code has a default threshold of 100, but in some cases this is too much and some cases this is not enough. So for each adc channel, the threshold can be set. We don't want to include the "pedestal". Charge sharing.
 Won't cut too much or too little..
