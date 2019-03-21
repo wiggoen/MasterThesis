@@ -479,6 +479,13 @@ Ba: barium (Z = 56)
 particle-gamma and particle-gamma-gamma coincidence
 
 \section{Simulation}
+To calibrate the data, we need to know the expected energy of the centroids of the peaks. 
+This was done by simulating the experiment in a program called kinsim3. 
+
+
+
+
+
 Simulation done by kinsim3
 
 
@@ -493,7 +500,7 @@ Terminal: Simulation: 140Sm on 208Pb:
 $ cd GitHub/Miniball/kinsim
 $ root
 root [0] .L kinsim3.cc+
-root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 26.98, false, 1e6, "../SRIM")
+root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 27.01, false, 1e6, "../SRIM")
 \end{lstlisting}
 
 similarly for Ni
