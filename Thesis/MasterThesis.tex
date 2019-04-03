@@ -14,6 +14,7 @@
 \usepackage[nottoc]{tocbibind}
 
 \usepackage{float} 
+\usepackage{pdfpages}
 
 \interfootnotelinepenalty=10000 % to force footnotes to NOT run over to the next page
 
@@ -415,7 +416,7 @@ Pictures \url{https://cds.cern.ch/record/844871?ln=en}
 
 16 rings, 12 strips effectively (24 strips, 12 pairs with two strips making a pair)
 
-Angle coverage: [18.4$^\circ$, 56.7$^\circ$]
+Angle coverage: [18.4$^\circ$, 56.6$^\circ$]
 
 
 \subsection{\ga\ detectors, HPGe}
@@ -467,27 +468,101 @@ ROOT: analysere data
 
 kinsim3 \url{https://github.com/lpgaff/kinsim} + SRIM \url{http://www.srim.org}
 
- +Experiment code: IS553
+\bigskip
 
-Ni: nickel (Z = 28)
+PC: \newline
+MacBook Air (13-inch, 2017) \newline
+Processor: 1.8 GHz Intel Core i5 \newline
+Memory: 8 GB 1600 MHz DDR3 \newline
 
-Ba: barium (Z = 56)
+Runtime for sorting data: \newline
+TreeBuilder (online calibration): $\sim$ 40-45 min \newline
+AQ4Sort (online calibration): $\sim$ 120 min
+
+The runtime of the bash script was done with the built in script time
+
+\begin{lstlisting}[language=sh]
+$ time ./AQ4S.sh Sm online TB
+...
+real	45m19.265s
+user	42m49.653s
+sys	0m39.665s
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=sh]
+$ time ./AQ4S.sh Sm online Q4
+...
+real	121m40.830s
+user	116m18.361s
+sys	1m17.809s
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=sh]
+$ time ./AQ4S.sh Sm user TB
+...
+real	41m11.282s
+user	39m45.592s
+sys	0m27.777s
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=sh]
+$ time ./AQ4S.sh Sm user Q4
+...
+real	143m47.600s
+user	128m6.174s
+sys	1m50.921s
+\end{lstlisting}
 
 
 \bigskip
 
 particle-gamma and particle-gamma-gamma coincidence
 
+\textcolor{red}{sjekk opp om energi fra online kalibrering passer med simuleringen.}
+
+\section{Data and sorting}
+The analysis code for MIniball is named MiniballCoulexSort and is available on GitHub at \url{https://github.com/Miniball/MiniballCoulexSort}. The main steps of using it is outlined in the README.md file. 
+
+
+Data from Miniball comes in the form of .MED-files (Miniball Event Data). In order to analyze this data in ROOT the first part of the sorting is just to convert the MED-files into ROOT-files, and the main file for this is called \textbf{MedToRoot.cc}. The process of how to run the 
+
+
+
+\section{Scripts}
+In order to not copy and paste the sorting command in the terminal for every data file, I made a bash script to do this. The script is called \textbf{M2R.sh} found in the folder Scripts/sorting on GitHub \textbf{\textcolor{red}{(NOT UPLOADED YET)}}.
+
+
+
+
+To plot data some scripts had to be written. 
+
+My scripts: MultiFit.cpp, MultiPlot.cpp, ++ (python, bash,..)
+
+
 \section{Simulation}
 To calibrate the data, we need to know the expected energy of the centroids of the peaks. 
 This was done by simulating the experiment in a program called kinsim3. 
 
+kinsim3 is written by Liam Gaffney\footnote{Fellow at ISOLDE, affiliated with MINIBALL.} and the purpose of the program is to simulate the kinematics of the experiment. It takes into account the Silicon dead layer. 
+
+kinsim3 generates pdf-files of the stopping powers automatically. 
+The rest of the plots are available inside the root-file. 
+To get the energy simulation for each ring, the function \textbf{cd\_sim\_plots()} from the script \textbf{MultiPlot.cpp} was used. 
+
+\bigskip
 
 
+CD to target distance: 26.98 mm.
 
 
 Simulation done by kinsim3
 
+\begin{figure}[H]\centering
+    \includegraphics[width=\linewidth]{../Plots/simulation/kin_140Sm_208Pb.pdf}
+\end{figure}
 
 
 \textcolor{red}{Mail fra Liam:} \newline
@@ -527,7 +602,13 @@ void kinsim3( int Zb, int Zt, double Ab, double At, double thick /* mg/cm^2 */, 
 
 \section{Calibration}
 
-* Threshold (forskjellig i log/ikke-log skala.
+\textcolor{red}{HUSK:} Si noe om ADC time offsets. Og at man må se på det tidlig, så resortere.
+
+
+Simulation fit $\rightarrow$ AQ4\_fit() $\rightarrow$ 
+
+Visualize plots using ROOT and the scripts. 
+
 
 
 Skriv om scriptene som er lagd, og at det var litt vanskelig å automatisere kalibreringen. Hvis det skulle vært gjort måtte vi funnet en "left skewed function". 
@@ -536,8 +617,27 @@ Skriv om scriptene som er lagd, og at det var litt vanskelig å automatisere kal
 I log-skala ser dette mer Gaussisk ut, men det er ikke det i non-log skala. 
 
 
+Back detector calibration: There are just too much individual differences to calibrate the back detectors with a simple script given a range for all 12 back strips. I found out this way to late. There isn't any range to rule them all, at least since the fitting function can behave very strange given a too small or too big range.
+
+
+\subsection{Threshold}
+* Threshold (forskjellig i log/ikke-log skala)
+
+Threshold: The code has a default threshold of 100, but in some cases this is too much and some cases this is not enough. So for each adc channel, the threshold can be set. We don't want to include the "pedestal". Charge sharing.
+Won't cut too much or too little..
+
+Sjekk hva Liam skrev i mailen. 
 
 \subsection{Particle detector}
+\subsubsection{Online calibration}
+
+
+
+
+
+
+
+\subsubsection{User calibration}
 ADC: Analog to digital converter (Mesytec)
 
 TDC: Time to digital converter
@@ -547,7 +647,7 @@ DSSSD: Double-Sided Silicon Strip Detector $\implies$ CD
 must remove the inner ring from data analysis because of damage
 
 \begin{align*}
-	gain = \frac{E_{Sm} - E_{Pb ~or~ Ni}}{Ch_{Sm} - Ch_{Pb ~or~ Ni}}
+	gain = \frac{E_{Sm} - E_{Pb}}{Ch_{Sm} - Ch_{Pb}}
 \end{align*}
 
 \begin{align*}
@@ -557,10 +657,6 @@ in keV.
 
 \textcolor{red}{Hvis man har flere sentroider bruker man bare lineær regresjon. Gjelder for baksiden!}
 
-Threshold: The code has a default threshold of 100, but in some cases this is too much and some cases this is not enough. So for each adc channel, the threshold can be set. We don't want to include the "pedestal". Charge sharing.
-Won't cut too much or too little..
-
-Sjekk hva Liam skrev i mailen. 
 
 
 \subsection{Gamma detectors}
@@ -599,6 +695,7 @@ addback, singles, ...
 \begin{appendices}
 \chapter{Some Appendix}
 
+\includepdf[pages={-}, angle=270]{../Plots/simulation/cd_sim_all.pdf}
 
 \chapter{Some other appendix...}
 
