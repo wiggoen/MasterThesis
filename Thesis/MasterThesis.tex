@@ -605,7 +605,10 @@ void kinsim3( int Zb, int Zt, double Ab, double At, double thick /* mg/cm^2 */, 
 \textcolor{red}{HUSK:} Si noe om ADC time offsets. Og at man må se på det tidlig, så resortere.
 
 
-Simulation fit $\rightarrow$ AQ4\_fit() $\rightarrow$ 
+M2R.sh $\rightarrow$ AQ4S.sh$\rightarrow$ check time offset $\rightarrow$ threshold $\rightarrow$ AQ4\_fit() $\rightarrow$ particle-calibration.py $\rightarrow$  ADC\_generator.py $\rightarrow$ copy the calibration from the terminal and paste into calibration file 
+
+
+Simulation fit $\rightarrow$ AQ4\_fit() $\rightarrow$ particle-calibration.py $\rightarrow$  ADC\_generator.py $\rightarrow$ copy the calibration from the terminal and paste into calibration file 
 
 Visualize plots using ROOT and the scripts. 
 
@@ -618,6 +621,8 @@ I log-skala ser dette mer Gaussisk ut, men det er ikke det i non-log skala.
 
 
 Back detector calibration: There are just too much individual differences to calibrate the back detectors with a simple script given a range for all 12 back strips. I found out this way to late. There isn't any range to rule them all, at least since the fitting function can behave very strange given a too small or too big range.
+
+\subsection{ADC time offsets}
 
 
 \subsection{Threshold}
