@@ -42,11 +42,13 @@ def plot_detector_side(detector_side):
         fig = plt.figure(i+1)
         for Q in range(quadrants):
             if i < 16:
-                title_name = "Front detector, Q{}, f{}".format(Q+1, i+1)
-                fig_name = "f{}".format(i+1)
+                detector_side = ["Front", "f"]
+                detector_num = i+1
             else:
-                title_name = "Back detector, Q{}, b{}".format(Q+1, i+1-rings)
-                fig_name = "b{}".format(i+1-rings)
+                detector_side = ["Back", "b"]
+                detector_num = i+1-rings
+            title_name = "{} detector, Q{}, {}{}".format(detector_side[0], Q+1, detector_side[1], detector_num)
+            fig_name = "{}{:02d}".format(detector_side[1], detector_num)
             pos = Q*(rings+strips) + i
             #print(pos)
             ax = plt.subplot(plot_number[Q])
