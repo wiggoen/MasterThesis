@@ -1,0 +1,7 @@
+element_name: Sm
+simulation_infile: ../../Sorted_data/sim_140Sm_208Pb.root
+sim_start_bin: 90
+sim_end_bin: 600
+ADC_data_infile: ../../Sorted_data/Sm_user-TreeBuilder-2019-03-22.root
+AQ4_data_infile: ../../Sorted_data/Sm_user-AQ4Sort-2019-03-23.root
+Threshold: input/Threshold.txt
