@@ -1,7 +1,8 @@
-### Other files
+### Other files or directories
 .DS_Store
 *.root
 *.med
+Raw_data/
 
 #--------------------
 ### Python ###
