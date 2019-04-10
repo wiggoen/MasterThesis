@@ -607,7 +607,7 @@ Terminal: Simulation: 140Sm on 208Pb:
 $ cd GitHub/Miniball/kinsim
 $ root
 root [0] .L kinsim3.cc+
-root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 27.01, false, 1e6, "../SRIM")
+root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 26.98, false, 1e6, "../SRIM")
 \end{lstlisting}
 
 
@@ -631,7 +631,26 @@ void kinsim3( int Zb, int Zt, double Ab, double At, double thick /* mg/cm^2 */, 
 For each file converted with MedToRoot, the program makes four files; OffBeam, OnBeam, OnBeamBackground and Scaler. The file we are interested in for analysis is the OnBeam file. 
 
 First all of the interesting files are converted with the M2R.sh script. 
+\begin{lstlisting}[language=sh]
+$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/sorting 
+$ ./M2R.sh Sm
+\end{lstlisting}
+
 Then the OnBeam files from M2R.sh is run through using Treebuilder in the AQ4S.sh script. 
+
+\begin{lstlisting}[language=sh]
+$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/sorting 
+$ ./AQ4S.sh Sm user TB
+\end{lstlisting}
+
+
+\textcolor{red}{MORE INPUT HERE!}
+
+
+
+
+\bigskip
+
 Using the MultiPlot.cpp script, the ADC time offsets can be extracted by the following commands
 \begin{lstlisting}[language=sh]
 $ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting
