@@ -9,9 +9,9 @@ the_date=$(date +%F)
 function usage {
 	echo "Usage of $0:"
 	echo "Provide three command line arguments; 'element calibration sorter'"
-	echo "e.g. 'Sm online TB' or 'Ni online TB' to calibrate the respective data."
+	echo "e.g. 'Sm online TB' to calibrate the respective data."
 	# Sm is used for Samarium. If you have other elements, it can be extended quite easily.
-	echo "Element choice: 'Sm' or 'Ni'."
+	echo "Element choice: 'Sm'."
 	echo "Calibration choice: 'online', 'zero' or 'user'."
 	echo "Sorting choice: 'Q4' (AQ4Sort) or 'TB' (Treebuilder)."
 	echo "Number of arguments: $argument_counter arguments."
@@ -27,9 +27,6 @@ else
         Sm)
             run_number=(8 9 10 11 12 16 17 18 19 20 25 26 29 30 31 35 37 39 40 41 42 43 44 45 51 52 53 57 60);
             ;;  # ;; indicates end of case
-        Ni)
-            run_number=(47 50 52 53 54 55 56 57 58 59); #(52 53 54);
-            ;;
         *)
             echo "$0: invalid option \"$1\""; 
             usage;
@@ -80,9 +77,6 @@ for number in ${run_number[*]};
     	if [ $element == "Sm" ]; then
     		directory="../../Raw_data/Sm"
         	rootfile="$directory/140Sm_208Pb_pos6_${zeros}${number}_OnBeam.root"
-        #elif [ $element == "Ni" ]; then
-        #	directory="../../Raw_data/Ni"
-        #	rootfile="$directory/144Ba_58Ni_pos5_${zeros}${number}_OnBeam.root"
 		fi
     	for entry in $directory/*;
 			do
