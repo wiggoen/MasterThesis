@@ -73,7 +73,10 @@
     %floatplacement=tbp
 }
  
-\lstset{style=mystyle}
+\lstset{
+	style=mystyle,
+	literate={~} {$\sim$}{1}
+}
 \renewcommand{\lstlistingname}{Code}
 %---
 
@@ -470,14 +473,36 @@ kinsim3 \url{https://github.com/lpgaff/kinsim} + SRIM \url{http://www.srim.org}
 
 \bigskip
 
-PC: \newline
-MacBook Air (13-inch, 2017) \newline
-Processor: 1.8 GHz Intel Core i5 \newline
-Memory: 8 GB 1600 MHz DDR3 \newline
+
+\begin{table}[H] \centering 
+\caption{Computer used for data analysis}
+\label{tab:PC}
+\begin{tabular}{ll}
+\hline
+Model & MacBook Air (13-inch, 2017) \\
+\hline
+Processor & 1.8 GHz (Intel Core i5) \\
+Memory & 8 GB (1600 MHz DDR3) \\
+\hline
+\end{tabular}
+\end{table}
 
 Runtime for sorting data: \newline
 TreeBuilder (online calibration): $\sim$ 40-45 min \newline
 AQ4Sort (online calibration): $\sim$ 120 min
+
+\begin{table}[H] \centering 
+\caption{Runtime for sorting data.}
+\label{tab:PC}
+\begin{tabular}{ll}
+\hline
+Executable & Runtime [min] \\
+\hline
+TreeBuilder & $\sim$ 45 \\
+AQ4Sort & $\sim$ 120 \\
+\hline
+\end{tabular}
+\end{table}
 
 The runtime of the bash script was done with the built in script time
 
@@ -524,15 +549,19 @@ particle-gamma and particle-gamma-gamma coincidence
 \textcolor{red}{sjekk opp om energi fra online kalibrering passer med simuleringen.}
 
 \section{Data and sorting}
-The analysis code for MIniball is named MiniballCoulexSort and is available on GitHub at \url{https://github.com/Miniball/MiniballCoulexSort}. The main steps of using it is outlined in the README.md file. 
+The analysis code for Miniball data is named MiniballCoulexSort and is available on GitHub at \url{https://github.com/Miniball/MiniballCoulexSort}. The main steps of how to download, install and use it is outlined in the README.md file in the GitHub repository. 
 
 
-Data from Miniball comes in the form of .MED-files (Miniball Event Data). In order to analyze this data in ROOT the first part of the sorting is just to convert the MED-files into ROOT-files, and the main file for this is called \textbf{MedToRoot.cc}. The process of how to run the 
-
-
+Data from Miniball comes in the form of .MED-files (Miniball Event Data). In order to analyze this data in ROOT\footnote{ROOT is a data analysis framework made at CERN.} the first part of the sorting is just to convert the MED-files into ROOT-files, and the main file for this is called \textbf{MedToRoot.cc}. The process of how to run this is 
+\begin{lstlisting}[language=sh]
+$ MedToRoot -mf data_file.med -sf settings_file.dat
+\end{lstlisting}
+The settings file is provided by ISOLDE and fits to the experiment.
 
 \section{Scripts}
-In order to not copy and paste the sorting command in the terminal for every data file, I made a bash script to do this. The script is called \textbf{M2R.sh} found in the folder Scripts/sorting on GitHub \textbf{\textcolor{red}{(NOT UPLOADED YET)}}.
+In order to not copy and paste the sorting command in the terminal for every data file, I made a bash script to do this. The script is called \textbf{M2R.sh} found in the folder Scripts/sorting on my GitHub repository \url{https://github.com/wiggoen/MasterThesis}.
+
+
 
 
 
@@ -698,11 +727,50 @@ addback, singles, ...
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 \begin{appendices}
-\chapter{Some Appendix}
+\chapter{Connecting MiniballCoulexSort with ROOT}
+To connect MiniballCoulexSort with ROOT you need them to share their libraries with each other. This is done with a dynamic loader. You can find out more here: \url{https://root.cern.ch/root/htmldoc/guides/users-guide/ROOTUsersGuide.html#file-system.rootrc}. 
 
+You have to make a \textbf{.rootrc} file in your home folder on your computer. In the \textbf{.rootrc} file you want to write something like this 
+\begin{lstlisting}[language=sh]
+Unix.*.Root.DynamicPath:    .:</Users/trondwj/GitHub/ROOT-framework/build/lib>:/Users/trondwj/GitHub/Miniball/MiniballCoulexSort/lib:
+\end{lstlisting}
+This should all be in one line. The first part is to tell the system to use the dynamic loader of ROOT to connect the given paths that follow. In my case the lib folder of the ROOT install was at 
+\begin{lstlisting}[language=sh]
+/Users/trondwj/GitHub/ROOT-framework/build/lib
+\end{lstlisting}
+and the lib folder of the MiniballCoulexSort was at
+\begin{lstlisting}[language=sh]
+/Users/trondwj/GitHub/Miniball/MiniballCoulexSort/lib
+\end{lstlisting}
+These paths is totally individual, and you will probably not have it in the same place. Therefore these paths must be changed to fit your system. 
+
+After making the file you either have restart the terminal or you can source the file by writing this in the terminal
+\begin{lstlisting}[language=sh]
+$ source ~/.rootrc
+\end{lstlisting}
+
+
+\chapter{Running ROOT and MiniballCoulexSort from anywhere in the terminal}
+To run ROOT or the different scripts of MiniballCoulexSort anywhere in the terminal, you have to edit your \textbf{.bash\_profile} file [.bash\_profile on MacOS, .bashrc on Linux]. In my \textbf{.bash\_profile} I used this 
+\begin{lstlisting}[language=sh]
+# Run ROOT from anywhere
+export ROOTSYS=$HOME/GitHub/ROOT-framework/build
+export PATH=$ROOTSYS/lib:$PATH
+export PATH=$ROOTSYS/bin:$PATH
+export DYLD_LIBRARY_PATH=$ROOTSYS/lib:$DYLD_LIBRARY_PATH
+
+# Run MiniballCoulexSort from anywhere
+export DYLD_LIBRARY_PATH=$HOME/GitHub/Miniball/MiniballCoulexSort/lib:$DYLD_LIBRARY_PATH
+export PATH=$HOME/GitHub/Miniball/MiniballCoulexSort/lib:$PATH
+export PATH=$HOME/GitHub/Miniball/MiniballCoulexSort/bin:$PATH
+\end{lstlisting}
+The DYLD\_LIBRARY\_PATH is used on Mac only. On other systems, use \newline LD\_LIBRARY\_PATH. You need to locate the lib and bin folders for both ROOT and MiniballCoulexSort and change them to fit your system, and in addition you need the build folder of your ROOT install.
+
+
+
+\chapter{Other appendicies}
 \includepdf[pages={-}, angle=270]{../Plots/simulation/cd_sim_all.pdf}
 
-\chapter{Some other appendix...}
 
 \end{appendices}
 
