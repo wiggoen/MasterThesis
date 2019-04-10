@@ -632,12 +632,12 @@ For each file converted with MedToRoot, the program makes four files; OffBeam, O
 
 First all of the interesting files are converted with the M2R.sh script. 
 Then the OnBeam files from M2R.sh is run through using Treebuilder in the AQ4S.sh script. 
-Using the MultiPlot.cpp script, the ADC time offsets can be extracted
+Using the MultiPlot.cpp script, the ADC time offsets can be extracted by the following commands
 \begin{lstlisting}[language=sh]
 $ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting
 $ root
 root [0] .L MultiPlot.cpp 
-root [1] check_ADC_time_offsets("setup_Sm.txt", "online")
+root [1] check_ADC_time_offsets("setup_Sm.txt", "user")
 \end{lstlisting}
 or they can be manually reached by
 \begin{lstlisting}[language=sh]
