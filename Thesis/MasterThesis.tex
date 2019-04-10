@@ -549,33 +549,34 @@ particle-gamma and particle-gamma-gamma coincidence
 \textcolor{red}{sjekk opp om energi fra online kalibrering passer med simuleringen.}
 
 \section{Data and sorting}
-The analysis code for Miniball data is named MiniballCoulexSort and is available on GitHub at \url{https://github.com/Miniball/MiniballCoulexSort}. The main steps of how to download, install and use it is outlined in the README.md file in the GitHub repository. 
+The analysis code for Miniball data is named MiniballCoulexSort and is available on GitHub at \url{https://github.com/Miniball/MiniballCoulexSort}. 
+The main steps of how to download, install and use it is outlined in the README.md file in the GitHub repository. 
 
+Data from Miniball comes in the form of .med-files (Miniball Event Data). 
+In order to analyze this data in ROOT\footnote{ROOT is a data analysis framework made at CERN.} the first part of the sorting is just to convert the .med-files into .root-files with the script MedToRoot. 
 
-Data from Miniball comes in the form of .MED-files (Miniball Event Data). In order to analyze this data in ROOT\footnote{ROOT is a data analysis framework made at CERN.} the first part of the sorting is just to convert the MED-files into ROOT-files, and the main file for this is called \textbf{MedToRoot.cc}. The process of how to run this is 
-\begin{lstlisting}[language=sh]
-$ MedToRoot -mf data_file.med -sf settings_file.dat
-\end{lstlisting}
-The settings file is provided by ISOLDE and fits to the experiment.
+To get useful information out of the converted .root-files, the Treebuilder script is used. 
+The .root-file(s) and a calibration file is given to the Treebuilder so it can make event trees that can be used for analyzing the Coulomb excitation events. 
 
-\section{Scripts}
-In order to not copy and paste the sorting command in the terminal for every data file, I made a bash script to do this. The script is called \textbf{M2R.sh} found in the folder Scripts/sorting on my GitHub repository \url{https://github.com/wiggoen/MasterThesis}.
-
-
-
+One script that is mentioned in the Miniball GitHub repository, but not showed how to use, is the AQ4Sort. It is used in the same way as the TreeBuilder script, but it sorts the histograms in another way. 
+This script is used before and during the calibration of the detectors, because it gives information about every single ring and every single back strip. The one thing to note here, is that the numbering of the detector rings and strips are different from the ones used in Treebuilder. 
 
 
 
-To plot data some scripts had to be written. 
+\section{Helping scripts}
+All of my scripts are available in the GitHub repository \url{https://github.com/wiggoen/MasterThesis}.
+
+In order to not copy and paste the sorting command in the terminal for every data file, I made two bash scripts to do this. The script \textbf{M2R.sh} is using MedToRoot to take in as many files as you want, and sort it in one go. The other script is \textbf{AQ4S.sh}, which is using either AQ4Sort or Treebuilder to sort a lot of files in one go. 
+
+I also made other helping scripts to get histograms, do fitting, comparison and calibration. 
 
 My scripts: MultiFit.cpp, MultiPlot.cpp, ++ (python, bash,..)
 
 
 \section{Simulation}
 To calibrate the data, we need to know the expected energy of the centroids of the peaks. 
-This was done by simulating the experiment in a program called kinsim3. 
-
-kinsim3 is written by Liam Gaffney\footnote{Fellow at ISOLDE, affiliated with MINIBALL.} and the purpose of the program is to simulate the kinematics of the experiment. It takes into account the Silicon dead layer. 
+This was done by simulating the experiment in a program called kinsim3. The program is written by Liam Gaffney\footnote{Liam Gaffney is a fellow at ISOLDE, affiliated with MINIBALL.} and the purpose of the program is to simulate the kinematics of the experiment. 
+It takes into account the Silicon dead layer. 
 
 kinsim3 generates pdf-files of the stopping powers automatically. 
 The rest of the plots are available inside the root-file. 
@@ -595,7 +596,9 @@ Simulation done by kinsim3
 
 
 \textcolor{red}{Mail fra Liam:} \newline
-"the source has a thickness of 1.23 mm, which needs to be factored in so that the CD to target distance is the CD to source distance PLUS the source thickness, i.e. 25.78 mm + 1.23 mm =  27.01 mm. This is very close to the 26.98 mm you got from us in August. \textcolor{red}{I think that the source data was reanalysed since the original blog entry, giving the 0.03 mm difference!}" \newline
+"the source has a thickness of 1.23 mm, which needs to be factored in so that the CD to target distance is the CD to source distance PLUS the source thickness, i.e. 25.78 mm + 1.23 mm =  27.01 mm. 
+This is very close to the 26.98 mm you got from us in August. 
+\textcolor{red}{I think that the source data was reanalysed since the original blog entry, giving the 0.03 mm difference!}" \newline
 
 
 
@@ -607,11 +610,6 @@ root [0] .L kinsim3.cc+
 root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 27.01, false, 1e6, "../SRIM")
 \end{lstlisting}
 
-similarly for Ni
-
-\begin{lstlisting}[language=sh]
-root [2] kinsim3(56, 28, 144, 58, 1.8, 3.395, 0.02, 1.0, 0.6, 26.98, false, 1e6, "../SRIM")
-\end{lstlisting}
 
 kinsim3 function:
 \begin{lstlisting}[language=c++]
@@ -630,6 +628,14 @@ void kinsim3( int Zb, int Zt, double Ab, double At, double thick /* mg/cm^2 */, 
 
 
 \section{Calibration}
+For each file converted with MedToRoot, the program makes four files; OffBeam, OnBeam, OnBeamBackground and Scaler. The file we are interested in for analysis is the OnBeam file. 
+
+First all of the interesting files are converted with the M2R.sh script. 
+Then the OnBeam files from M2R.sh is run through using Treebuilder in the AQ4S.sh script. 
+
+
+
+
 
 \textcolor{red}{HUSK:} Si noe om ADC time offsets. Og at man må se på det tidlig, så resortere.
 
