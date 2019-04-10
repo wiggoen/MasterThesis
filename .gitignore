@@ -3,6 +3,7 @@
 *.root
 *.med
 Raw_data/
+*ACLiC_dict_rdict.pcm
 
 #--------------------
 ### Python ###
