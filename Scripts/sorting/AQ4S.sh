@@ -7,22 +7,22 @@ sorting="$3";
 the_date=$(date +%F)
 
 function usage {
-	echo "Usage of $0:"
-	echo "Provide three command line arguments; 'element calibration sorter'"
-	echo "e.g. 'Sm online TB' to calibrate the respective data."
-	# Sm is used for Samarium. If you have other elements, it can be extended quite easily.
-	echo "Element choice: 'Sm'."
-	echo "Calibration choice: 'online', 'zero' or 'user'."
-	echo "Sorting choice: 'Q4' (AQ4Sort) or 'TB' (Treebuilder)."
-	echo "Number of arguments: $argument_counter arguments."
-	echo "Argument list: $arguments"
+    echo "Usage of $0:"
+    echo "Provide three command line arguments; 'element calibration sorter'"
+    echo "e.g. 'Sm online TB' to calibrate the respective data."
+    # Sm is used for Samarium. If you have other elements, it can be extended quite easily.
+    echo "Element choice: 'Sm'."
+    echo "Calibration choice: 'online', 'zero' or 'user'."
+    echo "Sorting choice: 'Q4' (AQ4Sort) or 'TB' (Treebuilder)."
+    echo "Number of arguments: $argument_counter arguments."
+    echo "Argument list: $arguments"
 }
 
 if [ $# == 0 ] || [ $# != 3 ]; then
-	usage;
-	exit;
+    usage;
+    exit;
 else
-	# Read first command line argument
+    # Read first command line argument
     case "$1" in
         Sm)
             run_number=(8 9 10 11 12 16 17 18 19 20 25 26 29 30 31 35 37 39 40 41 42 43 44 45 51 52 53 57 60);
@@ -32,32 +32,32 @@ else
             usage;
             exit ;;
     esac
-	# Read second command line argument
+    # Read second command line argument
     case "$2" in
         online)
-			calibrationfile="../../../Miniball/MiniballCoulexSort/config/IS558-online.cal"
-			;;
-		user)
-			calibrationfile="../../../Miniball/MiniballCoulexSort/config/IS558-user.cal"
-			;;
-		zero)
-			calibrationfile="../../../Miniball/MiniballCoulexSort/config/IS558-zero.cal"
-			;;
+            calibrationfile="../../../Miniball/MiniballCoulexSort/config/IS558-online.cal"
+            ;;
+        user)
+            calibrationfile="../../../Miniball/MiniballCoulexSort/config/IS558-user.cal"
+            ;;
+        zero)
+            calibrationfile="../../../Miniball/MiniballCoulexSort/config/IS558-zero.cal"
+            ;;
         *)
             echo "$0: invalid option \"$2\""; 
             usage;
             exit ;;
     esac
-	# Read third command line argument
-	case "$3" in
+    # Read third command line argument
+    case "$3" in
         Q4)
-			sort_choice="AQ4Sort"
-			flag="";
-			;;
-		TB)
-			sort_choice="TreeBuilder";
-			flag="-cdpad"
-			;;
+            sort_choice="AQ4Sort"
+            flag="";
+            ;;
+        TB)
+            sort_choice="TreeBuilder";
+            flag="-cdpad"
+            ;;
         *)
             echo "$0: invalid option \"$3\""; 
             usage;
@@ -69,21 +69,21 @@ filearray=()
 
 for number in ${run_number[*]};
     do
-		if [ $number -lt 10 ]; then
-				zeros="00";
-			else
-				zeros="0";
-		fi
-    	if [ $element == "Sm" ]; then
-    		directory="../../Raw_data/Sm"
-        	rootfile="$directory/140Sm_208Pb_pos6_${zeros}${number}_OnBeam.root"
-		fi
-    	for entry in $directory/*;
-			do
-				if [ "$entry" == "$rootfile" ]; then
-					filearray+=("$entry")
-				fi
-			done
+        if [ $number -lt 10 ]; then
+                zeros="00";
+            else
+                zeros="0";
+        fi
+        if [ $element == "Sm" ]; then
+            directory="../../Raw_data/Sm"
+            rootfile="$directory/140Sm_208Pb_pos6_${zeros}${number}_OnBeam.root"
+        fi
+        for entry in $directory/*;
+            do
+                if [ "$entry" == "$rootfile" ]; then
+                    filearray+=("$entry")
+                fi
+            done
     done 
 
 filearray=${filearray[@]}
