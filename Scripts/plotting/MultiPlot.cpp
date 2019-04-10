@@ -489,6 +489,10 @@ void plot_front_back_energy(std::string setup_file, std::string name_addition = 
   TH1F *histogram = nullptr;
   std::string histogram_name;
 
+  if (!name_addition.empty()) {
+    name_addition = "-" + name_addition;
+  }
+
   for (int quadrant = 0; quadrant < adc.quadrants; quadrant++) {
     canvas->cd(quadrant+1);
     histogram_name = Form("CD_spec/E_f_b_%d", quadrant);
@@ -498,7 +502,7 @@ void plot_front_back_energy(std::string setup_file, std::string name_addition = 
     histogram->GetYaxis()->SetLabelSize(0.06);
     histogram->GetXaxis()->SetLabelSize(0.06);
   }
-  canvas->SaveAs(Form("../../Plots/plotting/E_f_b_Q1-4-%s.pdf", name_addition.c_str()));
+  canvas->SaveAs(Form("../../Plots/plotting/E_f_b_Q1-4%s.pdf", name_addition.c_str()));
 }
 
 
@@ -695,6 +699,10 @@ void check_ADC_time_offsets(std::string setup_file, std::string name_addition = 
   TH1F *histogram = nullptr;
   std::string histogram_name;
 
+  if (!name_addition.empty()) {
+    name_addition = "-" + name_addition;
+  }
+
   for (int quadrant = 0; quadrant < adc.quadrants; quadrant++) {
     canvas->cd(quadrant+1);
     histogram_name = Form("tdiff_gp_%d", quadrant);
@@ -704,6 +712,6 @@ void check_ADC_time_offsets(std::string setup_file, std::string name_addition = 
     histogram->GetYaxis()->SetLabelSize(0.06);
     histogram->GetXaxis()->SetLabelSize(0.06);
   }
-  canvas->SaveAs(Form("../../Plots/plotting/tdiff_gp_0-3-%s.pdf", name_addition.c_str()));
+  canvas->SaveAs(Form("../../Plots/plotting/tdiff_gp_0-3%s.pdf", name_addition.c_str()));
 
 }
