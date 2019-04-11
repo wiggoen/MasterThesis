@@ -487,16 +487,16 @@ Memory & 8 GB (1600 MHz DDR3) \\
 \end{tabular}
 \end{table}
 
-Runtime for sorting data: \newline
+Run time for sorting data: \newline
 TreeBuilder (online calibration): $\sim$ 40-45 min \newline
 AQ4Sort (online calibration): $\sim$ 120 min
 
 \begin{table}[H] \centering 
-\caption{Runtime for sorting data.}
+\caption{Run time for sorting data.}
 \label{tab:PC}
 \begin{tabular}{ll}
 \hline
-Executable & Runtime [min] \\
+Executable & Run time [min] \\
 \hline
 TreeBuilder & $\sim$ 45 \\
 AQ4Sort & $\sim$ 120 \\
@@ -504,7 +504,7 @@ AQ4Sort & $\sim$ 120 \\
 \end{tabular}
 \end{table}
 
-The runtime of the bash script was done with the built in script time
+The run time of the bash script was done with the built in script time
 
 \begin{lstlisting}[language=sh]
 $ time ./AQ4S.sh Sm online TB
@@ -628,6 +628,9 @@ void kinsim3( int Zb, int Zt, double Ab, double At, double thick /* mg/cm^2 */, 
 
 
 \section{Calibration}
+
+\textcolor{red}{MOVE THIS TO APPENDIX?}
+
 For each file converted with MedToRoot, the program makes four files; OffBeam, OnBeam, OnBeamBackground and Scaler. The file we are interested in for analysis is the OnBeam file. 
 
 First all of the interesting files are converted with the M2R.sh script. 
@@ -646,16 +649,14 @@ $ ./AQ4S.sh Sm user TB
 
 \textcolor{red}{MORE INPUT HERE!}
 
+After the sorting, I moved the file to a folder of sorted data, and gave the relative path in the setup\_Sm.txt file used as input in the MultiPlot.cpp script. 
 
-
-
-\bigskip
 
 Using the MultiPlot.cpp script, the ADC time offsets can be extracted by the following commands
 \begin{lstlisting}[language=sh]
 $ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting
 $ root
-root [0] .L MultiPlot.cpp 
+root [0] .L MultiPlot.cpp++
 root [1] check_ADC_time_offsets("setup_Sm.txt", "user")
 \end{lstlisting}
 or they can be manually reached by
