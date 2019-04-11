@@ -714,5 +714,39 @@ void check_ADC_time_offsets(std::string setup_file, std::string name_addition = 
     histogram->GetXaxis()->SetLabelSize(0.06);
   }
   canvas->SaveAs(Form("../../Plots/plotting/tdiff_gp_0-3%s.pdf", name_addition.c_str()));
+}
 
+
+
+void check_cd_debug(std::string setup_file, std::string name_addition = "") {
+  /*
+      Plots data sorted from TreeBuilder.
+      Plots CD debugging.
+  */
+  ADC adc;
+  Element *element = new Element();
+
+  element->read_setup_file(setup_file);
+
+  TFile *infile = new TFile(element->ADC_infile.c_str(), "UPDATE");
+  TCanvas *canvas = nullptr;
+  std::string canvas_name;
+  canvas_name = Form("CD debugging");
+  canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
+  //canvas->Divide(2, 2);
+  TH1F *histogram = nullptr;
+  std::string histogram_name;
+
+  if (!name_addition.empty()) {
+    name_addition = "-" + name_addition;
+  }
+
+  histogram_name = Form("cd_debug");
+  //std::cout << histogram_name << std::endl;
+  histogram = (TH1F *)infile->Get(histogram_name.c_str());
+  histogram->Draw();
+  histogram->SetAxisRange(0, 25, "X");
+  histogram->GetYaxis()->SetLabelSize(0.06);
+  histogram->GetXaxis()->SetLabelSize(0.06);
+  canvas->SaveAs(Form("../../Plots/plotting/cd_debug%s.pdf", name_addition.c_str()));
 }
