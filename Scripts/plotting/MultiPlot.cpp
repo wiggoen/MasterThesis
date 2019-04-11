@@ -709,6 +709,7 @@ void check_ADC_time_offsets(std::string setup_file, std::string name_addition = 
     //std::cout << histogram_name << std::endl;
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw();
+    histogram->SetAxisRange(-10, 10, "X");
     histogram->GetYaxis()->SetLabelSize(0.06);
     histogram->GetXaxis()->SetLabelSize(0.06);
   }
