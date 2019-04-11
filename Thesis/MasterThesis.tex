@@ -704,7 +704,11 @@ I log-skala ser dette mer Gaussisk ut, men det er ikke det i non-log skala.
 Back detector calibration: There are just too much individual differences to calibrate the back detectors with a simple script given a range for all 12 back strips. I found out this way to late. There isn't any range to rule them all, at least since the fitting function can behave very strange given a too small or too big range.
 
 
-\subsection{Threshold}
+
+
+
+\textbf{Threshold}
+
 * Threshold (forskjellig i log/ikke-log skala)
 
 Using a logarithmic y-axis, the threshold value will decrease very much. So don't use that. 
@@ -712,7 +716,20 @@ Using a logarithmic y-axis, the threshold value will decrease very much. So don'
 Threshold: The code has a default threshold of 100, but in some cases this is too much and some cases this is not enough. So for each adc channel, the threshold can be set. We don't want to include the "pedestal". Charge sharing.
 Won't cut too much or too little..
 
-Sjekk hva Liam skrev i mailen. 
+\textbf{From Liam:}
+
+"You might have to investigate the threshold a little bit. The continuum of events at low energy comes from charge sharing between the strips. For these very heavy ions, the total amount of charge deposited gets split between neighbouring strips of the CD. The code does performs some tricks to try and recover the correct energy and position, but that depends on counting the number of strips that fire. Therefore, if the threshold is too low you will include "pedestal" events and it will get things wrong. If the threshold is too high, you will miss some events that have charge sharing and get the wrong energy for your particle. 
+
+The key spectra to look at are "part" and "cd\_debug". The latter counts how many particles have X strips fired on the front side and Y strips fired on the back side.
+
+If you have too many cd\_debug events = 3, then your thresholds are too low. If you have a large continuum/background in the "part" spectrum, your thresholds are too high. Best thing to do is play about with different values.
+
+Bin 20 is when no particle can be found, because there is no energy registered in either the front or the back strips. This can only happen when the front energy is below the software threshold that you set and the back energy is either in a broken strip or is also below the software threshold. Likely it is some noise events or charge sharing that comes below the threshold.
+
+\textcolor{red}{The major problem with the online calibration is that a number of the back strips have the wrong gains}, but it otherwise looks quite good. Have you identified which strips these are, by comparing the gains between the 'online' and 'user' calibrations? You could maybe correct those strips as an intermediate step and see how things look.
+
+the source has a thickness of 1.23 mm, which needs to be factored in so that the CD to target \textcolor{red}{distance is the CD} to source distance PLUS the source thickness, i.e. 25.78 mm + 1.23 mm =  27.01 mm. This is very close to the 26.98 mm you got from us in August. I think that the source data was reanalyzed since the original blog entry, giving the 0.03 mm difference!"
+
 
 \subsection{Particle detector}
 \subsubsection{Online calibration}
