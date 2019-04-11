@@ -752,3 +752,50 @@ void check_cd_debug(std::string setup_file, std::string name_addition = "") {
   histogram->GetXaxis()->SetLabelSize(0.06);
   canvas->SaveAs(Form("../../Plots/plotting/cd_debug%s.pdf", name_addition.c_str()));
 }
+
+
+void check_pedestal(std::string setup_file, std::string detector_side,
+                            int quadrant, int strip) {
+  /*
+      Plots data sorted from TreeBuilder.
+      Plots the pedestal for a given quadrant and ring/strip.
+  */
+  ADC adc;
+  Element *element = new Element();
+
+  element->read_setup_file(setup_file);
+  element->read_parameters(element->threshold_infile);
+
+  if ( !(detector_side == "b" || detector_side == "f")) {
+    std::cout << "Invalid option. Choose detector side (b)ack or (f)ront." << std::endl;
+  }
+  if ( detector_side == "f" && !(strip >= 1 && strip <= 16) ) {
+    std::cout << "Invalid option. Choose between front ring 1-16." << std::endl;
+  }
+  if ( detector_side == "b" && !(strip >= 1 && strip <= 12) ) {
+    std::cout << "Invalid option. Choose between back strip 1-12." << std::endl;
+  }
+
+  TFile *infile = new TFile(element->ADC_infile.c_str(), "UPDATE");
+  TCanvas *canvas = nullptr;
+  std::string canvas_name;
+  TH1F *histogram = nullptr;
+  std::string histogram_name;
+  int channel = 0;
+ 
+  if (detector_side == "f") {
+      channel = strip-1;
+  } else if (detector_side == "b") {
+      channel = adc.rings + strip-1;
+  }
+
+  canvas_name = Form("Pedestal Q%d_%s%d", quadrant, detector_side.c_str(), strip);
+  canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
+  histogram_name = Form("adc_spec/adc_%d_%d", quadrant-1, channel);
+  histogram = (TH1F *)infile->Get(histogram_name.c_str());
+  histogram->Draw();
+  histogram->SetAxisRange(0, 100, "X");
+  //histogram->GetYaxis()->SetLabelSize(0.06);
+  //histogram->GetXaxis()->SetLabelSize(0.06); 
+  canvas->SaveAs(Form("../../Plots/plotting/Pedestal_Q%d_%s%d.pdf", quadrant, detector_side.c_str(), strip));
+}
