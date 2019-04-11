@@ -592,6 +592,7 @@ void check_all_threshold(std::string setup_file) {
       //y_line->Draw("SAME");
 
     }
+    //canvas[quadrant]->SaveAs(Form("../../Plots/plotting/Threshold_Q%d_%s.pdf", quadrant_number+1, detector_side.c_str()));
   }
 }
 
@@ -677,6 +678,7 @@ void check_single_threshold(std::string setup_file, std::string detector_side,
   //y_line->SetLineColor(kRed);
   //y_line->SetLineStyle(kDashed);
   //y_line->Draw("SAME");  
+  canvas->SaveAs(Form("../../Plots/plotting/Threshold_Q%d_%s%d.pdf", quadrant, detector_side.c_str(), strip));
 }
 
 
