@@ -644,12 +644,11 @@ Then the OnBeam files from M2R.sh is run through using Treebuilder in the AQ4S.s
 \begin{lstlisting}[language=sh]
 $ cd /Users/trondwj/GitHub/MasterThesis/Scripts/sorting 
 $ ./AQ4S.sh Sm user TB
+$ mv Sm_user-TreeBuilder-2019-04-10.root ../../Sorted_data/
 \end{lstlisting}
 
 
-\textcolor{red}{MORE INPUT HERE!}
-
-After the sorting, I moved the file to a folder of sorted data, and gave the relative path in the setup\_Sm.txt file used as input in the MultiPlot.cpp script. 
+After the sorting, I moved the file to a folder of sorted data, and gave the relative path in the setup\_Sm.txt file in Scripts/plotting/ used as input in the MultiPlot.cpp script. 
 
 
 Using the MultiPlot.cpp script, the ADC time offsets can be extracted by the following commands
@@ -662,13 +661,29 @@ root [1] check_ADC_time_offsets("setup_Sm.txt")
 or they can be manually reached by
 \begin{lstlisting}[language=sh]
 $ cd /Users/trondwj/GitHub/MasterThesis/Sorted_data
-$ root Sm_user-TreeBuilder-2019-03-22.root 
+$ root Sm_user-TreeBuilder-2019-04-10.root
 root [1] new TBrowser()
 \end{lstlisting}
-and in the browser, the histograms named tdiff\_gp\_i (where i is a number between 0 and 3) will lie under all the folders. The peaks of these plots have the interesting x-value. Zooming into the peaks, it is very clear what value it is. These values are provided in the calibration file under ADC time offsets (ticks). These values can change depending on the amount of data sorted, so it is wise to double check them.
+and in the browser, the histograms named tdiff\_gp\_\textit{i} (where \textit{i} is a number between 0 and 3) will lie under all the folders. The peaks of these plots have the interesting x-value. Zooming into the peaks, it is very clear what value it is. These values are provided in the calibration file under ADC time offsets (ticks). These values can change depending on the amount of data sorted, so it is wise to double check them.
+
+After the peak values have been collected, they should be written into the calibration file
+\begin{lstlisting}[language=sh]
+# ADC time offsets (ticks)
+adc_0.TimeOffset:  0
+adc_1.TimeOffset:  -2
+adc_2.TimeOffset:  -3
+adc_3.TimeOffset:  5
+\end{lstlisting}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{../Plots/plotting/tdiff_gp_0-3-user.pdf}
+	\caption{?.}
+	\label{fig:ADC_dt}
+\end{figure}
 
 
-\textcolor{red}{HUSK:} Si noe om ADC time offsets. Og at man må se på det tidlig, så resortere.
+\textcolor{red}{HUSK:} Si noe om ADC time offsets + Threshold. Og at man må se på det tidlig, så resortere.
 
 
 M2R.sh $\rightarrow$ AQ4S.sh$\rightarrow$ check time offset $\rightarrow$ threshold $\rightarrow$ AQ4\_fit() $\rightarrow$ particle-calibration.py $\rightarrow$  ADC\_generator.py $\rightarrow$ copy the calibration from the terminal and paste into calibration file 
@@ -680,7 +695,7 @@ Visualize plots using ROOT and the scripts.
 
 
 
-Skriv om scriptene som er lagd, og at det var litt vanskelig å automatisere kalibreringen. Hvis det skulle vært gjort måtte vi funnet en "left skewed function". 
+Skriv om scriptene som er lagd, og at det var litt vanskelig å automatisere kalibreringen. Hvis det skulle vært gjort måtte vi funnet en funksjon med "negatively skewed distribution" or "negative skewness" (right modal), en "left skewed function" (most data is more than the mean). 
 
 
 I log-skala ser dette mer Gaussisk ut, men det er ikke det i non-log skala. 
@@ -688,11 +703,11 @@ I log-skala ser dette mer Gaussisk ut, men det er ikke det i non-log skala.
 
 Back detector calibration: There are just too much individual differences to calibrate the back detectors with a simple script given a range for all 12 back strips. I found out this way to late. There isn't any range to rule them all, at least since the fitting function can behave very strange given a too small or too big range.
 
-\subsection{ADC time offsets}
-
 
 \subsection{Threshold}
 * Threshold (forskjellig i log/ikke-log skala)
+
+Using a logarithmic y-axis, the threshold value will decrease very much. So don't use that. 
 
 Threshold: The code has a default threshold of 100, but in some cases this is too much and some cases this is not enough. So for each adc channel, the threshold can be set. We don't want to include the "pedestal". Charge sharing.
 Won't cut too much or too little..
@@ -718,15 +733,15 @@ DSSSD: Double-Sided Silicon Strip Detector $\implies$ CD
 must remove the inner ring from data analysis because of damage
 
 \begin{align*}
-	gain = \frac{E_{Sm} - E_{Pb}}{Ch_{Sm} - Ch_{Pb}}
+	\text{gain} = \frac{E_{\text{Sm}} - E_{\text{Pb}}}{Ch_{\text{Sm}} - Ch_{\text{Pb}}}
 \end{align*}
 
 \begin{align*}
-	offset = E_{Sm} - gain \cdot Ch_{Sm}
+	\text{offset} = E_{\text{Sm}} - \text{gain} \cdot Ch_{\text{Sm}}
 \end{align*}
 in keV.
 
-\textcolor{red}{Hvis man har flere sentroider bruker man bare lineær regresjon. Gjelder for baksiden!}
+\textcolor{red}{Hvis man har flere sentroider bruker man bare lineær regresjon. Gjelder spesielt for baksiden!}
 
 
 
