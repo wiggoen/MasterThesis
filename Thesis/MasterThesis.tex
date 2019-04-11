@@ -731,6 +731,17 @@ Bin 20 is when no particle can be found, because there is no energy registered i
 the source has a thickness of 1.23 mm, which needs to be factored in so that the CD to target \textcolor{red}{distance is the CD} to source distance PLUS the source thickness, i.e. 25.78 mm + 1.23 mm =  27.01 mm. This is very close to the 26.98 mm you got from us in August. I think that the source data was reanalyzed since the original blog entry, giving the 0.03 mm difference!"
 
 
+\textbf{CD debug:}
+
+\begin{lstlisting}[language=sh]
+$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting 
+$ root
+root [0] .L MultiPlot.cpp++
+root [1] check_cd_debug("setup_Sm.txt")
+\end{lstlisting}
+
+
+
 \subsection{Particle detector}
 \subsubsection{Online calibration}
 
