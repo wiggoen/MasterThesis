@@ -629,7 +629,29 @@ void kinsim3( int Zb, int Zt, double Ab, double At, double thick /* mg/cm^2 */, 
 
 \section{Calibration}
 
-\textcolor{red}{MOVE THIS TO APPENDIX?}
+My goal of the calibration was to make a program that could automatically fit the plots i needed, but it became more and more manual labor. 
+Because of the shape of the data peaks, it demands very much individual care. 
+This I could not do with a automatic program. 
+The downfall of the automatic centroid collector came when trying it on the back detectors. 
+
+The total amount particle front detectors to calibrate is 4 quadrants * 16 rings = 64 front detectors 
+
+back detectors: 4 quadrants * 12 strips = 48 back detectors
+
+
+but to do this, one need all the centroids of the peaks from both sides:
+
+front: 64 detectors * 2 peaks/ring = 128 centroids
+
+back: 48 detectors * 2 peaks/ring * 16 rings =  1536 centroids 
+
+total centroids to collect: 1664 centroids (this I did not want to do manually)
+
+Full calibration with 16 rings and 12 back strips. We had to remove the innermost ring. 
+
+
+
+\textcolor{red}{MOVE THE BELOW TO APPENDIX?}
 
 For each file converted with MedToRoot, the program makes four files; OffBeam, OnBeam, OnBeamBackground and Scaler. The file we are interested in for analysis is the OnBeam file. 
 
@@ -649,8 +671,6 @@ $ mv Sm_user-TreeBuilder-2019-04-10.root ../../Sorted_data/
 
 
 After the sorting, I moved the file to a folder of sorted data, and gave the relative path in the setup\_Sm.txt file in Scripts/plotting/ used as input in the MultiPlot.cpp script. 
-
-
 Using the MultiPlot.cpp script, the ADC time offsets can be extracted by the following commands
 \begin{lstlisting}[language=sh]
 $ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting
@@ -678,7 +698,7 @@ adc_3.TimeOffset:  5
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/tdiff_gp_0-3-user.pdf}
-	\caption{?.}
+	\caption{ADC time offsets.}
 	\label{fig:ADC_dt}
 \end{figure}
 
@@ -705,6 +725,43 @@ Back detector calibration: There are just too much individual differences to cal
 
 
 
+\textbf{From Liam:}
+
+"You might have to investigate the threshold a little bit. The continuum of events at low energy comes from charge sharing between the strips. For these very heavy ions, the total amount of charge deposited gets split between neighbouring strips of the CD. The code does performs some tricks to try and recover the correct energy and position, but that depends on counting the number of strips that fire. Therefore, if the threshold is too low you will include "pedestal" events and it will get things wrong. If the threshold is too high, you will miss some events that have charge sharing and get the wrong energy for your particle. 
+
+The key spectra to look at are "part" and "cd\_debug". The latter counts how many particles have X strips fired on the front side and Y strips fired on the back side.
+
+If you have too many cd\_debug events = 3, then your thresholds are too low. If you have a large continuum/background in the "part" spectrum, your thresholds are too high. Best thing to do is play about with different values.
+
+Bin 20 is when no particle can be found, because there is no energy registered in either the front or the back strips. This can only happen when the front energy is below the software threshold that you set and the back energy is either in a broken strip or is also below the software threshold. Likely it is some noise events or charge sharing that comes below the threshold.
+
+\textcolor{red}{The major problem with the online calibration is that a number of the back strips have the wrong gains}, but it otherwise looks quite good. Have you identified which strips these are, by comparing the gains between the 'online' and 'user' calibrations? You could maybe correct those strips as an intermediate step and see how things look.
+
+the source has a thickness of 1.23 mm, which needs to be factored in so that the CD to target \textcolor{red}{distance is the CD} to source distance PLUS the source thickness, i.e. 25.78 mm + 1.23 mm =  27.01 mm. This is very close to the 26.98 mm you got from us in August. I think that the source data was reanalyzed since the original blog entry, giving the 0.03 mm difference!"
+
+
+
+\textbf{Pedestal}
+
+The pedestal is like a massive statue in front of the interesting data. 
+
+
+We use a threshold to cut away the pedestal.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q1_f1.pdf}
+	\caption{Pedestal Q1, f6.}
+	\label{fig:Pedestal_f}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q1_b1.pdf}
+	\caption{Pedestal Q1, f6.}
+	\label{fig:Pedestal_f}
+\end{figure}
+
 
 
 \textbf{Threshold}
@@ -719,32 +776,17 @@ Won't cut too much or too little..
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_f6.pdf}
-	\caption{Q1, f6.}
+	\caption{Threshold Q1, f6.}
 	\label{fig:Threshold_f}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_b6.pdf}
-	\caption{Q1, b6.}
+	\caption{Threshold Q1, b6.}
 	\label{fig:Threshold_b}
 \end{figure}
 
-
-
-\textbf{From Liam:}
-
-"You might have to investigate the threshold a little bit. The continuum of events at low energy comes from charge sharing between the strips. For these very heavy ions, the total amount of charge deposited gets split between neighbouring strips of the CD. The code does performs some tricks to try and recover the correct energy and position, but that depends on counting the number of strips that fire. Therefore, if the threshold is too low you will include "pedestal" events and it will get things wrong. If the threshold is too high, you will miss some events that have charge sharing and get the wrong energy for your particle. 
-
-The key spectra to look at are "part" and "cd\_debug". The latter counts how many particles have X strips fired on the front side and Y strips fired on the back side.
-
-If you have too many cd\_debug events = 3, then your thresholds are too low. If you have a large continuum/background in the "part" spectrum, your thresholds are too high. Best thing to do is play about with different values.
-
-Bin 20 is when no particle can be found, because there is no energy registered in either the front or the back strips. This can only happen when the front energy is below the software threshold that you set and the back energy is either in a broken strip or is also below the software threshold. Likely it is some noise events or charge sharing that comes below the threshold.
-
-\textcolor{red}{The major problem with the online calibration is that a number of the back strips have the wrong gains}, but it otherwise looks quite good. Have you identified which strips these are, by comparing the gains between the 'online' and 'user' calibrations? You could maybe correct those strips as an intermediate step and see how things look.
-
-the source has a thickness of 1.23 mm, which needs to be factored in so that the CD to target \textcolor{red}{distance is the CD} to source distance PLUS the source thickness, i.e. 25.78 mm + 1.23 mm =  27.01 mm. This is very close to the 26.98 mm you got from us in August. I think that the source data was reanalyzed since the original blog entry, giving the 0.03 mm difference!"
 
 
 \textbf{CD debug:}
