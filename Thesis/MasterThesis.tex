@@ -716,6 +716,10 @@ Using a logarithmic y-axis, the threshold value will decrease very much. So don'
 Threshold: The code has a default threshold of 100, but in some cases this is too much and some cases this is not enough. So for each adc channel, the threshold can be set. We don't want to include the "pedestal". Charge sharing.
 Won't cut too much or too little..
 
+
+
+
+
 \textbf{From Liam:}
 
 "You might have to investigate the threshold a little bit. The continuum of events at low energy comes from charge sharing between the strips. For these very heavy ions, the total amount of charge deposited gets split between neighbouring strips of the CD. The code does performs some tricks to try and recover the correct energy and position, but that depends on counting the number of strips that fire. Therefore, if the threshold is too low you will include "pedestal" events and it will get things wrong. If the threshold is too high, you will miss some events that have charge sharing and get the wrong energy for your particle. 
@@ -741,14 +745,15 @@ root [1] check_cd_debug("setup_Sm.txt")
 \end{lstlisting}
 
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{../Plots/plotting/cd_debug-user.pdf}
+	\caption{?.}
+	\label{fig:CD_debug}
+\end{figure}
+
 
 \subsection{Particle detector}
-\subsubsection{Online calibration}
-
-
-
-
-
 
 
 \subsubsection{User calibration}
@@ -770,6 +775,10 @@ must remove the inner ring from data analysis because of damage
 in keV.
 
 \textcolor{red}{Hvis man har flere sentroider bruker man bare lineær regresjon. Gjelder spesielt for baksiden!}
+
+
+
+\subsubsection{Online calibration}
 
 
 
