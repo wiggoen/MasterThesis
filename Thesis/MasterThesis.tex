@@ -422,7 +422,7 @@ Pictures \url{https://cds.cern.ch/record/844871?ln=en}
 Angle coverage: [18.4$^\circ$, 56.6$^\circ$]
 
 
-\subsection{\ga\ detectors, HPGe}
+\subsection{\texorpdfstring{$\gamma$}{Gamma} detectors, HPGe}
 
 24 six-fold segmented. 8 clusters of 3 crystals each. Each crystal segmented in 6 parts (144 segments in total).
 
@@ -493,7 +493,7 @@ AQ4Sort (online calibration): $\sim$ 120 min
 
 \begin{table}[H] \centering 
 \caption{Run time for sorting data.}
-\label{tab:PC}
+\label{tab:run_time}
 \begin{tabular}{ll}
 \hline
 Executable & Run time [min] \\
@@ -560,6 +560,67 @@ The .root-file(s) and a calibration file is given to the Treebuilder so it can m
 
 One script that is mentioned in the Miniball GitHub repository, but not showed how to use, is the AQ4Sort. It is used in the same way as the TreeBuilder script, but it sorts the histograms in another way. 
 This script is used before and during the calibration of the detectors, because it gives information about every single ring and every single back strip. The one thing to note here, is that the numbering of the detector rings and strips are different from the ones used in Treebuilder. 
+
+
+The histograms sorted by Treebuilder starts counting from 0 and the AQ4Sort starts counting from 1. 
+
+The ADC spectras from the file sorted by Treebuilder have a naming convention of adc\_q\_s, where $q$ corresponds to the quadrant and $s$ corresponds to the channel. The front energy is saved in adc\_[0-3]\_[0-15] and the back energy from strips 1-12 from all 16 rings (the whole quadrant) is saved in adc\_[0-3]\_[16-27].
+
+adc\_0\_0 in the file sorted by Treebuilder is the same as fE\_Q1\_f1 sorted by AQ4Sort. All the front detectors can be found in the Treebuilder-sorted file, but when it comes to the back detector, the single pixels from the strips are not shown. These are available through the AQ4Sort sorted file.
+
+
+
+\bigskip
+
+\textcolor{red}{Make a conversion table?}
+
+adc\_0\_0 $\rightarrow$ fE\_Q1\_f1 \newline
+adc\_0\_1 $\rightarrow$ fE\_Q1\_f2
+
+\begin{table}[ht] \centering 
+\caption{ADC}
+\label{tab:ADC}
+\begin{tabular}{cccc}
+\hline
+ADC   & Quadrant & Channel & Front [F] or Back [B] \\
+\hline
+0 - 3 &  1 - 4   &    0    &    F      \\
+0 - 3 &  1 - 4   &    1    &    F      \\
+0 - 3 &  1 - 4   &    2    &    F      \\
+0 - 3 &  1 - 4   &    3    &    F      \\
+0 - 3 &  1 - 4   &    4    &    F      \\
+0 - 3 &  1 - 4   &    5    &    F      \\
+0 - 3 &  1 - 4   &    6    &    F      \\
+0 - 3 &  1 - 4   &    7    &    F      \\
+0 - 3 &  1 - 4   &    8    &    F      \\
+0 - 3 &  1 - 4   &    9    &    F      \\
+0 - 3 &  1 - 4   &    10   &    F      \\
+0 - 3 &  1 - 4   &    11   &    F      \\
+0 - 3 &  1 - 4   &    12   &    F      \\
+0 - 3 &  1 - 4   &    13   &    F      \\
+0 - 3 &  1 - 4   &    14   &    F      \\
+0 - 3 &  1 - 4   &    15   &    F      \\
+0 - 3 &  1 - 4   &    16   &    B      \\
+0 - 3 &  1 - 4   &    17   &    B      \\
+0 - 3 &  1 - 4   &    18   &    B      \\
+0 - 3 &  1 - 4   &    19   &    B      \\
+0 - 3 &  1 - 4   &    20   &    B      \\
+0 - 3 &  1 - 4   &    21   &    B      \\
+0 - 3 &  1 - 4   &    22   &    B      \\
+0 - 3 &  1 - 4   &    23   &    B      \\
+0 - 3 &  1 - 4   &    24   &    B      \\
+0 - 3 &  1 - 4   &    25   &    B      \\
+0 - 3 &  1 - 4   &    26   &    B      \\
+0 - 3 &  1 - 4   &    27   &    B      \\
+0 - 3 &            &    28   &    Empty  \\
+0 - 3 &            &    29   &    Empty  \\
+0 - 3 &            &    30   &    Empty  \\
+0 - 3 &  1 - 4   &    31   &    PAD    \\
+  4    &             &    0     &    Ionization Chamber \\
+  4    &             &    1      &    Ionization Chamber \\
+\hline
+\end{tabular}
+\end{table}
 
 
 
@@ -695,12 +756,14 @@ adc_2.TimeOffset:  -3
 adc_3.TimeOffset:  5
 \end{lstlisting}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/tdiff_gp_0-3-user.pdf}
 	\caption{ADC time offsets.}
 	\label{fig:ADC_dt}
 \end{figure}
+
+
 
 
 \textcolor{red}{HUSK:} Si noe om ADC time offsets + Threshold. Og at man må se på det tidlig, så resortere.
@@ -748,18 +811,18 @@ The pedestal is like a massive statue in front of the interesting data.
 
 We use a threshold to cut away the pedestal.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q1_f1.pdf}
 	\caption{Pedestal Q1, f6.}
 	\label{fig:Pedestal_f}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q1_b1.pdf}
 	\caption{Pedestal Q1, f6.}
-	\label{fig:Pedestal_f}
+	\label{fig:Pedestal_b}
 \end{figure}
 
 
@@ -773,14 +836,14 @@ Using a logarithmic y-axis, the threshold value will decrease very much. So don'
 Threshold: The code has a default threshold of 100, but in some cases this is too much and some cases this is not enough. So for each adc channel, the threshold can be set. We don't want to include the "pedestal". Charge sharing.
 Won't cut too much or too little..
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_f6.pdf}
 	\caption{Threshold Q1, f6.}
 	\label{fig:Threshold_f}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_b6.pdf}
 	\caption{Threshold Q1, b6.}
@@ -799,10 +862,10 @@ root [1] check_cd_debug("setup_Sm.txt")
 \end{lstlisting}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/cd_debug-user.pdf}
-	\caption{?.}
+	\caption{CD debugging.}
 	\label{fig:CD_debug}
 \end{figure}
 
@@ -830,9 +893,24 @@ in keV.
 
 \textcolor{red}{Hvis man har flere sentroider bruker man bare lineær regresjon. Gjelder spesielt for baksiden!}
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-user-new-cal.pdf}
+	\caption{User calibration.}
+	\label{fig:cal_user}
+\end{figure}
+
 
 
 \subsubsection{Online calibration}
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-online.pdf}
+	\caption{Online calibration.}
+	\label{fig:cal_online}
+\end{figure}
 
 
 
