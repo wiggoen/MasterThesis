@@ -566,16 +566,19 @@ The histograms sorted by Treebuilder starts counting from 0 and the AQ4Sort star
 
 The ADC spectras from the file sorted by Treebuilder have a naming convention of adc\_q\_s, where $q$ corresponds to the quadrant and $s$ corresponds to the channel. The front energy is saved in adc\_[0-3]\_[0-15] and the back energy from strips 1-12 from all 16 rings (the whole quadrant) is saved in adc\_[0-3]\_[16-27].
 
-adc\_0\_0 in the file sorted by Treebuilder is the same as fE\_Q1\_f1 sorted by AQ4Sort. All the front detectors can be found in the Treebuilder-sorted file, but when it comes to the back detector, the single pixels from the strips are not shown. These are available through the AQ4Sort sorted file.
+adc\_0\_0 in the file sorted by Treebuilder is the same as fE\_Q1\_f1 sorted by AQ4Sort. All the front detectors can be found in the Treebuilder-sorted file, but when it comes to the back detector, the single pixels from the strips are not shown. These are available through the AQ4Sort sorted file. For the front detectors the histograms adc\_[0-3]\_[0-15] and fE\_Q[1-4]\_f[1-16] are the same. For the back detectors, we have that adc\_[0-3]\_[16-27] and bE\_Q[1-4]\_b[1-12] are the same. In addition in AQ4Sort we can see the different pixels. The histograms fE\_Q[1-4]\_f[1-16]\_b[1-12] shows the front energy of quadrant 1-4 gated on ring 1-16 and back strip 1-12, while the bE\_Q[1-4]\_f[1-16]\_b[1-12] shows the same, only for the back energy. 
+
+In the naming convention of adc\_q\_s or fE\_Qu\_fv, where $q \in [0, 1, 2, 3], s \in [0, 1, \ldots, 27]$ and $u \in [1, 2, 3, 4], v \in [1, 2, \ldots, 16]$, the $s = 0$ and $v = 1$ is the outermost ring, while $s = 15$ and $v = 16$ is the innermost ring. In our case, the innermost ring was so destroyed that we have to remove it from the data analysis.
 
 
+adc\_q\_s, where $q \in [0, 1, 2, 3], s \in [0, 1, \ldots, 27]$.
 
-\bigskip
+$p$E\_Q$q$\_f$r$\_b$s$, where $ \in [b, f], q \in [1, 2, 3, 4], r \in [1, 2, \ldots, 16]$ and $s \in [1, 2, \ldots, 12]$. 
 
-\textcolor{red}{Make a conversion table?}
+The adc\_[0-3]\_[16-27] or bE\_Q[1-4]\_b[1-12] are a combination of all the 16 rings of bE\_Q[1-4]f\_[1, 2, $\ldots$, 16]\_b[1-12].
 
-adc\_0\_0 $\rightarrow$ fE\_Q1\_f1 \newline
-adc\_0\_1 $\rightarrow$ fE\_Q1\_f2
+Don't blame me for the naming convention, I did not write the code. I just tried to make sense of it.
+
 
 \begin{table}[ht] \centering 
 \caption{ADC}
@@ -656,11 +659,11 @@ Simulation done by kinsim3
 \end{figure}
 
 
-\textcolor{red}{Mail fra Liam:} \newline
+\textbf{--- \textcolor{red}{Mail from Liam started} ---} \newline
 "the source has a thickness of 1.23 mm, which needs to be factored in so that the CD to target distance is the CD to source distance PLUS the source thickness, i.e. 25.78 mm + 1.23 mm =  27.01 mm. 
 This is very close to the 26.98 mm you got from us in August. 
 \textcolor{red}{I think that the source data was reanalysed since the original blog entry, giving the 0.03 mm difference!}" \newline
-
+\textbf{--- \textcolor{red}{Mail from Liam ended} ---} \newline
 
 
 Terminal: Simulation: 140Sm on 208Pb:
@@ -788,7 +791,7 @@ Back detector calibration: There are just too much individual differences to cal
 
 
 
-\textbf{From Liam:}
+\textbf{--- \textcolor{red}{Mail from Liam begins} ---}
 
 "You might have to investigate the threshold a little bit. The continuum of events at low energy comes from charge sharing between the strips. For these very heavy ions, the total amount of charge deposited gets split between neighbouring strips of the CD. The code does performs some tricks to try and recover the correct energy and position, but that depends on counting the number of strips that fire. Therefore, if the threshold is too low you will include "pedestal" events and it will get things wrong. If the threshold is too high, you will miss some events that have charge sharing and get the wrong energy for your particle. 
 
@@ -801,6 +804,8 @@ Bin 20 is when no particle can be found, because there is no energy registered i
 \textcolor{red}{The major problem with the online calibration is that a number of the back strips have the wrong gains}, but it otherwise looks quite good. Have you identified which strips these are, by comparing the gains between the 'online' and 'user' calibrations? You could maybe correct those strips as an intermediate step and see how things look.
 
 the source has a thickness of 1.23 mm, which needs to be factored in so that the CD to target \textcolor{red}{distance is the CD} to source distance PLUS the source thickness, i.e. 25.78 mm + 1.23 mm =  27.01 mm. This is very close to the 26.98 mm you got from us in August. I think that the source data was reanalyzed since the original blog entry, giving the 0.03 mm difference!"
+
+\textbf{--- \textcolor{red}{Mail from Liam ended} ---}
 
 
 
