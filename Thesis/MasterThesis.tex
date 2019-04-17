@@ -158,7 +158,7 @@ My family
 
 Morten, Alex and Astrid.
 
-Ina, I love you.
+Ina, for pushing me towards excellence, I love you.
 
 \subsection*{Collaboration details}
 The sorting and analysis code used in this thesis has been developed at CERN-ISOLDE and can be found at \url{https://github.com/Miniball/MiniballCoulexSort}
@@ -198,7 +198,7 @@ Experiment conducted 8th - 14th of August 2017.
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 
-\chapter{Theory?}
+\chapter{Motivation / Theory?}
 
 Quadrupole deformation of nuclei. \newline
 
@@ -226,19 +226,19 @@ Shape coexistence possible for certain regions of $N$ and $Z$.
         CERN & European Council for Nuclear Research \\ 
          & (in French Conseil Européen pour la Recherche Nucléaire) \\
         ISOL & Isotope Separator On Line \\
-        ISOLDE & Isotope Separator On Line DEvice \\
+        ISOLDE & ISOL DEvice \\
         PSB & Proton Synchrotron Booster \\
         GPS & General Purpose Separator \\
         HRS & High Resolution Separator \\
         EBIS & Electron Beam Ion Source \\
         REXEBIS & Radioactive beam EXperiment EBIS \\
         RILIS & Resonance Ionization Laser Ion Source \\
-        HIE-ISOLDE & High Intensity and Energy upgrade \\
+        HIE-ISOLDE & High Intensity and Energy upgrade of ISOLDE \\
         RIB & Radioactive Ion Beam \\
         ENSAR2 & European Nuclear Science and Applications Research - 2 \\
         Linac & Linear accelerator \\
-        ADC & Analog-to-Digital Converter \\
-        TDC & Time-to-Digital Converter (or time digitizer) \\
+        ADC & Analog to Digital Converter \\
+        TDC & Time to Digital Converter (or time digitizer) \\
         Coulex & Coulomb excitation \\
         \hline
     \end{tabular}
@@ -297,7 +297,7 @@ ISOLDE experimental hall (\textcolor{red}{make flow chart or show overview over 
  &\text{REXEBIS} \rightarrow \text{HIE-ISOLDE} \rightarrow \text{MINIBALL}
 \end{align*}
 
-A proton beam of 1.4 GeV ($\sim 10^{18}$ protons) from the PSB comes into the ISOLDE facility and collide with a production target \textcolor{purple}{of tantalum, producing the elements in the chart of nuclides up to tantalum. The proton beam can collide in one of the two target stations, the general purpose separator (GPS) or the high resolution separator (HRS). The GPS has one bending magnet and can deliver beams of different mass simultaneously into three beam lines, while the HRS has two bending magnets with high mass resolving power and deliver the beam into the main \textcolor{teal}{(or common)} beam line. In this experiment, the GPS was used.} The fragments travels in the beam line onward to the GPS where the mass of $A = 140$ (isobar) is selected (\textcolor{red}{separated from the rest}). 
+A proton beam of 1.4 GeV ($\sim 10^{18}$ protons) from the PSB comes into the ISOLDE facility and collide with a production target \textcolor{purple}{of tantalum, producing the elements in the chart of nuclides up to tantalum. The proton beam can collide in one of the two target stations, the general purpose separator (GPS) or the high resolution separator (HRS). The GPS has one bending magnet and can deliver beams of different mass simultaneously into three beam lines, while the HRS has two bending magnets with high mass resolving power and deliver the beam into the main \textcolor{teal}{(or common)} beam line. In this experiment, the GPS was used.} The fragments travels in the beam line onward to the GPS where the isobar of with mass number $A = 140$ is selected (\textcolor{red}{separated from the rest}). 
 
 \textcolor{red}{GPS or RILIS first??}
 
@@ -417,10 +417,50 @@ Pictures \url{https://cds.cern.ch/record/844871?ln=en}
 
 \subsection{Particle detector, DSSSD (CD)}
 
+DSSSD: Double sided silicon strip detector
+
 16 rings, 12 strips effectively (24 strips, 12 pairs with two strips making a pair)
+
+Rings = annular strips, strips = radial strips or sector strips
+
+CD distance: 26.98 mm, Inner angle (min): 9 mm, Outer angle (max): 40.9 mm
 
 Angle coverage: [18.4$^\circ$, 56.6$^\circ$]
 
+See \autoref{tab:CD_angles}
+
+\begin{table}[ht] \centering 
+\caption{CD angles in laboratory frame. Adjacent (CD distance): 26.98 mm.}
+\label{tab:CD_angles}
+\begin{tabular}{cccc}
+\hline
+Ring & Opposite (mid ring) & Angle [degrees] \\
+\hline
+0    &       40             & 56.0  \\
+1    &       38             & 54.6  \\
+2    &       36             & 53.1  \\
+3    &       34             & 51.6  \\
+4    &       32             & 49.9  \\
+5    &       30             & 48.0  \\
+6    &       28             & 46.1  \\
+7    &       26             & 43.9  \\
+8    &       24             & 41.7  \\
+9    &       22             & 39.2  \\
+10   &       20             & 36.5  \\
+11   &       18             & 33.7  \\
+12   &       16             & 30.7  \\
+13   &       14             & 27.4  \\
+14   &       12             & 24.0  \\
+15   &       10             & 20.3  \\
+\hline
+\end{tabular}
+\end{table}
+
+\textcolor{red}{Vis en figur av trekanten?} 
+
+\begin{align*}
+	\theta = \tan^{-1} \left( \frac{\text{opposite}}{\text{adjacent}} \right)
+\end{align*}
 
 \subsection{\texorpdfstring{$\gamma$}{Gamma} detectors, HPGe}
 
@@ -944,6 +984,9 @@ addback, singles, ...
 
 \chapter{Summary and outlook}
 
+GOSIA and GOSIA2 analysis?
+
+\url{https://www.pas.rochester.edu/~cline/Gosia/Gosia_Manual_20110609.pdf}
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
