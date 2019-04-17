@@ -4,6 +4,7 @@
 *.med
 Raw_data/
 *ACLiC_dict_rdict.pcm
+*.idraw
 
 #--------------------
 ### Python ###
