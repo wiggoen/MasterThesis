@@ -11,7 +11,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}[1996/12/01]
-\ProvidesClass{uiofysmaster}
+\ProvidesClass{uiofysmaster/uiofysmaster}
               [2012/08/22 v1.0
    LaTeX document class]
 \def\baseclass{book}
