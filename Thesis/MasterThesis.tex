@@ -168,6 +168,9 @@ Some calibration code is based on the codes of Ville Virtanen and Liam Gaffney.
 
 Other code/scripts have been written by the author. C++ / Python.
 
+
+ENSAR2 & European Nuclear Science and Applications Research - 2
+
   \vspace{1.5cm}
   
   \noindent\textit{Trond Wiggo Johansen}\\
@@ -184,6 +187,8 @@ Other code/scripts have been written by the author. C++ / Python.
 % ----------------------------------------------------------------------------------------------------------------------
 
 \chapter{Introduction}
+\textcolor{red}{+ Motivation}
+
 
 kinsim \cite{kinsim}
 
@@ -194,7 +199,7 @@ Experiment conducted 8th - 14th of August 2017.
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 
-\chapter{Motivation / Theory?}
+\chapter{Theory}
 
 Quadrupole deformation of nuclei. \newline
 
@@ -273,7 +278,6 @@ PSB \url{https://home.cern/science/accelerators/proton-synchrotron-booster}
          & (in French Conseil Européen pour la Recherche Nucléaire) \\
         Coulex & Coulomb excitation \\
         EBIS & Electron Beam Ion Source \\
-        ENSAR2 & European Nuclear Science and Applications Research - 2 \\
         GPS & General Purpose Separator \\
         HIE-ISOLDE & High Intensity and Energy upgrade of ISOLDE \\
         HRS & High Resolution Separator \\
@@ -304,32 +308,35 @@ ISOLDE is a radioactive ion beam facility at CERN in Meyrin, Switzerland. \autor
 \end{figure}
 
 
+* skriv litt generelt om ISOL-teknikken (radioactive target not possible)
+
 \subsection{Beam production}
-A proton beam bunch of 1.4 GeV ($\sim 10^{18}$ protons) from the PSB comes into the ISOLDE facility and collide with a production target \textcolor{purple}{of tantalum, producing the elements in the chart of nuclides up to tantalum.}
+A proton beam of 1.4 GeV ($\sim 10^{18}$ protons) from the PSB comes into the ISOLDE facility and collide with a production target \textcolor{purple}{of tantalum, producing the elements in the chart of nuclides up to tantalum.}
 
 
+* kan gjerne forklare figuren litt mer. I vårt tilfelle bruker vi tantalum, ikke for alle reaksjoner. Fragmentation er viktig å nevne
+
+
+Production target:
+
+
+*bruker laser on/off for å se hva annet som kommer ut av beamen
 
 
 \textcolor{red}{RILIS:} \newline
-The resonance ionization laser ion source (RILIS) uses the method of step-wise excitation and ionization of the atom. \textcolor{red}{It is a three step excitation, where the last step leads to the ionization.}  \textcolor{teal}{RILIS selects samarium with laser (element selective process, samarium $Z = 62$). RILIS is used to produce ion beams \textcolor{purple}{of the correct element}.}
+The resonance ionization laser ion source (RILIS) is based on the method of step-wise excitation and ionization of the atom. It is an element-selective process which is used to produce ion beams of the correct element \cite{RILIS}. In this experiment RILIS was used to select samarium with atomic number $Z = 62$. 
+
+* 2-3 step ionization
+* also other elements come through
+
+\textcolor{red}{Other refs:} \url{http://rilis.web.cern.ch} and \url{https://www.research.manchester.ac.uk/portal/files/60831252/FULL_TEXT.PDF} and \url{https://www.sciencedirect.com/science/article/pii/S0168583X13008914?via%3Dihub}
 
 \bigskip
-
-\textcolor{red}{"The RILIS is a chemically selective ion source which relies on resonant excitation of atomic transitions using tunable laser radiation." \url{http://rilis.web.cern.ch}} 
-
-\bigskip
-
-\textcolor{red}{"The principal application of RILIS is the production of ion beams of elements required for ISOLDE experiments. ... laser ionization is required to be only an element-selective process"} \url{http://iopscience.iop.org/article/10.1088/1361-6471/aa78e0}
-
-\bigskip
-
-RILIS \url{http://rilis.web.cern.ch} and \url{http://iopscience.iop.org/article/10.1088/1361-6471/aa78e0/meta} and \url{https://www.research.manchester.ac.uk/portal/files/60831252/FULL_TEXT.PDF} and \url{https://www.sciencedirect.com/science/article/pii/S0168583X13008914?via%3Dihub}
-
 
 \textcolor{red}{GPS:} \newline
 The beam can collide in one of two target stations, either the general purpose separator (GPS) or the high resolution separator (HRS). The GPS has one bending magnet and can deliver beams of different masses simultaneously into three beam lines, while the HRS has two bending magnets with high mass resolving power which delivers the beam into the main beam line \cite{GPS}. In this experiment the GPS was used to select the isotope of samarium with mass number $A = 140$. 
 
-Other refs:  \url{http://isolde.web.cern.ch/targets-and-separators}
+\textcolor{red}{Other refs:}  \url{http://isolde.web.cern.ch/targets-and-separators} and \textcolor{purple}{Klintefjord's PhD}
 
 \bigskip
 
@@ -337,7 +344,7 @@ Other refs:  \url{http://isolde.web.cern.ch/targets-and-separators}
 REXTRAP is a penning trap which has the tasks of accumulation, bunching and cooling of the RIB. \cite{HIE-ISOLDE} The ions are released in bunches and transfered to the REXEBIS.
 
 
-Other refs: \url{https://www.sciencedirect.com/science/article/pii/S0168900204020169} and \url{https://www.sciencedirect.com/science/article/abs/pii/S0375947401016426}
+\textcolor{red}{Other refs:} \url{https://www.sciencedirect.com/science/article/pii/S0168900204020169} and \url{https://www.sciencedirect.com/science/article/abs/pii/S0375947401016426}
 
 \bigskip
 
@@ -348,11 +355,13 @@ REXEBIS is a charge breeder where the RIB is bred to a high charge state \cite{R
 
 \bigskip
 
-Other refs: \url{http://cds.cern.ch/record/478399/files/} and \url{http://rex-isolde.web.cern.ch}
+\textcolor{red}{Other refs:} \url{http://cds.cern.ch/record/478399/files/} and \url{http://rex-isolde.web.cern.ch}
 
 
 \textcolor{red}{HIE-ISOLDE Linac:} \newline
 The HIE-ISOLDE Linac accelerates the beam through the beam line and magnets bend the beam into MINIBALL. 
+
+* one of the first Miniball experiments with the new accelerator
 
 \bigskip
 
@@ -383,7 +392,7 @@ ISOLDE \url{http://iopscience.iop.org/article/10.1088/1361-6471/aa5f03/pdf}
 
 \bigskip
 
-Very pure beam (\textcolor{red}{did we have statistics of this?})
+Very pure beam (\textcolor{red}{did we have statistics of this?}) - resultat til avhandling. sjekk etter doppler-korrigering. Nd-contaminasjon? i så fall veldig lite, 1-2 prosent?
 
 \bigskip
 
@@ -408,7 +417,13 @@ CERN Document Server  \url{https://cds.cern.ch}
 
 \subsection{Target}
 
-\Pb\ was chosen as a target. Want high $Z$ so that the probability of excitation is high. Not enough beam energy to excite \Pb. \newline
+* Kan skrive om dette i motivasjonen
+
+\Pb\ was chosen as a target. Want high $Z$ so that the probability of excitation is high. \newline
+
+Doubly magic, very hard to excite. No quadrupole deformation/excitation. Need quadrupole for first state (see nndc)
+
+ja og nei: Not enough beam energy to excite \Pb. \newline
 
 Highest $Z$ for maximum excitation probability.
 
@@ -511,7 +526,7 @@ Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclea
 
 \bigskip
 
-Level scheme (from Klintefjord?)
+
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
@@ -991,6 +1006,7 @@ addback, singles, ...
 
 \chapter{Discussion}
 
+Level scheme (from Klintefjord?)
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
