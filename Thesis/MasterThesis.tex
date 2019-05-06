@@ -16,6 +16,8 @@
 \usepackage{float} 
 \usepackage{pdfpages}
 
+%---
+
 \interfootnotelinepenalty=10000 % to force footnotes to NOT run over to the next page
 
 %---
@@ -160,16 +162,10 @@ Morten, Alex and Astrid.
 Ina, for pushing me towards excellence, I love you.
 
 \subsection*{Collaboration details}
-The sorting and analysis code used in this thesis has been developed at CERN-ISOLDE and can be found at \url{https://github.com/Miniball/MiniballCoulexSort}
-
-The code for theoretical predictions of energy used in the calibration was developed by Liam Gaffney who is working at ISOLDE and has to do with analysis of data from Miniball and ISS. kinsim can be found here \url{https://github.com/lpgaff/kinsim}
-
-Some calibration code is based on the codes of Ville Virtanen and Liam Gaffney. 
-
-Other code/scripts have been written by the author. C++ / Python.
 
 
-ENSAR2 & European Nuclear Science and Applications Research - 2
+
+ENSAR2: European Nuclear Science and Applications Research - 2 \url{http://www.ensarfp7.eu}, UiO, ISOLDE, other contributors to the experiment?
 
   \vspace{1.5cm}
   
@@ -211,6 +207,12 @@ Shape coexistence possible for certain regions of $N$ and $Z$.
 - benchmark for theoretical models \newline
 - transition probabilities and quadrupole moments between several excited states are not known \newline
 - fundamental research
+
+\bigskip
+
+COULEX: \newline
+- nucleus excited by electromagnetic interaction. \newline
+- de-excitation $\rightarrow$ gamma
 
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
@@ -261,44 +263,19 @@ PSB \url{https://home.cern/science/accelerators/proton-synchrotron-booster}
 
 
 \chapter{Coulomb excitation experiment} 
-- nucleus excited by electromagnetic interaction. \newline
-- de-excitation $\rightarrow$ gamma
-
-\bigskip
-
-\autoref{tab:acro} shows a table of acronyms and abbreviations.
-
-\begin{table}[h]
-  \centering
-  \caption{Acronyms and abbreviations.}
-    \begin{tabular}{ll}
-        \hline
-        ADC & Analog to Digital Converter \\
-        CERN & European Council for Nuclear Research \\ 
-         & (in French Conseil Européen pour la Recherche Nucléaire) \\
-        Coulex & Coulomb excitation \\
-        EBIS & Electron Beam Ion Source \\
-        GPS & General Purpose Separator \\
-        HIE-ISOLDE & High Intensity and Energy upgrade of ISOLDE \\
-        HRS & High Resolution Separator \\
-        ISOL & Isotope Separator On Line \\
-        ISOLDE & ISOL DEvice \\
-        Linac & Linear accelerator \\
-        PSB & Proton Synchrotron Booster \\
-        REXEBIS & Radioactive beam EXperiment EBIS \\
-        REX-ISOLDE & Radioactive beam EXperiment at ISOLDE \\
-        RIB & Radioactive Ion Beam \\
-        RILIS & Resonance Ionization Laser Ion Source \\
-        TDC & Time to Digital Converter (or time digitizer) \\
-        \hline
-    \end{tabular}
-    \label{tab:acro}
-\end{table}
 
 
 \section{ISOLDE at CERN}
-ISOLDE is a radioactive ion beam facility at CERN in Meyrin, Switzerland. \autoref{fig:accelerators} shows the CERN accelerator complex \cite{CERN-AC}, where ISOLDE is located beside the PS BOOSTER (PSB). The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated radioactive ion beams (RIBs) have been conducted. The high intensity and energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. 
+The acronym ISOLDE stands for Isotope Separator On Line DEvice. ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland.  \autoref{fig:accelerators} shows the CERN accelerator complex \cite{CERN-AC}, where ISOLDE is located beside the Proton Synchrotron Booster (PSB). 
 
+
+\textcolor{red}{kan gjerne forklare figuren litt mer}
+
+
+
+The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted. The high intensity and energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. 
+
+Most of the around 4000 known nuclides are radioactive. In many cases it is not possible to make radioactive nuclei targets and perform an experiment because of the short half-life of the nucleus of interest. To study these radioactive nuclei, RIBs are used on stable targets. One way of obtaining a RIB is to use the Isotope Separator On Line (ISOL) method. In the ISOL method, two accelerator systems is needed. The first accelerator is used to produce the radioactive atoms at rest, and the second accelerator is used to accelerate these atoms \cite{ISOL}. 
 
 \begin{figure}[t]
 	\centering
@@ -308,13 +285,15 @@ ISOLDE is a radioactive ion beam facility at CERN in Meyrin, Switzerland. \autor
 \end{figure}
 
 
-* skriv litt generelt om ISOL-teknikken (radioactive target not possible)
-
 \subsection{Beam production}
-A proton beam of 1.4 GeV ($\sim 10^{18}$ protons) from the PSB comes into the ISOLDE facility and collide with a production target \textcolor{purple}{of tantalum, producing the elements in the chart of nuclides up to tantalum.}
+A continuous proton beam of 1.4 GeV ($\sim 10^{18}$ protons) from the PSB comes into the ISOLDE facility and collide with a thick production target of tantalum (Ta), producing the elements in the chart of nuclides up to tantalum by fragmentation reactions (basically smashing the Ta target into pieces). Tantalum is not used in all experiments, but it was in this experiment. The production target is chosen from a stable region heavier than the nucleus of interest.
 
 
-* kan gjerne forklare figuren litt mer. I vårt tilfelle bruker vi tantalum, ikke for alle reaksjoner. Fragmentation er viktig å nevne
+\bigskip
+
+\textcolor{red}{Fra Andreas:} \newline
+\textcolor{red}{These bunches are accelerated by the PSB continuously, one bunch every 1.2 s. ISOLDE typically takes 50\% of all proton bunches from the PSB, the rest goes to the LHC (and other experiments).}
+
 
 
 Production target:
@@ -349,7 +328,7 @@ REXTRAP is a penning trap which has the tasks of accumulation, bunching and cool
 \bigskip
 
 \textcolor{red}{REXEBIS:} \newline
-REXEBIS is a charge breeder where the RIB is bred to a high charge state \cite{REXEBIS}, with a mass-to-charge ($A/q$) ratio typically between 2.5 and 4.5 \cite{Post-acc}. REXEBIS releases the beam with a certain energy through a mass separator and into the HIE-ISOLDE Linac \cite{HIE-ISOLDE}. 
+REXEBIS is a charge breeder where the RIB is bred to a high charge state \cite{REXEBIS}, with a mass-to-charge ($A/q$) ratio typically between 2.5 and 4.5 \cite{Post-acc}. REXEBIS releases the beam with a certain energy through a mass separator and into the HIE-ISOLDE LINAC (LINear ACcelerator) \cite{HIE-ISOLDE}. 
 
 \textcolor{purple}{excites the nucleus in three steps ionizing the atom, which leaves the nucleus in a high charge state.  ?}
 
@@ -358,14 +337,14 @@ REXEBIS is a charge breeder where the RIB is bred to a high charge state \cite{R
 \textcolor{red}{Other refs:} \url{http://cds.cern.ch/record/478399/files/} and \url{http://rex-isolde.web.cern.ch}
 
 
-\textcolor{red}{HIE-ISOLDE Linac:} \newline
-The HIE-ISOLDE Linac accelerates the beam through the beam line and magnets bend the beam into MINIBALL. 
+\textcolor{red}{HIE-ISOLDE LINAC:} \newline
+The HIE-ISOLDE LINAC accelerates the beam through the beam line and magnets bend the beam into MINIBALL. 
 
 * one of the first Miniball experiments with the new accelerator
 
 \bigskip
 
-HIE-ISOLDE (Superconducting Linac Upgrade): Linear accelerator, HIE-linac \newline
+HIE-ISOLDE (Superconducting LINAC Upgrade): Linear accelerator, HIE-LINAC \newline
 
 \bigskip
 
@@ -510,9 +489,9 @@ Pb: lead (Z = 82) \newline
 
 
 
-Beam: \Sm (T$_{1/2} \approx 15$ min, 4.65 MeV/$u$, total 651 MeV), excellent purity
+Beam: \Sm ~(T$_{1/2} = 14.82$ min, 4.65 MeV/$u$, total 651 MeV), excellent purity
 
-Target: \Pb (Thickness: 1.4 mg/cm$^2$)
+Target: \Pb ~(Thickness: 1.4 mg/cm$^2$)
 
 
 Small angle: Forward scattering: Larger distance, weaker \textcolor{red}{EM}-field, less excitation probability.
@@ -1024,6 +1003,75 @@ GOSIA and GOSIA2 analysis?
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 \begin{appendices}
+
+\chapter{Symbol list}
+
+\begin{table}[h]
+  \centering
+  \caption{Table of symbols with explanations.}
+    \begin{tabular}{ll}
+        \hline
+        T$_{1/2}$ & Half-life \\
+        \hline
+    \end{tabular}
+    \label{tab:symbols}
+\end{table}
+
+
+\chapter{Acronyms and abbreviations}
+
+\begin{table}[h]
+  \centering
+  \caption{Table of acronyms and abbreviations.}
+    \begin{tabular}{ll}
+        \hline
+        ADC & Analog to Digital Converter \\
+        CERN & European Council for Nuclear Research \\ 
+         & (in French Conseil Européen pour la Recherche Nucléaire) \\
+        Coulex & Coulomb excitation \\
+        EBIS & Electron Beam Ion Source \\
+        GPS & General Purpose Separator \\
+        HIE-ISOLDE & High Intensity and Energy upgrade of ISOLDE \\
+        HRS & High Resolution Separator \\
+        ISOL & Isotope Separator On Line \\
+        ISOLDE & ISOL DEvice \\
+        LINAC & LINear ACcelerator \\
+        PSB & Proton Synchrotron Booster \\
+        REXEBIS & Radioactive beam EXperiment EBIS \\
+        REX-ISOLDE & Radioactive beam EXperiment at ISOLDE \\
+        RIB & Radioactive Ion Beam \\
+        RILIS & Resonance Ionization Laser Ion Source \\
+        TDC & Time to Digital Converter (or time digitizer) \\
+        \hline
+    \end{tabular}
+    \label{tab:acro}
+\end{table}
+
+
+\chapter{Source code}
+The sorting and analysis code used in this thesis has been developed at CERN-ISOLDE and can be found at \url{https://github.com/Miniball/MiniballCoulexSort}
+
+The code for theoretical predictions of energy used in the calibration was developed by Liam Gaffney who is working at ISOLDE and has to do with analysis of data from Miniball and ISS. kinsim can be found here \url{https://github.com/lpgaff/kinsim}
+
+Some calibration code is based on the codes of Ville Virtanen and Liam Gaffney. 
+
+Other code/scripts have been written by the author. C++ / Python.
+
+\begin{table}[h]
+  \centering
+  \caption{Table of source code.}
+    \begin{tabular}{ll}
+        \hline
+        Name/Link & Description \\
+        \hline
+         \href{https://github.com/Miniball/MiniballCoulexSort}{MiniballCoulexSort} & Sorting and analysis code \\
+         \href{https://github.com/lpgaff/kinsim} & Kinematic simulation \\
+        \hline
+    \end{tabular}
+    \label{tab:code}
+\end{table}
+
+
 \chapter{Connecting MiniballCoulexSort with ROOT}
 To connect MiniballCoulexSort with ROOT you need them to share their libraries with each other. This is done with a dynamic loader. You can find out more here: \url{https://root.cern.ch/root/htmldoc/guides/users-guide/ROOTUsersGuide.html#file-system.rootrc}. 
 
@@ -1062,7 +1110,6 @@ export PATH=$HOME/GitHub/Miniball/MiniballCoulexSort/lib:$PATH
 export PATH=$HOME/GitHub/Miniball/MiniballCoulexSort/bin:$PATH
 \end{lstlisting}
 The DYLD\_LIBRARY\_PATH is used on Mac only. On other systems, use \newline LD\_LIBRARY\_PATH. You need to locate the lib and bin folders for both ROOT and MiniballCoulexSort and change them to fit your system, and in addition you need the build folder of your ROOT install.
-
 
 
 \chapter{Other appendicies}
