@@ -235,7 +235,7 @@ Taking out neutrons: very neutron-deficient Sm nuclei are also prolate deformed 
 
 
 \textcolor{red}{Some suggestions:} \newline
-$\bullet$ general \textcolor{red}{??????} about nuclei shapes \newline
+$\bullet$ general things about nuclei shapes \newline
 - multipole expansion, shape parameters (5 parameters, 3 for space, 2 for deformation $\beta$, \ga), ... \newline
 - quadrupole moments: intrinsic (body-fixed frame), spectroscopic (lab frame)  \newline
 - transition probabilities, el.magn. matrix elements  \newline
@@ -326,7 +326,7 @@ A continuous flow of accelerated proton beam bunches from the PSB comes into the
 \bigskip
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
-A large amount of different nuclei/isotopes is produced in this way. Challenge: extract the nuclei we are interested in. Idea: selective ionization $\rightarrow$ use HV (electrostatic field) to extract Sm ions electronic ?????? are characteristic for each chemical element. use laserlight to excite an electron to a specific excited (electron) state in Sm, use ?????? laser to excite electrons ?????? to another excited state, 3. laser to to kick out the electron $\rightarrow$ only Sm atoms are ionized. There could be contaminants from surface ionization (atoms that collide with the walls of the ion source).}
+A large amount of different nuclei/isotopes is produced in this way. Challenge: extract the nuclei we are interested in. Idea: selective ionization $\rightarrow$ use HV (electrostatic field) to extract Sm ions electronic transitions are characteristic for each chemical element. use laserlight to excite an electron to a specific excited (electron) state in Sm, use another laser to excite electrons further to another excited state, 3. laser to to kick out the electron $\rightarrow$ only Sm atoms are ionized. There could be contaminants from surface ionization (atoms that collide with the walls of the ion source).}
 
 *bruker laser on/off for å se hva annet som kommer ut av beamen
 
@@ -345,12 +345,12 @@ The resonance ionization laser ion source (RILIS) is based on the method of step
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
 at this point we have a continuous beam of Sm ions of 60 keV energy (the target is on a 60 kV HV platform). \newline
-next step: we need to have mass separation, and we need to give ???? continuous beam a fine structure, because the post-accelerator cannot accept a continuous beam coming in, it also accelerates bunches.}
+next step: we need to have mass separation, and we need to give this continuous beam a fine structure, because the post-accelerator cannot accept a continuous beam coming in, it also accelerates bunches.}
 
 The beam can collide in one of two target stations, either the general purpose separator (GPS) or the high resolution separator (HRS). The GPS has one bending magnet and can deliver beams of different masses simultaneously into three beam lines, while the HRS has two bending magnets with high mass resolving power which delivers the beam into the main beam line \cite{GPS}. In this experiment the GPS was used to select the isotope of samarium with mass number $A = 140$. 
 
 \textcolor{Magenta}{Tilbakemelding: \newline
-now we have a continuous beam of \Sm. The mass separator gets ???? rid of contaminants that come out of RILIS ???? have different mass. There could still be isobaric contaminants from surface ionization but luckily there is very little surface ionization for the neighboring elements of Sm. Laser ON/OFF.}
+now we have a continuous beam of \Sm. The mass separator gets also rid of contaminants that come out of RILIS but have different mass. There could still be isobaric contaminants from surface ionization but luckily there is very little surface ionization for the neighboring elements of Sm. Laser ON/OFF.}
 
 \textcolor{red}{Other refs:}  \url{http://isolde.web.cern.ch/targets-and-separators} and \textcolor{purple}{Klintefjord's PhD}
 
@@ -360,7 +360,7 @@ now we have a continuous beam of \Sm. The mass separator gets ???? rid of contam
 REXTRAP is a penning trap which has the tasks of accumulation, bunching and cooling of the RIB. \cite{HIE-ISOLDE} The ions are released in bunches and transfered to the REXEBIS.
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
-In REXTRAP we collect the \Sm ~ions, so that we can release them in bunches that are ????? to the fine structure of the LINAC.}
+In REXTRAP we collect the \Sm ~ions, so that we can release them in bunches that are matched to the fine structure of the LINAC.}
 
 
 \textcolor{red}{Other refs:} \url{https://www.sciencedirect.com/science/article/pii/S0168900204020169} and \url{https://www.sciencedirect.com/science/article/abs/pii/S0375947401016426}
@@ -576,6 +576,23 @@ Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclea
 
 \chapter{Data analysis} 
 
+\textcolor{Magenta}{Tilbakemelding: \newline
+First: explain the tasks and give the bigger picture of what needs to be done: \newline 
+starting point: Raw data in list mode: ID, E, T, ID, E, T, ... (basically) \newline
+what you want: Doppler-corrected $\gamma$-spectra with various conditions on particles, angles, etc. \newline
+procedure: 3 steps: \newline 
+1. convert raw data to ROOT format \newline
+2. event-building: \newline
+$\bullet$ calibrate detectors, apply thresholds, etc. \newline
+$\bullet$ use correlations to build events: particle-$\gamma$ coincidences \newline
+$\bullet$ store everything in a tree structure for easy access \newline
+3. apply gates on particles and perform Doppler correction \newline
+--------- \newline
+Could be nice to have a ''cook book'', i.e. step-by-step explanation of this procedure.
+}
+
+\bigskip
+
 ROOT: analysere data
 
 kinsim3 \url{https://github.com/lpgaff/kinsim} + SRIM \url{http://www.srim.org}
@@ -675,7 +692,15 @@ The histograms sorted by Treebuilder starts counting from 0 and the AQ4Sort star
 
 The ADC spectras from the file sorted by Treebuilder have a naming convention of adc\_q\_s, where $q$ corresponds to the quadrant and $s$ corresponds to the channel. The front energy is saved in adc\_[0-3]\_[0-15] and the back energy from strips 1-12 from all 16 rings (the whole quadrant) is saved in adc\_[0-3]\_[16-27].
 
+\textcolor{Magenta}{Tilbakemelding: \newline 
+useful with a table that explains all the different channels and assigns the various detector segments/???? ? (???? conventions) (appendix?)
+}
+
 adc\_0\_0 in the file sorted by Treebuilder is the same as fE\_Q1\_f1 sorted by AQ4Sort. All the front detectors can be found in the Treebuilder-sorted file, but when it comes to the back detector, the single pixels from the strips are not shown. These are available through the AQ4Sort sorted file. For the front detectors the histograms adc\_[0-3]\_[0-15] and fE\_Q[1-4]\_f[1-16] are the same. For the back detectors, we have that adc\_[0-3]\_[16-27] and bE\_Q[1-4]\_b[1-12] are the same. In addition in AQ4Sort we can see the different pixels. The histograms fE\_Q[1-4]\_f[1-16]\_b[1-12] shows the front energy of quadrant 1-4 gated on ring 1-16 and back strip 1-12, while the bE\_Q[1-4]\_f[1-16]\_b[1-12] shows the same, only for the back energy. 
+
+\textcolor{Magenta}{Tilbakemelding: \newline 
+a little confusing: is it correct that the treebuilder sort individual spectra for the front and back strips, but if you want coincidences between front and back ($\rightarrow$ pixels) you use AQ4Sort?
+}
 
 In the naming convention of adc\_q\_s or fE\_Qu\_fv, where $q \in [0, 1, 2, 3], s \in [0, 1, \ldots, 27]$ and $u \in [1, 2, 3, 4], v \in [1, 2, \ldots, 16]$, the $s = 0$ and $v = 1$ is the outermost ring, while $s = 15$ and $v = 16$ is the innermost ring. In our case, the innermost ring was so destroyed that we have to remove it from the data analysis.
 
@@ -741,9 +766,17 @@ All of my scripts are available in the GitHub repository \url{https://github.com
 
 In order to not copy and paste the sorting command in the terminal for every data file, I made two bash scripts to do this. The script \textbf{M2R.sh} is using MedToRoot to take in as many files as you want, and sort it in one go. The other script is \textbf{AQ4S.sh}, which is using either AQ4Sort or Treebuilder to sort a lot of files in one go. 
 
+\textcolor{Magenta}{Tilbakemelding: \newline 
+you should have a list of all the files with comments: in-beam data, calibration, laser on-off, problems, which ones can be used and which can not.
+}
+
 I also made other helping scripts to get histograms, do fitting, comparison and calibration. 
 
 My scripts: MultiFit.cpp, MultiPlot.cpp, ++ (python, bash,..)
+
+\textcolor{Magenta}{Tilbakemelding: \newline 
+if you try to write this step-by-step cook book, you could introduce your scripts wherever is the right place to use them. 
+}
 
 
 \section{Simulation}
@@ -754,6 +787,13 @@ It takes into account the Silicon dead layer.
 kinsim3 generates pdf-files of the stopping powers automatically. 
 The rest of the plots are available inside the root-file. 
 To get the energy simulation for each ring, the function \textbf{cd\_sim\_plots()} from the script \textbf{MultiPlot.cpp} was used. 
+
+\textcolor{Magenta}{Tilbakemelding: \newline 
+what are the ingredients for this simulation? \newline
+simple 2-body kinematics: energy of projectile, scattering angle of projectile $\implies$ energy of scattered projectile, \{angle, energy\} of binary ???? (target recoil) \newline
+Stopping powers (which models?) $\rightarrow$ SRIM \newline
+Slowing of the particles in the target and in the dead layer of Si
+}
 
 \bigskip
 
@@ -766,6 +806,11 @@ Simulation done by kinsim3
 \begin{figure}[H]\centering
     \includegraphics[width=\linewidth]{../Plots/simulation/kin_140Sm_208Pb.pdf}
 \end{figure}
+
+\textcolor{Magenta}{Tilbakemelding: \newline 
+explain figure: Sm/Pb inner ring, Sm/Pb outer ring \newline
+simulation does not consider cross sections: in simulation all angles are equally probable. The corresponding figure from your data looks therefore quite different.
+}
 
 
 \textbf{--- \textcolor{red}{Mail from Liam started} ---} \newline
@@ -802,6 +847,20 @@ void kinsim3( int Zb, int Zt, double Ab, double At, double thick /* mg/cm^2 */, 
 
 \section{Calibration}
 
+\textcolor{Magenta}{Tilbakemelding: \newline 
+start with explaining the general idea for the calibration: \newline 
+determine centroids of peaks in spectra, compare with simulations (kinematics, energy loss) to get linear coefficients (gain + offset). You could show spectra for 2 rings: one where it is ok to get the 2 centroids for Sm and Pb, and one where it is difficult $\rightarrow$ use additional data (Ni?) \newline
+Sectors: cover wide angular range $\rightarrow$ no sharp peaks  \newline
+Solution: gate on rings to see peaks in sectors and calibrate. \newline
+Idea: \newline
+1. produce spectra \newline
+2. set thresholds: example, explain criteria \newline
+3. find calibration coefficients $\rightarrow$ see above \newline
+explain strategy, show examples... \newline
+4. time calibration 
+}
+
+
 My goal of the calibration was to make a program that could automatically fit the plots i needed, but it became more and more manual labor. 
 Because of the shape of the data peaks, it demands very much individual care. 
 This I could not do with a automatic program. 
@@ -825,6 +884,11 @@ Full calibration with 16 rings and 12 back strips. We had to remove the innermos
 
 
 \textcolor{red}{MOVE THE BELOW TO APPENDIX?}
+
+\textcolor{Magenta}{Tilbakemelding: \newline 
+up to you. I would do like this: \newline
+very technical things about scripts etc. I would move to an appendix. If it helps understanding what you did, I would leave it in the text.
+}
 
 For each file converted with MedToRoot, the program makes four files; OffBeam, OnBeam, OnBeamBackground and Scaler. The file we are interested in for analysis is the OnBeam file. 
 
@@ -875,13 +939,21 @@ adc_3.TimeOffset:  5
 	\label{fig:ADC_dt}
 \end{figure}
 
-
+\textcolor{Magenta}{Tilbakemelding: \newline 
+one time spectrum per quadrant?
+}
 
 
 \textcolor{red}{HUSK:} Si noe om ADC time offsets + Threshold. Og at man må se på det tidlig, så resortere.
 
 
 M2R.sh $\rightarrow$ AQ4S.sh$\rightarrow$ check time offset $\rightarrow$ threshold $\rightarrow$ AQ4\_fit() $\rightarrow$ particle-calibration.py $\rightarrow$  ADC\_generator.py $\rightarrow$ copy the calibration from the terminal and paste into calibration file 
+
+\textcolor{Magenta}{Tilbakemelding: \newline 
+need to explain the time spectra: start - stop \newline
+purpose: align time spectra so that you can set a prompt time gate. \newline
+$\rightarrow$ correlate $\gamma$-rays with particles.
+}
 
 
 Simulation fit $\rightarrow$ AQ4\_fit() $\rightarrow$ particle-calibration.py $\rightarrow$  ADC\_generator.py $\rightarrow$ copy the calibration from the terminal and paste into calibration file 
@@ -916,7 +988,9 @@ the source has a thickness of 1.23 mm, which needs to be factored in so that the
 
 \textbf{--- \textcolor{red}{Mail from Liam ended} ---}
 
-
+\textcolor{Magenta}{Tilbakemelding: \newline 
+I presume that charge sharing is only considered if 2 firing strips are neighbors?
+}
 
 \textbf{Pedestal}
 
@@ -928,14 +1002,14 @@ We use a threshold to cut away the pedestal.
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q1_f1.pdf}
-	\caption{Pedestal Q1, f6.}
+	\caption{Pedestal Q1, f1.}
 	\label{fig:Pedestal_f}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q1_b1.pdf}
-	\caption{Pedestal Q1, f6.}
+	\caption{Pedestal Q1, b1.}
 	\label{fig:Pedestal_b}
 \end{figure}
 
@@ -947,6 +1021,10 @@ We use a threshold to cut away the pedestal.
 
 Using a logarithmic y-axis, the threshold value will decrease very much. So don't use that. 
 
+\textcolor{Magenta}{Tilbakemelding: \newline 
+easier to set thresholds on lin. scale.
+}
+
 Threshold: The code has a default threshold of 100, but in some cases this is too much and some cases this is not enough. So for each adc channel, the threshold can be set. We don't want to include the "pedestal". Charge sharing.
 Won't cut too much or too little..
 
@@ -957,13 +1035,13 @@ Won't cut too much or too little..
 	\label{fig:Threshold_f}
 \end{figure}
 
+
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_b6.pdf}
 	\caption{Threshold Q1, b6.}
 	\label{fig:Threshold_b}
 \end{figure}
-
 
 
 \textbf{CD debug:}
