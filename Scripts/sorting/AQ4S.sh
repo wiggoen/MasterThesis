@@ -34,6 +34,9 @@ else
     esac
     # Read second command line argument
     case "$2" in
+        is553) 
+            calibrationfile="../../../Miniball/MiniballCoulexSort/config/is553_2017_normal.cal"
+            ;;
         online)
             calibrationfile="../../../Miniball/MiniballCoulexSort/config/IS558-online.cal"
             ;;
