@@ -15,6 +15,15 @@
 
 \usepackage{float} 
 \usepackage{pdfpages}
+\usepackage{tikz}
+\usetikzlibrary{arrows, shapes.callouts}
+\tikzset{
+    level/.style = { ultra thick, black },
+    connect/.style = { dotted, black },
+    notice/.style = { draw, rectangle callout, callout relative pointer={#1} },
+    label/.style = { text width=2cm }
+}
+\usepackage{stackengine}
 
 %---
 
@@ -103,7 +112,7 @@
 
 \author{Trond Wiggo Johansen}
 \title{Coulomb excitation of $\textnormal{\Sm}$}
-\date{May 2019}
+\date{September 2019}
  
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
@@ -483,6 +492,24 @@ CD distance: 26.98 mm, Inner angle (min): 9 mm, Outer angle (max): 40.9 mm
 
 Angle coverage: [18.4$^\circ$, 56.6$^\circ$]
 
+See \autoref{fig:ADC-FB}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{images/cd_drawing.pdf}
+	\caption{CD drawing, adapted from Nigel Warr.}
+	\label{fig:ADC-FB}
+\end{figure}
+
+
+%\begin{figure}
+%	\centering
+%	\input{images/CD-geometry.tikz}
+%	\caption{CD-geometry.}
+%	\label{fig:CD-geometry}
+%\end{figure}
+
+
 See \autoref{tab:CD_angles}
 
 \begin{table}[ht] \centering 
@@ -510,7 +537,7 @@ Cryo-modules
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{../Drawings/Coulex-ISOLDE.png}
+	\includegraphics[width=\textwidth]{images/Coulex-ISOLDE.png}
 	\caption{The Coulomb excitation setup at ISOLDE. Adapted from Malin Klintefjord's PhD thesis \cite{Klintefjord}.}
 	\label{fig:Coulex}
 \end{figure}
@@ -551,7 +578,7 @@ Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclea
 
 
 
-\chapter{Data analysis} 
+\chapter{Data analysis}  
 
 \textcolor{Magenta}{Tilbakemelding: \newline
 First: explain the tasks and give the bigger picture of what needs to be done: \newline 
@@ -577,7 +604,8 @@ kinsim3 \url{https://github.com/lpgaff/kinsim} + SRIM \url{http://www.srim.org}
 \bigskip
 
 
-\begin{table}[H] \centering 
+\begin{table}[H] 
+\centering 
 \caption{Computer used for data analysis}
 \label{tab:PC}
 \begin{tabular}{ll}
@@ -594,7 +622,8 @@ Run time for sorting data: \newline
 TreeBuilder (online calibration): $\sim$ 40-45 min \newline
 AQ4Sort (online calibration): $\sim$ 120 min
 
-\begin{table}[H] \centering 
+\begin{table}[H] 
+\centering 
 \caption{Run time for sorting data.}
 \label{tab:run_time}
 \begin{tabular}{ll}
@@ -652,6 +681,25 @@ particle-gamma and particle-gamma-gamma coincidence
 \textcolor{red}{sjekk opp om energi fra online kalibrering passer med simuleringen.}
 
 \section{Data and sorting}
+
+Gamma: \\
+core ID from 0 to 23 \\
+segment ID from 0 to 6 (zero is the core) \\
+cluster ID from 0 to 7 \\
+
+ADC: \\
+annular (front) strip ID of particle (0 = outer; 15 inner) \\
+secular (back) strip ID of particle (0 to 12; clockwise wrt beam) \\
+
+\textcolor{red}{From offl\_root\_med.pdf} \\
+"Direction of the central axis of the detector $(r, \theta, \phi)$ and the notation about the axis of the cluster ($\alpha$), \textcolor{red}{is this correct??}. Needed to calculate the positions of the segments or the position of a point determined bye the pulse-shape a analysis.
+
+In order to perform the Doppler shift, we need to know the angle in the Miniball frame of reference of the interaction point. We determine the interaction point either from the segment with the largest energy or using pulse-shape analysis. In the former case, we need to know the position of the centre of each segment. In the latter, we need geometrical information to relate the time-to-steepest slope and ratio of the mirror charge amplitudes to the angle between the interaction point, the target and the emitted particle."
+
+
+
+
+
 The analysis code for Miniball data is named MiniballCoulexSort and is available on GitHub at \url{https://github.com/Miniball/MiniballCoulexSort}. 
 The main steps of how to download, install and use it is outlined in the README.md file in the GitHub repository. 
 
@@ -673,7 +721,8 @@ The ADC spectras from the file sorted by Treebuilder have a naming convention of
 useful with a table that explains all the different channels and assigns the various detector segments/rings? (naming conventions) (appendix?)
 }
 
-\begin{table}[ht] \centering 
+\begin{table}[ht] 
+	\centering 
 	\input{Table-data/TBvsAQ4.tex}
 \end{table}
 
@@ -695,7 +744,8 @@ The adc\_[0-3]\_[16-27] or bE\_Q[1-4]\_b[1-12] are a combination of all the 16 r
 Don't blame me for the naming convention, I did not write the code. I just tried to make sense of it.
 
 
-\begin{table}[ht] \centering 
+\begin{table}[ht] 
+	\centering 
 	\input{Table-data/ADC.tex}
 \end{table}
 
@@ -926,6 +976,16 @@ Bin 20 is when no particle can be found, because there is no energy registered i
 
 the source has a thickness of 1.23 mm, which needs to be factored in so that the CD to target \textcolor{red}{distance is the CD} to source distance PLUS the source thickness, i.e. 25.78 mm + 1.23 mm =  27.01 mm. This is very close to the 26.98 mm you got from us in August. I think that the source data was reanalyzed since the original blog entry, giving the 0.03 mm difference!"
 
+For the centroids, it is very hard to tell in log scale how precise you are with the automatic fitting. I zoomed in on one example (attached) and you can see that the black lines do not really represent the centroid in this instance (black lines too low in energy). Because of the complex peak shapes, it is very hard to do this with automatic fitting it seems. 
+
+It honestly might be better to simply hover your mouse over the correct "feature" of the peak, be it the centroid or the maximum, and compare that. The fitting just doesn't seem reliable.
+
+If you do not have the cdpad option selected, then there will be no particle events, because they come in the CD. The -s flag is for adding particles which come without a gamma-ray and the add back flag is for adding Compton scattered events together in the Miniball clusters. 
+
+What you observe around channel number 20 in the ADC events is the so-called pedestal. There is a single common gate for the each ADC (containing channels from one CD quadrant). Therefore, when there is an event in one strip of the CD all channels are readout,  but the channels without a real event read a "zero" energy. These are the events in the pedestal. You should define your threshold for each ADC channel to be above this peak. You are simply zoomed in to the wrong range. Maybe try with log scale on the y-axis and you will see that there should be a cut off at low-energy. After a correct calibration is applied (as you can see for adc\_1\_19 in your example), this pedestal will be calibrated out of the physical energy range.
+
+The nominal calibration will be quite good for most detectors in a certain energy range, because it is designed to be that way. The gains of each DGF are matched during the setup of the experiment so that the online analysis is more straightforward. However, there are some non-linearities and drifting offsets and gains over time that have to be corrected for with a proper calibration using the 133Ba/152Eu source data. 
+
 \textbf{--- \textcolor{red}{Mail from Liam ended} ---}
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
@@ -1053,7 +1113,12 @@ DGF: Digital \ga~ finder
 addback, singles, ...
 
 
+
 \section{Doppler correction}
+
+
+
+
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
@@ -1073,6 +1138,17 @@ at some point you should show the level scheme. \newline
 $\bullet$ motivation: to explain what is known, and which transition probabilities you want to measure.  \newline
 Perhaps also to explain what theory predicts. \newline
 $\bullet$ discussion: if you get \ga-spectrum for \Sm ~$\rightarrow$ to explain what you see.}
+
+
+\begin{figure}
+	\centering
+	\input{images/Level-scheme-140Sm.tikz}
+	\caption{Level scheme for \Sm. Adapted from Klintefjord.}
+	\label{fig:levels}
+\end{figure}
+
+
+
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
@@ -1114,33 +1190,9 @@ GOSIA and GOSIA2 analysis?
 
 \chapter{Acronyms and abbreviations}
 
-\begin{table}[h]
-  \centering
-  \caption{Table of acronyms and abbreviations.}
-    \begin{tabular}{ll}
-        \hline
-        ADC & Analog to Digital Converter \\
-        CERN & European Council for Nuclear Research \\ 
-         & (in French Conseil Européen pour la Recherche Nucléaire) \\
-        COULEX & Coulomb excitation \\
-        DGF & Digital Gamma Finder \\
-        DSSSD & Double-Sided Silicon Strip Detector \\
-        GPS & General Purpose Separator \\
-        HRS & High Resolution Separator \\
-        HIE-ISOLDE & High Intensity and Energy upgrade of ISOLDE \\
-        ISOL & Isotope Separator On Line \\
-        ISOLDE & ISOL DEvice \\
-        LINAC & LINear ACcelerator \\
-        PSB & Proton Synchrotron Booster \\
-        EBIS & Electron Beam Ion Source \\
-        REXEBIS & Radioactive beam EXperiment EBIS \\
-        REX-ISOLDE & Radioactive beam EXperiment at ISOLDE \\
-        RIB & Radioactive Ion Beam \\
-        RILIS & Resonance Ionization Laser Ion Source \\
-        TDC & Time to Digital Converter \\
-        \hline
-    \end{tabular}
-    \label{tab:acro}
+\begin{table}[ht] 
+	\centering 
+	\input{Table-data/Acronyms-and-abbreviations.tex}
 \end{table}
 
 

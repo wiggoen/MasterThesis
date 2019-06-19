@@ -1,5 +1,4 @@
 #include "TH1.h"
-#include "TH2.h"
 #include "TF1.h"
 #include "TFile.h"
 #include "TMath.h"
@@ -815,20 +814,20 @@ void energy_vs_angle() {
   TCanvas *canvas = nullptr;
   std::string canvas_name = Form("Energy vs angles");
   canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
-  canvas->Divide(2, 2);
+  //canvas->Divide(2, 2);
   TH1F *histogram = nullptr;
   std::string histogram_name;
 
   for (int quadrant = 0; quadrant < adc.quadrants; quadrant++) {
-    canvas->cd(quadrant+1);
-    histogram_name = Form("partQ%d", quadrant+1);
+    //canvas->cd(quadrant+1);
+    histogram_name = Form("part");
     //std::cout << histogram_name << std::endl;
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw("colz");
-    gPad->SetLogz();
     histogram->SetAxisRange(22, 57, "X");
     //histogram->GetYaxis()->SetLabelSize(0.06);
     //histogram->GetXaxis()->SetLabelSize(0.06);
+    gPad->SetLogz();
   }
   //canvas->SaveAs(Form("../../Plots/plotting/E_vs_theta_all_Q.pdf")); 
 }

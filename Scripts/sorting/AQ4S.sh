@@ -33,18 +33,16 @@ else
             exit ;;
     esac
     # Read second command line argument
+    # By default, the config files lie in the folder "../../../Miniball/MiniballCoulexSort/config/"
     case "$2" in
-        is553) 
-            calibrationfile="../../../Miniball/MiniballCoulexSort/config/is553_2017_normal.cal"
-            ;;
         online)
-            calibrationfile="../../../Miniball/MiniballCoulexSort/config/IS558-online.cal"
+            calibrationfile="../../Miniball-config/IS558-online.cal"
             ;;
         user)
-            calibrationfile="../../../Miniball/MiniballCoulexSort/config/IS558-user.cal"
+            calibrationfile="../../Miniball-config/IS558-user.cal"
             ;;
         zero)
-            calibrationfile="../../../Miniball/MiniballCoulexSort/config/IS558-zero.cal"
+            calibrationfile="../../Miniball-config/IS558-zero.cal"
             ;;
         *)
             echo "$0: invalid option \"$2\""; 
