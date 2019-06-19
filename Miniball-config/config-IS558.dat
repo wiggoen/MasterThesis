@@ -1,0 +1,15 @@
+Zb:           62
+Ab:           140
+Zt:           82
+At:           208
+Eb:           4650
+Ex:           531
+thick:        1.4
+depth:        0.7
+cddist:       26.98
+cdoffset:     242.6
+deadlayer:    0.0007
+contaminant:  -1.0
+spededist:    23.6
+bg_frac:      -0.75
+srim:         /Users/trondwj/GitHub/MasterThesis/SRIM
