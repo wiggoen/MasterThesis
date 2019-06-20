@@ -4,6 +4,7 @@ arguments="$@";
 element="$1";
 calibration="$2";
 sorting="$3";
+optional_flag="$4"
 the_date=$(date +%F)
 
 function usage {
@@ -14,11 +15,13 @@ function usage {
     echo "Element choice: 'Sm'."
     echo "Calibration choice: 'online', 'zero' or 'user'."
     echo "Sorting choice: 'Q4' (AQ4Sort) or 'TB' (Treebuilder)."
+    echo "Flag choice (optional, only for TreeBuilder): '-s' (singles), '-a' (addback), '-r' (reject)."
     echo "Number of arguments: $argument_counter arguments."
     echo "Argument list: $arguments"
 }
 
-if [ $# == 0 ] || [ $# != 3 ]; then
+if [ $# == 0 ] || [ $# -lt 3 ] || [ $# -gt 4 ]; then
+    echo "Error: number of command line arguments not supported."
     usage;
     exit;
 else
@@ -53,17 +56,42 @@ else
     case "$3" in
         Q4)
             sort_choice="AQ4Sort"
-            flag="";
+            default_flag="";
             ;;
         TB)
             sort_choice="TreeBuilder";
-            flag="-cdpad"
+            default_flag="-cdpad"
             ;;
         *)
             echo "$0: invalid option \"$3\""; 
             usage;
             exit ;;
     esac
+    # Read fourth command line argument
+    if [ "$3" == "TB" ]; then
+        case "$4" in
+            -s)
+                flag="-s";  # singles
+                flag_choice="-singles";
+                ;;
+            -a)
+                flag="-addback";
+                flag_choice="-addback";
+                ;;
+            -r)
+                flag="-reject";
+                flag_choice="-reject";
+                ;;
+            *)
+                ;;  # no flag is also an option
+        esac
+    elif [ "$3" == "Q4" ]; then
+        case "$4" in
+            *)
+                echo "Info: No flag option for 'AQ4Sort'. Ignoring optional flag."
+                ;;
+        esac
+    fi
 fi
 
 filearray=()
@@ -89,6 +117,6 @@ for number in ${run_number[*]};
 
 filearray=${filearray[@]}
 echo "--- $sort_choice ---"
-command="$sort_choice -i $filearray -o ${element}_${calibration}-${sort_choice}-${the_date}.root -c $calibrationfile $flag -vl"
+command="$sort_choice -i $filearray -o ${element}_${calibration}-${sort_choice}${flag_choice}-${the_date}.root -c $calibrationfile $default_flag $flag -vl"
 # Call sorter to calibrate data
 $command
