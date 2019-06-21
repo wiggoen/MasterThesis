@@ -675,11 +675,81 @@ sys	1m50.921s
 
 \bigskip
 
+MedToRoot: file 9
+\begin{lstlisting}[language=sh]
+$ ./M2R.sh Sm
+opening file ../../Raw_data/Sm/140Sm_208Pb_pos6_009.med ...
+EventBuffer::EventBuffer(GlobalSettings *)
+Processing event number       0
+Start trigger #14
+
+Processing event number   40000
+Stop trigger #15
+
+
+Unpacked 47268 events:
+wrong dgf hit pattern:                      0 ( 0.0 %)
+wrong adc headers:                          0 ( 0.0 %)
+# of overflows in adc channels:        147009 (311.0 %)
+# of underflows in adc channels:            0 ( 0.0 %)
+pattern unit mismatches:                    0 ( 0.0 %)
+
+Number of ebis pulses:            23584
+Number of t1 pulses:                717
+Number of supercycle pulses:        153
+committed         351 320 654  bytes to tree tr, 'Tree for on beam data of Coulex setup@Miniball'
+and                 4 889 999  bytes to tree bg, 'Tree for on beam background data of Coulex setup@Miniball'
+and                68 650 177  bytes to tree tr, 'Tree for off beam data of Coulex setup@Miniball'
+wrote                  63 916  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_009_OnBeam.root 	=> compressed by a factor of 5496.6
+,                       9 451  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_009_OnBeamBackground.root 	=> compressed by a factor of 517.4
+,                      44 809  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_009_OffBeam.root 	=> compressed by a factor of 1532.1
+and                    12 904  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_009_Scaler.root 	=> compressed by a factor of 1690.2
+
+\end{lstlisting}
+
+
+MedToRoot: file 25
+\begin{lstlisting}[language=sh]
+$ ./M2R.sh Sm
+opening file ../../Raw_data/Sm/140Sm_208Pb_pos6_025.med ...
+EventBuffer::EventBuffer(GlobalSettings *)
+Processing event number       0
+Start trigger #14
+
+Processing event number  100000
+Stop trigger #15
+
+
+Unpacked 105352 events:
+wrong dgf hit pattern:                      0 ( 0.0 %)
+wrong adc headers:                          0 ( 0.0 %)
+# of overflows in adc channels:        535143 (508.0 %)
+# of underflows in adc channels:            0 ( 0.0 %)
+pattern unit mismatches:                    0 ( 0.0 %)
+
+Number of ebis pulses:            52626
+Number of t1 pulses:               1904
+Number of supercycle pulses:        150
+committed       1  68 292 586  bytes to tree tr, 'Tree for on beam data of Coulex setup@Miniball'
+and                12 475  16  bytes to tree bg, 'Tree for on beam background data of Coulex setup@Miniball'
+and               213 620 380  bytes to tree tr, 'Tree for off beam data of Coulex setup@Miniball'
+wrote                  95 604  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_025_OnBeam.root 	=> compressed by a factor of 11174.1
+,                      16 636  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_025_OnBeamBackground.root 	=> compressed by a factor of 749.9
+,                      64 319  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_025_OffBeam.root 	=> compressed by a factor of 3321.3
+and                    20 646  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_025_Scaler.root 	=> compressed by a factor of 2080.6
+
+\end{lstlisting}
+
+\bigskip
+
 TreeBuilder:
 \begin{lstlisting}[language=sh]
-$ ./AQ4S.sh Sm user TB
-...
-...
+$ ./Q4S.sh Sm user TB
+--- TreeBuilder ---
+input file(s):
+... <shows a list of all input files>
+output file: Sm_user-TreeBuilder-2019-06-20.root
+calibration file: ../../Miniball-config/IS558-user.cal
 WeightPR: 0.75
 Particle distribution:
  Q0 fired: 12243817
