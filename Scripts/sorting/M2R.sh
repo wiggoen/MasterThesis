@@ -33,7 +33,7 @@ else
     done
 fi
 
-settingfile="../../../Miniball/MiniballCoulexSort/config/MBSettings2017_CLX_IS558.dat"
+settingsfile="../../Miniball-config/MBSettings2017_CLX_IS558.dat"
 
 for number in ${run_number[*]};
     do
@@ -45,7 +45,7 @@ for number in ${run_number[*]};
         if [ $element == "Sm" ]; then
             medfile="../../Raw_data/Sm/140Sm_208Pb_pos6_${zeros}${number}.med"
         fi
-        command="MedToRoot -mf $medfile -sf $settingfile"
+        command="MedToRoot -mf $medfile -sf $settingsfile"
         # Call MedToRoot for converting
         $command
     done 
