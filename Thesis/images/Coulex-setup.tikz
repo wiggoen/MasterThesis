@@ -1,0 +1,43 @@
+\begin{tikzpicture}
+    % Definitions
+    \coordinate (origo)   at (0,0);
+    \coordinate (Protons) at (-2.5,2.75);
+    \coordinate (GPS)     at (-8.5,1.25);
+    \coordinate (RILIS)   at (-5.5,1.25);
+    \coordinate (PTarget) at (-2.5,1.25);
+    \coordinate (REXTRAP) at (-8.5,0);
+    \coordinate (REXEBIS) at (-5.5,0);
+    \coordinate (HILinac) at (-2.5,0);
+    % Target and lines from target
+    \draw[->,red,>=stealth,line width=1.5pt] (origo) -- (4,-0.35);
+    \draw[->,blue,>=stealth,line width=1.5pt] (origo) -- (4,0.8);
+    \draw[red, line width=4pt] (0,0.75) -- (0,-0.75) node[black, below] {Target};
+    % Nodes
+    \node(P)   at (Protons) [draw,thick] {\shortstack{Protons \\ (1.4 GeV)}};
+    \node(G)   at (GPS)     [draw,thick] {GPS};
+    \node(R)   at (RILIS)   [draw,thick] {RILIS};
+    \node(PT)  at (PTarget) [draw,thick] {\shortstack{Production \\ target: Ta}};
+    \node(RXT) at (REXTRAP) [draw,thick] {REXTRAP};
+    \node(RXE) at (REXEBIS) [draw,thick] {REXEBIS};
+    \node(LIN) at (HILinac) [draw,thick] {\shortstack{HIE-ISOLDE \\ LINAC}};
+    % Arrows
+    \draw[->,>=stealth,line width=1.5pt]      (P) -- (PT);
+    \draw[->,>=stealth,line width=1.5pt]      (PT) -- (R);
+    \draw[->,blue,>=stealth,line width=1.5pt] (R) -- (G) node[anchor=south, pos=0.45] {Sm};
+    \draw[->,blue,>=stealth,line width=1.5pt] (G) -- (RXT) node[anchor=east, pos=0.45] {$^{140}$Sm$^{1+}$};
+    \draw[->,blue,>=stealth,line width=1.5pt] (RXT) -- (RXE);
+    \draw[->,blue,>=stealth,line width=1.5pt] (RXE) -- (LIN) node[anchor=north, pos=0.45, outer sep=5mm] {$^{140}$Sm$^{34+}$};
+    \draw[->,blue,>=stealth,line width=1.5pt] (LIN) -- (origo);
+    % CD 
+    \draw[ultra thick] (4,0) ellipse [x radius=0.25cm,y radius=0.125cm, rotate=90];
+    \draw[ultra thick] (4,0) ellipse [x radius=0.6cm,y radius=0.3cm, rotate=90];
+    \draw[ultra thick] (4,0) ellipse [x radius=1cm,y radius=0.5cm, rotate=90] node[anchor=north, outer sep=11mm] {DSSSD};
+    % HPGe
+    %\draw (2,2.5) circle (1cm);
+    \draw[ultra thick]  (0.95,2) -- ++(0.5,-0.2) -- ++(0.5,0.2) -- ++(0,0.5) -- ++(-0.5,0.2) -- ++(-0.5,-0.2) -- cycle;
+    \draw[ultra thick] (1.5,2.8) -- ++(0.5,-0.2) -- ++(0.5,0.2) -- ++(0,0.5) -- ++(-0.5,0.2) -- ++(-0.5,-0.2) -- cycle;
+    \draw[ultra thick]  (2.05,2) -- ++(0.5,-0.2) -- ++(0.5,0.2) -- ++(0,0.5) -- ++(-0.5,0.2) -- ++(-0.5,-0.2) -- cycle;
+    \node[anchor=west] at (2.7,3.1) {HPGe};
+    % Gamma
+    \draw[->, decoration={snake,segment length=5mm,amplitude=2mm},decorate,thick] (1,0.2) -- (1.5,2.3) node[left, pos=0.5, outer sep=2mm] {$\gamma$};
+\end{tikzpicture}

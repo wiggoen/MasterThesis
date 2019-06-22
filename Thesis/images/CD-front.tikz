@@ -1,0 +1,48 @@
+\begin{tikzpicture}
+    % Definitions
+    \coordinate (origo) at (0,0);
+    \def \smallradius{0.9cm}
+    \def \bigradius{4.1cm}
+    \def \factor{0.2}
+    \def \rotation{70}
+    %%%
+    %%% Front detector
+    %%%
+    % Gray background
+    \foreach \factor in {0, 90, 180, 270} 
+    {
+        \fill[gray!30, rotate=\factor+\rotation] (origo) -- (\bigradius,0cm) arc (0:84:\bigradius) -- (origo);
+    }
+    % Annular lines
+    \foreach \radius in {0.9, 1.1, ..., 4.1} 
+    {
+        \draw[black, rotate=\rotation, >=stealth]     (0:\radius) arc (0:84:\radius) {};
+        \draw[black, rotate=90+\rotation, >=stealth]  (0:\radius) arc (0:84:\radius) {};
+        \draw[black, rotate=180+\rotation, >=stealth] (0:\radius) arc (0:84:\radius) {};
+        \draw[black, rotate=270+\rotation, >=stealth] (0:\radius) arc (0:84:\radius) {};
+    }
+    % Radial quadrant lines
+    \foreach \x in {-6, 0, 84, 90, 174, 180, 264, 270} 
+    {
+        \draw[very thin, black!30, rotate=\rotation] (origo) -- (\x:\bigradius);
+    }
+    % Inner circle
+    \draw[very thin, white, fill=white] (origo) circle (\smallradius);
+    % Inner and outer circle arc
+    \foreach \factor in {0, 90, 180, 270} 
+    {
+        \draw[black, rotate=\factor+\rotation, >=stealth] (0:\smallradius) arc (0:84:\smallradius) {};
+        \draw[black, rotate=\factor+\rotation, >=stealth] (0:\bigradius) arc (0:84:\bigradius) {};
+    }
+    % Pitch/width
+    \draw[red] (0,\bigradius) -- (\bigradius,\bigradius);
+    \draw[red] (0,3.9) -- node[right, pos=1] {\shortstack{2 mm pitch \\ 1.9 mm width}} (\bigradius,3.9);
+    % Inner/outer radius
+    \draw[red] (-\smallradius,0) -- (-\smallradius,-4.7);
+    \draw[red] (origo) -- (0,-4.7);
+    \draw[red] (\bigradius, 0) -- (\bigradius,-4.7);
+    \draw[<->, red] (-\smallradius,-4.6) -- node[below] {9 mm} (0,-4.6);
+    \draw[<->, red] (0,-4.6) -- node[below] {40.9 mm} (\bigradius,-4.6);
+    % Vertical alignment with back detector
+    \node[] at (-7.47,0) {};
+\end{tikzpicture}
