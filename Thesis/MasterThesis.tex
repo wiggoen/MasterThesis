@@ -14,9 +14,16 @@
 \usepackage[nottoc]{tocbibind}
 
 \usepackage{float} 
+\usepackage{subcaption}
+\newcommand{\blank}[1]{\hspace*{#1}} % move figures by \blank{}
 \usepackage{pdfpages}
 \usepackage{tikz}
-\usetikzlibrary{arrows, shapes.callouts}
+\usetikzlibrary{
+	arrows, 
+	shapes.callouts,
+	decorations.pathreplacing,
+	decorations.pathmorphing
+}
 \tikzset{
     level/.style = { ultra thick, black },
     connect/.style = { dotted, black },
@@ -494,20 +501,24 @@ Angle coverage: [18.4$^\circ$, 56.6$^\circ$]
 
 See \autoref{fig:ADC-FB}
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{images/cd_drawing.pdf}
-	\caption{CD drawing, adapted from Nigel Warr.}
-	\label{fig:ADC-FB}
-\end{figure}
-
 
 \begin{figure}
 	\centering
-	\input{images/CD-geometry.tikz}
-	\caption{CD-geometry.}
-	\label{fig:CD-geometry}
+	\begin{subfigure}{\textwidth}
+		\input{images/CD-front.tikz}
+		\caption{CD front.}
+		\label{fig:CD-F}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\input{images/CD-back.tikz}
+		\caption{CD back.}
+		\label{fig:CD-B}
+	\end{subfigure}
+	\caption{CD drawing, adapted from Nigel Warr.}
+	\label{fig:CD-FB}
 \end{figure}
+
+
 
 
 See \autoref{tab:CD_angles}
@@ -535,12 +546,15 @@ Cryo-modules
 \section{Experimental setup}
 \Sm ~Coulomb excitation experiment.
 
+
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{images/Coulex-ISOLDE.png}
+	\input{images/Coulex-setup.tikz}
 	\caption{The Coulomb excitation setup at ISOLDE. Adapted from Malin Klintefjord's PhD thesis \cite{Klintefjord}.}
 	\label{fig:Coulex}
 \end{figure}
+
+
 
 \textcolor{red}{Show where Sm is made + ionized (+1) + bred (+34?) in the figure?}
 
@@ -573,6 +587,13 @@ Large angle: Backward scattering: Closer distance, stronger \textcolor{red}{EM}-
 Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclear deformation). 
 
 \bigskip
+
+\begin{figure}[ht]
+	\centering
+	\input{images/Coulex-LAB-CM.tikz}
+	\caption{Coulex.}
+	\label{fig:Coulex-LAB-CM}
+\end{figure}
 
 
 
