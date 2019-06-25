@@ -555,16 +555,18 @@ Cryo-modules
 	\label{fig:Coulex}
 \end{figure}
 
+\textcolor{red}{From operators logbook: 140Sm34+ at 4.65 MeV/u experiment. A/q = 4.0.}
 
 \begin{table}[ht] 
 	\centering 
 	\input{Table-data/Geometry.tex}
 \end{table}
+\textcolor{red}{For geometry, see: \url{https://www.ikp.uni-koeln.de/~warr/doc/frame.pdf}}
 
 
-\textcolor{red}{Show where Sm is made + ionized (+1) + bred (+34?) in the figure?}
 
-\textcolor{red}{From operators logbook: 140Sm34+ at 4.65 MeV/u experiment. A/q = 4.0.}
+
+
 
 \bigskip
 
@@ -1365,6 +1367,58 @@ GOSIA and GOSIA2 analysis?
 	\centering 
 	\input{Table-data/Acronyms-and-abbreviations.tex}
 \end{table}
+
+
+\chapter{Two-particle collision in the LAB frame}
+
+
+\begin{align}\label{eq:2p-collision}
+\begin{split}
+	 \boldsymbol{v}_{bi} &= v_{bi} \boldsymbol{\hat{x}}  \\
+	 \boldsymbol{v}_{bf} &= v_{bf} (\cos \theta_b \boldsymbol{\hat{x}} + \sin \theta_b \boldsymbol{\hat{y}})  \\
+	\boldsymbol{v}_{ti} &= 0  \\
+	\boldsymbol{v}_{tf} &= v_{tf} (\cos \theta_t \boldsymbol{\hat{x}} - \sin \theta_t \boldsymbol{\hat{y}})
+\end{split}
+\end{align}
+
+Conservation of momentum
+\begin{equation*}\label{eq:comom}
+	m_b \boldsymbol{v}_{bi} = m_b \boldsymbol{v}_{bf} + m_t \boldsymbol{v}_{tf}
+\end{equation*}
+
+In x-direction
+\begin{align}\label{eq:comomx}
+	m_b v_{bi} &= m_b v_{bf} \cos \theta_b + m_t v_{tf} \cos \theta_t \nonumber\\
+	m_b (v_{bi} - v_{bf} \cos \theta_b) &= m_t v_{tf} \cos \theta_t \nonumber\\
+	\frac{m_b}{m_t} (v_{bi} - v_{bf} \cos \theta_b) &= v_{tf} \cos \theta_t \nonumber\\
+	m (v_{bi} - v_{bf} \cos \theta_b) &= v_{tf} \cos \theta_t 
+\end{align}
+where $m = m_b/m_t$ is the ratio of the projectile mass to the target mass.
+
+In y-direction
+\begin{align}\label{eq:comomy}
+	0 &= m_b v_{bf} \sin \theta_b - m_t v_{tf} \sin \theta_t \nonumber\\
+	m_b v_{bf} \sin \theta_b &= m_t v_{tf} \sin \theta_t \nonumber\\
+	\frac{m_b}{m_t} v_{bf} \sin \theta_b &= v_{tf} \sin \theta_t \nonumber\\
+	m v_{bf} \sin \theta_b &= v_{tf} \sin \theta_t
+\end{align}
+
+Conservation of energy
+\begin{align}\label{eq:coe}
+	\tfrac{1}{2} m_b v_{bi}^2 &= \tfrac{1}{2} m_b v_{bf}^2 + \tfrac{1}{2} m_t v_{tf}^2 \nonumber\\
+	m_b (v_{bi}^2 - v_{bf}^2) &= m_t v_{tf}^2 \nonumber\\
+	\frac{m_b}{m_t} (v_{bi}^2 - v_{bf}^2) &= v_{tf}^2 \nonumber\\
+	m (v_{bi}^2 - v_{bf}^2) &= v_{tf}^2
+\end{align}
+
+Since \autoref{eq:comomx}, \autoref{eq:comomx} and \autoref{eq:coe}...
+
+
+
+
+
+\chapter{Connection between the LAB frame and the CM frame}
+
 
 
 \chapter{Source code}
