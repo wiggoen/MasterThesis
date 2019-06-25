@@ -4,6 +4,7 @@
 #include "TMath.h"
 #include "TGraph.h"
 #include "TCanvas.h"
+#include "TStyle.h"
 #include "TLine.h"
 
 #include <iostream>
@@ -489,6 +490,10 @@ void plot_front_back_energy(std::string setup_file, std::string name_addition = 
   TH1F *histogram = nullptr;
   std::string histogram_name;
 
+  std::string title[4] = {"Q1", "Q2", "Q3", "Q4"};
+  float label_size = 0.06;
+  float margin_size = 0.13;
+
   if (!name_addition.empty()) {
     name_addition = "-" + name_addition;
   }
@@ -499,8 +504,16 @@ void plot_front_back_energy(std::string setup_file, std::string name_addition = 
     //std::cout << histogram_name << std::endl;
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw("colz");
-    histogram->GetYaxis()->SetLabelSize(0.06);
-    histogram->GetXaxis()->SetLabelSize(0.06);
+    histogram->SetTitle(title[quadrant].c_str()); // Changing titles
+    //std::cout << title[quadrant] << std::endl;
+    histogram->SetStats(0);                       // Remove stats
+    histogram->SetLabelSize(label_size, "xyz");   // Label size for x-, y- and z-axis
+    histogram->SetTitleSize(label_size, "xy");    // Text size for x- and y-axis
+    histogram->GetYaxis()->SetTitleOffset(1.0);   // Move y-axis text a little closer
+    gStyle->SetTitleSize(label_size, "t");        // Title size
+    gPad->SetLeftMargin(margin_size);
+    gPad->SetRightMargin(margin_size);
+    gPad->SetBottomMargin(margin_size);
   }
   canvas->SaveAs(Form("../../Plots/plotting/E_f_b_Q1-4%s.pdf", name_addition.c_str()));
 }

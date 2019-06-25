@@ -728,7 +728,6 @@ wrote                  63 916  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_
 ,                       9 451  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_009_OnBeamBackground.root 	=> compressed by a factor of 517.4
 ,                      44 809  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_009_OffBeam.root 	=> compressed by a factor of 1532.1
 and                    12 904  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_009_Scaler.root 	=> compressed by a factor of 1690.2
-
 \end{lstlisting}
 
 
@@ -761,13 +760,12 @@ wrote                  95 604  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_
 ,                      16 636  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_025_OnBeamBackground.root 	=> compressed by a factor of 749.9
 ,                      64 319  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_025_OffBeam.root 	=> compressed by a factor of 3321.3
 and                    20 646  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_025_Scaler.root 	=> compressed by a factor of 2080.6
-
 \end{lstlisting}
 
 \bigskip
 
-TreeBuilder:
-\begin{lstlisting}[language=sh]
+\subsubsection{TreeBuilder}
+\begin{lstlisting}[language=]
 $ ./Q4S.sh Sm user TB
 --- TreeBuilder ---
 input file(s):
@@ -781,6 +779,58 @@ Particle distribution:
  Q2 fired: 11479362
  Q3 fired: 10936096
 Finished.
+\end{lstlisting}
+
+
+\subsubsection{AQ4Sort}
+\begin{lstlisting}[language=]
+$ ./Q4S.sh Sm user Q4
+Info: No flag option for 'AQ4Sort'. Ignoring optional flag.
+--- AQ4Sort ---
+calibration file: ../../Miniball-config/IS558-user.cal
+input file(s):
+... <shows a list of all input files>
+output file: Sm_user-AQ4Sort-2019-06-24.root
+\end{lstlisting}
+
+\subsubsection{CLXAna}
+\begin{lstlisting}[language=]
+$ CLXAna -i /Users/trondwj/GitHub/MasterThesis/Sorted_data/Sm_user-TreeBuilder-2019-06-20.root -o test_analysis_wcut.root -c /Users/trondwj/GitHub/MasterThesis/Miniball-config/config-IS558.dat -cut /Users/trondwj/GitHub/MasterThesis/Sorted_data/outputfile.root:Bcut:Tcut
+Input parameters:
+Zb = 62
+Ab = 140
+Zt = 82
+At = 208
+Eb = 4650 keV/u
+Ex = 531 keV
+thick = 1.4 mg/cm2
+depth = 0.7 mg/cm2
+cddist = 26.98 mm
+cdoffset = 242.6 degrees
+deadlayer = 0.0007 mm
+contaminant = -1 mg/cm2
+spededist = 23.6 mm
+bg_frac = -0.75
+srim = /Users/trondwj/GitHub/MasterThesis/SRIM
+cutfile = /Users/trondwj/GitHub/MasterThesis/Sorted_data/outputfile.root:Bcut:Tcut
+Begin g_clx loop.
+Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/140Sm_208Pb.pdf has been created
+Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/208Pb_208Pb.pdf has been created
+Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/140Sm_Si.pdf has been created
+Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/208Pb_Si.pdf has been created
+Initialising histograms...
+Looping over events...
+Warning in <TClass::Init>: no dictionary for class trevts is available
+1-particle events = 89020258%)    
+Finished.
+\end{lstlisting}
+
+
+\subsubsection{hadd}
+After saving "part" from CLXAna-file:
+\begin{lstlisting}[language=]
+$ cd GitHub/ROOT-framework/build/bin
+$ hadd /Users/trondwj/GitHub/MasterThesis/Sorted_data/outputfile.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/part.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Bcut.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Tcut.root 
 \end{lstlisting}
 
 \bigskip
