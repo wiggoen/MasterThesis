@@ -112,6 +112,70 @@
   #1,
 }
 
+%% We need to redefine \autoref. We should use 
+%% abbreviations inside the sentence and full names 
+%% at the beginning of sentences. Additionally,
+%% need to handle the plural cases.
+
+% \Autoref is for the beginning of the sentence
+\let\orgautoref\autoref
+\providecommand{\Autoref}
+        {\def\equationautorefname{Equation}%
+         \def\figureautorefname{Figure}%
+         \def\subfigureautorefname{Figure}%
+         \def\sectionautorefname{Section}%
+         \def\subsectionautorefname{Section}%
+         \def\subsubsectionautorefname{Section}%
+         \def\Itemautorefname{Item}%
+         \def\tableautorefname{Table}%
+         \orgautoref}
+
+% \Autorefs is plural for the beginning of the sentence
+\providecommand{\Autorefs}
+        {\def\equationautorefname{Equations}%
+         \def\figureautorefname{Figures}%
+         \def\subfigureautorefname{Figures}%
+         \def\sectionautorefname{Sections}%
+         \def\subsectionautorefname{Sections}%
+         \def\subsubsectionautorefname{Sections}%
+         \def\Itemautorefname{Items}%
+         \def\tableautorefname{Tables}%
+         \orgautoref}
+
+% \autoref is used inside a sentence 
+% (this is a renew of the standard)
+\renewcommand{\autoref}
+        {\def\equationautorefname{Eq.}%
+         \def\figureautorefname{Fig.}%
+         \def\subfigureautorefname{Fig.}%
+         \def\sectionautorefname{Sec.}%
+         \def\subsectionautorefname{Sec.}%
+         \def\subsubsectionautorefname{Sec.}%
+         \def\Itemautorefname{item}%
+         \def\tableautorefname{Tab.}%
+         \orgautoref}
+
+% \autorefs is plural for inside a sentence
+\providecommand{\autorefs}
+        {\def\equationautorefname{Eqs.}%
+         \def\figureautorefname{Figs.}%
+         \def\subfigureautorefname{Figs.}%
+         \def\sectionautorefname{Secs.}%
+         \def\subsectionautorefname{Secs.}%
+         \def\subsubsectionautorefname{Secs.}%
+         \def\Itemautorefname{items}%
+         \def\tableautorefname{Tabs.}%
+         \orgautoref}
+
+% Make equations text be Eq. (ref)
+\makeatletter
+\def\tagform@#1{\maketag@@@{\ignorespaces#1\unskip\@@italiccorr}}
+\let\orgtheequation\theequation
+\def\theequation{(\orgtheequation)}
+\makeatother
+
+%% End of redefinition
+
 %---
 
 
@@ -499,7 +563,7 @@ CD distance: 26.98 mm, Inner angle (min): 9 mm, Outer angle (max): 40.9 mm
 
 Angle coverage: [18.4$^\circ$, 56.6$^\circ$]
 
-See \autoref{fig:ADC-FB}
+See \autoref{fig:CD-FB}
 
 
 \begin{figure}
@@ -602,7 +666,7 @@ Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclea
 	\caption{Coulex.}
 	\label{fig:Coulex-LAB-CM}
 \end{figure}
-
+testing ref inside sentence \autoref{fig:Coulex-LAB-CM}.
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
@@ -1372,48 +1436,126 @@ GOSIA and GOSIA2 analysis?
 \chapter{Two-particle collision in the LAB frame}
 
 
-\begin{align}\label{eq:2p-collision}
+\begin{align}\label{eq:2p-LAB-collision}
 \begin{split}
-	 \boldsymbol{v}_{bi} &= v_{bi} \boldsymbol{\hat{x}}  \\
-	 \boldsymbol{v}_{bf} &= v_{bf} (\cos \theta_b \boldsymbol{\hat{x}} + \sin \theta_b \boldsymbol{\hat{y}})  \\
-	\boldsymbol{v}_{ti} &= 0  \\
-	\boldsymbol{v}_{tf} &= v_{tf} (\cos \theta_t \boldsymbol{\hat{x}} - \sin \theta_t \boldsymbol{\hat{y}})
+	 \boldsymbol{u} &= u \boldsymbol{\hat{x}}  \\
+	 \boldsymbol{u}_2 &= 0  \\
+	 \boldsymbol{v}_1 &= v_1 (\cos \theta \boldsymbol{\hat{x}} + \sin \theta \boldsymbol{\hat{y}})  \\
+	\boldsymbol{v}_2 &= v_2 (\cos \varphi \boldsymbol{\hat{x}} - \sin \varphi \boldsymbol{\hat{y}})
 \end{split}
 \end{align}
 
 Conservation of momentum
-\begin{equation*}\label{eq:comom}
-	m_b \boldsymbol{v}_{bi} = m_b \boldsymbol{v}_{bf} + m_t \boldsymbol{v}_{tf}
-\end{equation*}
+\begin{align*}%\label{eq:comom}
+	m_1 \boldsymbol{u} &= m_1 \boldsymbol{v}_1 + m_2 \boldsymbol{v}_2
+\end{align*}
 
 In x-direction
-\begin{align}\label{eq:comomx}
-	m_b v_{bi} &= m_b v_{bf} \cos \theta_b + m_t v_{tf} \cos \theta_t \nonumber\\
-	m_b (v_{bi} - v_{bf} \cos \theta_b) &= m_t v_{tf} \cos \theta_t \nonumber\\
-	\frac{m_b}{m_t} (v_{bi} - v_{bf} \cos \theta_b) &= v_{tf} \cos \theta_t \nonumber\\
-	m (v_{bi} - v_{bf} \cos \theta_b) &= v_{tf} \cos \theta_t 
+\begin{align}\label{eq:comx}
+	m_1 u &= m_1 v_1 \cos \theta + m_2 v_2 \cos \varphi  \nonumber\\
+	m_1 (u - v_1 \cos \theta) &= m_2 v_2 \cos \varphi  \nonumber\\
+	\frac{m_1}{m_2} (u - v_1 \cos \theta) &= v_2 \cos \varphi  \nonumber\\
+	\mu (u - v_1 \cos \theta) &= v_2 \cos \varphi
 \end{align}
-where $m = m_b/m_t$ is the ratio of the projectile mass to the target mass.
+where $\mu = m_1/m_2$ is the ratio of the projectile mass to the target mass.
 
 In y-direction
-\begin{align}\label{eq:comomy}
-	0 &= m_b v_{bf} \sin \theta_b - m_t v_{tf} \sin \theta_t \nonumber\\
-	m_b v_{bf} \sin \theta_b &= m_t v_{tf} \sin \theta_t \nonumber\\
-	\frac{m_b}{m_t} v_{bf} \sin \theta_b &= v_{tf} \sin \theta_t \nonumber\\
-	m v_{bf} \sin \theta_b &= v_{tf} \sin \theta_t
+\begin{align}\label{eq:comy}
+	0 &= m_1 v_1 \sin \theta - m_2 v_2 \sin \varphi \nonumber\\
+	m_1 v_1 \sin \theta &= m_2 v_2 \sin \varphi \nonumber\\
+	\frac{m_1}{m_2} v_1 \sin \theta &= v_2 \sin \varphi \nonumber\\
+	\mu v_1 \sin \theta &= v_2 \sin \varphi
 \end{align}
 
 Conservation of energy
 \begin{align}\label{eq:coe}
-	\tfrac{1}{2} m_b v_{bi}^2 &= \tfrac{1}{2} m_b v_{bf}^2 + \tfrac{1}{2} m_t v_{tf}^2 \nonumber\\
-	m_b (v_{bi}^2 - v_{bf}^2) &= m_t v_{tf}^2 \nonumber\\
-	\frac{m_b}{m_t} (v_{bi}^2 - v_{bf}^2) &= v_{tf}^2 \nonumber\\
-	m (v_{bi}^2 - v_{bf}^2) &= v_{tf}^2
+	\tfrac{1}{2} m_1 \boldsymbol{u}^2 &= \tfrac{1}{2} m_1 \boldsymbol{v}_1^2 + \tfrac{1}{2} m_2 \boldsymbol{v}_2^2 \nonumber\\
+	\tfrac{1}{2} m_1 (u^2 - v_1^2) &= \tfrac{1}{2} m_2 v_2^2 \nonumber\\
+	\frac{m_1}{m_2} (u^2 - v_1^2) &= v_2^2 \nonumber\\
+	\mu (u^2 - v_1^2) &= v_2^2
 \end{align}
 
-Since \autoref{eq:comomx}, \autoref{eq:comomx} and \autoref{eq:coe}...
+Since \autoref{eq:comx}, \autoref{eq:comy} and \autoref{eq:coe}...
 
+\autoref{eq:comx} squared:
+\begin{align*}%\label{eq:c}
+	\mu^2 (u - v_1 \cos \theta)^2 &= v_2^2 \cos^2 \varphi  \\
+	\mu^2 (u^2 - 2uv_1 \cos \theta + v_1^2 \cos^2 \theta) &= v_2^2 \cos^2 \varphi
+\end{align*}
 
+\autoref{eq:comy} squared:
+\begin{align*}%\label{eq:c}
+	\mu^2 v_1^2 \sin^2 \theta &= v_2^2 \sin^2 \varphi
+\end{align*}
+
+\autoref{eq:comx} squared plus \autoref{eq:comy} squared:
+\begin{align*}%\label{eq:c}
+	\mu^2 (u^2 - 2uv_1 \cos \theta + v_1^2 \cos^2 \theta + v_1^2 \sin^2 \theta) &= v_2^2 (\cos^2 \varphi + \sin^2 \varphi)  \\
+	\mu^2 (u^2 - 2uv_1 \cos \theta + v_1^2) &= v_2^2  \\
+	\mu^2 u^2 - 2\mu^2 uv_1 \cos \theta + \mu^2 v_1^2 &= v_2^2  \\
+	\mu^2 v_1^2 &= -\mu^2 u^2 + 2\mu^2 uv_1 \cos \theta + v_2^2  \\
+	\mu^2 v_1^2 &= -\mu^2 u^2 + 2\mu u (\mu v_1 \cos \theta) + v_2^2
+\end{align*}
+From \autoref{eq:comx} we have
+\begin{align*}%\label{eq:c}
+	\mu (u - v_1 \cos \theta) &= v_2 \cos \varphi  \\
+	\mu u - \mu v_1 \cos \theta &= v_2 \cos \varphi  \\
+	\mu v_1 \cos \theta &= \mu u - v_2 \cos \varphi
+\end{align*}
+substituting for ($\mu v_1 \cos \theta$) we get 
+\begin{align}\label{eq:comsq}
+	\mu^2 v_1^2 &= -\mu^2 u^2 + 2\mu u (\mu u - v_2 \cos \varphi ) + v_2^2  \nonumber\\
+	\mu^2 v_1^2 &= -\mu^2 u^2 + 2\mu^2 u^2 - 2\mu u v_2 \cos \varphi + v_2^2  \nonumber\\
+	\mu^2 v_1^2 &= \mu^2 u^2 - 2\mu u v_2 \cos \varphi + v_2^2
+\end{align}
+
+Using \autoref{eq:coe} we get
+\begin{align}\label{eq:coesub}
+    \left( \frac{\mu}{\mu} \right) \mu (u^2 - v_1^2) &= v_2^2  \nonumber\\
+    \mu^2 (u^2 - v_1^2) &= \mu v_2^2  \nonumber\\
+	\mu^2 u^2 - \mu^2 v_1^2 &= \mu v_2^2  \nonumber\\
+	\mu^2 v_1^2 &= \mu^2 u^2 - \mu v_2^2
+\end{align}
+
+Combining \autoref{eq:comsq} and \autoref{eq:coesub} we get
+\begin{align}\label{eq:comcoe}
+    \mu^2 u^2 - 2\mu u v_2 \cos \varphi + v_2^2 &= \mu^2 u^2 - \mu v_2^2  \nonumber\\
+    v_2^2 + \mu v_2^2 &= 2\mu u v_2 \cos \varphi  \nonumber\\
+    v_2^2 (1 + \mu) &= 2\mu u v_2 \cos \varphi  \nonumber\\
+    v_2 &= 2 \left( \frac{\mu}{1 + \mu} \right) u \cos \varphi 
+\end{align}
+
+Substituting \autoref{eq:comcoe} into \autoref{eq:coesub} we get
+\begin{align}\label{eq:coesubsub}
+    \mu^2 v_1^2 &= \mu^2 u^2 - \mu \left( 2 \left( \frac{\mu}{1 + \mu} \right) u \cos \varphi  \right)^2  \nonumber\\
+    v_1^2 &= u^2 - \frac{1}{\mu} \left( 4 \left( \frac{\mu^2}{(1 + \mu)^2} \right) u^2 \cos^2 \varphi  \right)  \nonumber\\
+    v_1^2 &= u^2 \left(1 - 4 \left( \frac{\mu}{(1 + \mu)^2} \right) \cos^2 \varphi  \right)  \nonumber\\
+    v_1 &= u \sqrt{1 - 4 \frac{\mu}{M} \cos^2 \varphi}
+\end{align}
+where $\mu/M = \mu/(1 + \alpha)^2$ is the ratio ...
+
+From \autoref{eq:comx} 
+\begin{align}\label{eq:comx2}
+	\mu (u - v_1 \cos \theta) &= v_2 \cos \varphi  \nonumber\\
+	\mu u - \mu v_1 \cos \theta &= v_2 \cos \varphi  \nonumber\\
+	\mu v_1 \cos \theta &= \mu u - v_2 \cos \varphi
+\end{align}
+
+The ratio of \autoref{eq:comy} and \autoref{eq:comx2}
+\begin{align}\label{eq:comxy}
+	\frac{\mu v_1 \sin \theta}{\mu v_1 \cos \theta} &= \frac{v_2 \sin \varphi}{\mu u - v_2 \cos \varphi}  \nonumber\\
+	\tan \theta &= \frac{v_2 \sin \varphi}{\mu u - v_2 \cos \varphi}
+\end{align}
+inserting \autoref{eq:comcoe} into \autoref{eq:comxy} gives
+\begin{align}\label{eq:tanB}
+	\tan \theta &= \frac{\left( 2 \left( \frac{\mu}{1 + \mu} \right) u \cos \varphi  \right) \sin \varphi}{\mu u - \left( 2 \left( \frac{\mu}{1 + \mu} \right) u \cos \varphi  \right) \cos \varphi}  \nonumber\\
+	\tan \theta &= \frac{\mu u \left( \frac{1}{1 + \mu} \right) 2 \sin \varphi \cos \varphi}{\mu u \left(1 - 2 \left( \frac{1}{1 + \mu} \right) \cos^2 \varphi \right)}  \nonumber\\
+	\tan \theta &= \frac{\sin 2\varphi}{(1 + \mu)\left(1 - 2 \left( \frac{1}{1 + \mu} \right) \cos^2 \varphi \right)}  \nonumber\\
+	\tan \theta &= \frac{\sin 2\varphi}{1 + \mu - 2 \cos^2 \varphi}  \nonumber\\
+	\tan \theta &= \frac{\sin 2\varphi}{\mu - (2 \cos^2 \varphi - 1)}  \nonumber\\
+	\tan \theta &= \frac{\sin 2\varphi}{\mu - \cos 2\varphi}  \nonumber\\
+	\theta &= \arctan \left( \frac{\sin 2\varphi}{\mu - \cos 2\varphi} \right)
+\end{align}
 
 
 
