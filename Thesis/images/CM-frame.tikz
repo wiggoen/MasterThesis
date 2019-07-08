@@ -1,0 +1,44 @@
+%%
+%% Center of mass frame
+%%
+\begin{center}
+\begin{tikzpicture}
+    % Definitions
+    \coordinate (Bleft)  at (-5,0.5);
+    \coordinate (Bright) at (5,0.5);
+    \coordinate (origo)  at (0,0);
+    \coordinate (Tleft)  at (-5,-0.5);
+    \coordinate (Tright) at (5,-0.5);
+    \coordinate (Bup)    at (2,3);
+    \coordinate (Tdown)  at (-2,-3);
+    % Lines
+    \draw[dotted] (Tleft)  -- (3.75,-0.5);
+    \draw[dotted] (Tdown)  -- (Bup);    % 180 degree line
+    \draw[dotted] (-0.5,0) -- (1.5,0);  % angle help line
+    % Particle paths
+    \draw[red,loosely dashed]  (Bleft) .. controls (-0.5,0.5) and (0.5,0.5) .. (Bup);
+    \draw[blue,loosely dashed] (Tright) .. controls (0.5,-0.5) and (-0.5,-0.5) .. (Tdown);
+    % Impact parameter
+    \draw[<->, >=stealth] (-3,0.5) -- node[left] {a} (-3,-0.5);
+    % Center of mass
+    \draw[fill=black] (origo) circle[radius=0.07cm] node {};
+    % Angles
+    \draw[->, >=stealth] (1,0) arc (0:57:1cm) node[right, pos=0.6, outer sep=1mm] {$\theta_b^{'}$};
+    % Vectors
+    \draw[->, >=stealth] (-4.78,0.5) -- ++(1,0)        node[below, pos=0.7] {$\textbf{u}^{'}$};
+    \draw[->, >=stealth] (4.75,-0.5) -- ++(-1,0)       node[below, pos=0.6] {-$\textbf{u}^{'}$};
+    \draw[->, >=stealth] (Bup)       -- ++(0.5,0.75)   node[right, pos=0.4,outer sep=0.5mm] {$\textbf{v}_b^{'}$};
+    \draw[->, >=stealth] (Tdown)     -- ++(-0.5,-0.75) node[right, pos=0.8,outer sep=0.5mm] {$\textbf{v}_t^{'}$};
+    % Particles
+    \draw[draw=blue,fill=blue!20] (Tdown)  circle[radius=0.25cm] node {t};
+    \draw[draw=blue,fill=blue!20] (Tright) circle[radius=0.25cm] node {t};
+    \draw[draw=red,fill=red!20]   (Bleft)  circle[radius=0.22cm] node {b};
+    \draw[draw=red,fill=red!20]   (Bup)    circle[radius=0.22cm] node {b};
+    % Coordinate system 
+    \coordinate (CSP) at (-4,1.5);
+    \draw[->, >=stealth] (CSP) -- ++(1,0) node[below, pos=0.9] {x'};
+    \draw[->, >=stealth] (CSP) -- ++(0,1) node[left, pos=0.9] {y'};
+    % Vertical space from LAB frame
+    \node[] at (0,4.5) {};
+\end{tikzpicture}
+\end{center}
