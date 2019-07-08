@@ -592,7 +592,6 @@ See \autoref{tab:CD_angles}
 	\input{Table-data/CD.tex}
 \end{table}
 
-\textcolor{red}{\textbf{SKAL TABELLEN VISE MeV eller MeV/u??}}
 
 \textcolor{red}{Vis en figur/tegning av "trekanten" i detektoroppsettet? Skjematisk figur?} 
 
@@ -628,7 +627,23 @@ Cryo-modules
 \textcolor{red}{For geometry, see: \url{https://www.ikp.uni-koeln.de/~warr/doc/frame.pdf}}
 
 
-
+\begin{table}[ht] 
+    \centering 
+    \caption{LAB vs CM. Based on LAB input angles from $\theta_b$ and $\theta_t$. From LISE++ kinematics calculator (reaction from the middle of the target).}
+	\label{tab:LABvsCM}
+    \begin{subtable}{0.45\textwidth}
+    		\centering
+		\caption{$\theta_b \in [22.0^\circ, 56.7^\circ]$.}
+	 	\label{tab:LABvsCM_b}
+	 	\input{Table-data/LABvsCM_b.tex}
+	\end{subtable}
+	\begin{subtable}{0.45\textwidth}
+		\centering
+		\caption{$\theta_t \in [22.0^\circ, 56.7^\circ]$.}
+		\label{tab:LABvsCM_t}
+		\input{Table-data/LABvsCM_t.tex}
+	\end{subtable}
+\end{table}
 
 
 
@@ -660,13 +675,22 @@ Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclea
 
 \bigskip
 
-\begin{figure}[ht]
+
+\begin{figure}
 	\centering
-	\input{images/Coulex-LAB-CM.tikz}
-	\caption{Coulex.}
-	\label{fig:Coulex-LAB-CM}
+	\begin{subfigure}{\textwidth}
+		\input{images/LAB-frame.tikz}
+		\caption{Laboratory (LAB) frame}
+		\label{fig:LAB}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\input{images/CM-frame.tikz}
+		\caption{Center of mass (CM) frame.}
+		\label{fig:CM}
+	\end{subfigure}
+	\caption{LAB vs CM frame.}
+	\label{fig:LAB-CM}
 \end{figure}
-testing ref inside sentence \autoref{fig:Coulex-LAB-CM}.
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
@@ -1433,133 +1457,282 @@ GOSIA and GOSIA2 analysis?
 \end{table}
 
 
-\chapter{Two-particle collision in the LAB frame}
-
-
+\chapter{Two-particle collision}
+\section{Laboratory (LAB) frame of reference}\label{sec:LAB}
+The angles of the two-particle collision in the laboratory frame from \autoref{fig:LAB} is calculated in this section. A general approach is used to make it easier to hold track of the parameters. From the figure we can express the velocities as
 \begin{align}\label{eq:2p-LAB-collision}
 \begin{split}
-	 \boldsymbol{u} &= u \boldsymbol{\hat{x}}  \\
+	 \boldsymbol{u} &= \boldsymbol{u}_1 = u \boldsymbol{\hat{x}}  \\
 	 \boldsymbol{u}_2 &= 0  \\
-	 \boldsymbol{v}_1 &= v_1 (\cos \theta \boldsymbol{\hat{x}} + \sin \theta \boldsymbol{\hat{y}})  \\
-	\boldsymbol{v}_2 &= v_2 (\cos \varphi \boldsymbol{\hat{x}} - \sin \varphi \boldsymbol{\hat{y}})
+	 \boldsymbol{v}_b &= \boldsymbol{v}_1 = v_1 (\cos \theta \boldsymbol{\hat{x}} + \sin \theta \boldsymbol{\hat{y}})  \\
+	\boldsymbol{v}_t &= \boldsymbol{v}_2 = v_2 (\cos \varphi \boldsymbol{\hat{x}} - \sin \varphi \boldsymbol{\hat{y}})
 \end{split}
 \end{align}
+where $\boldsymbol{u}_1$ and $\boldsymbol{v}_1$ is the initial and final velocity of the projectile $m_b = m_1$ respectively, and $\boldsymbol{u}_2$ and $\boldsymbol{v}_2$ is the initial and final velocity of the target $m_t = m_2$ respectively. The angles $\theta_b = \theta$ and $\theta_t = \varphi$ are the projectile and target angle respectively. We also introduce a ratio of the projectile mass to the target mass, $\alpha = m_1/m_2$.
 
-Conservation of momentum
+Conservation of momentum gives
 \begin{align*}%\label{eq:comom}
-	m_1 \boldsymbol{u} &= m_1 \boldsymbol{v}_1 + m_2 \boldsymbol{v}_2
+	m_1 \boldsymbol{u}_1 &= m_1 \boldsymbol{v}_1 + m_2 \boldsymbol{v}_2
 \end{align*}
-
-In x-direction
+which in x-direction can be expressed as
 \begin{align}\label{eq:comx}
 	m_1 u &= m_1 v_1 \cos \theta + m_2 v_2 \cos \varphi  \nonumber\\
 	m_1 (u - v_1 \cos \theta) &= m_2 v_2 \cos \varphi  \nonumber\\
 	\frac{m_1}{m_2} (u - v_1 \cos \theta) &= v_2 \cos \varphi  \nonumber\\
-	\mu (u - v_1 \cos \theta) &= v_2 \cos \varphi
+	\alpha (u - v_1 \cos \theta) &= v_2 \cos \varphi
 \end{align}
-where $\mu = m_1/m_2$ is the ratio of the projectile mass to the target mass.
-
-In y-direction
+and in y-direction can be expressed as
 \begin{align}\label{eq:comy}
 	0 &= m_1 v_1 \sin \theta - m_2 v_2 \sin \varphi \nonumber\\
 	m_1 v_1 \sin \theta &= m_2 v_2 \sin \varphi \nonumber\\
 	\frac{m_1}{m_2} v_1 \sin \theta &= v_2 \sin \varphi \nonumber\\
-	\mu v_1 \sin \theta &= v_2 \sin \varphi
+	\alpha v_1 \sin \theta &= v_2 \sin \varphi
 \end{align}
 
-Conservation of energy
+Conservation of energy gives
 \begin{align}\label{eq:coe}
-	\tfrac{1}{2} m_1 \boldsymbol{u}^2 &= \tfrac{1}{2} m_1 \boldsymbol{v}_1^2 + \tfrac{1}{2} m_2 \boldsymbol{v}_2^2 \nonumber\\
+	\tfrac{1}{2} m_1 \boldsymbol{u}_1^2 &= \tfrac{1}{2} m_1 \boldsymbol{v}_1^2 + \tfrac{1}{2} m_2 \boldsymbol{v}_2^2 \nonumber\\
 	\tfrac{1}{2} m_1 (u^2 - v_1^2) &= \tfrac{1}{2} m_2 v_2^2 \nonumber\\
 	\frac{m_1}{m_2} (u^2 - v_1^2) &= v_2^2 \nonumber\\
-	\mu (u^2 - v_1^2) &= v_2^2
+	\alpha (u^2 - v_1^2) &= v_2^2
 \end{align}
 
-Since \autoref{eq:comx}, \autoref{eq:comy} and \autoref{eq:coe}...
+We now have three equations (\autoref{eq:comx} - \autoref{eq:coe}) with four unknown quantities ($v_1, \theta, v_2, \varphi$). Using the target angle $\varphi$ as an independent variable, we can find expressions for the other three variables. 
 
-\autoref{eq:comx} squared:
+Squaring \autoref{eq:comx} 
 \begin{align*}%\label{eq:c}
-	\mu^2 (u - v_1 \cos \theta)^2 &= v_2^2 \cos^2 \varphi  \\
-	\mu^2 (u^2 - 2uv_1 \cos \theta + v_1^2 \cos^2 \theta) &= v_2^2 \cos^2 \varphi
+	\alpha^2 (u - v_1 \cos \theta)^2 &= v_2^2 \cos^2 \varphi  \\
+	\alpha^2 (u^2 - 2uv_1 \cos \theta + v_1^2 \cos^2 \theta) &= v_2^2 \cos^2 \varphi
 \end{align*}
-
-\autoref{eq:comy} squared:
+and \autoref{eq:comy}
 \begin{align*}%\label{eq:c}
-	\mu^2 v_1^2 \sin^2 \theta &= v_2^2 \sin^2 \varphi
+	\alpha^2 v_1^2 \sin^2 \theta &= v_2^2 \sin^2 \varphi
 \end{align*}
-
-\autoref{eq:comx} squared plus \autoref{eq:comy} squared:
-\begin{align*}%\label{eq:c}
-	\mu^2 (u^2 - 2uv_1 \cos \theta + v_1^2 \cos^2 \theta + v_1^2 \sin^2 \theta) &= v_2^2 (\cos^2 \varphi + \sin^2 \varphi)  \\
-	\mu^2 (u^2 - 2uv_1 \cos \theta + v_1^2) &= v_2^2  \\
-	\mu^2 u^2 - 2\mu^2 uv_1 \cos \theta + \mu^2 v_1^2 &= v_2^2  \\
-	\mu^2 v_1^2 &= -\mu^2 u^2 + 2\mu^2 uv_1 \cos \theta + v_2^2  \\
-	\mu^2 v_1^2 &= -\mu^2 u^2 + 2\mu u (\mu v_1 \cos \theta) + v_2^2
-\end{align*}
+and adding them together gives
+\begin{align}\label{eq:av}
+	\alpha^2 (u^2 - 2uv_1 \cos \theta + v_1^2 \cos^2 \theta + v_1^2 \sin^2 \theta) &= v_2^2 (\cos^2 \varphi + \sin^2 \varphi)  \nonumber\\
+	\alpha^2 (u^2 - 2uv_1 \cos \theta + v_1^2) &= v_2^2  \nonumber\\
+	\alpha^2 u^2 - 2\alpha^2 uv_1 \cos \theta + \alpha^2 v_1^2 &= v_2^2  \nonumber\\
+	\alpha^2 v_1^2 &= -\alpha^2 u^2 + 2\alpha^2 uv_1 \cos \theta + v_2^2  \nonumber\\
+	\alpha^2 v_1^2 &= -\alpha^2 u^2 + 2\alpha u (\alpha v_1 \cos \theta) + v_2^2
+\end{align}
 From \autoref{eq:comx} we have
-\begin{align*}%\label{eq:c}
-	\mu (u - v_1 \cos \theta) &= v_2 \cos \varphi  \\
-	\mu u - \mu v_1 \cos \theta &= v_2 \cos \varphi  \\
-	\mu v_1 \cos \theta &= \mu u - v_2 \cos \varphi
-\end{align*}
-substituting for ($\mu v_1 \cos \theta$) we get 
-\begin{align}\label{eq:comsq}
-	\mu^2 v_1^2 &= -\mu^2 u^2 + 2\mu u (\mu u - v_2 \cos \varphi ) + v_2^2  \nonumber\\
-	\mu^2 v_1^2 &= -\mu^2 u^2 + 2\mu^2 u^2 - 2\mu u v_2 \cos \varphi + v_2^2  \nonumber\\
-	\mu^2 v_1^2 &= \mu^2 u^2 - 2\mu u v_2 \cos \varphi + v_2^2
+\begin{align}\label{eq:comx2}
+	\alpha (u - v_1 \cos \theta) &= v_2 \cos \varphi  \nonumber\\
+	\alpha u - \alpha v_1 \cos \theta &= v_2 \cos \varphi  \nonumber\\
+	\alpha v_1 \cos \theta &= \alpha u - v_2 \cos \varphi
 \end{align}
-
+Substituting for \autoref{eq:comx2} into \autoref{eq:av} we get
+\begin{align}\label{eq:comsq}
+	\alpha^2 v_1^2 &= -\alpha^2 u^2 + 2\alpha u (\alpha u - v_2 \cos \varphi ) + v_2^2  \nonumber\\
+	\alpha^2 v_1^2 &= -\alpha^2 u^2 + 2\alpha^2 u^2 - 2\alpha u v_2 \cos \varphi + v_2^2  \nonumber\\
+	\alpha^2 v_1^2 &= \alpha^2 u^2 - 2\alpha u v_2 \cos \varphi + v_2^2
+\end{align}
 Using \autoref{eq:coe} we get
 \begin{align}\label{eq:coesub}
-    \left( \frac{\mu}{\mu} \right) \mu (u^2 - v_1^2) &= v_2^2  \nonumber\\
-    \mu^2 (u^2 - v_1^2) &= \mu v_2^2  \nonumber\\
-	\mu^2 u^2 - \mu^2 v_1^2 &= \mu v_2^2  \nonumber\\
-	\mu^2 v_1^2 &= \mu^2 u^2 - \mu v_2^2
+    \left( \frac{\alpha}{\alpha} \right) \alpha (u^2 - v_1^2) &= v_2^2  \nonumber\\
+    \alpha^2 (u^2 - v_1^2) &= \alpha v_2^2  \nonumber\\
+	\alpha^2 u^2 - \alpha^2 v_1^2 &= \alpha v_2^2  \nonumber\\
+	\alpha^2 v_1^2 &= \alpha^2 u^2 - \alpha v_2^2
 \end{align}
-
-Combining \autoref{eq:comsq} and \autoref{eq:coesub} we get
+Combining \autoref{eq:comsq} and \autoref{eq:coesub} gives
 \begin{align}\label{eq:comcoe}
-    \mu^2 u^2 - 2\mu u v_2 \cos \varphi + v_2^2 &= \mu^2 u^2 - \mu v_2^2  \nonumber\\
-    v_2^2 + \mu v_2^2 &= 2\mu u v_2 \cos \varphi  \nonumber\\
-    v_2^2 (1 + \mu) &= 2\mu u v_2 \cos \varphi  \nonumber\\
-    v_2 &= 2 \left( \frac{\mu}{1 + \mu} \right) u \cos \varphi 
+    \alpha^2 u^2 - 2\alpha u v_2 \cos \varphi + v_2^2 &= \alpha^2 u^2 - \alpha v_2^2  \nonumber\\
+    v_2^2 + \alpha v_2^2 &= 2\alpha u v_2 \cos \varphi  \nonumber\\
+    v_2^2 (1 + \alpha) &= 2\alpha u v_2 \cos \varphi  \nonumber\\
+    v_2 &= 2 \left( \frac{\alpha}{1 + \alpha} \right) u \cos \varphi 
 \end{align}
-
 Substituting \autoref{eq:comcoe} into \autoref{eq:coesub} we get
 \begin{align}\label{eq:coesubsub}
-    \mu^2 v_1^2 &= \mu^2 u^2 - \mu \left( 2 \left( \frac{\mu}{1 + \mu} \right) u \cos \varphi  \right)^2  \nonumber\\
-    v_1^2 &= u^2 - \frac{1}{\mu} \left( 4 \left( \frac{\mu^2}{(1 + \mu)^2} \right) u^2 \cos^2 \varphi  \right)  \nonumber\\
-    v_1^2 &= u^2 \left(1 - 4 \left( \frac{\mu}{(1 + \mu)^2} \right) \cos^2 \varphi  \right)  \nonumber\\
-    v_1 &= u \sqrt{1 - 4 \frac{\mu}{M} \cos^2 \varphi}
+    \alpha^2 v_1^2 &= \alpha^2 u^2 - \alpha \left( 2 \left( \frac{\alpha}{1 + \alpha} \right) u \cos \varphi  \right)^2  \nonumber\\
+    v_1^2 &= u^2 - \frac{1}{\alpha} \left( 4 \left( \frac{\alpha^2}{(1 + \alpha)^2} \right) u^2 \cos^2 \varphi  \right)  \nonumber\\
+    v_1^2 &= u^2 \left(1 - 4 \left( \frac{\alpha}{(1 + \alpha)^2} \right) \cos^2 \varphi  \right)  \nonumber\\
+    v_1 &= u \sqrt{1 - 4 \frac{\alpha}{M} \cos^2 \varphi}
 \end{align}
-where $\mu/M = \mu/(1 + \alpha)^2$ is the ratio ...
-
-From \autoref{eq:comx} 
-\begin{align}\label{eq:comx2}
-	\mu (u - v_1 \cos \theta) &= v_2 \cos \varphi  \nonumber\\
-	\mu u - \mu v_1 \cos \theta &= v_2 \cos \varphi  \nonumber\\
-	\mu v_1 \cos \theta &= \mu u - v_2 \cos \varphi
-\end{align}
-
-The ratio of \autoref{eq:comy} and \autoref{eq:comx2}
+where $\alpha/M = \alpha/(1 + \alpha)^2$. The ratio of \autoref{eq:comy} and \autoref{eq:comx2} gives
 \begin{align}\label{eq:comxy}
-	\frac{\mu v_1 \sin \theta}{\mu v_1 \cos \theta} &= \frac{v_2 \sin \varphi}{\mu u - v_2 \cos \varphi}  \nonumber\\
-	\tan \theta &= \frac{v_2 \sin \varphi}{\mu u - v_2 \cos \varphi}
+	\frac{\alpha v_1 \sin \theta}{\alpha v_1 \cos \theta} &= \frac{v_2 \sin \varphi}{\alpha u - v_2 \cos \varphi}  \nonumber\\
+	\tan \theta &= \frac{v_2 \sin \varphi}{\alpha u - v_2 \cos \varphi}
 \end{align}
-inserting \autoref{eq:comcoe} into \autoref{eq:comxy} gives
+Inserting \autoref{eq:comcoe} into \autoref{eq:comxy} gives
+\begin{align}\label{eq:tanBgen}
+	\tan \theta &= \frac{\left( 2 \left( \frac{\alpha}{1 + \alpha} \right) u \cos \varphi  \right) \sin \varphi}{\alpha u - \left( 2 \left( \frac{\alpha}{1 + \alpha} \right) u \cos \varphi  \right) \cos \varphi}  \nonumber\\
+	\tan \theta &= \frac{\alpha u \left( \frac{1}{1 + \alpha} \right) 2 \sin \varphi \cos \varphi}{\alpha u \left(1 - 2 \left( \frac{1}{1 + \alpha} \right) \cos^2 \varphi \right)}  \nonumber\\
+	\tan \theta &= \frac{\sin 2\varphi}{(1 + \alpha)\left(1 - 2 \left( \frac{1}{1 + \alpha} \right) \cos^2 \varphi \right)}  \nonumber\\
+	\tan \theta &= \frac{\sin 2\varphi}{1 + \alpha - 2 \cos^2 \varphi}  \nonumber\\
+	\tan \theta &= \frac{\sin 2\varphi}{\alpha - (2 \cos^2 \varphi - 1)}  \nonumber\\
+	\tan \theta &= \frac{\sin 2\varphi}{\alpha - \cos 2\varphi}  \nonumber\\
+	\theta &= \arctan \left( \frac{\sin 2\varphi}{\alpha - \cos 2\varphi} \right)
+\end{align}
+Substituting back the variable names from \autoref{fig:LAB} into \autoref{eq:tanBgen} gives
 \begin{align}\label{eq:tanB}
-	\tan \theta &= \frac{\left( 2 \left( \frac{\mu}{1 + \mu} \right) u \cos \varphi  \right) \sin \varphi}{\mu u - \left( 2 \left( \frac{\mu}{1 + \mu} \right) u \cos \varphi  \right) \cos \varphi}  \nonumber\\
-	\tan \theta &= \frac{\mu u \left( \frac{1}{1 + \mu} \right) 2 \sin \varphi \cos \varphi}{\mu u \left(1 - 2 \left( \frac{1}{1 + \mu} \right) \cos^2 \varphi \right)}  \nonumber\\
-	\tan \theta &= \frac{\sin 2\varphi}{(1 + \mu)\left(1 - 2 \left( \frac{1}{1 + \mu} \right) \cos^2 \varphi \right)}  \nonumber\\
-	\tan \theta &= \frac{\sin 2\varphi}{1 + \mu - 2 \cos^2 \varphi}  \nonumber\\
-	\tan \theta &= \frac{\sin 2\varphi}{\mu - (2 \cos^2 \varphi - 1)}  \nonumber\\
-	\tan \theta &= \frac{\sin 2\varphi}{\mu - \cos 2\varphi}  \nonumber\\
-	\theta &= \arctan \left( \frac{\sin 2\varphi}{\mu - \cos 2\varphi} \right)
+	\theta_b &= \arctan \left( \frac{\sin 2\theta_t}{\alpha - \cos 2\theta_t} \right)
 \end{align}
 
 
+\section{Center of mass (CM) frame of reference}
+Using the same approach as \autoref{sec:LAB}. From figure \autoref{fig:CM} we can express the velocities as
+\begin{align}\label{eq:2p-CM-collision}
+\begin{split}
+	 \boldsymbol{u}_1^{'} &= u_1^{'} \boldsymbol{\hat{x}} \\
+	 \boldsymbol{u}_2^{'} &= u_2^{'} \boldsymbol{\hat{x}} \\
+	 \boldsymbol{v}_b^{'} &= \boldsymbol{v}_1^{'} = v_1^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}}) \\
+	\boldsymbol{v}_t^{'} &= \boldsymbol{v}_2^{'} = v_2^{'} (-\cos \theta^{'} \boldsymbol{\hat{x}} - \sin \theta^{'} \boldsymbol{\hat{y}}) = -v_2^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}})
+\end{split}
+\end{align}
+where $\boldsymbol{u}_1^{'}$ and $\boldsymbol{v}_1^{'}$ is the initial and final velocity of the projectile $m_b = m_1$ respectively, and $\boldsymbol{u}_2^{'}$ and $\boldsymbol{v}_2^{'}$ is the initial and final velocity of the target $m_t = m_2$ respectively. The angle $\theta_b^{'} = \theta^{'}$ is the projectile angle. 
 
-\chapter{Connection between the LAB frame and the CM frame}
+In the center of mass (CM) frame of reference, the position of the center of mass is given by
+\begin{align}\label{eq:CMpos}
+	\boldsymbol{R} &= \frac{m_1 \boldsymbol{r}_1 + m_2 \boldsymbol{r}_2}{m_1 + m_2}
+\end{align}
+and the velocity is
+\begin{align}\label{eq:Vcm}
+	\boldsymbol{V} &= \frac{d\boldsymbol{R}}{dt}
+	= \frac{d}{dt} \left( \frac{m_1 \boldsymbol{r}_1 + m_2 \boldsymbol{r}_2}{m_1 + m_2} \right)
+	= \frac{m_1 \boldsymbol{u}_1^{'} + m_2 \boldsymbol{u}_2^{'}}{m_1 + m_2}
+\end{align}
+At the origin of the CM frame, $\boldsymbol{R} = 0$, which implies $\boldsymbol{V} = 0$. The total momentum before the collision is
+\begin{align}\label{eq:ucm}
+	m_1 \boldsymbol{u}_1^{'} + m_2 \boldsymbol{u}_2^{'} &= 0  \nonumber\\
+	m_2 u_2^{'} &= -m_1 u_1^{'} \nonumber\\
+	u_2^{'} &= - \frac{m_1}{m_2} u_1^{'} \nonumber\\
+	u_2^{'} &= - \alpha u_1^{'}
+\end{align}
+and after the collision it is
+\begin{align}\label{eq:vcm}
+	m_1 \boldsymbol{v}_1^{'} + m_2 \boldsymbol{v}_2^{'} &= 0  \nonumber\\
+	m_2 \boldsymbol{v}_2^{'} &= -m_1 \boldsymbol{v}_1^{'} \nonumber\\
+	\boldsymbol{v}_2^{'} &= - \frac{m_1}{m_2} \boldsymbol{v}_1^{'} \nonumber\\
+	\boldsymbol{v}_2^{'} &= - \alpha \boldsymbol{v}_1^{'} \nonumber\\
+	-v_2^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}}) &= - \alpha v_1^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}}) \nonumber\\
+	v_2^{'} &= \alpha v_1^{'}
+\end{align}
+Conservation of energy gives
+\begin{align}\label{eq:coecm}
+	\tfrac{1}{2} m_1 u_1^{'2} + \tfrac{1}{2} m_2 u_2^{'2} &= \tfrac{1}{2} m_1 v_1^{'2} + \tfrac{1}{2} m_2 v_2^{'2} \nonumber\\
+	m_1 u_1^{'2} + m_2 u_2^{'2} &= m_1 v_1^{'2} + m_2 v_2^{'2}
+\end{align}
+Substituting \autoref{eq:ucm} and \autoref{eq:vcm} into \autoref{eq:coecm} gives
+\begin{align}\label{eq:u2u1}
+	m_1 u_1^{'2} + m_2 (-\alpha u_1^{'})^2 &= m_1 v_1^{'2} + m_2 (\alpha v_1^{'})^2 \nonumber\\
+	m_1 u_1^{'2} + \alpha^2 m_2 u_1^{'2} &= m_1 v_1^{'2} + \alpha^2 m_2 v_1^{'2} \nonumber\\
+	(m_1 +\alpha^2 m_2) u_1^{'2} &= (m_1 +\alpha^2 m_2) v_1^{'2} \nonumber\\
+	u_1^{'2} &= v_1^{'2} \nonumber\\
+	u_1^{'} &= v_1^{'}
+\end{align}
+Substituting \autoref{eq:u2u1} into \autoref{eq:ucm} gives 
+\begin{align}\label{eq:u2v1}
+	u_2^{'} &= - \alpha v_1^{'}
+\end{align}
+
+
+\section{Connection between the LAB frame and the CM frame}
+Galilean transformations describes the relationship between the LAB frame and the CM frame
+\begin{align*}
+	 x^{'} &= x - vt  & v_x^{'} &= v_x - V_{cm} \\
+	 y^{'} &= y & v_y^{'} &= v_y \\
+	 z^{'} &= z & v_z^{'} &= v_z \\
+	 t^{'} &= t \\
+\end{align*}
+
+Using the same approach as \autoref{sec:LAB}. In the LAB frame \autoref{fig:LAB}, conservation of momentum is given by
+\begin{align}\label{eq:comlab}
+	m_1 \boldsymbol{u}_1 + m_2 \boldsymbol{u}_2 &= m_1 \boldsymbol{v}_1 + m_2 \boldsymbol{v}_2 = (m_1 + m_2)\boldsymbol{V}
+\end{align}
+which can be written as
+\begin{align}\label{eq:V}
+	m_1 \boldsymbol{u}_1 + m_2 \boldsymbol{u}_2 &= (m_1 + m_2)\boldsymbol{V} \nonumber\\
+	\boldsymbol{V} &= \frac{m_1 \boldsymbol{u}_1 + m_2 \boldsymbol{u}_2}{m_1 + m_2} & \boldsymbol{u}_2& = 0 \nonumber\\
+	\boldsymbol{V} &= \frac{m_1}{m_1 + m_2} \boldsymbol{u}_1 \nonumber\\
+	\boldsymbol{V} &= \frac{\alpha}{1 + \alpha} u \boldsymbol{\hat{x}} \nonumber\\
+	V &= \frac{\alpha}{1 + \alpha} u
+\end{align}
+
+Using Galilean transformations, the connection between $\boldsymbol{v}_1^{'}$ and $\boldsymbol{v}_1$ is expressed as
+\begin{align}\label{eq:vcmv}
+	\boldsymbol{v}_1^{'} &= \boldsymbol{v}_1 - \boldsymbol{V} \nonumber\\
+	\boldsymbol{v}_1 &= \boldsymbol{v}_1^{'} + \boldsymbol{V}
+\end{align}
+which in x-direction gives
+\begin{align}\label{eq:vcmvx}
+	v_1 \cos \theta &= v_1^{'} \cos \theta^{'} + V
+\end{align}
+and in y-direction gives
+\begin{align}\label{eq:vcmvy}
+	v_1 \sin \theta &= v_1^{'} \sin \theta^{'}
+\end{align}
+The ratio of \autoref{eq:vcmvy} and \autoref{eq:vcmvx} gives
+\begin{align}\label{eq:vcmvxy}
+	\frac{v_1 \sin \theta}{v_1 \cos \theta} &= \frac{v_1^{'} \sin \theta^{'}}{v_1^{'} \cos \theta^{'} + V} \nonumber\\
+	\tan \theta &= \frac{\sin \theta^{'}}{\cos \theta^{'} + \frac{V}{v_1^{'}}} \nonumber\\
+	\tan \theta &= \frac{\sin \theta^{'}}{\frac{V}{v_1^{'}} + \cos \theta^{'}}
+\end{align}
+We need to reformulate the velocity ratio. Substitution from \autoref{eq:u2u1} gives
+\begin{align}\label{eq:Vou}
+	\frac{V}{v_1^{'}} = \frac{V}{u_1^{'}}
+\end{align}
+Using Galilean transformation and \autoref{eq:V} we have that
+\begin{align}\label{u1cm}
+	\boldsymbol{u}_1^{'} &= \boldsymbol{u}_1 - \boldsymbol{V} \nonumber\\
+	u_1^{'} &= u_1 - V \nonumber\\
+	u_1^{'} &= u - \frac{\alpha}{1 + \alpha} u \nonumber\\
+	u_1^{'} &= u \left( 1 - \frac{\alpha}{1 + \alpha} \right) \nonumber\\
+	u_1^{'} &= u \left( \frac{1 + \alpha - \alpha}{1 + \alpha} \right) \nonumber\\
+	u_1^{'} &= \frac{1}{1 + \alpha} u
+\end{align}
+Substituting \autoref{eq:V} and \autoref{u1cm} into \autoref{eq:Vou} gives
+\begin{align}\label{eq:Vouea}
+	\frac{V}{u_1^{'}} &= \frac{\frac{\alpha}{1 + \alpha} u}{\frac{1}{1 + \alpha} u} = \alpha
+\end{align}
+Substituting \autoref{eq:Vouea} into \autoref{eq:vcmvxy} gives
+\begin{align}\label{eq:tanB1}
+	\tan \theta &= \frac{\sin \theta^{'}}{\alpha + \cos \theta^{'}}  \nonumber\\
+	\theta &= \arctan \left( \frac{\sin \theta^{'}}{\alpha + \cos \theta^{'}} \right)
+\end{align}
+Substituting back the variable names from \autoref{fig:CM} into \autoref{eq:tanB1} gives
+\begin{align}\label{eq:tanB1n}
+	\theta_b &= \arctan \left( \frac{\sin \theta_b^{'}}{\alpha + \cos \theta_b^{'}} \right)
+\end{align}
+
+Using Galilean transformations, the connection between $\boldsymbol{v}_2^{'}$ and $\boldsymbol{v}_2$ is expressed as
+\begin{align}\label{eq:vcmv2}
+	\boldsymbol{v}_2^{'} &= \boldsymbol{v}_2 - \boldsymbol{V} \nonumber\\
+	\boldsymbol{v}_2 &= \boldsymbol{v}_2^{'} + \boldsymbol{V}
+\end{align}
+which in x-direction gives
+\begin{align}\label{eq:vcmvx2}
+	v_2 \cos \varphi &= -v_2^{'} \cos \theta^{'} + V \nonumber\\
+	v_2 \cos \varphi &= V - v_2^{'} \cos \theta^{'}
+\end{align}
+and in y-direction gives
+\begin{align}\label{eq:vcmvy2}
+	v_2 \sin \varphi &= v_2^{'} \sin \theta^{'}
+\end{align}
+The ratio of \autoref{eq:vcmvy2} and \autoref{eq:vcmvx2} gives
+\begin{align}\label{eq:vcmvxy2}
+	\frac{v_2 \sin \varphi}{v_2 \cos \varphi} &= \frac{v_2^{'} \sin \theta^{'}}{V - v_2^{'} \cos \theta^{'}} \nonumber\\
+	\tan \varphi &= \frac{\sin \theta^{'}}{\frac{V}{v_2^{'}} - \cos \theta^{'}}
+\end{align}
+We need to reformulate the velocity ratio. Substitution from \autoref{eq:vcm} and \autoref{eq:u2u1} gives
+\begin{align}\label{eq:Vou2}
+	\frac{V}{v_2^{'}} &= \frac{V}{\alpha v_1^{'}} = \frac{V}{\alpha u_1^{'}}
+\end{align}
+Substituting \autoref{eq:Vouea} into \autoref{eq:Vou2} gives
+\begin{align}\label{eq:Vouea2}
+	\frac{V}{v_2^{'}} &= \frac{V}{\alpha \frac{V}{\alpha}} = 1
+\end{align}
+Substituting \autoref{eq:Vouea2} into \autoref{eq:vcmvxy2} gives
+\begin{align}\label{eq:tanT}
+	\tan \varphi &= \frac{\sin \theta^{'}}{1 - \cos \theta^{'}} = \frac{1}{\frac{1 - \cos \theta^{'}}{\sin \theta^{'}}} = \frac{1}{\tan \frac{\theta^{'}}{2}} = \cot \frac{\theta^{'}}{2} \nonumber\\
+	\varphi &= \tfrac{1}{2} (\pi - \theta^{'}) ~[ \text{radians} ] = \tfrac{1}{2} (180^\circ - \theta^{'}) ~[ \text{degrees} ]
+\end{align}
+Substituting back the variable names from \autoref{fig:LAB-CM} into \autoref{eq:tanT} gives
+\begin{align}\label{eq:tanTgen}
+	\theta_t &= \tfrac{1}{2} (\pi - \theta_b^{'}) ~[ \text{radians} ] = \tfrac{1}{2} (180^\circ - \theta_b^{'}) ~[ \text{degrees} ]
+\end{align}
+
+
 
 
 
