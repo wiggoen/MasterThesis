@@ -891,7 +891,8 @@ output file: Sm_user-AQ4Sort-2019-06-24.root
 
 \subsubsection{CLXAna}
 \begin{lstlisting}[language=]
-$ CLXAna -i /Users/trondwj/GitHub/MasterThesis/Sorted_data/Sm_user-TreeBuilder-2019-06-20.root -o test_analysis_wcut.root -c /Users/trondwj/GitHub/MasterThesis/Miniball-config/config-IS558.dat -cut /Users/trondwj/GitHub/MasterThesis/Sorted_data/outputfile.root:Bcut:Tcut
+$ ./Coulex.sh -n
+--- Coulex: normal ---
 Input parameters:
 Zb = 62
 Ab = 140
@@ -908,7 +909,7 @@ contaminant = -1 mg/cm2
 spededist = 23.6 mm
 bg_frac = -0.75
 srim = /Users/trondwj/GitHub/MasterThesis/SRIM
-cutfile = /Users/trondwj/GitHub/MasterThesis/Sorted_data/outputfile.root:Bcut:Tcut
+cutfile = ../../Sorted_data/outputfile.root:Bcut:Tcut
 Begin g_clx loop.
 Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/140Sm_208Pb.pdf has been created
 Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/208Pb_208Pb.pdf has been created
