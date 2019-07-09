@@ -14,7 +14,7 @@
     % Red point in HPGe center
     \draw[fill=red,rotate=-5] (4,3) circle (2pt);
     % Distance vector
-    \draw[->,>=stealth,rotate=-5] (origo) -- (4,3) node[anchor=north,pos=0.6,outer sep=1mm]
+    \draw[->,>=stealth,rotate=-5] (origo) -- (4,3) node[anchor=north,pos=0.75,outer sep=1mm]
     {$R_i$};
     % Vector decomposition
     \draw[dashed] (origo)    -- (4.25,1);

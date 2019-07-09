@@ -589,7 +589,9 @@ See \autoref{tab:CD_angles}
 
 \begin{table}[ht] 
     \centering 
+    \caption{CD angles in laboratory frame. Adjacent (CD distance): 26.98 mm. The centroid energy is from simulation with kinsim3.}
 	\input{Table-data/CD.tex}
+	\label{tab:CD_angles}
 \end{table}
 
 
@@ -624,14 +626,16 @@ Cryo-modules
 \begin{figure}[ht]
 	\centering
 	\input{images/MB-angles.tikz}
-	\caption{Miniball angles.}
+	\caption{Miniball angles, where $i$ denotes cluster number from \autoref{tab:Geo}.}
 	\label{fig:MB-angles}
 \end{figure}
 
 
 \begin{table}[ht] 
 	\centering 
+	\caption{Geometry}
 	\input{Table-data/Geometry.tex}
+	\label{tab:Geo}
 \end{table}
 For Miniball geometry (angles) \cite{NWarr-Angles}. 
 
@@ -1000,7 +1004,9 @@ useful with a table that explains all the different channels and assigns the var
 
 \begin{table}[ht] 
 	\centering 
+	\caption{TreeBuilder vs AQ4Sort.}
 	\input{Table-data/TBvsAQ4.tex}
+	\label{tab:TBvsAQ4}
 \end{table}
 
 adc\_0\_0 in the file sorted by Treebuilder is the same as fE\_Q1\_f1 sorted by AQ4Sort. All the front detectors can be found in the Treebuilder-sorted file, but when it comes to the back detector, the single pixels from the strips are not shown. These are available through the AQ4Sort sorted file. For the front detectors the histograms adc\_[0-3]\_[0-15] and fE\_Q[1-4]\_f[1-16] are the same. For the back detectors, we have that adc\_[0-3]\_[16-27] and bE\_Q[1-4]\_b[1-12] are the same. In addition in AQ4Sort we can see the different pixels. The histograms fE\_Q[1-4]\_f[1-16]\_b[1-12] shows the front energy of quadrant 1-4 gated on ring 1-16 and back strip 1-12, while the bE\_Q[1-4]\_f[1-16]\_b[1-12] shows the same, only for the back energy. 
@@ -1023,7 +1029,9 @@ Don't blame me for the naming convention, I did not write the code. I just tried
 
 \begin{table}[ht] 
 	\centering 
+	\caption{ADC}
 	\input{Table-data/ADC.tex}
+	\label{tab:ADC}
 \end{table}
 
 
@@ -1390,6 +1398,13 @@ DGF: Digital \ga~ finder
 addback, singles, ...
 
 
+\begin{table}[ht] 
+	\centering 
+	\caption{DGF}
+	\input{Table-data/DGF.tex}
+	\label{tab:DGF}
+\end{table}
+
 
 \section{Doppler correction}
 
@@ -1469,6 +1484,7 @@ GOSIA and GOSIA2 analysis?
 
 \begin{table}[ht] 
 	\centering 
+	\caption{Table of acronyms and abbreviations.}
 	\input{Table-data/Acronyms-and-abbreviations.tex}
 \end{table}
 
