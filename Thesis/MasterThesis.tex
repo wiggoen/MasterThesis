@@ -274,14 +274,21 @@ Experiment conducted 8th - 14th of August 2017.
 \bigskip
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
-old REX-ISOLDE post-accelerator limited to 2.8 MeV/u (low Coulomb excitation cross section, low probability for multi-step excitation). Mo target was chosen to maximize cross section at this energy, and to normalize B(E2; $0^+ \rightarrow 2^+$) value in \Sm ~to the well-known B(E2) value for the target. \newline
-New HIE-ISOLDE: energies up to 10 MeV/u $\implies$ we can choose high-Z target (Pb) $\implies$ high Coulex cross section, especially for multi-step. Also: B(E2) for \Sm ~now known from previous experiment (and a lifetime measurement) $\implies$ no need for normalization: we can use the known B(E2; $0^+ \rightarrow 2^+$) to nomalize the transition probabilities for the higher-lying transitions. Chosen 4.7 MeV/u as the highest possible energy that is safe for Pb (distance of closest approach large enough to exclude nuclear interaction.)}
+old REX-ISOLDE post-accelerator limited to 2.8 MeV/u (low Coulomb excitation cross section, low probability for multi-step excitation). Mo target was chosen to maximize cross section at this energy, and to normalize B(E2; $0^+ \rightarrow 2^+$) value in \Sm\ to the well-known B(E2) value for the target. \newline
+New HIE-ISOLDE: energies up to 10 MeV/u $\implies$ we can choose high-Z target (Pb) $\implies$ high Coulex cross section, especially for multi-step. Also: B(E2) for \Sm\ now known from previous experiment (and a lifetime measurement) $\implies$ no need for normalization: we can use the known B(E2; $0^+ \rightarrow 2^+$) to nomalize the transition probabilities for the higher-lying transitions. Chosen 4.7 MeV/u as the highest possible energy that is safe for Pb (distance of closest approach large enough to exclude nuclear interaction.)}
 
 
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 
 \chapter{Theory}
+
+Magic numbers: 2, 8, 20, 28, 50, 82, 126 \newline
+Maria Goeppert Mayer “discovered” them in $\sim$1945. Observation of periodicity in binding energy $\implies$ shell model for nuclei. \newline
+Eugene Wigner believed in liquid-drop model, did not trust new theory $\implies$ called these numbers “magic”. \newline
+Source: \url{https://ocw.mit.edu/courses/nuclear-engineering/22-02-introduction-to-applied-nuclear-physics-spring-2012/lecture-notes/MIT22_02S12_lec01.pdf}
+
+\bigskip
 
 Quadrupole deformation of nuclei. \newline
 
@@ -306,10 +313,10 @@ COULEX: \newline
 shape coexistence often found near closed shells. Example: neutron deficient Hg nuclei (Z = 80 just below 82 shell closure, N $\sim$ 104: neutron mid-shell). \newline
 \Sm: N = 78, just below N = 82 shell closure, Z = 62: mid-shell. \newline
 Typical indication for shape coexistence: $0^+$ states (often at low energy). \newline 
-\Sm ~was thought to have a low-lying $0^+$ state [Firestone], but this state was shown to be $2^+$ [Suoranczyk?]. Indication for $0^+$ states around 1.5 MeV. \newline 
+\Sm\ was thought to have a low-lying $0^+$ state [Firestone], but this state was shown to be $2^+$ [Suoranczyk?]. Indication for $0^+$ states around 1.5 MeV. \newline 
 One of the objectives of this experiment: clarify the nature/structure of these $0^+$ states. \newline 
 Shape transition: Sm-144 (Z = 62, N = 82) spherical. Adding neutrons: transition of N = 90 from spherical to prolate deformed $\rightarrow$ shape-phase transition, so called X(5) critical-point symmetry. \newline
-Taking out neutrons: very neutron-deficient Sm nuclei are also prolate deformed (e.g. Sm-132), but for \Sm: indication for triaxiality/\ga-softness [Klintefjord] $\rightarrow$ another form of shape-phase transition/critical point behavior $\implies$ E(5) [Iachello?]. \Sm ~could be one of the best examples for E(5) symmetry $\implies$ need transition probabilities from higher-lying states to confirm.} \newline
+Taking out neutrons: very neutron-deficient Sm nuclei are also prolate deformed (e.g. Sm-132), but for \Sm: indication for triaxiality/\ga-softness [Klintefjord] $\rightarrow$ another form of shape-phase transition/critical point behavior $\implies$ E(5) [Iachello?]. \Sm\ could be one of the best examples for E(5) symmetry $\implies$ need transition probabilities from higher-lying states to confirm.} \newline
 
 
 \textcolor{red}{Some suggestions:} \newline
@@ -389,7 +396,7 @@ The acronym ISOLDE stands for Isotope Separator On Line DEvice. ISOLDE is a Radi
 
 Most of the around 4000 characterized nuclides are radioactive  \cite{CoN}. In many cases it is not possible to make radioactive nuclei targets and perform an experiment because of the short half-life of the nucleus of interest. To study these radioactive nuclei, RIBs are used on stable targets. One way of obtaining a RIB is to use the Isotope Separator On Line (ISOL) method. In the ISOL method, two accelerator systems is needed. The first accelerator is used to produce the radioactive atoms at rest, and the second accelerator is used to accelerate these atoms \cite{ISOL}. 
 
-\begin{figure}[t]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{images/0812015.pdf}
 	\caption{The CERN accelerator complex. ISOLDE gets accelerated protons from LINAC 2 and the PS BOOSTER.}
@@ -398,158 +405,43 @@ Most of the around 4000 characterized nuclides are radioactive  \cite{CoN}. In m
 
 
 \subsection{Beam production}
-A continuous flow of accelerated proton beam bunches from the PSB comes into the ISOLDE facility and collide with a thick production target. The proton beam has an energy of 1.4 GeV and an intensity up to 2 $\mu$A. Two proton beam bunches is separated by 1.2 s \cite{TIF}. ISOLDE typically takes 50\% \textcolor{red}{\textbf{REF?}} of all proton bunches form the PSB, the rest goes to the LHC and other experiments shown in \autoref{fig:accelerators}. In the reaction between the proton beam and the production target, radioactive nuclides are produced in spallation, fission or fragmentation reactions (basically smashing the target into pieces) \cite{ISOLDE-web}. The production target is chosen from a stable region heavier than the nucleus of interest. In our experiment, a production target of tantalum (Ta) was used, producing the elements in the chart of nuclides up to tantalum. A large amount of different isotopes is produced in this way, and the challenge is to extract the nucleus of interest. 
+A continuous flow of accelerated proton beam bunches from the PSB comes into the ISOLDE facility and collide with a thick production target. The proton beam has an energy of 1.4 GeV and an intensity up to 2 $\mu$A. Two proton beam bunches is separated by 1.2 s \cite{TIF, TIF2013}. ISOLDE typically takes 50\% \textcolor{red}{\textbf{REF?}} of all proton bunches form the PSB, the rest goes to the LHC and other experiments shown in \autoref{fig:accelerators}. In the reaction between the proton beam and the production target, radioactive nuclides are produced in spallation, fission or fragmentation reactions (basically smashing the target into pieces) \cite{ISOLDE-web}. The production target is chosen from a stable region heavier than the nucleus of interest. In our experiment, a production target of tantalum (Ta) was used, producing the elements in the chart of nuclides up to tantalum. A large amount of different isotopes is produced in this way, and the challenge is to extract the nucleus of interest. To obtain the nucleus of interest, we first have to use a method of selecting the atom of interest, and then the nucleus of interest. 
 
-One idea is to use a method of selective ionization, which means using a high voltage electrostatic field to extract the Sm ions. 
- 
- 
-\textcolor{red}{Find other refs as well! Forklare figuren mer?}
+To get the atomic element of interest, one idea is to use a method of selective ionization and then a high voltage electrostatic field to extract the ions. Electronic transitions are characteristic for each chemical element. A laser with precisely tuned wavelength can obtain the photon energy that matches the electronic transition energies in the atom \cite{RILIS-web, RILIS2013}. Thus we can use one laser to excite an electron to a specific excited electron-state in the atom, a second laser to excite electrons further to another excited electron-sate and a third laser to kick out the electron. In this way we only ionize the atomic element of interest. There could be contaminants from surface ionization (atoms that collide with the walls of the ion source), but this is detectable. Using periods of laser on and off, we can detect the resulting contaminants in the beam. The resonance ionization laser ion source (RILIS) is based on the method of step-wise (2-3 step) excitation and ionization of the atom. It is an element-selective process which is used to produce ion beams of the correct element \cite{RILIS}. In this experiment RILIS was used to select Sm with atomic number $Z = 62$. 
 
+At this point we have a continuous beam of Sm ions of 60 keV energy (the target is on a 60 kV high voltage platform) \cite{ISOLDE-web, TIF}. The next step in the process is to have mass separation, and we need to give the continuous beam a fine structure, because the post-accelerator cannot accept a continuous beam coming in, it accelerates bunches. The beam can collide in one of two target stations, either the general purpose separator (GPS) or the high resolution separator (HRS). The GPS has one bending magnet and can deliver beams of different masses ($\pm 13 \%$ of the central beam line mass) simultaneously into three beam lines, while the HRS has two bending magnets with high mass resolving power which delivers the beam into the main (central) beam line \cite{GPS, TIF}. In this experiment the GPS was used to select the isotope of samarium with mass number $A = 140$. 
 
-\bigskip
+Now we have a continuous beam of \Sm. The mass separator also gets rid of contaminants that come out of RILIS but have different mass. There could still be isobaric contaminants from surface ionization but luckily there is very little surface ionization for the neighboring elements of Sm. In the radioactive beam experiment trap (REXTRAP) we collect the \Sm\ ions, so that we can release them in bunches that are matched to the fine structure of the linear accelerator (LINAC). REXTRAP is a penning trap which has the tasks of accumulation, bunching and cooling of the RIB \cite{HIE-ISOLDE, REXTRAP1, REXTRAP2}. The ions are released in bunches and transfered to the radioactive beam experiment electron beam ion source (REXEBIS).
 
-\textcolor{Magenta}{Tilbakemelding: \newline 
-A large amount of different nuclei/isotopes is produced in this way. Challenge: extract the nuclei we are interested in. Idea: selective ionization $\rightarrow$ use HV (electrostatic field) to extract Sm ions. Electronic transitions are characteristic for each chemical element. use laserlight to excite an electron to a specific excited (electron) state in Sm, use another laser to excite electrons further to another excited state, 3. laser to to kick out the electron $\rightarrow$ only Sm atoms are ionized. There could be contaminants from surface ionization (atoms that collide with the walls of the ion source).}
+REXEBIS is a charge breeder where the RIB is bred to a high charge state \cite{REXEBIS}, with a mass-to-charge ($A/q$) ratio typically between 2.5 and 4.5 \cite{Post-acc}. REXEBIS releases the beam with a certain energy through a mass separator and into the high intensity and energy upgrade of the ISOLDE LINAC (HIE-ISOLDE LINAC) \cite{HIE-ISOLDE}. To accelerate the charged ions (beam) to high energy, we need highly charged ions. The electron beam ion source (EBIS) blasts off more electrons from Sm, which leaves the nucleus in a high charge state, going from \Sm$^{+1}$ to \Sm$^{+34}$ ($A/q \approx 4.1$). The longer the ions stay in REXEBIS, the higher the charge state becomes. We get a distribution of charge states, and we loose those that have the wrong charge state because the LINAC can only accept one charge state \cite{REX-web, HIE-web, EBIS2002, EBIS2010}.
 
-*bruker laser on/off for å se hva annet som kommer ut av beamen
-
-
-\textcolor{red}{RILIS:} \newline
-The resonance ionization laser ion source (RILIS) is based on the method of step-wise excitation and ionization of the atom. It is an element-selective process which is used to produce ion beams of the correct element \cite{RILIS}. In this experiment RILIS was used to select samarium with atomic number $Z = 62$. 
-
-* 2-3 step ionization
-* also other elements come through
-
-\textcolor{red}{Other refs:} \url{http://rilis.web.cern.ch} and \url{https://www.research.manchester.ac.uk/portal/files/60831252/FULL_TEXT.PDF} and \url{https://www.sciencedirect.com/science/article/pii/S0168583X13008914?via%3Dihub}
-
-\bigskip
-
-\textcolor{red}{GPS:} \newline
-
-\textcolor{Magenta}{Tilbakemelding: \newline 
-at this point we have a continuous beam of Sm ions of 60 keV energy (the target is on a 60 kV HV platform). \newline
-next step: we need to have mass separation, and we need to give this continuous beam a fine structure, because the post-accelerator cannot accept a continuous beam coming in, it also accelerates bunches.}
-
-The beam can collide in one of two target stations, either the general purpose separator (GPS) or the high resolution separator (HRS). The GPS has one bending magnet and can deliver beams of different masses simultaneously into three beam lines, while the HRS has two bending magnets with high mass resolving power which delivers the beam into the main beam line \cite{GPS}. In this experiment the GPS was used to select the isotope of samarium with mass number $A = 140$. 
-
-\textcolor{Magenta}{Tilbakemelding: \newline
-now we have a continuous beam of \Sm. The mass separator gets also rid of contaminants that come out of RILIS but have different mass. There could still be isobaric contaminants from surface ionization but luckily there is very little surface ionization for the neighboring elements of Sm. Laser ON/OFF.}
-
-\textcolor{red}{Other refs:}  \url{http://isolde.web.cern.ch/targets-and-separators} and \textcolor{purple}{Klintefjord's PhD}
-
-\bigskip
-
-\textcolor{red}{REXTRAP:} \newline
-REXTRAP is a penning trap which has the tasks of accumulation, bunching and cooling of the RIB. \cite{HIE-ISOLDE} The ions are released in bunches and transfered to the REXEBIS.
-
-\textcolor{Magenta}{Tilbakemelding: \newline 
-In REXTRAP we collect the \Sm ~ions, so that we can release them in bunches that are matched to the fine structure of the LINAC.}
-
-
-\textcolor{red}{Other refs:} \url{https://www.sciencedirect.com/science/article/pii/S0168900204020169} and \url{https://www.sciencedirect.com/science/article/abs/pii/S0375947401016426}
-
-\bigskip
-
-\textcolor{red}{REXEBIS:} \newline
-REXEBIS is a charge breeder where the RIB is bred to a high charge state \cite{REXEBIS}, with a mass-to-charge ($A/q$) ratio typically between 2.5 and 4.5 \cite{Post-acc}. REXEBIS releases the beam with a certain energy through a mass separator and into the HIE-ISOLDE LINAC (LINear ACcelerator) \cite{HIE-ISOLDE}. 
-
-\textcolor{Magenta}{Tilbakemelding: \newline
-go from \Sm$^{+1}$ to \Sm$^{+33}$ (I think, check log book), anyway we need a highly charged ion to accelerate to high energies. The electron beam of EBIS just blasts off more electrons from Sm. The longer the ions stay in EBIS, the higher the charge state $\rightarrow$ distribution of charge states $\rightarrow$ we loose those that have the wrong charge state. LINAC can only accept one.}
-
-\textcolor{purple}{excites the nucleus in three steps ionizing the atom, which leaves the nucleus in a high charge state.  ?}
-
-\bigskip
-
-\textcolor{red}{Other refs:} \url{http://cds.cern.ch/record/478399/files/} and \url{http://rex-isolde.web.cern.ch}
-
-
-\textcolor{red}{HIE-ISOLDE LINAC:} \newline
-The HIE-ISOLDE LINAC accelerates the beam through the beam line and magnets bend the beam into MINIBALL. 
-
-* one of the first Miniball experiments with the new accelerator
-
-\textcolor{Magenta}{Tilbakemelding: \newline
-Accelerates \Sm ~to 4.65 MeV/u}
-
-\bigskip
-
-HIE-ISOLDE (Superconducting LINAC Upgrade): Linear accelerator, HIE-LINAC \newline
-
-\bigskip
-
-HIE-ISOLDE \url{http://hie-isolde-project.web.cern.ch}, technical design \url{http://cds.cern.ch/record/2635892?ln=en}, direct to doc: \url{http://cds.cern.ch/record/2635892/files/HIE-ISOLDE_TDR.pdf}
-
-
-\textcolor{red}{MINIBALL:} \newline
-
-
-
-\textcolor{red}{Cite: \url{https://ac.els-cdn.com/0168583X92959079/1-s2.0-0168583X92959079-main.pdf?_tid=0ccb0647-5870-48f9-ac38-df8c0077981c&acdnat=1545216224_d359ddcc40ea1f94369c85a141edba63} and \url{https://cds.cern.ch/record/2025701/files/epjconf_inpc2013_11005.pdf} and \url{http://isolde.web.cern.ch/targets-and-separators}}
-
-
-\bigskip
-
-Magnets....
-
-\bigskip
-
-ISOLDE actually uses the most protons at CERN [\textcolor{red}{ref?}].
-
-
-ISOLDE \url{http://iopscience.iop.org/article/10.1088/1361-6471/aa5f03/pdf}
-
-\bigskip
-
-Very pure beam (\textcolor{red}{did we have statistics of this?}) - resultat til avhandling. sjekk etter doppler-korrigering. Nd-contaminasjon? i så fall veldig lite, 1-2 prosent?
-
-\textcolor{Magenta}{Tilbakemelding: \newline
-we would have to look at the \ga-spectra to identify any contaminants. There may be a little bit of Nd-140 in the beam, but if so, it is very little (judging from on-line spectra).}
-
-\bigskip
-
-MINIBALL \url{http://isolde.web.cern.ch/experiments/miniball} and \url{https://www.miniball.york.ac.uk/wiki/Main_Page}
-
-\bigskip
-
-ENSAR2 \url{http://www.ensarfp7.eu}
-
-\bigskip
-
-Beam production \url{http://tuprints.ulb.tu-darmstadt.de/4599/1/TUDthesis_Christoph%20Seiffert.pdf}
-
-\bigskip
-
-Test \cite{CERN-AC}, copyright: \url{https://copyright.web.cern.ch}
-
-\bigskip
-
-CERN Document Server  \url{https://cds.cern.ch}
+The HIE-ISOLDE LINAC accelerates the beam of \Sm\ to 4.65 MeV/u through the beam line, and magnets bend the beam into Miniball. This experiment was one of the first Miniball experiments with the new upgraded superconducting accelerator.
 
 
 \subsection{Target}
-
 \textcolor{red}{Kan skrive om dette i motivasjonen.}
 
-\Pb\ was chosen as a target. Want high $Z$ so that the probability of excitation is high. \newline
 
-\textcolor{Magenta}{Tilbakemelding: \newline
-Thickness, etc. \newline
-It is very hard to excite \Pb ~(doubly magic). We might see a little bit of the 2.6 MeV state (octupole vibration), but not sure. \newline
-Since we don't need normalization (because we have the B(E2, $0^+ \rightarrow 2^+$) from the previous experiment and from lifetime measurement [Bello], we have chosen a target that is very hard to excite, so transitions from the target will not complicate the spectrum.}
+As a target, \Pb\ with a thickness of 1.4 mg/cm$^2$ was chosen. The reason for the choice is that it is very hard to excite \Pb\ since it's doubly magic. We wanted the highest possible $Z ~(= 82)$ of a stable isotope to get maximum excitation probability. 
 
-Doubly magic, very hard to excite. No quadrupole deformation/excitation. Need quadrupole for first state (see nndc)
+Since we don't need normalization (because we have the B(E2, $0^+ \rightarrow 2^+$) from the previous experiment \cite{Klintefjord} and from lifetime measurement \cite{BelloGarrote2015}), we have chosen a target that is very hard to excite, so transitions from the target will not complicate the spectrum.
 
-ja og nei: Not enough beam energy to excite \Pb. \newline
+\Pb\ has no quadrupole deformation, the first excited state (2615 keV, $T_{1/2} = 16.7$ ps) is of octupole vibration ($J^\pi = 3^-$). If we are \textcolor{red}{lucky/unlucky?} we might see a little bit of this first excited state in the spectrum. This happens if the "collision" is almost head on, and the target hits one of the inner rings.
 
-Highest $Z$ for maximum excitation probability.
+Unfortunately there was a finger print on the target, so even before beginning the experiment, we have some contamination (probably carbon). The target wheel is shown in \autoref{fig:TWheel}. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\linewidth]{images/Target-wheel.png}
+	\caption{Target wheel 07.08.2017. Position 6 has the target \Pb\ with thickness 1.4 mg/cm$^2$. Photo by: Liam Gaffney.}
+	\label{fig:TWheel}
+\end{figure}
 
 
-Contamination... finger print [\textcolor{red}{picture}]
+
 
 
 \section{Miniball}
-
-Testcite (Nigel Warr) \cite{NWarr}
 
 
 Pictures \url{https://cds.cern.ch/record/844871?ln=en}
@@ -613,7 +505,7 @@ See \autoref{tab:CD_angles}
 Cryo-modules
 
 \section{Experimental setup}
-\Sm ~Coulomb excitation experiment.
+\Sm\ Coulomb excitation experiment.
 
 
 \begin{figure}[ht]
@@ -636,7 +528,7 @@ Cryo-modules
 
 \begin{table}[ht] 
 	\centering 
-	\caption{Geometry to center Miniball HPGe clusters for the Doppler correction.}
+	\caption{Geometry to center Miniball HPGe clusters (red dot) for the Doppler correction.}
 	\input{Table-data/Geometry.tex}
 	\label{tab:Geo}
 \end{table}
@@ -681,9 +573,9 @@ Pb: lead (Z = 82) \newline
 
 
 
-Beam: \Sm ~(T$_{1/2} = 14.82$ min, 4.65 MeV/$u$, total 651 MeV), excellent purity
+Beam: \Sm\ (T$_{1/2} = 14.82$ min, 4.65 MeV/$u$, total 651 MeV), excellent purity
 
-Target: \Pb ~(Thickness: 1.4 mg/cm$^2$)
+Target: \Pb\ (Thickness: 1.4 mg/cm$^2$)
 
 
 Small angle: Forward scattering: Larger distance, weaker \textcolor{red}{EM}-field, less excitation probability.
@@ -1423,6 +1315,12 @@ addback, singles, ...
 \chapter{Experimental results}
 
 
+Very pure beam (\textcolor{red}{did we have statistics of this?}) - resultat til avhandling. sjekk etter doppler-korrigering. Nd-contaminasjon? i så fall veldig lite, 1-2 prosent?
+
+\textcolor{Magenta}{Tilbakemelding: \newline
+we would have to look at the \ga-spectra to identify any contaminants. There may be a little bit of Nd-140 in the beam, but if so, it is very little (judging from on-line spectra).}
+
+
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 
@@ -1434,7 +1332,7 @@ Level scheme (from Klintefjord?)\newline
 at some point you should show the level scheme. \newline
 $\bullet$ motivation: to explain what is known, and which transition probabilities you want to measure.  \newline
 Perhaps also to explain what theory predicts. \newline
-$\bullet$ discussion: if you get \ga-spectrum for \Sm ~$\rightarrow$ to explain what you see.}
+$\bullet$ discussion: if you get \ga-spectrum for \Sm\ $\rightarrow$ to explain what you see.}
 
 
 \begin{figure}
