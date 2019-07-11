@@ -118,54 +118,54 @@
 %% need to handle the plural cases.
 
 % \Autoref is for the beginning of the sentence
-\let\orgautoref\autoref
-\providecommand{\Autoref}
-        {\def\equationautorefname{Equation}%
-         \def\figureautorefname{Figure}%
-         \def\subfigureautorefname{Figure}%
-         \def\sectionautorefname{Section}%
-         \def\subsectionautorefname{Section}%
-         \def\subsubsectionautorefname{Section}%
-         \def\Itemautorefname{Item}%
-         \def\tableautorefname{Table}%
-         \orgautoref}
+%\let\orgautoref\autoref
+%\providecommand{\Autoref}
+%        {\def\equationautorefname{Equation}%
+%         \def\figureautorefname{Figure}%
+%         \def\subfigureautorefname{Figure}%
+%         \def\sectionautorefname{Section}%
+%         \def\subsectionautorefname{Section}%
+%         \def\subsubsectionautorefname{Section}%
+%         \def\Itemautorefname{Item}%
+%         \def\tableautorefname{Table}%
+%         \orgautoref}
 
 % \Autorefs is plural for the beginning of the sentence
-\providecommand{\Autorefs}
-        {\def\equationautorefname{Equations}%
-         \def\figureautorefname{Figures}%
-         \def\subfigureautorefname{Figures}%
-         \def\sectionautorefname{Sections}%
-         \def\subsectionautorefname{Sections}%
-         \def\subsubsectionautorefname{Sections}%
-         \def\Itemautorefname{Items}%
-         \def\tableautorefname{Tables}%
-         \orgautoref}
+%\providecommand{\Autorefs}
+%        {\def\equationautorefname{Equations}%
+%         \def\figureautorefname{Figures}%
+%         \def\subfigureautorefname{Figures}%
+%         \def\sectionautorefname{Sections}%
+%         \def\subsectionautorefname{Sections}%
+%         \def\subsubsectionautorefname{Sections}%
+%         \def\Itemautorefname{Items}%
+%         \def\tableautorefname{Tables}%
+%         \orgautoref}
 
 % \autoref is used inside a sentence 
 % (this is a renew of the standard)
-\renewcommand{\autoref}
-        {\def\equationautorefname{Eq.}%
-         \def\figureautorefname{Fig.}%
-         \def\subfigureautorefname{Fig.}%
-         \def\sectionautorefname{Sec.}%
-         \def\subsectionautorefname{Sec.}%
-         \def\subsubsectionautorefname{Sec.}%
-         \def\Itemautorefname{item}%
-         \def\tableautorefname{Tab.}%
-         \orgautoref}
+%\renewcommand{\autoref}
+%        {\def\equationautorefname{Eq.}%
+%         \def\figureautorefname{Fig.}%
+%         \def\subfigureautorefname{Fig.}%
+%         \def\sectionautorefname{Sec.}%
+%         \def\subsectionautorefname{Sec.}%
+%         \def\subsubsectionautorefname{Sec.}%
+%         \def\Itemautorefname{item}%
+%         \def\tableautorefname{Tab.}%
+%         \orgautoref}
 
 % \autorefs is plural for inside a sentence
-\providecommand{\autorefs}
-        {\def\equationautorefname{Eqs.}%
-         \def\figureautorefname{Figs.}%
-         \def\subfigureautorefname{Figs.}%
-         \def\sectionautorefname{Secs.}%
-         \def\subsectionautorefname{Secs.}%
-         \def\subsubsectionautorefname{Secs.}%
-         \def\Itemautorefname{items}%
-         \def\tableautorefname{Tabs.}%
-         \orgautoref}
+%\providecommand{\autorefs}
+%        {\def\equationautorefname{Eqs.}%
+%         \def\figureautorefname{Figs.}%
+%         \def\subfigureautorefname{Figs.}%
+%         \def\sectionautorefname{Secs.}%
+%         \def\subsectionautorefname{Secs.}%
+%         \def\subsubsectionautorefname{Secs.}%
+%         \def\Itemautorefname{items}%
+%         \def\tableautorefname{Tabs.}%
+%         \orgautoref}
 
 % Make equations text be Eq. (ref)
 \makeatletter
@@ -265,8 +265,6 @@ ENSAR2: European Nuclear Science and Applications Research - 2 \url{http://www.e
 \chapter{Introduction}
 \textcolor{red}{+ Motivation}
 
-
-kinsim \cite{kinsim}
 
 The experiment has been done before, with lower energy (and another target), Malin Klintefjord. \url{http://urn.nb.no/URN:NBN:no-56121} \newline
  
@@ -376,6 +374,8 @@ PSB \url{https://home.cern/science/accelerators/proton-synchrotron-booster}
 \section*{\textcolor{red}{Sjekk sensorveiledning!!}}
 
 
+\section*{\textcolor{red}{Fjern blå linker in-text før innlevering!!}}
+
 \newpage
 
 % ----------------------------------------------------------------------------------------------------------------------
@@ -387,7 +387,7 @@ PSB \url{https://home.cern/science/accelerators/proton-synchrotron-booster}
 \section{ISOLDE at CERN}
 The acronym ISOLDE stands for Isotope Separator On Line DEvice. ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland.  \autoref{fig:accelerators} shows the CERN accelerator complex \cite{CERN-AC}, where ISOLDE is located beside the Proton Synchrotron Booster (PSB). The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted. The high intensity and energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. 
 
-Most of the around 4000 known nuclides are radioactive. In many cases it is not possible to make radioactive nuclei targets and perform an experiment because of the short half-life of the nucleus of interest. To study these radioactive nuclei, RIBs are used on stable targets. One way of obtaining a RIB is to use the Isotope Separator On Line (ISOL) method. In the ISOL method, two accelerator systems is needed. The first accelerator is used to produce the radioactive atoms at rest, and the second accelerator is used to accelerate these atoms \cite{ISOL}. 
+Most of the around 4000 characterized nuclides are radioactive  \cite{CoN}. In many cases it is not possible to make radioactive nuclei targets and perform an experiment because of the short half-life of the nucleus of interest. To study these radioactive nuclei, RIBs are used on stable targets. One way of obtaining a RIB is to use the Isotope Separator On Line (ISOL) method. In the ISOL method, two accelerator systems is needed. The first accelerator is used to produce the radioactive atoms at rest, and the second accelerator is used to accelerate these atoms \cite{ISOL}. 
 
 \begin{figure}[t]
 	\centering
@@ -398,15 +398,18 @@ Most of the around 4000 known nuclides are radioactive. In many cases it is not 
 
 
 \subsection{Beam production}
-A continuous flow of accelerated proton beam bunches from the PSB comes into the ISOLDE facility and collide with a thick production target. The proton beam has an energy of 1.4 GeV and an intensity up to 2 $\mu$A. Two proton beam bunches is separated by 1.2 s. ISOLDE typically takes 50\% \textcolor{red}{\textbf{REF?}} of all proton bunches form the PSB, the rest goes to the LHC and other experiments shown in \autoref{fig:accelerators}. In the reaction between the proton beam and the production target, radioactive nuclides are produced in spallation, fission or fragmentation reactions (basically smashing the target into pieces) \cite{ISOLDE-web}. The production target is chosen from a stable region heavier than the nucleus of interest. In our experiment, a production target of tantalum (Ta) was used, producing the elements in the chart of nuclides up to tantalum. A large amount of different isotopes is produced in this way, and the challenge is to extract the nucleus of interest. 
+A continuous flow of accelerated proton beam bunches from the PSB comes into the ISOLDE facility and collide with a thick production target. The proton beam has an energy of 1.4 GeV and an intensity up to 2 $\mu$A. Two proton beam bunches is separated by 1.2 s \cite{TIF}. ISOLDE typically takes 50\% \textcolor{red}{\textbf{REF?}} of all proton bunches form the PSB, the rest goes to the LHC and other experiments shown in \autoref{fig:accelerators}. In the reaction between the proton beam and the production target, radioactive nuclides are produced in spallation, fission or fragmentation reactions (basically smashing the target into pieces) \cite{ISOLDE-web}. The production target is chosen from a stable region heavier than the nucleus of interest. In our experiment, a production target of tantalum (Ta) was used, producing the elements in the chart of nuclides up to tantalum. A large amount of different isotopes is produced in this way, and the challenge is to extract the nucleus of interest. 
+
+One idea is to use a method of selective ionization, which means using a high voltage electrostatic field to extract the Sm ions. 
  
-\textcolor{red}{find other refs as well! forklare figuren mer?}
+ 
+\textcolor{red}{Find other refs as well! Forklare figuren mer?}
 
 
 \bigskip
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
-A large amount of different nuclei/isotopes is produced in this way. Challenge: extract the nuclei we are interested in. Idea: selective ionization $\rightarrow$ use HV (electrostatic field) to extract Sm ions electronic transitions are characteristic for each chemical element. use laserlight to excite an electron to a specific excited (electron) state in Sm, use another laser to excite electrons further to another excited state, 3. laser to to kick out the electron $\rightarrow$ only Sm atoms are ionized. There could be contaminants from surface ionization (atoms that collide with the walls of the ion source).}
+A large amount of different nuclei/isotopes is produced in this way. Challenge: extract the nuclei we are interested in. Idea: selective ionization $\rightarrow$ use HV (electrostatic field) to extract Sm ions. Electronic transitions are characteristic for each chemical element. use laserlight to excite an electron to a specific excited (electron) state in Sm, use another laser to excite electrons further to another excited state, 3. laser to to kick out the electron $\rightarrow$ only Sm atoms are ionized. There could be contaminants from surface ionization (atoms that collide with the walls of the ion source).}
 
 *bruker laser on/off for å se hva annet som kommer ut av beamen
 
@@ -633,7 +636,7 @@ Cryo-modules
 
 \begin{table}[ht] 
 	\centering 
-	\caption{Geometry}
+	\caption{Geometry to center Miniball HPGe clusters for the Doppler correction.}
 	\input{Table-data/Geometry.tex}
 	\label{tab:Geo}
 \end{table}
@@ -735,9 +738,11 @@ Could be nice to have a ''cook book'', i.e. step-by-step explanation of this pro
 
 \bigskip
 
-ROOT: analysere data
+ROOT: analysere data \cite{ROOT}
 
-kinsim3 \url{https://github.com/lpgaff/kinsim} + SRIM \url{http://www.srim.org}
+kinsim3 \cite{kinsim} + SRIM \cite{SRIM}
+
+MiniballCoulexSort \cite{MBCS}
 
 \bigskip
 
