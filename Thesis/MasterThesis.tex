@@ -283,6 +283,16 @@ New HIE-ISOLDE: energies up to 10 MeV/u $\implies$ we can choose high-Z target (
 
 \chapter{Theory}
 
+
+\begin{table}[ht] 
+    \centering 
+    \caption{Values of the fundamental physical constants from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
+	\input{Table-data/Units.tex}
+	\label{tab:units}
+\end{table}
+
+
+
 Why CoulEx? \url{https://iks32.fys.kuleuven.be/wiki/brix/images/5/58/10_20151123_Illana_BriX15_web.pdf} \newline
 
 
@@ -445,6 +455,7 @@ Other info sources:
 	\item Pictures: \url{https://cds.cern.ch/record/844871?ln=en}
 \end{itemize}
 
+The Miniball spectrometer \cite{MB-spect}
 
 \subsection{Particle detector, DSSSD (CD)}
 To detect the scattered beam and target nuclei, a segmented double sided silicon strip detector (DSSSD) composed of four quadrants was used. The DSSSD looks very like an audio compact disc (CD), and hence it is called the CD. In the front of the CD, one quadrant consists of 16 annular strips (rings) with a pitch of 2 mm, while the back consists of 24 sector (radial) strips with a pitch of 3.5$^\circ$. There are in total 160 discrete detector elements for all four quadrants (64 in front, 96 in back). Because of lack of available channels in the analog to digital converter (ADC), the sector strips in the back are paired up, so that it is effectively 12 sector strips in the back side. The CD detector has a total area of 5000 mm$^2$, where the active area is approximately 93$\%$. The silicon wafer thickness is between 50 $\mu$m and 1000 $\mu$m with a dead layer of 0.3 to 0.8 $\mu$m aluminum (Al) equivalent (\textcolor{red}{what does this mean?}). For simplicity the dead layer thickness is usually assumed to be 0.7 $\mu$m silicon (Si) equivalent (\textcolor{red}{what does this mean?}) \cite{NWarr-CD}. \autoref{tab:CD_spec} shows some of the specifications of the CD and \autoref{fig:CD-FB} shows a sketch of the front and back side. The distance from the target to the CD is 26.98 mm ($\pm$ 1 mm). In the laboratory (LAB) reference frame the CD has a angular coverage between 18.4$^\circ$ and 56.6$^\circ$.
@@ -491,12 +502,6 @@ See \autoref{tab:CD_angles}
 	\label{tab:CD_angles}
 \end{table}
 
-
-\textcolor{red}{Vis en figur/tegning av "trekanten" i detektoroppsettet? Skjematisk figur?} 
-
-\begin{align*}
-	\theta = \tan^{-1} \left( \frac{\text{opposite}}{\text{adjacent}} \right)
-\end{align*}
 
 \subsection{\texorpdfstring{$\gamma$}{Gamma} detectors, HPGe}
 
