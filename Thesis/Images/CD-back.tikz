@@ -4,7 +4,7 @@
     \def \smallradius{0.9cm}
     \def \bigradius{4.1cm}
     \def \pitch{3.5}
-    \def \rotation{70}
+    \def \rotation{50}
     %%%
     %%% Back detector
     %%%
@@ -24,7 +24,7 @@
     % Physical/active area
     \draw[red, rotate=90+\rotation] (origo) -- (4.7,0);
     \draw[red, rotate=174+\rotation] (origo) -- (4.7,0);
-    \draw[<->, red, rotate=90+\rotation, >=stealth] (0:1.1*\bigradius) arc (0:84:1.1*\bigradius) node[anchor=south east, pos=0.6, outer sep=6mm] {\shortstack{$83.9^\circ$ (physical) \\ $81.6^\circ$ (active)}};
+    \draw[<->, red, rotate=90+\rotation, >=stealth] (0:1.1*\bigradius) arc (0:84:1.1*\bigradius) node[anchor=south east, pos=0.7, outer sep=6mm] {\shortstack{$83.9^\circ$ (physical) \\ $81.6^\circ$ (active)}};
     % Pitch/width area
     \draw[red, rotate=187+\rotation] (origo) -- (4.7,0);
     \draw[red, rotate=190.5+\rotation] (origo) -- (4.7,0) node[anchor=north, pos=1] {\shortstack{$3.5^\circ$ pitch \\ $3.4^\circ$ width}};

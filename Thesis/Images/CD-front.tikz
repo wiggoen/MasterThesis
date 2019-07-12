@@ -4,7 +4,7 @@
     \def \smallradius{0.9cm}
     \def \bigradius{4.1cm}
     \def \factor{0.2}
-    \def \rotation{70}
+    \def \rotation{50}
     %%%
     %%% Front detector
     %%%
