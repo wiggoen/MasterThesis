@@ -52,6 +52,7 @@
 \newcommand{\Pb}{$^{208}$Pb} 
 \newcommand{\bd}{$\beta$-decay} % making it faster to write 
 \newcommand{\ga}{$\gamma$}
+\newcommand{\MBOU}{MAR\belowbaseline[-2pt]{a}B\stackinset{l}{3pt}{b}{-3pt}{O}{O}\,U}
 
 %---
 % modifying color in code listings and some style
@@ -381,7 +382,7 @@ Multi-step Coulomb excitation with radioactive beam, isotope separation on-line 
 
 \chapter{Coulomb excitation experiment} 
 
-Other info sources:
+\textcolor{red}{Other info sources:}
 \begin{itemize}
 	\item ISOL \& Post acceleration: \url{https://www.euroschoolonexoticbeams.be/site/files/nlp/LNP700_contrib2.pdf}
 	\item ISOL RIB (2004): \url{http://accelconf.web.cern.ch/AccelConf/e04/PAPERS/TUXCH01.PDF}
@@ -449,16 +450,33 @@ Unfortunately there was a finger print on the target, so even before beginning t
 
 \section{Miniball spectrometer}
 
-Other info sources:
+\textcolor{red}{Other info sources:}
 \begin{itemize}
 	\item 2017: \url{https://iopscience.iop.org/article/10.1088/1361-6471/aa5c4e#jpgaa5c4es2}
 	\item Pictures: \url{https://cds.cern.ch/record/844871?ln=en}
 \end{itemize}
 
-The Miniball spectrometer \cite{MB-spect}
+The Miniball spectrometer \cite{MB-spect} \newline
+p. 7: \newline
+left top: \newline
+This means that the FPGA (field programmable gate arrays) can cope with high counting rates with no dead time and is essentially limited only by pile-up. \newline
+left bottom: \newline
+These buffers contain the energies of the \ga-rays, 48 bit time stamps with 25 ns resolution and either the time to steepest slope or the mirror charge, for each of the 168 channels. This buffer size is large enough that the DGF-4Cs only need to be read out between beam bursts, so the readout does not produce additional dead time. \newline
+right top: \newline
+ADCs and TDCs are capable of buffering up to 32 events. \newline
+
+p. 8: \newline
+left bottom: \newline
+The application of an add-back (AB) routine involves the summing of the energies of two coincident gamma rays within 100 ns in neighboring cores on the same cluster detector. \newline
+
+
+\bigskip
+
+The MINIBALL array \cite{MBarray}
+
 
 \subsection{Particle detector, DSSSD (CD)}
-To detect the scattered beam and target nuclei, a segmented double sided silicon strip detector (DSSSD) composed of four quadrants was used. The DSSSD looks very like an audio compact disc (CD), and hence it is called the CD. In the front of the CD, one quadrant consists of 16 annular strips (rings) with a pitch of 2 mm, while the back consists of 24 sector (radial) strips with a pitch of 3.5$^\circ$. There are in total 160 discrete detector elements for all four quadrants (64 in front, 96 in back). Because of lack of available channels in the analog to digital converter (ADC), the sector strips in the back are paired up, so that it is effectively 12 sector strips in the back side. The CD detector has a total area of 5000 mm$^2$, where the active area is approximately 93$\%$. The silicon wafer thickness is between 50 $\mu$m and 1000 $\mu$m with a dead layer of 0.3 to 0.8 $\mu$m aluminum (Al) equivalent (\textcolor{red}{what does this mean?}). For simplicity the dead layer thickness is usually assumed to be 0.7 $\mu$m silicon (Si) equivalent (\textcolor{red}{what does this mean?}) \cite{NWarr-CD}. \autoref{tab:CD_spec} shows some of the specifications of the CD and \autoref{fig:CD-FB} shows a sketch of the front and back side. The distance from the target to the CD is 26.98 mm ($\pm$ 1 mm). In the laboratory (LAB) reference frame the CD has a angular coverage between 18.4$^\circ$ and 56.6$^\circ$.
+To detect the scattered beam and target nuclei, a segmented double sided silicon strip detector (DSSSD) composed of four quadrants was used. The DSSSD looks very like an audio compact disc (CD), and hence it is called the CD. In the front of the CD, one quadrant consists of 16 annular strips (rings) with a pitch of 2 mm, while the back consists of 24 sector (radial) strips with a pitch of 3.5$^\circ$. There are in total 160 discrete detector elements for all four quadrants (64 in front, 96 in back). Each quadrant is connected to its own analog to digital converter (ADC). Because of lack of available channels in the ADC, the sector strips in the back are paired up, so that it is effectively 12 sector strips in the back side. The CD detector has a total area of 5000 mm$^2$, where the active area is approximately 93$\%$. The silicon wafer thickness is between 50 $\mu$m and 1000 $\mu$m with a dead layer of 0.3 to 0.8 $\mu$m aluminum (Al) equivalent (\textcolor{red}{what does this mean?}). For simplicity the dead layer thickness is usually assumed to be 0.7 $\mu$m silicon (Si) equivalent (\textcolor{red}{what does this mean?}) \cite{NWarr-CD}. \autoref{tab:CD_spec} shows some of the specifications of the CD and \autoref{fig:CD-FB} shows a sketch of the front and back side. The distance from the target to the CD is 26.98 mm ($\pm$ 1 mm). In the laboratory (LAB) reference frame the CD has a angular coverage between 18.4$^\circ$ and 56.6$^\circ$.
 
 
 
@@ -615,14 +633,21 @@ Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclea
 
 
 \section{Data acquisition system}
+Signals from the CD and the HPGe clusters are read out by the ADC and DGF modules and sent to a personal computer (PC) in the data acquisition (DAQ) room at ISOLDE where the data is then stored. The collection of data is done by the \MBOU\ \cite{Maraboou} DAQ system \cite{MB-spect}. It is split in two parts as shown in \autoref{fig:MARaBOOU}, one front-end part based on the multi branch system (MBS) \cite{MBS} and one back-end part based on the ROOT framework \cite{ROOT}. The front-end takes care of data readout, event building and data transportation, while the back-end takes care of the setup, run control, histogramming, data analysis and data storage \cite{MB-spect}.
 
+
+\textcolor{red}{Other info sources:}
 \begin{itemize}
-	\item MARaBOU article: \url{https://www.researchgate.net/publication/3136837_MARaBOOU_-_a_MBS_and_ROOT_based_onlineoffline_utility}
-	\item MARaBOU: \url{https://www-old.mll-muenchen.de/marabou/htmldoc/}
-	\item File formatting: \url{https://www-old.mll-muenchen.de/marabou/htmldoc/marabou/IOSpec.html}
-	\item Tasks: \url{https://www-old.mll-muenchen.de/marabou/htmldoc/pics/MarabouTasks.gif}
+	\item \MBOU\ web page: \url{https://www-old.mll-muenchen.de/marabou/htmldoc/}
+	\item \MBOU\ file formatting: \url{https://www-old.mll-muenchen.de/marabou/htmldoc/marabou/IOSpec.html}
 \end{itemize}
 
+\begin{figure}[ht]
+	\centering
+	\input{Images/MARaBOOU.tikz}
+	\caption{\protect\MBOU\ tasks, adapted from \cite{Maraboou}.}
+	\label{fig:MARaBOOU}
+\end{figure}
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------

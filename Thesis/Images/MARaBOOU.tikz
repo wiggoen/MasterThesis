@@ -1,0 +1,46 @@
+\begin{tikzpicture}
+    % Definitions
+    \coordinate (EX)  at (1.75,5.5);
+    \coordinate (RC)  at (0,3);
+    \coordinate (RO)  at (3.75,3);
+    \coordinate (EB)  at (7,3);
+    \coordinate (DT)  at (10.5,3);
+    \coordinate (RRC) at (0,0);
+    \coordinate (COH) at (2.5,0);
+    \coordinate (CCG) at (5,0);
+    \coordinate (OM)  at (7.5,0);
+    \coordinate (DS)  at (10,0);
+    \coordinate (OA)  at (12.5,0);
+    % Rectangles
+    \draw[fill=yellow!30] (-1.5,1.5)  rectangle (14,4);
+    \draw[fill=yellow!30] (-1.5,-1.5) rectangle (14,1);
+    % Nodes
+    \node(Expe)   at (EX)  [draw,thick,minimum width=+17ex,minimum height=+6ex,fill=green!40]  {Experiment}; 
+    \node(RuCo)   at (RC)  [draw,thick,minimum width=+13ex,minimum height=+9ex,fill=orange!40] {\shortstack{Run \\ Control}};
+    \node(ReOu)   at (RO)  [draw,thick,minimum width=+13ex,minimum height=+9ex,fill=orange!40] {Readout};
+    \node(EvBu)   at (EB)  [draw,thick,minimum width=+13ex,minimum height=+9ex,fill=orange!40] {\shortstack{Event \\ Builder}};
+    \node(DaTr)   at (DT)  [draw,thick,minimum width=+13ex,minimum height=+9ex,fill=orange!40] {\shortstack{Data \\ Transport}};
+    \node(ReRuCo) at (RRC) [draw,thick,minimum width=+13ex,minimum height=+9ex,fill=green!40]  {\shortstack{Remote \\ Run \\ Control}};
+    \node(CoofHa) at (COH) [draw,thick,minimum width=+13ex,minimum height=+9ex,fill=green!40]  {\shortstack{Control \\ of \\ Hardware}};
+    \node(CoCoGe) at (CCG) [draw,thick,minimum width=+13ex,minimum height=+9ex,fill=green!40]  {\shortstack{Config \& \\ Code \\ Generation}};
+    \node(OnMo)   at (OM)  [draw,thick,minimum width=+13ex,minimum height=+9ex,fill=green!40]  {\shortstack{Online \\ Monitor}};
+    \node(DaSt)   at (DS)  [draw,thick,minimum width=+13ex,minimum height=+9ex,fill=green!40]  {\shortstack{Data \\ Storage}};
+    \node(OfAn)   at (OA)  [draw,thick,minimum width=+13ex,minimum height=+9ex,fill=green!40]  {\shortstack{Offline \\ Analysis}};
+    \node[thick] at (13,1.9)  {$\textbf{\textit{MBS}}$};
+    \node[thick] at (13,-1.1) {$\textbf{\textit{ROOT}}$};
+    % Arrows
+    \draw[<->,>=stealth,line width=1.5pt] (Expe)   -- (RuCo);
+    \draw[->,>=stealth,line width=1.5pt]  (Expe)   -- (ReOu);
+    \draw[->,>=stealth,line width=1.5pt]  (RuCo)   -- (ReOu);
+    \draw[->,>=stealth,line width=1.5pt]  (ReOu)   -- (EvBu);
+    \draw[->,>=stealth,line width=1.5pt]  (EvBu)   -- (DaTr);
+    \draw[->,>=stealth,line width=1.5pt]  (DaTr)   -- (OnMo);
+    \draw[->,>=stealth,line width=1.5pt]  (DaTr)   -- (DaSt);
+    \draw[<->,>=stealth,line width=1.5pt] (RuCo)   -- (ReRuCo);
+    \draw[->,>=stealth,line width=1.5pt]  (CoofHa) -- (ReOu);
+    \draw[->,>=stealth,line width=1.5pt]  (CoCoGe) -- (ReOu);
+    \draw[->,>=stealth,line width=1.5pt]  (CoCoGe) -- (EvBu);
+    \draw[->,>=stealth,line width=1.5pt]  (CoCoGe) -- (OnMo);
+    \draw[->,>=stealth,line width=1.5pt]  (DaSt)   -- (OnMo);
+    \draw[->,>=stealth,line width=1.5pt]  (DaSt)   -- (OfAn);
+\end{tikzpicture}
