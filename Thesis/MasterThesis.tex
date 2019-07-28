@@ -14,6 +14,7 @@
 \usepackage[nottoc]{tocbibind}
 
 \usepackage{float} 
+\usepackage[export]{adjustbox}
 \usepackage{subcaption}
 \newcommand{\blank}[1]{\hspace*{#1}} % move figures by \blank{}
 \usepackage{pdfpages}
@@ -248,12 +249,30 @@ Ina, for pushing me towards excellence, I love you.
 
 ENSAR2: European Nuclear Science and Applications Research - 2 \url{http://www.ensarfp7.eu}, UiO, ISOLDE, other contributors to the experiment?
 
+
+
   \vspace{1.5cm}
   
   \noindent\textit{Trond Wiggo Johansen}\\
   
   \noindent September, 2019
-  
+
+
+\vspace{1cm}
+
+\begin{figure}[h]
+	\begin{minipage}[b]{0.25\linewidth}
+	\centering
+		\includegraphics[width=\textwidth]{uiofysmaster/figures/apollonseglet/Apollonseglet/UiO_Segl_150dpi.png}
+	\end{minipage}
+	\hspace{4.8cm}
+	\begin{minipage}[b]{0.45\linewidth}
+	\centering
+		\includegraphics[width=\textwidth]{Images/ISOLDE-logo.png}
+	\end{minipage}
+\end{figure}
+
+
 \end{acknowledgements}
 
 
@@ -269,6 +288,9 @@ ENSAR2: European Nuclear Science and Applications Research - 2 \url{http://www.e
 
 The experiment has been done before, with lower energy (and another target), Malin Klintefjord. \url{http://urn.nb.no/URN:NBN:no-56121} \newline
  
+Malin Klintefjord PhD thesis \cite{Klintefjord} with the three papers \cite{Klintefjord2015}, \cite{Samorajczyk2015} and \cite{Klintefjord2016} on \Sm.
+ 
+\bigskip
  
 Experiment conducted 8th - 14th of August 2017.
 
@@ -292,7 +314,15 @@ New HIE-ISOLDE: energies up to 10 MeV/u $\implies$ we can choose high-Z target (
 	\label{tab:units}
 \end{table}
 
+\bigskip
 
+Isotope notation:
+\begin{align*}
+	^A_Z\text{X}_N^Q
+\end{align*}
+where $X$ is the chemical symbol of the element, $A$ is the nucleon number (mass number, $A = Z + N$), $Z$ is the atomic number (proton number), $N$ is the neutron number and $Q$ is the charge ($Q = Z$ protons $- ~i$ electrons). 
+
+\bigskip
 
 Why CoulEx? \url{https://iks32.fys.kuleuven.be/wiki/brix/images/5/58/10_20151123_Illana_BriX15_web.pdf} \newline
 
@@ -401,7 +431,7 @@ Multi-step Coulomb excitation with radioactive beam, isotope separation on-line 
 
 
 \section{ISOLDE at CERN}
-The acronym ISOLDE stands for Isotope Separator On Line DEvice. ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland.  \autoref{fig:accelerators} shows the CERN accelerator complex \cite{CERN-AC}, where ISOLDE is located beside the Proton Synchrotron Booster (PSB). The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted. The high intensity and energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. 
+The acronym ISOLDE stands for Isotope Separator On Line DEvice. ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland.  \autoref{fig:accelerators} shows the CERN accelerator complex, where ISOLDE is located beside the Proton Synchrotron Booster (PSB). The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted. The High Intensity and Energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. 
 
 Most of the around 4000 characterized nuclides are radioactive  \cite{CoN}. In many cases it is not possible to make radioactive nuclei targets and perform an experiment because of the short half-life of the nucleus of interest. To study these radioactive nuclei, RIBs are used on stable targets. One way of obtaining a RIB is to use the Isotope Separator On Line (ISOL) method. In the ISOL method, two accelerator systems is needed. The first accelerator is used to produce the radioactive atoms at rest, and the second accelerator is used to accelerate these atoms \cite{ISOL}. 
 
@@ -411,23 +441,23 @@ In RIB facilities the energy and intensity is generally lower compared to stable
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{Images/0812015.pdf}
-	\caption{The CERN accelerator complex. ISOLDE gets accelerated protons from LINAC 2 and the PS BOOSTER.}
+	\caption{The CERN accelerator complex \cite{CERN-AC}. ISOLDE gets accelerated protons from LINAC 2 and the PS Booster.}
 	\label{fig:accelerators}
 \end{figure}
 
 
 \subsection{Beam production}
-A continuous flow of accelerated proton beam bunches from the PSB comes into the ISOLDE facility and collide with a thick production target. The proton beam has an energy of 1.4 GeV and an intensity up to 2 $\mu$A. Two proton beam bunches is separated by 1.2 s \cite{TIF, TIF2013}. ISOLDE typically takes 50\% \cite{MB-spect} of all proton bunches form the PSB, the rest goes to the LHC and other experiments shown in \autoref{fig:accelerators}. In the reaction between the proton beam and the production target, radioactive nuclides are produced in spallation, fission or fragmentation reactions (basically smashing the target into pieces) \cite{ISOLDE-web}. The production target is chosen from a stable region heavier than the nucleus of interest. In our experiment, a production target of tantalum (Ta) was used, producing the elements in the chart of nuclides up to tantalum. A large amount of different isotopes is produced in this way, and the challenge is to extract the nucleus of interest. To obtain the nucleus of interest, we first have to use a method of selecting the atom of interest, and then the nucleus of interest. 
+A continuous flow of accelerated proton beam bunches from the PSB comes into the ISOLDE facility and collide with a thick production target. The proton beam has an energy of 1.4 GeV and an intensity up to 2 $\mu$A. Two proton beam bunches is separated by 1.2 s \cite{TIF, TIF2013}. ISOLDE typically takes 50\% \cite{MB-spect} of all proton bunches form the PSB, the rest goes to the Large Hadron Collider (LHC) and other experiments shown in \autoref{fig:accelerators}. In the reaction between the proton beam and the production target, radioactive nuclides are produced in spallation, fission or fragmentation reactions (basically smashing the target into pieces) \cite{ISOLDE-web}. The production target is chosen from a stable region heavier than the nucleus of interest. In our experiment, a production target of tantalum (Ta) was used, producing the elements in the chart of nuclides up to Ta. A large amount of different isotopes is produced in this way, and the challenge is to extract the nucleus of interest. To obtain the nucleus of interest, we first have to use a method of selecting the atom of interest, and then the nucleus of interest. 
 
-To get the atomic element of interest, one idea is to use a method of selective ionization and then a high voltage electrostatic field to extract the ions. Electronic transitions are characteristic for each chemical element. A laser with precisely tuned wavelength can obtain the photon energy that matches the electronic transition energies in the atom \cite{RILIS-web, RILIS2013}. Thus we can use one laser to excite an electron to a specific excited electron-state in the atom, a second laser to excite electrons further to another excited electron-sate and a third laser to kick out the electron. In this way we only ionize the atomic element of interest. There could be contaminants from surface ionization (atoms that collide with the walls of the ion source), but this is detectable. Using periods of laser on and off, we can detect the resulting contaminants in the beam. The resonance ionization laser ion source (RILIS) is based on the method of step-wise (2-3 step) excitation and ionization of the atom. It is an element-selective process which is used to produce ion beams of the correct element \cite{RILIS}. In this experiment RILIS was used to select Sm with atomic number $Z = 62$. 
+To get the atomic element of interest, one idea is to use a method of selective ionization and then a high voltage electrostatic field to extract the ions. Electronic transitions are characteristic for each chemical element. A laser with precisely tuned wavelength can obtain the photon energy that matches the electronic transition energies in the atom \cite{RILIS-web, RILIS2013}. Thus we can use one laser to excite an electron to a specific excited electron-state in the atom, a second laser to excite electrons further to another excited electron-sate and a third laser to kick out the electron. In this way we only ionize the atomic element of interest. There could be contaminants from surface ionization (atoms that collide with the walls of the ion source), but this is detectable. Using periods of laser on and off, we can detect the resulting contaminants in the beam. The Resonance Ionization Laser Ion Source (RILIS) is based on the method of step-wise (2-3 step) excitation and ionization of the atom. It is an element-selective process which is used to produce ion beams of the correct element \cite{RILIS}. In this experiment RILIS was used to select samarium (Sm) with atomic number $Z = 62$. 
 
-At this point we have a continuous beam of Sm ions of 60 keV energy (the target is on a 60 kV high voltage platform) \cite{ISOLDE-web, TIF}. The next step in the process is to have mass separation, and we need to give the continuous beam a fine structure, because the post-accelerator cannot accept a continuous beam coming in, it accelerates bunches. The beam can collide in one of two target stations, either the general purpose separator (GPS) or the high resolution separator (HRS). The GPS has one bending magnet and can deliver beams of different masses ($\pm 13 \%$ of the central beam line mass) simultaneously into three beam lines, while the HRS has two bending magnets with high mass resolving power which delivers the beam into the main (central) beam line \cite{GPS, TIF}. In this experiment the GPS was used to select the isotope of samarium with mass number $A = 140$. 
+At this point we have a continuous beam of Sm ions of 60 keV energy (the target is on a 60 kV high voltage platform) \cite{ISOLDE-web, TIF}. The next step in the process is to have mass separation, and we need to give the continuous beam a fine structure, because the post-accelerator cannot accept a continuous beam coming in, it accelerates bunches. The beam can collide in one of two target stations, either the General Purpose Separator (GPS) or the High Resolution Separator (HRS). The GPS has one bending magnet and can deliver beams of different masses ($\pm 13 \%$ of the central beam line mass) simultaneously into three beam lines, while the HRS has two bending magnets with high mass resolving power which delivers the beam into the main (central) beam line \cite{GPS, TIF}. In this experiment the GPS was used to select the isotope of Sm with mass number $A = 140$. 
 
-Now we have a continuous beam of \Sm. The mass separator also gets rid of contaminants that come out of RILIS but have different mass. There could still be isobaric contaminants from surface ionization but luckily there is very little surface ionization for the neighboring elements of Sm. In the radioactive beam experiment trap (REXTRAP) we collect the \Sm\ ions, so that we can release them in bunches that are matched to the fine structure of the linear accelerator (LINAC). REXTRAP is a penning trap which has the tasks of accumulation, bunching and cooling of the RIB \cite{HIE-ISOLDE, REXTRAP1, REXTRAP2}. The ions are released in bunches and transfered to the radioactive beam experiment electron beam ion source (REXEBIS).
+Now we have a continuous beam of \Sm. The mass separator also gets rid of contaminants that come out of RILIS but have different mass. There could still be isobaric contaminants from surface ionization but luckily there is very little surface ionization for the neighboring elements of Sm. In the Radioactive beam EXperiment TRAP (REXTRAP) we collect the \Sm\ ions, so that we can release them in bunches that are matched to the fine structure of the LINear ACcelerator (LINAC). REXTRAP is a penning trap which has the tasks of accumulation, bunching and cooling of the RIB \cite{HIE-ISOLDE, REXTRAP1, REXTRAP2}. The ions are released in bunches and transfered to the REX Electron Beam Ion Source (REXEBIS).
 
-REXEBIS is a charge breeder where the RIB is bred to a high charge state \cite{REXEBIS}, with a mass-to-charge ($A/q$) ratio typically between 2.5 and 4.5 \cite{Post-acc}. REXEBIS releases the beam with a certain energy through a mass separator and into the high intensity and energy upgrade of the ISOLDE LINAC (HIE-ISOLDE LINAC) \cite{HIE-ISOLDE}. To accelerate the charged ions (beam) to high energy, we need highly charged ions. The electron beam ion source (EBIS) blasts off more electrons from Sm, which leaves the nucleus in a high charge state, going from \Sm$^{+1}$ to \Sm$^{+34}$ ($A/q \approx 4.1$). The longer the ions stay in REXEBIS, the higher the charge state becomes. We get a distribution of charge states, and we loose those that have the wrong charge state because the LINAC can only accept one charge state \cite{REX-web, HIE-web, EBIS2002, EBIS2010}.
+REXEBIS is a charge breeder where the RIB is bred to a high charge state \cite{REXEBIS}, with a mass-to-charge ($A/q$) ratio typically between 2.5 and 4.5 \cite{Post-acc}. REXEBIS releases the beam with a certain energy through a mass separator and into the HIE-ISOLDE LINAC \cite{HIE-ISOLDE}. To accelerate the charged ions (the beam) to high energy, we need highly charged ions. The EBIS blasts off more electrons from Sm, which leaves the nucleus in a high charge state, going from \Sm$^{+1}$ to \Sm$^{+34}$ ($A/q \approx 4.1$). The longer the ions stay in REXEBIS, the higher the charge state becomes. We get a distribution of charge states, and we loose those that have the wrong charge state because the LINAC can only accept one charge state \cite{REX-web, HIE-web, EBIS2002, EBIS2010}.
 
-The HIE-ISOLDE LINAC accelerates the beam of \Sm\ to 4.65 MeV/u through the beam line, and magnets bend the beam into Miniball. This experiment was one of the first Miniball experiments with the new upgraded superconducting accelerator.
+The HIE-ISOLDE LINAC accelerates the beam of \Sm\ to 4.65 MeV/u through the beam line, and magnets bend the beam into the Miniball spectrometer, where the particles and \ga-rays are detected. This experiment was one of the first Miniball experiments with the new upgraded superconducting accelerator.
 
 To have a successful experiment, the purity of the beam is of great importance. Contaminants in the beam can come from different sources  \cite{MB-spect}. From the primary target we can have:
 \begin{itemize}
@@ -443,12 +473,9 @@ and from stable isotopes the contaminants can come from:
 
 
 \subsection{Target}
-\textcolor{red}{Kan skrive om dette i motivasjonen.}
-
-
 As a target, \Pb\ with a thickness of 1.4 mg/cm$^2$ was chosen. The reason for the choice is that it is very hard to excite \Pb\ since it's doubly magic. We wanted the highest possible $Z ~(= 82)$ of a stable isotope to get maximum excitation probability. 
 
-Since we don't need normalization (because we have the B(E2, $0^+ \rightarrow 2^+$) from the previous experiment \cite{Klintefjord} and from lifetime measurement \cite{BelloGarrote2015}), we have chosen a target that is very hard to excite, so transitions from the target will not complicate the spectrum.
+Since we don't need normalization (because we have the $B(E2, 0_1^+ \rightarrow 2_1^+$) from the previous experiment \cite{Klintefjord2016} and from lifetime measurement \cite{BelloGarrote2015}), we have chosen a target that is very hard to excite, so transitions from the target will not complicate the spectrum.
 
 \Pb\ has no quadrupole deformation, the first excited state (2615 keV, $T_{1/2} = 16.7$ ps) is of octupole vibration ($J^\pi = 3^-$). If we are \textcolor{red}{lucky/unlucky?} we might see a little bit of this first excited state in the spectrum. This happens if the "collision" is almost head on, and the target hits one of the inner rings.
 
@@ -457,7 +484,7 @@ Unfortunately there was a finger print on the target, so even before beginning t
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\linewidth]{Images/Target-wheel.png}
-	\caption{Target wheel 07.08.2017. Position 6 has the target \Pb\ with thickness 1.4 mg/cm$^2$. Photo by: Liam Gaffney.}
+	\caption{The target wheel can hold up to six different targets. Position 6 has the target \Pb\ with thickness 1.4 mg/cm$^2$. Photo by: Liam Gaffney, date: 07.08.2017.}
 	\label{fig:TWheel}
 \end{figure}
 
@@ -469,16 +496,20 @@ Unfortunately there was a finger print on the target, so even before beginning t
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\linewidth]{Images/IMG3849.JPG}
-	\caption{Picture of the Miniball spectrometer. Photo by: Trond Wiggo Johansen.}
+	\caption{Overview picture of the Miniball spectrometer. Photo by: Trond Wiggo Johansen.}
 	\label{fig:MBSpect}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\linewidth]{Images/IMG3917.JPG}
-	\caption{Close up picture of the Miniball spectrometer. Photo by: Trond Wiggo Johansen.}
+	\caption{Close up picture of the Miniball spectrometer. The Miniball target chamber is in the middle, surrounded by the triple-cluster encapsulated \ga\ crystals. The beam line goes through the target chamber. Photo by: Trond Wiggo Johansen.}
 	\label{fig:MBSpectCU}
 \end{figure}
+
+
+\subsection{Target chamber}
+In Coulomb excitation experiments the target chamber is surrounded by the \ga\ detectors as shown in \autoref{fig:MBSpectCU}. The chamber is a hollow sphere made out of a machined out, single piece of AlMg$_3$, with a thin wall and an inner radius of approximately 80 mm. Inside the chamber we find a target wheel and a particle detector. The target wheel can hold up to six different targets as shown in \autoref{fig:TWheel}. The particle detector can be positioned 25 - 31 mm from the target wheel, limited by the space inside the chamber. Outside of the target chamber the average distance from each \ga-detector cluster to the center of the target chamber is approximately 10 cm. The forward detectors and the backward detectors has an angular position $\theta$ of approximately 45$^\circ$ and 135$^\circ$ respectively, compared to the beam line. In the vertical plane $\phi$, perpendicular to the beam line, the four \ga-detectors in forward and backward position are placed roughly on a circle with a separation of 90$^\circ$ \cite{MB-spect}.
 
 
 \subsection{Particle detector, DSSSD (CD)}
@@ -519,17 +550,9 @@ To detect the scattered beam and target nuclei, a segmented double sided silicon
 
 
 \subsection{\texorpdfstring{$\gamma$}{Gamma} detectors, high-purity germanium (HPGe)}
-The \ga-ray spectrometer consists of a total of 24 six-fold segmented high-purity germanium (HPGe) crystals, which are divided into 8 clusters of 3 crystals each. Each crystal encapsulated and segmented into 6 parts, making a total of 144 segments. For maximum efficiency, the detectors are placed in a compact geometry around the target chamber \cite{NWarr-HPGe, MB-spect}. The detector-array can cover a solid angle of about 60\% of 4$\pi$, when the optimum distance between the target chamber and the HPGe-clusters is achieved. The average energy resolution at $E_\gamma = 1.3$ MeV is 2.3 keV \cite{Butler2017}. 
-
-From each detector we get seven signals in total for each event, one from the core and six from each segment. \textcolor{red}{This requires 168 channels for data aquisition.} The shapes of these signals is analyzed to get information of the position. Because of the segmentation of the detector, a better Doppler correction can be performed compared to using the whole crystal. During operation the HPGe-clusters needs to be cooled by liquid nitrogen and there is an automated filling system in place for this \cite{NWarr-HPGe}. 
+The \ga-ray spectrometer consists of a total of 24 six-fold segmented high-purity germanium (HPGe) crystals, which are divided into 8 clusters of 3 crystals each. Each crystal encapsulated and segmented into 6 parts, making a total of 144 segments. For maximum efficiency, the detectors are placed in a compact geometry around the target chamber \cite{NWarr-HPGe, MB-spect}. The detector-array can cover a solid angle of about 60\% of 4$\pi$, when the optimum distance between the target chamber and the HPGe-clusters is achieved. The average energy resolution at $E_\gamma = 1.3$ MeV is 2.3 keV \cite{Butler2017}. From each detector we get seven signals in total for each event, one from the core and six from each segment. \textcolor{red}{This requires 168 channels for data aquisition.} The shapes of these signals is analyzed to get information of the position. Because of the segmentation of the detector, a better Doppler correction can be performed compared to using the whole crystal. During operation the HPGe-clusters needs to be cooled by liquid nitrogen and there is an automated filling system in place for this \cite{NWarr-HPGe}. 
 
 
-\subsection{Target chamber}
-p. 10: \newline
-\textbf{Target chamber:} \newline
-left bottom: \newline
-The target chamber used in Coulomb-excitation experiments, surrounded by the eight Miniball clusters is shown in fig. 7(A). It consists of a thin-walled hollow sphere of inner radius $\approx$ 80 mm machined out of a single piece of AlMg$_3$. Inside this chamber a target wheel, that can accommodate six different targets, can be mounted (see fig. 7(B)). The particle detector used for the Coulomb- excitation experiments is shown in fig. 7(C) and will be described in sect. 3. It is positioned 25–31mm from the target wheel (in forward direction) and is mounted on three fixed mounting rods (see fig. 7(B)). There is limited flexibility in the positioning of the detector because of the limited space in the target chamber. \newline
-... Each cluster detector resides at an average distance of $\approx$ 10 cm from the center of the target chamber. This spherical configuration ensures a coverage of $\approx$ 60$\%$ of 4$\pi$ around the reaction target (see fig. 7(A)). The angular position of each detector is approximately 45$^\circ$ (for the forward detectors) or 135$^\circ$ (for the backward detectors) with respect to the beam line ($\theta$). In the $\phi$ direction, the four clusters at forward and backward angles are positioned roughly on a circle, separated by 90$^\circ$. \newline
 
 \section{Experimental setup}
 \Sm\ Coulomb excitation experiment.
@@ -555,7 +578,7 @@ The target chamber used in Coulomb-excitation experiments, surrounded by the eig
 
 \begin{table}[ht] 
 	\centering 
-	\caption{Geometry to center Miniball HPGe clusters (red dot) for the Doppler correction.}
+	\caption{Geometry to the center of the Miniball HPGe clusters (red dot in \autoref{fig:MB-angles}) for the Doppler correction.}
 	\input{Table-data/Geometry.tex}
 	\label{tab:Geo}
 \end{table}
@@ -1812,7 +1835,7 @@ The DYLD\_LIBRARY\_PATH is used on Mac only. On other systems, use \newline LD\_
 %\bibliographystyle{unsrtnat}
 \bibliographystyle{mybibstyle} %my own bibstyle to set first names to one letter + unsrtnat
 
-\bibliography{/Users/trondwj/GitHub/MasterThesis/Thesis/Mendeley/ISOLDE.bib,/Users/trondwj/GitHub/MasterThesis/Thesis/References/web_references.bib}
+\bibliography{/Users/trondwj/GitHub/MasterThesis/Thesis/Mendeley/References.bib,/Users/trondwj/GitHub/MasterThesis/Thesis/References/web_references.bib}
 
 
 \end{document}
