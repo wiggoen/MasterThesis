@@ -227,7 +227,7 @@ To my family, for all their support and encouragement!
 \end{dedication}
 
 \begin{acknowledgements}
-Supervisors Andreas Görgen and Katarzyna Hady\'nska-Kl\c ek
+Supervisors Andreas Görgen and Katarzyna Hady{\'{n}}ska-Kl{\c{e}}k
 
 Nuclear Physics Group
 
@@ -293,6 +293,10 @@ Malin Klintefjord PhD thesis \cite{Klintefjord} with the three papers \cite{Klin
 \bigskip
  
 Experiment conducted 8th - 14th of August 2017.
+
+\bigskip
+
+Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclear deformation). 
 
 \bigskip
 
@@ -373,6 +377,45 @@ $\bullet$ general things about nuclei shapes \newline
 
 $\bullet$ the basics of Coulomb excitation 
 
+
+\bigskip
+
+
+\begin{table}[ht] 
+    \centering 
+    \caption{LAB vs CM. Based on LAB input angles from $\theta_b$ and $\theta_t$. From LISE++ kinematics calculator (reaction from the middle of the target).}
+	\label{tab:LABvsCM}
+    \begin{subtable}{0.45\textwidth}
+    		\centering
+		\caption{$\theta_b \in [22.0^\circ, 56.7^\circ]$.}
+	 	\label{tab:LABvsCM_b}
+	 	\input{Table-data/LABvsCM_b.tex}
+	\end{subtable}
+	\begin{subtable}{0.45\textwidth}
+		\centering
+		\caption{$\theta_t \in [22.0^\circ, 56.7^\circ]$.}
+		\label{tab:LABvsCM_t}
+		\input{Table-data/LABvsCM_t.tex}
+	\end{subtable}
+\end{table}
+
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{\textwidth}
+		\input{Images/LAB-frame.tikz}
+		\caption{Scattering in the laboratory (LAB) frame. A small angle $\theta_b$ means forward scattering of the beam, a larger distance between the beam particle and the target particle, a weaker electromagnetic (EM) field and less excitation probability. A large angle $\theta_b$ means backward scattering of the beam, a closer distance between the beam particle and the target particle, a stronger EM field and a higher excitation probability.}
+		\label{fig:LAB}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\input{Images/CM-frame.tikz}
+		\caption{Center of mass (CM) frame.}
+		\label{fig:CM}
+	\end{subfigure}
+	\caption{LAB vs CM frame.}
+	\label{fig:LAB-CM}
+\end{figure}
+
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 \newpage
@@ -405,14 +448,7 @@ Multi-step Coulomb excitation with radioactive beam, isotope separation on-line 
 
 \section*{\textcolor{red}{Fjern blå linker in-text før innlevering!!}}
 
-\newpage
-
-% ----------------------------------------------------------------------------------------------------------------------
-% ----------------------------------------------------------------------------------------------------------------------
-
-\chapter{Coulomb excitation experiment} 
-
-\textcolor{red}{Other info sources:}
+\section*{\textcolor{red}{Experimental setup - other info sources}}
 \begin{itemize}
 	\item ISOL \& Post acceleration: \url{https://www.euroschoolonexoticbeams.be/site/files/nlp/LNP700_contrib2.pdf}
 	\item ISOL RIB (2004): \url{http://accelconf.web.cern.ch/AccelConf/e04/PAPERS/TUXCH01.PDF}
@@ -428,15 +464,24 @@ Multi-step Coulomb excitation with radioactive beam, isotope separation on-line 
 	\item The MINIBALL array \cite{MBarray}
 \end{itemize}
 
+\textcolor{red}{DAQ:}
+\begin{itemize}
+	\item \MBOU\ web page: \url{https://www-old.mll-muenchen.de/marabou/htmldoc/}
+	\item \MBOU\ file formatting: \url{https://www-old.mll-muenchen.de/marabou/htmldoc/marabou/IOSpec.html}
+\end{itemize}
 
+\newpage
 
+% ----------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------
+
+\chapter{Coulomb excitation experiment}
 \section{ISOLDE at CERN}
 The acronym ISOLDE stands for Isotope Separator On Line DEvice. ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland.  \autoref{fig:accelerators} shows the CERN accelerator complex, where ISOLDE is located beside the Proton Synchrotron Booster (PSB). The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted. The High Intensity and Energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. 
 
 Most of the around 4000 characterized nuclides are radioactive  \cite{CoN}. In many cases it is not possible to make radioactive nuclei targets and perform an experiment because of the short half-life of the nucleus of interest. To study these radioactive nuclei, RIBs are used on stable targets. One way of obtaining a RIB is to use the Isotope Separator On Line (ISOL) method. In the ISOL method, two accelerator systems is needed. The first accelerator is used to produce the radioactive atoms at rest, and the second accelerator is used to accelerate these atoms \cite{ISOL}. 
 
 In RIB facilities the energy and intensity is generally lower compared to stable beam facilities. This makes it suitable for Coulomb excitation and particle transfer reactions. The beam is the isotope of interest and since it is traveling with a significant velocity ($v/c$ values of a few percent), the emitted \ga-rays from de-excitation may have large Doppler shifts. Since the detectors have a finite solid angle, it can lead to a sizable Doppler broadening. When the detection system has high granularity, the Doppler shifts and broadening can be corrected for. If the angle between the recoiling nucleus and the \ga-ray can be determined accurately, Doppler correction can be applied \cite{MB-spect}.
-
 
 \begin{figure}[ht]
 	\centering
@@ -446,8 +491,9 @@ In RIB facilities the energy and intensity is generally lower compared to stable
 \end{figure}
 
 
+\section{Experimental setup}
 \subsection{Beam production}
-A continuous flow of accelerated proton beam bunches from the PSB comes into the ISOLDE facility and collide with a thick production target. The proton beam has an energy of 1.4 GeV and an intensity up to 2 $\mu$A. Two proton beam bunches is separated by 1.2 s \cite{TIF, TIF2013}. ISOLDE typically takes 50\% \cite{MB-spect} of all proton bunches form the PSB, the rest goes to the Large Hadron Collider (LHC) and other experiments shown in \autoref{fig:accelerators}. In the reaction between the proton beam and the production target, radioactive nuclides are produced in spallation, fission or fragmentation reactions (basically smashing the target into pieces) \cite{ISOLDE-web}. The production target is chosen from a stable region heavier than the nucleus of interest. In our experiment, a production target of tantalum (Ta) was used, producing the elements in the chart of nuclides up to Ta. A large amount of different isotopes is produced in this way, and the challenge is to extract the nucleus of interest. To obtain the nucleus of interest, we first have to use a method of selecting the atom of interest, and then the nucleus of interest. 
+\autoref{fig:Coulex} shows a sketch of the experimental setup used in the \Sm\ Coulomb excitation experiment. A continuous flow of accelerated proton beam bunches from the PSB comes into the ISOLDE facility and collide with a thick production target. The proton beam has an energy of 1.4 GeV and an intensity up to 2 $\mu$A. Two proton beam bunches is separated by 1.2 s \cite{TIF, TIF2013}. ISOLDE typically takes 50\% \cite{MB-spect} of all proton bunches form the PSB, the rest goes to the Large Hadron Collider (LHC) and other experiments shown in \autoref{fig:accelerators}. In the reaction between the proton beam and the production target, radioactive nuclides are produced in spallation, fission or fragmentation reactions (basically smashing the target into pieces) \cite{ISOLDE-web}. The production target is chosen from a stable region heavier than the nucleus of interest. In our experiment, a production target of tantalum (Ta, $Z = 73$) was used, producing the elements in the chart of nuclides up to Ta. A large amount of different isotopes is produced in this way, and the challenge is to extract the nucleus of interest. To obtain the nucleus of interest, we first have to use a method of selecting the atom of interest, and then the nucleus of interest. 
 
 To get the atomic element of interest, one idea is to use a method of selective ionization and then a high voltage electrostatic field to extract the ions. Electronic transitions are characteristic for each chemical element. A laser with precisely tuned wavelength can obtain the photon energy that matches the electronic transition energies in the atom \cite{RILIS-web, RILIS2013}. Thus we can use one laser to excite an electron to a specific excited electron-state in the atom, a second laser to excite electrons further to another excited electron-sate and a third laser to kick out the electron. In this way we only ionize the atomic element of interest. There could be contaminants from surface ionization (atoms that collide with the walls of the ion source), but this is detectable. Using periods of laser on and off, we can detect the resulting contaminants in the beam. The Resonance Ionization Laser Ion Source (RILIS) is based on the method of step-wise (2-3 step) excitation and ionization of the atom. It is an element-selective process which is used to produce ion beams of the correct element \cite{RILIS}. In this experiment RILIS was used to select samarium (Sm) with atomic number $Z = 62$. 
 
@@ -457,7 +503,7 @@ Now we have a continuous beam of \Sm. The mass separator also gets rid of contam
 
 REXEBIS is a charge breeder where the RIB is bred to a high charge state \cite{REXEBIS}, with a mass-to-charge ($A/q$) ratio typically between 2.5 and 4.5 \cite{Post-acc}. REXEBIS releases the beam with a certain energy through a mass separator and into the HIE-ISOLDE LINAC \cite{HIE-ISOLDE}. To accelerate the charged ions (the beam) to high energy, we need highly charged ions. The EBIS blasts off more electrons from Sm, which leaves the nucleus in a high charge state, going from \Sm$^{+1}$ to \Sm$^{+34}$ ($A/q \approx 4.1$). The longer the ions stay in REXEBIS, the higher the charge state becomes. We get a distribution of charge states, and we loose those that have the wrong charge state because the LINAC can only accept one charge state \cite{REX-web, HIE-web, EBIS2002, EBIS2010}.
 
-The HIE-ISOLDE LINAC accelerates the beam of \Sm\ to 4.65 MeV/u through the beam line, and magnets bend the beam into the Miniball spectrometer, where the particles and \ga-rays are detected. This experiment was one of the first Miniball experiments with the new upgraded superconducting accelerator.
+The HIE-ISOLDE LINAC accelerates the beam of \Sm\ ($T_{1/2} = 14.82$ min) \textcolor{red}{with excellent purity} to 4.65 MeV/u (total energy 651 MeV) through the beam line, and magnets bend the beam into the Miniball spectrometer, where the particles and \ga-rays are detected. This experiment was one of the first Miniball experiments with the new upgraded superconducting accelerator. 
 
 To have a successful experiment, the purity of the beam is of great importance. Contaminants in the beam can come from different sources  \cite{MB-spect}. From the primary target we can have:
 \begin{itemize}
@@ -472,6 +518,14 @@ and from stable isotopes the contaminants can come from:
 \end{itemize}
 
 
+\begin{figure}[ht]
+	\centering
+	\input{Images/Coulex-setup.tikz}
+	\caption{The Coulomb excitation setup at ISOLDE (experiment code: IS558). Adapted from \cite{Klintefjord}.}
+	\label{fig:Coulex}
+\end{figure}
+
+
 \subsection{Target}
 As a target, \Pb\ with a thickness of 1.4 mg/cm$^2$ was chosen. The reason for the choice is that it is very hard to excite \Pb\ since it's doubly magic. We wanted the highest possible $Z ~(= 82)$ of a stable isotope to get maximum excitation probability. 
 
@@ -479,41 +533,40 @@ Since we don't need normalization (because we have the $B(E2, 0_1^+ \rightarrow 
 
 \Pb\ has no quadrupole deformation, the first excited state (2615 keV, $T_{1/2} = 16.7$ ps) is of octupole vibration ($J^\pi = 3^-$). If we are \textcolor{red}{lucky/unlucky?} we might see a little bit of this first excited state in the spectrum. This happens if the "collision" is almost head on, and the target hits one of the inner rings.
 
-Unfortunately there was a finger print on the target, so even before beginning the experiment, we have some contamination (probably carbon). The target wheel is shown in \autoref{fig:TWheel}. 
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\linewidth]{Images/Target-wheel.png}
-	\caption{The target wheel can hold up to six different targets. Position 6 has the target \Pb\ with thickness 1.4 mg/cm$^2$. Photo by: Liam Gaffney, date: 07.08.2017.}
-	\label{fig:TWheel}
-\end{figure}
+Unfortunately there was a finger print on the target, so even before beginning the experiment, we have some contamination (probably carbon).
 
 
-
-\section{Miniball spectrometer}
-
+\subsection{Miniball spectrometer}
+\autoref{fig:MBSpect} shows an overview picture of the Miniball spectrometer. 
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\linewidth]{Images/IMG3849.JPG}
-	\caption{Overview picture of the Miniball spectrometer. Photo by: Trond Wiggo Johansen.}
+	\caption{Overview picture of the Miniball spectrometer. \\ Photo by: Trond Wiggo Johansen.}
 	\label{fig:MBSpect}
 \end{figure}
 
+
+\subsubsection{Target chamber}
+The target chamber is a hollow sphere made out of a machined out, single piece of aluminium alloy (AlMg$_3$), with a thin wall and an inner radius of approximately 80 mm. Inside the chamber we find a target wheel and a particle detector. The target wheel can hold up to six different targets as shown in \autoref{fig:TWheel}. The particle detector can be positioned 25 - 31 mm from the target wheel, limited by the space inside the chamber. Outside of the target chamber the average distance from each \ga-detector cluster to the center of the target chamber is approximately 10 cm. The forward detectors and the backward detectors has an angular position $\theta$ of approximately 45$^\circ$ and 135$^\circ$ respectively, compared to the beam line. In the vertical plane, perpendicular to the beam line, the four \ga-detectors in forward and backward position are placed roughly on a circle with a separation of $\phi = 90^\circ$ \cite{MB-spect}.  
+
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\linewidth]{Images/IMG3917.JPG}
-	\caption{Close up picture of the Miniball spectrometer. The Miniball target chamber is in the middle, surrounded by the triple-cluster encapsulated \ga\ crystals. The beam line goes through the target chamber. Photo by: Trond Wiggo Johansen.}
-	\label{fig:MBSpectCU}
+	\includegraphics[width=\linewidth]{Images/Target-wheel.png}
+	\caption{The target wheel can hold up to six different targets. Position 6 has the target \Pb\ with thickness 1.4 mg/cm$^2$. \\ Photo by: Liam Gaffney, date: 07.08.2017.}
+	\label{fig:TWheel}
 \end{figure}
 
 
-\subsection{Target chamber}
-In Coulomb excitation experiments the target chamber is surrounded by the \ga\ detectors as shown in \autoref{fig:MBSpectCU}. The chamber is a hollow sphere made out of a machined out, single piece of AlMg$_3$, with a thin wall and an inner radius of approximately 80 mm. Inside the chamber we find a target wheel and a particle detector. The target wheel can hold up to six different targets as shown in \autoref{fig:TWheel}. The particle detector can be positioned 25 - 31 mm from the target wheel, limited by the space inside the chamber. Outside of the target chamber the average distance from each \ga-detector cluster to the center of the target chamber is approximately 10 cm. The forward detectors and the backward detectors has an angular position $\theta$ of approximately 45$^\circ$ and 135$^\circ$ respectively, compared to the beam line. In the vertical plane $\phi$, perpendicular to the beam line, the four \ga-detectors in forward and backward position are placed roughly on a circle with a separation of 90$^\circ$ \cite{MB-spect}.
+\subsubsection{Particle detector, DSSSD (CD)}
+To detect the scattered beam and target nuclei, a segmented Double Sided Silicon Strip Detector (DSSSD) composed of four quadrants was used. The DSSSD looks very like an audio Compact Disc (CD), and hence it is called the CD. In the front of the CD, one quadrant consists of 16 annular strips (rings) with a pitch of 2 mm, while the back consists of 24 sector (radial) strips with a pitch of 3.5$^\circ$. The innermost strip has an inner radius of the active area of 9 mm, while the outermost strip has an outer radius of the active area of 40.9 mm. There are in total 160 discrete detector elements for all four quadrants (64 in front, 96 in back). Each quadrant is connected to its own Analog to Digital Converter (ADC). Because of lack of available channels in the ADC, the sector strips in the back are paired up, so that it is effectively 12 sector strips in the back side. The CD detector has a total area of 5000 mm$^2$, where the active area is approximately 93$\%$. The silicon wafer thickness is between 50 $\mu$m and 1000 $\mu$m with a dead layer of 0.3 to 0.8 $\mu$m. For simplicity the dead layer thickness is usually assumed to be 0.7 $\mu$m \cite{NWarr-CD, MB-spect}. \autoref{tab:CD_spec} shows some of the specifications of the CD and \autoref{fig:CD-FB} shows a sketch of the front and back side. The distance from the target to the CD is 26.98 mm ($\pm$ 1 mm). In the laboratory (LAB) reference frame the CD has a angular coverage between 18.4$^\circ$ and 56.6$^\circ$. An extensive description of the CD can be found in \cite{CD-DSSSD}.
 
-
-\subsection{Particle detector, DSSSD (CD)}
-To detect the scattered beam and target nuclei, a segmented double sided silicon strip detector (DSSSD) composed of four quadrants was used. The DSSSD looks very like an audio compact disc (CD), and hence it is called the CD. In the front of the CD, one quadrant consists of 16 annular strips (rings) with a pitch of 2 mm, while the back consists of 24 sector (radial) strips with a pitch of 3.5$^\circ$. The innermost strip has an inner radius of the active area of 9 mm, while the outermost strip has an outer radius of the active area of 40.9 mm. There are in total 160 discrete detector elements for all four quadrants (64 in front, 96 in back). Each quadrant is connected to its own analog to digital converter (ADC). Because of lack of available channels in the ADC, the sector strips in the back are paired up, so that it is effectively 12 sector strips in the back side. The CD detector has a total area of 5000 mm$^2$, where the active area is approximately 93$\%$. The silicon wafer thickness is between 50 $\mu$m and 1000 $\mu$m with a dead layer of 0.3 to 0.8 $\mu$m aluminum (Al) equivalent (\textcolor{red}{what does this mean?}). For simplicity the dead layer thickness is usually assumed to be 0.7 $\mu$m silicon (Si) equivalent (\textcolor{red}{what does this mean?}) \cite{NWarr-CD, MB-spect}. \autoref{tab:CD_spec} shows some of the specifications of the CD and \autoref{fig:CD-FB} shows a sketch of the front and back side. The distance from the target to the CD is 26.98 mm ($\pm$ 1 mm). In the laboratory (LAB) reference frame the CD has a angular coverage between 18.4$^\circ$ and 56.6$^\circ$. \autoref{tab:CD_angles} shows the mid strip CD angles in the laboratory frame for the front of the CD. An extensive description of the CD can be found in \cite{CD-DSSSD}.
+\begin{table}[ht] 
+    \centering 
+    \caption{CD specifications.}
+	\input{Table-data/CD-spec.tex}
+	\label{tab:CD_spec}
+\end{table}
 
 
 \begin{figure}
@@ -533,139 +586,20 @@ To detect the scattered beam and target nuclei, a segmented double sided silicon
 \end{figure}
 
 
-\begin{table}[ht] 
-    \centering 
-    \caption{CD specifications.}
-	\input{Table-data/CD-spec.tex}
-	\label{tab:CD_spec}
-\end{table}
-
-
-\begin{table}[ht] 
-    \centering 
-    \caption{Mid ring CD angles in laboratory frame with distance from target to CD of 26.98 mm. The centroid energy is from simulation with kinsim3. $E_t$ is the energy of the target particle and $E_b$ is the energy of the beam particle.}
-	\input{Table-data/CD.tex}
-	\label{tab:CD_angles}
-\end{table}
-
-
-\subsection{\texorpdfstring{$\gamma$}{Gamma} detectors, high-purity germanium (HPGe)}
-The \ga-ray spectrometer consists of a total of 24 six-fold segmented high-purity germanium (HPGe) crystals, which are divided into 8 clusters of 3 crystals each. Each crystal encapsulated and segmented into 6 parts, making a total of 144 segments. For maximum efficiency, the detectors are placed in a compact geometry around the target chamber \cite{NWarr-HPGe, MB-spect}. The detector-array can cover a solid angle of about 60\% of 4$\pi$, when the optimum distance between the target chamber and the HPGe-clusters is achieved. The average energy resolution at $E_\gamma = 1.3$ MeV is 2.3 keV \cite{Butler2017}. From each detector we get seven signals in total for each event, one from the core and six from each segment. \textcolor{red}{This requires 168 channels for data aquisition.} The shapes of these signals is analyzed to get information of the position. Because of the segmentation of the detector, a better Doppler correction can be performed compared to using the whole crystal. During operation the HPGe-clusters needs to be cooled by liquid nitrogen and there is an automated filling system in place for this \cite{NWarr-HPGe}. 
-
-
-
-\section{Experimental setup}
-\Sm\ Coulomb excitation experiment.
-
+\subsubsection{\texorpdfstring{$\gamma$}{Gamma} detectors, high-purity germanium (HPGe)}
+In Coulomb excitation experiments the target chamber is surrounded by the \ga\ detectors as shown in \autoref{fig:MBSpectCU}. The \ga-ray spectrometer consists of a total of 24 six-fold segmented High-Purity Germanium (HPGe) crystals, which are divided into 8 clusters of 3 crystals each. Each crystal is encapsulated and segmented into 6 parts, making a total of 144 segments. For maximum efficiency, the detectors are placed in a compact geometry around the target chamber \cite{NWarr-HPGe, MB-spect}. The detector-array can cover a solid angle of about 60\% of 4$\pi$, when the optimum distance between the target chamber and the HPGe-clusters is achieved. The average energy resolution at $E_\gamma = 1.3$ MeV is 2.3 keV \cite{Butler2017}. From each detector we get seven signals in total for each event, one from the core and six from each segment. \textcolor{red}{This requires 168 channels for data aquisition.} The shapes of these signals is analyzed to get information of the position. Because of the segmentation of the detector, a better Doppler correction can be performed compared to using the whole crystal. During operation the HPGe-clusters needs to be cooled down by liquid nitrogen and there is an automated filling system in place for this \cite{NWarr-HPGe}. 
 
 \begin{figure}[ht]
 	\centering
-	\input{Images/Coulex-setup.tikz}
-	\caption{The Coulomb excitation setup at ISOLDE. Adapted from Malin Klintefjord's PhD thesis \cite{Klintefjord}.}
-	\label{fig:Coulex}
-\end{figure}
-
-\textcolor{red}{From operators logbook: 140Sm34+ at 4.65 MeV/u experiment. A/q = 4.0.}
-
-
-\begin{figure}[ht]
-	\centering
-	\input{Images/MB-angles.tikz}
-	\caption{Miniball angles, where $i$ denotes cluster number from \autoref{tab:Geo}.}
-	\label{fig:MB-angles}
-\end{figure}
-
-
-\begin{table}[ht] 
-	\centering 
-	\caption{Geometry to the center of the Miniball HPGe clusters (red dot in \autoref{fig:MB-angles}) for the Doppler correction.}
-	\input{Table-data/Geometry.tex}
-	\label{tab:Geo}
-\end{table}
-For Miniball geometry (angles) \cite{NWarr-Angles}. 
-
-
-
-%\textcolor{red}{For geometry, see: \url{https://www.ikp.uni-koeln.de/~warr/doc/frame.pdf}}
-
-
-
-
-\begin{table}[ht] 
-    \centering 
-    \caption{LAB vs CM. Based on LAB input angles from $\theta_b$ and $\theta_t$. From LISE++ kinematics calculator (reaction from the middle of the target).}
-	\label{tab:LABvsCM}
-    \begin{subtable}{0.45\textwidth}
-    		\centering
-		\caption{$\theta_b \in [22.0^\circ, 56.7^\circ]$.}
-	 	\label{tab:LABvsCM_b}
-	 	\input{Table-data/LABvsCM_b.tex}
-	\end{subtable}
-	\begin{subtable}{0.45\textwidth}
-		\centering
-		\caption{$\theta_t \in [22.0^\circ, 56.7^\circ]$.}
-		\label{tab:LABvsCM_t}
-		\input{Table-data/LABvsCM_t.tex}
-	\end{subtable}
-\end{table}
-
-
-
-\bigskip
-
-Experiment code: IS558 
-
-Ta: tantalum (Z = 73)
-
-Sm: samarium (Z = 62)
-
-Pb: lead (Z = 82) \newline
-
-
-
-Beam: \Sm\ (T$_{1/2} = 14.82$ min, 4.65 MeV/$u$, total 651 MeV), excellent purity
-
-Target: \Pb\ (Thickness: 1.4 mg/cm$^2$)
-
-
-Small angle: Forward scattering: Larger distance, weaker \textcolor{red}{EM}-field, less excitation probability.
-
-Large angle: Backward scattering: Closer distance, stronger \textcolor{red}{EM}-field, higher excitation probability. \newline
-
-
-\bigskip
-
-Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclear deformation). 
-
-\bigskip
-
-
-\begin{figure}
-	\centering
-	\begin{subfigure}{\textwidth}
-		\input{Images/LAB-frame.tikz}
-		\caption{Laboratory (LAB) frame}
-		\label{fig:LAB}
-	\end{subfigure}
-	\begin{subfigure}{\textwidth}
-		\input{Images/CM-frame.tikz}
-		\caption{Center of mass (CM) frame.}
-		\label{fig:CM}
-	\end{subfigure}
-	\caption{LAB vs CM frame.}
-	\label{fig:LAB-CM}
+	\includegraphics[width=\linewidth]{Images/IMG3917.JPG}
+	\caption{Close up picture of the Miniball spectrometer. The Miniball target chamber is in the middle, surrounded by the triple-cluster encapsulated \ga\ crystals. The beam line goes through the target chamber. \\ Photo by: Trond Wiggo Johansen.}
+	\label{fig:MBSpectCU}
 \end{figure}
 
 
 \section{Data acquisition system}
-Signals from the CD and the HPGe clusters are read out by the ADC and DGF modules and sent to a personal computer (PC) in the data acquisition (DAQ) room at ISOLDE where the data is then stored. The collection of data is done by the \MBOU\ \cite{Maraboou} DAQ system \cite{MB-spect}. It is split in two parts as shown in \autoref{fig:MARaBOOU}, one front-end part based on the multi branch system (MBS) \cite{MBS} and one back-end part based on the ROOT framework \cite{ROOT}. The front-end takes care of data readout, event building and data transportation, while the back-end takes care of the setup, run control, histogramming, data analysis and data storage \cite{MB-spect}.
+Signals from the CD and the HPGe clusters are read out by the ADC and Digital Gamma Finder (DGF) modules and sent to a Personal Computer (PC) in the Data AcQuisition (DAQ) room at ISOLDE where the data is then stored. The collection of data is done by the \MBOU\ \cite{Maraboou} DAQ system \cite{MB-spect}. It is split in two parts as shown in \autoref{fig:MARaBOOU}, one front-end part based on the multi branch system (MBS) \cite{MBS} and one back-end part based on the ROOT framework \cite{ROOT}. The front-end takes care of data readout, event building and data transportation, while the back-end takes care of the setup, run control, histogramming, data analysis and data storage. The system can manage high counting rates without dead time, where the limitation is essentially only pile-up. The ADCs and TDCs can buffer up to 32 events at a time \cite{MB-spect}. 
 
-
-\textcolor{red}{Other info sources:}
-\begin{itemize}
-	\item \MBOU\ web page: \url{https://www-old.mll-muenchen.de/marabou/htmldoc/}
-	\item \MBOU\ file formatting: \url{https://www-old.mll-muenchen.de/marabou/htmldoc/marabou/IOSpec.html}
-\end{itemize}
 
 \begin{figure}[ht]
 	\centering
@@ -679,7 +613,7 @@ Signals from the CD and the HPGe clusters are read out by the ADC and DGF module
 
 
 
-\chapter{Data analysis}  
+\chapter{Data calibration and analysis}  
 
 \textcolor{Magenta}{Tilbakemelding: \newline
 First: explain the tasks and give the bigger picture of what needs to be done: \newline 
@@ -706,6 +640,34 @@ MiniballCoulexSort \cite{MBCS}
 
 \bigskip
 
+\autoref{tab:CD_angles} shows the mid strip CD angles in the laboratory frame for the front of the CD. 
+
+\begin{table}[ht] 
+    \centering 
+    \caption{Mid ring CD angles in laboratory frame with distance from target to CD of 26.98 mm. The centroid energy is from simulation with kinsim3. $E_t$ is the energy of the target particle and $E_b$ is the energy of the beam particle.}
+	\input{Table-data/CD.tex}
+	\label{tab:CD_angles}
+\end{table}
+
+\bigskip
+
+\begin{figure}[ht]
+	\centering
+	\input{Images/MB-angles.tikz}
+	\caption{Miniball angles, where $i$ denotes cluster number from \autoref{tab:Geo}.}
+	\label{fig:MB-angles}
+\end{figure}
+
+For Miniball geometry (angles) \cite{NWarr-Angles}. 
+
+\begin{table}[ht] 
+	\centering 
+	\caption{Geometry to the center of the Miniball HPGe clusters (red dot in \autoref{fig:MB-angles}) for the Doppler correction.}
+	\input{Table-data/Geometry.tex}
+	\label{tab:Geo}
+\end{table}
+
+\bigskip
 
 \begin{table}[H] 
 \centering 
@@ -928,17 +890,6 @@ particle-gamma and particle-gamma-gamma coincidence
 
 \section{Data and sorting}
 
-\subsection{\textcolor{red}{Digital electronics - unnecessary?}}
-
-The Miniball spectrometer \cite{MB-spect} \newline
-p. 7: \newline
-\textbf{Digital electronics:} \newline
-left top: \newline
-This means that the FPGA (field programmable gate arrays) can cope with high counting rates with no dead time and is essentially limited only by pile-up. \newline
-left bottom: \newline
-These buffers contain the energies of the \ga-rays, 48 bit time stamps with 25 ns resolution and either the time to steepest slope or the mirror charge, for each of the 168 channels. This buffer size is large enough that the DGF-4Cs only need to be read out between beam bursts, so the readout does not produce additional dead time. \newline
-right top: \newline
-ADCs and TDCs are capable of buffering up to 32 events. \newline
 
 
 
