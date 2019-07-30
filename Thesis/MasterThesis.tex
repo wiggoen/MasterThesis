@@ -302,14 +302,18 @@ Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclea
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
 old REX-ISOLDE post-accelerator limited to 2.8 MeV/u (low Coulomb excitation cross section, low probability for multi-step excitation). Mo target was chosen to maximize cross section at this energy, and to normalize B(E2; $0^+ \rightarrow 2^+$) value in \Sm\ to the well-known B(E2) value for the target. \newline
-New HIE-ISOLDE: energies up to 10 MeV/u $\implies$ we can choose high-Z target (Pb) $\implies$ high Coulex cross section, especially for multi-step. Also: B(E2) for \Sm\ now known from previous experiment (and a lifetime measurement) $\implies$ no need for normalization: we can use the known B(E2; $0^+ \rightarrow 2^+$) to nomalize the transition probabilities for the higher-lying transitions. Chosen 4.7 MeV/u as the highest possible energy that is safe for Pb (distance of closest approach large enough to exclude nuclear interaction.)}
+New HIE-ISOLDE: energies up to 10 MeV/u $\implies$ we can choose high-Z target (Pb) $\implies$ high Coulex cross section, especially for multi-step. Also: B(E2) for \Sm\ now known from previous experiment (and a lifetime measurement) $\implies$ no need for normalization: we can use the known B(E2; $0^+ \rightarrow 2^+$) to nomalize the transition probabilities for the higher-lying transitions. Chosen 4.7 MeV/u as the highest possible energy that is safe for Pb (distance of closest approach large enough to exclude nuclear interaction.)} \newline
 
+
+All of my scripts are available in my GitHub repository found at \\ \url{https://github.com/wiggoen/MasterThesis}.
 
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 
 \chapter{Theory}
+table of nuclides (HFB-style): \url{http://www-phynu.cea.fr/science_en_ligne/carte_potentiels_microscopiques/carte_potentiel_nucleaire_eng.htm}
 
+$\beta-\gamma$ triangle: \url{http://www-phynu.cea.fr/science_en_ligne/carte_potentiels_microscopiques/noyaux/zz62/zz62nn78all_eng.html}
 
 \begin{table}[ht] 
     \centering 
@@ -559,7 +563,7 @@ The target chamber is a hollow sphere made out of a machined out, single piece o
 
 
 \subsubsection{Particle detector, DSSSD (CD)}
-To detect the scattered beam and target nuclei, a segmented Double Sided Silicon Strip Detector (DSSSD) composed of four quadrants was used. The DSSSD looks very like an audio Compact Disc (CD), and hence it is called the CD. In the front of the CD, one quadrant consists of 16 annular strips (rings) with a pitch of 2 mm, while the back consists of 24 sector (radial) strips with a pitch of 3.5$^\circ$. The innermost strip has an inner radius of the active area of 9 mm, while the outermost strip has an outer radius of the active area of 40.9 mm. There are in total 160 discrete detector elements for all four quadrants (64 in front, 96 in back). Each quadrant is connected to its own Analog to Digital Converter (ADC). Because of lack of available channels in the ADC, the sector strips in the back are paired up, so that it is effectively 12 sector strips in the back side. The CD detector has a total area of 5000 mm$^2$, where the active area is approximately 93$\%$. The silicon wafer thickness is between 50 $\mu$m and 1000 $\mu$m with a dead layer of 0.3 to 0.8 $\mu$m. For simplicity the dead layer thickness is usually assumed to be 0.7 $\mu$m \cite{NWarr-CD, MB-spect}. \autoref{tab:CD_spec} shows some of the specifications of the CD and \autoref{fig:CD-FB} shows a sketch of the front and back side. The distance from the target to the CD is 26.98 mm ($\pm$ 1 mm). In the laboratory (LAB) reference frame the CD has a angular coverage between 18.4$^\circ$ and 56.6$^\circ$. An extensive description of the CD can be found in \cite{CD-DSSSD}.
+To detect the scattered beam and target nuclei, a segmented Double Sided Silicon Strip Detector (DSSSD) composed of four quadrants was used. The DSSSD looks very like an audio Compact Disc (CD), and hence it is called the CD. In the front of the CD, one quadrant consists of 16 annular strips (rings) with a pitch of 2 mm, while the back consists of 24 sector (radial) strips with a pitch of 3.5$^\circ$. The innermost strip has an inner radius of the active area of 9 mm, while the outermost strip has an outer radius of the active area of 40.9 mm. There are in total 160 discrete detector elements for all four quadrants (64 in front, 96 in back). Each quadrant is connected to its own Analog to Digital Converter (ADC). Because of lack of available channels in the ADC, the sector strips in the back are paired up, so that it is effectively 12 sector strips in the back side. The CD detector has a total area of 5000 mm$^2$, where the active area is approximately 93$\%$. The silicon wafer thickness is between 50 $\mu$m and 1000 $\mu$m with a dead layer of 0.3 to 0.8 $\mu$m of aluminium. For simplicity the dead layer thickness is usually assumed to be 0.7 $\mu$m \cite{NWarr-CD, MB-spect}. \autoref{tab:CD_spec} shows some of the specifications of the CD and \autoref{fig:CD-FB} shows a sketch of the front and back side. The distance from the target to the CD is 26.98 mm ($\pm$ 1 mm). In the laboratory (LAB) reference frame the CD has a angular coverage between 18.4$^\circ$ and 56.6$^\circ$. An extensive description of the CD can be found in \cite{CD-DSSSD}.
 
 \begin{table}[ht] 
     \centering 
@@ -598,7 +602,7 @@ In Coulomb excitation experiments the target chamber is surrounded by the \ga\ d
 
 
 \section{Data acquisition system}
-Signals from the CD and the HPGe clusters are read out by the ADC and Digital Gamma Finder (DGF) modules and sent to a Personal Computer (PC) in the Data AcQuisition (DAQ) room at ISOLDE where the data is then stored. The collection of data is done by the \MBOU\ \cite{Maraboou} DAQ system \cite{MB-spect}. It is split in two parts as shown in \autoref{fig:MARaBOOU}, one front-end part based on the multi branch system (MBS) \cite{MBS} and one back-end part based on the ROOT framework \cite{ROOT}. The front-end takes care of data readout, event building and data transportation, while the back-end takes care of the setup, run control, histogramming, data analysis and data storage. The system can manage high counting rates without dead time, where the limitation is essentially only pile-up. The ADCs and TDCs can buffer up to 32 events at a time \cite{MB-spect}. 
+Signals from the CD and the HPGe clusters are read out by the ADC and Digital Gamma Finder (DGF) modules and sent to a Personal Computer (PC) in the Data AcQuisition (DAQ) room at ISOLDE where the data is then stored. The collection of data is done by the \MBOU\ \cite{Maraboou} DAQ system \cite{MB-spect}. It is split in two parts as shown in \autoref{fig:MARaBOOU}, one front-end part based on the Multi Branch System (MBS) \cite{MBS} and one back-end part based on the ROOT framework \cite{ROOT}. The front-end takes care of data readout, event building and data transportation, while the back-end takes care of the setup, run control, histogramming, data analysis and data storage. The system can manage high counting rates without dead time, where the limitation is essentially only pile-up. The ADCs and TDCs can buffer up to 32 events at a time \cite{MB-spect}. 
 
 
 \begin{figure}[ht]
@@ -615,198 +619,96 @@ Signals from the CD and the HPGe clusters are read out by the ADC and Digital Ga
 
 \chapter{Data calibration and analysis}  
 
-\textcolor{Magenta}{Tilbakemelding: \newline
-First: explain the tasks and give the bigger picture of what needs to be done: \newline 
-starting point: Raw data in list mode: ID, E, T, ID, E, T, ... (basically) \newline
-what you want: Doppler-corrected $\gamma$-spectra with various conditions on particles, angles, etc. \newline
-procedure: 3 steps: \newline 
-1. convert raw data to ROOT format \newline
-2. event-building: \newline
-$\bullet$ calibrate detectors, apply thresholds, etc. \newline
-$\bullet$ use correlations to build events: particle-$\gamma$ coincidences \newline
-$\bullet$ store everything in a tree structure for easy access \newline
-3. apply gates on particles and perform Doppler correction \newline
---------- \newline
-Could be nice to have a ''cook book'', i.e. step-by-step explanation of this procedure.
-}
+\section{Data handling}
+The raw data from Miniball experiments essentially\footnote{The format is not entirely correct, since it has identification of where the particle and \ga\ hit. A more detailed format could be: time, cluster, crystal, sector, ring/strip, energy, etc.} comes in list mode (identification, energy, time), where every line is an event. It is stored in \textbf{.med}-files (MBS Event Data, or also known as Miniball Event Data) with the naming convention \textit{140Sm\_208Pb\_pos6\_0xy.med}, where \textit{x} and \textit{y} are numbers between 0 and 9. The goal of the data is to obtain Doppler-corrected \ga-spectra with various conditions on particles and angles, in order to analyse the Coulomb excitation of \Sm. 
 
-\bigskip
+An analysis code named \textsl{MiniballCoulexSort} \cite{MBCS} written in C/C++ is the preferred code to use for Miniball experiment data. It is under constant development under the management of Dr. Liam Gaffney\footnote{Dr. Liam Gaffney is a research fellow at ISOLDE, affiliated with Miniball.}. The main steps of how to download, install and use it is outlined in the \texttt{README.md} file in the GitHub repository for Miniball, linked in the reference. To get from the raw data to the Doppler-corrected \ga-spectra, the code is broken down in a three step procedure:
 
-ROOT: analysere data \cite{ROOT}
+\begin{enumerate}
+	\item \texttt{MedToRoot}
+	\begin{itemize}
+		\item converts the raw data to ROOT format
+	\end{itemize}
+	\item \texttt{TreeBuilder}
+	\begin{itemize}
+		\item event building
+		\begin{itemize}
+			\item calibrate detectors and apply thresholds
+			\item use particle-\ga\ coincidences (correlations) to build events
+			\item store everything in a three structure for easy access
+		\end{itemize}
+	\end{itemize}
+	\item \texttt{CLXAna}
+	\begin{itemize}
+		\item apply gates on particles and perform Doppler correction
+	\end{itemize}
+\end{enumerate}
 
-kinsim3 \cite{kinsim} + SRIM \cite{SRIM}
-
-MiniballCoulexSort \cite{MBCS}
-
-\bigskip
-
-\autoref{tab:CD_angles} shows the mid strip CD angles in the laboratory frame for the front of the CD. 
-
-\begin{table}[ht] 
-    \centering 
-    \caption{Mid ring CD angles in laboratory frame with distance from target to CD of 26.98 mm. The centroid energy is from simulation with kinsim3. $E_t$ is the energy of the target particle and $E_b$ is the energy of the beam particle.}
-	\input{Table-data/CD.tex}
-	\label{tab:CD_angles}
-\end{table}
-
-\bigskip
-
-\begin{figure}[ht]
-	\centering
-	\input{Images/MB-angles.tikz}
-	\caption{Miniball angles, where $i$ denotes cluster number from \autoref{tab:Geo}.}
-	\label{fig:MB-angles}
-\end{figure}
-
-For Miniball geometry (angles) \cite{NWarr-Angles}. 
-
-\begin{table}[ht] 
-	\centering 
-	\caption{Geometry to the center of the Miniball HPGe clusters (red dot in \autoref{fig:MB-angles}) for the Doppler correction.}
-	\input{Table-data/Geometry.tex}
-	\label{tab:Geo}
-\end{table}
-
-\bigskip
-
-\begin{table}[H] 
-\centering 
-\caption{Computer used for data analysis}
-\label{tab:PC}
-\begin{tabular}{ll}
-\hline
-Model & MacBook Air (13-inch, 2017) \\
-\hline
-Processor & 1.8 GHz (Intel Core i5) \\
-Memory & 8 GB (1600 MHz DDR3) \\
-\hline
-\end{tabular}
-\end{table}
-
-Run time for sorting data: \newline
-TreeBuilder (online calibration): $\sim$ 40-45 min \newline
-AQ4Sort (online calibration): $\sim$ 120 min
-
-\begin{table}[H] 
-\centering 
-\caption{Run time for sorting data.}
-\label{tab:run_time}
-\begin{tabular}{ll}
-\hline
-Executable & Run time [min] \\
-\hline
-TreeBuilder & $\sim$ 45 \\
-AQ4Sort & $\sim$ 120 \\
-\hline
-\end{tabular}
-\end{table}
-
-The run time of the bash script was done with the built in script time
-
-\begin{lstlisting}[language=sh]
-$ time ./AQ4S.sh Sm online TB
-...
-real	45m19.265s
-user	42m49.653s
-sys	0m39.665s
-\end{lstlisting}
+One program that is mentioned in the Miniball GitHub repository, but not showed how to use, is the \texttt{AQ4Sort}. It is used in the same way as the \texttt{TreeBuilder} script, but it sorts the histograms in another way. 
+This program is used before and during the calibration of the detectors, because it gives information about every single ring and every single back strip (the pixels of the detectors). The one thing to note here, is that the numbering of the detector rings and strips are different from the ones used in \texttt{TreeBuilder}. The histograms sorted by \texttt{TreeBuilder} starts counting from 0 and the \texttt{AQ4Sort} starts counting from 1. 
 
 
-\begin{lstlisting}[language=sh]
-$ time ./AQ4S.sh Sm online Q4
-...
-real	121m40.830s
-user	116m18.361s
-sys	1m17.809s
-\end{lstlisting}
 
 
-\begin{lstlisting}[language=sh]
-$ time ./AQ4S.sh Sm user TB
-...
-real	41m11.282s
-user	39m45.592s
-sys	0m27.777s
-\end{lstlisting}
+\section{Conversion}
+In order to analyze the data in the ROOT\footnote{ROOT is a data analysis framework written in C/C++ made at CERN.} framework, the first part of the code is just to convert the \textbf{.med}-files produced by \MBOU\ into \textbf{.root}-files with the program \texttt{MedToRoot}. In order to not copy and paste the commands used with \texttt{MedToRoot} in the terminal for every data file, I made a bash script called \texttt{M2R.sh} to do this. It uses \texttt{MedToRoot} to take in as many files as you want, and convert it in one go. It takes one command line argument because it was initially developed to sort different elements, so it is fairly simple to expand. By not using any command line arguments, the script will print out how to use it. An example of the use with terminal output for \textbf{.med}-file \textit{xy = 08} is as follows:
 
-
-\begin{lstlisting}[language=sh]
-$ time ./AQ4S.sh Sm user Q4
-...
-real	143m47.600s
-user	128m6.174s
-sys	1m50.921s
-\end{lstlisting}
-
-\bigskip
-
-MedToRoot: file 9
 % Empty language = plain text
 \begin{lstlisting}[language=] 
 $ ./M2R.sh Sm
-opening file ../../Raw_data/Sm/140Sm_208Pb_pos6_009.med ...
+opening file ../../Raw_data/Sm/140Sm_208Pb_pos6_008.med ...
 EventBuffer::EventBuffer(GlobalSettings *)
 Processing event number       0
 Start trigger #14
 
-Processing event number   40000
+Processing event number  130000
 Stop trigger #15
 
 
-Unpacked 47268 events:
+Unpacked 132802 events:
 wrong dgf hit pattern:                      0 ( 0.0 %)
 wrong adc headers:                          0 ( 0.0 %)
-# of overflows in adc channels:        147009 (311.0 %)
+# of overflows in adc channels:        599712 (451.6 %)
 # of underflows in adc channels:            0 ( 0.0 %)
 pattern unit mismatches:                    0 ( 0.0 %)
 
-Number of ebis pulses:            23584
-Number of t1 pulses:                717
-Number of supercycle pulses:        153
-committed         351 320 654  bytes to tree tr, 'Tree for on beam data of Coulex setup@Miniball'
-and                 4 889 999  bytes to tree bg, 'Tree for on beam background data of Coulex setup@Miniball'
-and                68 650 177  bytes to tree tr, 'Tree for off beam data of Coulex setup@Miniball'
-wrote                  63 916  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_009_OnBeam.root 	=> compressed by a factor of 5496.6
-,                       9 451  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_009_OnBeamBackground.root 	=> compressed by a factor of 517.4
-,                      44 809  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_009_OffBeam.root 	=> compressed by a factor of 1532.1
-and                    12 904  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_009_Scaler.root 	=> compressed by a factor of 1690.2
+Number of ebis pulses:            66351
+Number of t1 pulses:               2211
+Number of supercycle pulses:        429
+committed       1 243 951 987  bytes to tree tr, 'Tree for on beam data of Coulex setup@Miniball'
+and                15 338 250  bytes to tree bg, 'Tree for on beam background data of Coulex setup@Miniball'
+and               237 454 436  bytes to tree tr, 'Tree for off beam data of Coulex setup@Miniball'
+wrote                  97 189  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_008_OnBeam.root 	=> compressed by a factor of 12799.3
+,                      18 362  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_008_OnBeamBackground.root 	=> compressed by a factor of 835.3
+,                      67 934  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_008_OffBeam.root 	=> compressed by a factor of 3495.4
+and                    22 167  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_008_Scaler.root 	=> compressed by a factor of 2769.1
 \end{lstlisting}
 
-
-MedToRoot: file 25
-\begin{lstlisting}[language=]
-$ ./M2R.sh Sm
-opening file ../../Raw_data/Sm/140Sm_208Pb_pos6_025.med ...
-EventBuffer::EventBuffer(GlobalSettings *)
-Processing event number       0
-Start trigger #14
-
-Processing event number  100000
-Stop trigger #15
+\texttt{MedToRoot} outputs four files with the naming convention
+\begin{itemize}
+	\item \textit{140Sm\_208Pb\_pos6\_0xy\_OnBeam.root} 
+	\item \textit{140Sm\_208Pb\_pos6\_0xy\_OnBeamBackground.root}
+	\item \textit{140Sm\_208Pb\_pos6\_0xy\_OffBeam.root}
+	\item \textit{140Sm\_208Pb\_pos6\_0xy\_Scaler.root} 
+\end{itemize}
+where the file of interest is the first one. The \textit{OnBeam}-files are the files used in the sorting and event building with \texttt{TreeBuilder} (and/or \texttt{AQ4Sort}).
 
 
-Unpacked 105352 events:
-wrong dgf hit pattern:                      0 ( 0.0 %)
-wrong adc headers:                          0 ( 0.0 %)
-# of overflows in adc channels:        535143 (508.0 %)
-# of underflows in adc channels:            0 ( 0.0 %)
-pattern unit mismatches:                    0 ( 0.0 %)
+\subsubsection{\textcolor{red}{TODO: Run timing on M2R.sh}}
 
-Number of ebis pulses:            52626
-Number of t1 pulses:               1904
-Number of supercycle pulses:        150
-committed       1  68 292 586  bytes to tree tr, 'Tree for on beam data of Coulex setup@Miniball'
-and                12 475  16  bytes to tree bg, 'Tree for on beam background data of Coulex setup@Miniball'
-and               213 620 380  bytes to tree tr, 'Tree for off beam data of Coulex setup@Miniball'
-wrote                  95 604  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_025_OnBeam.root 	=> compressed by a factor of 11174.1
-,                      16 636  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_025_OnBeamBackground.root 	=> compressed by a factor of 749.9
-,                      64 319  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_025_OffBeam.root 	=> compressed by a factor of 3321.3
-and                    20 646  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_025_Scaler.root 	=> compressed by a factor of 2080.6
-\end{lstlisting}
 
-\bigskip
+\section{Sorting and event building}
 
-\subsubsection{TreeBuilder}
+\textit{140Sm\_208Pb\_pos6\_0xy\_OnBeam.root} 
+
+
+\section*{\textcolor{red}{Skriv om kalibrering og sortering samtidig, siden det henger sammen i "steg 2". Sjekk notater og tilbakemeldinger lengre ned for tips!}}
+
+
+
+
+
+\subsection{TreeBuilder}
 \begin{lstlisting}[language=]
 $ ./Q4S.sh Sm user TB
 --- TreeBuilder ---
@@ -824,7 +726,7 @@ Finished.
 \end{lstlisting}
 
 
-\subsubsection{AQ4Sort}
+\subsection{AQ4Sort}
 \begin{lstlisting}[language=]
 $ ./Q4S.sh Sm user Q4
 Info: No flag option for 'AQ4Sort'. Ignoring optional flag.
@@ -835,96 +737,85 @@ input file(s):
 output file: Sm_user-AQ4Sort-2019-06-24.root
 \end{lstlisting}
 
-\subsubsection{CLXAna}
-\begin{lstlisting}[language=]
-$ ./Coulex.sh -n
---- Coulex: normal ---
-Input parameters:
-Zb = 62
-Ab = 140
-Zt = 82
-At = 208
-Eb = 4650 keV/u
-Ex = 531 keV
-thick = 1.4 mg/cm2
-depth = 0.7 mg/cm2
-cddist = 26.98 mm
-cdoffset = 242.6 degrees
-deadlayer = 0.0007 mm
-contaminant = -1 mg/cm2
-spededist = 23.6 mm
-bg_frac = -0.75
-srim = /Users/trondwj/GitHub/MasterThesis/SRIM
-cutfile = ../../Sorted_data/outputfile.root:Bcut:Tcut
-Begin g_clx loop.
-Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/140Sm_208Pb.pdf has been created
-Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/208Pb_208Pb.pdf has been created
-Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/140Sm_Si.pdf has been created
-Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/208Pb_Si.pdf has been created
-Initialising histograms...
-Looping over events...
-Warning in <TClass::Init>: no dictionary for class trevts is available
-1-particle events = 89020258%)    
-Finished.
-\end{lstlisting}
 
 
-\subsubsection{hadd}
-After saving "part" from CLXAna-file:
-\begin{lstlisting}[language=]
-$ cd GitHub/ROOT-framework/build/bin
-$ hadd /Users/trondwj/GitHub/MasterThesis/Sorted_data/outputfile.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/part.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Bcut.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Tcut.root 
-\end{lstlisting}
+\section{Calibration}
+\subsection{Calibration of the particle detector}
 
+Assuming a linear correlation between the energy $E$ of the particle and the channel number $n$ of the ADC, we get
+\begin{equation}\label{eq:Ego}
+	E = g \cdot n + a
+\end{equation}
+where $a$ is the offset in keV and $g$ is the gain in keV/$n$. The offset $a$ can be expressed easily from \autoref{eq:Ego} as 
+\begin{equation}\label{eq:offset}
+	a = E - g \cdot n 
+\end{equation}
+To find the gain $g$, we need at least two measuring points, e.g. the peak energy of Sm and the peak energy of Pb for a given angle. The relationship can be written as 
+\begin{equation}\label{eq:gain}
+	g = \frac{E_{\text{Sm}} - E_{\text{Pb}}}{n_{\text{Sm}} - n_{\text{Pb}}}
+\end{equation}
 
-\subsubsection{•}
-\begin{lstlisting}[language=]
-\end{lstlisting}
+On the front side of the CD we only have two measuring points. By doing a Gaussian fit, we can get the centroids (channels of the peaks) for both Sm and Pb. 
 
+On the back side of the CD we have two peaks per secular strip that we can fit. 
 
-\bigskip
-
-particle-gamma and particle-gamma-gamma coincidence
-
-\textcolor{red}{sjekk opp om energi fra online kalibrering passer med simuleringen.}
-
-\section{Data and sorting}
-
-
-
-
-Gamma: \\
-core ID from 0 to 23 \\
-segment ID from 0 to 6 (zero is the core) \\
-cluster ID from 0 to 7 \\
 
 ADC: \\
 annular (front) strip ID of particle (0 = outer; 15 inner) \\
 secular (back) strip ID of particle (0 to 12; clockwise wrt beam) \\
 
-\textcolor{red}{From offl\_root\_med.pdf} \\
-"Direction of the central axis of the detector $(r, \theta, \phi)$ and the notation about the axis of the cluster ($\alpha$), \textcolor{red}{is this correct??}. Needed to calculate the positions of the segments or the position of a point determined bye the pulse-shape a analysis.
-
-In order to perform the Doppler shift, we need to know the angle in the Miniball frame of reference of the interaction point. We determine the interaction point either from the segment with the largest energy or using pulse-shape analysis. In the former case, we need to know the position of the centre of each segment. In the latter, we need geometrical information to relate the time-to-steepest slope and ratio of the mirror charge amplitudes to the angle between the interaction point, the target and the emitted particle."
+\subsubsection{User calibration}
 
 
+must remove the inner ring from data analysis because of damage
+
+\textcolor{red}{Hvis man har flere sentroider bruker man bare lineær regresjon. Gjelder spesielt for baksiden!}
+
+\begin{figure}[ht]
+	\centering
+	%\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-user-new-cal.pdf}
+	\caption{User calibration.}
+	\label{fig:cal_user}
+\end{figure}
 
 
 
-The analysis code for Miniball data is named MiniballCoulexSort and is available on GitHub at \url{https://github.com/Miniball/MiniballCoulexSort}. 
-The main steps of how to download, install and use it is outlined in the README.md file in the GitHub repository. 
+\subsubsection{Online calibration}
 
-Data from Miniball comes in the form of .med-files (Miniball Event Data). 
-In order to analyze this data in ROOT\footnote{ROOT is a data analysis framework made at CERN.} the first part of the sorting is just to convert the .med-files into .root-files with the script MedToRoot. 
+\begin{figure}[ht]
+	\centering
+	%\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-online.pdf}
+	\caption{Online calibration.}
+	\label{fig:cal_online}
+\end{figure}
+
+
+\subsection{Calibration of the \texorpdfstring{$\gamma$}{Gamma} detectors}
+
+DGF: Digital \ga~ finder
+
+addback, singles, ...
+
+
+\begin{table}[ht] 
+	\centering 
+	\caption{DGF}
+	\input{Table-data/DGF.tex}
+	\label{tab:DGF}
+\end{table}
+
+
+
+\section{Data analysis}
+
+
+
+\subsection{\textcolor{red}{Notes to section}}
 
 To get useful information out of the converted .root-files, the Treebuilder script is used. 
 The .root-file(s) and a calibration file is given to the Treebuilder so it can make event trees that can be used for analyzing the Coulomb excitation events. 
 
-One script that is mentioned in the Miniball GitHub repository, but not showed how to use, is the AQ4Sort. It is used in the same way as the TreeBuilder script, but it sorts the histograms in another way. 
-This script is used before and during the calibration of the detectors, because it gives information about every single ring and every single back strip. The one thing to note here, is that the numbering of the detector rings and strips are different from the ones used in Treebuilder. 
 
-
-The histograms sorted by Treebuilder starts counting from 0 and the AQ4Sort starts counting from 1. 
 
 The ADC spectras from the file sorted by Treebuilder have a naming convention of adc\_q\_s, where $q$ corresponds to the quadrant and $s$ corresponds to the channel. The front energy is saved in adc\_[0-3]\_[0-15] and the back energy from strips 1-12 from all 16 rings (the whole quadrant) is saved in adc\_[0-3]\_[16-27].
 
@@ -965,18 +856,23 @@ Don't blame me for the naming convention, I did not write the code. I just tried
 \end{table}
 
 
-\subsection{\textcolor{red}{???}}
-The Miniball spectrometer \cite{MB-spect} \newline
-p. 8: \newline
-\textbf{Efficiency and resolution:}
-left bottom: \newline
-The application of an add-back (AB) routine involves the summing of the energies of two coincident gamma rays within 100 ns in neighboring cores on the same cluster detector. This situation corresponds to a Compton-scattered \ga-ray event where the energy of the \ga-ray is shared between two or more crystals in the same triple cluster detector. For higher-energy \ga-rays, where scattering from one crystal into its neighbor is quite likely, this improves the efficiency, but for low-energy \ga-rays, where scattering is less likely, summing effects actually reduce the efficiency. For this reason a cut-off is normally applied and AB is only performed for energies above this threshold. \newline
+\subsection{Helping scripts}
+\textcolor{Magenta}{Tilbakemelding: \newline 
+if you try to write this step-by-step cook book, you could introduce your scripts wherever is the right place to use them. 
+}
 
 
-\section{Helping scripts}
-All of my scripts are available in the GitHub repository \url{https://github.com/wiggoen/MasterThesis}.
+\begin{enumerate}
+	\item \texttt{Q4S.sh}
+	\begin{itemize}
+		\item uses either \texttt{AQ4Sort} to make histograms for each pixel of the particle detector (used for calibration) or \texttt{Treebuilder} to build events with a lot of files in one go. 
+	\end{itemize}
+	\item 
+	\begin{itemize}
+	
+	\end{itemize}
+\end{enumerate}
 
-In order to not copy and paste the sorting command in the terminal for every data file, I made two bash scripts to do this. The script \textbf{M2R.sh} is using MedToRoot to take in as many files as you want, and sort it in one go. The other script is \textbf{AQ4S.sh}, which is using either AQ4Sort or Treebuilder to sort a lot of files in one go. 
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
 you should have a list of all the files with comments: in-beam data, calibration, laser on-off, problems, which ones can be used and which can not.
@@ -986,14 +882,133 @@ I also made other helping scripts to get histograms, do fitting, comparison and 
 
 My scripts: MultiFit.cpp, MultiPlot.cpp, ++ (python, bash,..)
 
-\textcolor{Magenta}{Tilbakemelding: \newline 
-if you try to write this step-by-step cook book, you could introduce your scripts wherever is the right place to use them. 
-}
+\section*{\textcolor{red}{Notes}}
+
+\bigskip
+
+ROOT: analysere data \cite{ROOT}
+
+kinsim3 \cite{kinsim} + SRIM \cite{SRIM}
+
+MiniballCoulexSort \cite{MBCS}
+
+\bigskip
+
+\autoref{tab:CD_angles} shows the mid strip CD angles in the laboratory frame for the front of the CD. 
+
+\begin{table}[ht] 
+    \centering 
+    \caption{Mid ring CD angles in laboratory frame with distance from target to CD of 26.98 mm. The centroid energy is from simulation with kinsim3. $E_t$ is the energy of the target particle and $E_b$ is the energy of the beam particle.}
+	\input{Table-data/CD.tex}
+	\label{tab:CD_angles}
+\end{table}
+
+\bigskip
+
+\begin{figure}[ht]
+	\centering
+	\input{Images/MB-angles.tikz}
+	\caption{Miniball angles, where $i$ denotes cluster number from \autoref{tab:Geo}.}
+	\label{fig:MB-angles}
+\end{figure}
+
+For Miniball geometry (angles) \cite{NWarr-Angles}. 
+
+\begin{table}[ht] 
+	\centering 
+	\caption{Geometry to the center of the Miniball HPGe clusters (red dot in \autoref{fig:MB-angles}) for the Doppler correction.}
+	\input{Table-data/Geometry.tex}
+	\label{tab:Geo}
+\end{table}
+
+
+
+\subsubsection{CLXAna}
+\begin{lstlisting}[language=]
+$ ./Coulex.sh -n
+--- Coulex: normal ---
+Input parameters:
+Zb = 62
+Ab = 140
+Zt = 82
+At = 208
+Eb = 4650 keV/u
+Ex = 531 keV
+thick = 1.4 mg/cm2
+depth = 0.7 mg/cm2
+cddist = 26.98 mm
+cdoffset = 242.6 degrees
+deadlayer = 0.0007 mm
+contaminant = -1 mg/cm2
+spededist = 23.6 mm
+bg_frac = -0.75
+srim = /Users/trondwj/GitHub/MasterThesis/SRIM
+cutfile = ../../Sorted_data/outputfile.root:Bcut:Tcut
+Begin g_clx loop.
+Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/140Sm_208Pb.pdf has been created
+Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/208Pb_208Pb.pdf has been created
+Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/140Sm_Si.pdf has been created
+Info in <TCanvas::Print>: pdf file /Users/trondwj/GitHub/MasterThesis/SRIM/208Pb_Si.pdf has been created
+Initialising histograms...
+Looping over events...
+Warning in <TClass::Init>: no dictionary for class trevts is available
+1-particle events = 89020258%)    
+Finished.
+\end{lstlisting}
+
+
+\subsubsection{hadd (from ROOT)}
+After saving "part" from CLXAna-file:
+\begin{lstlisting}[language=]
+$ cd GitHub/ROOT-framework/build/bin
+$ hadd /Users/trondwj/GitHub/MasterThesis/Sorted_data/outputfile.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/part.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Bcut.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Tcut.root 
+\end{lstlisting}
+
+
+
+\bigskip
+
+particle-gamma and particle-gamma-gamma coincidence
+
+\textcolor{red}{sjekk opp om energi fra online kalibrering passer med simuleringen.}
+
+\section{\textcolor{red}{Data and sorting notes}}
+
+
+
+
+Gamma: \\
+core ID from 0 to 23 \\
+segment ID from 0 to 6 (zero is the core) \\
+cluster ID from 0 to 7 \\
+
+
+
+\textcolor{red}{From offl\_root\_med.pdf} \\
+"Direction of the central axis of the detector $(r, \theta, \phi)$ and the notation about the axis of the cluster ($\alpha$), \textcolor{red}{is this correct??}. Needed to calculate the positions of the segments or the position of a point determined bye the pulse-shape a analysis.
+
+In order to perform the Doppler shift, we need to know the angle in the Miniball frame of reference of the interaction point. We determine the interaction point either from the segment with the largest energy or using pulse-shape analysis. In the former case, we need to know the position of the centre of each segment. In the latter, we need geometrical information to relate the time-to-steepest slope and ratio of the mirror charge amplitudes to the angle between the interaction point, the target and the emitted particle." \newline
+\textcolor{red}{---}
+
+
+
+
+
+
+\subsection{\textcolor{red}{???}}
+The Miniball spectrometer \cite{MB-spect} \newline
+p. 8: \newline
+\textbf{Efficiency and resolution:}
+left bottom: \newline
+The application of an add-back (AB) routine involves the summing of the energies of two coincident gamma rays within 100 ns in neighboring cores on the same cluster detector. This situation corresponds to a Compton-scattered \ga-ray event where the energy of the \ga-ray is shared between two or more crystals in the same triple cluster detector. For higher-energy \ga-rays, where scattering from one crystal into its neighbor is quite likely, this improves the efficiency, but for low-energy \ga-rays, where scattering is less likely, summing effects actually reduce the efficiency. For this reason a cut-off is normally applied and AB is only performed for energies above this threshold. \newline
+
+
+
 
 
 \section{Simulation}
 To calibrate the data, we need to know the expected energy of the centroids of the peaks. 
-This was done by simulating the experiment in a program called kinsim3. The program is written by Liam Gaffney\footnote{Liam Gaffney is a fellow at ISOLDE, affiliated with MINIBALL.} and the purpose of the program is to simulate the kinematics of the experiment. 
+This was done by simulating the experiment in a program called kinsim3. The program is written by Liam Gaffney and the purpose of the program is to simulate the kinematics of the experiment. 
 It takes into account the Silicon dead layer. 
 
 kinsim3 generates pdf-files of the stopping powers automatically. 
@@ -1284,63 +1299,6 @@ root [1] check_cd_debug("setup_Sm.txt")
 \end{figure}
 
 
-\subsection{Particle detector}
-
-
-\subsubsection{User calibration}
-ADC: Analog to digital converter (Mesytec)
-
-TDC: Time to digital converter
-
-DSSSD: Double-Sided Silicon Strip Detector $\implies$ CD
-
-must remove the inner ring from data analysis because of damage
-
-\begin{align*}
-	\text{gain} = \frac{E_{\text{Sm}} - E_{\text{Pb}}}{Ch_{\text{Sm}} - Ch_{\text{Pb}}}
-\end{align*}
-
-\begin{align*}
-	\text{offset} = E_{\text{Sm}} - \text{gain} \cdot Ch_{\text{Sm}}
-\end{align*}
-in keV.
-
-\textcolor{red}{Hvis man har flere sentroider bruker man bare lineær regresjon. Gjelder spesielt for baksiden!}
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-user-new-cal.pdf}
-	\caption{User calibration.}
-	\label{fig:cal_user}
-\end{figure}
-
-
-
-\subsubsection{Online calibration}
-
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-online.pdf}
-	\caption{Online calibration.}
-	\label{fig:cal_online}
-\end{figure}
-
-
-
-\subsection{Gamma detectors}
-
-DGF: Digital \ga~ finder
-
-addback, singles, ...
-
-
-\begin{table}[ht] 
-	\centering 
-	\caption{DGF}
-	\input{Table-data/DGF.tex}
-	\label{tab:DGF}
-\end{table}
 
 
 \section{Doppler correction}
@@ -1391,6 +1349,11 @@ $\bullet$ discussion: if you get \ga-spectrum for \Sm\ $\rightarrow$ to explain 
 
 Future work: Better calibration of particle detectors (online not perfect). Take into account the shape of the peaks $\implies$ calibrate the particle detectors manually.. Takes a lot of time! But maybe less than trying to fit all in a script? Had I just known...
 
+\bigskip
+
+Efficiency calibration ++
+
+\bigskip
 
 \textcolor{red}{Fra oppgaveteksten:} \newline
 determine Coulomb excitation yields. These yields will then, in a second step, be compared to theoretical calculations and transition probabilities and quadrupole moments will be extracted using chi-square minimization procedures.
@@ -1429,6 +1392,60 @@ GOSIA and GOSIA2 analysis?
 	\centering 
 	\caption{Table of acronyms and abbreviations.}
 	\input{Table-data/Acronyms-and-abbreviations.tex}
+\end{table}
+
+
+\chapter{Computer setup and environment}
+\section{The computer}
+The \textsl{MiniballCoulexSort} code does not require any a lot of computing power to run. \autoref{tab:PC} shows the computer with specifications used for the sorting and data analysis. Since the data from the experiment takes up about 60 GB, the limitation was with the SSD\footnote{The SSD (solid-state drive) is the internal storage device in the computer.}. When running the sorting and event-building programs, the space on the computer rapidly vanishes. 
+
+\begin{table}[H] 
+	\centering 
+	\caption{Computer used for sorting and data analysis.}
+	\label{tab:PC}
+	\begin{tabular}{ll}
+		\hline
+		Model & MacBook Air (13-inch, 2017) \\
+		\hline
+		Processor  &  1.8 GHz (Intel Core i5, dual core, 4 threads)  \\
+						 &  Max turbo frequency: 2.90 Ghz  \\
+		Memory     &  8 GB (1600 MHz DDR3)  \\
+		SSD		     &  128 GB  \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+\section{The environment}
+\subsubsection*{\textcolor{red}{Nevn den relative mappestrukturen, slik at terminal-commandoer gir mening. Både for Miniball kode og ROOT framework.}}
+
+\begin{lstlisting}[language=sh]
+/Users/trondwj/GitHub/Miniball/MiniballCoulexSort
+\end{lstlisting}
+
+\begin{lstlisting}[language=sh]
+/Users/trondwj/GitHub/Miniball/kinsim
+\end{lstlisting}
+
+\begin{lstlisting}[language=sh]
+/Users/trondwj/GitHub/ROOT-framework/build
+\end{lstlisting}
+
+
+\section{Run time}
+
+\begin{table}[H] 
+	\centering 
+	\caption{Run time for building event trees. The run time of the bash scripts was timed with the built in command line script named \texttt{time}. It depends on the number of files added for tree building.}
+	\label{tab:run_time}
+	\begin{tabular}{ll}
+		\hline
+		Executable   &  Run time [min] \\
+		\hline
+		TreeBuilder  &  $\sim$ 45   \\
+		AQ4Sort       &  $\sim$ 130  \\
+		\hline
+	\end{tabular}
 \end{table}
 
 
