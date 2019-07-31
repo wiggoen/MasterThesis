@@ -527,7 +527,7 @@ and from stable isotopes the contaminants can come from:
 \begin{figure}[ht]
 	\centering
 	\input{Images/Coulex-setup.tikz}
-	\caption{The Coulomb excitation setup at ISOLDE (experiment code: IS558). Adapted from \cite{Klintefjord}.}
+	\caption{The Coulomb excitation setup at ISOLDE (experiment code: IS558, which was titled Shape Transition and Coexistence in Neutron-Deficient Rare Earth Isotopes). Adapted from \cite{Klintefjord}.}
 	\label{fig:Coulex}
 \end{figure}
 
@@ -650,7 +650,7 @@ This program is used before and during the calibration of the detectors, because
 
 
 \section{Data conversion}
-In order to analyze the data in the ROOT\footnote{ROOT is a data analysis framework written in C/C++ made at CERN.} framework, the first part of the code is just to convert the \textbf{.med}-files produced by \MBOU\ into \textbf{.root}-files with the program \texttt{MedToRoot}. In order to not copy and paste the commands used with \texttt{MedToRoot} in the terminal for every data file, I made a bash script called \texttt{M2R.sh} to do this. It uses \texttt{MedToRoot} to take in as many files as you want, and convert it in one go. It takes one command line argument because it was initially developed to sort different elements, so it is fairly simple to expand. By not using any command line arguments, the script will print out how to use it. First all of the interesting files are converted with the M2R.sh script. An example of the use with terminal output for the \textbf{.med}-file with \textit{xy = 08} is as follows:
+In order to analyze the data in the ROOT\footnote{ROOT is a data analysis framework written in C/C++ made at CERN.} framework, the first part of the code is just to convert the \textbf{.med}-files produced by \MBOU\ into \textbf{.root}-files with the program \texttt{MedToRoot}. In order to not copy and paste the commands used with \texttt{MedToRoot} in the terminal for every data file, I made a bash script called \texttt{M2R.sh} to do this. It uses \texttt{MedToRoot} to take in as many files as you want, and convert it in one go. It takes one command line argument because it was initially developed to sort different elements, so it is fairly simple to expand. By not using any command line arguments, the script will print out how to use it. First all of the interesting files are converted with the \texttt{M2R.sh} script. An example of the use with terminal output for the \textbf{.med}-file with \textit{xy = 08} is as follows:
 
 % Empty language = plain text
 \begin{lstlisting}[language=]
@@ -684,7 +684,7 @@ wrote                  97 189  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_
 and                    22 167  bytes to file ../../Raw_data/Sm/140Sm_208Pb_pos6_008_Scaler.root 	=> compressed by a factor of 2769.1
 \end{lstlisting}
 
-For each file converted with MedToRoot, the program makes four files with the naming convention
+For each file converted with \texttt{MedToRoot}, the program makes four files with the naming convention
 \begin{itemize}
 	\item \textit{140Sm\_208Pb\_pos6\_0xy\_OnBeam.root} 
 	\item \textit{140Sm\_208Pb\_pos6\_0xy\_OnBeamBackground.root}
@@ -770,11 +770,78 @@ This is unfortunate since the innermost ring has the most statistics, but Si det
 It was old and supposed to be changed after our experiment. 
 
 
+\subsubsection*{\textcolor{red}{Online calibration}}
+Every year there is a campaign at ISOLDE, where the staff configures a settingsfile if there are any changes in the setup system. In addition they run a coctail beam composed of different isotopes on a specific target to make a calibration file. This calibration file is adjusted for each experiment following the campaign period. In this way it is easy to check during the experiment if it is going well and to make preliminary Doppler-corrected \ga-spectra. 
+
+
+
+\textcolor{red}{\textbf{Trenger en overgang til M2R.}}
+
+
+
+
+
+
+Then the OnBeam files from \texttt{M2R.sh} is run through using \texttt{TreeBuilder} in the \texttt{Q4S.sh} script. 
+
+\begin{lstlisting}[language=sh]
+$ cd ~/GitHub/MasterThesis/Scripts/sorting 
+$ ./Q4S.sh Sm user TB
+$ mv Sm_user-TreeBuilder-2019-04-10.root ../../Sorted_data/
+\end{lstlisting}
+
+
+After the sorting, I moved the file to a folder of sorted data, and gave the relative path in the setup\_Sm.txt file in Scripts/plotting/ used as input in the MultiPlot.cpp script. 
+
+
+
+
+
+
+\begin{figure}[ht]
+	\centering
+	%\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-online.pdf}
+	\caption{Online calibration.}
+	\label{fig:cal_online}
+\end{figure}
+
+
+
+\subsection*{TreeBuilder}
+\begin{lstlisting}[language=]
+$ ./Q4S.sh Sm user TB
+--- TreeBuilder ---
+input file(s):
+... <shows a list of all input files>
+output file: Sm_user-TreeBuilder-2019-06-20.root
+calibration file: ../../Miniball-config/IS558-user.cal
+WeightPR: 0.75
+Particle distribution:
+ Q0 fired: 12243817
+ Q1 fired: 12277727
+ Q2 fired: 11479362
+ Q3 fired: 10936096
+Finished.
+\end{lstlisting}
+
+
+\subsection*{AQ4Sort}
+\begin{lstlisting}[language=]
+$ ./Q4S.sh Sm user Q4
+Info: No flag option for 'AQ4Sort'. Ignoring optional flag.
+--- AQ4Sort ---
+calibration file: ../../Miniball-config/IS558-user.cal
+input file(s):
+... <shows a list of all input files>
+output file: Sm_user-AQ4Sort-2019-06-24.root
+\end{lstlisting}
+
+
 
 \subsubsection*{\textcolor{red}{Notes}}
 
 
-Simulation fit $\rightarrow$ AQ4\_fit() $\rightarrow$ particle-calibration.py $\rightarrow$  ADC\_generator.py $\rightarrow$ copy the calibration from the terminal and paste into calibration file 
+Simulation fit $\rightarrow$ Q4S\_fit() $\rightarrow$ particle-calibration.py $\rightarrow$  ADC\_generator.py $\rightarrow$ copy the calibration from the terminal and paste into calibration file 
 
 Visualize plots using ROOT and the scripts. 
 
@@ -842,48 +909,7 @@ must remove the inner ring from data analysis because of damage
 
 
 
-\subsubsection{Online calibration}
 
-\begin{figure}[ht]
-	\centering
-	%\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-online.pdf}
-	\caption{Online calibration.}
-	\label{fig:cal_online}
-\end{figure}
-
-
-
-
-
-
-\subsection*{TreeBuilder}
-\begin{lstlisting}[language=]
-$ ./Q4S.sh Sm user TB
---- TreeBuilder ---
-input file(s):
-... <shows a list of all input files>
-output file: Sm_user-TreeBuilder-2019-06-20.root
-calibration file: ../../Miniball-config/IS558-user.cal
-WeightPR: 0.75
-Particle distribution:
- Q0 fired: 12243817
- Q1 fired: 12277727
- Q2 fired: 11479362
- Q3 fired: 10936096
-Finished.
-\end{lstlisting}
-
-
-\subsection*{AQ4Sort}
-\begin{lstlisting}[language=]
-$ ./Q4S.sh Sm user Q4
-Info: No flag option for 'AQ4Sort'. Ignoring optional flag.
---- AQ4Sort ---
-calibration file: ../../Miniball-config/IS558-user.cal
-input file(s):
-... <shows a list of all input files>
-output file: Sm_user-AQ4Sort-2019-06-24.root
-\end{lstlisting}
 
 
 \section{Threshold}
@@ -963,16 +989,7 @@ root [1] check_cd_debug("setup_Sm.txt")
 
 \section{Time calibration}
 
-Then the OnBeam files from M2R.sh is run through using Treebuilder in the AQ4S.sh script. 
 
-\begin{lstlisting}[language=sh]
-$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/sorting 
-$ ./AQ4S.sh Sm user TB
-$ mv Sm_user-TreeBuilder-2019-04-10.root ../../Sorted_data/
-\end{lstlisting}
-
-
-After the sorting, I moved the file to a folder of sorted data, and gave the relative path in the setup\_Sm.txt file in Scripts/plotting/ used as input in the MultiPlot.cpp script. 
 Using the MultiPlot.cpp script, the ADC time offsets can be extracted by the following commands
 \begin{lstlisting}[language=sh]
 $ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting
@@ -1012,7 +1029,7 @@ one time spectrum per quadrant?
 \textcolor{red}{HUSK:} Si noe om ADC time offsets + Threshold. Og at man må se på det tidlig, så resortere.
 
 
-M2R.sh $\rightarrow$ AQ4S.sh$\rightarrow$ check time offset $\rightarrow$ threshold $\rightarrow$ AQ4\_fit() $\rightarrow$ particle-calibration.py $\rightarrow$  ADC\_generator.py $\rightarrow$ copy the calibration from the terminal and paste into calibration file 
+\texttt{M2R.sh} $\rightarrow$ \texttt{Q4S.sh} $\rightarrow$ check time offset $\rightarrow$ threshold $\rightarrow$ Q4S\_fit() $\rightarrow$ particle-calibration.py $\rightarrow$  ADC\_generator.py $\rightarrow$ copy the calibration from the terminal and paste into calibration file 
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
 need to explain the time spectra: start - stop \newline
@@ -1024,7 +1041,8 @@ $\rightarrow$ correlate $\gamma$-rays with particles.
 
 \section{Simulation}
 
-kinsim3 \cite{kinsim} + SRIM \cite{SRIM}
+Simulation done by kinsim3 \cite{kinsim} + SRIM-2013 \cite{SRIM} \newline
+\textcolor{red}{Say something about SRIM (the Stopping and Range of Ions in Matter) files.}
 
 \bigskip
 
@@ -1046,11 +1064,6 @@ Slowing of the particles in the target and in the dead layer of Si
 \bigskip
 
 
-CD to target distance: 26.98 mm.
-
-
-Simulation done by kinsim3
-
 \begin{figure}[H]\centering
     \includegraphics[width=\linewidth]{../Plots/simulation/kin_140Sm_208Pb.pdf}
 \end{figure}
@@ -1061,15 +1074,9 @@ simulation does not consider cross sections: in simulation all angles are equall
 }
 
 
-\textbf{--- \textcolor{red}{Mail from Liam started} ---} \newline
-"the source has a thickness of 1.23 mm, which needs to be factored in so that the CD to target distance is the CD to source distance PLUS the source thickness, i.e. 25.78 mm + 1.23 mm =  27.01 mm. 
-This is very close to the 26.98 mm you got from us in August. 
-\textcolor{red}{I think that the source data was reanalysed since the original blog entry, giving the 0.03 mm difference!}" \newline
-\textbf{--- \textcolor{red}{Mail from Liam ended} ---} \newline
-
 
 Terminal: Simulation: 140Sm on 208Pb:
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=]
 $ cd GitHub/Miniball/kinsim
 $ root
 root [0] .L kinsim3.cc+
@@ -1085,9 +1092,6 @@ void kinsim3( int Zb, int Zt, double Ab, double At, double thick /* mg/cm^2 */, 
 	long Nevts = 1E6, string srim_dir = "../srim" )
 \end{lstlisting}
 
-\bigskip
-
-\textcolor{red}{Say something about SRIM files.}
 
 \bigskip
 
@@ -1146,7 +1150,7 @@ Finished.
 
 
 \subsubsection{hadd (from ROOT)}
-After saving "part" from CLXAna-file:
+After saving "part" from \texttt{CLXAna}-file:
 \begin{lstlisting}[language=]
 $ cd GitHub/ROOT-framework/build/bin
 $ hadd /Users/trondwj/GitHub/MasterThesis/Sorted_data/outputfile.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/part.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Bcut.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Tcut.root 
@@ -1226,12 +1230,12 @@ In order to perform the Doppler shift, we need to know the angle in the Miniball
 
 \section*{\textcolor{red}{Notes to chapter}}
 
-To get useful information out of the converted .root-files, the Treebuilder script is used. 
-The .root-file(s) and a calibration file is given to the Treebuilder so it can make event trees that can be used for analyzing the Coulomb excitation events. 
+To get useful information out of the converted .root-files, the \texttt{TreeBuilder} script is used. 
+The .root-file(s) and a calibration file is given to the \texttt{TreeBuilder} so it can make event trees that can be used for analyzing the Coulomb excitation events. 
 
 
 
-The ADC spectras from the file sorted by Treebuilder have a naming convention of adc\_q\_s, where $q$ corresponds to the quadrant and $s$ corresponds to the channel. The front energy is saved in adc\_[0-3]\_[0-15] and the back energy from strips 1-12 from all 16 rings (the whole quadrant) is saved in adc\_[0-3]\_[16-27].
+The ADC spectras from the file sorted by \texttt{TreeBuilder} have a naming convention of adc\_q\_s, where $q$ corresponds to the quadrant and $s$ corresponds to the channel. The front energy is saved in adc\_[0-3]\_[0-15] and the back energy from strips 1-12 from all 16 rings (the whole quadrant) is saved in adc\_[0-3]\_[16-27].
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
 useful with a table that explains all the different channels and assigns the various detector segments/rings? (naming conventions) (appendix?)
@@ -1244,10 +1248,10 @@ useful with a table that explains all the different channels and assigns the var
 	\label{tab:TBvsAQ4}
 \end{table}
 
-adc\_0\_0 in the file sorted by Treebuilder is the same as fE\_Q1\_f1 sorted by AQ4Sort. All the front detectors can be found in the Treebuilder-sorted file, but when it comes to the back detector, the single pixels from the strips are not shown. These are available through the AQ4Sort sorted file. For the front detectors the histograms adc\_[0-3]\_[0-15] and fE\_Q[1-4]\_f[1-16] are the same. For the back detectors, we have that adc\_[0-3]\_[16-27] and bE\_Q[1-4]\_b[1-12] are the same. In addition in AQ4Sort we can see the different pixels. The histograms fE\_Q[1-4]\_f[1-16]\_b[1-12] shows the front energy of quadrant 1-4 gated on ring 1-16 and back strip 1-12, while the bE\_Q[1-4]\_f[1-16]\_b[1-12] shows the same, only for the back energy. 
+adc\_0\_0 in the file sorted by \texttt{TreeBuilder} is the same as fE\_Q1\_f1 sorted by AQ4Sort. All the front detectors can be found in the \texttt{TreeBuilder}-sorted file, but when it comes to the back detector, the single pixels from the strips are not shown. These are available through the AQ4Sort sorted file. For the front detectors the histograms adc\_[0-3]\_[0-15] and fE\_Q[1-4]\_f[1-16] are the same. For the back detectors, we have that adc\_[0-3]\_[16-27] and bE\_Q[1-4]\_b[1-12] are the same. In addition in AQ4Sort we can see the different pixels. The histograms fE\_Q[1-4]\_f[1-16]\_b[1-12] shows the front energy of quadrant 1-4 gated on ring 1-16 and back strip 1-12, while the bE\_Q[1-4]\_f[1-16]\_b[1-12] shows the same, only for the back energy. 
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
-a little confusing: is it correct that the treebuilder sort individual spectra for the front and back strips, but if you want coincidences between front and back ($\rightarrow$ pixels) you use AQ4Sort?
+a little confusing: is it correct that the \texttt{TreeBuilder} sort individual spectra for the front and back strips, but if you want coincidences between front and back ($\rightarrow$ pixels) you use AQ4Sort?
 }
 
 In the naming convention of adc\_q\_s or fE\_Qu\_fv, where $q \in [0, 1, 2, 3], s \in [0, 1, \ldots, 27]$ and $u \in [1, 2, 3, 4], v \in [1, 2, \ldots, 16]$, the $s = 0$ and $v = 1$ is the outermost ring, while $s = 15$ and $v = 16$ is the innermost ring. In our case, the innermost ring was so destroyed that we have to remove it from the data analysis.
@@ -1441,7 +1445,7 @@ The \textsl{MiniballCoulexSort} code does not require any a lot of computing pow
 
 \section{Run time}
 
-\subsubsection{\textcolor{red}{TODO: Run timing on M2R.sh}}
+\subsubsection{\textcolor{red}{TODO: Run timing on \texttt{M2R.sh}}}
 
 \begin{table}[H] 
 	\centering 
