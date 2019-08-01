@@ -118,10 +118,10 @@ class Element {
 };
 
 
-void simulation_plot(std::string setup_file, bool single_plot) {
+void simulation_plot(std::string setup_file, bool single_plots) {
   /*
       Plotting data and saving histograms simulated by kinsim3.
-      The single_plot option is for storing either single plots, 
+      The single_plots option is for storing either single plots, 
       or a all-in-one plot of the simulated rings.
   */
   ADC adc;
@@ -139,7 +139,12 @@ void simulation_plot(std::string setup_file, bool single_plot) {
   std::string histogram_name;
   std::string zero;
   
-  if (!single_plot) {
+  float label_size = 0.05;
+  float label_size_AllInOne = 0.07;
+  float margin_size = 0.13;
+  float margin_size_AllInOne = 0.14;
+
+  if (!single_plots) {
     canvas_name = element->sim_infile;
     canvas[0] = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
     canvas[0]->Divide(4, 4);
@@ -150,11 +155,20 @@ void simulation_plot(std::string setup_file, bool single_plot) {
     histogram_name = Form("cd_sim");
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw();
-    canvas[0]->SaveAs(Form("../../Plots/simulation/kin_140Sm_208Pb.pdf"));
+    histogram->SetStats(0);                      // Remove stats
+    histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
+    histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
+    histogram->GetYaxis()->SetTitleOffset(1.1);  // Move y-axis text a little closer
+    histogram->SetTitle(Form("LAB frame"));      // Change title of histogram
+    gStyle->SetTitleSize(label_size, "t");       // Title size
+    gPad->SetLeftMargin(margin_size);
+    gPad->SetRightMargin(margin_size);
+    gPad->SetBottomMargin(margin_size);
+    canvas[0]->SaveAs(Form("../../Plots/simulation/kin_140Sm_208Pb.png"));
   }
 
   for (int ring = 0; ring < adc.rings; ring++) {
-    if (!single_plot) {
+    if (!single_plots) {
       canvas[0]->cd(ring+1);
     } else {
       canvas[ring+1] = new TCanvas(histogram_name.c_str(), histogram_name.c_str(), 1280, 800); 
@@ -162,17 +176,33 @@ void simulation_plot(std::string setup_file, bool single_plot) {
     histogram_name = Form("cd_sim_%d", ring+1);
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw();
-    if (!single_plot) {
+    histogram->GetYaxis()->SetTitle("Counts");   // Change y-axis title
+    histogram->GetYaxis()->SetTitleOffset(1.1);  // Move y-axis text a little closer
+    
+    if (!single_plots) {
       histogram->SetAxisRange(0.95*element->start_bin, 1.05*element->end_bin, "X");
-      histogram->GetYaxis()->SetLabelSize(0.06);
-      histogram->GetXaxis()->SetLabelSize(0.06);
+      histogram->SetStats(0);                              // Remove stats
+      histogram->SetTitle(Form("Ring %d", ring+1));        // Changing titles
+      histogram->SetLabelSize(label_size_AllInOne, "xy");  // Label size for x- and y-axis
+      histogram->SetTitleSize(label_size_AllInOne, "xy");  // Text  size for x- and y-axis
+      gStyle->SetTitleSize(label_size_AllInOne, "t");      // Title size
+      gPad->SetLeftMargin(margin_size_AllInOne);
+      gPad->SetRightMargin(margin_size_AllInOne);
+      gPad->SetBottomMargin(0.15);
       if (ring == adc.rings-1) {
         canvas[0]->SaveAs(Form("../../Plots/simulation/cd_sim_all.pdf"));
       } 
     } else {
       // Shorthand if-else statement: (condition) ? (if_true) : (if_false);
       (ring < 9) ? zero = "0" : zero = "";
-      canvas[ring+1]->SaveAs(Form("../../Plots/simulation/cd_sim_%s%d.pdf", zero.c_str(), ring+1));
+      histogram->SetStats(0);                     // Remove stats
+      histogram->SetLabelSize(label_size, "xy");  // Label size for x- and y-axis
+      histogram->SetTitleSize(label_size, "xy");  // Text  size for x- and y-axis
+      gStyle->SetTitleSize(label_size, "t");      // Title size
+      gPad->SetLeftMargin(margin_size);
+      gPad->SetRightMargin(margin_size);
+      gPad->SetBottomMargin(margin_size);
+      canvas[ring+1]->SaveAs(Form("../../Plots/simulation/cd_sim_%s%d.png", zero.c_str(), ring+1));
     }
   }
 }
@@ -515,7 +545,7 @@ void plot_front_back_energy(std::string setup_file, std::string name_addition = 
     gPad->SetRightMargin(margin_size);
     gPad->SetBottomMargin(margin_size);
   }
-  canvas->SaveAs(Form("../../Plots/plotting/E_f_b_Q1-4%s.pdf", name_addition.c_str()));
+  canvas->SaveAs(Form("../../Plots/plotting/E_f_b_Q1-4%s.png", name_addition.c_str()));
 }
 
 

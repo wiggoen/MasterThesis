@@ -235,7 +235,7 @@ Computational Physics Group, Professor Morten Hjorth-Jensen
 
 CERN-ISOLDE, Dr. Liam Gaffney
 
-Ville Virtanen from University of Jyväskylä for tips on scripts 
+Ville Virtanen from University of Jyväskylä for tips on scripts. 
 
 Lillefy, FFU, Fysikkforeningen
 
@@ -246,7 +246,6 @@ Morten, Alex and Astrid.
 Ina, for pushing me towards excellence, I love you.
 
 \subsection*{Collaboration details}
-
 
 
 ENSAR2: European Nuclear Science and Applications Research - 2 \url{http://www.ensarfp7.eu}, UiO, ISOLDE, other contributors to the experiment?
@@ -389,7 +388,7 @@ $\bullet$ the basics of Coulomb excitation
 
 \begin{table}[ht] 
     \centering 
-    \caption{LAB vs CM. Based on LAB input angles from $\theta_b$ and $\theta_t$. From LISE++ kinematics calculator (reaction from the middle of the target).}
+    \caption{LAB vs. CM. Based on LAB input angles from $\theta_b$ and $\theta_t$. From LISE++ kinematics calculator (reaction from the middle of the target).}
 	\label{tab:LABvsCM}
     \begin{subtable}{0.45\textwidth}
     		\centering
@@ -418,7 +417,7 @@ $\bullet$ the basics of Coulomb excitation
 		\caption{Center of mass (CM) frame.}
 		\label{fig:CM}
 	\end{subfigure}
-	\caption{LAB vs CM frame.}
+	\caption{LAB vs. CM frame.}
 	\label{fig:LAB-CM}
 \end{figure}
 
@@ -618,12 +617,13 @@ Signals from the CD and the HPGe clusters are read out by the ADC and Digital Ga
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 
-\chapter{Detector calibration and data analysis}  
+\chapter{Data analysis}  
 
 \section{Data handling}
 The raw data from Miniball experiments essentially\footnote{The format is not entirely correct, since it has identification of where the particle and \ga\ hit. A more detailed format could be: time, cluster, crystal, sector, ring/strip, energy, etc.} comes in list mode (identification, energy, time), where every line is an event. It is stored in \textbf{.med}-files (MBS Event Data, or also known as Miniball Event Data) with the naming convention \textit{140Sm\_208Pb\_pos6\_0xy.med}, where \textit{x} and \textit{y} are numbers between 0 and 9. The goal of the data is to obtain Doppler-corrected \ga-spectra with various conditions on particles and angles, in order to analyse the Coulomb excitation of \Sm. 
 
-An analysis code named \textsl{MiniballCoulexSort} \cite{MBCS} written in C/C++ is the preferred code to use for Miniball experiment data. It is under constant development under the management of Dr. Liam Gaffney\footnote{Dr. Liam Gaffney is a research fellow at ISOLDE, affiliated with Miniball.}. The main steps of how to download, install and use it is outlined in the \texttt{README.md} file in the GitHub repository for Miniball, linked in the reference. To get from the raw data to the Doppler-corrected \ga-spectra, the code is broken down in a three step procedure:
+A sorting and analysis code named \textsl{MiniballCoulexSort} \cite{MBCS} written in C/C++ is the preferred code to use for Miniball experiment data. 
+It is under constant development at CERN-ISOLDE under the management of Dr. Liam Gaffney\footnote{Dr. Liam Gaffney is a research fellow at ISOLDE, affiliated with Miniball.}. The main steps of how to download, install and use it is outlined in the \texttt{README.md} file in the GitHub repository for Miniball, linked in the reference. To get from the raw data to the Doppler-corrected \ga-spectra, the code is broken down in a three step procedure:
 
 \begin{enumerate}
 	\item \texttt{MedToRoot}
@@ -645,7 +645,7 @@ An analysis code named \textsl{MiniballCoulexSort} \cite{MBCS} written in C/C++ 
 	\end{itemize}
 \end{enumerate}
 
-One program that is mentioned in the Miniball GitHub repository, but not showed how to use, is the \texttt{AQ4Sort}. It is used in the same way as the \texttt{TreeBuilder} script, but it sorts the histograms in another way. 
+One program that is mentioned in the Miniball GitHub repository, but not showed how to use, is the \texttt{AQ4Sort}. It is used in the same way as the \texttt{TreeBuilder} script, but it sorts the histograms in another way and it does not take any command line flag options. 
 This program is used before and during the calibration of the detectors, because it gives information about every single ring and every single back strip (the pixels of the detectors). The one thing to note here, is that the numbering of the detector rings and strips are different from the ones used in \texttt{TreeBuilder}. The histograms sorted by \texttt{TreeBuilder} starts counting from 0 and the \texttt{AQ4Sort} starts counting from 1. 
 
 
@@ -691,7 +691,7 @@ For each file converted with \texttt{MedToRoot}, the program makes four files wi
 	\item \textit{140Sm\_208Pb\_pos6\_0xy\_OffBeam.root}
 	\item \textit{140Sm\_208Pb\_pos6\_0xy\_Scaler.root} 
 \end{itemize}
-where the file of interest is the first one. The \textit{OnBeam}-files are the files used in the sorting and event building with \texttt{TreeBuilder} (and/or \texttt{AQ4Sort}).
+where the file of interest is the first one. The \textit{OnBeam.root}-files are the files used in the sorting and event building with \texttt{TreeBuilder} (and/or \texttt{AQ4Sort}).
 
 
 \section{Detector calibration}
@@ -723,7 +723,8 @@ The basic principle of operation is that incoming ionizing radiation\footnote{Fo
 The number of electron-hole pairs is proportional to the energy of the incoming radiation to the semiconductor \cite{WRLeo}. 
 
 
-\subsubsection{\textcolor{red}{Particle detector calibration?}}
+
+\subsection{Particle detector calibration}
 Assuming a linear correlation between the energy $E$ of the particle (\textcolor{red}{or \ga?}) and the channel number $n$ of the ADC, we get
 \begin{equation}\label{eq:Ego}
 	E = g \cdot n + a
@@ -743,10 +744,137 @@ On the front side of the CD we only have two measuring points per angle interval
 By doing a Gaussian fit, we can get the centroids (channels of the peaks) for both Sm and Pb. 
 For more than two centroids, we can use linear regression to find the best fit (this is the best option for the back side of the CD).
 
-In some spectras it is very hard to determine the centroid of the Pb peaks. 
-We tried to use additional data from experiment IS553 ($^{144}$Ba on $^{58}$Ni), which was right before our experiment. 
-The reason for this was to try to get calibration for the lower energy spectra. 
-But unfortunately the data from the IS553 experiment was a bad fit with our experiment. 
+
+
+\subsection{Online calibration}
+Every year there is a campaign at ISOLDE, where the staff configures a settingsfile if there are any changes in the setup system. In addition they run a coctail beam composed of different isotopes on a specific target to make a calibration file containing the calibration coefficients for both the CD and \ga-detectors. This calibration file is adjusted for each experiment following the campaign period. In this way it is easy to sort and analyze during the experiment if it is going well and to make preliminary Doppler-corrected \ga-spectra. 
+
+\bigskip
+
+\textcolor{red}{\textbf{Trenger en overgang til M2R.}}
+
+\bigskip
+
+
+
+Just as for the \texttt{MedToRoot} program, I made a bash script named \texttt{Q4S.sh} for the \texttt{TreeBuilder} and \texttt{AQ4Sort} programs. 
+\texttt{Q4S.sh} uses either \texttt{AQ4Sort} to make histograms for each pixel of the particle detector (used for calibration) or \texttt{Treebuilder} to build events, with a lot of files in one go for both. 
+When using the online calibration, we don't need to use the \texttt{AQ4Sort} program, because we already have the calibration coefficients. 
+They are adjusted in the beginning and during the experiment.
+The \textit{OnBeam.root}-files are loaded into \texttt{TreeBuilder} via \texttt{Q4S.sh} with the commands
+
+\begin{lstlisting}[language=sh]
+$ cd ~/GitHub/MasterThesis/Scripts/sorting 
+$ ./Q4S.sh Sm online TB
+... <showing output from script>
+$ mv Sm_online-TreeBuilder-2019-06-24.root ../../Sorted_data/
+\end{lstlisting}
+
+I also made other helping scripts to get histograms, do fitting, comparison and calibration. 
+After the sorting, I moved the file to a folder of sorted data (with the \textbf{mv} command), and gave the relative path in the \textit{setup\_Sm.txt} file in \textit{Scripts/plotting/} used as input in the \texttt{ParticlePlot.cpp} script. 
+This script has to be loaded into the ROOT 6 framework to extract the histograms of interest and fix the formatting.
+To run the \texttt{ParticlePlot.cpp} in interaction with ROOT, the following commands are used
+
+\begin{lstlisting}[language=sh]
+$ cd ~/GitHub/MasterThesis/Scripts/plotting 
+$ root
+root [0] .L ParticlePlot.cpp++
+root [1] plot_front_back_energy("setup_Sm.txt", "online")
+... <showing output from script>
+\end{lstlisting}
+
+\autoref{fig:cal_online} shows the back vs. front energy (online calibration) for the four different quadrants of the CD. 
+The plots shows a part of a line for each front and back strip. An indication of a good calibration is when all detectors lie on a linear line ($y = x$), meaning that the front side and the back side of the CD has detected the same energy. 
+From the figure we see that not all detectors fit the line, indicating that there are some calibration coefficients wrong in some of the strips.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-online.png}
+	\caption{Online calibration for the CD showing the four quadrants. It generally looks quite good, but there is a number of the secular strips (back side) that have the wrong gains.}
+	\label{fig:cal_online}
+\end{figure}
+
+
+
+\subsection{Simulation}
+
+
+To calibrate the data, we need to know the expected energy of the centroids of the peaks. 
+This was done by simulating the experiment in a program called \texttt{kinsim3} \cite{kinsim}. 
+The program is written in C++ by Dr. Liam Gaffney and the purpose of the program is to simulate the kinematics of an experiment. 
+The simulations are theoretical predictions of energy used in the calibration.
+The program uses SRIM-2013 \cite{SRIM} (the Stopping and Range of Ions in Matter) generated files relevant to the \textcolor{red}{scattering/reaction?} and it takes into account the Si dead layer. 
+
+kinsim3 generates pdf-files of the stopping powers automatically. 
+The rest of the plots are available inside the generated \textit{.root}-file. 
+To get the energy simulation for each ring, the function \textbf{simulation\_plots()} from the script \texttt{ParticlePlot.cpp} was used. 
+
+\textcolor{Magenta}{Tilbakemelding: \newline 
+what are the ingredients for this simulation? \newline
+simple 2-body kinematics: energy of projectile, scattering angle of projectile $\implies$ energy of scattered projectile, \{angle, energy\} of binary partner (target recoil) \newline
+Stopping powers (which models?) $\rightarrow$ SRIM \newline
+Slowing of the particles in the target and in the dead layer of Si
+}
+
+\bigskip
+
+
+
+Terminal: Simulation: 140Sm on 208Pb:
+\begin{lstlisting}[language=sh]
+$ cd ~/GitHub/Miniball/kinsim
+$ root
+root [0] .L kinsim3.cc+
+root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 26.98, false, 1e6, "../SRIM")
+\end{lstlisting}
+
+The SRIM-files used in this simulation can be found in \textit{MasterThesis/SRIM}.
+
+
+kinsim3 function:
+\begin{lstlisting}[language=c++]
+void kinsim3( int Zb, int Zt, double Ab, double At, 
+	double thick /* mg/cm^2 */, double Eb /* MeV/u */, 
+	double dEb = 0.1 /* MeV/u */, double Ex = 1.0 /* MeV */, 
+	double res = 0.6 /* % */, double cd_dist = 28.0 /* mm */, 
+	bool flat = false /* angular distribution? */, 
+	long Nevts = 1E6, string srim_dir = "../srim" )
+\end{lstlisting}
+
+
+\bigskip
+
+\textcolor{red}{sjekk opp om energi fra online kalibrering passer med simuleringen.}
+
+
+
+
+\begin{lstlisting}[language=sh]
+$ cd ~/GitHub/MasterThesis/Scripts/plotting
+$ root
+root [0] .L ParticlePlot.cpp++
+root [1] simulation_plot("setup_Sm.txt", 1)
+... <showing output from script>
+\end{lstlisting}
+
+
+\begin{figure}[ht]
+	\centering
+    \includegraphics[width=\linewidth]{../Plots/simulation/kin_140Sm_208Pb.png}
+	\caption{Simulation of the kinematics in the LAB frame for \Sm\ on \Pb\ at 4.65 MeV/u.}
+	\label{fig:kinsim}
+\end{figure}
+
+\textcolor{Magenta}{Tilbakemelding: \newline 
+explain figure: Sm/Pb inner ring, Sm/Pb outer ring \newline
+simulation does not consider cross sections: in simulation all angles are equally probable. The corresponding figure from your data looks therefore quite different.
+}
+
+
+
+
+\subsection{User calibration}
+
 
 My goal of the calibration was to make a program that could automatically fit the plots I needed, but it became more and more manual labor. 
 In log-scale the data looked more Gaussian distributed, but it is not the case in linear scale. 
@@ -757,6 +885,11 @@ There is just too much individual differences to calibrate the secular strips wi
 I found out this way to late. 
 There isn't any range to rule them all, at least since the fitting function can behave very strange given a too small or too big range.
 To implement a proper automatic fitting program, one would have to find a function with a negatively (left) skewed distribution or negative skewness (right modal), where most of the data is more than the mean. Sadly I discovered this too late to implement it. 
+
+In some spectras it is very hard to determine the centroid of the Pb peaks. 
+We tried to use additional data from experiment IS553 ($^{144}$Ba on $^{58}$Ni), which was right before our experiment. 
+The reason for this was to try to get calibration for the lower energy spectra. 
+But unfortunately the data from the IS553 experiment was a bad fit with our experiment. 
 
 The total amount of annular strips to calibrate on the front side of the CD is 64 (4 quadrants $\cdot$ 16 rings). 
 On the back side we have 48 secular strips (4 quadrants $\cdot$ 12 strips). 
@@ -770,44 +903,20 @@ This is unfortunate since the innermost ring has the most statistics, but Si det
 It was old and supposed to be changed after our experiment. 
 
 
-\subsubsection*{\textcolor{red}{Online calibration}}
-Every year there is a campaign at ISOLDE, where the staff configures a settingsfile if there are any changes in the setup system. In addition they run a coctail beam composed of different isotopes on a specific target to make a calibration file. This calibration file is adjusted for each experiment following the campaign period. In this way it is easy to check during the experiment if it is going well and to make preliminary Doppler-corrected \ga-spectra. 
 
+Changing the relative path in the \textit{setup\_Sm.txt} file used as input in the \texttt{ParticlePlot.cpp} script, we now have
 
-
-\textcolor{red}{\textbf{Trenger en overgang til M2R.}}
-
-
-
-
-
-
-Then the OnBeam files from \texttt{M2R.sh} is run through using \texttt{TreeBuilder} in the \texttt{Q4S.sh} script. 
 
 \begin{lstlisting}[language=sh]
 $ cd ~/GitHub/MasterThesis/Scripts/sorting 
 $ ./Q4S.sh Sm user TB
-$ mv Sm_user-TreeBuilder-2019-04-10.root ../../Sorted_data/
+...
+$ mv Sm_user-TreeBuilder-2019-06-20.root ../../Sorted_data/
 \end{lstlisting}
 
 
-After the sorting, I moved the file to a folder of sorted data, and gave the relative path in the setup\_Sm.txt file in Scripts/plotting/ used as input in the MultiPlot.cpp script. 
 
-
-
-
-
-
-\begin{figure}[ht]
-	\centering
-	%\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-online.pdf}
-	\caption{Online calibration.}
-	\label{fig:cal_online}
-\end{figure}
-
-
-
-\subsection*{TreeBuilder}
+\subsubsection*{TreeBuilder}
 \begin{lstlisting}[language=]
 $ ./Q4S.sh Sm user TB
 --- TreeBuilder ---
@@ -825,7 +934,7 @@ Finished.
 \end{lstlisting}
 
 
-\subsection*{AQ4Sort}
+\subsubsection*{AQ4Sort}
 \begin{lstlisting}[language=]
 $ ./Q4S.sh Sm user Q4
 Info: No flag option for 'AQ4Sort'. Ignoring optional flag.
@@ -835,6 +944,27 @@ input file(s):
 ... <shows a list of all input files>
 output file: Sm_user-AQ4Sort-2019-06-24.root
 \end{lstlisting}
+
+
+
+The user calibration of the CD shown in \autoref{fig:cal_user} is basically the online calibration without the innermost ring. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-user.png}
+	\caption{User calibration for the CD showing the four quadrants.}
+	\label{fig:cal_user}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -862,22 +992,7 @@ ROOT: analysere data \cite{ROOT}
 \bigskip
 
 
-\begin{enumerate}
-	\item \texttt{Q4S.sh}
-	\begin{itemize}
-		\item uses either \texttt{AQ4Sort} to make histograms for each pixel of the particle detector (used for calibration) or \texttt{Treebuilder} to build events with a lot of files in one go. 
-	\end{itemize}
-	\item 
-	\begin{itemize}
-	
-	\end{itemize}
-\end{enumerate}
-
-
-
-I also made other helping scripts to get histograms, do fitting, comparison and calibration. 
-
-My scripts: MultiFit.cpp, MultiPlot.cpp, ++ (python, bash,..)
+My scripts: \texttt{ParticleFit.cpp},  \texttt{GammaFit.cpp}, \texttt{ParticlePlot.cpp}, \texttt{GammaPlot.cpp}, ++ (python, bash,..)
 
 
 
@@ -891,28 +1006,11 @@ My scripts: MultiFit.cpp, MultiPlot.cpp, ++ (python, bash,..)
 
 
 
-\subsubsection{User calibration}
-
-\textit{140Sm\_208Pb\_pos6\_0xy\_OnBeam.root}  \newline
-
-
-must remove the inner ring from data analysis because of damage
-
-
-
-\begin{figure}[ht]
-	\centering
-	%\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-user-new-cal.pdf}
-	\caption{User calibration.}
-	\label{fig:cal_user}
-\end{figure}
 
 
 
 
-
-
-\section{Threshold}
+\subsection{Threshold}
 
 \textbf{Pedestal}
 
@@ -971,7 +1069,7 @@ Won't cut too much or too little..
 \begin{lstlisting}[language=sh]
 $ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting 
 $ root
-root [0] .L MultiPlot.cpp++
+root [0] .L ParticlePlot.cpp++
 root [1] check_cd_debug("setup_Sm.txt")
 \end{lstlisting}
 
@@ -987,14 +1085,14 @@ root [1] check_cd_debug("setup_Sm.txt")
 
 
 
-\section{Time calibration}
+\subsection{Time calibration}
 
 
-Using the MultiPlot.cpp script, the ADC time offsets can be extracted by the following commands
+Using the \texttt{ParticlePlot.cpp} script, the ADC time offsets can be extracted by the following commands
 \begin{lstlisting}[language=sh]
 $ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting
 $ root
-root [0] .L MultiPlot.cpp++
+root [0] .L ParticlePlot.cpp++
 root [1] check_ADC_time_offsets("setup_Sm.txt")
 \end{lstlisting}
 or they can be manually reached by
@@ -1039,66 +1137,10 @@ $\rightarrow$ correlate $\gamma$-rays with particles.
 
 
 
-\section{Simulation}
-
-Simulation done by kinsim3 \cite{kinsim} + SRIM-2013 \cite{SRIM} \newline
-\textcolor{red}{Say something about SRIM (the Stopping and Range of Ions in Matter) files.}
-
-\bigskip
-
-To calibrate the data, we need to know the expected energy of the centroids of the peaks. 
-This was done by simulating the experiment in a program called kinsim3. The program is written by Liam Gaffney and the purpose of the program is to simulate the kinematics of the experiment. 
-It takes into account the Silicon dead layer. 
-
-kinsim3 generates pdf-files of the stopping powers automatically. 
-The rest of the plots are available inside the root-file. 
-To get the energy simulation for each ring, the function \textbf{cd\_sim\_plots()} from the script \textbf{MultiPlot.cpp} was used. 
-
-\textcolor{Magenta}{Tilbakemelding: \newline 
-what are the ingredients for this simulation? \newline
-simple 2-body kinematics: energy of projectile, scattering angle of projectile $\implies$ energy of scattered projectile, \{angle, energy\} of binary partner (target recoil) \newline
-Stopping powers (which models?) $\rightarrow$ SRIM \newline
-Slowing of the particles in the target and in the dead layer of Si
-}
-
-\bigskip
-
-
-\begin{figure}[H]\centering
-    \includegraphics[width=\linewidth]{../Plots/simulation/kin_140Sm_208Pb.pdf}
-\end{figure}
-
-\textcolor{Magenta}{Tilbakemelding: \newline 
-explain figure: Sm/Pb inner ring, Sm/Pb outer ring \newline
-simulation does not consider cross sections: in simulation all angles are equally probable. The corresponding figure from your data looks therefore quite different.
-}
 
 
 
-Terminal: Simulation: 140Sm on 208Pb:
-\begin{lstlisting}[language=]
-$ cd GitHub/Miniball/kinsim
-$ root
-root [0] .L kinsim3.cc+
-root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 26.98, false, 1e6, "../SRIM")
-\end{lstlisting}
-
-
-kinsim3 function:
-\begin{lstlisting}[language=c++]
-void kinsim3( int Zb, int Zt, double Ab, double At, double thick /* mg/cm^2 */, double Eb /* MeV/u */,
-    double dEb = 0.1 /* MeV/u */, double Ex = 1.0 /* MeV */, double res = 0.6 /* % */,
-	double cd_dist = 28.0 /* mm */, bool flat = false /* angular distribution? */,
-	long Nevts = 1E6, string srim_dir = "../srim" )
-\end{lstlisting}
-
-
-\bigskip
-
-\textcolor{red}{sjekk opp om energi fra online kalibrering passer med simuleringen.}
-
-
-\section{Gamma}
+\subsection{Gamma}
 
 \subsection*{Calibration of the \texorpdfstring{$\gamma$}{Gamma} detectors}
 
@@ -1178,6 +1220,7 @@ left bottom: \newline
 The application of an add-back (AB) routine involves the summing of the energies of two coincident gamma rays within 100 ns in neighboring cores on the same cluster detector. This situation corresponds to a Compton-scattered \ga-ray event where the energy of the \ga-ray is shared between two or more crystals in the same triple cluster detector. For higher-energy \ga-rays, where scattering from one crystal into its neighbor is quite likely, this improves the efficiency, but for low-energy \ga-rays, where scattering is less likely, summing effects actually reduce the efficiency. For this reason a cut-off is normally applied and AB is only performed for energies above this threshold. \newline
 
 
+\subsection{Doppler correction}
 
 
 \section*{\textcolor{red}{Mails and other}}
@@ -1243,7 +1286,7 @@ useful with a table that explains all the different channels and assigns the var
 
 \begin{table}[ht] 
 	\centering 
-	\caption{TreeBuilder vs AQ4Sort.}
+	\caption{TreeBuilder vs. AQ4Sort.}
 	\input{Table-data/TBvsAQ4.tex}
 	\label{tab:TBvsAQ4}
 \end{table}
@@ -1276,7 +1319,7 @@ Don't blame me for the naming convention, I did not write the code. I just tried
 
 
 
-\section*{\textcolor{red}{Notes}}
+\subsubsection*{\textcolor{red}{Notes}}
 
 \autoref{tab:CD_angles} shows the mid strip CD angles in the laboratory frame for the front of the CD. 
 
@@ -1312,7 +1355,7 @@ For Miniball geometry (angles) \cite{NWarr-Angles}.
 
 
 
-\section{Doppler correction}
+
 
 
 
@@ -1407,6 +1450,8 @@ GOSIA and GOSIA2 analysis?
 
 
 \chapter{Computer setup and environment}
+Some calibration code is based on the codes of Ville Virtanen and Dr. Liam Gaffney. Other code/scripts have been written by the author in C++ / Python.
+
 \section{The computer}
 The \textsl{MiniballCoulexSort} code does not require any a lot of computing power to run. \autoref{tab:PC} shows the computer with specifications used for the sorting and data analysis. Since the data from the experiment takes up about 60 GB, the limitation was with the SSD\footnote{The SSD (solid-state drive) is the internal storage device in the computer.}. When running the sorting and event-building programs, the space on the computer rapidly vanishes. 
 
@@ -1742,28 +1787,7 @@ Substituting back the variable names from \autoref{fig:LAB-CM} into \autoref{eq:
 
 
 
-\chapter{Source code}
-The sorting and analysis code used in this thesis has been developed at CERN-ISOLDE and can be found at \url{https://github.com/Miniball/MiniballCoulexSort}
 
-The code for theoretical predictions of energy used in the calibration was developed by Liam Gaffney who is working at ISOLDE and has to do with analysis of data from Miniball and ISS. kinsim can be found here \url{https://github.com/lpgaff/kinsim}
-
-Some calibration code is based on the codes of Ville Virtanen and Liam Gaffney. 
-
-Other code/scripts have been written by the author. C++ / Python.
-
-\begin{table}[h]
-  \centering
-  \caption{Table of source code.}
-    \begin{tabular}{ll}
-        \hline
-        Name/Link & Description \\
-        \hline
-         \href{https://github.com/Miniball/MiniballCoulexSort}{MiniballCoulexSort} & Sorting and analysis code \\
-         \href{https://github.com/lpgaff/kinsim} & Kinematic simulation \\
-        \hline
-    \end{tabular}
-    \label{tab:code}
-\end{table}
 
 
 \chapter{Connecting MiniballCoulexSort with ROOT}
@@ -1806,7 +1830,10 @@ export PATH=$HOME/GitHub/Miniball/MiniballCoulexSort/bin:$PATH
 The DYLD\_LIBRARY\_PATH is used on Mac only. On other systems, use \newline LD\_LIBRARY\_PATH. You need to locate the lib and bin folders for both ROOT and MiniballCoulexSort and change them to fit your system, and in addition you need the build folder of your ROOT install.
 
 
-\chapter{Other appendicies}
+\chapter{CD simulation}
+On the next page, the CD simulation is showed for each ring. Ring 1 is the innermost ring and ring 16 is the outermost ring. The plots show simulated counts vs. energy.
+
+
 \includepdf[pages={-}, angle=270]{../Plots/simulation/cd_sim_all.pdf}
 
 
