@@ -4,6 +4,7 @@
 #include "TMath.h"
 #include "TGraph.h"
 #include "TCanvas.h"
+#include "TStyle.h"
 #include "TLine.h"
 
 #include <iostream>
@@ -289,6 +290,8 @@ void simulation_fit(std::string setup_file) {
   canvas->Divide(4, 4);
   TH1F *histogram = nullptr;
   std::string histogram_name;
+  float label_size = 0.07;
+  float margin_size = 0.14;
 
   // For fitting
   std::string fit_name;
@@ -310,8 +313,6 @@ void simulation_fit(std::string setup_file) {
     histogram_name = Form("cd_sim_%d", ring+1);
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw();
-    histogram->GetYaxis()->SetLabelSize(0.06);
-    histogram->GetXaxis()->SetLabelSize(0.06);
     std::vector<double> centroid_peaks;
     for (int peak = 0; peak < element->peaks; peak++) { 
       min_bin = element->min_bin.at(peak*adc.rings + ring);
@@ -338,6 +339,15 @@ void simulation_fit(std::string setup_file) {
       }
     }
     histogram->SetAxisRange(0.95 * min_range, 1.05 * max_range, "X");
+    histogram->SetStats(0);                        // Remove stats
+    histogram->SetLabelSize(label_size, "xy");     // Label size for x- and y-axis
+    histogram->SetTitleSize(label_size, "xy");     // Text  size for x- and y-axis
+    histogram->GetYaxis()->SetTitleOffset(1.1);    // Move y-axis text a little closer
+    histogram->SetTitle(Form("Ring %d", ring+1));  // Changing titles
+    gStyle->SetTitleSize(label_size, "t");         // Title size
+    gPad->SetLeftMargin(margin_size);
+    gPad->SetRightMargin(margin_size);
+    gPad->SetBottomMargin(margin_size);
     // Shorthand if-else statement: (condition) ? (if_true) : (if_false)
     (ring < 9) ? space = " " : space = "";
     // Write centroid to file
