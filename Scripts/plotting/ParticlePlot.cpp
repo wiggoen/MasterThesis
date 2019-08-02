@@ -178,7 +178,6 @@ void simulation_plot(std::string setup_file, bool single_plots) {
     histogram->Draw();
     histogram->GetYaxis()->SetTitle("Counts");   // Change y-axis title
     histogram->GetYaxis()->SetTitleOffset(1.1);  // Move y-axis text a little closer
-    
     if (!single_plots) {
       histogram->SetAxisRange(0.95*element->start_bin, 1.05*element->end_bin, "X");
       histogram->SetStats(0);                              // Remove stats
@@ -210,7 +209,9 @@ void simulation_plot(std::string setup_file, bool single_plots) {
 
 void ADC_plot(std::string setup_file, bool use_calibrated) {
   /*
-      Plotting data sorted by TreeBuilder. 
+      Plotting data sorted by TreeBuilder. Energy in MeV.
+      This function plots an overview of the four quadrants
+      with all front strips and back strips separately.
       Choose to use calibrated spectra or not.
       Use true, 1 or any number for calibrated spectra.
       Use false or 0 for uncalibrated spectra.
@@ -233,7 +234,9 @@ void ADC_plot(std::string setup_file, bool use_calibrated) {
   std::string detector_side;
   int channel = 0;
   int quadrant_number = 0;
-    
+  float label_size = 0.07;
+  float margin_size = 0.15;
+  
   for (int quadrant = 0; quadrant < 2*adc.quadrants; quadrant++) {   
     if (quadrant < adc.quadrants) {
       detector_side = "Front";
@@ -254,9 +257,18 @@ void ADC_plot(std::string setup_file, bool use_calibrated) {
       histogram_name = Form("adc_spec/adc_%d_%d%s", quadrant_number, channel, calibrated.c_str());
       histogram = (TH1F *)infile->Get(histogram_name.c_str());
       histogram->Draw();
-      //histogram->SetAxisRange(0, 500, "X");
-      histogram->GetYaxis()->SetLabelSize(0.06);
-      histogram->GetXaxis()->SetLabelSize(0.06);
+      histogram->SetStats(0);                      // Remove stats
+      histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
+      histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
+      histogram->GetYaxis()->SetTitle("Counts");   // Change y-axis title
+      histogram->GetYaxis()->SetTitleOffset(1.0);  // Move y-axis text a little closer
+      histogram->GetYaxis()->SetMaxDigits(3);      // Force scientific notation if number is large
+      histogram->SetTitle(Form("Q%d %s %d %s", quadrant_number+1, detector_side.c_str(), ring+1, calibrated.c_str()));  // Changing titles
+      // Shorthand if-else statement: (condition) ? (if_true) : (if_false);
+      (use_calibrated) ? histogram->SetAxisRange(40, 750, "X") : histogram->SetAxisRange(100, 3000, "X");
+      gStyle->SetTitleSize(label_size, "t");       // Title size
+      gPad->SetLeftMargin(margin_size);
+      gPad->SetBottomMargin(margin_size);
     }
   }
 }
@@ -264,7 +276,9 @@ void ADC_plot(std::string setup_file, bool use_calibrated) {
 
 void AQ4_plot(std::string setup_file, std::string gate, bool use_calibrated) {
   /*
-      Plotting data sorted by AQ4Sort.
+      Plotting data sorted by AQ4Sort. Energy in keV.
+      This function plots an overview of the four quadrants
+      with the gated front strips or back strips separately.
       Choose which side and front ring or back strip to gate on. 
       E.g.: "f10" or "b3".
   */
@@ -294,6 +308,8 @@ void AQ4_plot(std::string setup_file, std::string gate, bool use_calibrated) {
   std::string vs;
   int front_ring = 0;
   int back_strip = 0;
+  float label_size = 0.07;
+  float margin_size = 0.15;
   if (gate_side == "b") {
     detector_side = "f";
     detector_gate = "back";
@@ -322,9 +338,21 @@ void AQ4_plot(std::string setup_file, std::string gate, bool use_calibrated) {
       histogram_name = Form("%sE_Q%d_f%d_b%d%s", detector_side.c_str(), quadrant+1, front_ring, back_strip, calibrated.c_str());
       histogram = (TH1F *)infile->Get(histogram_name.c_str());
       histogram->Draw();
-      //histogram->SetAxisRange(0, 200, "X");
-      histogram->GetYaxis()->SetLabelSize(0.06);
-      histogram->GetXaxis()->SetLabelSize(0.05);  
+      histogram->SetStats(0);                      // Remove stats
+      histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
+      histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
+      histogram->GetYaxis()->SetTitle("Counts");   // Change y-axis title
+      histogram->GetYaxis()->SetTitleOffset(1.1);  // Move y-axis text a little closer
+      histogram->GetYaxis()->SetMaxDigits(3);      // Force scientific notation if number is large
+      // Shorthand if-else statement: (condition) ? (if_true) : (if_false);
+      (use_calibrated) ? histogram->SetAxisRange(40000, 750000, "X") : histogram->SetAxisRange(100, 3000, "X");
+      if (use_calibrated) {
+        histogram->GetXaxis()->SetMaxDigits(3);    // Force scientific notation if number is large
+      }
+      gStyle->SetTitleSize(label_size, "t");       // Title size
+      gPad->SetLeftMargin(margin_size);
+      gPad->SetRightMargin(margin_size);
+      gPad->SetBottomMargin(margin_size);  
     }
   }
 }

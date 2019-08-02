@@ -649,15 +649,16 @@ One program that is mentioned in the Miniball GitHub repository, but not showed 
 This program is used before and during the calibration of the particle detectors, because it gives information about every single ring and every single back strip (the pixels of the CD). 
 
 
-\subsection{Counting}
+\subsection{Counting and naming convention}
 In the following sections I will introduce different programs and scripts used in the data calibration and analysis. One thing to note here, is that the numbering of the CD rings and strips are different in these programs and scripts. 
 
-Histograms sorted by \texttt{TreeBuilder} starts counting from 0 (outermost ring) to 15 (innermost ring) showed in \autoref{fig:CD-FB}. 
-In \texttt{AQ4Sort} it starts from 1 (innermost ring) to 16 (outermost ring). 
+Histograms sorted by \texttt{TreeBuilder} starts counting from 0 (outermost ring) to 15 (innermost ring) with energy in MeV showed in \autoref{fig:CD-FB}. 
+In \texttt{AQ4Sort} it starts from 1 (innermost ring) to 16 (outermost ring) with energy in keV. 
 \autoref{tab:ADC} shows the ADC wiring and a comparison of the histogram naming from \texttt{TreeBuilder} and \texttt{AQ4Sort} can be found in \autoref{tab:TBvsAQ4}.
 The simulation program \texttt{kinsim3} counts from 1 (innermost ring) to 16 (outermost ring), the opposite of \texttt{AQ4Sort}. 
 It is easy to be confused by all the different counting, but I will try to use the counting order of \texttt{kinsim3} for everything, it seems like the most logic way of counting. 
 I cannot change the wiring of the CD, but I can choose the most logic order of counting for me.
+
 
 \begin{table}[ht] 
 	\centering 
@@ -717,7 +718,7 @@ For each file converted with \texttt{MedToRoot}, the program makes four files wi
 	\item \textit{140Sm\_208Pb\_pos6\_0xy\_OffBeam.root}
 	\item \textit{140Sm\_208Pb\_pos6\_0xy\_Scaler.root} 
 \end{itemize}
-where the file of interest is the first one. The \textit{OnBeam.root}-files are the files used in the sorting and event building with \texttt{TreeBuilder} (and/or \texttt{AQ4Sort}).
+where the file of interest is the first one. The \textit{OnBeam.root}-files are the files used in the sorting and event building with \texttt{TreeBuilder} and/or \texttt{AQ4Sort}.
 
 
 \section{Detector calibration}
@@ -740,7 +741,7 @@ explain strategy, show examples... \newline
 if you try to write this step-by-step cook book, you could introduce your scripts wherever is the right place to use them. 
 }\newline
 
-The general idea of the calibration is to make sure that the energy spectra from the detectors have the same physical features, that the detectors show the same energy distribution for the same kind of particles or \ga-rays hitting the same or the angular similarly place in the detector.
+The general idea of the calibration is to make sure that the energy spectra from the detectors have the same physical features, that the detectors show the same energy distribution at the same position for the same kind of particles or \ga-rays hitting the same or the angular similarly place in the detector.
 We want to determine centroids of peaks in the spectra, compare these with simulations using kinematics of the reaction and energy loss, to get linear coefficients of the detectors. 
 
 Both detector types in this experiment are semiconductor detectors. 
@@ -748,7 +749,7 @@ Except for silicon (as the CD), semiconductors generally require cooling to low 
 The basic principle of operation is that incoming ionizing radiation\footnote{For the CD, the ionizing radiation is the beam or target particles scattered from the reaction, while the ionizing radiation for the HPGe-detectors is the high-energy photons (\ga) from de-excitation of the nuclei.} creates electron-hole pairs in the semi-conducting material which are then collected by an electric field. 
 The number of electron-hole pairs is proportional to the energy of the incoming radiation to the semiconductor \cite{WRLeo}. 
 
-Assuming a linear correlation between the energy $E$ of the particle (\textcolor{red}{or \ga?}) and the channel number $n$ of the ADC, we get
+Assuming a linear correlation between the energy $E$ of the particle or \ga-ray and the channel number $n$ of the ADC, we get
 \begin{equation}\label{eq:Ego}
 	E = g \cdot n + a
 \end{equation}
@@ -768,20 +769,15 @@ By doing a Gaussian fit, we can get the centroids (channels of the peaks) for bo
 For more than two centroids, we can use linear regression to find the best fit (this is the best option for the back side of the CD).
 
 
-\bigskip
-
-
-
-
-
 
 \subsection{Simulation}
-
 To calibrate the data, we need to know the expected energy of the centroids of the peaks. 
 This was done by simulating the experiment in a program called \texttt{kinsim3} \cite{kinsim}. 
 The program is written in C++ by Dr. Liam Gaffney and the purpose of the program is to simulate the kinematics of an experiment. 
-The simulations are theoretical predictions of energy used in the calibration.
+The simulations are theoretical predictions of the energy distribution of the peaks for each ring in the CD.
+These we fit, collect the centroid of and use in the calibration.
 The program uses SRIM-2013 \cite{SRIM} (the Stopping and Range of Ions in Matter) generated files relevant to the \textcolor{red}{scattering/reaction?} and it takes into account the Si dead layer. 
+The SRIM-files used in this simulation can be found in \textit{MasterThesis/SRIM}.
 
 \texttt{kinsim3} generates pdf-files of the stopping powers automatically. 
 The rest of the plots are available inside the generated \textit{.root}-file. 
@@ -804,9 +800,15 @@ $ cd ~/GitHub/Miniball/kinsim
 $ root
 root [0] .L kinsim3.cc+
 root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 26.98, false, 1e6, "../SRIM")
+... <showing output from program>
+root [2] .q
+$ mv 140Sm_208Pb_1.4mg_4.65MeVu_d0.02MeVu_res0.6.root ../../MasterThesis/Sorted_data/sim_140Sm_208Pb.root
 \end{lstlisting}
 
-The SRIM-files used in this simulation can be found in \textit{MasterThesis/SRIM}.
+After the simulation program was run, I moved and renamed the file with the \textbf{mv} command. 
+
+
+
 
 
 \texttt{kinsim3} function:
@@ -849,7 +851,7 @@ simulation does not consider cross sections: in simulation all angles are equall
 }
 
 
-Appendix \autoref{ch:cd_sim} shows the simulated energy for each ring of the CD.
+Appendix \autoref{ch:cd_sim} shows the simulated energy for each ring of the CD, in addition to the fitted peaks of each ring.
 
 
 \autoref{tab:CD_angles} shows the mid strip CD angles in the laboratory frame for the front of the CD. 
@@ -864,26 +866,15 @@ Appendix \autoref{ch:cd_sim} shows the simulated energy for each ring of the CD.
 
 
 
-\subsection{Online particle calibration}
+\subsection{Online calibration of particle detector}
 Every year there is a campaign at ISOLDE, where the staff configures a settingsfile if there are any changes in the setup system. In addition they run a coctail beam composed of different isotopes on a specific target to make a calibration file containing the calibration coefficients for both the CD and \ga-detectors. This calibration file is adjusted for each experiment following the campaign period. In this way it is easy to sort and analyze during the experiment if it is going well and to make preliminary Doppler-corrected \ga-spectra. 
+
+The settingsfile and calibration files used in this experiment can be found in \textit{$\sim$/GitHub/MasterThesis/Miniball-config}, but when used with \textsl{MiniballCoulexSort} the default path is \textit{$\sim$/GitHub/Miniball/MiniballCoulexSort/config}.
+
 
 \bigskip
 
 \textcolor{red}{\textbf{Trenger en overgang til M2R.}}
-
-\bigskip
-
-% ----- NOTES
-To get useful information out of the converted .root-files, the \texttt{TreeBuilder} script is used. 
-The .root-file(s) and a calibration file is given to the \texttt{TreeBuilder} so it can make event trees that can be used for analyzing the Coulomb excitation events. 
-
-The ADC spectras from the file sorted by \texttt{TreeBuilder} have a naming convention of \textit{adc\_q\_n}, where $q$ corresponds to the quadrant and $n$ corresponds to the channel. The front energy is saved in adc\_[0-3]\_[0-15] and the back energy from strips 1-12 from all 16 rings (the whole quadrant) is saved in adc\_[0-3]\_[16-27].
-
-\textcolor{Magenta}{Tilbakemelding: \newline 
-useful with a table that explains all the different channels and assigns the various detector segments/rings? (naming conventions) (appendix?)
-}
-
-% -----
 
 \bigskip
 
@@ -893,6 +884,7 @@ Just as for the \texttt{MedToRoot} program, I made a bash script named \texttt{Q
 \texttt{Q4S.sh} uses either \texttt{AQ4Sort} to make histograms for each pixel of the particle detector (used for calibration) or \texttt{Treebuilder} to build events, with a lot of files in one go for both. 
 When using the online calibration, we don't need to use the \texttt{AQ4Sort} program, because we already have the calibration coefficients. 
 They are adjusted in the beginning and during the experiment.
+\texttt{TreeBuilder} makes event trees and energy spectra for both particle and \ga detection which can be used for analyzing the Coulomb excitation events.
 The \textit{OnBeam.root}-files are loaded into \texttt{TreeBuilder} via \texttt{Q4S.sh} with the commands
 
 \begin{lstlisting}[language=sh]
@@ -935,7 +927,7 @@ From the figure we see that not all detectors fit the line, indicating that ther
 
 
 
-\subsection{User particle calibration}
+\subsection{User calibration of particle detector}
 
 
 My goal of the calibration was to make a program that could automatically fit the plots I needed, but it became more and more manual labor. 
@@ -972,7 +964,7 @@ Changing the relative path in the \textit{setup\_Sm.txt} file used as input in t
 \begin{lstlisting}[language=sh]
 $ cd ~/GitHub/MasterThesis/Scripts/sorting 
 $ ./Q4S.sh Sm user TB
-...
+... <showing output from script>
 $ mv Sm_user-TreeBuilder-2019-06-20.root ../../Sorted_data/
 \end{lstlisting}
 
