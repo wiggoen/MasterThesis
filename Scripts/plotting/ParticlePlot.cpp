@@ -215,7 +215,8 @@ void ADC_plot(std::string setup_file, bool use_calibrated) {
       Choose to use calibrated spectra or not.
       Use true, 1 or any number for calibrated spectra.
       Use false or 0 for uncalibrated spectra.
-  */ 
+      Counting on front side: f1 (innermost ring) to f16 (outermost ring).
+  */
   ADC adc;
   Element *element = new Element();
   element->read_setup_file(setup_file);
@@ -281,6 +282,7 @@ void AQ4_plot(std::string setup_file, std::string gate, bool use_calibrated) {
       with the gated front strips or back strips separately.
       Choose which side and front ring or back strip to gate on. 
       E.g.: "f10" or "b3".
+      Counting on front side: f1 (outermost ring) to f16 (innermost ring).
   */
   ADC adc;
   Element *element = new Element();
@@ -352,7 +354,7 @@ void AQ4_plot(std::string setup_file, std::string gate, bool use_calibrated) {
       gStyle->SetTitleSize(label_size, "t");       // Title size
       gPad->SetLeftMargin(margin_size);
       gPad->SetRightMargin(margin_size);
-      gPad->SetBottomMargin(margin_size);  
+      gPad->SetBottomMargin(margin_size);
     }
   }
 }
@@ -360,11 +362,12 @@ void AQ4_plot(std::string setup_file, std::string gate, bool use_calibrated) {
 
 void plot_side(std::string setup_file, std::string detector_side, bool use_calibrated) {
   /*
-      Plotting data sorted by AQ4Sort.
+      Plotting data sorted by AQ4Sort. Energy in keV.
       Choose ("b")ack side or ("f")ront side of detector.
       Choose to use calibrated spectra or not.
       Use true, 1 or any number for calibrated spectra.
       Use false or 0 for uncalibrated spectra.
+      Counting on front side: f1 (outermost ring) to f16 (innermost ring).
   */
   ADC adc;
   Element *element = new Element();
@@ -389,6 +392,8 @@ void plot_side(std::string setup_file, std::string detector_side, bool use_calib
   else if (detector_side == "f") { detector_gate = "front"; }
   // Colors: kRed, kBlue, kGreen, kPink, kAzure, kSpring, kMagenta, kCyan, kYellow, kViolet, kTeal, kOrange
   int colors[] = { 632, 600, 416, 900, 860, 820, 616, 432, 400, 880, 840, 800 };
+  float label_size = 0.07;
+  float margin_size = 0.15;
 
   for (int quadrant = 0; quadrant < adc.quadrants; quadrant++) {
     canvas_name = Form("Quadrant %d, %s energy", quadrant+1, detector_gate.c_str());
@@ -404,13 +409,43 @@ void plot_side(std::string setup_file, std::string detector_side, bool use_calib
           histogram->SetLineColor(colors[back_strip - 1]);
           if (use_calibrated) { histogram->GetXaxis()->SetRange(0, 700); }
           histogram->Draw("SAME");
+          histogram->SetStats(0);                      // Remove stats
+          histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
+          histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
+          histogram->GetYaxis()->SetTitle("Counts");   // Change y-axis title
+          histogram->GetYaxis()->SetTitleOffset(1.0);  // Move y-axis text a little closer
+          histogram->GetYaxis()->SetMaxDigits(3);      // Force scientific notation if number is large
+          // Shorthand if-else statement: (condition) ? (if_true) : (if_false);
+          (use_calibrated) ? histogram->SetAxisRange(40000, 750000, "X") : histogram->SetAxisRange(100, 3000, "X");
+          if (use_calibrated) {
+            histogram->GetXaxis()->SetMaxDigits(3);    // Force scientific notation if number is large
+          }
+          gStyle->SetTitleSize(label_size, "t");       // Title size
+          gPad->SetLeftMargin(margin_size);
+          gPad->SetRightMargin(margin_size);
+          gPad->SetBottomMargin(margin_size);
         }
       } else if (detector_side == "f") {
         histogram_name = Form("%sE_Q%d_f%d%s", detector_side.c_str(), quadrant+1, ring+1, calibrated.c_str());
         //std::cout << histogram_name << std::endl;
         histogram = (TH1F *)infile->Get(histogram_name.c_str());
         if (use_calibrated) { histogram->GetXaxis()->SetRange(0, 1000); }
-        histogram->Draw();   
+        histogram->Draw();
+        histogram->SetStats(0);                      // Remove stats
+        histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
+        histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
+        histogram->GetYaxis()->SetTitle("Counts");   // Change y-axis title
+        histogram->GetYaxis()->SetTitleOffset(1.0);  // Move y-axis text a little closer
+        histogram->GetYaxis()->SetMaxDigits(3);      // Force scientific notation if number is large
+        // Shorthand if-else statement: (condition) ? (if_true) : (if_false);
+        (use_calibrated) ? histogram->SetAxisRange(40000, 750000, "X") : histogram->SetAxisRange(100, 3000, "X");
+        if (use_calibrated) {
+          histogram->GetXaxis()->SetMaxDigits(3);    // Force scientific notation if number is large
+        }
+        gStyle->SetTitleSize(label_size, "t");       // Title size
+        gPad->SetLeftMargin(margin_size);
+        gPad->SetRightMargin(margin_size);
+        gPad->SetBottomMargin(margin_size);
       }
     }
   }
@@ -420,12 +455,13 @@ void plot_side(std::string setup_file, std::string detector_side, bool use_calib
 void plot_quadrants(std::string setup_file, std::string detector_side, 
                     int ring_gate, bool use_calibrated, int back_strip = 1) {
   /*
-      Fitting data sorted by AQ4Sort.
+      Fitting data sorted by AQ4Sort. Energy in keV.
       Choose the detector side, quadrant, front ring to gate on, the back strip you 
       want to look at.
       Choices: ("f")ront or ("b")ack side, quadrant 1-4, ring gate 1-16, if you want the 
       calibrated spectra or not (0 or false, 1 or true), back strip 1-12.
       Back strip only valid for looking at the back side of the detector.
+      Counting on front side: f1 (outermost ring) to f16 (innermost ring).
   */
   ADC adc;
   Element *element = new Element();
@@ -465,6 +501,8 @@ void plot_quadrants(std::string setup_file, std::string detector_side,
   canvas->Divide(2, 2);
   TH1F *histogram = nullptr;
   std::string histogram_name;
+  float label_size = 0.07;
+  float margin_size = 0.14;
 
   for (int quadrant = 0; quadrant < adc.quadrants; quadrant++) {
     canvas->cd(quadrant+1);
@@ -472,11 +510,22 @@ void plot_quadrants(std::string setup_file, std::string detector_side,
     //std::cout << histogram_name << std::endl;
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw("SAME");
+    histogram->SetStats(0);                      // Remove stats
+    histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
+    histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
+    histogram->GetYaxis()->SetTitle("Counts");   // Change y-axis title
+    histogram->GetYaxis()->SetTitleOffset(0.9);  // Move y-axis text a little closer
+    histogram->GetYaxis()->SetMaxDigits(3);      // Force scientific notation if number is large
     if (use_calibrated) {
-      histogram->SetAxisRange(0, 1E6, "X");
-    } 
-    histogram->GetYaxis()->SetLabelSize(0.06);
-    histogram->GetXaxis()->SetLabelSize(0.06);
+      histogram->SetAxisRange(40000, 750000, "X");
+    } else {
+      histogram->SetAxisRange(100, 3000, "X");
+      histogram->GetXaxis()->SetTitle("Channel");   // Change y-axis title
+    }
+    gStyle->SetTitleSize(label_size, "t");       // Title size
+    gPad->SetLeftMargin(margin_size);
+    gPad->SetRightMargin(margin_size);
+    gPad->SetBottomMargin(margin_size);
   }
 }
 
