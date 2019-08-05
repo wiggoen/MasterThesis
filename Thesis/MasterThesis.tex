@@ -1104,16 +1104,16 @@ Won't cut too much or too little..
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_f6.pdf}
-	\caption{Threshold Q1, f6.}
+	\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_f11.png}
+	\caption{Threshold Q1, F11.}
 	\label{fig:Threshold_f}
 \end{figure}
 
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_b6.pdf}
-	\caption{Threshold Q1, b6.}
+	\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_b6.png}
+	\caption{Threshold Q1, B6.}
 	\label{fig:Threshold_b}
 \end{figure}
 
@@ -1124,17 +1124,24 @@ Won't cut too much or too little..
 $ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting 
 $ root
 root [0] .L ParticlePlot.cpp++
-root [1] check_cd_debug("setup_Sm.txt")
+root [1] check_cd_debug("setup_Sm.txt", "user")
 \end{lstlisting}
 
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{../Plots/plotting/cd_debug-user.pdf}
+	\includegraphics[width=\textwidth]{../Plots/plotting/cd_debug-user.png}
 	\caption{CD debugging.}
 	\label{fig:CD_debug}
 \end{figure}
 
+
+\begin{table}[ht] 
+	\centering 
+	\caption{CD debugging.}
+	\input{Table-data/CD_debug.tex}
+	\label{tab:CD_debug}
+\end{table}
 
 
 
@@ -1168,8 +1175,8 @@ adc_3.TimeOffset:  5
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{../Plots/plotting/tdiff_gp_0-3-user.pdf}
-	\caption{ADC time offsets.}
+	\includegraphics[width=\textwidth]{../Plots/plotting/tdiff_gp_0-3-user.png}
+	\caption{ADC time offsets for the four quadrants of the CD.}
 	\label{fig:ADC_dt}
 \end{figure}
 

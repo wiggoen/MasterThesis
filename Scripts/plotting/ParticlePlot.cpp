@@ -532,11 +532,13 @@ void plot_quadrants(std::string setup_file, std::string detector_side,
 
 void plot_back_quadrants(std::string setup_file, int front_ring, bool use_calibrated) {
   /*
-      Fitting data sorted by AQ4Sort. Shows all back strips in each separated quadrant.
+      Fitting data sorted by AQ4Sort. Energy in keV.
+      Shows all back strips in each separated quadrant.
       Choose which front ring number to gate on. Choice: 1-16.
       Choose to use calibrated spectra or not.
       Use true, 1 or any number for calibrated spectra.
       Use false or 0 for uncalibrated spectra.
+      Counting on front side: f1 (outermost ring) to f16 (innermost ring).
   */
   ADC adc;
   Element *element = new Element();
@@ -561,6 +563,8 @@ void plot_back_quadrants(std::string setup_file, int front_ring, bool use_calibr
   std::string histogram_name;
   // Colors: kRed, kBlue, kGreen, kPink, kAzure, kSpring, kMagenta, kCyan, kYellow, kViolet, kTeal, kOrange
   int colors[] = { 632, 600, 416, 900, 860, 820, 616, 432, 400, 880, 840, 800 };
+  float label_size = 0.07;
+  float margin_size = 0.14;
 
   for (int quadrant = 0; quadrant < adc.quadrants; quadrant++) {
     canvas->cd(quadrant+1);
@@ -570,9 +574,22 @@ void plot_back_quadrants(std::string setup_file, int front_ring, bool use_calibr
       histogram = (TH1F *)infile->Get(histogram_name.c_str());
       histogram->SetLineColor(colors[strip]);
       histogram->Draw("SAME");
-      //histogram->SetAxisRange(0, 3000, "X");
-      histogram->GetYaxis()->SetLabelSize(0.06);
-      histogram->GetXaxis()->SetLabelSize(0.06);
+      histogram->SetStats(0);                      // Remove stats
+      histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
+      histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
+      histogram->GetYaxis()->SetTitle("Counts");   // Change y-axis title
+      histogram->GetYaxis()->SetTitleOffset(0.9);  // Move y-axis text a little closer
+      histogram->GetYaxis()->SetMaxDigits(3);      // Force scientific notation if number is large
+      if (use_calibrated) {
+        histogram->SetAxisRange(40000, 750000, "X");
+      } else {
+        histogram->SetAxisRange(100, 3000, "X");
+        histogram->GetXaxis()->SetTitle("Channel");  // Change y-axis title
+      }
+      gStyle->SetTitleSize(label_size, "t");         // Title size
+      gPad->SetLeftMargin(margin_size);
+      gPad->SetRightMargin(margin_size);
+      gPad->SetBottomMargin(margin_size);
     }
   }
 }
@@ -580,8 +597,10 @@ void plot_back_quadrants(std::string setup_file, int front_ring, bool use_calibr
 
 void plot_front_back_energy(std::string setup_file, std::string name_addition = "") {
   /*
-      Plots data sorted from TreeBuilder.
+      Plots data sorted from TreeBuilder. Energy in MeV.
       Plots front vs back energy for the four quadrants.
+      Option: name_addition is an addition to the file name, 
+      so it's easier to find the correct one. 
   */
   ADC adc;
   Element *element = new Element();
@@ -628,8 +647,9 @@ void plot_front_back_energy(std::string setup_file, std::string name_addition = 
 
 void check_all_threshold(std::string setup_file) {
   /*
-      Plots data sorted from TreeBuilder.
+      Plots data sorted from TreeBuilder. Energy in MeV.
       Plots the threshold for each quadrant and ring/strip.
+      Counting on front side: f0 (outermost ring) to f15 (innermost ring).
   */
   ADC adc;
   Element *element = new Element();
@@ -654,6 +674,9 @@ void check_all_threshold(std::string setup_file) {
   int x_max = 0;
   int y_max = 0;
 
+  float label_size = 0.07;
+  float margin_size = 0.15;
+
   for (int quadrant = 0; quadrant < 2*adc.quadrants; quadrant++) {
     if (quadrant < adc.quadrants) {
       detector_side = "Front";
@@ -669,8 +692,8 @@ void check_all_threshold(std::string setup_file) {
     for (int ring = 0; ring < adc.rings; ring++) {
       if (quadrant >= adc.quadrants && ring >= adc.strips) { break; }
       // Shorthand if-else statement: (condition) ? (if_true) : (if_false);
-      //(quadrant < adc.quadrants) ? channel = adc.rings-ring-1 : channel = adc.rings + ring;  // front first, then back
-      (quadrant < adc.quadrants) ? channel = ring : channel = adc.rings + ring;
+      (quadrant < adc.quadrants) ? channel = ring : channel = adc.rings + ring;  // front: outermost ring first (default)
+      //(quadrant < adc.quadrants) ? channel = adc.rings-ring-1 : channel = adc.rings + ring;  // front: innermost ring first
       canvas[quadrant]->cd(ring+1);
       histogram_name = Form("adc_spec/adc_%d_%d", quadrant_number, channel);
       histogram = (TH1F *)infile->Get(histogram_name.c_str());
@@ -696,8 +719,18 @@ void check_all_threshold(std::string setup_file) {
       } 
       histogram->SetAxisRange(0, x_max, "X");
       histogram->SetAxisRange(0, y_max, "Y");
-      histogram->GetYaxis()->SetLabelSize(0.06);
-      histogram->GetXaxis()->SetLabelSize(0.05);
+
+      histogram->SetStats(0);                      // Remove stats
+      histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
+      histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
+      histogram->GetYaxis()->SetTitle("Counts");   // Change y-axis title
+      histogram->GetYaxis()->SetTitleOffset(1.1);  // Move y-axis text a little closer
+      if (quadrant >= adc.quadrants) {
+        histogram->GetYaxis()->SetMaxDigits(3);    // Force scientific notation if number is large
+      }
+      gStyle->SetTitleSize(label_size, "t");       // Title size
+      gPad->SetLeftMargin(margin_size);
+      gPad->SetBottomMargin(margin_size);
 
       pos = quadrant_number*(adc.rings+adc.strips) + channel;
       x_value = element->parameters.at(pos);
@@ -705,12 +738,6 @@ void check_all_threshold(std::string setup_file) {
       line->SetLineColor(kRed);
       line->SetLineStyle(kDashed);
       line->Draw("SAME");
-
-      //y_line = new TLine(0, 300, 1000, 300);
-      //y_line->SetLineColor(kRed);
-      //y_line->SetLineStyle(kDashed);
-      //y_line->Draw("SAME");
-
     }
     //canvas[quadrant]->SaveAs(Form("../../Plots/plotting/Threshold_Q%d_%s.pdf", quadrant_number+1, detector_side.c_str()));
   }
@@ -718,10 +745,14 @@ void check_all_threshold(std::string setup_file) {
 
 
 void check_single_threshold(std::string setup_file, std::string detector_side,
-                            int quadrant, int strip) {
+                            int quadrant, int strip, int x_max = 3500, int y_max = 12000) {
   /*
-      Plots data sorted from TreeBuilder.
+      Plots data sorted from TreeBuilder. Uncalibrated (counts vs. channels).
       Plots the threshold for a given quadrant and ring/strip.
+      Choices: ("f")ront or ("b")ack side, quadrant 1-4, 
+      strip 1-16 for front side or strip 1-12 for back side.
+      x_max chooses the  Energy in MeV.
+      Counting on front side: f1 (innermost ring) to f16 (outermost ring).
   */
   ADC adc;
   Element *element = new Element();
@@ -747,45 +778,45 @@ void check_single_threshold(std::string setup_file, std::string detector_side,
   TLine *line = nullptr;
 
   std::string detector_side_name;
+  int strip_number = 0;
   int channel = 0;
   int pos = 0;
   double x_value = 0;
-  int x_max = 0;
-  int y_max = 0;  
+  float label_size = 0.05;
+  float margin_size = 0.13;
 
   if (detector_side == "f") {
       detector_side_name = "Front";
       channel = strip-1;
-      if (channel < 4) {
-          x_max = 2000;
-          y_max = 4000;
-        } else if (channel >= 4 && channel < 8) {
-          x_max = 2500;
-          y_max = 3000;
-        }  else if (channel >= 8 && channel < 12) {
-          x_max = 3000;
-          y_max = 3000;
-        } else {
-          x_max = 3500;
-          y_max = 12000;
-        }
+      strip_number = adc.rings - strip;  // For correct counting of front side plots
   } else if (detector_side == "b") {
       detector_side_name = "Back";
       channel = adc.rings + strip-1;
-      x_max = 3000;
-      y_max = 2500;
+      strip_number = channel;
   }
 
   canvas_name = Form("Quadrant %d, %s threshold", quadrant, detector_side_name.c_str());
   canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
 
-  histogram_name = Form("adc_spec/adc_%d_%d", quadrant-1, channel);
+  histogram_name = Form("adc_spec/adc_%d_%d", quadrant-1, strip_number);
+  std::cout << histogram_name << std::endl;
+  std::cout << strip_number << std::endl;
   histogram = (TH1F *)infile->Get(histogram_name.c_str());
   histogram->Draw();
   histogram->SetAxisRange(0, x_max, "X");
   histogram->SetAxisRange(0, y_max, "Y");
-  //histogram->GetYaxis()->SetLabelSize(0.06);
-  //histogram->GetXaxis()->SetLabelSize(0.06);
+
+  //histogram->SetStats(0);                      // Remove stats
+  histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
+  histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
+  histogram->GetXaxis()->SetTitle("Channel");  // Change x-axis title
+  histogram->GetYaxis()->SetTitle("Counts");   // Change y-axis title
+  histogram->GetYaxis()->SetTitleOffset(1.2);  // Move y-axis text a little closer
+  histogram->SetTitle(Form("Q%d %s%d", quadrant, detector_side_name.substr(0,1).c_str(), strip));  // Change title of histogram
+  gStyle->SetTitleSize(label_size, "t");       // Title size
+  //gStyle->SetStatFontSize(0.04);               // Stats font size
+  gPad->SetLeftMargin(margin_size);
+  gPad->SetBottomMargin(margin_size);
 
   pos = (quadrant-1)*(adc.rings+adc.strips) + channel;
   x_value = element->parameters.at(pos);
@@ -793,19 +824,15 @@ void check_single_threshold(std::string setup_file, std::string detector_side,
   line->SetLineColor(kRed);
   line->SetLineStyle(kDashed);
   line->Draw("SAME");
-
-  //y_line = new TLine(0, 300, 1000, 300);
-  //y_line->SetLineColor(kRed);
-  //y_line->SetLineStyle(kDashed);
-  //y_line->Draw("SAME");  
-  canvas->SaveAs(Form("../../Plots/plotting/Threshold_Q%d_%s%d.pdf", quadrant, detector_side.c_str(), strip));
+ 
+  canvas->SaveAs(Form("../../Plots/plotting/Threshold_Q%d_%s%d.png", quadrant, detector_side.c_str(), strip));
 }
 
 
 void check_ADC_time_offsets(std::string setup_file, std::string name_addition = "") {
   /*
       Plots data sorted from TreeBuilder.
-      Plots ADC time offsets for the 4 ADC quadrants.
+      Plots ADC time offsets for the 4 CD quadrants.
   */
   ADC adc;
   Element *element = new Element();
@@ -820,6 +847,8 @@ void check_ADC_time_offsets(std::string setup_file, std::string name_addition = 
   canvas->Divide(2, 2);
   TH1F *histogram = nullptr;
   std::string histogram_name;
+  float label_size = 0.06;
+  float margin_size = 0.13;
 
   if (!name_addition.empty()) {
     name_addition = "-" + name_addition;
@@ -832,10 +861,19 @@ void check_ADC_time_offsets(std::string setup_file, std::string name_addition = 
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw();
     histogram->SetAxisRange(-10, 10, "X");
-    histogram->GetYaxis()->SetLabelSize(0.06);
-    histogram->GetXaxis()->SetLabelSize(0.06);
+    
+    histogram->SetStats(0);                        // Remove stats
+    histogram->SetLabelSize(label_size, "xy");     // Label size for x- and y-axis
+    histogram->SetTitleSize(label_size, "xy");     // Text  size for x- and y-axis
+    histogram->GetXaxis()->SetTitle("Time difference (particle - #gamma) [25 ns ticks]");  // Change x-axis title
+    histogram->GetYaxis()->SetTitle("Counts");     // Change y-axis title
+    histogram->GetYaxis()->SetTitleOffset(1.0);    // Move y-axis text a little closer
+    histogram->SetTitle(Form("Q%d", quadrant+1));  // Change title of histogram
+    gStyle->SetTitleSize(label_size, "t");         // Title size
+    gPad->SetLeftMargin(margin_size);
+    gPad->SetBottomMargin(margin_size);
   }
-  canvas->SaveAs(Form("../../Plots/plotting/tdiff_gp_0-3%s.pdf", name_addition.c_str()));
+  canvas->SaveAs(Form("../../Plots/plotting/tdiff_gp_0-3%s.png", name_addition.c_str()));
 }
 
 
@@ -858,6 +896,8 @@ void check_cd_debug(std::string setup_file, std::string name_addition = "") {
   //canvas->Divide(2, 2);
   TH1F *histogram = nullptr;
   std::string histogram_name;
+  float label_size = 0.05;
+  float margin_size = 0.13;
 
   if (!name_addition.empty()) {
     name_addition = "-" + name_addition;
@@ -868,9 +908,19 @@ void check_cd_debug(std::string setup_file, std::string name_addition = "") {
   histogram = (TH1F *)infile->Get(histogram_name.c_str());
   histogram->Draw();
   histogram->SetAxisRange(0, 25, "X");
-  histogram->GetYaxis()->SetLabelSize(0.06);
-  histogram->GetXaxis()->SetLabelSize(0.06);
-  canvas->SaveAs(Form("../../Plots/plotting/cd_debug%s.pdf", name_addition.c_str()));
+  
+  histogram->SetStats(0);                       // Remove stats
+  histogram->SetLabelSize(label_size, "xy");    // Label size for x- and y-axis
+  histogram->SetTitleSize(label_size, "xy");    // Text  size for x- and y-axis
+  histogram->GetXaxis()->SetTitle("Debug ID");  // Change x-axis title
+  histogram->GetYaxis()->SetTitle("Counts");    // Change y-axis title
+  histogram->GetYaxis()->SetTitleOffset(0.7);   // Move y-axis text a little closer
+  //histogram->SetTitle(Form(""));                // Remove title of histogram
+  gStyle->SetTitleSize(label_size, "t");        // Title size
+  gPad->SetLeftMargin(margin_size);
+  gPad->SetBottomMargin(margin_size);
+
+  canvas->SaveAs(Form("../../Plots/plotting/cd_debug%s.png", name_addition.c_str()));
 }
 
 
