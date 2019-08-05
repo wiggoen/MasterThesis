@@ -1011,9 +1011,20 @@ The user calibration of the CD shown in \autoref{fig:cal_user} is basically the 
 \end{figure}
 
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_f-strip_all_Q.png}
+	\caption{CD front.}
+	\label{fig:cal_CD_front}
+\end{figure}
 
 
-
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_b-strip_all_Q.png}
+	\caption{CD back.}
+	\label{fig:cal_CD_back}
+\end{figure}
 
 
 
@@ -1075,15 +1086,15 @@ We use a threshold to cut away the pedestal.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q1_f1.pdf}
-	\caption{Pedestal Q1, f1.}
+	\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q1_f1.png}
+	\caption{Pedestal Q1, F1.}
 	\label{fig:Pedestal_f}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q1_b1.pdf}
-	\caption{Pedestal Q1, b1.}
+	\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q1_b1.png}
+	\caption{Pedestal Q1, B1.}
 	\label{fig:Pedestal_b}
 \end{figure}
 
@@ -1128,10 +1139,13 @@ root [1] check_cd_debug("setup_Sm.txt", "user")
 \end{lstlisting}
 
 
+\autoref{fig:CD_debug} shows how many particles have strips fired on the front side or back side of the CD. The debug IDs are explained by \autoref{tab:CD_debug}. Debug ID 20 is when no particle can be found, because there is no energy registered in either the front or the back strips. This can only happen when the front energy is below the software threshold set by the user in the calibration file and the back energy is either in a broken strip or is also below the software threshold. It is likely that it is some noise events or charge sharing that comes below the threshold. 
+
+
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/cd_debug-user.png}
-	\caption{CD debugging.}
+	\caption{CD debugging. Debug IDs are explained by \autoref{tab:CD_debug}. }
 	\label{fig:CD_debug}
 \end{figure}
 
