@@ -1,0 +1,37 @@
+\begin{tikzpicture}
+    % Definitions
+    \coordinate (ks3)     at ( 5, 2);
+    \coordinate (sim)     at ( 5, 0);
+    \coordinate (exp)     at (-5, 0);
+    \coordinate (M2R)     at (-5,-2);
+    \coordinate (Q4S)     at (-5,-4);
+    \coordinate (sSm)     at ( 0,-6);
+    \coordinate (Pfit)    at (6.5,-4);
+    \coordinate (pcal)    at (12,-6);
+    \coordinate (ADCgen)  at (12,-8);
+    \coordinate (calfile) at (6.5,-8);
+    \coordinate (Pplt)    at (1.5,-8);
+    % Nodes
+    \node(K)   at (ks3)   [draw,minimum width=+30ex,minimum height=+5ex,thick] {$\texttt{kinsim3.cc}$};
+    \node(S)   at (sim)     [draw,minimum width=+30ex,minimum height=+5ex,thick] {Simulated data};
+    \node(E)   at (exp)     [draw,minimum width=+30ex,minimum height=+5ex,thick] {Experimental data};
+    \node(M)   at (M2R)     [draw,minimum width=+30ex,minimum height=+5ex,thick] {$\texttt{M2R.sh}$};
+    \node(A)   at (Q4S)     [draw,minimum width=+30ex,minimum height=+5ex,thick] {$\texttt{Q4S.sh}$};
+    \node(Sm)  at (sSm)     [draw,minimum width=+30ex,minimum height=+5ex,thick] {$\textit{setup\_Sm.txt}$};
+    \node(P)   at (Pfit)    [draw,thick] {$\texttt{ParticleFit.cpp}$};
+    \node(pc)  at (pcal)    [draw,minimum width=+30ex,minimum height=+5ex,thick] {$\texttt{particle-calibration.py}$};
+    \node(ADC) at (ADCgen)  [draw,minimum width=+30ex,minimum height=+5ex,thick] {$\texttt{ADC\_generator.py}$};
+    \node(cal) at (calfile) [draw,thick] {$\textit{IS558-user.cal}$};
+    \node(plt) at (Pplt)    [draw,thick] {$\texttt{ParticlePlot.cpp}$};
+    % Arrows
+    \draw[->,>=stealth,line width=1.5pt] (K)   -- (S);
+    \draw[->,>=stealth,line width=1.5pt] (E)   -- (M);
+    \draw[->,>=stealth,line width=1.5pt] (M)   -- (A);
+    \draw[->,>=stealth,line width=1.5pt] (S)   -- (Sm);
+    \draw[->,>=stealth,line width=1.5pt] (A)   -- (Sm);
+    %\draw[->,>=stealth,line width=1.5pt] (A)   -- (P);
+    %\draw[->,>=stealth,line width=1.5pt] (P)   -- (pc);
+    %\draw[->,>=stealth,line width=1.5pt] (pc)  -- (ADC);
+    %\draw[->,>=stealth,line width=1.5pt] (ADC) -- (cal);
+    %\draw[->,>=stealth,line width=1.5pt] (cal) -- (plt);
+\end{tikzpicture}

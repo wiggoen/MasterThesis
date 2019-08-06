@@ -376,9 +376,13 @@ void simulation_fit(std::string setup_file) {
 
 void AQ4_fit(std::string setup_file, std::string detector_side, int ring_gate = 1, bool help_lines = false) {
   /*
-      Fitting data sorted by AQ4Sort.
+      Fitting data sorted by AQ4Sort. Uncalibrated (counts vs. channels).
+      The fitted data is shown by a red curve, the fitted centroid is dotted red.
       Choose ("b")ack side or ("f")ront side of detector.
       Gating on ring is only for the back side.
+      Help lines (green for range and centroid guess, dotted red for centroid fit):
+      Use true, 1 or any number for help lines.
+      Use false or 0 for having no help lines.
   */
   ADC adc;
   Element *element = new Element();
@@ -516,7 +520,7 @@ void AQ4_fit(std::string setup_file, std::string detector_side, int ring_gate = 
         output_file << histogram_name << ":" << space << std::setw(10) << centroid.at(0) << std::endl;
       }   
     }
-    canvas[quadrant]->SaveAs(Form("../../Plots/fitting/%s_%s_Q%d_%s%s_fit.pdf", element->element_peak_1.c_str(), element->element_peak_2.c_str(), quadrant+1, detector_side_name.c_str(), gate.c_str()));
+    //canvas[quadrant]->SaveAs(Form("../../Plots/fitting/%s_%s_Q%d_%s%s_fit.pdf", element->element_peak_1.c_str(), element->element_peak_2.c_str(), quadrant+1, detector_side_name.c_str(), gate.c_str()));
   }
   element->print_centroids();
   output_file.close();
@@ -638,7 +642,7 @@ void AQ4_single_fit(std::string setup_file, std::string detector_side, int quadr
       histogram->SetAxisRange(0.95 * min_range, 1.05 * max_range, "X");
     }
 
-  canvas->SaveAs(Form("../../Plots/fitting/%s_%s_%s_fit.pdf", element->element_peak_1.c_str(), element->element_peak_2.c_str(), histogram_name.c_str()));
+  //canvas->SaveAs(Form("../../Plots/fitting/%s_%s_%s_fit.pdf", element->element_peak_1.c_str(), element->element_peak_2.c_str(), histogram_name.c_str()));
   }
   element->print_centroids();
   std::cout << "--- Fitting data ended ---" << std::endl;
@@ -740,7 +744,7 @@ void AQ4_back_strip_fit(std::string setup_file, int quadrant, int ring_gate,
             << std::setw(9)  << max_bin      << std::setw(12) << centroid_guess
             << std::setw(10) << centroid     << std::endl;
 
-  canvas->SaveAs(Form("../../Plots/fitting/Manual_Pb_Sm_back_Q%d_f%d_b%d_fit.pdf", quadrant, ring_gate, back_strip));
+  //canvas->SaveAs(Form("../../Plots/fitting/Manual_Pb_Sm_back_Q%d_f%d_b%d_fit.pdf", quadrant, ring_gate, back_strip));
   
   std::cout << "--- Manual fitting data ended ---" << std::endl;
 }
@@ -748,7 +752,7 @@ void AQ4_back_strip_fit(std::string setup_file, int quadrant, int ring_gate,
 
 
 void test() {
-  std::string infile_ = "../../Sorted_data/Sm_user-AQ4Sort-2019-03-23.root";
+  std::string infile_ = "../../Sorted_data/Sm_user-AQ4Sort-2019-06-24.root";
   TFile *infile = new TFile(infile_.c_str(), "UPDATE");
   TCanvas *canvas = nullptr;
   std::string canvas_name;
