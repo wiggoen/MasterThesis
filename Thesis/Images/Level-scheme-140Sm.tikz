@@ -1,4 +1,9 @@
-\begin{tikzpicture}
+\begin{tikzpicture}[
+    level/.style = { ultra thick, black },
+    connect/.style = { dotted, black },
+    notice/.style = { draw, rectangle callout, callout relative pointer={#1} },
+    label/.style = { text width=2cm }
+    ]
     %%% Picture made by normalizing energy to the 2+ state (531) and choosing it to be 
     %%% 2 units of y in height.
 

@@ -1,37 +1,54 @@
-\begin{tikzpicture}
+\begin{tikzpicture}[
+    box/.style = { draw,minimum width=+30ex,minimum height=+5ex,thick },
+    arrowstyle/.style = { ->,>=stealth,line width=1.5pt }
+    ]
     % Definitions
-    \coordinate (ks3)     at ( 5, 2);
-    \coordinate (sim)     at ( 5, 0);
-    \coordinate (exp)     at (-5, 0);
-    \coordinate (M2R)     at (-5,-2);
-    \coordinate (Q4S)     at (-5,-4);
-    \coordinate (sSm)     at ( 0,-6);
-    \coordinate (Pfit)    at (6.5,-4);
-    \coordinate (pcal)    at (12,-6);
-    \coordinate (ADCgen)  at (12,-8);
-    \coordinate (calfile) at (6.5,-8);
-    \coordinate (Pplt)    at (1.5,-8);
+    \coordinate (ks3)  at ( 5, 2 );
+    \coordinate (sim)  at ( 5, 0 );
+    \coordinate (exp)  at (-5, 0 );
+    \coordinate (M2R)  at (-5,-2 );
+    \coordinate (Q4S)  at (-5,-4 );
+    \coordinate (Pplt) at (-5,-6 );
+    \coordinate (Pfit) at (-5,-8 );
+    \coordinate (pcal) at (-5,-10);
+    \coordinate (Pgen) at (-5,-12);
+    \coordinate (ROOT) at ( 5,-4 );
+    \coordinate (Gplt) at ( 5,-6 );
+    \coordinate (Gfit) at ( 5,-8 );
+    \coordinate (Dgen) at ( 5,-10);
+    \coordinate (Ggen) at ( 5,-12);
+    \coordinate (calf) at ( 0,-14);
     % Nodes
-    \node(K)   at (ks3)   [draw,minimum width=+30ex,minimum height=+5ex,thick] {$\texttt{kinsim3.cc}$};
-    \node(S)   at (sim)     [draw,minimum width=+30ex,minimum height=+5ex,thick] {Simulated data};
-    \node(E)   at (exp)     [draw,minimum width=+30ex,minimum height=+5ex,thick] {Experimental data};
-    \node(M)   at (M2R)     [draw,minimum width=+30ex,minimum height=+5ex,thick] {$\texttt{M2R.sh}$};
-    \node(A)   at (Q4S)     [draw,minimum width=+30ex,minimum height=+5ex,thick] {$\texttt{Q4S.sh}$};
-    \node(Sm)  at (sSm)     [draw,minimum width=+30ex,minimum height=+5ex,thick] {$\textit{setup\_Sm.txt}$};
-    \node(P)   at (Pfit)    [draw,thick] {$\texttt{ParticleFit.cpp}$};
-    \node(pc)  at (pcal)    [draw,minimum width=+30ex,minimum height=+5ex,thick] {$\texttt{particle-calibration.py}$};
-    \node(ADC) at (ADCgen)  [draw,minimum width=+30ex,minimum height=+5ex,thick] {$\texttt{ADC\_generator.py}$};
-    \node(cal) at (calfile) [draw,thick] {$\textit{IS558-user.cal}$};
-    \node(plt) at (Pplt)    [draw,thick] {$\texttt{ParticlePlot.cpp}$};
+    \node(K)  at (ks3)  [box]               {$\texttt{kinsim3.cc}$};
+    \node(S)  at (sim)  [box,fill=cyan!40]  {Simulated data};
+    \node(E)  at (exp)  [box,fill=green!40] {Experimental data};
+    \node(M)  at (M2R)  [box]               {$\texttt{M2R.sh}$};
+    \node(A)  at (Q4S)  [box]               {$\texttt{Q4S.sh}$};
+    \node(RT) at (ROOT) [box]               {ROOT};
+    \node(PP) at (Pplt) [box]               {$\texttt{ParticlePlot.cpp}$};
+    \node(PF) at (Pfit) [box]               {$\texttt{ParticleFit.cpp}$};
+    \node(pc) at (pcal) [box]               {$\texttt{particle-calibration.py}$};
+    \node(uc) at (Pgen) [box]               {$\texttt{ADC\_generator.py}$};
+    \node(GP) at (Gplt) [box,fill=black!10] {$\texttt{GammaPlot.cpp}$};
+    \node(GF) at (Gfit) [box,fill=black!10] {$\texttt{GammaFit.cpp}$};
+    \node(dg) at (Dgen) [box,fill=black!10] {$\texttt{DGF\_generator.py}$};
+    \node(gg) at (Ggen) [box,fill=black!10] {$\texttt{Geometry\_generator.py}$};
+    \node(cf) at (calf) [box]               {$\textit{IS558-user.cal}$};
     % Arrows
-    \draw[->,>=stealth,line width=1.5pt] (K)   -- (S);
-    \draw[->,>=stealth,line width=1.5pt] (E)   -- (M);
-    \draw[->,>=stealth,line width=1.5pt] (M)   -- (A);
-    \draw[->,>=stealth,line width=1.5pt] (S)   -- (Sm);
-    \draw[->,>=stealth,line width=1.5pt] (A)   -- (Sm);
-    %\draw[->,>=stealth,line width=1.5pt] (A)   -- (P);
-    %\draw[->,>=stealth,line width=1.5pt] (P)   -- (pc);
-    %\draw[->,>=stealth,line width=1.5pt] (pc)  -- (ADC);
-    %\draw[->,>=stealth,line width=1.5pt] (ADC) -- (cal);
-    %\draw[->,>=stealth,line width=1.5pt] (cal) -- (plt);
+    \draw[arrowstyle] (K)       -- (S);
+    \draw[arrowstyle] (E)       -- (M);
+    \draw[arrowstyle] (M)       -- (A);
+    \draw[arrowstyle] (S)       -- (PP.east);
+    \draw[arrowstyle] (A)       -- (PP);
+    \draw[arrowstyle] (A.east)  -- (RT.west);
+    \draw[arrowstyle] (A.east)  -- (GP.west);
+    \draw[arrowstyle] (PP)      -- (PF);
+    \draw[arrowstyle] (PF)      -- (pc);
+    \draw[arrowstyle] (pc)      -- (uc);
+    \draw[arrowstyle] (pc.west) |- node[] {} ++(-0.5,0) |- (PP.west);
+    \draw[arrowstyle] (uc)      -- (cf);
+    \draw[arrowstyle] (GP)      -- (GF);
+    \draw[arrowstyle] (GF)      -- (dg);
+    \draw[arrowstyle] (dg)      -- (gg);
+    \draw[arrowstyle] (gg)      -- (cf);
 \end{tikzpicture}

@@ -23,13 +23,8 @@
 	arrows, 
 	shapes.callouts,
 	decorations.pathreplacing,
-	decorations.pathmorphing
-}
-\tikzset{
-    level/.style = { ultra thick, black },
-    connect/.style = { dotted, black },
-    notice/.style = { draw, rectangle callout, callout relative pointer={#1} },
-    label/.style = { text width=2cm }
+	decorations.pathmorphing,
+	calc
 }
 \usepackage{stackengine}
 
@@ -1133,16 +1128,9 @@ The user calibration of the CD shown in \autoref{fig:cal_user} is basically the 
 
 \subsubsection{The ambitious idea}
 
-\texttt{ParticleFit.cpp} \newline
-Function 
-\begin{lstlisting}[language=c++]
-void AQ4_fit(std::string setup_file, 
-	std::string detector_side, int ring_gate = 1, 
-	bool help_lines = false)
-\end{lstlisting}
-AQ4\_fit()
 
-\autoref{fig:cal_FC} shows a flowchart of the programs, scripts and files used in the user calibration. The idea was to use the \textbf{kinsim3()} function from \texttt{kinsim3.cc} to simulate the data and the \texttt{Q4S.sh} script to sort the experimental data with \texttt{AQ4Sort}. 
+\autoref{fig:cal_FC} shows a flowchart of the programs, scripts and files used in the user calibration. The idea was to use the \textbf{kinsim3()} function from \texttt{kinsim3.cc} to simulate the data and the \texttt{Q4S.sh} script to sort the experimental data with \texttt{AQ4Sort} to get each pixel of the CD. This data could either be analyzed in ROOT with the \textbf{TBrowser()} or through different functions in \texttt{ParticlePlot.cpp}. From either ROOT or \texttt{ParticlePlot.cpp} information about the range of the peaks and guesses of the centroids of Pb and Sm would be written down in input files used in \texttt{ParticleFit.cpp}. 
+
 
 \begin{figure}[ht]
 	\centering
@@ -1150,6 +1138,16 @@ AQ4\_fit()
 	\caption{Flowchart of the programs, scripts and files used in the user calibration.}
 	\label{fig:cal_FC}
 \end{figure}
+
+\bigskip
+
+\texttt{ParticleFit.cpp} \newline
+Function 
+\begin{lstlisting}[language=c++]
+void AQ4_fit(std::string setup_file, 
+	std::string detector_side, int ring_gate = 1, 
+	bool help_lines = false)
+\end{lstlisting}
 
 \bigskip
 
