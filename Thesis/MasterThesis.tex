@@ -970,6 +970,16 @@ The total centroids to collect are 1664 centroids, and this I did not want to do
 For a quick calibration, or a bare minimum calibration, one needs two peaks in each annular strip and two peaks in each secular strip, making it 224 centroids.
 All above this just makes it more precise.
 
+\autoref{fig:cal_FC} shows a flowchart of the programs, scripts and files used in the user calibration. 
+The idea was to use the \textbf{kinsim3()} function from \texttt{kinsim3.cc} to simulate the data and the \texttt{Q4S.sh} script to sort the experimental data with \texttt{AQ4Sort} to get each pixel of the CD. 
+This data could either be analyzed in ROOT with the \textbf{TBrowser()} or through different functions in \texttt{ParticlePlot.cpp}. 
+From either ROOT or \texttt{ParticlePlot.cpp}, information about the range of the peaks and guesses of the centroids of Pb and Sm would be written down in input files used in \texttt{ParticleFit.cpp}. 
+Here the automatic fitting would have used the input files to fit the peaks, collect the centroids and written them to output files which would have been used as input files in \texttt{particle-calibration.py}. 
+In this Python script, the centroids would have been plotted and a linear regression method using least squares of a first degree polynomial fit\footnote{Polynomial fit: \url{https://docs.scipy.org/doc/numpy/reference/generated/numpy.polyfit.html}} would have fitted a line to re-produce the points. 
+It would also write the gains and offsets to separate output files, which would be used as input in \texttt{ADC\_generator.py}. 
+This Python script will write the calibration coefficients to the terminal, and from there it is possible to copy and paste it into the calibration file \textit{IS5558-user.cal}. 
+This calibration file is then used to sort the data once more with \texttt{Q4S.sh} using \texttt{TreeBuilder} and the new calibration coefficients.
+
 The downfall of the automatic "centroid collector" came when trying it on the secular strips of the CD. 
 There is just too much individual differences to calibrate the secular strips with a simple script given a channel range for all 12 back strips. 
 I found out this way too late. 
@@ -1125,11 +1135,10 @@ The user calibration of the CD shown in \autoref{fig:cal_user} is basically the 
 	\label{fig:cal_CD}
 \end{figure}
 
+\newpage
 
-\subsubsection{The ambitious idea}
 
 
-\autoref{fig:cal_FC} shows a flowchart of the programs, scripts and files used in the user calibration. The idea was to use the \textbf{kinsim3()} function from \texttt{kinsim3.cc} to simulate the data and the \texttt{Q4S.sh} script to sort the experimental data with \texttt{AQ4Sort} to get each pixel of the CD. This data could either be analyzed in ROOT with the \textbf{TBrowser()} or through different functions in \texttt{ParticlePlot.cpp}. From either ROOT or \texttt{ParticlePlot.cpp} information about the range of the peaks and guesses of the centroids of Pb and Sm would be written down in input files used in \texttt{ParticleFit.cpp}. 
 
 
 \begin{figure}[ht]
@@ -1189,7 +1198,6 @@ The continuum of events at low energy comes from charge sharing between the stri
  \autoref{fig:Pedestal} shows the big peak of the charge sharing on the front and back side. 
  This peak we call the "pedestal", because it is like a massive statue in front of the interesting data. 
  For the very heavy ions, the total amount of charge deposited gets split between neighboring strips of the CD. 
-
 There is a single common gate for each ADC, containing channels from one CD quadrant. 
 Therefore, when there is an event in one strip of the CD all channels are readout, but the channels without a real event read a "zero" energy.
 These are the events in the pedestal.
@@ -1198,8 +1206,9 @@ After a correct calibration is applied, this pedestal will be calibrated out of 
 
 \textsl{MiniballCoulexSort} does perform some tricks to try to recover the correct energy and position, but that depends on counting the number of strips that fire. 
 We use a software threshold to cut away the pedestal. 
-If the threshold is set too low, we will include "pedestal" events and it will get things wrong. 
+If the threshold is set too low, we will include pedestal events and it will get things wrong. 
 If the threshold is too high, we will miss some events that have charge sharing and get the wrong energy for the particle. 
+The goal is to not include the pedestal, and don't cut away too many events from the continuum.
 It is easier to set thresholds in linear scale than logarithmic, because in logarithmic scale the threshold value will decrease very much and it's hard to see where to set the limit. 
 The default threshold (if none is given in the calibration file) is set to channel 100. 
 In some cases this is too much and in others this is not enough. 
@@ -1207,7 +1216,7 @@ For each ADC channel, the threshold can, and should be set.
 \autoref{fig:Threshold} shows the software threshold set in the calibration file on the front and back side for one strip on each side.
 
 
-Goal: You are not including the pedestal, and you don't cut away too many events from the continuum.
+
 
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
@@ -1344,7 +1353,7 @@ root [1] check_ADC_time_offsets("setup_Sm.txt")
 or they can be manually reached by
 \begin{lstlisting}[language=sh]
 $ cd /Users/trondwj/GitHub/MasterThesis/Sorted_data
-$ root Sm_user-TreeBuilder-2019-04-10.root
+$ root Sm_user-TreeBuilder-2019-06-20.root
 root [1] new TBrowser()
 \end{lstlisting}
 and in the browser, the histograms named tdiff\_gp\_\textit{i} (where \textit{i} is a number between 0 and 3) will lie under all the folders. The peaks of these plots have the interesting x-value. Zooming into the peaks, it is very clear what value it is. These values are provided in the calibration file under ADC time offsets (ticks). These values can change depending on the amount of data sorted, so it is wise to double check them.
