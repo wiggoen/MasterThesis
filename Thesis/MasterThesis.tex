@@ -405,7 +405,7 @@ LISE++ \cite{LISE}
 \end{table}
 
 
-\begin{figure}
+\begin{figure}[ht]
 	\centering
 	\begin{subfigure}{\textwidth}
 		\input{Images/LAB-frame.tikz}
@@ -575,7 +575,7 @@ The distance\footnote{The distance was measured using a $\alpha$-source ($^{226}
 \end{table}
 
 
-\begin{figure}
+\begin{figure}[ht]
 	\centering
 	\begin{subfigure}{\textwidth}
 		\input{Images/CD-front.tikz}
@@ -621,7 +621,7 @@ Signals from the CD and the HPGe clusters are read out by the ADC and Digital Ga
 \chapter{Data analysis}  
 
 \section{Data handling}
-The raw data from Miniball experiments essentially\footnote{The format is not entirely correct, since it has identification of where the particle and \ga\ hit. A more detailed format could be: time, cluster, crystal, sector, ring/strip, energy, etc.} comes in list mode (identification, energy, time), where every line is an event. It is stored in \textbf{.med}-files (MBS Event Data, or also known as Miniball Event Data) with the naming convention \textit{140Sm\_208Pb\_pos6\_0xy.med}, where \textit{x} and \textit{y} are numbers between 0 and 9. The goal of the data is to obtain Doppler-corrected \ga-spectra with various conditions on particles and angles, in order to analyse the Coulomb excitation of \Sm. 
+The raw data from Miniball experiments essentially\footnote{The format is not entirely correct, since it has identification of where the particle and \ga\ hit. A more detailed format could be: time, cluster, crystal, sector, ring/strip, energy, etc.} comes in list mode (identification, energy, time), where every line is an event. It is stored in \textit{.med}-files (MBS Event Data, or also known as Miniball Event Data) with the naming convention \textit{140Sm\_208Pb\_pos6\_0xy.med}, where \textit{x} and \textit{y} are numbers between 0 and 9. The goal of the data is to obtain Doppler-corrected \ga-spectra with various conditions on particles and angles, in order to analyse the Coulomb excitation of \Sm. 
 
 \begin{lstlisting}[language=]
 $ cd ~/GitHub/MasterThesis/Raw_data/Sm
@@ -679,14 +679,15 @@ This program is used before and during the calibration of the particle detectors
 
 
 \subsection{Counting and naming convention}
-In the following sections I will introduce different programs and scripts used in the data calibration and analysis. One thing to note here, is that the numbering of the CD rings and strips are different in these programs and scripts. 
+In the following sections there will be an introduction of different programs and scripts used in the data calibration and analysis. One thing to note here, is that the numbering of the CD rings and strips are different in these programs and scripts. 
 
 Histograms sorted by \texttt{TreeBuilder} starts counting from 0 (outermost ring) to 15 (innermost ring) with energy in MeV showed in \autoref{fig:CD-FB}. 
 In \texttt{AQ4Sort} it starts from 1 (innermost ring) to 16 (outermost ring) with energy in keV. 
 \autoref{tab:ADC} shows the ADC wiring and a comparison of the histogram naming from \texttt{TreeBuilder} and \texttt{AQ4Sort} can be found in \autoref{tab:TBvsAQ4}.
 The simulation program \texttt{kinsim3} counts from 1 (innermost ring) to 16 (outermost ring), the opposite of \texttt{AQ4Sort}. 
-It is easy to be confused by all the different counting, but I will try to use the counting order of \texttt{kinsim3} for everything, it seems like the most logic way of counting. 
-I cannot change the wiring of the CD, but I can choose the most logic order of counting for me.
+It is easy to be confused by all the different counting, but this thesis will try to use the counting order of \texttt{kinsim3} for everything, it seems like the most logic way of counting. 
+A change of the wiring of the CD will probably not happen, but it is possible to choose a logic order of counting software wise.
+Calibration coefficients given to the calibration file, which is introduced in later sections, follow the naming convention of \texttt{TreeBuilder} in \autoref{tab:TBvsAQ4}.
 
 
 \begin{table}[ht] 
@@ -706,7 +707,7 @@ I cannot change the wiring of the CD, but I can choose the most logic order of c
 
 
 \section{Data conversion}
-In order to analyze the data in the ROOT\footnote{ROOT is a data analysis framework written in C/C++ made at CERN.} framework, the first part of the code is just to convert the \textbf{.med}-files produced by \MBOU\ into \textbf{.root}-files with the program \texttt{MedToRoot}. In order to not copy and paste the commands used with \texttt{MedToRoot} in the terminal for every data file, I made a bash script called \texttt{M2R.sh} to do this. It uses \texttt{MedToRoot} to take in as many files as you want, and convert it in one go. It takes one command line argument because it was initially developed to sort different elements, so it is fairly simple to expand. By not using any command line arguments, the script will print out how to use it. First all of the interesting files are converted with the \texttt{M2R.sh} script. An example of the use with terminal output for the \textbf{.med}-file with \textit{xy = 08} is as follows:
+In order to analyze the data in the ROOT\footnote{ROOT is a data analysis framework written in C/C++ made at CERN.} framework, the first part of the code is just to convert the \textit{.med}-files produced by \MBOU\ into \textit{.root}-files with the program \texttt{MedToRoot}. In order to not copy and paste the commands used with \texttt{MedToRoot} in the terminal for every data file, a bash script called \texttt{M2R.sh} was made to do this. It uses \texttt{MedToRoot} to take in as many files as you want, and convert it in one go. It takes one command line argument because it was initially developed to sort different elements, so it is fairly simple to expand. By not using any command line arguments, the script will print out how to use it. First all of the interesting files are converted with the \texttt{M2R.sh} script. An example of the use with terminal output for the \textit{.med}-file with \textit{xy = 08} is as follows:
 
 % Empty language = plain text
 \begin{lstlisting}[language=]
@@ -844,7 +845,7 @@ root [2] .q
 $ mv 140Sm_208Pb_1.4mg_4.65MeVu_d0.02MeVu_res0.6.root ../../MasterThesis/Sorted_data/sim_140Sm_208Pb.root
 \end{lstlisting}
 
-After the simulation program was run, I moved and renamed the file with the \textbf{mv} command. 
+After the simulation program was run, the file was moved and renamed with the \textbf{mv} command.
 
 
 
@@ -925,7 +926,7 @@ The settingsfile, \textit{MBSettings2017\_CLX\_IS558.dat}, and calibration files
 
 
 
-Just as for the \texttt{MedToRoot} program, I made a bash script named \texttt{Q4S.sh} for the \texttt{TreeBuilder} and \texttt{AQ4Sort} programs. 
+Just as for the \texttt{MedToRoot} program, a bash script named \texttt{Q4S.sh} was made for the \texttt{TreeBuilder} and \texttt{AQ4Sort} programs. 
 \texttt{Q4S.sh} uses either \texttt{AQ4Sort} to make histograms for each pixel of the particle detector (used for calibration) or \texttt{Treebuilder} to build events, with a lot of files in one go for both. 
 When using the online calibration, we don't need to use the \texttt{AQ4Sort} program, because we already have the calibration coefficients. 
 They are adjusted in the beginning and during the experiment.
@@ -939,8 +940,8 @@ $ ./Q4S.sh Sm online TB
 $ mv Sm_online-TreeBuilder-2019-06-24.root ../../Sorted_data/
 \end{lstlisting}
 
-I also made other helping scripts to get histograms, do fitting, comparison and calibration. 
-After the sorting, I moved the file to a folder of sorted data (with the \textbf{mv} command), and gave the relative path in the \textit{setup\_Sm.txt} file in \textit{Scripts/plotting/} used as input in the \texttt{ParticlePlot.cpp} script. 
+Also other helping scripts to get histograms, do fitting, comparison and calibration was made. 
+After the sorting, the file was moved to a folder of sorted data (with the \textbf{mv} command), and the relative path was given in the \textit{setup\_Sm.txt} file in \textit{Scripts/plotting/} used as input in the \texttt{ParticlePlot.cpp} script. 
 This script has to be loaded into the ROOT 6 framework to extract the histograms of interest and fix the formatting.
 To run the \texttt{ParticlePlot.cpp} in interaction with ROOT, the following commands are used
 
@@ -962,17 +963,17 @@ One major problem with the online calibration is that a number of the back strip
 
 
 \subsection{User calibration of the particle detector}
-My ambitious goal of the calibration was to make a program that could automatically fit the plots I needed. 
+An ambitious goal of the calibration was to make a program that could automatically fit the centroid of the peaks needed. 
 It turned out to be very difficult, and it became more and more manual labor. 
 Because of the complex peak shapes, it is very hard to do an automatic fitting it seems. 
-The peaks demands very much individual care, which I could not do with a automatic program. 
+The peaks demands very much individual care, which is very difficult to do with a automatic program. 
 In logarithmic scale (log-scale) the data looked more Gaussian distributed, but it is not the case in linear scale. 
 For the centroids, it was very hard to tell in log-scale how precise the automatic fitting was. 
 
 The total amount of annular strips to calibrate on the front side of the CD is 64 (4 quadrants $\cdot$ 16 rings). 
 On the back side we have 48 secular strips (4 quadrants $\cdot$ 12 strips). 
 To fully calibrate the CD, we need all the centroids of the peaks from both sides, 128 centroids (64 annular strips $\cdot$ 2 peaks/ring) on the front side and 1536 centroids (48 secular strips $\cdot$ 2 peaks/ring $\cdot$ 16 rings) on the back side. 
-The total centroids to collect are 1664 centroids, and this I did not want to do manually.
+The total centroids to collect are 1664 centroids, and this is not a task one would want to do manually.
 For a quick calibration, or a bare minimum calibration, one needs two peaks in each annular strip and two peaks in each secular strip, making it 224 centroids.
 All above this just makes it more precise.
 
@@ -990,10 +991,10 @@ The gray boxes related to the \ga-calibration will be discussed in \autoref{sec:
 
 The downfall of the automatic "centroid collector" came when trying it on the secular strips of the CD. 
 There is just too much individual differences to calibrate the secular strips with a simple script given a channel range for all 12 back strips. 
-I found out this way too late. 
+This was discovered way too late. 
 There isn't any range to "rule them all", at least since the fitting function can behave very strange given a too small or too big range.
 To implement a proper automatic fitting program, one would have to find a function with a negatively (left) skewed distribution or negative skewness (right modal), where most of the data is more than the mean. 
-Sadly I discovered this too late to implement it. 
+Sadly this was discovered too late to implement it. 
 
 In some spectra it was very hard to determine the centroid of the Pb peaks. 
 We tried to use additional data from experiment IS553 ($^{144}$Ba on $^{58}$Ni), which was right before our experiment. 
@@ -1093,7 +1094,7 @@ output file: Sm_user-AQ4Sort-2019-06-24.root
 The user calibration of the CD shown in \autoref{fig:cal_user} is basically the online calibration without the innermost ring. 
 
 
-\begin{figure}
+\begin{figure}[ht]
 	\centering
 	\begin{subfigure}{\textwidth}
 		\centering
@@ -1130,7 +1131,7 @@ The user calibration of the CD shown in \autoref{fig:cal_user} is basically the 
 %
 % CD energy vs. strip --<
 
-\begin{figure}
+\begin{figure}[ht]
 	\centering
 	\begin{subfigure}{\textwidth}
 		\centering
@@ -1159,9 +1160,8 @@ The user calibration of the CD shown in \autoref{fig:cal_user} is basically the 
 
 
 
-
-
-We anyways have decided to go with the online calibration for this thesis since I have used so much time on scripts, and then found out that the auto-fitting was a much harder problem than I first expected (because of the shape of the peaks). 
+It was anyways decided to stick with the online calibration for this thesis since there is no time to do a new calibration of the detectors. 
+A lot of time have been used on scripts, and then the auto-fitting was a much harder problem than first expected (because of the shape of the peaks). 
 
 
 
@@ -1214,7 +1214,7 @@ I presume that charge sharing is only considered if 2 firing strips are neighbor
 %
 % Pedestal --<
 
-\begin{figure}
+\begin{figure}[ht]
 	\centering
 	\begin{subfigure}{\textwidth}
 		\centering
@@ -1251,7 +1251,7 @@ I presume that charge sharing is only considered if 2 firing strips are neighbor
 %
 % Threshold --<
 
-\begin{figure}
+\begin{figure}[ht]
 	\centering
 	\begin{subfigure}{\textwidth}
 		\centering
@@ -1311,13 +1311,33 @@ It is likely that it is some noise events or charge sharing that comes below the
 
 
 
+\subsection{Time structure and calibration}
+Each quadrant of the CD is independently connected to a Time to Digital Converter (TDC), which keeps track of the time of registered particle-\ga\ \textcolor{red}{(and particle-\ga-\ga)?} coincidences. 
+The ADCs and DGFs record an energy and a time-stamp with 25 ns ticks. 
+It is the multiplicity of the output of the DGFs that is used to generate the \ga\ signal, which in turn is used to make the particle-\ga\ coincidence.
+\autoref{fig:ITS} shows a schematic of the ISOLDE time structure. 
+The Miniball data acquisition is happening during two time windows, the "on-beam" and "off-beam" windows. 
+When REXEBIS releases the beam to the HIE-ISOLDE LINAC, a signal is also sent to generate the on-beam window. 
+This window called the "slow extraction mode" was 800 $\mu$s, but in 2011 it was extended to 1 ms, because the method of extraction of the beam was improved. 
+All the data are read out after the on-beam window. 
+This causes the DAQ to become dead for a while, so the next on-beam window is triggered when the DAQ is operable again.
+The off-beam window starts 60 $\mu$s after the end of a readout, triggered by the disappearance of the DAQ is inoperable signal, to then allow the ADCs and TDCs time to start. 
+In the off-beam window, which has the same duration of time as the on-beam window, data recordings of the background is conducted.
+After the off-beam window closes, a readout of the records is triggered.
+It is then possible to subtract the windows from each other to get the beam contribution. 
+The DAQ system records the signals from each detector segment, which is individually time-stamped. 
+With these records, a full reconstruction of the real events and coincidences is possible \cite{NWarr-el}.
 
-\subsection{Time calibration}
-Each quadrant of the CD is connected to a Time to Digital Converter (TDC). The TDC keeps track of the time of registered particle-\ga\ coincidences. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{Images/Time-structure.png}
+	\caption{Schematic of the ISOLDE time structure. (A) The supercycle of proton beam bunches with a width of $\approx 100 ~\mu$s from the PSB separated by 1.2 s. The black vertical lines shows an allocation of the the bunches which the ISOLDE production target receives, while the others are distributed to other experiments. (B) The release profile of radionuclides from the production target, which is heavily modulated by the PSB cycle. (C+D) REXTRAP and REXEBIS beam bunches, synchronized with (E) the radio frequency (RF) window of the HIE-ISOLDE LINAC. (F) The "on-beam" and "off-beam" time window of 800 $\mu$s using the Miniball setup. Figure courtesy of J. van de Walle \cite{HI-TDR}.}
+	\label{fig:ITS}
+\end{figure}
 
 
-
-Using the \texttt{ParticlePlot.cpp} script, the ADC time offsets can be extracted by the following commands
+The purpose of the time calibration is to align the time spectra so that a prompt time gate can be set. In this way it is possible to correlate particles and \ga-rays. Using the \texttt{ParticlePlot.cpp} script, the ADC time offsets can be extracted by the following commands
 \begin{lstlisting}[language=sh]
 $ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting
 $ root
@@ -1330,9 +1350,7 @@ $ cd /Users/trondwj/GitHub/MasterThesis/Sorted_data
 $ root Sm_user-TreeBuilder-2019-06-20.root
 root [1] new TBrowser()
 \end{lstlisting}
-and in the browser, the histograms named tdiff\_gp\_\textit{i} (where \textit{i} is a number between 0 and 3) will lie under all the folders. The peaks of these plots have the interesting x-value. Zooming into the peaks, it is very clear what value it is. These values are provided in the calibration file under ADC time offsets (ticks). These values can change depending on the amount of data sorted, so it is wise to double check them.
-
-After the peak values have been collected, they should be written into the calibration file
+and in the browser, the histograms named \textit{tdiff\_gp\_i} (where \textit{i} is a number between 0 and 3 implying quadrant 1 to 4) will lie in the \textit{.root}-file without a folder. \autoref{fig:ADC_dt} shows the time offsets for the CD. The peaks of these plots have the interesting x-axis value. Zooming into the peaks, it is very clear what value it is. These values are provided in the calibration file under ADC time offsets (ticks). These values can change depending on the amount of data sorted, so it is wise to double check them when more data is added to the file. After the peak values have been collected, they should be written into the calibration file. The time offsets of this experiment was the following
 \begin{lstlisting}[language=sh]
 # ADC time offsets (ticks)
 adc_0.TimeOffset:  0
@@ -1340,6 +1358,7 @@ adc_1.TimeOffset:  -2
 adc_2.TimeOffset:  -3
 adc_3.TimeOffset:  5
 \end{lstlisting}
+After the software threshold and ADC time offsets are added to the calibration file, we must re-run the \texttt{Q4S.sh}-step with \texttt{TreeBuilder} and the updated calibration file.
 
 \begin{figure}[ht]
 	\centering
@@ -1348,42 +1367,37 @@ adc_3.TimeOffset:  5
 	\label{fig:ADC_dt}
 \end{figure}
 
-\textcolor{Magenta}{Tilbakemelding: \newline 
-one time spectrum per quadrant?
-}
 
 
-\textcolor{red}{HUSK:} Si noe om ADC time offsets + Threshold. Og at man må se på det tidlig, så resortere.
+\subsection{Calibration of the \texorpdfstring{$\gamma$}{gamma} detectors}\label{sec:gamma}
 
-
-\texttt{M2R.sh} $\rightarrow$ \texttt{Q4S.sh} $\rightarrow$ check time offset $\rightarrow$ threshold $\rightarrow$ Q4S\_fit() $\rightarrow$ particle-calibration.py $\rightarrow$  ADC\_generator.py $\rightarrow$ copy the calibration from the terminal and paste into calibration file 
-
-\textcolor{Magenta}{Tilbakemelding: \newline 
-need to explain the time spectra: start - stop \newline
-purpose: align time spectra so that you can set a prompt time gate. \newline
-$\rightarrow$ correlate $\gamma$-rays with particles.
-}
-
-
-\textbf{OBS:}\newline
-After the threshold and ADC time offsets are set, we must rerun the TreeBuilder step with the updated calibration file.
+The online calibration of the \ga\ detectors is quite good for most detectors in a certain energy range, because it is designed to be that way. 
+During the setup of the experiment, a hardware calibration of the \ga\ detectors is performed. 
+The gains of each DGF are matched so that the online analysis is more straightforward.
+However, there are non-linearities and drifting offsets and gains over time that have to be corrected for with a proper calibration using the \Ba\ and \Eu\ source data collected in the end of the experiment.
 
 
 \bigskip
 
-\url{https://www.ikp.uni-koeln.de/~warr/doc/electronics_201507.pdf} \newline
-The MADCs, like the DGFs, record an energy and a timestamp with 25 ns ticks. 
 
-The gate for the MADCs and the common stop for the TDCs is generated for each quadrant of the CD independently.
+E\_gam\_seg\_[0-7]\_[0-2]\_[0-6], cluster number (0-7), detector number (0-2) and segment number (0-6), where segment 0 is actually the core signal.
 
-The multiplicity output of the DGFs is used to generate the gamma signal, which is used to make the particle-gamma coincidence.
+The thing with core ID 15 is a cross-talk issue involving a dead segment in detector 18A. It means that some events have to be vetoed to avoid double-peaking and this reduces the efficiency. You can see this list of vetoed detectors in Addback.hh line 193. In my most recent version, I am also vetoing segment number 106 for this reason.
 
-In the setup, we use the fact that the end of the on window triggers readout, causing the DAQ to become dead for a while, so we wait until the DAQ is not dead again after the on window.
-We start the off window 60 $\mu$s after the end of readout (obtained from the disappearance of the DAQ dead signal) to allow the ADCs and TDCs time to start.
+\bigskip
 
-\subsection{Calibration of the \texorpdfstring{$\gamma$}{gamma} detectors}\label{sec:gamma}
+particle-gamma and particle-gamma-gamma coincidence
 
-The nominal calibration will be quite good for most detectors in a certain energy range, because it is designed to be that way. The gains of each DGF are matched during the setup of the experiment so that the online analysis is more straightforward. However, there are non-linearities and drifting offsets and gains over time that have to be corrected for with a proper calibration using the \Ba/\Eu\ source data.
+\bigskip
+
+Gamma: \\
+core ID from 0 to 23 \\
+segment ID from 0 to 6 (zero is the core) \\
+cluster ID from 0 to 7 \\
+
+
+\bigskip
+
 
 \textbf{CLXAna:}\newline
 \begin{lstlisting}[language=]
@@ -1401,7 +1415,7 @@ In the output file of CLXAna you will find a histogram called B\_dcB\_cid, which
 
 graphical cuts from the CLXAna-step (partQx) with Energy vs lab angle
 
-After making the cut, right click and SetName to either "Bcut" or "Tcut". Then right click and SaveAs, giving the name of a root file of your choice (key is the .root extension so that it knows which file format to use).
+After making the cut, right click and SetName to either "Bcut" or "Tcut". Then right click and SaveAs, giving the name of a root file of your choice (key is the \textit{.root} extension so that it knows which file format to use).
 
 Do this for both the target-like (Tcut) and and beam-like (Bcut) particles. You will have one file each that you need to add together using 'hadd':
 
@@ -1411,7 +1425,7 @@ hadd outputfile.root input1.root input2.root
 
 What does the Bcut and Tcut indicate from [cutfile.root:Bcut:Tcut]?
 Should the name have these? Are they values, names or other stuff?
-This is the outputfile.root that you just created in the last step, plus the names of the cuts in that file. The first cut is the beam-like and the second is the target-like. You can choose these names, but they must match the names that you set in the first step.
+This is the \textit{outputfile.root} that you just created in the last step, plus the names of the cuts in that file. The first cut is the beam-like and the second is the target-like. You can choose these names, but they must match the names that you set in the first step.
 
 DGF: Digital \ga~ finder
 
@@ -1469,22 +1483,6 @@ $ hadd /Users/trondwj/GitHub/MasterThesis/Sorted_data/outputfile.root /Users/tro
 
 \bigskip
 
-E\_gam\_seg\_[0-7]\_[0-2]\_[0-6], cluster number (0-7), detector number (0-2) and segment number (0-6), where segment 0 is actually the core signal.
-
-The thing with core ID 15 is a cross-talk issue involving a dead segment in detector 18A. It means that some events have to be vetoed to avoid double-peaking and this reduces the efficiency. You can see this list of vetoed detectors in Addback.hh line 193. In my most recent version, I am also vetoing segment number 106 for this reason.
-
-\bigskip
-
-particle-gamma and particle-gamma-gamma coincidence
-
-\bigskip
-
-Gamma: \\
-core ID from 0 to 23 \\
-segment ID from 0 to 6 (zero is the core) \\
-cluster ID from 0 to 7 \\
-
-\bigskip
 
 The Miniball spectrometer \cite{MB-spect} \newline
 p. 8: \newline
@@ -1495,35 +1493,22 @@ The application of an add-back (AB) routine involves the summing of the energies
 
 \subsection{Doppler correction}
 
-
-\textcolor{red}{From offl\_root\_med.pdf} \\
-"Direction of the central axis of the detector $(r, \theta, \phi)$ and the notation about the axis of the cluster ($\alpha$), \textcolor{red}{is this correct??}. Needed to calculate the positions of the segments or the position of a point determined bye the pulse-shape a analysis.
-
-In order to perform the Doppler shift, we need to know the angle in the Miniball frame of reference of the interaction point. We determine the interaction point either from the segment with the largest energy or using pulse-shape analysis. In the former case, we need to know the position of the centre of each segment. In the latter, we need geometrical information to relate the time-to-steepest slope and ratio of the mirror charge amplitudes to the angle between the interaction point, the target and the emitted particle." \newline
-\textcolor{red}{---}
-
-
-
-
-
-
-
-
-
-\subsubsection*{\textcolor{red}{Notes}}
-
-
-
-\bigskip
+In order to perform the Doppler correction, the interaction point angles in the Miniball frame of reference has to be known. 
+\autoref{fig:MB-angles} shows a sketch of the Miniball cluster geometry and \autoref{tab:Geo} gives the angles and distance of the different clusters.
+The parameters $\theta$, $\phi$ and $R$ describes the position of the central axis of the detector clusters, while $\alpha$ describes the orientation about the axis of the cluster. All these parameters are needed to calculate the position of the segments or the position of a point determined by the pulse-shape analysis. 
+The interaction point is determined either from the segment with the largest energy or using a pulse-shape analysis. 
+In the first case, the position of the center of each segment has to be known.
+In the second case, geometrical information to relate the time-to-steepest slope and ratio of the mirror charge amplitudes to the angle between the interaction point, the target and the emitted particle need to be known. 
+This is built into \texttt{MiniballCoulexSort}, which does the geometrical calculations. 
+The geometry parameters of the Miniball clusters has to be written into the calibration file. 
 
 \begin{figure}[ht]
 	\centering
 	\input{Images/MB-angles.tikz}
-	\caption{Miniball angles, where $i$ denotes cluster number from \autoref{tab:Geo} and the $z$-axis is the beam direction. The angles ($\theta$ and $\phi$) are defined from a right-hand polar coordinate system, while the angle $\alpha$ determines the clockwise rotation around the center of the triple-cluster as seen from the target position.}
+	\caption{Miniball angles, where $i$ denotes cluster number from \autoref{tab:Geo} and the $z$-axis is the beam direction. The angles ($\theta$ and $\phi$) are defined from a right-hand polar coordinate system, while the angle $\alpha$ determines the clockwise rotation around the center of the triple-cluster as seen from the target position \cite{NWarr-Angles}.}
 	\label{fig:MB-angles}
 \end{figure}
 
-For Miniball geometry (angles) \cite{NWarr-Angles}. 
 
 \begin{table}[ht] 
 	\centering 
@@ -1533,22 +1518,10 @@ For Miniball geometry (angles) \cite{NWarr-Angles}.
 \end{table}
 
 
-
-
-\section{Data analysis}
-
-
-
-
-
-
-
-
-
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 
-\chapter{Experimental results}
+\chapter{Experimental results and discussion}
 
 
 Very pure beam (\textcolor{red}{did we have statistics of this?}) - resultat til avhandling. sjekk etter doppler-korrigering. Nd-contaminasjon? i så fall veldig lite, 1-2 prosent?
@@ -1557,10 +1530,8 @@ Very pure beam (\textcolor{red}{did we have statistics of this?}) - resultat til
 we would have to look at the \ga-spectra to identify any contaminants. There may be a little bit of Nd-140 in the beam, but if so, it is very little (judging from on-line spectra).}
 
 
-% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
+\bigskip
 
-
-\chapter{Discussion}
 
 Level scheme (from Klintefjord?)\newline
 
@@ -1571,7 +1542,7 @@ Perhaps also to explain what theory predicts. \newline
 $\bullet$ discussion: if you get \ga-spectrum for \Sm\ $\rightarrow$ to explain what you see.}
 
 
-\begin{figure}
+\begin{figure}[ht]
 	\centering
 	\input{Images/Level-scheme-140Sm.tikz}
 	\caption{Level scheme for \Sm. Adapted from Klintefjord.}
@@ -1585,7 +1556,7 @@ $\bullet$ discussion: if you get \ga-spectrum for \Sm\ $\rightarrow$ to explain 
 
 \chapter{Summary and outlook}
 
-Future work: Better calibration of particle detectors and \ga-detectors (online not perfect). Take into account the shape of the peaks $\implies$ calibrate the particle detectors manually.. Takes a lot of time! But maybe less than trying to fit all in a script? Had I just known...
+Future work: Better calibration of particle detectors and \ga-detectors (online not perfect). Take into account the shape of the peaks $\implies$ calibrate the particle detectors manually.. Takes a lot of time! But maybe less than trying to fit all in a script? If someone only knew and told this story...
 
 Use a second opinion on the simulation, maybe try LISE++ or some other simulation program to get the centroids?
 If you are using only the Pb and Sm for calibration, and then applying that calibration back to the data, then it should matter if the absolute energies are correct. 
@@ -1614,9 +1585,20 @@ GOSIA and GOSIA2 analysis?
 
 \begin{appendices}
 
+\chapter{Acronyms and abbreviations}
+
+\begin{table}[ht] 
+	\centering 
+	%\caption{Table of acronyms and abbreviations.}
+	\input{Table-data/Acronyms-and-abbreviations.tex}
+\end{table}
+
+
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
+
 \chapter{Symbol list}
 
-\begin{table}[h]
+\begin{table}[ht]
   \centering
   \caption{Table of symbols with explanations.}
     \begin{tabular}{ll}
@@ -1627,84 +1609,7 @@ GOSIA and GOSIA2 analysis?
     \label{tab:symbols}
 \end{table}
 
-
-\chapter{Acronyms and abbreviations}
-
-\begin{table}[ht] 
-	\centering 
-	\caption{Table of acronyms and abbreviations.}
-	\input{Table-data/Acronyms-and-abbreviations.tex}
-\end{table}
-
-
-\chapter{Computer setup and environment}
-Some calibration code is based on the codes of Ville Virtanen and Dr. Liam Gaffney. Other code/scripts have been written by the author in C++ / Python.
-
-\section{The computer}
-The \textsl{MiniballCoulexSort} code does not require any a lot of computing power to run. \autoref{tab:PC} shows the computer with specifications used for the sorting and data analysis. Since the data from the experiment takes up about 60 GB, the limitation was with the SSD\footnote{The SSD (solid-state drive) is the internal storage device in the computer.}. When running the sorting and event-building programs, the space on the computer rapidly vanishes. 
-
-\begin{table}[H] 
-	\centering 
-	\caption{Computer used for sorting and data analysis.}
-	\label{tab:PC}
-	\begin{tabular}{ll}
-		\hline
-		Model & MacBook Air (13-inch, 2017) \\
-		\hline
-		OS              & macOS High Sierra (Version 10.13.6) \\
-		Processor  &  1.8 GHz (Intel Core i5, dual core, 4 threads)  \\
-						 &  Max turbo frequency: 2.90 Ghz  \\
-		Memory     &  8 GB (1600 MHz DDR3)  \\
-		SSD		     &  128 GB  \\
-		\hline
-	\end{tabular}
-\end{table}
-
-
-\section{The environment}
-\subsubsection*{\textcolor{red}{Nevn den relative mappestrukturen, slik at terminal-commandoer gir mening. Både for Miniball kode og ROOT framework.}}
-
-\begin{lstlisting}[language=sh]
-/Users/trondwj/GitHub/Miniball/MiniballCoulexSort
-\end{lstlisting}
-
-\begin{lstlisting}[language=sh]
-/Users/trondwj/GitHub/Miniball/kinsim
-\end{lstlisting}
-
-\begin{lstlisting}[language=sh]
-/Users/trondwj/GitHub/ROOT-framework/build
-\end{lstlisting}
-
-
-\section{Run time}
-
-\subsubsection{\textcolor{red}{TODO: Run timing on \texttt{M2R.sh}}}
-
-\begin{table}[H] 
-	\centering 
-	\caption{Run time for building event trees. The run time of the bash scripts was timed with the built in command line script named \texttt{time}. It depends on the number of files added for tree building.}
-	\label{tab:run_time}
-	\begin{tabular}{ll}
-		\hline
-		Executable   &  Run time [min] \\
-		\hline
-		TreeBuilder  &  $\sim$ 45   \\
-		AQ4Sort       &  $\sim$ 130  \\
-		\hline
-	\end{tabular}
-\end{table}
-
-\section{Script usage?}
-
-\texttt{ParticleFit.cpp} \newline
-Function 
-\begin{lstlisting}[language=c++]
-void AQ4_fit(std::string setup_file, 
-	std::string detector_side, int ring_gate = 1, 
-	bool help_lines = false)
-\end{lstlisting}
-
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 \chapter{Two-particle collision}
 \section{Laboratory (LAB) frame of reference}\label{sec:LAB}
@@ -1981,14 +1886,79 @@ Substituting back the variable names from \autoref{fig:LAB-CM} into \autoref{eq:
 	\theta_t &= \tfrac{1}{2} (\pi - \theta_b^{'}) ~[ \text{radians} ] = \tfrac{1}{2} (180^\circ - \theta_b^{'}) ~[ \text{degrees} ]
 \end{align}
 
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
+
+\chapter{Computer setup and environment}
+Some calibration code is based on the codes of Ville Virtanen and Dr. Liam Gaffney. Other code/scripts have been written by the author in C++ / Python.
+
+\section{The computer}
+The \textsl{MiniballCoulexSort} code does not require any a lot of computing power to run. \autoref{tab:PC} shows the computer with specifications used for the sorting and data analysis. Since the data from the experiment takes up about 60 GB, the limitation was with the SSD\footnote{The SSD (solid-state drive) is the internal storage device in the computer.}. When running the sorting and event-building programs, the space on the computer rapidly vanishes. 
+
+\begin{table}[ht] 
+	\centering 
+	\caption{Computer used for sorting and data analysis.}
+	\label{tab:PC}
+	\begin{tabular}{ll}
+		\hline
+		Model & MacBook Air (13-inch, 2017) \\
+		\hline
+		OS              & macOS High Sierra (Version 10.13.6) \\
+		Processor  &  1.8 GHz (Intel Core i5, dual core, 4 threads)  \\
+						 &  Max turbo frequency: 2.90 Ghz  \\
+		Memory     &  8 GB (1600 MHz DDR3)  \\
+		SSD		     &  128 GB  \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+\section{The environment}
+\subsubsection*{\textcolor{red}{Nevn den relative mappestrukturen, slik at terminal-commandoer gir mening. Både for Miniball kode og ROOT framework.}}
+
+\begin{lstlisting}[language=sh]
+/Users/trondwj/GitHub/Miniball/MiniballCoulexSort
+\end{lstlisting}
+
+\begin{lstlisting}[language=sh]
+/Users/trondwj/GitHub/Miniball/kinsim
+\end{lstlisting}
+
+\begin{lstlisting}[language=sh]
+/Users/trondwj/GitHub/ROOT-framework/build
+\end{lstlisting}
+
+
+\section{Run time}
+
+\subsubsection{\textcolor{red}{TODO: Run timing on \texttt{M2R.sh}}}
+
+\begin{table}[ht] 
+	\centering 
+	\caption{Run time for building event trees. The run time of the bash scripts was timed with the built in command line script named \texttt{time}. It depends on the number of files added for tree building.}
+	\label{tab:run_time}
+	\begin{tabular}{ll}
+		\hline
+		Executable   &  Run time [min] \\
+		\hline
+		TreeBuilder  &  $\sim$ 45   \\
+		AQ4Sort       &  $\sim$ 130  \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\section{Script usage?}
+
+\texttt{ParticleFit.cpp} \newline
+Function 
+\begin{lstlisting}[language=c++]
+void AQ4_fit(std::string setup_file, 
+	std::string detector_side, int ring_gate = 1, 
+	bool help_lines = false)
+\end{lstlisting}
 
 
 
-
-
-
-
-\chapter{Connecting MiniballCoulexSort with ROOT}
+\section{Connecting MiniballCoulexSort with ROOT}
 To connect MiniballCoulexSort with ROOT you need them to share their libraries with each other. This is done with a dynamic loader, which you can find out more about here \cite{ROOTdynLoader}. 
 
 You have to make a \textit{.rootrc} file in your home folder on your computer. In the \textit{.rootrc} file you want to write something like this 
@@ -2011,8 +1981,9 @@ $ source ~/.rootrc
 \end{lstlisting}
 
 
-\chapter{Running ROOT and MiniballCoulexSort from anywhere in the terminal}
-To run ROOT or the different scripts of \textsl{MiniballCoulexSort} anywhere in the terminal, you have to edit your \textit{.bash\_profile} file [\textit{.bash\_profile} on MacOS, \textit{.bashrc} on Linux]. In my \textit{.bash\_profile} I used this 
+
+\section{Running ROOT and MiniballCoulexSort from anywhere in the terminal}
+To run ROOT or the different scripts of \textsl{MiniballCoulexSort} anywhere in the terminal, you have to edit your \textit{.bash\_profile} file [\textit{.bash\_profile} on MacOS, \textit{.bashrc} on Linux]. In the \textit{.bash\_profile} the following commands were used 
 \begin{lstlisting}[language=sh]
 # Run ROOT from anywhere
 export ROOTSYS=$HOME/GitHub/ROOT-framework/build
@@ -2057,7 +2028,7 @@ root [1] simulation_fit("setup_Sm.txt")
 
 \end{appendices}
 
-
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 %\bibliographystyle{unsrtnat}
 \bibliographystyle{mybibstyle} %my own bibstyle to set first names to one letter + unsrtnat
