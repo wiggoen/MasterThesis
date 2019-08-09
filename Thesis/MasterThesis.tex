@@ -673,9 +673,12 @@ It is under constant development at CERN-ISOLDE under the management of Dr. Liam
 \end{enumerate}
 
 One program that is mentioned in the Miniball GitHub repository, but not showed how to use, is the \texttt{AQ4Sort}. It is used in the same way as the \texttt{TreeBuilder} script, but it sorts the histograms in another way and it does not take any command line flag options. 
-This program is used before and during the calibration of the particle detectors, because it gives information about every single ring and every single back strip (the pixels of the CD). 
+This program is used before and during the calibration of the particle detectors, because it gives information about every single ring and every single back strip (the "pixels" of the CD). 
 
-\texttt{TreeBuilder} takes a number of flag options. If the \textit{-cdpad} flag option is not used, then there will be no particle events, because they come in the CD. The \textit{-s} flag (singles) is for adding particles which come without a \ga-ray and the \textit{-addback} flag is for adding Compton scattered events together in the Miniball clusters.
+For the CD, \texttt{TreeBuilder} sorts each quadrant for itself, but it is not possible to see each pixel of the detector. 
+In the front, each annular strip can be viewed and in the back each secular strip can be viewed as a whole, the back strip contains the energy information of all of the 16 annular strips.
+
+\texttt{TreeBuilder} takes a number of flag options. If the \textit{-cdpad} flag option is not used, then there will be no particle events, because they come in the CD. \textcolor{red}{The \textit{-s} flag (singles) is for adding particles which come without a \ga-ray} and the \textit{-addback} flag is for adding Compton scattered events together in the Miniball clusters.
 
 
 \subsection{Counting and naming convention}
@@ -1374,29 +1377,45 @@ After the software threshold and ADC time offsets are added to the calibration f
 The online calibration of the \ga\ detectors is quite good for most detectors in a certain energy range, because it is designed to be that way. 
 During the setup of the experiment, a hardware calibration of the \ga\ detectors is performed. 
 The gains of each DGF are matched so that the online analysis is more straightforward.
-However, there are non-linearities and drifting offsets and gains over time that have to be corrected for with a proper calibration using the \Ba\ and \Eu\ source data collected in the end of the experiment.
-
+However, there are non-linearities and drifting offsets and gains over time that have to be corrected for with a proper calibration using the \Ba\ and \Eu\ source data collected in the end of the experiment. The \Ba\ and \Eu\ sources are placed at the target position simultaneously (back to back), and the data is also used to determine the relative efficiency of Miniball. 
 
 \bigskip
-
 
 E\_gam\_seg\_[0-7]\_[0-2]\_[0-6], cluster number (0-7), detector number (0-2) and segment number (0-6), where segment 0 is actually the core signal.
-
-The thing with core ID 15 is a cross-talk issue involving a dead segment in detector 18A. It means that some events have to be vetoed to avoid double-peaking and this reduces the efficiency. You can see this list of vetoed detectors in Addback.hh line 193. In my most recent version, I am also vetoing segment number 106 for this reason.
-
-\bigskip
-
-particle-gamma and particle-gamma-gamma coincidence
-
-\bigskip
 
 Gamma: \\
 core ID from 0 to 23 \\
 segment ID from 0 to 6 (zero is the core) \\
 cluster ID from 0 to 7 \\
 
+The thing with core ID 15 is a cross-talk issue involving a dead segment in detector 18A. It means that some events have to be vetoed to avoid double-peaking and this reduces the efficiency. You can see this list of vetoed detectors in Addback.hh line 193. In my most recent version, I am also vetoing segment number 106 for this reason.
 
 \bigskip
+
+\textcolor{red}{"The -s flag is for adding particles which come without a gamma-ray and the add back flag is for adding Compton scattered events together in the Miniball clusters."}
+
+\textcolor{red}{\textbf{Then I have misunderstood the singles method?}}
+
+There are three methods of sorting the events from Miniball; singles, add-back and reject. 
+When applying the singles method, every \ga-ray entering a detector is counted as an event.
+There are no assumptions of Compton scattering in this kind of sorting. 
+This implies that some of the events counted as true events are in fact scattered \ga's corresponding to a different energy.
+When utilizing the add-back method, events occurring in neighboring detectors in the same cluster within a 100 ns time window are added together as a single event. 
+The energies of the events that occurred in the separate segments are summed, and the segment with the highest energy is assumed to be the position of the incident \ga-ray.
+An advantage of the add-back method is that the full energy of a single \ga-ray, which has undergone a Compton scattering process, can be reconstructed to increase the efficiency.
+A disadvantage of the method is the uncertainty in the assumptions of the addition of several events into a single event. 
+The timing resolution cannot distinguish true \ga-\ga\ events from Compton scattering events.
+The add-back method can cause an increase in the intensity of \ga-ray sum peaks since it has no way to deal with pile-up of different \ga-rays, thus no correction is performed when different \ga-rays pile up in the detector.
+When applying the reject method for the sorting, events occurring in neighboring detectors in the same cluster within a 100 ns time window is excluded as an event. 
+The total statistics for the reject method will therefore be smaller. 
+If the amount of total statistics is large, it is possible and maybe even advantageous to apply the reject method, because it will give a higher probability of getting the actual full energy peaks of the \ga-rays detected. 
+
+
+
+
+\bigskip
+
+
 
 
 \textbf{CLXAna:}\newline
@@ -1516,6 +1535,15 @@ The geometry parameters of the Miniball clusters has to be written into the cali
 	\input{Table-data/Geometry.tex}
 	\label{tab:Geo}
 \end{table}
+
+
+Because of the significant velocity of the scattered particles, the emitted \ga-rays from the particle de-excitation has a Doppler shifted \ga-energy given by 
+\begin{equation}
+	E_\gamma = \frac{\gamma E_\gamma^{'}}{1 - \beta \cos \theta}
+\end{equation}
+where $E_\gamma^{'}$ is the energy in the nucleus' frame of reference, $\beta = \frac{v}{c}$, $v$ is the nucleus' velocity, $c$ is the speed of light, $\theta$ is the angle of the emitted \ga-ray in with respect to the nucleus' direction of motion and $\gamma = 1/\sqrt{1 - \beta^2}$ is the Lorentz factor. 
+
+
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------

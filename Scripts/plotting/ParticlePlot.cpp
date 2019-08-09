@@ -1125,3 +1125,91 @@ void CD_energy(std::string setup_file, std::string detector_side) {
   }
   canvas->SaveAs(Form("../../Plots/plotting/E_vs_%s-strip_all_Q.png", detector_side.c_str()));
 }
+
+
+void get_single_plot(std::string setup_file, std::string sorter, std::string detector_side, 
+                     bool use_calibrated, int quadrant, int ring, int strip = 1,
+                     int x_max = 3000, int y_max = 12000) {
+  /*
+      Plotting data sorted by TreeBuilder with energy in MeV or
+      data sorted by AQ4Sort with energy in keV.
+      This function gets a single plot of one strip on either 
+      the front side or the back side.
+  */
+  ADC adc;
+  Element *element = new Element();
+  element->read_setup_file(setup_file);
+  std::string input_file;
+  std::string calibrated;
+  // Shorthand if-else statement: (condition) ? (if_true) : (if_false);
+  use_calibrated ? calibrated = "_cal" : calibrated = "";
+  TCanvas *canvas = nullptr;
+  std::string canvas_name;
+  TH1F *histogram = nullptr;
+  std::string histogram_name;
+  std::string detector_side_name;
+  int quadrant_number = 0;
+  int channel = 0;
+  float label_size = 0.05;
+  float margin_size = 0.13;
+
+  if ( !(detector_side == "f" || detector_side == "b") ) {
+    std::cout << "Invalid option. Choose between (f)ront side or (b)ack side." << std::endl;
+  }
+  if (sorter == "tb") {
+    input_file = element->ADC_infile;
+    if (detector_side == "f") {
+      channel = adc.rings-ring;
+      canvas_name = Form("Q%d F%d", quadrant, ring);
+    } else if (detector_side == "b") {
+      channel = adc.rings + strip - 1;
+      canvas_name = Form("Q%d B%d", quadrant, strip);
+    }
+    histogram_name = Form("adc_spec/adc_%d_%d%s", quadrant-1, channel, calibrated.c_str());
+  } else if (sorter == "q4") {
+    input_file = element->AQ4_infile;
+    if (detector_side == "f") {
+      channel = adc.rings-ring+1;
+    } 
+    canvas_name = Form("%sE Q%d F%d B%d", detector_side.c_str(), quadrant, ring, strip);
+    histogram_name = Form("%sE_Q%d_f%d_b%d%s", detector_side.c_str(), quadrant, channel, strip, calibrated.c_str());
+  } else {
+    std::cout << "Invalid option. Choose either ''tb'' for TreeBuilder or ''q4'' for AQ4Sort." << std::endl;
+  }
+  if ( !(quadrant >= 1 && quadrant <= 4) ) {
+    std::cout << "Invalid option. Choose between quadrant 1-4." << std::endl;
+  }
+  if ( !(ring >= 1 && ring <= 16) ) {
+    std::cout << "Invalid option. Choose between front ring 1-16." << std::endl;
+  }
+  if ( !(strip >= 1 && strip <= 12) ) {
+    std::cout << "Invalid option. Choose between back strip 1-12." << std::endl;
+  }
+
+  std::cout << "Looking at " << element->element_name 
+            << " from file: " << input_file << std::endl;
+
+  TFile *infile = new TFile(input_file.c_str(), "UPDATE");
+  canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
+  histogram = (TH1F *)infile->Get(histogram_name.c_str());
+  histogram->Draw();
+
+  std::cout << "Histogram: " << histogram_name << std::endl;
+  
+  //histogram->SetStats(0);                        // Remove stats
+  histogram->SetLabelSize(label_size, "xy");     // Label size for x- and y-axis
+  histogram->SetTitleSize(label_size, "xy");     // Text  size for x- and y-axis
+  histogram->GetYaxis()->SetTitle("Counts");     // Change y-axis title
+  if (sorter == "tb") {
+    histogram->GetYaxis()->SetTitleOffset(1.2);  // Move y-axis text a little closer
+  } else if (sorter == "q4") {
+    x_max *= 1000;
+    histogram->GetYaxis()->SetTitleOffset(1.2);  // Move y-axis text a little closer
+  }
+  histogram->SetTitle(canvas_name.c_str());      // Changing titles
+  histogram->SetAxisRange(0, x_max, "X");
+  histogram->SetAxisRange(0, y_max, "Y");
+  gStyle->SetTitleSize(label_size, "t");         // Title size
+  gPad->SetLeftMargin(margin_size);
+  gPad->SetBottomMargin(margin_size);
+}
