@@ -1148,6 +1148,7 @@ void get_single_plot(std::string setup_file, std::string sorter, std::string det
   TH1F *histogram = nullptr;
   std::string histogram_name;
   std::string detector_side_name;
+  std::string savefile_name;
   int quadrant_number = 0;
   int channel = 0;
   float label_size = 0.05;
@@ -1161,18 +1162,19 @@ void get_single_plot(std::string setup_file, std::string sorter, std::string det
     if (detector_side == "f") {
       channel = adc.rings-ring;
       canvas_name = Form("Q%d F%d", quadrant, ring);
+      savefile_name = Form("TB_Q%d_F%d%s", quadrant, ring, calibrated.c_str());
     } else if (detector_side == "b") {
       channel = adc.rings + strip - 1;
       canvas_name = Form("Q%d B%d", quadrant, strip);
+      savefile_name = Form("TB_Q%d_B%d%s", quadrant, strip, calibrated.c_str());
     }
     histogram_name = Form("adc_spec/adc_%d_%d%s", quadrant-1, channel, calibrated.c_str());
   } else if (sorter == "q4") {
     input_file = element->AQ4_infile;
-    if (detector_side == "f") {
-      channel = adc.rings-ring+1;
-    } 
+    channel = adc.rings-ring+1;
     canvas_name = Form("%sE Q%d F%d B%d", detector_side.c_str(), quadrant, ring, strip);
     histogram_name = Form("%sE_Q%d_f%d_b%d%s", detector_side.c_str(), quadrant, channel, strip, calibrated.c_str());
+    savefile_name = Form("%sE_Q%d_f%d_b%d%s", detector_side.c_str(), quadrant, ring, strip, calibrated.c_str());
   } else {
     std::cout << "Invalid option. Choose either ''tb'' for TreeBuilder or ''q4'' for AQ4Sort." << std::endl;
   }
@@ -1191,11 +1193,11 @@ void get_single_plot(std::string setup_file, std::string sorter, std::string det
 
   TFile *infile = new TFile(input_file.c_str(), "UPDATE");
   canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
-  histogram = (TH1F *)infile->Get(histogram_name.c_str());
-  histogram->Draw();
 
   std::cout << "Histogram: " << histogram_name << std::endl;
-  
+
+  histogram = (TH1F *)infile->Get(histogram_name.c_str());
+  histogram->Draw();  
   //histogram->SetStats(0);                        // Remove stats
   histogram->SetLabelSize(label_size, "xy");     // Label size for x- and y-axis
   histogram->SetTitleSize(label_size, "xy");     // Text  size for x- and y-axis
@@ -1212,4 +1214,6 @@ void get_single_plot(std::string setup_file, std::string sorter, std::string det
   gStyle->SetTitleSize(label_size, "t");         // Title size
   gPad->SetLeftMargin(margin_size);
   gPad->SetBottomMargin(margin_size);
+
+  canvas->SaveAs(Form("../../Plots/plotting/%s.png", savefile_name.c_str()));
 }
