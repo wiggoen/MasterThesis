@@ -1537,12 +1537,29 @@ The geometry parameters of the Miniball clusters has to be written into the cali
 \end{table}
 
 
-Because of the significant velocity of the scattered particles, the emitted \ga-rays from the particle de-excitation has a Doppler shifted \ga-energy given by 
-\begin{equation}
-	E_\gamma = \frac{\gamma E_\gamma^{'}}{1 - \beta \cos \theta}
-\end{equation}
-where $E_\gamma^{'}$ is the energy in the nucleus' frame of reference, $\beta = \frac{v}{c}$, $v$ is the nucleus' velocity, $c$ is the speed of light, $\theta$ is the angle of the emitted \ga-ray in with respect to the nucleus' direction of motion and $\gamma = 1/\sqrt{1 - \beta^2}$ is the Lorentz factor. 
 
+
+Because of the significant velocity of the scattered particles, the emitted \ga-rays from the particle de-excitation has a Doppler shifted \ga-energy given by 
+\begin{equation}\label{eq:DS}
+	E_\gamma = \frac{E_\gamma^{'}}{\gamma (1 - \beta \cos \theta)}
+\end{equation}
+where $E_\gamma$ is the \ga-energy detected in the LAB frame, $E_\gamma^{'}$ is the \ga-energy in the nucleus' frame of reference, $\beta = \frac{v}{c}$, $v$ is the nucleus' velocity, $c$ is the speed of light, $\theta$ is the angle of the emitted \ga-ray with respect to the nucleus' direction of motion and $\gamma = 1/\sqrt{1 - \beta^2}$ is the Lorentz factor. Since both the CD and the HPGe-array are segmented, the emission angle $\theta$ of the \ga-ray can be calculated by 
+\begin{equation}\label{eq:DSA}
+	\cos \theta = \sin \theta_p \sin \theta_\gamma \cos (\phi_p - \phi_\gamma) + \cos \theta_p \cos \theta_\gamma
+\end{equation}
+where ($\theta_p, \phi_p$) and ($\theta_\gamma, \phi_\gamma$) are the detection angles of the particle and \ga-ray respectively, ($\theta_p, \theta_\gamma$) are the angles with respect to the beam axis and ($\phi_p, \phi_\gamma$) are the azimuthal angles \cite{RIBF2012, MB-spect}. The Doppler correction factor is found by combining \autoref{eq:DS} and \autoref{eq:DSA} into
+\begin{equation}
+	\frac{E_\gamma^{'}}{E_\gamma} = \gamma (1 - \beta (\sin \theta_p \sin \theta_\gamma \cos (\phi_p - \phi_\gamma) + \cos \theta_p \cos \theta_\gamma))
+\end{equation}
+
+
+\subsection{Broken detector segments}
+
+CD: ring 1 + Quadrant 4, back strip 1
+
+\bigskip
+
+HPGe: Core ID 20? Other? Check vetoed segments
 
 
 
