@@ -621,36 +621,36 @@ Signals from the CD and the HPGe clusters are read out by the ADC and Digital Ga
 \chapter{Data analysis}  
 
 \section{Data handling}
-The raw data from Miniball experiments essentially\footnote{The format is not entirely correct, since it has identification of where the particle and \ga\ hit. A more detailed format could be: time, cluster, crystal, sector, ring/strip, energy, etc.} comes in list mode (identification, energy, time), where every line is an event. It is stored in \textit{.med}-files (MBS Event Data, or also known as Miniball Event Data) with the naming convention \textit{140Sm\_208Pb\_pos6\_0xy.med}, where \textit{x} and \textit{y} are numbers between 0 and 9. The goal of the data is to obtain Doppler-corrected \ga-spectra with various conditions on particles and angles, in order to analyse the Coulomb excitation of \Sm. 
+The raw data from Miniball experiments essentially\footnote{The format is not entirely correct, since it has identification of where the particle and \ga\ hit. A more detailed format is: identification, time, particle energy (front strip, back strip), \ga\ energy (cluster, crystal, segment), etc.} comes in list mode (identification, energy, time), where every line is an event. It is stored in \textit{.med}-files (MBS Event Data, or also known as Miniball Event Data) with the naming convention \textit{140Sm\_208Pb\_pos6\_0xy.med} for this experiment, where \textit{x} and \textit{y} are numbers between 0 and 9. The goal of the data analysis is to obtain Doppler-corrected \ga-spectra with various conditions on particles and angles, in order to analyze the Coulomb excitation of \Sm. 
 
-\begin{lstlisting}[language=]
-$ cd ~/GitHub/MasterThesis/Raw_data/Sm
-$ root 140Sm_208Pb_pos6_008_OnBeam.root
-root [1] tr->Show(10)
-======> EVENT:10
- Event           = (BuiltEvent*)0x7f8db0469010
- fUniqueID       = 0
- fBits           = 33554432
- ebisTime        = 16936792
- t1Time          = 0
- superCycleTime  = 65948
- eventNumber     = 100
- subEventNumber  = 12
- dgfData         = (vector<DgfData>*)0x7f8db04690c0
- dgfData.fUniqueID = 0
- dgfData.fBits   = 33554432
- dgfData.fModuleNumber = 18
- dgfData.fChannel = 0
- dgfData.fMultiplicity = 1
- dgfData.fEventTime = 40774
- dgfData.fEnergy = 583
- dgfData.fFastTriggerTime = 40799
- dgfData.fLongFastTriggerTime = 16949087
- dgfData.fUserValues[6] = 26112 , 60811 , 32766 , 0 , 38240 , 60811
-\end{lstlisting}
+%\begin{lstlisting}[language=]
+%$ cd ~/GitHub/MasterThesis/Raw_data/Sm
+%$ root 140Sm_208Pb_pos6_008_OnBeam.root
+%root [1] tr->Show(10)
+%======> EVENT:10
+% Event           = (BuiltEvent*)0x7f8db0469010
+% fUniqueID       = 0
+% fBits           = 33554432
+% ebisTime        = 16936792
+% t1Time          = 0
+% superCycleTime  = 65948
+% eventNumber     = 100
+% subEventNumber  = 12
+% dgfData         = (vector<DgfData>*)0x7f8db04690c0
+% dgfData.fUniqueID = 0
+% dgfData.fBits   = 33554432
+% dgfData.fModuleNumber = 18
+% dgfData.fChannel = 0
+% dgfData.fMultiplicity = 1
+% dgfData.fEventTime = 40774
+% dgfData.fEnergy = 583
+% dgfData.fFastTriggerTime = 40799
+% dgfData.fLongFastTriggerTime = 16949087
+% dgfData.fUserValues[6] = 26112 , 60811 , 32766 , 0 , 38240 , 60811
+%\end{lstlisting}
 
 A sorting and analysis code named \textsl{MiniballCoulexSort} \cite{MBCS} written in C/C++ is the preferred code to use for Miniball experiment data. 
-It is under constant development at CERN-ISOLDE under the management of Dr. Liam Gaffney\footnote{Dr. Liam Gaffney is a research fellow at ISOLDE, affiliated with Miniball.}. The main steps of how to download, install\footnote{If the \textbf{make} step fails, try doing a \textbf{make clean} and then \textbf{make}. The code might think that it is already built.} and use it is outlined in the \texttt{README.md} file in the GitHub repository for Miniball, linked in the reference. Unfortunately the code isn't very well documented, so it takes some time to learn what it does and how to use it. To get from the raw data to the Doppler-corrected \ga-spectra, the code is divided into a three step procedure:
+It is under constant development at CERN-ISOLDE under the management of Dr. Liam Gaffney\footnote{Dr. Liam Gaffney is a research fellow at ISOLDE, affiliated with Miniball.}. The main steps of how to download, install\footnote{If the \textbf{make} step fails, try doing a \textbf{make clean} and then \textbf{make}. The program might think that it is already built.} and use it is outlined in the \texttt{README.md} file in the GitHub repository of Miniball, linked in the reference. Unfortunately the code isn't very well documented, so it takes some time to learn what it does and how to use it. To get from the raw data to the Doppler-corrected \ga-spectra, the code is divided into a three step procedure:
 
 \begin{enumerate}
 	\item \texttt{MedToRoot}
@@ -676,20 +676,19 @@ One program that is mentioned in the Miniball GitHub repository, but not showed 
 This program is used before and during the calibration of the particle detectors, because it gives information about every single ring and every single back strip (the "pixels" of the CD). 
 
 For the CD, \texttt{TreeBuilder} sorts each quadrant for itself, but it is not possible to see each pixel of the detector. 
-In the front, each annular strip can be viewed and in the back each secular strip can be viewed as a whole, the back strip contains the energy information of all of the 16 annular strips.
-
-\texttt{TreeBuilder} takes a number of flag options. If the \textit{-cdpad} flag option is not used, then there will be no particle events, because they come in the CD. \textcolor{red}{The \textit{-s} flag (singles) is for adding particles which come without a \ga-ray} and the \textit{-addback} flag is for adding Compton scattered events together in the Miniball clusters.
+In the front, each annular strip can be viewed and in the back each secular strip can be viewed as a whole, the back strip contains the energy information of all of the 16 annular strips. \texttt{TreeBuilder} also takes a number of command line flag options. If the \textit{-cdpad} flag option is not used, then there will be no particle events, because they come in the CD. Other flag options will be introduced later in the chapter.
 
 
 \subsection{Counting and naming convention}
 In the following sections there will be an introduction of different programs and scripts used in the data calibration and analysis. One thing to note here, is that the numbering of the CD rings and strips are different in these programs and scripts. 
 
 Histograms sorted by \texttt{TreeBuilder} starts counting from 0 (outermost ring) to 15 (innermost ring) with energy in MeV showed in \autoref{fig:CD-FB}. 
-In \texttt{AQ4Sort} it starts from 1 (innermost ring) to 16 (outermost ring) with energy in keV. 
-\autoref{tab:ADC} shows the ADC wiring and a comparison of the histogram naming from \texttt{TreeBuilder} and \texttt{AQ4Sort} can be found in \autoref{tab:TBvsAQ4}.
+\texttt{AQ4Sort} starts from 1 (outermost ring) to 16 (innermost ring) with energy in keV. 
+\autoref{tab:ADC} shows the ADC wiring.
 The simulation program \texttt{kinsim3} counts from 1 (innermost ring) to 16 (outermost ring), the opposite of \texttt{AQ4Sort}. 
 It is easy to be confused by all the different counting, but this thesis will try to use the counting order of \texttt{kinsim3} for everything, it seems like the most logic way of counting. 
 A change of the wiring of the CD will probably not happen, but it is possible to choose a logic order of counting software wise.
+\autoref{tab:TBvsAQ4} shows a comparison of the logic counting and the histogram naming from \texttt{TreeBuilder} and \texttt{AQ4Sort}.
 Calibration coefficients given to the calibration file, which is introduced in later sections, follow the naming convention of \texttt{TreeBuilder} in \autoref{tab:TBvsAQ4}.
 
 
@@ -1414,7 +1413,8 @@ The thing with core ID 15 is a cross-talk issue involving a dead segment in dete
 
 \bigskip
 
-\textcolor{red}{"The -s flag is for adding particles which come without a gamma-ray and the add back flag is for adding Compton scattered events together in the Miniball clusters."}
+
+\textcolor{red}{The \textit{-s} flag (singles) is for adding particles which come without a \ga-ray and the \textit{-addback} flag is for adding Compton scattered events together in the Miniball clusters.}
 
 \textcolor{red}{\textbf{Then I have misunderstood the singles method?}}
 
