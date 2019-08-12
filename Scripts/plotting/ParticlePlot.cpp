@@ -6,6 +6,9 @@
 #include "TCanvas.h"
 #include "TStyle.h"
 #include "TLine.h"
+#include "TPaveText.h"
+#include "TArrow.h"
+#include "TLatex.h"
 
 #include <iostream>
 #include <iomanip>
@@ -174,6 +177,9 @@ void simulation_plot(std::string setup_file, bool single_plots) {
       canvas[ring+1] = new TCanvas(histogram_name.c_str(), histogram_name.c_str(), 1280, 800); 
     }
     histogram_name = Form("cd_sim_%d", ring+1);
+
+    //std::cout << "Histogram: " << histogram_name << std::endl;
+
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw();
     histogram->GetYaxis()->SetTitle("Counts");   // Change y-axis title
@@ -256,6 +262,9 @@ void ADC_plot(std::string setup_file, bool use_calibrated) {
       (quadrant < adc.quadrants) ? channel = adc.rings-ring-1 : channel = adc.rings + ring;
       canvas[quadrant]->cd(ring+1);
       histogram_name = Form("adc_spec/adc_%d_%d%s", quadrant_number, channel, calibrated.c_str());
+      
+      //std::cout << "Histogram: " << histogram_name << std::endl;
+
       histogram = (TH1F *)infile->Get(histogram_name.c_str());
       histogram->Draw();
       histogram->SetStats(0);                      // Remove stats
@@ -338,6 +347,9 @@ void AQ4_plot(std::string setup_file, std::string gate, bool use_calibrated) {
       }
       canvas[quadrant]->cd(ring+1);
       histogram_name = Form("%sE_Q%d_f%d_b%d%s", detector_side.c_str(), quadrant+1, front_ring, back_strip, calibrated.c_str());
+      
+      //std::cout << "Histogram: " << histogram_name << std::endl;
+
       histogram = (TH1F *)infile->Get(histogram_name.c_str());
       histogram->Draw();
       histogram->SetStats(0);                      // Remove stats
@@ -427,7 +439,9 @@ void plot_side(std::string setup_file, std::string detector_side, bool use_calib
         }
       } else if (detector_side == "f") {
         histogram_name = Form("%sE_Q%d_f%d%s", detector_side.c_str(), quadrant+1, ring+1, calibrated.c_str());
-        //std::cout << histogram_name << std::endl;
+        
+        //std::cout << "Histogram: " << histogram_name << std::endl;
+        
         histogram = (TH1F *)infile->Get(histogram_name.c_str());
         if (use_calibrated) { histogram->GetXaxis()->SetRange(0, 1000); }
         histogram->Draw();
@@ -507,7 +521,9 @@ void plot_quadrants(std::string setup_file, std::string detector_side,
   for (int quadrant = 0; quadrant < adc.quadrants; quadrant++) {
     canvas->cd(quadrant+1);
     histogram_name = Form("%sE_Q%d_f%d%s%s", detector_side.c_str(), quadrant+1, ring_gate, extension.c_str(), calibrated.c_str());
-    //std::cout << histogram_name << std::endl;
+    
+    //std::cout << "Histogram: " << histogram_name << std::endl;
+
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw("SAME");
     histogram->SetStats(0);                      // Remove stats
@@ -520,7 +536,7 @@ void plot_quadrants(std::string setup_file, std::string detector_side,
       histogram->SetAxisRange(40000, 750000, "X");
     } else {
       histogram->SetAxisRange(100, 3000, "X");
-      histogram->GetXaxis()->SetTitle("Channel");   // Change y-axis title
+      histogram->GetXaxis()->SetTitle("Channel");   // Change x-axis title
     }
     gStyle->SetTitleSize(label_size, "t");       // Title size
     gPad->SetLeftMargin(margin_size);
@@ -570,7 +586,9 @@ void plot_back_quadrants(std::string setup_file, int front_ring, bool use_calibr
     canvas->cd(quadrant+1);
     for (int strip = 0; strip < adc.strips; strip++) {
       histogram_name = Form("bE_Q%d_f%d_b%d%s", quadrant+1, front_ring, strip+1, calibrated.c_str());
-      //std::cout << histogram_name << std::endl;
+      
+      //std::cout << "Histogram: " << histogram_name << std::endl;
+      
       histogram = (TH1F *)infile->Get(histogram_name.c_str());
       histogram->SetLineColor(colors[strip]);
       histogram->Draw("SAME");
@@ -584,7 +602,7 @@ void plot_back_quadrants(std::string setup_file, int front_ring, bool use_calibr
         histogram->SetAxisRange(40000, 750000, "X");
       } else {
         histogram->SetAxisRange(100, 3000, "X");
-        histogram->GetXaxis()->SetTitle("Channel");  // Change y-axis title
+        histogram->GetXaxis()->SetTitle("Channel");  // Change x-axis title
       }
       gStyle->SetTitleSize(label_size, "t");         // Title size
       gPad->SetLeftMargin(margin_size);
@@ -627,7 +645,9 @@ void plot_front_back_energy(std::string setup_file, std::string name_addition = 
   for (int quadrant = 0; quadrant < adc.quadrants; quadrant++) {
     canvas->cd(quadrant+1);
     histogram_name = Form("CD_spec/E_f_b_%d", quadrant);
-    //std::cout << histogram_name << std::endl;
+
+    //std::cout << "Histogram: " << histogram_name << std::endl;
+    
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw("colz");
     histogram->SetTitle(title[quadrant].c_str()); // Changing titles
@@ -695,10 +715,13 @@ void check_pedestal(std::string setup_file, std::string detector_side,
   canvas_name = Form("Pedestal Q%d_%s%d", quadrant, detector_side.c_str(), strip);
   canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
   histogram_name = Form("adc_spec/adc_%d_%d", quadrant-1, strip_number);
+
+  std::cout << "Histogram: " << histogram_name << std::endl;
+
   histogram = (TH1F *)infile->Get(histogram_name.c_str());
   histogram->Draw();
   histogram->SetAxisRange(0, x_max, "X");
-  //histogram->SetStats(0);                      // Remove stats
+  histogram->SetStats(0);                      // Remove stats
   histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
   histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
   histogram->GetXaxis()->SetTitle("Channel");  // Change x-axis title
@@ -765,6 +788,9 @@ void check_all_threshold(std::string setup_file) {
       //(quadrant < adc.quadrants) ? channel = adc.rings-ring-1 : channel = adc.rings + ring;  // front: innermost ring first
       canvas[quadrant]->cd(ring+1);
       histogram_name = Form("adc_spec/adc_%d_%d", quadrant_number, channel);
+
+      //std::cout << "Histogram: " << histogram_name << std::endl;
+
       histogram = (TH1F *)infile->Get(histogram_name.c_str());
       histogram->Draw();
 
@@ -868,14 +894,14 @@ void check_single_threshold(std::string setup_file, std::string detector_side,
   canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
 
   histogram_name = Form("adc_spec/adc_%d_%d", quadrant-1, strip_number);
-  std::cout << histogram_name << std::endl;
-  std::cout << strip_number << std::endl;
+
+  std::cout << "Histogram: " << histogram_name << std::endl;
+
   histogram = (TH1F *)infile->Get(histogram_name.c_str());
   histogram->Draw();
   histogram->SetAxisRange(0, x_max, "X");
   histogram->SetAxisRange(0, y_max, "Y");
-
-  //histogram->SetStats(0);                      // Remove stats
+  histogram->SetStats(0);                      // Remove stats
   histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
   histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
   histogram->GetXaxis()->SetTitle("Channel");  // Change x-axis title
@@ -926,11 +952,12 @@ void check_ADC_time_offsets(std::string setup_file, std::string name_addition = 
   for (int quadrant = 0; quadrant < adc.quadrants; quadrant++) {
     canvas->cd(quadrant+1);
     histogram_name = Form("tdiff_gp_%d", quadrant);
-    //std::cout << histogram_name << std::endl;
+
+    std::cout << "Histogram: " << histogram_name << std::endl;
+
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw();
     histogram->SetAxisRange(-10, 10, "X");
-    
     histogram->SetStats(0);                        // Remove stats
     histogram->SetLabelSize(label_size, "xy");     // Label size for x- and y-axis
     histogram->SetTitleSize(label_size, "xy");     // Text  size for x- and y-axis
@@ -961,7 +988,6 @@ void check_cd_debug(std::string setup_file, std::string name_addition = "") {
   std::string canvas_name;
   canvas_name = Form("CD debugging");
   canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
-  //canvas->Divide(2, 2);
   TH1F *histogram = nullptr;
   std::string histogram_name;
   float label_size = 0.05;
@@ -972,11 +998,12 @@ void check_cd_debug(std::string setup_file, std::string name_addition = "") {
   }
 
   histogram_name = Form("cd_debug");
-  //std::cout << histogram_name << std::endl;
+
+  std::cout << "Histogram: " << histogram_name << std::endl;
+
   histogram = (TH1F *)infile->Get(histogram_name.c_str());
   histogram->Draw();
   histogram->SetAxisRange(0, 25, "X");
-  
   histogram->SetStats(0);                       // Remove stats
   histogram->SetLabelSize(label_size, "xy");    // Label size for x- and y-axis
   histogram->SetTitleSize(label_size, "xy");    // Text  size for x- and y-axis
@@ -1013,13 +1040,13 @@ void energy_vs_ring(std::string setup_file) {
   float label_size = 0.05;
   float margin_size = 0.13;
 
-  //canvas->cd(quadrant+1);
   histogram_name = Form("part");
-  //std::cout << histogram_name << std::endl;
+
+  std::cout << "Histogram: " << histogram_name << std::endl;
+
   histogram = (TH1F *)infile->Get(histogram_name.c_str());
   histogram->Draw("colz");
   histogram->SetAxisRange(-0.5, 15, "X");
-  
   histogram->SetStats(0);                      // Remove stats
   histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
   histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
@@ -1087,11 +1114,12 @@ void CD_energy(std::string setup_file, std::string detector_side) {
   for (int quadrant = 0; quadrant < adc.quadrants; quadrant++) {
     canvas->cd(quadrant+1);
     histogram_name = Form("CD_spec/CD_%s_energy_%d", detector_side_name.c_str(), quadrant);
-    //std::cout << histogram_name << std::endl;
+
+    //std::cout << "Histogram: " << histogram_name << std::endl;
+
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw("colz");
     histogram->SetAxisRange(-0.5, x_max, "X");
-
     histogram->SetStats(0);                        // Remove stats
     histogram->SetLabelSize(label_size, "xy");     // Label size for x- and y-axis
     histogram->SetTitleSize(label_size, "xy");     // Text  size for x- and y-axis
@@ -1129,7 +1157,7 @@ void CD_energy(std::string setup_file, std::string detector_side) {
 
 void get_single_plot(std::string setup_file, std::string sorter, std::string detector_side, 
                      bool use_calibrated, int quadrant, int ring, int strip = 1,
-                     int x_max = 3000, int y_max = 12000) {
+                     int x_min = 0, int x_max = 3000, int y_max = 12000) {
   /*
       Plotting data sorted by TreeBuilder with energy in MeV or
       data sorted by AQ4Sort with energy in keV.
@@ -1198,22 +1226,59 @@ void get_single_plot(std::string setup_file, std::string sorter, std::string det
 
   histogram = (TH1F *)infile->Get(histogram_name.c_str());
   histogram->Draw();  
-  //histogram->SetStats(0);                        // Remove stats
+  histogram->SetStats(0);                        // Remove stats
   histogram->SetLabelSize(label_size, "xy");     // Label size for x- and y-axis
   histogram->SetTitleSize(label_size, "xy");     // Text  size for x- and y-axis
+  if (!use_calibrated) {
+    histogram->GetXaxis()->SetTitle("Channel");  // Change x-axis title
+  }
   histogram->GetYaxis()->SetTitle("Counts");     // Change y-axis title
   if (sorter == "tb") {
     histogram->GetYaxis()->SetTitleOffset(1.2);  // Move y-axis text a little closer
   } else if (sorter == "q4") {
-    x_max *= 1000;
+    // Shorthand if-else statement: (condition) ? (if_true) : (if_false);
+    (use_calibrated) ? x_max *= 1000 : x_max *= 1;
     histogram->GetYaxis()->SetTitleOffset(1.2);  // Move y-axis text a little closer
   }
   histogram->SetTitle(canvas_name.c_str());      // Changing titles
-  histogram->SetAxisRange(0, x_max, "X");
+  histogram->SetAxisRange(x_min, x_max, "X");
   histogram->SetAxisRange(0, y_max, "Y");
   gStyle->SetTitleSize(label_size, "t");         // Title size
   gPad->SetLeftMargin(margin_size);
   gPad->SetBottomMargin(margin_size);
-
+  /*
+  // -- Q4 F9 ----------
+  // Write on plot
+  TLatex latex;
+  latex.SetTextSize(0.05);
+  // Coordinates: x, y
+  latex.DrawLatex(750, 900, "Contaminant");
+  latex.DrawLatex(950, 600, "^{208}Pb");
+  latex.DrawLatex(1600, 950, "^{140}Sm");
+  // Draw arrow on plot
+  // Coordinates: x-min, y-min, x-max, y-max
+  TArrow *arrow = new TArrow(730, 925, 520, 925, 0.015, "|>");
+  arrow->SetAngle(40);     // Angle of the arrow tip
+  arrow->SetLineWidth(2);
+  arrow->Draw();
+  // -------------------
+  */
+  /*
+  // -- bE Q4 F16 B2 ---
+  // Write on plot
+  TLatex latex;
+  latex.SetTextSize(0.05);
+  // Coordinates: x, y
+  latex.DrawLatex(450, 275, "Contaminant");
+  latex.DrawLatex(370, 110, "^{208}Pb");
+  latex.DrawLatex(1030, 40, "^{140}Sm");
+  // Draw arrow on plot
+  // Coordinates: x-min, y-min, x-max, y-max
+  TArrow *arrow = new TArrow(440, 282, 320, 282, 0.015, "|>");
+  arrow->SetAngle(40);     // Angle of the arrow tip
+  arrow->SetLineWidth(2);
+  arrow->Draw();
+  // -------------------
+  */
   canvas->SaveAs(Form("../../Plots/plotting/%s.png", savefile_name.c_str()));
 }

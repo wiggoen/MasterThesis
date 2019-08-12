@@ -804,6 +804,28 @@ For more than two centroids, we can use linear regression to find the best fit (
 Calibrating the back strips of the CD is the same as the front, however because they cover a large range of angles in the $\theta$ direction, we need to gate on one of the front strips to define an angle and therefore an energy. For this purpose, we will use the code \texttt{AQ4Sort} in the \textit{$\sim$/GitHub/Miniball/MiniballCoulexSort/TreeBuilder} directory. It operates the same files as \texttt{TreeBuilder} does, but with the purpose of making every combination of gates on front and back strips so that we have the front and back energy for every "pixel" of the detector.
 
 
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{\textwidth}
+		\centering
+		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 4, 9, 1, 300, 2400, 1080)
+		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F9.png}
+		\caption{Easy.}
+		\label{fig:cal_online}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\centering
+		% get_single_plot("setup_Sm.txt", "q4", "b", 0, 1, 16, 12, 200, 1400, 330)
+		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q1_f16_b12.png}
+		\caption{Difficult.}
+		\label{fig:cal_user}
+	\end{subfigure}
+	\caption{Cal.}
+	\label{fig:cal_ED}
+\end{figure}
+
+
+
 \subsection{Simulation}
 To calibrate the data, we need to know the expected energy of the centroids of the peaks. 
 This was done by simulating the experiment in a program called \texttt{kinsim3} \cite{kinsim}. 
@@ -1205,14 +1227,14 @@ I presume that charge sharing is only considered if 2 firing strips are neighbor
 %$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting 
 %$ root
 %root [0] .L ParticlePlot.cpp++
-%root [1] check_pedestal("setup_Sm.txt", "f", 1, 1)
+%root [1] check_pedestal("setup_Sm.txt", "f", 2, 4, 60)
 %\end{lstlisting}
 %
 %\begin{lstlisting}[language=sh]
 %$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting 
 %$ root
 %root [0] .L ParticlePlot.cpp++
-%root [1] check_pedestal("setup_Sm.txt", "b", 1, 1)
+%root [1] check_pedestal("setup_Sm.txt", "b", 3, 8, 70)
 %\end{lstlisting}
 %
 % Pedestal --<
@@ -1221,14 +1243,14 @@ I presume that charge sharing is only considered if 2 firing strips are neighbor
 	\centering
 	\begin{subfigure}{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q1_f1.png}
-		\caption{Pedestal in quadrant 1, annular strip 1.}
+		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q2_f4.png}
+		\caption{Pedestal in quadrant 2, annular strip 4.}
 		\label{fig:Pedestal_f}
 	\end{subfigure}
 	\begin{subfigure}{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q1_b1.png}
-		\caption{Pedestal in quadrant 1, secular strip 1.}
+		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q3_b8.png}
+		\caption{Pedestal in quadrant 3, secular strip 8.}
 		\label{fig:Pedestal_b}
 	\end{subfigure}
 	\caption{The pedestal from charge sharing in the front and back side of the CD.}
