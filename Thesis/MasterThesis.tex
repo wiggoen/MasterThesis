@@ -676,14 +676,14 @@ One program that is mentioned in the Miniball GitHub repository, but not showed 
 This program is used before and during the calibration of the particle detectors, because it gives information about every single ring and every single back strip (the "pixels" of the CD). 
 
 For the CD, \texttt{TreeBuilder} sorts each quadrant for itself, but it is not possible to see each pixel of the detector. 
-In the front, each annular strip can be viewed and in the back each secular strip can be viewed as a whole, the back strip contains the energy information of all of the 16 annular strips. \texttt{TreeBuilder} also takes a number of command line flag options. If the \textit{-cdpad} flag option is not used, then there will be no particle events, because they come in the CD. Other flag options will be introduced later in the chapter.
+In the front, each annular strip can be viewed and in the back each secular strip can be viewed as a whole, the back strip contains the energy information of all of the 16 annular strips. \texttt{TreeBuilder} also takes a number of command line flag options. If the \textit{-cdpad} flag option is not used, then there will be no particle events, because they come into the CD. Other flag options will be introduced later in the chapter.
 
 
 \subsection{Counting and naming convention}
 In the following sections there will be an introduction of different programs and scripts used in the data calibration and analysis. One thing to note here, is that the numbering of the CD rings and strips are different in these programs and scripts. 
 
-Histograms sorted by \texttt{TreeBuilder} starts counting from 0 (outermost ring) to 15 (innermost ring) with energy in MeV showed in \autoref{fig:CD-FB}. 
-\texttt{AQ4Sort} starts from 1 (outermost ring) to 16 (innermost ring) with energy in keV. 
+Histograms sorted by \texttt{TreeBuilder} starts counting from 0 (outermost ring) to 15 (innermost ring) with energy in MeV (in calibrated spectra) showed in \autoref{fig:CD-FB}. 
+\texttt{AQ4Sort} starts from 1 (outermost ring) to 16 (innermost ring) with energy in keV (in calibrated spectra). 
 \autoref{tab:ADC} shows the ADC wiring.
 The simulation program \texttt{kinsim3} counts from 1 (innermost ring) to 16 (outermost ring), the opposite of \texttt{AQ4Sort}. 
 It is easy to be confused by all the different counting, but this thesis will try to use the counting order of \texttt{kinsim3} for everything, it seems like the most logic way of counting. 
@@ -810,14 +810,14 @@ Calibrating the back strips of the CD is the same as the front, however because 
 		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 4, 9, 1, 300, 2400, 1080)
 		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F9.png}
 		\caption{Easy.}
-		\label{fig:cal_online}
+		\label{fig:cal_easy}
 	\end{subfigure}
 	\begin{subfigure}{\textwidth}
 		\centering
 		% get_single_plot("setup_Sm.txt", "q4", "b", 0, 1, 16, 12, 200, 1400, 330)
 		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q1_f16_b12.png}
 		\caption{Difficult.}
-		\label{fig:cal_user}
+		\label{fig:cal_difficult}
 	\end{subfigure}
 	\caption{Cal.}
 	\label{fig:cal_ED}
@@ -1577,12 +1577,19 @@ where ($\theta_p, \phi_p$) and ($\theta_\gamma, \phi_\gamma$) are the detection 
 
 \subsection{Broken detector segments}
 
-CD: ring 1 + Quadrant 4, back strip 1
+CD: ring 1 + Quadrant 4, front ring 16, back strip 1
 
 \bigskip
 
 HPGe: Core ID 20? Other? Check vetoed segments
 
+\begin{figure}[ht]
+	\centering
+	% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
+	\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
+	\caption{CD quadrant 4, ring 16 (outermost ring), back strip 1.}
+	\label{fig:BDS_B1}
+\end{figure}
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------

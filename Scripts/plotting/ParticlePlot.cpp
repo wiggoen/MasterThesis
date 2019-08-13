@@ -9,6 +9,7 @@
 #include "TPaveText.h"
 #include "TArrow.h"
 #include "TLatex.h"
+#include "TLegend.h"
 
 #include <iostream>
 #include <iomanip>
@@ -123,9 +124,11 @@ class Element {
 
 void simulation_plot(std::string setup_file, bool single_plots) {
   /*
-      Plotting data and saving histograms simulated by kinsim3.
-      The single_plots option is for storing either single plots, 
+      Plotting data and saving histograms simulated by kinsim3. Energy in MeV.
+      The single_plots option is for storing either single plots of every ring, 
       or a all-in-one plot of the simulated rings.
+      Use true, 1 or any number for single plots of every ring.
+      Use false or 0 for all-in-one plot.
   */
   ADC adc;
   Element *element = new Element();
@@ -215,7 +218,7 @@ void simulation_plot(std::string setup_file, bool single_plots) {
 
 void ADC_plot(std::string setup_file, bool use_calibrated) {
   /*
-      Plotting data sorted by TreeBuilder. Energy in MeV.
+      Plotting data sorted by TreeBuilder. If calibrated: Energy in MeV.
       This function plots an overview of the four quadrants
       with all front strips and back strips separately.
       Choose to use calibrated spectra or not.
@@ -286,11 +289,13 @@ void ADC_plot(std::string setup_file, bool use_calibrated) {
 
 void AQ4_plot(std::string setup_file, std::string gate, bool use_calibrated) {
   /*
-      Plotting data sorted by AQ4Sort. Energy in keV.
+      Plotting data sorted by AQ4Sort. If calibrated: Energy in keV.
       This function plots an overview of the four quadrants
       with the gated front strips or back strips separately.
       Choose which side and front ring or back strip to gate on. 
       E.g.: "f10" or "b3".
+      "f10" shows front strip 10 with all the back  strips 1-12 for all 4 quadrants.
+      "b3"  shows back  strip  3 with all the front strips 1-16 for all 4 quadrants.
       Counting on front side: f1 (outermost ring) to f16 (innermost ring).
   */
   ADC adc;
@@ -374,8 +379,10 @@ void AQ4_plot(std::string setup_file, std::string gate, bool use_calibrated) {
 
 void plot_side(std::string setup_file, std::string detector_side, bool use_calibrated) {
   /*
-      Plotting data sorted by AQ4Sort. Energy in keV.
+      Plotting data sorted by AQ4Sort. If calibrated: Energy in keV.
       Choose ("b")ack side or ("f")ront side of detector.
+      "b" shows all the back strips 1-12 in one plot for every front ring 1-16 for all 4 quadrants.
+      "f" shows the front rings 1-16 for all 4 quadrants (just like ADC_plot() on front side).
       Choose to use calibrated spectra or not.
       Use true, 1 or any number for calibrated spectra.
       Use false or 0 for uncalibrated spectra.
@@ -469,7 +476,8 @@ void plot_side(std::string setup_file, std::string detector_side, bool use_calib
 void plot_quadrants(std::string setup_file, std::string detector_side, 
                     int ring_gate, bool use_calibrated, int back_strip = 1) {
   /*
-      Fitting data sorted by AQ4Sort. Energy in keV.
+      Plotting data sorted by AQ4Sort. If calibrated: Energy in keV.
+      Shows the front/back energy of the ring/strip of choice, for each quadrant separately.
       Choose the detector side, quadrant, front ring to gate on, the back strip you 
       want to look at.
       Choices: ("f")ront or ("b")ack side, quadrant 1-4, ring gate 1-16, if you want the 
@@ -526,19 +534,19 @@ void plot_quadrants(std::string setup_file, std::string detector_side,
 
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw("SAME");
-    histogram->SetStats(0);                      // Remove stats
-    histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
-    histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
-    histogram->GetYaxis()->SetTitle("Counts");   // Change y-axis title
-    histogram->GetYaxis()->SetTitleOffset(0.9);  // Move y-axis text a little closer
-    histogram->GetYaxis()->SetMaxDigits(3);      // Force scientific notation if number is large
+    histogram->SetStats(0);                        // Remove stats
+    histogram->SetLabelSize(label_size, "xy");     // Label size for x- and y-axis
+    histogram->SetTitleSize(label_size, "xy");     // Text  size for x- and y-axis
+    histogram->GetYaxis()->SetTitle("Counts");     // Change y-axis title
+    histogram->GetYaxis()->SetTitleOffset(0.9);    // Move y-axis text a little closer
+    histogram->GetYaxis()->SetMaxDigits(3);        // Force scientific notation if number is large
     if (use_calibrated) {
       histogram->SetAxisRange(40000, 750000, "X");
     } else {
       histogram->SetAxisRange(100, 3000, "X");
-      histogram->GetXaxis()->SetTitle("Channel");   // Change x-axis title
+      histogram->GetXaxis()->SetTitle("Channel");  // Change x-axis title
     }
-    gStyle->SetTitleSize(label_size, "t");       // Title size
+    gStyle->SetTitleSize(label_size, "t");         // Title size
     gPad->SetLeftMargin(margin_size);
     gPad->SetRightMargin(margin_size);
     gPad->SetBottomMargin(margin_size);
@@ -548,8 +556,9 @@ void plot_quadrants(std::string setup_file, std::string detector_side,
 
 void plot_back_quadrants(std::string setup_file, int front_ring, bool use_calibrated) {
   /*
-      Fitting data sorted by AQ4Sort. Energy in keV.
-      Shows all back strips in each separated quadrant.
+      Plotting data sorted by AQ4Sort. If calibrated: Energy in keV.
+      Shows all back strips 1-12 in each quadrant separately. The title of the plots
+      shows only b1, but it is actually b1-12.
       Choose which front ring number to gate on. Choice: 1-16.
       Choose to use calibrated spectra or not.
       Use true, 1 or any number for calibrated spectra.
@@ -616,7 +625,7 @@ void plot_back_quadrants(std::string setup_file, int front_ring, bool use_calibr
 void plot_front_back_energy(std::string setup_file, std::string name_addition = "") {
   /*
       Plots data sorted from TreeBuilder. Energy in MeV.
-      Plots front vs back energy for the four quadrants.
+      Plots front vs back energy for the 4 quadrants separately.
       Option: name_addition is an addition to the file name, 
       so it's easier to find the correct one. 
   */
@@ -739,9 +748,11 @@ void check_pedestal(std::string setup_file, std::string detector_side,
 
 void check_all_threshold(std::string setup_file) {
   /*
-      Plots data sorted from TreeBuilder. Energy in MeV.
+      Plots data sorted from TreeBuilder. Uncalibrated (counts vs. channels).
       Plots the threshold for each quadrant and ring/strip.
       Counting on front side: f0 (outermost ring) to f15 (innermost ring).
+      Counting on back  side: 16 (back strip 1)   to 27  (back strip 12).
+      Quadrant counting: 0 = Q1, 1 = Q2, 2 = Q3, 3 = Q4.
   */
   ADC adc;
   Element *element = new Element();
@@ -927,7 +938,7 @@ void check_single_threshold(std::string setup_file, std::string detector_side,
 void check_ADC_time_offsets(std::string setup_file, std::string name_addition = "") {
   /*
       Plots data sorted from TreeBuilder.
-      Plots ADC time offsets for the 4 CD quadrants.
+      Plots ADC time offsets for the 4 CD quadrants separately.
   */
   ADC adc;
   Element *element = new Element();
@@ -1079,6 +1090,8 @@ void CD_energy(std::string setup_file, std::string detector_side) {
       Plots energy vs ring number for the 4 quadrants of the CD.
       Choices: ("f")ront or ("b")ack side.
       Counting on front side: f1 (innermost ring) to f16 (outermost ring).
+      Front side: logarithmic z-axis.
+      Back  side: linear      z-axis.
   */
   ADC adc;
   Element *element = new Element();
@@ -1130,8 +1143,8 @@ void CD_energy(std::string setup_file, std::string detector_side) {
     gPad->SetBottomMargin(margin_size);
 
     if (detector_side == "f") {
+      // Set logarithmic z-axis
       gPad->SetLogz();
-      //histogram->GetXaxis()->SetTitle("Ring number");  // Change x-axis title
       // Change label on x-axis for correct counting of front side plots
       histogram->GetXaxis()->ChangeLabel(1,-1,-1,-1,-1,-1,"16");
       histogram->GetXaxis()->ChangeLabel(2,-1,-1,-1,-1,-1,"14");
@@ -1163,6 +1176,7 @@ void get_single_plot(std::string setup_file, std::string sorter, std::string det
       data sorted by AQ4Sort with energy in keV.
       This function gets a single plot of one strip on either 
       the front side or the back side.
+      Counting on front side: f1 (innermost ring) to f16 (outermost ring).
   */
   ADC adc;
   Element *element = new Element();
@@ -1199,7 +1213,7 @@ void get_single_plot(std::string setup_file, std::string sorter, std::string det
     histogram_name = Form("adc_spec/adc_%d_%d%s", quadrant-1, channel, calibrated.c_str());
   } else if (sorter == "q4") {
     input_file = element->AQ4_infile;
-    channel = adc.rings-ring+1;
+    channel = adc.rings - ring + 1;
     canvas_name = Form("%sE Q%d F%d B%d", detector_side.c_str(), quadrant, ring, strip);
     histogram_name = Form("%sE_Q%d_f%d_b%d%s", detector_side.c_str(), quadrant, channel, strip, calibrated.c_str());
     savefile_name = Form("%sE_Q%d_f%d_b%d%s", detector_side.c_str(), quadrant, ring, strip, calibrated.c_str());
@@ -1280,5 +1294,81 @@ void get_single_plot(std::string setup_file, std::string sorter, std::string det
   arrow->Draw();
   // -------------------
   */
+  canvas->SaveAs(Form("../../Plots/plotting/%s.png", savefile_name.c_str()));
+}
+
+
+void plot_back_strips(std::string setup_file, int quadrant, int front_ring, bool use_calibrated, 
+                      int x_min = 0, int x_max = 3000, int y_max = 500) {
+  /*
+      Plotting data sorted by AQ4Sort. If calibrated: Energy in keV.
+      Shows all back strips 1-12 for 1 quadrant.
+      Choose which front ring number to gate on. Choice: 1-16.
+      Choose to use calibrated spectra or not.
+      Use true, 1 or any number for calibrated spectra.
+      Use false or 0 for uncalibrated spectra.
+      Counting on front side: f1 (innermost ring) to f16 (outermost ring).
+  */
+  ADC adc;
+  Element *element = new Element();
+  element->read_setup_file(setup_file);
+  if ( !(front_ring >= 1 && front_ring <= 16) ) {
+    std::cout << "Invalid option. Choose between ring 1-16." << std::endl;
+  }
+  std::string calibrated;
+  // Shorthand if-else statement: (condition) ? (if_true) : (if_false);
+  use_calibrated ? calibrated = "_cal" : calibrated = "";
+
+  std::cout << "Looking at " << element->element_name 
+            << " from file: " << element->AQ4_infile << std::endl;
+
+  TFile *infile = new TFile(element->AQ4_infile.c_str(), "UPDATE");
+  TCanvas *canvas = nullptr;
+  std::string canvas_name;
+  canvas_name = Form("Quadrant %d, front gate f%d vs back strips 1-12", quadrant, front_ring);
+  canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
+  TH1F *histogram = nullptr;
+  std::string histogram_name;
+  std::string legend_name;
+  std::string savefile_name = Form("bE_Q%d_f%d_b1-12%s", quadrant, front_ring, calibrated.c_str());;
+  // Colors: kRed, kBlue, kGreen, kPink, kAzure, kSpring, kMagenta, kCyan, kYellow, kViolet, kTeal, kOrange
+  int colors[] = { 632, 600, 416, 900, 860, 820, 616, 432, 400, 880, 840, 800 };
+  int ring = adc.rings - front_ring + 1;  // For correct counting of front side plots
+  float label_size = 0.05;
+  float margin_size = 0.13;
+  // Initialize legend: x-min, y-min, x-max, y-max
+  auto legend = new TLegend(0.75, 0.3, 0.87, 0.9);
+
+  for (int strip = 0; strip < adc.strips; strip++) {
+    histogram_name = Form("bE_Q%d_f%d_b%d%s", quadrant, ring, strip+1, calibrated.c_str());
+    
+    //std::cout << "Histogram: " << histogram_name << std::endl;
+    
+    histogram = (TH1F *)infile->Get(histogram_name.c_str());
+    histogram->SetLineColor(colors[strip]);
+    histogram->Draw("SAME");
+    histogram->SetStats(0);                     // Remove stats
+    histogram->SetLabelSize(label_size, "xy");  // Label size for x- and y-axis
+    histogram->SetTitleSize(label_size, "xy");  // Text  size for x- and y-axis
+    histogram->SetTitle(Form("bE Q%d F%d B1-12", quadrant, front_ring));  // Change title of histogram
+    histogram->GetYaxis()->SetTitle("Counts");  // Change y-axis title
+    histogram->GetYaxis()->SetTitleOffset(0.9); // Move y-axis text a little closer
+    //histogram->GetYaxis()->SetMaxDigits(3);     // Force scientific notation if number is large
+    if (use_calibrated) {
+      histogram->SetAxisRange(x_min*1000, x_max*1000, "X");
+    } else {
+      histogram->SetAxisRange(x_min, x_max, "X");
+      histogram->SetAxisRange(0, y_max, "Y");
+      histogram->GetXaxis()->SetTitle("Channel");  // Change x-axis title
+    }
+    gStyle->SetTitleSize(label_size, "t");         // Title size
+    gPad->SetLeftMargin(margin_size);
+    gPad->SetRightMargin(margin_size);
+    gPad->SetBottomMargin(margin_size);
+
+    legend->AddEntry(histogram, Form("B%d", strip+1), "l");
+    gStyle->SetLegendTextSize(0.04);
+    legend->Draw();
+  }
   canvas->SaveAs(Form("../../Plots/plotting/%s.png", savefile_name.c_str()));
 }
