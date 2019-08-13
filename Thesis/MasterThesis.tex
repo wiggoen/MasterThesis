@@ -672,21 +672,28 @@ It is under constant development at CERN-ISOLDE under the management of Dr. Liam
 	\end{itemize}
 \end{enumerate}
 
-One program that is mentioned in the Miniball GitHub repository, but not showed how to use, is the \texttt{AQ4Sort}. It is used in the same way as the \texttt{TreeBuilder} script, but it sorts the histograms in another way and it does not take any command line flag options. 
-This program is used before and during the calibration of the particle detectors, because it gives information about every single ring and every single back strip (the "pixels" of the CD). 
+For the CD, \texttt{TreeBuilder}\footnote{\texttt{TreeBuilder} is found in the \textit{$\sim$/GitHub/Miniball/MiniballCoulexSort/TreeBuilder} directory.} sorts each quadrant for itself, but it is not possible to see each pixel of the detector. 
+In the front, each annular strip can be viewed and in the back each secular strip can be viewed as a whole, the back strip contains the energy information of all of the 16 annular strips. 
+The secular strips cover a wide angular range, thus they show no sharp peaks.
+\texttt{TreeBuilder} also takes a number of command line flag options. 
+If the \textit{-cdpad} flag option is not used, then there will be no particle events, because they come into the CD. 
+Other flag options will be introduced later in the chapter.
 
-For the CD, \texttt{TreeBuilder} sorts each quadrant for itself, but it is not possible to see each pixel of the detector. 
-In the front, each annular strip can be viewed and in the back each secular strip can be viewed as a whole, the back strip contains the energy information of all of the 16 annular strips. \texttt{TreeBuilder} also takes a number of command line flag options. If the \textit{-cdpad} flag option is not used, then there will be no particle events, because they come into the CD. Other flag options will be introduced later in the chapter.
+One program that is mentioned in the Miniball GitHub repository, but not showed how to use, is the \texttt{AQ4Sort}\footnote{\texttt{AQ4Sort} is also found in the \textit{$\sim$/GitHub/Miniball/MiniballCoulexSort/TreeBuilder} directory.}. 
+It is used in the same way as the \texttt{TreeBuilder} script, but it sorts the histograms in another way and it does not take any command line flag options. 
+\texttt{AQ4Sort} is used before and during the calibration of the particle detectors, because it gives information about every single ring and every single back strip (the "pixels" of the CD). 
+These pixels are used for calibration and are made by gating on the annular (front) rings to see peaks in the secular (back) strips. 
 
 
 \subsection{Counting and naming convention}
-In the following sections there will be an introduction of different programs and scripts used in the data calibration and analysis. One thing to note here, is that the numbering of the CD rings and strips are different in these programs and scripts. 
-
-Histograms sorted by \texttt{TreeBuilder} starts counting from 0 (outermost ring) to 15 (innermost ring) with energy in MeV (in calibrated spectra) showed in \autoref{fig:CD-FB}. 
-\texttt{AQ4Sort} starts from 1 (outermost ring) to 16 (innermost ring) with energy in keV (in calibrated spectra). 
-\autoref{tab:ADC} shows the ADC wiring.
+In the following sections there will be an introduction of different programs and scripts used in the data calibration and analysis. 
+One thing to note here, is that the numbering of the CD rings and strips are different in these programs and scripts. 
+Histograms sorted by \texttt{TreeBuilder} starts counting from 0 (outermost ring) to 15 (innermost ring) as showed in \autoref{fig:CD-FB}. 
+\texttt{AQ4Sort} starts from 1 (outermost ring) to 16 (innermost ring), shifted compared to \texttt{TreeBuilder}.
+For calibrated spectra, \texttt{TreeBuilder} shows the energy in MeV, while \texttt{AQ4Sort} shows energy in keV.
 The simulation program \texttt{kinsim3} counts from 1 (innermost ring) to 16 (outermost ring), the opposite of \texttt{AQ4Sort}. 
-It is easy to be confused by all the different counting, but this thesis will try to use the counting order of \texttt{kinsim3} for everything, it seems like the most logic way of counting. 
+It is easy to be confused by all the different counting, but this thesis will try to use the counting order of \texttt{kinsim3} for the CD, it seems like the most logic way of counting. 
+\autoref{tab:ADC} shows the CD wiring.
 A change of the wiring of the CD will probably not happen, but it is possible to choose a logic order of counting software wise.
 \autoref{tab:TBvsAQ4} shows a comparison of the logic counting and the histogram naming from \texttt{TreeBuilder} and \texttt{AQ4Sort}.
 Calibration coefficients given to the calibration file, which is introduced in later sections, follow the naming convention of \texttt{TreeBuilder} in \autoref{tab:TBvsAQ4}.
@@ -694,7 +701,7 @@ Calibration coefficients given to the calibration file, which is introduced in l
 
 \begin{table}[ht] 
 	\centering 
-	\caption{ADC wiring for Coulomb excitation experiments.}
+	\caption{CD wiring for Coulomb excitation experiments.}
 	\input{Table-data/ADC.tex}
 	\label{tab:ADC}
 \end{table}
@@ -702,14 +709,20 @@ Calibration coefficients given to the calibration file, which is introduced in l
 
 \begin{table}[ht] 
 	\centering 
-	\caption{The naming of histograms from \texttt{TreeBuilder} vs. \texttt{AQ4Sort}.}
+	\caption{The logic counting and the naming of histograms from \texttt{TreeBuilder} and \texttt{AQ4Sort}.}
 	\input{Table-data/TBvsAQ4.tex}
 	\label{tab:TBvsAQ4}
 \end{table}
 
 
 \section{Data conversion}
-In order to analyze the data in the ROOT\footnote{ROOT is a data analysis framework written in C/C++ made at CERN.} framework, the first part of the code is just to convert the \textit{.med}-files produced by \MBOU\ into \textit{.root}-files with the program \texttt{MedToRoot}. In order to not copy and paste the commands used with \texttt{MedToRoot} in the terminal for every data file, a bash script called \texttt{M2R.sh} was made to do this. It uses \texttt{MedToRoot} to take in as many files as you want, and convert it in one go. It takes one command line argument because it was initially developed to sort different elements, so it is fairly simple to expand. By not using any command line arguments, the script will print out how to use it. First all of the interesting files are converted with the \texttt{M2R.sh} script. An example of the use with terminal output for the \textit{.med}-file with \textit{xy = 08} is as follows:
+In order to analyze the data in the ROOT\footnote{ROOT is a data analysis framework written in C/C++ made at CERN.} framework, the first part of the code is just to convert the \textit{.med}-files produced by \MBOU\ into \textit{.root}-files with the program \texttt{MedToRoot}. 
+To avoid copy and paste the commands used with \texttt{MedToRoot} in the terminal for every data file, a bash script called \texttt{M2R.sh} was made to do this. 
+It uses \texttt{MedToRoot} to take in as many files as you want, and convert it in one go. 
+It takes one command line argument because it was initially developed to convert files from different elements, so it is fairly simple to expand. 
+If no command line arguments are given, the script will print out how to use it.
+First all of the interesting raw data files are converted with the \texttt{M2R.sh} script. 
+An example of the use with terminal output for the \textit{140Sm\_208Pb\_pos6\_0xy.med}-file with \textit{xy = 08} is as follows:
 
 % Empty language = plain text
 \begin{lstlisting}[language=]
@@ -773,7 +786,8 @@ explain strategy, show examples... \newline
 if you try to write this step-by-step cook book, you could introduce your scripts wherever is the right place to use them. 
 }\newline
 
-The general idea of the calibration is to make sure that the energy spectra from the detectors have the same physical features, that the detectors show the same energy distribution at the same position for the same kind of particles or \ga-rays hitting the same or the angular similarly place in the detector.
+The general idea of the calibration is to make sure that the energy spectra from the detectors have the same physical features, that the detectors show the same energy distribution at the same position for the same kind of particles or \ga-rays hitting the same or the angular similarly place in the detectors.
+Calibration of the detectors minimize the measurement uncertainty by making the detectors more accurate and consistent.
 We want to determine centroids of peaks in the spectra, compare these with simulations using kinematics of the reaction and energy loss, to get linear coefficients of the detectors. 
 
 Both detector types in this experiment are semiconductor detectors. 
@@ -781,48 +795,32 @@ Except for silicon (as the CD), semiconductors generally require cooling to low 
 The basic principle of operation is that incoming ionizing radiation\footnote{For the CD, the ionizing radiation is the beam or target particles scattered from the reaction, while the ionizing radiation for the HPGe-detectors is the high-energy photons (\ga) from de-excitation of the nuclei.} creates electron-hole pairs in the semi-conducting material which are then collected by an electric field. 
 The number of electron-hole pairs is proportional to the energy of the incoming radiation to the semiconductor \cite{WRLeo}. 
 
-Assuming a linear correlation between the energy $E$ of the particle or \ga-ray and the channel number $n$ of the ADC, we get
+Assuming a linear correlation between the energy $E$ of the particle (or \ga-ray) and the channel number $n$ of the ADC (or DGF), we get
 \begin{equation}\label{eq:Ego}
 	E = g \cdot n + a
 \end{equation}
 where $a$ is the offset in keV and $g$ is the gain in keV/$n$. 
-The offset $a$ can be expressed easily from \autoref{eq:Ego} as 
+The gain $g$ and the offset $a$ are the coefficients needed to do the calibration.
+From \autoref{eq:Ego}, the offset $a$ can easily be expressed as 
 \begin{equation}\label{eq:offset}
 	a = E - g \cdot n 
 \end{equation}
-To find the gain $g$, we need at least two measuring points, e.g. the peak energy of Sm and the peak energy of Pb for a given angle. 
+To find the gain $g$ in the CD denoted by $p$ for particle (or \ga-detectors denoted by \ga), at least two measuring points are needed, e.g. the peak energy of Sm and the peak energy of Pb for a given angle (or the peak of Eu and Ba explained in  \autoref{sec:gamma}). 
 The relationship can be written as 
-\begin{equation}\label{eq:gain}
-	g = \frac{E_{\text{Sm}} - E_{\text{Pb}}}{n_{\text{Sm}} - n_{\text{Pb}}}
-\end{equation}
+\begin{align}\label{eq:gain}
+	g_p &= \frac{E_{\text{Sm}} - E_{\text{Pb}}}{n_{\text{Sm}} - n_{\text{Pb}}}
+	&
+	\Bigg( g_\gamma &= \frac{E_{\text{Eu}} - E_{\text{Ba}}}{n_{\text{Eu}} - n_{\text{Ba}}} \Bigg)
+\end{align}
+where the peak energies are obtained from a simulation of the Coulomb excitation experiment and the channel numbers are obtained from the raw data of the actual experiment.
 
-On the front side of the CD we only have two measuring points per angle interval\footnote{Not entirely true, since we have three peaks in the spectra. But since we don't know what the contaminant is, we effectively only have two known measuring points.}, while on the back side of the CD we have we have two peaks per secular strip that we can fit. 
-By doing a Gaussian (or other) fit, we can get the centroids (channels of the peaks) for both Sm and Pb. 
-For more than two centroids, we can use linear regression to find the best fit (this is the best option for the back side of the CD).
+On the front side of the CD we only have two measuring points per angle interval\footnote{Not entirely true, since we have three peaks in the spectra. But since we don't know what the contaminant is, we effectively only have two known measuring points.}, while on the back side of the CD we have we have two peaks per gated annular strip that we can fit. 
+By doing a function fit (Gaussian or other), we can get the centroids (channels of the maximum or center of the peaks) for both Sm and Pb. 
+For more than two centroids per strip, as the back side of the CD have, linear regression is used to find the best fit of the calibration coefficients.
 
-Calibrating the back strips of the CD is the same as the front, however because they cover a large range of angles in the $\theta$ direction, we need to gate on one of the front strips to define an angle and therefore an energy. For this purpose, we will use the code \texttt{AQ4Sort} in the \textit{$\sim$/GitHub/Miniball/MiniballCoulexSort/TreeBuilder} directory. It operates the same files as \texttt{TreeBuilder} does, but with the purpose of making every combination of gates on front and back strips so that we have the front and back energy for every "pixel" of the detector.
-
-
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\centering
-		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 4, 9, 1, 300, 2400, 1080)
-		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F9.png}
-		\caption{Easy.}
-		\label{fig:cal_easy}
-	\end{subfigure}
-	\begin{subfigure}{\textwidth}
-		\centering
-		% get_single_plot("setup_Sm.txt", "q4", "b", 0, 1, 16, 12, 200, 1400, 330)
-		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q1_f16_b12.png}
-		\caption{Difficult.}
-		\label{fig:cal_difficult}
-	\end{subfigure}
-	\caption{Cal.}
-	\label{fig:cal_ED}
-\end{figure}
-
+Calibrating the back strips of the CD is the same as the front, however because they cover a large range of angles in the $\theta$ direction (according to \autoref{fig:LAB}), a gate on one of the front strips is needed to define an angle and thereby an energy. 
+For this purpose, the program \texttt{AQ4Sort} is used. 
+It operates the same files as \texttt{TreeBuilder} does, but with the purpose of making every combination of gates on front and back strips so that the front and back centroids for every "pixel" of the detector is available.
 
 
 \subsection{Simulation}
@@ -834,7 +832,7 @@ These we fit, collect the centroid of and use in the calibration.
 The program uses SRIM-2013 \cite{SRIM} (the Stopping and Range of Ions in Matter) generated files relevant to the \textcolor{red}{scattering/reaction?} and it takes into account the energy loss in the dead layer of the detector, which is energy and angle dependent. 
 The SRIM-files used in this simulation can be found in \textit{MasterThesis/SRIM}.
 For the Si dead layer, the SRIM-files must have units of MeV/mm. 
-(If you are using MeV/cm2, you must change the distance on line 359 to be in the correct units. 
+(If you are using MeV/cm$^2$, you must change the distance on line 359 to be in the correct units. 
 The correction factor is at the bottom of the SRIM file.)
 Line 358 and 359 reads:
 
@@ -999,7 +997,9 @@ On the back side we have 48 secular strips (4 quadrants $\cdot$ 12 strips).
 To fully calibrate the CD, we need all the centroids of the peaks from both sides, 128 centroids (64 annular strips $\cdot$ 2 peaks/ring) on the front side and 1536 centroids (48 secular strips $\cdot$ 2 peaks/ring $\cdot$ 16 rings) on the back side. 
 The total centroids to collect are 1664 centroids, and this is not a task one would want to do manually.
 For a quick calibration, or a bare minimum calibration, one needs two peaks in each annular strip and two peaks in each secular strip, making it 224 centroids.
-All above this just makes it more precise.
+Taking more centroids than this makes it more precise. 
+By taking more centroids, which is generally a good idea, it is possible to check for non-linearities or instabilities in time.
+
 
 \autoref{fig:cal_FC} shows a flowchart of the programs, scripts and files used in the user calibration. 
 The idea was to use the \textbf{kinsim3()} function from \texttt{kinsim3.cc} to simulate the data and the \texttt{Q4S.sh} script to sort the experimental data with \texttt{AQ4Sort} to get each pixel of the CD. 
@@ -1114,6 +1114,28 @@ output file: Sm_user-AQ4Sort-2019-06-24.root
 \end{lstlisting}
 
 
+\autoref{fig:cal_ED} shows one strip that is easy to calibrate and one that is difficult to calibrate.
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{\textwidth}
+		\centering
+		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 4, 9, 1, 300, 2400, 1080)
+		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F9.png}
+		\caption{Easy.}
+		\label{fig:cal_easy}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\centering
+		% get_single_plot("setup_Sm.txt", "q4", "b", 0, 1, 16, 12, 200, 1400, 330)
+		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q1_f16_b12.png}
+		\caption{Difficult.}
+		\label{fig:cal_difficult}
+	\end{subfigure}
+	\caption{Cal.}
+	\label{fig:cal_ED}
+\end{figure}
+
 
 The user calibration of the CD shown in \autoref{fig:cal_user} is basically the online calibration without the innermost ring. 
 
@@ -1178,7 +1200,7 @@ The user calibration of the CD shown in \autoref{fig:cal_user} is basically the 
 \begin{figure}[ht]
 	\centering
 	\input{Images/Calibration-flow-chart.tikz}
-	\caption{Flowchart of the programs, scripts and files used in the user calibration.}
+	\caption{Flowchart of the programs, scripts and files used in the user calibration. The relative paths of these programs and scripts is shown in \autoref{tab:paths}.}
 	\label{fig:cal_FC}
 \end{figure}
 
@@ -1592,14 +1614,14 @@ HPGe: Core ID 20? Other? Check vetoed segments
 		\centering
 		% plot_quadrants("setup_Sm.txt", "f", 1, 0, 1, 0, 3500, 8500)
 		\includegraphics[width=\textwidth]{../Plots/plotting/Q1-4_f1.png}
-		\caption{CD ring 1 (innermost ring).}
+		\caption{CD front ring 1 (innermost ring).}
 		\label{fig:BDS_R1}
 	\end{subfigure}
 	\begin{subfigure}{\textwidth}
 		\centering
 		% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
 		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
-		\caption{CD quadrant 4, ring 16 (outermost ring), back strip 1.}
+		\caption{CD back strip 1 gated on front ring 16 (outermost ring) in quadrant 4.}
 		\label{fig:BDS_B1}
 	\end{subfigure}
 	\caption{LAB vs. CM frame.}
@@ -2015,6 +2037,20 @@ The \textsl{MiniballCoulexSort} code does not require any a lot of computing pow
 \begin{lstlisting}[language=sh]
 /Users/trondwj/GitHub/ROOT-framework/build
 \end{lstlisting}
+
+
+\subsection{Relative path of programs and scripts}
+
+\autoref{tab:paths} shows the relative path of programs and scripts used in this thesis.
+
+\begin{table}[ht] 
+    \centering 
+    \caption{Relative path of programs and scripts.}
+	\input{Table-data/Paths.tex}
+	\label{tab:paths}
+\end{table}
+
+
 
 
 \section{Run time}
