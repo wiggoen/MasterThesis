@@ -474,7 +474,8 @@ void plot_side(std::string setup_file, std::string detector_side, bool use_calib
 
 
 void plot_quadrants(std::string setup_file, std::string detector_side, 
-                    int ring_gate, bool use_calibrated, int back_strip = 1) {
+                    int ring_gate, bool use_calibrated, int back_strip = 1,
+                    int x_min = 0, int x_max = 3000, int y_max = 9000) {
   /*
       Plotting data sorted by AQ4Sort. If calibrated: Energy in keV.
       Shows the front/back energy of the ring/strip of choice, for each quadrant separately.
@@ -483,7 +484,7 @@ void plot_quadrants(std::string setup_file, std::string detector_side,
       Choices: ("f")ront or ("b")ack side, quadrant 1-4, ring gate 1-16, if you want the 
       calibrated spectra or not (0 or false, 1 or true), back strip 1-12.
       Back strip only valid for looking at the back side of the detector.
-      Counting on front side: f1 (outermost ring) to f16 (innermost ring).
+      Counting on front side: f1 (innermost ring) to f16 (outermost ring).
   */
   ADC adc;
   Element *element = new Element();
@@ -507,12 +508,15 @@ void plot_quadrants(std::string setup_file, std::string detector_side,
   std::string detector_side_name;
   std::string extension;
   std::string title_extension;
+  std::string savefile_name;
   if (detector_side == "b") {
     detector_side_name = "Back";
     extension = "_b" + std::to_string(back_strip);
     title_extension = ", back strip " + std::to_string(back_strip);
+    savefile_name = Form("Q1-4_f%d_b%d%s", ring_gate, back_strip, calibrated.c_str());;
   } else if (detector_side == "f") {
     detector_side_name = "Front";
+    savefile_name = Form("Q1-4_f%d%s", ring_gate, calibrated.c_str());;
   }
 
   TFile *infile = new TFile(element->AQ4_infile.c_str(), "UPDATE");
@@ -523,17 +527,20 @@ void plot_quadrants(std::string setup_file, std::string detector_side,
   canvas->Divide(2, 2);
   TH1F *histogram = nullptr;
   std::string histogram_name;
+  std::string title[4] = {"Q1", "Q2", "Q3", "Q4"};
+  int ring = adc.rings - ring_gate + 1;  // For correct counting of front side plots
   float label_size = 0.07;
   float margin_size = 0.14;
 
   for (int quadrant = 0; quadrant < adc.quadrants; quadrant++) {
     canvas->cd(quadrant+1);
-    histogram_name = Form("%sE_Q%d_f%d%s%s", detector_side.c_str(), quadrant+1, ring_gate, extension.c_str(), calibrated.c_str());
+    histogram_name = Form("%sE_Q%d_f%d%s%s", detector_side.c_str(), quadrant+1, ring, extension.c_str(), calibrated.c_str());
     
-    //std::cout << "Histogram: " << histogram_name << std::endl;
+    std::cout << "Histogram: " << histogram_name << std::endl;
 
     histogram = (TH1F *)infile->Get(histogram_name.c_str());
     histogram->Draw("SAME");
+    histogram->SetTitle(title[quadrant].c_str());  // Changing titles
     histogram->SetStats(0);                        // Remove stats
     histogram->SetLabelSize(label_size, "xy");     // Label size for x- and y-axis
     histogram->SetTitleSize(label_size, "xy");     // Text  size for x- and y-axis
@@ -541,16 +548,18 @@ void plot_quadrants(std::string setup_file, std::string detector_side,
     histogram->GetYaxis()->SetTitleOffset(0.9);    // Move y-axis text a little closer
     histogram->GetYaxis()->SetMaxDigits(3);        // Force scientific notation if number is large
     if (use_calibrated) {
-      histogram->SetAxisRange(40000, 750000, "X");
+      histogram->SetAxisRange(x_min*1000, x_max*1000, "X");
     } else {
-      histogram->SetAxisRange(100, 3000, "X");
+      histogram->SetAxisRange(x_min, x_max, "X");
       histogram->GetXaxis()->SetTitle("Channel");  // Change x-axis title
     }
+    histogram->SetAxisRange(0, y_max, "Y");
     gStyle->SetTitleSize(label_size, "t");         // Title size
     gPad->SetLeftMargin(margin_size);
     gPad->SetRightMargin(margin_size);
     gPad->SetBottomMargin(margin_size);
   }
+  canvas->SaveAs(Form("../../Plots/plotting/%s.png", savefile_name.c_str()));
 }
 
 

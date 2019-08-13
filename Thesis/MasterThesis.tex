@@ -1577,18 +1577,33 @@ where ($\theta_p, \phi_p$) and ($\theta_\gamma, \phi_\gamma$) are the detection 
 
 \subsection{Broken detector segments}
 
-CD: ring 1 + Quadrant 4, front ring 16, back strip 1
+CD: ring 1 + Quadrant 4, front ring 16, back strip 1 \newline
+
+\autoref{fig:BDS_B1} shows one pixel where back strip 1 (B1) is acting weird compared to the other back strips. There are other rings where B1 is a bit off, but not nearly as much as in this pixel. Maybe B1 should be excluded, but in this thesis, it was used. 
 
 \bigskip
 
 HPGe: Core ID 20? Other? Check vetoed segments
 
+
 \begin{figure}[ht]
 	\centering
-	% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
-	\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
-	\caption{CD quadrant 4, ring 16 (outermost ring), back strip 1.}
-	\label{fig:BDS_B1}
+	\begin{subfigure}{\textwidth}
+		\centering
+		% plot_quadrants("setup_Sm.txt", "f", 1, 0, 1, 0, 3500, 8500)
+		\includegraphics[width=\textwidth]{../Plots/plotting/Q1-4_f1.png}
+		\caption{CD ring 1 (innermost ring).}
+		\label{fig:BDS_R1}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\centering
+		% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
+		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
+		\caption{CD quadrant 4, ring 16 (outermost ring), back strip 1.}
+		\label{fig:BDS_B1}
+	\end{subfigure}
+	\caption{LAB vs. CM frame.}
+	\label{fig:BDS}
 \end{figure}
 
 
