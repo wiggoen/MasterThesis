@@ -636,7 +636,7 @@ Scripts developed in the present thesis work for the fitting procedures are slig
 The codes have been further developed and heavily re-written in the current work. 
 Presently the code has only a minor resemblance to the original code. 
 The remaining Python and bash scripts are written and developed by the author.
-All of the scripts written in C/C++ are dependent on the ROOT framework, a C/C++ data analysis framework developed and maintained at CERN.
+All of the scripts written in C/C++ are dependent on the ROOT 6 framework, a C/C++ data analysis framework developed and maintained at CERN.
 
 
 \section{Data handling}
@@ -933,7 +933,16 @@ A general kinematics simulation in the LAB frame is shown in \autoref{fig:kinsim
 
 
 \subsection{Online calibration of the particle detector}
-Every year there is a campaign at ISOLDE, where the staff configures a settingsfile\footnote{For IS558, the settingsfile \textit{MBSettings2017\_CLX\_IS558.dat} was used.} if there are any changes in the setup system. In addition they run a coctail beam composed of different isotopes on a specific target to make a calibration file containing the calibration coefficients for the CD. For the \ga-detectors they put \ga\ sources in the target position and from the data they get the calibration coefficients which is put in the calibration file. This calibration file is adjusted for each experiment following the campaign period. In this way it is easy to sort and analyze during the experiment, check if it is going well and to make preliminary Doppler-corrected \ga-spectra. 
+Every year there is a campaign at ISOLDE, where the staff configures a settingsfile if there are any changes in the setup system. 
+In addition the staff makes a calibration file containing the calibration coefficients for the CD and the Miniball \ga-detector array. 
+For the calibration of the CD, a cocktail beam composed of different isotopes is accelerated into a specific target. 
+For the calibration of the \ga-detectors, usually two \ga\ sources are placed in the target position.
+The data from these runs are used to make the calibration file. 
+It contains the calibration coefficients for the ADCs and DGFs in addition to the Miniball geometry.
+This calibration file is adjusted for each experiment following the campaign period.
+In this way it is easy to sort and analyze during the experiments, to check if it is going well and to make preliminary Doppler-corrected \ga-spectra.
+For IS558, the settingsfile \textit{MBSettings2017\_CLX\_IS558.dat} and the calibration file \textit{IS558-online.cal} was made.
+
 
 
 \bigskip
@@ -960,7 +969,7 @@ $ mv Sm_online-TreeBuilder-2019-06-24.root ../../Sorted_data/
 
 Also other helping scripts to get histograms, do fitting, comparison and calibration was made. 
 After the sorting, the file was moved to a folder of sorted data (with the \textbf{mv} command), and the relative path was given in the \textit{setup\_Sm.txt} file in \textit{Scripts/plotting/} used as input in the \texttt{ParticlePlot.cpp} script. 
-This script has to be loaded into the ROOT 6 framework to extract the histograms of interest and fix the formatting.
+This script has to be loaded into the ROOT framework to extract the histograms of interest and fix the formatting.
 To run the \texttt{ParticlePlot.cpp} in interaction with ROOT, the following commands are used
 
 \begin{lstlisting}[language=sh]
