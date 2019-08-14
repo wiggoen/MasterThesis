@@ -193,6 +193,7 @@ void simulation_plot(std::string setup_file, bool single_plots) {
       histogram->SetTitle(Form("Ring %d", ring+1));        // Changing titles
       histogram->SetLabelSize(label_size_AllInOne, "xy");  // Label size for x- and y-axis
       histogram->SetTitleSize(label_size_AllInOne, "xy");  // Text  size for x- and y-axis
+      histogram->GetYaxis()->SetNdivisions(506, kTRUE);    // Change number of ticks on y-axis
       gStyle->SetTitleSize(label_size_AllInOne, "t");      // Title size
       gPad->SetLeftMargin(margin_size_AllInOne);
       gPad->SetRightMargin(margin_size_AllInOne);

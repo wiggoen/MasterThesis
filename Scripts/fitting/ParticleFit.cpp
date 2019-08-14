@@ -339,12 +339,14 @@ void simulation_fit(std::string setup_file) {
       }
     }
     histogram->SetAxisRange(0.95 * min_range, 1.05 * max_range, "X");
-    histogram->SetStats(0);                        // Remove stats
-    histogram->SetLabelSize(label_size, "xy");     // Label size for x- and y-axis
-    histogram->SetTitleSize(label_size, "xy");     // Text  size for x- and y-axis
-    histogram->GetYaxis()->SetTitleOffset(1.1);    // Move y-axis text a little closer
-    histogram->SetTitle(Form("Ring %d", ring+1));  // Changing titles
-    gStyle->SetTitleSize(label_size, "t");         // Title size
+    histogram->SetStats(0);                            // Remove stats
+    histogram->SetLabelSize(label_size, "xy");         // Label size for x- and y-axis
+    histogram->SetTitleSize(label_size, "xy");         // Text  size for x- and y-axis
+    histogram->GetYaxis()->SetTitleOffset(1.1);        // Move y-axis text a little closer
+    histogram->SetTitle(Form("Ring %d", ring+1));      // Changing titles
+    histogram->GetXaxis()->SetNdivisions(506, kTRUE);  // Change number of ticks on x-axis
+    histogram->GetYaxis()->SetNdivisions(506, kTRUE);  // Change number of ticks on y-axis
+    gStyle->SetTitleSize(label_size, "t");             // Title size
     gPad->SetLeftMargin(margin_size);
     gPad->SetRightMargin(margin_size);
     gPad->SetBottomMargin(margin_size);
