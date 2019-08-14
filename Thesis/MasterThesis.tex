@@ -307,6 +307,17 @@ New HIE-ISOLDE: energies up to 10 MeV/u $\implies$ we can choose high-Z target (
 
 All of my scripts are available in my GitHub repository found at \\ \url{https://github.com/wiggoen/MasterThesis}.
 
+\bigskip
+
+\textbf{COULEX links:}
+\begin{itemize}
+	\item \url{https://www.researchgate.net/profile/Jacek_Wojciechowski/publication/268366137_Application_of_Genetic_Algorithm_with_Real_Representation_to_COULEX_Data_Analysis/links/54b913850cf269d8cbf72ed4.pdf}
+	\item \url{https://core.ac.uk/download/pdf/76649116.pdf}
+	\item \url{http://oregonstate.edu/instruct/ch374/ch418518/Chapter%2010%20NUCLEAR%20REACTIONS.pdf}
+\end{itemize}
+
+
+
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 
@@ -379,7 +390,7 @@ $\bullet$ general things about nuclei shapes \newline
 - rotations and vibrations $\rightarrow$ energy spectra, B(E2) values  \newline
 - Casten triangle (spherical vibrator, deformed rotor, \ga-soft + X(5), E(5)), expected spectrum for E(5) nuclei \newline
 
-$\bullet$ the basics of Coulomb excitation 
+$\bullet$ the basics of Coulomb excitation (COULEX)
 
 
 \bigskip
@@ -558,7 +569,7 @@ The target chamber is a hollow sphere made out of a machined out, single piece o
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\linewidth]{Images/Target-wheel.png}
-	\caption{The target wheel can hold up to six different targets. Position 6 has the target \Pb\ with thickness 1.4 mg/cm$^2$. \\ Photo by: Liam Gaffney, date: 07.08.2017.}
+	\caption{The target wheel can hold up to six different targets. Position 6 has the target \Pb\ with thickness 1.4 mg/cm$^2$. \\ Photo by: Dr. Liam Gaffney, date: 07.08.2017.}
 	\label{fig:TWheel}
 \end{figure}
 
@@ -620,8 +631,19 @@ Signals from the CD and the HPGe clusters are read out by the ADC and Digital Ga
 
 \chapter{Data analysis}  
 
+In this chapter, the various programs and scripts applied in the detector calibration and data analysis will be introduced. 
+Scripts developed in the present thesis work for the fitting procedures are slightly based on scripts written by Ville Virtanen\footnote{Ville Virtanen is a student from University of Jyväskylä.} and Dr. Liam Gaffney\footnote{Dr. Liam Gaffney is a research fellow at ISOLDE, affiliated with Miniball.}. 
+The codes have been further developed and heavily re-written in the current work. 
+Presently the code has only a minor resemblance to the original code. 
+The remaining Python and bash scripts are written and developed by the author.
+All of the scripts written in C/C++ are dependent on the ROOT framework, a C/C++ data analysis framework developed and maintained at CERN.
+
+
 \section{Data handling}
-The raw data from Miniball experiments essentially\footnote{The format is not entirely correct, since it has identification of where the particle and \ga\ hit. A more detailed format is: identification, time, particle energy (front strip, back strip), \ga\ energy (cluster, crystal, segment), etc.} comes in list mode (identification, energy, time), where every line is an event. It is stored in \textit{.med}-files (MBS Event Data, or also known as Miniball Event Data) with the naming convention \textit{140Sm\_208Pb\_pos6\_0xy.med} for this experiment, where \textit{x} and \textit{y} are numbers between 0 and 9. The goal of the data analysis is to obtain Doppler-corrected \ga-spectra with various conditions on particles and angles, in order to analyze the Coulomb excitation of \Sm. 
+The raw data from Miniball experiments essentially\footnote{The format is not entirely correct, since it has identification of where the particle and \ga\ hit. 
+A more detailed format is: identification, time, particle energy (front strip, back strip), \ga\ energy (cluster, crystal, segment), etc.} comes in list mode (identification, energy, time), where every line is an event. 
+It is stored in \textit{.med}-files, MBS Event Data or also known as Miniball Event Data, with the naming convention \textit{140Sm\_208Pb\_pos6\_0xy.med} for this experiment, where \textit{x} and \textit{y} are numbers between 0 and 9. 
+The goal of the data analysis is to obtain Doppler-corrected \ga-spectra with various conditions on particles and angles, in order to analyze the Coulomb excitation of \Sm. 
 
 %\begin{lstlisting}[language=]
 %$ cd ~/GitHub/MasterThesis/Raw_data/Sm
@@ -649,8 +671,12 @@ The raw data from Miniball experiments essentially\footnote{The format is not en
 % dgfData.fUserValues[6] = 26112 , 60811 , 32766 , 0 , 38240 , 60811
 %\end{lstlisting}
 
-A sorting and analysis code named \textsl{MiniballCoulexSort} \cite{MBCS} written in C/C++ is the preferred code to use for Miniball experiment data. 
-It is under constant development at CERN-ISOLDE under the management of Dr. Liam Gaffney\footnote{Dr. Liam Gaffney is a research fellow at ISOLDE, affiliated with Miniball.}. The main steps of how to download, install\footnote{If the \textbf{make} step fails, try doing a \textbf{make clean} and then \textbf{make}. The program might think that it is already built.} and use it is outlined in the \texttt{README.md} file in the GitHub repository of Miniball, linked in the reference. Unfortunately the code isn't very well documented, so it takes some time to learn what it does and how to use it. To get from the raw data to the Doppler-corrected \ga-spectra, the code is divided into a three step procedure:
+For Miniball experiment data, the preferred sorting and analysis code is \textsl{MiniballCoulexSort} \cite{MBCS}. 
+The main steps of how to download, install\footnote{If the \textbf{make} step fails, try doing a \textbf{make clean} and then \textbf{make}. The program might think that it is already built.} and use it is outlined in the \textit{README.md} file in the GitHub repository of Miniball, linked in the reference. 
+The program is written in C/C++ and depends on the ROOT framework. 
+It is under constant development at CERN-ISOLDE under the management of Dr. Liam Gaffney. 
+Unfortunately the code isn't very well documented, so it takes some time to learn what it does and how to use it. 
+To get from the raw data to the Doppler-corrected \ga-spectra, the code is divided into a three step procedure:
 
 \begin{enumerate}
 	\item \texttt{MedToRoot}
@@ -686,8 +712,7 @@ These pixels are used for calibration and are made by gating on the annular (fro
 
 
 \subsection{Counting and naming convention}
-In the following sections there will be an introduction of different programs and scripts used in the data calibration and analysis. 
-One thing to note here, is that the numbering of the CD rings and strips are different in these programs and scripts. 
+The numbering of the CD rings and strips are different in different programs and scripts. 
 Histograms sorted by \texttt{TreeBuilder} starts counting from 0 (outermost ring) to 15 (innermost ring) as showed in \autoref{fig:CD-FB}. 
 \texttt{AQ4Sort} starts from 1 (outermost ring) to 16 (innermost ring), shifted compared to \texttt{TreeBuilder}.
 For calibrated spectra, \texttt{TreeBuilder} shows the energy in MeV, while \texttt{AQ4Sort} shows energy in keV.
@@ -716,7 +741,7 @@ Calibration coefficients given to the calibration file, which is introduced in l
 
 
 \section{Data conversion}
-In order to analyze the data in the ROOT\footnote{ROOT is a data analysis framework written in C/C++ made at CERN.} framework, the first part of the code is just to convert the \textit{.med}-files produced by \MBOU\ into \textit{.root}-files with the program \texttt{MedToRoot}. 
+In order to analyze the data in the ROOT framework, the first part of the code is just to convert the \textit{.med}-files produced by \MBOU\ into \textit{.root}-files with the program \texttt{MedToRoot}. 
 To avoid copy and paste the commands used with \texttt{MedToRoot} in the terminal for every data file, a bash script called \texttt{M2R.sh} was made to do this. 
 It uses \texttt{MedToRoot} to take in as many files as you want, and convert it in one go. 
 It takes one command line argument because it was initially developed to convert files from different elements, so it is fairly simple to expand. 
@@ -818,32 +843,15 @@ On the front side of the CD we only have two measuring points per angle interval
 By doing a function fit (Gaussian or other), we can get the centroids (channels of the maximum or center of the peaks) for both Sm and Pb. 
 For more than two centroids per strip, as the back side of the CD have, linear regression is used to find the best fit of the calibration coefficients.
 
+An assumption when calibrating is that the energy on the front side and the back side of the detector is the same. 
+This is not entirely correct, since there will be a small energy loss when the particle goes through the front side, but in most cases this is negligible.
 Calibrating the back strips of the CD is the same as the front, however because they cover a large range of angles in the $\theta$ direction (according to \autoref{fig:LAB}), a gate on one of the front strips is needed to define an angle and thereby an energy. 
 For this purpose, the program \texttt{AQ4Sort} is used. 
 It operates the same files as \texttt{TreeBuilder} does, but with the purpose of making every combination of gates on front and back strips so that the front and back centroids for every "pixel" of the detector is available.
 
 
 \subsection{Simulation}
-To calibrate the data, we need to know the expected energy of the centroids of the peaks. 
-This was done by simulating the experiment in a program called \texttt{kinsim3} \cite{kinsim}. 
-The program is written in C++ by Dr. Liam Gaffney and the purpose of the program is to simulate the kinematics of an experiment. 
-The simulations are theoretical predictions of the energy distribution of the peaks for each ring in the CD (it gives a simulated spectra for the CD and for every strip).
-These we fit, collect the centroid of and use in the calibration.
-The program uses SRIM-2013 \cite{SRIM} (the Stopping and Range of Ions in Matter) generated files relevant to the \textcolor{red}{scattering/reaction?} and it takes into account the energy loss in the dead layer of the detector, which is energy and angle dependent. 
-The SRIM-files used in this simulation can be found in \textit{MasterThesis/SRIM}.
-For the Si dead layer, the SRIM-files must have units of MeV/mm. 
-(If you are using MeV/cm$^2$, you must change the distance on line 359 to be in the correct units. 
-The correction factor is at the bottom of the SRIM file.)
-Line 358 and 359 reads:
 
-\begin{lstlisting}[language=c++]
-// Correct for dead layer loss
-dist = TMath::Abs( 0.0007 / TMath::Cos( TTh ) );
-\end{lstlisting}
-
-\texttt{kinsim3} generates pdf-files of the stopping powers automatically. 
-The rest of the plots are available inside the generated \textit{.root}-file. 
-To get the energy simulation for each ring, the function \textbf{simulation\_plots()} from the script \texttt{ParticlePlot.cpp} was used. 
 
 \textcolor{Magenta}{Tilbakemelding: \newline 
 what are the ingredients for this simulation? \newline
@@ -854,9 +862,28 @@ Slowing of the particles in the target and in the dead layer of Si
 
 \bigskip
 
+To calibrate the data, we need to know the expected energy of the centroids of the peaks. 
+This was done by simulating the experiment using the program \texttt{kinsim3} \cite{kinsim} written by Dr. Liam Gaffney. 
+The purpose of the program is to simulate the kinematics of a Coulomb excitation experiment done with the CD. 
+The simulations are theoretical predictions of the energy distribution of the peaks for each ring in the CD. 
+\texttt{kinsim3} gives simulated spectra for the LAB and CM frame, in addition to every (annular) strip of the CD.
+These strips are fitted, their energy centroids are collected and used in the calibration as shown in \autoref{ch:cd_sim}.
+For stopping powers, the program uses SRIM-2013 \cite{SRIM} generated files relevant to the \textcolor{red}{scattering/reaction?} with some random spread (SRIM is an acronym for the Stopping and Range of Ions in Matter).
+It also takes into account the energy loss in the dead layer of the detector, which is energy and angle dependent. 
+The simulation considers cross sections in the way that the COULEX probability increases with the CM angle ($0^\circ \implies P_{CE} = 0, 180^\circ \implies P_{CE} = 0.1539$), but the angular distribution is flat (\textcolor{red}{uniform?}). 
 
+The main function of \texttt{kinsim3} looks like this
+\begin{lstlisting}[language=c++]
+void kinsim3( int Zb, int Zt, double Ab, double At, 
+	double thick /* mg/cm^2 */, double Eb /* MeV/u */, 
+	double dEb = 0.1 /* MeV/u */, double Ex = 1.0 /* MeV */, 
+	double res = 0.6 /* % */, double cd_dist = 28.0 /* mm */, 
+	bool flat = false /* angular distribution? */, 
+	long Nevts = 1E6, string srim_dir = "../srim" )
+\end{lstlisting}
+where $Zb$ and $Zt$ is the proton number of the beam and target respectively, $Ab$ and $At$ is the mass number of the beam and target respectively, $thick$ is the target thickness in mg/cm$^2$, $Eb$ is the beam energy in MeV/u, $dEb$ is the \textcolor{red}{distribution?} of the beam energy in MeV/u, $Ex$ is the excitation energy, $res$ is the detector resolution in percent, $cd\_dist$ is the distance form the target to the CD in mm, $flat$ is the choice of a uniform or angular distribution, $Nevts$ is the number of events and $srim\_dir$ is the relative path of the SRIM directory.
 
-Terminal: Simulation: \Sm\ on \Pb:
+\texttt{kinsim3} was run with the following commands in the terminal to do the simulation
 \begin{lstlisting}[language=sh]
 $ cd ~/GitHub/Miniball/kinsim
 $ root
@@ -866,31 +893,11 @@ root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 26.98, false, 1e6,
 root [2] .q
 $ mv 140Sm_208Pb_1.4mg_4.65MeVu_d0.02MeVu_res0.6.root ../../MasterThesis/Sorted_data/sim_140Sm_208Pb.root
 \end{lstlisting}
-
-After the simulation program was run, the file was moved and renamed with the \textbf{mv} command.
-
-
-
-
-
-\texttt{kinsim3} function:
-\begin{lstlisting}[language=c++]
-void kinsim3( int Zb, int Zt, double Ab, double At, 
-	double thick /* mg/cm^2 */, double Eb /* MeV/u */, 
-	double dEb = 0.1 /* MeV/u */, double Ex = 1.0 /* MeV */, 
-	double res = 0.6 /* % */, double cd_dist = 28.0 /* mm */, 
-	bool flat = false /* angular distribution? */, 
-	long Nevts = 1E6, string srim_dir = "../srim" )
-\end{lstlisting}
-
-
-\bigskip
-
-\textcolor{red}{sjekk opp om energi fra online kalibrering passer med simuleringen.}
-
-
-
-
+To load \texttt{kinsim3} into ROOT, the \textbf{.L $<$filename$>$} command was used. Adding the '$+$' at the end, makes ROOT compile the code. 
+After the simulation program was run, the file was moved and renamed with the \textbf{mv} command. 
+\texttt{kinsim3} generates pdf-files of the stopping powers automatically. 
+The rest of the plots are available inside the generated \textit{.root}-file. 
+To get the energy simulation for each ring, the function \textbf{simulation\_plots()} from the script \texttt{ParticlePlot.cpp} was used. 
 \begin{lstlisting}[language=sh]
 $ cd ~/GitHub/MasterThesis/Scripts/plotting
 $ root
@@ -899,38 +906,31 @@ root [1] simulation_plot("setup_Sm.txt", 1)
 ... <showing output from script>
 \end{lstlisting}
 
-
-\begin{figure}[ht]
-	\centering
-    \includegraphics[width=\linewidth]{../Plots/simulation/kin_140Sm_208Pb.png}
-	\caption{Simulation of the kinematics in the LAB frame for \Sm\ on \Pb\ at 4.65 MeV/u.}
-	\label{fig:kinsim}
-\end{figure}
-
-\textcolor{Magenta}{Tilbakemelding: \newline 
-explain figure: Sm/Pb inner ring, Sm/Pb outer ring \newline
-simulation does not consider cross sections: in simulation all angles are equally probable. The corresponding figure from your data looks therefore quite different.
-}
-
-
 \autoref{ch:cd_sim} shows the simulated energy for each ring of the CD, in addition to the fitted peaks of each ring.
+In the fitting of the simulated data, a Gaussian function with linear background was applied
+\begin{equation}
+	g(x) = c + sx + A e^{-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2}
+\end{equation}
+where $c$ is the background constant, $s$ is the background slope, $A$ is the amplitude (Gauss constant), $\mu$ is the mean (expected value) and $\sigma$ is the standard deviation (Gauss width).
 
-
-\autoref{tab:CD_angles} shows the mid strip CD angles in the laboratory frame for the front of the CD. 
+\autoref{tab:CD_angles} shows the mid ring CD angles in the LAB frame for the front of the CD. 
 
 \begin{table}[ht] 
     \centering 
-    \caption{Mid ring CD angles in laboratory frame with distance from target to CD of 26.98 mm. Ring 1 is the innermost ring and ring 16 is the outermost ring. The centroid energy is from simulation with \texttt{kinsim3}. $E_t$ is the energy of the target particle and $E_b$ is the energy of the beam particle.}
+    \caption{The mid ring CD angles in the LAB frame, with a distance from the target to the CD of 26.98 mm. Ring 1 is the innermost ring and ring 16 is the outermost ring. The centroid energies comes from simulation with \texttt{kinsim3}. $E_t$ is the energy of the target particle (Pb) and $E_b$ is the energy of the beam particle (Sm).}
 	\input{Table-data/CD.tex}
 	\label{tab:CD_angles}
 \end{table}
 
 
-Fitting of the simulated data is done by a Gaussian distribution with linear background
-\begin{equation}
-	g(x) = c + sx + A e^{-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2}
-\end{equation}
-where $c$ is the background constant, $s$ is the background slope, $A$ is the amplitude (Gauss constant), $\mu$ is the mean (expected value) and $\sigma$ is the standard deviation (Gauss width).
+A general kinematics simulation in the LAB frame is shown in \autoref{fig:kinsim}. 
+
+\begin{figure}[ht]
+	\centering
+    \includegraphics[width=\linewidth]{../Plots/simulation/kin_140Sm_208Pb.png}
+	\caption{Simulation of the kinematics in the LAB frame for \Sm\ on \Pb\ at 4.65 MeV/u. The upper curve is the Sm and the lower curve is the Pb. Smaller angles corresponds to the inner rings and larger angles to the outer rings.}
+	\label{fig:kinsim}
+\end{figure}
 
 
 
@@ -1209,6 +1209,9 @@ The user calibration of the CD shown in \autoref{fig:cal_user} is basically the 
 It was anyways decided to stick with the online calibration for this thesis since there is no time to do a new calibration of the detectors. 
 A lot of time have been used on scripts, and then the auto-fitting was a much harder problem than first expected (because of the shape of the peaks). 
 
+\bigskip
+
+\textcolor{red}{Skal jeg forklare mer om "the fitting procedure" i denne seksjonen?}
 
 
 \subsection{Threshold}
@@ -1670,6 +1673,7 @@ $\bullet$ discussion: if you get \ga-spectrum for \Sm\ $\rightarrow$ to explain 
 Future work: Better calibration of particle detectors and \ga-detectors (online not perfect). Take into account the shape of the peaks $\implies$ calibrate the particle detectors manually.. Takes a lot of time! But maybe less than trying to fit all in a script? If someone only knew and told this story...
 
 Use a second opinion on the simulation, maybe try LISE++ or some other simulation program to get the centroids?
+Maybe \texttt{kinsim3} uses too much energy loss in CD? 
 If you are using only the Pb and Sm for calibration, and then applying that calibration back to the data, then it should matter if the absolute energies are correct. 
 This is an internal calibration, so that would simply mean that the peaks would have the wrong energy, but they should still be aligned on the front and back.
 
@@ -2027,25 +2031,25 @@ The \textsl{MiniballCoulexSort} code does not require any a lot of computing pow
 \subsubsection*{\textcolor{red}{Nevn den relative mappestrukturen, slik at terminal-commandoer gir mening. Både for Miniball kode og ROOT framework.}}
 
 \begin{lstlisting}[language=sh]
-/Users/trondwj/GitHub/Miniball/MiniballCoulexSort
+~/GitHub/Miniball/MiniballCoulexSort
 \end{lstlisting}
 
 \begin{lstlisting}[language=sh]
-/Users/trondwj/GitHub/Miniball/kinsim
+~/GitHub/Miniball/kinsim
 \end{lstlisting}
 
 \begin{lstlisting}[language=sh]
-/Users/trondwj/GitHub/ROOT-framework/build
+~/GitHub/ROOT-framework/build
 \end{lstlisting}
 
 
 \subsection{Relative path of programs and scripts}
 
-\autoref{tab:paths} shows the relative path of programs and scripts used in this thesis.
+\autoref{tab:paths} shows the relative path of programs, scripts and files used in this thesis.
 
 \begin{table}[ht] 
     \centering 
-    \caption{Relative path of programs and scripts.}
+    \caption{Relative path of programs, scripts and files.}
 	\input{Table-data/Paths.tex}
 	\label{tab:paths}
 \end{table}
@@ -2144,6 +2148,16 @@ root [0] .L ParticleFit.cpp++
 root [1] simulation_fit("setup_Sm.txt")
 ... <showing output from script>
 \end{lstlisting}
+
+For the Si dead layer in \texttt{kinsim3}, the SRIM files must have units of MeV/mm. 
+If units of MeV/cm$^2$ are used, the distance on line 359 in \texttt{kinsim3} needs to be changed to the correct units. 
+The correction factor is at the bottom of the SRIM file.
+Line 358 and 359 in \texttt{kinsim3} reads
+\begin{lstlisting}[language=c++]
+// Correct for dead layer loss
+dist = TMath::Abs( 0.0007 / TMath::Cos( TTh ) );
+\end{lstlisting}
+where the factor needs to be changed.
 
 
 \includepdf[pages={-}, angle=270]{../Plots/simulation/cd_sim_all.pdf}
