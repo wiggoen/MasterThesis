@@ -933,9 +933,7 @@ A general kinematics simulation in the LAB frame is shown in \autoref{fig:kinsim
 
 
 \subsection{Online calibration of the particle detector}
-Every year there is a campaign at ISOLDE, where the staff configures a settingsfile if there are any changes in the setup system. In addition they run a coctail beam composed of different isotopes on a specific target to make a calibration file containing the calibration coefficients for both the CD and \ga-detectors. This calibration file is adjusted for each experiment following the campaign period. In this way it is easy to sort and analyze during the experiment if it is going well and to make preliminary Doppler-corrected \ga-spectra. 
-
-The settingsfile, \textit{MBSettings2017\_CLX\_IS558.dat}, and calibration files, \textit{IS558-online.cal} and \textit{IS558-user.cal}, used in this experiment can be found in \newline \textit{$\sim$/GitHub/MasterThesis/Miniball-config}, but when used with \textsl{MiniballCoulexSort} the default path is \textit{$\sim$/GitHub/Miniball/MiniballCoulexSort/config}.
+Every year there is a campaign at ISOLDE, where the staff configures a settingsfile\footnote{For IS558, the settingsfile \textit{MBSettings2017\_CLX\_IS558.dat} was used.} if there are any changes in the setup system. In addition they run a coctail beam composed of different isotopes on a specific target to make a calibration file containing the calibration coefficients for the CD. For the \ga-detectors they put \ga\ sources in the target position and from the data they get the calibration coefficients which is put in the calibration file. This calibration file is adjusted for each experiment following the campaign period. In this way it is easy to sort and analyze during the experiment, check if it is going well and to make preliminary Doppler-corrected \ga-spectra. 
 
 
 \bigskip
@@ -2029,31 +2027,29 @@ The \textsl{MiniballCoulexSort} code does not require any a lot of computing pow
 \section{The environment}
 \subsubsection*{\textcolor{red}{Nevn den relative mappestrukturen, slik at terminal-commandoer gir mening. Både for Miniball kode og ROOT framework.}}
 
+The relative path of \textsl{MiniballCoulexSort} is
 \begin{lstlisting}[language=sh]
 ~/GitHub/Miniball/MiniballCoulexSort
 \end{lstlisting}
-
+The relative path of \texttt{kinsim3} is
 \begin{lstlisting}[language=sh]
 ~/GitHub/Miniball/kinsim
 \end{lstlisting}
-
+The relative path of the ROOT framework is
 \begin{lstlisting}[language=sh]
 ~/GitHub/ROOT-framework/build
 \end{lstlisting}
 
 
 \subsection{Relative path of programs and scripts}
+\autoref{tab:paths} shows the relative path of programs, scripts and files used in this thesis. The settingsfile \textit{MBSettings2017\_CLX\_IS558.dat}, and calibration files \textit{IS558-online.cal} and \textit{IS558-user.cal}, used in this experiment can be found in the directory specified in the table, but when used directly with \textsl{MiniballCoulexSort} the default path is \textit{$\sim$/GitHub/Miniball/MiniballCoulexSort/config}.
 
-\autoref{tab:paths} shows the relative path of programs, scripts and files used in this thesis.
-
-\begin{table}[ht] 
-    \centering 
+\begin{table}[ht]
+    \centering
     \caption{Relative path of programs, scripts and files.}
 	\input{Table-data/Paths.tex}
 	\label{tab:paths}
 \end{table}
-
-
 
 
 \section{Run time}
