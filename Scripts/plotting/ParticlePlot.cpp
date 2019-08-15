@@ -654,8 +654,8 @@ void plot_front_back_energy(std::string setup_file, std::string name_addition = 
   std::string histogram_name;
 
   std::string title[4] = {"Q1", "Q2", "Q3", "Q4"};
-  float label_size = 0.06;
-  float margin_size = 0.13;
+  float label_size = 0.07;
+  float margin_size = 0.14;
 
   if (!name_addition.empty()) {
     name_addition = "-" + name_addition;
@@ -963,8 +963,8 @@ void check_ADC_time_offsets(std::string setup_file, std::string name_addition = 
   canvas->Divide(2, 2);
   TH1F *histogram = nullptr;
   std::string histogram_name;
-  float label_size = 0.06;
-  float margin_size = 0.13;
+  float label_size = 0.07;
+  float margin_size = 0.14;
 
   if (!name_addition.empty()) {
     name_addition = "-" + name_addition;
@@ -1069,7 +1069,7 @@ void energy_vs_ring(std::string setup_file) {
   histogram->Draw("colz");
   histogram->SetAxisRange(-0.5, 15, "X");
   histogram->SetStats(0);                      // Remove stats
-  histogram->SetLabelSize(label_size, "xy");   // Label size for x- and y-axis
+  histogram->SetLabelSize(label_size, "xyz");  // Label size for x-, y- and z-axis
   histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
   histogram->GetXaxis()->SetTitle("Ring number");             // Change x-axis title
   histogram->GetYaxis()->SetTitle("Energy particle [MeV]");  // Change y-axis title
@@ -1077,6 +1077,7 @@ void energy_vs_ring(std::string setup_file) {
   histogram->SetTitle(Form(""));               // Remove title of histogram
   gStyle->SetTitleSize(label_size, "t");       // Title size
   gPad->SetLeftMargin(margin_size);
+  gPad->SetRightMargin(margin_size);
   gPad->SetBottomMargin(margin_size);
   gPad->SetLogz();                             // Log-scale on z-axis
 
@@ -1122,8 +1123,8 @@ void CD_energy(std::string setup_file, std::string detector_side) {
   std::string histogram_name;
   std::string detector_side_name;
   std::string title[4] = {"Q1", "Q2", "Q3", "Q4"};
-  float label_size = 0.06;
-  float margin_size = 0.13;
+  float label_size = 0.07;
+  float margin_size = 0.14;
   int x_max = 0;
 
   if (detector_side == "f") {
@@ -1144,12 +1145,13 @@ void CD_energy(std::string setup_file, std::string detector_side) {
     histogram->Draw("colz");
     histogram->SetAxisRange(-0.5, x_max, "X");
     histogram->SetStats(0);                        // Remove stats
-    histogram->SetLabelSize(label_size, "xy");     // Label size for x- and y-axis
+    histogram->SetLabelSize(label_size, "xyz");    // Label size for x-, y- and z-axis
     histogram->SetTitleSize(label_size, "xy");     // Text  size for x- and y-axis
     histogram->GetYaxis()->SetTitleOffset(1.0);    // Move y-axis text a little closer
     histogram->SetTitle(title[quadrant].c_str());  // Changing titles
     gStyle->SetTitleSize(label_size, "t");         // Title size
     gPad->SetLeftMargin(margin_size);
+    gPad->SetRightMargin(margin_size);
     gPad->SetBottomMargin(margin_size);
 
     if (detector_side == "f") {

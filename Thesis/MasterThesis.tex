@@ -815,6 +815,7 @@ if you try to write this step-by-step cook book, you could introduce your script
 The general idea of the calibration is to make sure that the energy spectra from the detectors have the same physical features, that the detectors show the same energy distribution at the same position for the same kind of particles or \ga-rays hitting the same or the angular similarly place in the detectors.
 Calibration of the detectors minimize the measurement uncertainty by making the detectors more accurate and consistent.
 We want to determine centroids of peaks in the spectra, compare these with simulations using kinematics of the reaction and energy loss, to get linear coefficients of the detectors. 
+In this context, the centroids refer to the channels of the maximum height of the peaks or the center of the peaks. 
 
 Both detector types in this experiment are semiconductor detectors. 
 Except for silicon (as the CD), semiconductors generally require cooling to low temperatures before they can be operated. 
@@ -988,11 +989,13 @@ Because of the complex peak shapes, it is very hard to do an automatic fitting i
 The peaks demands very much individual care, which is very difficult to do with a automatic program. 
 In logarithmic (log) scale the data looked more Gaussian distributed, but it is not the case in linear scale. 
 For the centroids, it was very hard to tell in log scale how precise the automatic fitting was. 
+It turned out that it was not very precise, so a lot of time was wasted looking at the data in log scale. 
 
 \begin{figure}[ht]
 	\centering
 	\begin{subfigure}{\textwidth}
 		\centering
+		% ParticlePlot.cpp
 		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 4, 9, 1, 300, 2400, 1080)
 		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F9.png}
 		\caption{Front strip 9 in quadrant 4.}
@@ -1000,6 +1003,7 @@ For the centroids, it was very hard to tell in log scale how precise the automat
 	\end{subfigure}
 	\begin{subfigure}{\textwidth}
 		\centering
+		% ParticlePlot.cpp
 		% get_single_plot("setup_Sm.txt", "q4", "b", 0, 1, 16, 12, 200, 1400, 330)
 		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q1_f16_b12.png}
 		\caption{Back strip 12, gated on ring 16 (outermost ring) in quadrant 1.}
@@ -1009,113 +1013,149 @@ For the centroids, it was very hard to tell in log scale how precise the automat
 	\label{fig:cal_ED}
 \end{figure}
 
-The total amount of annular strips to calibrate on the front side of the CD is 64 (4 quadrants $\cdot$ 16 rings). 
-On the back side we have 48 secular strips (4 quadrants $\cdot$ 12 strips). 
-To fully calibrate the CD, we need all the centroids of the peaks from both sides, 128 centroids (64 annular strips $\cdot$ 2 peaks/ring) on the front side and 1536 centroids (48 secular strips $\cdot$ 2 peaks/ring $\cdot$ 16 rings) on the back side. 
-The total centroids to collect are 1664 centroids, and this is not a task one would want to do manually.
-For a quick calibration, or a bare minimum calibration, one needs two peaks in each annular strip and two peaks in each secular strip, making it 224 centroids.
-Taking more centroids than this makes it more precise. 
-By taking more centroids, which is generally a good idea, it is possible to check for non-linearities or instabilities in time.
-
-
-\autoref{fig:cal_FC} shows a flowchart of the programs, scripts and files used in the user calibration. 
-The idea was to use the \textbf{kinsim3()} function from \texttt{kinsim3.cc} to simulate the data and the \texttt{Q4S.sh} script to sort the experimental data with \texttt{AQ4Sort} to get each pixel of the CD. 
-This data could either be analyzed in ROOT with the \textbf{TBrowser()} or through different functions in \texttt{ParticlePlot.cpp}. 
-From either ROOT or \texttt{ParticlePlot.cpp}, information about the range of the peaks and guesses of the centroids of Pb and Sm would be written down in input files used in \texttt{ParticleFit.cpp}. 
-Here the automatic fitting would have used the input files to fit the peaks, collect the centroids and written them to output files which would have been used as input files in \texttt{particle-calibration.py}. 
-In this Python script, the centroids would have been plotted and a linear regression method using least squares of a first degree polynomial fit\footnote{Polynomial fit: \url{https://docs.scipy.org/doc/numpy/reference/generated/numpy.polyfit.html}} would have fitted a line to re-produce the points. 
-It would also write the gains and offsets to separate output files, which would be used as input in \texttt{ADC\_generator.py}. 
-This Python script will write the calibration coefficients to the terminal, and from there it is possible to copy and paste it into the calibration file \textit{IS5558-user.cal}. 
-This calibration file is then used to sort the data once more with \texttt{Q4S.sh} using \texttt{TreeBuilder} and the new calibration coefficients.
-To visualize plots after a new calibration, either ROOT or \texttt{ParticlePlot.cpp} can be used. 
-The gray boxes related to the \ga-calibration will be discussed in \autoref{ssec:gamma}.
-
-The downfall of the automatic "centroid collector" came when trying it on the secular strips of the CD. 
-There is just too much individual differences to calibrate the secular strips with a simple script given a channel range for all 12 back strips. 
-This was discovered way too late. 
-There isn't any range to "rule them all", at least since the fitting function can behave very strange given a too small or too big range.
-To implement a proper automatic fitting program, one would have to find a function with a negatively (left) skewed distribution or negative skewness (right modal), where most of the data is more than the mean. 
-Sadly this was discovered too late to implement it. 
-
-In some spectra it was very hard to determine the centroid of the Pb peaks. 
-We tried to use additional data from experiment IS553 ($^{144}$Ba on $^{58}$Ni), which was right before our experiment. 
-The reason for this was to try to get calibration for the lower energy spectra. 
-But unfortunately the data from the IS553 experiment was a bad fit with our experiment. 
-The fitting just didn't seem reliable.
-It gave a steeper slope than the online calibration, which was very good to begin with. 
-Looking at the front vs. back energy plots, the diagonal lines were almost disappearing in the middle, and they were a lot broader than the online calibration. 
-One big problem of not using the Ni-data, was that we could not get any calibration coefficients for front ring 16 and maybe also 15 for Pb since the back strips had very few counts, even with a lot of data put into one \textit{.root}-file. 
-But this problem we also found in the Ni-data.
-It would have been nice with some low-energy points to calibrate as well as high-energy points. 
-The calibration did appear to get worse in a few aspects. 
-Firstly, the diagonal line in the front vs. back energy spectra was not as defined as the online calibration, but also the off-diagonal events seemed to increase, implying that there was an increase in the mismatch of front and back events. 
-The latter could be due to the visualization coming from the z-scale, since we have a different number of events. 
-
-Looking at the energy vs. channel plots, it was clear that something was not good.
-We could clearly see that a Gaussian fit didn't work. 
-Since the Gaussian distribution was a bad fit for the experimental data, a built in function in ROOT of a 4th degree polynomial was tried out to fit the complex peak shapes. The function sets the initial values of the parameters automatically for the predefined function.
-\begin{equation}
-	f(x) = p_0 + p_1 \cdot x + p_2 \cdot x^2 + p_3 \cdot x^3 + p_4 \cdot x^4
-\end{equation}
-It turned out that this didn't match the shapes either. 
-Unfortunately there is no way of knowing if a data set is useful or not until you try it. 
-It may be that the energy loss or target thickness was wrong, or that the beam energy was different, or that the simulation didn't account for all the details of the stopping. 
-The only way to get a good calibration is to have as much data as possible and then kick out the bad data until there is a good fit. 
-What was clear at the moment was that the scatter between the data points from different the reactions was too large to simply average out with a straight line fit. 
-We have to select data that agree.
-
-In the Sm data, the issue came in determining the peak centroid or maximum for the experimental data. 
-The peak shape is a convolution of many effects; intrinsic resolution of the detector, the beam energy width, straggling in the target, interaction points in the target, angular width of the detector strip, etc. 
-While the simulation tries to include all these things, we found that the peak shapes were not exactly the same. 
-It might be worthwhile spending a bit of time to play with the parameters and try to get the peak shape as similar as possible. 
-At that point, maybe use a certain feature of the peak, such as the maximum, or the highest energy edge. 
-Or, honestly, it might be better to simply hover the mouse over the correct "feature" of the peak and position it by eye, be it the centroid or the maximum.
-Then we can analyze the same feature in the corresponding simulated spectrum.
-The maximum of the peak on the high energy side is not the center of the peak, but roughly equivalent to the maximum. 
-You can imagine that fitting a Gaussian to the right-hand side (high-energy side) only, this would be roughly where the centroid is. 
-
-The innermost ring of the CD was very damaged by the bombardment of particles hitting it, so we had to remove the innermost ring from the data set (making the total centroids to collect to be 1500). 
-In the innermost ring, it was impossible to separate the beam and target peaks.
-This is unfortunate since the innermost ring has the most statistics, but Si detectors don't last forever. 
-It was old and supposed to be changed after our experiment. 
-We also found something weird with quadrant 4 secular strip 1 (Q4\_b1), it shows a lot more counts than all the other back strips. 
-Excluding detector strips is easy, the only thing to do is to set gain and offset to -1 (or gain to 0 and offset to -1). 
-That will make the energy calibration negative, and fall out of the scope. 
-It is the way it is usually done for dead CD strips or dead \ga-detectors. 
-
-\bigskip
-
-\textcolor{red}{Hvor er det plass til dette?}
-
-On the front side of the CD we only have two measuring points per angle interval\footnote{Not entirely true, since we have three peaks in the spectra. 
-But since we don't know what the contaminant is, we effectively only have two known measuring points.}, while on the back side of the CD we have we have two peaks per gated annular strip that we can fit. 
-By doing a function fit (Gaussian or other), we can get the centroids (channels of the maximum or center of the peaks) for both Sm and Pb. 
+On the front side of the CD, there is effectively only two measuring points per angle interval. 
+If the contaminant in the spectra was known and if it only consists of one element, it could have been a third measuring point.  
+On the back side of the CD there are two peaks per gated annular strip that can be fitted, so per back strip a maximum of 32 measuring points. 
+By doing a function fit, Gaussian or other, the centroids of the peaks for both Sm and Pb can be extracted. 
+On the front side of the CD, \autoref{eq:offset} and \autoref{eq:gain} can be used to calculate the calibration coefficients.
 For more than two centroids per strip, as the back side of the CD have, linear regression is used to find the best fit of the calibration coefficients.
 
 Calibrating the back strips of the CD is the same as the front, however because they cover a large range of angles in the $\theta$ direction (according to \autoref{fig:LAB}), a gate on one of the front strips is needed to define an angle and thereby an energy. 
 For this purpose, the program \texttt{AQ4Sort} is used. 
 It operates the same files as \texttt{TreeBuilder} does, but with the purpose of making every combination of gates on front and back strips so that the front and back centroids for every "pixel" of the detector is available.
 
-\bigskip
+The total amount of annular strips to calibrate on the front side of the CD is 64, since there is 4 quadrants with 16 rings. 
+On the back side, there is effectively 48 secular strips, 4 quadrants with 12 strips.
+To fully calibrate the CD, we need all the centroids of the peaks from both sides, 128 centroids (64 annular strips $\cdot$ 2 peaks/strip) on the front side and 1536 centroids (48 secular strips $\cdot$ 2 peaks/strip $\cdot$ 16 rings) on the back side. 
+This gives a total of 1664 centroids to extract, which is not a task one would like to do manually.
+For a quick calibration, or a bare minimum calibration, one needs two peaks in each annular strip and two peaks in each secular strip, making it 224 centroids.
+By taking more centroids, which is generally a good idea, it is possible to check for non-linearities or instabilities in time.
+It makes the calibration more precise.
 
-\textcolor{red}{\textbf{Trenger en overgang her..}}
+\autoref{fig:cal_FC} shows a flowchart of the programs, scripts and files used in the user calibration. 
+The idea was to use the \textbf{kinsim3()} function from \texttt{kinsim3.cc} to simulate the data and the \texttt{Q4S.sh} script to sort the experimental data with \texttt{AQ4Sort} to get each pixel of the CD. 
+This data could either be analyzed in ROOT with the \textbf{TBrowser()} or through different functions in \texttt{ParticlePlot.cpp}. 
+From either ROOT or \texttt{ParticlePlot.cpp}, information about the range of the peaks and guesses of the centroids of Pb and Sm would be written down in input files used in \texttt{ParticleFit.cpp}. 
+Here the automatic fitting would have used the input files to fit the peaks, collect the centroids and written them to output files which would have been used as input files in \texttt{particle-calibration.py}. 
+In this Python script, the centroids would have been plotted and a linear regression method using least squares of a first degree polynomial fit\footnote{Polynomial fit: \url{https://docs.scipy.org/doc/numpy/reference/generated/numpy.polyfit.html}} would have fitted a line to re-produce the points as best as possible. 
+It would also write the gains and offsets to separate output files, which would be used as input in \texttt{ADC\_generator.py}. 
+This Python script will write the calibration coefficients to the terminal, and from there it is possible to copy and paste it into the calibration file \textit{IS5558-user.cal}. 
+This calibration file is then used to sort the data once more with \texttt{Q4S.sh} using \texttt{TreeBuilder} and the new calibration coefficients.
+To visualize plots after a new calibration, either ROOT or \texttt{ParticlePlot.cpp} can be used. 
+The gray boxes related to the \ga-calibration will be discussed in \autoref{ssec:gamma}.
 
-\bigskip
+\begin{figure}[ht]
+	\centering
+	\input{Images/Calibration-flow-chart.tikz}
+	\caption{Flowchart of the programs, scripts and files used in the user calibration. The relative paths of these programs and scripts is shown in \autoref{tab:paths}.}
+	\label{fig:cal_FC}
+\end{figure}
 
-Changing the relative path in the \textit{setup\_Sm.txt} file used as input in the \texttt{ParticlePlot.cpp} script, we now have
+The downfall of the automatic centroid collector came when trying it on the secular strips of the CD. 
+There is just too much individual differences to calibrate the secular strips with a simple script given a channel range for all 12 back strips. 
+This was discovered way too late. 
+There isn't any range to "rule them all", at least since the fitting function can behave very strange given a too small or too big range.
+Another problem is the complex shape of the peaks.
+To implement a proper automatic fitting program, one would have to find a function with a negatively-skewed distribution, where most of the data values are concentrated on the right side of the distribution graph. 
+Sadly this was discovered too late to implement it. 
+
+In some spectra it was very hard to determine the centroid of the Pb peaks, as shown in \autoref{fig:cal_difficult}. 
+To try to solve this problem, additional data from an experiment conducted right before this one was applied. 
+The experiment was IS553, $^{144}$Ba on $^{58}$Ni, and the reason for trying additional data was to try to get calibration for the lower energy spectra. 
+But sadly the data from the IS553 experiment was a bad fit with this experiment. 
+Unfortunately there is no way of knowing if a data set is useful or not until it is tested. 
+It may be that the energy loss or target thickness was wrong, or that the beam energy was different, or that the simulation didn't account for all the details of the stopping. 
+The only way to get a good calibration is to have as much data as possible and then kick out the bad data until there is a good fit. 
+What was clear at the moment was that the scatter between the data points from the different reactions was too large to simply average out with a straight line fit. 
+It is important to select data that agree.
+The fitting just didn't seem reliable.
+It gave a steeper slope than the online calibration.
+By looking at the front vs. back energy plots, the diagonal lines were almost disappearing in the middle, and they were a lot broader than the online calibration. 
+One big problem of not using the IS553 data, was that it was not possible to get any good calibration coefficients for front ring 16 and maybe also ring 15.
+But this problem was also found in the IS553 data.
+It would have been nice with some low-energy points as well as high-energy points in order to do the calibration. 
+The user calibration did appear to get worse in a few aspects. 
+Firstly, the diagonal line in the front vs. back energy spectra was not as defined as the online calibration.
+Secondly, the off-diagonal events seemed to increase, implying that there was an increase in the mismatch of front and back events. 
+The latter could be due to the visualization coming from the $z$-scale, since there are a different number of events in the quadrants. 
+
+Looking at the energy vs. channel plots, it was clear that something was not good.
+It was clear that a Gaussian fit did not work. 
+Since the Gaussian distribution was a bad fit for the experimental data, a built in function in ROOT of a 4th degree polynomial was tried out to fit the complex peak shapes. 
+The predefined ROOT function 
+\begin{equation}
+	f(x) = p_0 + p_1 \cdot x + p_2 \cdot x^2 + p_3 \cdot x^3 + p_4 \cdot x^4
+\end{equation}
+sets the initial values of the parameters automatically. 
+Only a initial guess of the parameters have to be given.
+It turned out that this did not match the peak shapes either. 
+
+It was anyways decided to stick with the online calibration for this thesis since there is no time to do a new calibration of the detectors. 
+A lot of time have been used on scripts, and then the auto-fitting was a much harder problem than first expected because of the shape of the peaks.
+The user calibration of the CD is basically the online calibration without the innermost ring. 
+An explanation of why the innermost ring was removed can be found in  \autoref{sec:BDS}. 
+As \autoref{fig:cal_user} shows, the calibration of the CD got better by removing the innermost ring. 
+The most visibly lines which did not fit $y = x$ vanished, implying that most of the problem was in fact the coefficients of ring 1. 
 
 
-\begin{lstlisting}[language=sh]
-$ cd ~/GitHub/MasterThesis/Scripts/sorting 
-$ ./Q4S.sh Sm user TB
-... <showing output from script>
-$ mv Sm_user-TreeBuilder-2019-06-20.root ../../Sorted_data/
-\end{lstlisting}
+There are still visible blobs parallel to the line, but these might come from pile-up in the detector. 
+
+In several spectra, there was a second peak on the right side of the Sm peak like the one in quadrant 4 of \autoref{fig:BDS_R1}.
+These arises from the charge sharing of neighboring segments. 
 
 
+In \autoref{fig:cal_CD} the energy of every strip is shown for each quadrant separately.
+ 
 
-\subsubsection*{TreeBuilder}
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% plot_front_back_energy("setup_Sm.txt", "online")
+		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-online.png}
+		\caption{Online calibration for the CD showing the four quadrants. It generally looks quite good, but there is a number of the secular strips (back side) that have the wrong gains.}
+		\label{fig:cal_online}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% plot_front_back_energy("setup_Sm.txt", "user")
+		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-user.png}
+		\caption{User calibration for the CD showing the four quadrants. This is actually the online calibration without the innermost ring, which was broken.}
+		\label{fig:cal_user}
+	\end{subfigure}
+	\caption{Back energy vs. front energy for each quadrant of the CD.}
+	\label{fig:cal_OU}
+\end{figure}
+
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{\textwidth}
+		\centering
+		% ParticlePlot.cpp		
+		% CD_energy("setup_Sm.txt", "f")
+		\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_f-strip_all_Q.png}
+		\caption{CD front. Ring number 16 is the outermost ring and ring number 1 is the innermost ring.}
+		\label{fig:cal_CD_front}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\centering
+		% ParticlePlot.cpp	
+		% CD_energy("setup_Sm.txt", "b")
+		\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_b-strip_all_Q.png}
+		\caption{CD back. A number of the secular strips have the wrong gains.}
+		\label{fig:cal_CD_back}
+	\end{subfigure}
+	\caption{Energy vs. strip number for each quadrant of the CD.}
+	\label{fig:cal_CD}
+\end{figure}
+
+
+An example of how to use \texttt{Q4S.sh} with \texttt{TreeBuilder} is shown below
 \begin{lstlisting}[language=]
+$ cd ~/GitHub/MasterThesis/Scripts/sorting 
 $ ./Q4S.sh Sm user TB
 --- TreeBuilder ---
 input file(s):
@@ -1129,10 +1169,11 @@ Particle distribution:
  Q2 fired: 11479362
  Q3 fired: 10936096
 Finished.
+$ mv Sm_user-TreeBuilder-2019-06-20.root ../../Sorted_data/
 \end{lstlisting}
-
-
-\subsubsection*{AQ4Sort}
+In the output, there is a line reading WeightPR: 0.75. 
+This parameter is needed when calibrating the \ga-detectors explained in \autoref{ssec:gamma}. 
+A similar example of how to use \texttt{Q4S.sh} with \texttt{AQ4Sort} is shown below
 \begin{lstlisting}[language=]
 $ ./Q4S.sh Sm user Q4
 Info: No flag option for 'AQ4Sort'. Ignoring optional flag.
@@ -1141,110 +1182,60 @@ calibration file: ../../Miniball-config/IS558-user.cal
 input file(s):
 ... <shows a list of all input files>
 output file: Sm_user-AQ4Sort-2019-06-24.root
+$ mv Sm_user-AQ4Sort-2019-06-24.root ../../Sorted_data/
 \end{lstlisting}
 
-
-
-
-
-The user calibration of the CD shown in \autoref{fig:cal_user} is basically the online calibration without the innermost ring. 
-
-
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-online.png}
-		\caption{Online calibration for the CD showing the four quadrants. It generally looks quite good, but there is a number of the secular strips (back side) that have the wrong gains.}
-		\label{fig:cal_online}
-	\end{subfigure}
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-user.png}
-		\caption{User calibration for the CD showing the four quadrants. This is actually the online calibration without the innermost ring which was broken.}
-		\label{fig:cal_user}
-	\end{subfigure}
-	\caption{Back energy vs. front energy for each quadrant of the CD.}
-	\label{fig:cal_OU}
-\end{figure}
-
-
-% CD energy vs. strip -->
-%
-%\begin{lstlisting}[language=sh]
-%$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting 
-%$ root
-%root [0] .L ParticlePlot.cpp++
-%root [1] CD_energy("setup_Sm.txt", "f")
-%\end{lstlisting}
-%
-%\begin{lstlisting}[language=sh]
-%$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting 
-%$ root
-%root [0] .L ParticlePlot.cpp++
-%root [1] CD_energy("setup_Sm.txt", "b")
-%\end{lstlisting}
-%
-% CD energy vs. strip --<
-
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_f-strip_all_Q.png}
-		\caption{CD front. Ring number 16 is the outermost ring and ring number 1 is the innermost ring.}
-		\label{fig:cal_CD_front}
-	\end{subfigure}
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_b-strip_all_Q.png}
-		\caption{CD back. A number of the secular strips have the wrong gains.}
-		\label{fig:cal_CD_back}
-	\end{subfigure}
-	\caption{Energy vs. strip number for each quadrant of the CD.}
-	\label{fig:cal_CD}
-\end{figure}
-
-
-
-\begin{figure}[ht]
-	\centering
-	\input{Images/Calibration-flow-chart.tikz}
-	\caption{Flowchart of the programs, scripts and files used in the user calibration. The relative paths of these programs and scripts is shown in \autoref{tab:paths}.}
-	\label{fig:cal_FC}
-\end{figure}
-
-
-
-It was anyways decided to stick with the online calibration for this thesis since there is no time to do a new calibration of the detectors. 
-A lot of time have been used on scripts, and then the auto-fitting was a much harder problem than first expected (because of the shape of the peaks). 
 
 \bigskip
 
 \textcolor{red}{Skal jeg forklare mer om "the fitting procedure" i denne seksjonen?}
 
 
+
 \subsection{Threshold}\label{ssec:threshold}
 The continuum of events at low energy comes from charge sharing between the strips.
- \autoref{fig:Pedestal} shows the big peak of the charge sharing on the front and back side. 
- This peak we call the "pedestal", because it is like a massive statue in front of the interesting data. 
- For the very heavy ions, the total amount of charge deposited gets split between neighboring strips of the CD. 
+\autoref{fig:Pedestal} shows the big peak of the charge sharing on the front and back side of the CD. 
+This peak is called the "pedestal", because it is like a massive statue in front of the interesting data. 
+For the very heavy ions, the total amount of charge deposited gets split between neighboring strips of the CD. 
 There is a single common gate for each ADC, containing channels from one CD quadrant. 
 Therefore, when there is an event in one strip of the CD all channels are readout, but the channels without a real event read a "zero" energy.
 These are the events in the pedestal.
+A software threshold is applied to cut away the pedestal. 
+For each ADC channel, the threshold can, and should be set. 
 One should define the threshold for each ADC channel to be above this peak.
 After a correct calibration is applied, this pedestal will be calibrated out of the physical energy range.
 
-\textsl{MiniballCoulexSort} does perform some tricks to try to recover the correct energy and position, but that depends on counting the number of strips that fire. 
-We use a software threshold to cut away the pedestal. 
-If the threshold is set too low, we will include pedestal events and it will get things wrong. 
-If the threshold is too high, we will miss some events that have charge sharing and get the wrong energy for the particle. 
-The goal is to not include the pedestal, and don't cut away too many events from the continuum.
-It is easier to set thresholds in linear scale than logarithmic, because in logarithmic scale the threshold value will decrease very much and it's hard to see where to set the limit. 
-The default threshold (if none is given in the calibration file) is set to channel 100. 
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% check_pedestal("setup_Sm.txt", "f", 2, 4, 60)
+		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q2_f4.png}
+		\caption{Pedestal in quadrant 2, annular strip 4.}
+		\label{fig:Pedestal_f}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% check_pedestal("setup_Sm.txt", "b", 3, 8, 70)
+		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q3_b8.png}
+		\caption{Pedestal in quadrant 3, secular strip 8.}
+		\label{fig:Pedestal_b}
+	\end{subfigure}
+	\caption{The pedestal from charge sharing in the front and back side of the CD.}
+	\label{fig:Pedestal}
+\end{figure}
+
+\textsl{MiniballCoulexSort} does perform some tricks to try to recover the correct energy and position of the particles, but that depends on counting the number of strips that fire. 
+The default threshold is set to channel 100 if none is given in the calibration file.
 In some cases this is too much and in others this is not enough. 
-For each ADC channel, the threshold can, and should be set. 
-\autoref{fig:Threshold} shows the software threshold set in the calibration file on the front and back side for one strip on each side.
+If the threshold is set too low, pedestal events are included and it will get things wrong. 
+If the threshold is too high, some events that have charge sharing will be missed and this leads to getting the wrong energy for the particle.
+The goal is to not include the pedestal, and don't cut away too many events from the continuum.
+It is easier to set thresholds in linear scale than logarithmic, because in log scale the threshold value will decrease very much and it is difficult to see where to set the limit. 
+\autoref{fig:Threshold} shows the software threshold set in the user calibration file on the front and back side for one strip on each side.
+These values were also put into the online calibration file.
 
 
 
@@ -1255,71 +1246,21 @@ I presume that charge sharing is only considered if 2 firing strips are neighbor
 }
 
 
-% Pedestal -->
-%
-%\begin{lstlisting}[language=sh]
-%$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting 
-%$ root
-%root [0] .L ParticlePlot.cpp++
-%root [1] check_pedestal("setup_Sm.txt", "f", 2, 4, 60)
-%\end{lstlisting}
-%
-%\begin{lstlisting}[language=sh]
-%$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting 
-%$ root
-%root [0] .L ParticlePlot.cpp++
-%root [1] check_pedestal("setup_Sm.txt", "b", 3, 8, 70)
-%\end{lstlisting}
-%
-% Pedestal --<
 
 \begin{figure}[ht]
 	\centering
 	\begin{subfigure}{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q2_f4.png}
-		\caption{Pedestal in quadrant 2, annular strip 4.}
-		\label{fig:Pedestal_f}
-	\end{subfigure}
-	\begin{subfigure}{\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q3_b8.png}
-		\caption{Pedestal in quadrant 3, secular strip 8.}
-		\label{fig:Pedestal_b}
-	\end{subfigure}
-	\caption{The pedestal from charge sharing in the front and back side of the CD.}
-	\label{fig:Pedestal}
-\end{figure}
-
-
-% Threshold -->
-%
-%\begin{lstlisting}[language=sh]
-%$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting 
-%$ root
-%root [0] .L ParticlePlot.cpp++
-%root [1] check_single_threshold("setup_Sm.txt", "f", 1, 11, 2100, 1500)
-%\end{lstlisting}
-%
-%\begin{lstlisting}[language=sh]
-%$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting 
-%$ root
-%root [0] .L ParticlePlot.cpp++
-%root [1] check_single_threshold("setup_Sm.txt", "b", 1, 6, 2800, 1500)
-%\end{lstlisting}
-%
-% Threshold --<
-
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\centering
+		% ParticlePlot.cpp
+		% check_single_threshold("setup_Sm.txt", "f", 1, 11, 2100, 1500)
 		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_f11.png}
 		\caption{Threshold Q1, F11.}
 		\label{fig:Threshold_f}
 	\end{subfigure}
 	\begin{subfigure}{\textwidth}
 		\centering
+		% ParticlePlot.cpp
+		% check_single_threshold("setup_Sm.txt", "b", 1, 6, 2800, 1500)
 		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_b6.png}
 		\caption{Threshold Q1, B6.}
 		\label{fig:Threshold_b}
@@ -1469,6 +1410,9 @@ If the amount of total statistics is large, it is possible and maybe even advant
 
 
 
+\bigskip
+
+From \autoref{ssec:user_cal}, the output from \texttt{Q4S.sh} using \texttt{TreeBuilder}: WeightPR: 0.75.
 
 \bigskip
 
@@ -1611,11 +1555,22 @@ where ($\theta_p, \phi_p$) and ($\theta_\gamma, \phi_\gamma$) are the detection 
 \end{equation}
 
 
-\subsection{Broken detector segments}
+\subsection{Broken detector segments}\label{sec:BDS}
 
 CD: ring 1 + Quadrant 4, front ring 16, back strip 1 \newline
 
 \autoref{fig:BDS_B1} shows one pixel where back strip 1 (B1) is acting weird compared to the other back strips. There are other rings where B1 is a bit off, but not nearly as much as in this pixel. Maybe B1 should be excluded, but in this thesis, it was used. 
+
+\bigskip
+
+The innermost ring of the CD was very damaged by the bombardment of particles hitting it, so we had to remove the innermost ring from the data set (making the total centroids to collect to be 1500). 
+In the innermost ring, it was impossible to separate the beam and target peaks.
+This is unfortunate since the innermost ring has the most statistics, but Si detectors don't last forever. 
+It was old and supposed to be changed after our experiment. 
+We also found something weird with quadrant 4 secular strip 1 (Q4\_b1), it shows a lot more counts than all the other back strips. 
+Excluding detector strips is easy, the only thing to do is to set gain and offset to -1 (or gain to 0 and offset to -1). 
+That will make the energy calibration negative, and fall out of the scope. 
+It is the way it is usually done for dead CD strips or dead \ga-detectors. 
 
 \bigskip
 
@@ -1687,6 +1642,21 @@ Use a second opinion on the simulation, maybe try LISE++ or some other simulatio
 Maybe \texttt{kinsim3} uses too much energy loss in CD? 
 If you are using only the Pb and Sm for calibration, and then applying that calibration back to the data, then it should matter if the absolute energies are correct. 
 This is an internal calibration, so that would simply mean that the peaks would have the wrong energy, but they should still be aligned on the front and back.
+
+
+\bigskip
+
+
+In the Sm data, the issue came in determining the peak centroid or maximum for the experimental data. 
+The peak shape is a convolution of many effects; intrinsic resolution of the detector, the beam energy width, straggling in the target, interaction points in the target, angular width of the detector strip, etc. 
+While the simulation tries to include all these things, it was found that the peak shapes were not exactly the same. 
+It might be worthwhile spending a bit of time to play with the parameters and try to get the peak shape as similar as possible. 
+At that point, maybe use a certain feature of the peak, such as the maximum, or the highest energy edge. 
+Or, honestly, it might be better to simply hover the mouse over the correct "feature" of the peak and position it by eye, be it the centroid or the maximum.
+Then the same feature in the corresponding simulated spectrum can be analyzed.
+The maximum of the peak on the high energy side is not the center of the peak, but roughly equivalent to the maximum. 
+It can be imagined as fitting a Gaussian to the right-hand side, the high-energy side only, as this would be roughly where the centroid is. 
+
 
 \bigskip
 
