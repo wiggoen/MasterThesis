@@ -684,6 +684,58 @@ void plot_front_back_energy(std::string setup_file, std::string name_addition = 
 }
 
 
+void plot_single_front_back_energy(std::string setup_file, int quadrant, std::string name_addition = "") {
+  /*
+      Plots data sorted from TreeBuilder. Energy in MeV.
+      Plots front vs back energy for the one quadrant of choice (1-4).
+      Option: name_addition is an addition to the file name, 
+      so it's easier to find the correct one. 
+  */
+  ADC adc;
+  Element *element = new Element();
+
+  element->read_setup_file(setup_file);
+
+  TFile *infile = new TFile(element->ADC_infile.c_str(), "UPDATE");
+  TCanvas *canvas = nullptr;
+  std::string canvas_name;
+  canvas_name = Form("Front vs back energy");
+  canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
+  TH1F *histogram = nullptr;
+  std::string histogram_name;
+
+  float label_size = 0.05;
+  float margin_size = 0.13;
+
+  if ( !(quadrant >= 1 && quadrant <= 4) ) {
+    std::cout << "Invalid option. Choose between quadrant 1-4." << std::endl;
+  }
+
+  if (!name_addition.empty()) {
+    name_addition = "-" + name_addition;
+  }
+
+  histogram_name = Form("CD_spec/E_f_b_%d", quadrant-1);
+
+  std::cout << "Histogram: " << histogram_name << std::endl;
+  
+  histogram = (TH1F *)infile->Get(histogram_name.c_str());
+  histogram->Draw("colz");
+  histogram->SetTitle(Form("Q%d", quadrant));  // Changing titles
+  histogram->SetStats(0);                      // Remove stats
+  histogram->SetLabelSize(label_size, "xyz");  // Label size for x-, y- and z-axis
+  histogram->SetTitleSize(label_size, "xy");   // Text size for x- and y-axis
+  histogram->GetYaxis()->SetTitleOffset(1.0);  // Move y-axis text a little closer
+  gStyle->SetTitleSize(label_size, "t");       // Title size
+  gPad->SetLeftMargin(margin_size);
+  gPad->SetRightMargin(margin_size);
+  gPad->SetBottomMargin(margin_size);
+  gPad->SetLogz();                             // Log-scale on z-axis
+
+  canvas->SaveAs(Form("../../Plots/plotting/E_f_b_Q%d%s.png", quadrant, name_addition.c_str()));
+}
+
+
 void check_pedestal(std::string setup_file, std::string detector_side,
                             int quadrant, int strip, int x_max = 100) {
   /*
