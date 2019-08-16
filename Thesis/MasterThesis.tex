@@ -1097,28 +1097,55 @@ An explanation of why the innermost ring was removed can be found in  \autoref{s
 As \autoref{fig:cal_user} shows, the calibration of the CD got better by removing the innermost ring. 
 The most visibly lines which did not fit $y = x$ vanished, implying that most of the problem was in fact the coefficients of ring 1. 
 
-
-\textbf{\textcolor{red}{SKRIV OM DE FORSKJELLIGE REGIONENE I PLOTTET UNDER!}}
-
-\autoref{fig:EFBQ2} has some interesting regions.
+In several strips in quadrant 1 and 4, there was a double-peak structure of \Sm\ like the one in \autoref{fig:bump}. 
+To explain this we have to look at the two-dimensional (2D) spectrum in \autoref{fig:EFBQ4}, which can be divided into four parts \cite{Rosiak}:
+\begin{itemize}
+	\item Region 1: The measured energy at the front and back side of the CD are equal, which indicates that they are linearly correlated.
+	\item Region 2: In these events the detected energy is lower at the back side, while at the front side the energy is artificially increased. 
+	One explanation of this is if the energy is detected in one strip on the front side, but is shared between two neighboring strips on the back side.
+	The reduced energy on the back side only occurs when the impact position is close to or inside the dead layer between two strips. 
+	The current from the two neighboring strips can possibly induce an artificially higher energy to the front side of the CD. 
+	A similar phenomenon has been observed in segmented HPGe detectors discussed in detail in \cite{Bruyneel2006a, Bruyneel2006b, Bruyneel, Descovich2005, Abt2017}.	
+	Another explanation is that there are some charge trapping and charge recombination of the particle-hole pairs. 
+	This causes a Pulse-Height Defect (PHD) in the detector signal, which is discussed in detail in \cite{Miller1962, Wilkins1971}.
+	
+	The second Sm-peak at higher energies in \autoref{fig:bump} comes from the projection of the 2D spectrum from \autoref{fig:EFBQ4} onto the x-axis.
+	\item Region 3: This area has a similar, but different pattern to region 2. 
+	The detected energy is lower at the front side, while it is higher at the back side of the CD. 
+	Here, the reduced energy on the front side originates from charge sharing between neighboring annular strips if the incoming particle hits close to or inside the dead layer. 
+	 On the back side, the strips are coupled to a positive voltage which protects against the induction of an artificially higher energy by the front side charge sharing. 
+	These phenomena are discussed in detail in \cite{Grassi2014, Kramberger2002}.
+	\item Region 4: This structure originates from the same place as region 2.
+	These events occur because of the paired up secular strips on the back side of the CD.  
+	Because of the connection of two neighboring strips, the charge is split among them and it is added up to the total charge.
+\end{itemize}
 
 \begin{figure}[ht]
 	\centering
-	% ParticlePlot.cpp
-	% plot_single_front_back_energy("setup_Sm.txt", 2, "user")
-	\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q2-user-drawing.png}
-	\caption{Back energy vs. front energy for quadrant 2 of the CD. The $z$-axis is in log scale.}
-	\label{fig:EFBQ2}
+	\begin{subfigure}{\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% get_single_plot("setup_Sm.txt", "tb", "f", 1, 4, 4, 1, 270, 670, 15500)
+		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F4_cal.png}
+		\caption{Annular strip 4 in quadrant 4. At higher energies, there is a double-peak structure of \Sm.}
+		\label{fig:bump}
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% plot_single_front_back_energy("setup_Sm.txt", 4, "user")
+		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q4-user-drawing.png}
+		\caption{Back energy vs. front energy for quadrant 4 of the CD. A similar figure to figures 39 and 40 in \cite{Rosiak}.}
+	\label{fig:EFBQ4}
+	\end{subfigure}
+	\caption{(a) The second peak of \Sm\ can be explained by region 2 from (b). For more information, see text.}
+	\label{fig:FBE}
 \end{figure}
 
-There are still visible blobs parallel to the line, but these might come from pile-up in the detector. 
 
-In several spectra, there was a second peak on the right side of the Sm peak like the one in quadrant 4 of \autoref{fig:BDS_R1}.
-These arises from the charge sharing of neighboring segments. 
 
 
 In \autoref{fig:cal_CD} the energy of every strip is shown for each quadrant separately.
- 
 
 \begin{figure}[ht]
 	\centering

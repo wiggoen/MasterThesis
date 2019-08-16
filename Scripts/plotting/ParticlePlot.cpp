@@ -679,6 +679,7 @@ void plot_front_back_energy(std::string setup_file, std::string name_addition = 
     gPad->SetLeftMargin(margin_size);
     gPad->SetRightMargin(margin_size);
     gPad->SetBottomMargin(margin_size);
+    gPad->SetLogz();                              // Log-scale on z-axis
   }
   canvas->SaveAs(Form("../../Plots/plotting/E_f_b_Q1-4%s.png", name_addition.c_str()));
 }
@@ -1236,10 +1237,13 @@ void get_single_plot(std::string setup_file, std::string sorter, std::string det
                      bool use_calibrated, int quadrant, int ring, int strip = 1,
                      int x_min = 0, int x_max = 3000, int y_max = 12000) {
   /*
-      Plotting data sorted by TreeBuilder with energy in MeV or
-      data sorted by AQ4Sort with energy in keV.
+      Plotting data sorted by TreeBuilder ("tb") with energy in MeV or
+      data sorted by AQ4Sort ("q4") with energy in keV.
       This function gets a single plot of one strip on either 
       the front side or the back side.
+      Choices: quadrant 1-4, ring 1-16, strip 1-12.
+      Display: x_min and x_max sets the minimum and maximum value for the x-axis, 
+      while y_max sets the maximum value of the y-axis.
       Counting on front side: f1 (innermost ring) to f16 (outermost ring).
   */
   ADC adc;
@@ -1356,6 +1360,26 @@ void get_single_plot(std::string setup_file, std::string sorter, std::string det
   arrow->SetAngle(40);     // Angle of the arrow tip
   arrow->SetLineWidth(2);
   arrow->Draw();
+  // -------------------
+  */
+  /*
+  // -- Q4 F4 cal ------
+  // Write on plot
+  TLatex latex;
+  latex.SetTextSize(0.05);
+  // Coordinates: x, y
+  latex.DrawLatex(350, 2100, "^{208}Pb");
+  latex.DrawLatex(545, 5000, "^{140}Sm");
+  // Draw arrows on plot
+  // Coordinates: x-min, y-min, x-max, y-max
+  TArrow *horisontal_arrow = new TArrow(542, 5350, 515, 5350, 0.015, "|>");
+  horisontal_arrow->SetAngle(40);     // Angle of the arrow tip
+  horisontal_arrow->SetLineWidth(2);
+  horisontal_arrow->Draw();
+  TArrow *vertical_arrow = new TArrow(565, 4500, 565, 2200, 0.015, "|>");
+  vertical_arrow->SetAngle(40);     // Angle of the arrow tip
+  vertical_arrow->SetLineWidth(2);
+  vertical_arrow->Draw();
   // -------------------
   */
   canvas->SaveAs(Form("../../Plots/plotting/%s.png", savefile_name.c_str()));
