@@ -1143,9 +1143,7 @@ To explain this we have to look at the two-dimensional (2D) spectrum in \autoref
 \end{figure}
 
 
-
-
-In \autoref{fig:cal_CD} the energy of every strip is shown for each quadrant separately.
+In \autoref{fig:cal_CD} the energy of every strip is shown for each quadrant separately. \textcolor{red}{What can I say about these plots?}
 
 \begin{figure}[ht]
 	\centering
@@ -1243,7 +1241,7 @@ These are the events in the pedestal.
 A software threshold is applied to cut away the pedestal. 
 For each ADC channel, the threshold can, and should be set. 
 One should define the threshold for each ADC channel to be above this peak.
-After a correct calibration is applied, this pedestal will be calibrated out of the physical energy range.
+After a correct calibration is applied, the pedestal will be calibrated out of the physical energy range.
 
 \begin{figure}[ht]
 	\centering
@@ -1252,7 +1250,7 @@ After a correct calibration is applied, this pedestal will be calibrated out of 
 		% ParticlePlot.cpp
 		% check_pedestal("setup_Sm.txt", "f", 2, 4, 60)
 		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q2_f4.png}
-		\caption{Pedestal in quadrant 2, annular strip 4.}
+		\caption{Pedestal from annular strip 4 in quadrant 2.}
 		\label{fig:Pedestal_f}
 	\end{subfigure}
 	\begin{subfigure}{\textwidth}
@@ -1260,7 +1258,7 @@ After a correct calibration is applied, this pedestal will be calibrated out of 
 		% ParticlePlot.cpp
 		% check_pedestal("setup_Sm.txt", "b", 3, 8, 70)
 		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q3_b8.png}
-		\caption{Pedestal in quadrant 3, secular strip 8.}
+		\caption{Pedestal from secular strip 8 in quadrant 3.}
 		\label{fig:Pedestal_b}
 	\end{subfigure}
 	\caption{The pedestal from charge sharing in the front and back side of the CD.}
@@ -1278,15 +1276,6 @@ It is easier to set thresholds in linear scale than logarithmic, because in log 
 These values were also put into the online calibration file.
 
 
-
-
-
-\textcolor{Magenta}{Tilbakemelding: \newline 
-I presume that charge sharing is only considered if 2 firing strips are neighbors?
-}
-
-
-
 \begin{figure}[ht]
 	\centering
 	\begin{subfigure}{\textwidth}
@@ -1294,7 +1283,7 @@ I presume that charge sharing is only considered if 2 firing strips are neighbor
 		% ParticlePlot.cpp
 		% check_single_threshold("setup_Sm.txt", "f", 1, 11, 2100, 1500)
 		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_f11.png}
-		\caption{Threshold Q1, F11.}
+		\caption{Annular strip 11 in quadrant 1.}
 		\label{fig:Threshold_f}
 	\end{subfigure}
 	\begin{subfigure}{\textwidth}
@@ -1302,49 +1291,48 @@ I presume that charge sharing is only considered if 2 firing strips are neighbor
 		% ParticlePlot.cpp
 		% check_single_threshold("setup_Sm.txt", "b", 1, 6, 2800, 1500)
 		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_b6.png}
-		\caption{Threshold Q1, B6.}
+		\caption{Secular strip 6 in quadrant 1.}
 		\label{fig:Threshold_b}
 	\end{subfigure}
-	\caption{??}
+	\caption{The threshold, marked with a red dotted line, set for one front and one back strip of the CD.}
 	\label{fig:Threshold}
 \end{figure}
 
 
 The key spectra to look at are \autoref{fig:part} and \autoref{fig:CD_debug}. 
-\autoref{fig:CD_debug} shows how many particles have strips fired on the front side or back side of the CD (counts how many particles have X strips fired on the front side and Y strips fired on the back side). 
-The debug IDs are explained by \autoref{tab:CD_debug}. 
+\autoref{fig:CD_debug} shows how many particles have strips fired on the front side or back side of the CD. 
+It counts how many particles have $x$ strips fired on the front side and $y$ strips fired on the back side. 
+\autoref{tab:CD_debug} explains the different debug IDs. 
+The goal is to have a lot more counts in CD debug ID 0 compared to ID 3 as shown in \autoref{fig:CD_debug}. 
 If we have too many debug ID = 3, then the threshold is too low. If we have a large continuum/background in \autoref{fig:part}, the thresholds are too high. The best thing to do is to play about with different values to see what is best.
 Debug ID 20 is when no particle can be found, because there is no energy registered in either the front or the back strips. 
 This can only happen when the front energy is below the software threshold set by the user in the calibration file and the back energy is either in a broken strip or is also below the software threshold. 
 It is likely that it is some noise events or charge sharing that comes below the threshold. 
 
 
-
 \begin{figure}[ht]
 	\centering
+	% ParticlePlot.cpp
+	% energy_vs_ring("setup_Sm.txt")
 	\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_ring_all.png}
-	\caption{Energy vs. ring number.}
+	\caption{Energy vs. ring number all quadrants of the CD combined. The upper yellow curve is \Sm, the middle one is \Pb\ and the lower one is the contaminant. Ring 1, which is removed, is the innermost ring and ring 16 is the outermost ring.}
 	\label{fig:part}
 \end{figure}
 
 
-%\begin{lstlisting}[language=sh]
-%$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting 
-%$ root
-%root [0] .L ParticlePlot.cpp++
-%root [1] check_cd_debug("setup_Sm.txt", "user")
-%\end{lstlisting}
-
 \begin{figure}[ht]
 	\centering
+	% ParticlePlot.cpp
+	% check_cd_debug("setup_Sm.txt", "user")
 	\includegraphics[width=\textwidth]{../Plots/plotting/cd_debug-user.png}
-	\caption{CD debugging. Debug IDs are explained by \autoref{tab:CD_debug}. }
+	\caption{CD debugging. The debug IDs are explained by \autoref{tab:CD_debug}.}
 	\label{fig:CD_debug}
 \end{figure}
 
+
 \begin{table}[ht] 
 	\centering 
-	\caption{CD debugging.}
+	\caption{CD debugging shows the number of strips fired at the front and back side of the CD.}
 	\input{Table-data/CD_debug.tex}
 	\label{tab:CD_debug}
 \end{table}
@@ -1355,6 +1343,9 @@ It is likely that it is some noise events or charge sharing that comes below the
 Each quadrant of the CD is independently connected to a Time to Digital Converter (TDC), which keeps track of the time of registered particle-\ga\ \textcolor{red}{(and particle-\ga-\ga)?} coincidences. 
 The ADCs and DGFs record an energy and a time-stamp with 25 ns ticks. 
 It is the multiplicity of the output of the DGFs that is used to generate the \ga\ signal, which in turn is used to make the particle-\ga\ coincidence.
+
+\textcolor{red}{----------}\newline
+\textcolor{red}{Does this belong to chapter 3?}\newline
 \autoref{fig:ITS} shows a schematic of the ISOLDE time structure. 
 The Miniball data acquisition is happening during two time windows, the "on-beam" and "off-beam" windows. 
 When REXEBIS releases the beam to the HIE-ISOLDE LINAC, a signal is also sent to generate the on-beam window. 
@@ -1366,8 +1357,9 @@ In the off-beam window, which has the same duration of time as the on-beam windo
 After the off-beam window closes, a readout of the records is triggered.
 It is then possible to subtract the windows from each other to get the beam contribution. 
 The DAQ system records the signals from each detector segment, which is individually time-stamped. 
-With these records, a full reconstruction of the real events and coincidences is possible \cite{NWarr-el}.
-
+With these records, a full reconstruction of the real events and coincidences is possible \cite{NWarr-el}. 
+\newline
+\textcolor{red}{----------}\newline
 
 \begin{figure}[ht]
 	\centering
@@ -1377,20 +1369,26 @@ With these records, a full reconstruction of the real events and coincidences is
 \end{figure}
 
 
-The purpose of the time calibration is to align the time spectra so that a prompt time gate can be set. In this way it is possible to correlate particles and \ga-rays. Using the \texttt{ParticlePlot.cpp} script, the ADC time offsets can be extracted by the following commands
+The purpose of the time calibration is to align the time spectra so that a prompt time gate can be set. In this way it is possible to correlate particles and \ga-rays. Using the \texttt{ParticlePlot.cpp} script, the ADC time offset spectra can be extracted by the following commands
 \begin{lstlisting}[language=sh]
-$ cd /Users/trondwj/GitHub/MasterThesis/Scripts/plotting
+$ cd ~/GitHub/MasterThesis/Scripts/plotting
 $ root
 root [0] .L ParticlePlot.cpp++
 root [1] check_ADC_time_offsets("setup_Sm.txt")
 \end{lstlisting}
 or they can be manually reached by
 \begin{lstlisting}[language=sh]
-$ cd /Users/trondwj/GitHub/MasterThesis/Sorted_data
+$ cd ~/GitHub/MasterThesis/Sorted_data
 $ root Sm_user-TreeBuilder-2019-06-20.root
 root [1] new TBrowser()
 \end{lstlisting}
-and in the browser, the histograms named \textit{tdiff\_gp\_i} (where \textit{i} is a number between 0 and 3 implying quadrant 1 to 4) will lie in the \textit{.root}-file without a folder. \autoref{fig:ADC_dt} shows the time offsets for the CD. The peaks of these plots have the interesting x-axis value. Zooming into the peaks, it is very clear what value it is. These values are provided in the calibration file under ADC time offsets (ticks). These values can change depending on the amount of data sorted, so it is wise to double check them when more data is added to the file. After the peak values have been collected, they should be written into the calibration file. The time offsets of this experiment was the following
+In the browser, the histograms are named \textit{tdiff\_gp\_i}, where \textit{i} is a number between 0 and 3 implying quadrant 1 to 4. 
+They lie within the \textit{.root}-file without a folder. \autoref{fig:ADC_dt} shows the time offsets for the CD. 
+The peaks of these plots have the interesting x-axis values. 
+Zooming into the peaks, it is very clear what the value in each quadrant is. 
+The values can change depending on the amount of data sorted, so it is wise to double check them when more data is added to the \textit{.root}-file. 
+After the peak values have been collected, they should be written into the calibration file under ADC time offsets (ticks). 
+The time offsets of this experiment was the following
 \begin{lstlisting}[language=sh]
 # ADC time offsets (ticks)
 adc_0.TimeOffset:  0
@@ -1398,7 +1396,7 @@ adc_1.TimeOffset:  -2
 adc_2.TimeOffset:  -3
 adc_3.TimeOffset:  5
 \end{lstlisting}
-After the software threshold and ADC time offsets are added to the calibration file, we must re-run the \texttt{Q4S.sh}-step with \texttt{TreeBuilder} and the updated calibration file.
+After the software threshold and ADC time offsets are added to the calibration file, a re-run of the \texttt{Q4S.sh}-step with \texttt{TreeBuilder} and the updated calibration file has to be conducted.
 
 \begin{figure}[ht]
 	\centering
@@ -1410,22 +1408,28 @@ After the software threshold and ADC time offsets are added to the calibration f
 
 
 \subsection{Calibration of the \texorpdfstring{$\gamma$}{gamma} detectors}\label{ssec:gamma}
-
 The online calibration of the \ga\ detectors is quite good for most detectors in a certain energy range, because it is designed to be that way. 
-During the setup of the experiment, a hardware calibration of the \ga\ detectors is performed. 
+During the setup of the experiment, a hardware calibration of the \ga\ detectors was performed. 
 The gains of each DGF are matched so that the online analysis is more straightforward.
-However, there are non-linearities and drifting offsets and gains over time that have to be corrected for with a proper calibration using the \Ba\ and \Eu\ source data collected in the end of the experiment. The \Ba\ and \Eu\ sources are placed at the target position simultaneously (back to back), and the data is also used to determine the relative efficiency of Miniball. 
+However, there are non-linearities and drifting offsets and gains over time that have to be corrected for with a proper calibration using the \Ba\ and \Eu\ source data collected in the end of the experiment. The \Ba\ and \Eu\ sources are placed at the target position simultaneously, back to back, and the data is also used to determine the relative efficiency of Miniball. 
 
-\bigskip
+Histograms used for \ga-detector calibration sorted by \texttt{TreeBuilder} use the naming convention $\textit{E\_gam\_seg}\_c\_d\_s$, where $c \in [0, 7]$ is the cluster number, $d \in [0, 2]$ is the detector number and $s \in [0, 6]$ is the segment number, where $s = 0$ is actually the core signal.
+There was no time to do a proper calibration of the \ga-detectors in this thesis, but the online calibration was quite good anyways.
+Just as for the particle calibration, scripts for \ga-detector calibration was supposed to be made. 
+The gray boxes in \autoref{fig:cal_FC} are related to the \ga-detector calibration. 
+The idea was to use the \texttt{Q4S.sh} script to sort the experimental data with \texttt{TreeBuilder}.
+Then use \texttt{GammaPlot.cpp} or ROOT to analyze the data using the \ga-histograms mentioned above. 
+Information about the peaks should have been used as input in \texttt{GammaFit.cpp}, where the fitting would have taken place. 
+The Python scripts \texttt{DGF\_generator.py} and \texttt{Geometry\_generator.py} does at the moment reproduce the calibration coefficients and geometry parameters from the online calibration. 
+These were supposed to be changed to fit the proper calibration in time.  
+The output from these scripts should have been copied and pasted into the calibration file \textit{IS558-user.cal}.
+\autoref{ssec:Doppler} explains why it is important to know the geometry of the \ga-detector setup.
+After the calibration coefficients and the geometry parameters are added to the calibration file, a re-run of the \texttt{Q4S.sh}-step with \texttt{TreeBuilder} and the updated calibration file has to be conducted. 
+The next step is to do a Doppler correction, which is explained in  
+\autoref{ssec:Doppler}. 
 
-E\_gam\_seg\_[0-7]\_[0-2]\_[0-6], cluster number (0-7), detector number (0-2) and segment number (0-6), where segment 0 is actually the core signal.
+After the Doppler correction the \texttt{CLXAna} program needs to be used in order to get the Doppler-corrected \ga-spectra to analyze the Coulomb excitation of \Sm.
 
-Gamma: \\
-core ID from 0 to 23 \\
-segment ID from 0 to 6 (zero is the core) \\
-cluster ID from 0 to 7 \\
-
-The thing with core ID 15 is a cross-talk issue involving a dead segment in detector 18A. It means that some events have to be vetoed to avoid double-peaking and this reduces the efficiency. You can see this list of vetoed detectors in Addback.hh line 193. In my most recent version, I am also vetoing segment number 106 for this reason.
 
 \bigskip
 
@@ -1452,7 +1456,7 @@ If the amount of total statistics is large, it is possible and maybe even advant
 
 \bigskip
 
-From \autoref{ssec:user_cal}, the output from \texttt{Q4S.sh} using \texttt{TreeBuilder}: WeightPR: 0.75.
+As mentioned in \autoref{ssec:user_cal}, the output from \texttt{Q4S.sh} using \texttt{TreeBuilder} was: WeightPR: 0.75.
 
 \bigskip
 
@@ -1552,7 +1556,7 @@ left bottom: \newline
 The application of an add-back (AB) routine involves the summing of the energies of two coincident gamma rays within 100 ns in neighboring cores on the same cluster detector. This situation corresponds to a Compton-scattered \ga-ray event where the energy of the \ga-ray is shared between two or more crystals in the same triple cluster detector. For higher-energy \ga-rays, where scattering from one crystal into its neighbor is quite likely, this improves the efficiency, but for low-energy \ga-rays, where scattering is less likely, summing effects actually reduce the efficiency. For this reason a cut-off is normally applied and AB is only performed for energies above this threshold. \newline
 
 
-\subsection{Doppler correction}
+\subsection{Doppler correction}\label{ssec:Doppler}
 
 In order to perform the Doppler correction, the interaction point angles in the Miniball frame of reference has to be known. 
 \autoref{fig:MB-angles} shows a sketch of the Miniball cluster geometry and \autoref{tab:Geo} gives the angles and distance of the different clusters.
@@ -1566,7 +1570,7 @@ The geometry parameters of the Miniball clusters has to be written into the cali
 \begin{figure}[ht]
 	\centering
 	\input{Images/MB-angles.tikz}
-	\caption{Miniball angles, where $i$ denotes cluster number from \autoref{tab:Geo} and the $z$-axis is the beam direction. The angles ($\theta$ and $\phi$) are defined from a right-hand polar coordinate system, while the angle $\alpha$ determines the clockwise rotation around the center of the triple-cluster as seen from the target position \cite{NWarr-Angles}.}
+	\caption{Miniball angles, where $i$ denotes cluster number from \autoref{tab:Geo} and the $z$-axis is the beam direction. The angles, $\theta$ and $\phi$, are defined from a right-hand polar coordinate system, while the angle $\alpha$ determines the clockwise rotation around the center of the triple-cluster as seen from the target position \cite{NWarr-Angles, Rosiak}.}
 	\label{fig:MB-angles}
 \end{figure}
 
@@ -1595,6 +1599,10 @@ where ($\theta_p, \phi_p$) and ($\theta_\gamma, \phi_\gamma$) are the detection 
 \end{equation}
 
 
+
+
+
+
 \subsection{Broken detector segments}\label{sec:BDS}
 
 CD: ring 1 + Quadrant 4, front ring 16, back strip 1 \newline
@@ -1616,6 +1624,11 @@ It is the way it is usually done for dead CD strips or dead \ga-detectors.
 
 HPGe: Core ID 20? Other? Check vetoed segments
 
+\bigskip
+
+The thing with core ID 15 is a cross-talk issue involving a dead segment in detector 18A. It means that some events have to be vetoed to avoid double-peaking and this reduces the efficiency. You can see this list of vetoed detectors in Addback.hh line 193. In my most recent version, I am also vetoing segment number 106 for this reason.
+
+\bigskip
 
 \begin{figure}[ht]
 	\centering
