@@ -1482,7 +1482,7 @@ A plot of energy vs. LAB angle named "part" is needed in order to make the cut f
 It would have been more logical to include this plot in \texttt{TreeBuilder}, but for some reason it is not. 
 There is also a plot named "part" inside the \textit{.root}-file sorted by \texttt{TreeBuilder}, but this contains energy vs. annular strip.
 To make the cut file, the "part" plot from the output file of \texttt{CLXAna} needs to be opened.
-It is also advised to use log scale on the $z$-axis and zoom into the correct area.
+It is also advised to use log scale on the $z$-axis, the draw option "colz" and to zoom into the correct area.
 From this plot, graphical cuts around the beam-like and target-like particles needs to be done separately. 
 After making the cuts, right click and SetName to set the names to "Bcut" and "Tcut" respectively. 
 Then right click and SaveAs, giving the name of a \textit{.root}-file of your choice for each cut separately. 
