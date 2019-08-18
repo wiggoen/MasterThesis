@@ -1428,7 +1428,12 @@ After the calibration coefficients and the geometry parameters are added to the 
 The next step is to do a Doppler correction, which is explained in  
 \autoref{ssec:Doppler}. 
 
-After the Doppler correction the \texttt{CLXAna} program needs to be used in order to get the Doppler-corrected \ga-spectra to analyze the Coulomb excitation of \Sm.
+After the Doppler correction the \texttt{CLXAna} program needs to be used.
+
+
+ in order to get the Doppler-corrected \ga-spectra to analyze the Coulomb excitation of \Sm.
+
+\texttt{CLXAna} makes event trees and energy spectra for both particle and \ga\ detection which can be used for analyzing the Coulomb excitation events.
 
 
 \bigskip
@@ -1452,63 +1457,62 @@ When applying the reject method for the sorting, events occurring in neighboring
 The total statistics for the reject method will therefore be smaller. 
 If the amount of total statistics is large, it is possible and maybe even advantageous to apply the reject method, because it will give a higher probability of getting the actual full energy peaks of the \ga-rays detected. 
 
-
-
-\bigskip
-
-As mentioned in \autoref{ssec:user_cal}, the output from \texttt{Q4S.sh} using \texttt{TreeBuilder} was: WeightPR: 0.75.
-
-\bigskip
-
-
-
-
-\textbf{CLXAna:}\newline
+All input parameters for \texttt{CLXAna} are stated in the GitHub repository of \textsl{MiniballCoulexSort}, but they are not explained in detail. 
+From private communications with Dr. Liam Gaffney, some of the input parameters now have a little more context
+\begin{description}[align=left]
+	\item [-c] The configuration file is a file that contains all of the input parameters, except -cut, in order to not type the parameters into the command line each time.
+	\item [-cut] The cut file  is a root file containing the graphical cuts on the kinematics from the "part" histogram. This is the only file path that is not possible to put into the configuration file as stated above.
+	\item [-Ex] Excitation energy of the state that you want to perform the Doppler correction for, given in keV. This is not a significant value.
+	\item [-depth] The depth of the interaction in the target in mg/cm$^2$. Usually assumed to be half of the thickness of the target. Different values can be tested to see if it improves the Doppler correction.
+	\item [-cdoffset] The rotation of the CD detector in the phi angle, with a default value of 242.6 degrees. This can be optimized, but the value is usually around the default value.
+	\item [-deadlayer] The thickness of the Si dead layer in mm, with a default value of 0.0007 mm.
+	\item [-spededist] Not needed for this experiment.
+	\item [-bg\_frac] This value depends on the time windows defined in TreeBuilder, which means it should be -0.75 for the current version. The number can also be checked by taking the ratios of the beta-decay background peaks in the prompt gammas "p" and random gammas "r" spectra in the output file of \texttt{CLXAna}.
+\end{description}
+As mentioned in \autoref{ssec:user_cal}, one line in the output from \texttt{Q4S.sh} using \texttt{TreeBuilder} was
 \begin{lstlisting}[language=]
--c: configuration file is a file that contains all of the parameters to save you typing them on the command line each time
--cut: the root file containing the graphical cuts on the kinematics (from the part histogram). This is the only thing you can't put in the above configuration file
--Ex: excitation energy of the state that you want to perform the Doppler correction for, in keV. Not significant, really.
--depth: depth of the interaction in the target. I usually assume half of the thickness, but you can test different values to see if it improves the Doppler correction.
--cdoffset: the rotation of the CD detector in the phi angle. Can be optimised, but is around 242.6 (default value).
--deadlayer: exactly as you say, this should be 0.7 um or 0.0007 mm (default value).
--spededist: not needed
--bg_frac: depends on the time windows defined in TreeBuilder, which means it should be -0.75 for the current version. This number can also be checked by taking the ratios of the beta-decay background peaks in the 'p' and 'r' spectra.
+WeightPR: 0.75
+\end{lstlisting}
+This value is the one supposed to be used with the \textbf{-bg\_frac} input parameter when using \texttt{CLXAna}.
+Even though the WeightPR value is positive, the input parameter is supposed to be negative.  
+In this thesis, the input parameters used with \texttt{CLXAna} can be found in the \textit{config-IS558.dat} file.
+
+The first time \texttt{CLXAna} is run, every input parameter except \textbf{-cut} needs to be provided. 
+A plot of energy vs. LAB angle named "part" is needed in order to make the cut file, and this plot is found inside the \textit{.root}-file sorted by \texttt{CLXAna}.
+It would have been more logical to include this plot in \texttt{TreeBuilder}, but for some reason it is not. 
+There is also a plot named "part" inside the \textit{.root}-file sorted by \texttt{TreeBuilder}, but this contains energy vs. annular strip.
+To make the cut file, the "part" plot from the output file of \texttt{CLXAna} needs to be opened.
+It is also advised to use log scale on the $z$-axis and zoom into the correct area.
+From this plot, graphical cuts around the beam-like and target-like particles needs to be done separately. 
+After making the cuts, right click and SetName to set the names to "Bcut" and "Tcut" respectively. 
+Then right click and SaveAs, giving the name of a \textit{.root}-file of your choice for each cut separately. 
+The key is the \textit{.root} extension so that it knows which format to use. 
+In this thesis, the files were saved as \textit{Bcut.root} and \textit{Tcut.root} respectively.
+The two files can be added together using a ROOT program called \texttt{hadd}, which is used like this
+\begin{lstlisting}[language=]
+hadd outputfile.root input_file_1.root input_file_2.root 
+\end{lstlisting}
+If the files are supposed to be saved somewhere else, the absolute path can be given.
+With the cut files above, this step was done by
+\begin{lstlisting}[language=]
+$ cd ~/GitHub/ROOT-framework/build/bin
+$ hadd /Users/trondwj/GitHub/MasterThesis/Sorted_data/outputfile.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/part.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Bcut.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Tcut.root 
 \end{lstlisting}
 
-In the output file of CLXAna you will find a histogram called B\_dcB\_cid, which is the Doppler corrected spectra vs. each detector. The peak energies should of course be constant as a function of detector number, if they vary, then the angles need to be improved.
-
-graphical cuts from the CLXAna-step (partQx) with Energy vs lab angle
-
-After making the cut, right click and SetName to either "Bcut" or "Tcut". Then right click and SaveAs, giving the name of a root file of your choice (key is the \textit{.root} extension so that it knows which file format to use).
-
-Do this for both the target-like (Tcut) and and beam-like (Bcut) particles. You will have one file each that you need to add together using 'hadd':
-
+Now that the cut file is made, a second run of \texttt{CLXAna} can be performed. 
+In order to not copy and paste all command into the command line, a script named \texttt{Coulex.sh} was made to sort the data with \texttt{CLXAna}. 
+It uses the configuration file \textit{config-IS558.dat} and the cut file \textit{outputfile.root}. 
+In addition it takes one command line flag of the four different options of sorting the data
 \begin{lstlisting}[language=]
-hadd outputfile.root input1.root input2.root
+'-d' (default)
+'-s' (singles) 
+'-a' (addback) 
+'-r' (reject)
 \end{lstlisting}
-
-What does the Bcut and Tcut indicate from [cutfile.root:Bcut:Tcut]?
-Should the name have these? Are they values, names or other stuff?
-This is the \textit{outputfile.root} that you just created in the last step, plus the names of the cuts in that file. The first cut is the beam-like and the second is the target-like. You can choose these names, but they must match the names that you set in the first step.
-
-DGF: Digital \ga~ finder
-
-addback, singles, ...
-
-
-\begin{table}[ht] 
-	\centering 
-	\caption{DGF}
-	\input{Table-data/DGF.tex}
-	\label{tab:DGF}
-\end{table}
-
-\texttt{CLXAna} makes event trees and energy spectra for both particle and \ga\ detection which can be used for analyzing the Coulomb excitation events.
-
-\subsubsection{CLXAna}
+An example of running the script and the output given by \texttt{CLXAna} is shown below
 \begin{lstlisting}[language=]
-$ ./Coulex.sh -n
---- Coulex: normal ---
+$ ./Coulex.sh -d
+--- Coulex: default ---
 Input parameters:
 Zb = 62
 Ab = 140
@@ -1537,14 +1541,30 @@ Warning in <TClass::Init>: no dictionary for class trevts is available
 1-particle events = 89020258%)    
 Finished.
 \end{lstlisting}
-
-
-\subsubsection{hadd (from ROOT)}
-After saving "part" from \texttt{CLXAna}-file:
+As seen above, the cut file \textit{outputfile.root} is provided as  
 \begin{lstlisting}[language=]
-$ cd GitHub/ROOT-framework/build/bin
-$ hadd /Users/trondwj/GitHub/MasterThesis/Sorted_data/outputfile.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/part.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Bcut.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Tcut.root 
+outputfile.root:Bcut:Tcut
 \end{lstlisting}
+The :Bcut:Tcut ending are the names of the cuts in the file. The first cut is the beam-like and the second is the target-like. 
+These names can be chosen otherwise, but they must match the names set in the first step. 
+
+
+\bigskip
+
+
+\textcolor{red}{Figures....}
+
+
+\bigskip
+
+
+\begin{table}[ht] 
+	\centering 
+	\caption{DGF}
+	\input{Table-data/DGF.tex}
+	\label{tab:DGF}
+\end{table}
+
 
 \bigskip
 
@@ -1695,6 +1715,12 @@ Use a second opinion on the simulation, maybe try LISE++ or some other simulatio
 Maybe \texttt{kinsim3} uses too much energy loss in CD? 
 If you are using only the Pb and Sm for calibration, and then applying that calibration back to the data, then it should matter if the absolute energies are correct. 
 This is an internal calibration, so that would simply mean that the peaks would have the wrong energy, but they should still be aligned on the front and back.
+
+
+\bigskip
+
+Geometry:
+For the geometry, I am not sure exactly what the best set of angles are. You should produce some spectra to analyse before determining this. In the output file of CLXAna you will find a histogram called B\_dcB\_cid, which is the Doppler corrected spectra vs. each detector. The peak energies should of course be constant as a function of detector number, if they vary, then the angles need to be improved.
 
 
 \bigskip
