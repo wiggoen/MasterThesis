@@ -6,7 +6,6 @@
     ]
     %%% Picture made by normalizing energy to the 2+ state (531) and choosing it to be 
     %%% 2 units of y in height.
-
     %%%
     %%% Ground state band
     %%%
@@ -14,8 +13,8 @@
     \foreach \level / \state / \energy in {0/0_1^+/0, 2/2_1^+/531, 4.7/4_1^+/1246, 7.8/6_1^+/2082, 11.2/8_1^+/2970}
       { 
         \draw[level] (0,\level) -- (2,\level);
-        \node at (0,\level) [anchor=south east] {$\state$};
-        \node at (2,\level) [anchor=south west] {$\energy$};
+        \node at (0.5,\level) [anchor=south east] {$\state$};
+        \node at (1.2,\level) [anchor=south west] {$\energy$};
       }
     % Gamma transitions
     \foreach \endlevel / \startlevel / \gamma in {0/2/531, 2/4.7/715, 4.7/7.8/836, 7.8/11.2/888}
@@ -23,34 +22,8 @@
         \draw[line width=2pt, ->, >=triangle 60] (1,\startlevel) -- node[fill=white] {\gamma} (1,\endlevel);
       }
     % Dotted lines
-    \draw[connect] (-2,2) -- (0,2) (2,2) -- (7.5,2);
-    %\draw[connect] (-2,11.2) -- (0,11.2) (2,11.2) -- (4,11.2);
-    
-    %%%
-    %%% Left band
-    %%%
-    % Lower left band
-    \coordinate (levelleft)  at (-3,6.1);
-    \coordinate (levelright) at (-1,6.1);
-    \draw[level] (levelleft) -- (levelright);
-    \node at (levelleft)  [anchor=south east] {$0_3^{(+)}$};
-    \node at (levelright) [anchor=south west] {1628};
-    \draw[line width=2pt, ->, >=triangle 60] (-2,6.1) -- node[fill=white] {1098} (-2,2);
-    %% Higher left band
-    %\foreach \level / \state / \energy in {12.1/10^+/3211, 13.8/12^+/3653, 16.6/14^+/4404, 20.3/16^+/5398}
-    %  { 
-    %    \draw[level] (-3,\level) -- (-1,\level);
-    %    \node at (-3,\level) [anchor=south east] {$\state$};
-    %    \node at (-1,\level) [anchor=south west] {$\energy$};
-    %  }
-    %% Gamma transitions
-    %\foreach \endlevel / \startlevel / \gamma in {12.1/13.8/442, 13.8/16.6/751, 16.6/20.3/994}
-    %  { 
-    %    \draw[line width=2pt, ->, >=triangle 60] (-2,\startlevel) -- node[fill=white] {\gamma} (-2,\endlevel);
-    %  }
-    %% First gamma transition
-    %\draw[line width=2pt, ->, >=triangle 60] (-2,12.1) -- node[left=3pt] {241} (-2,11.2);
-
+    \draw[connect] (2,2)    -- (10,2);
+    %\draw[connect] (2,11.2) -- (10,11.2);
     %%%
     %%% 1st right band
     %%%
@@ -58,8 +31,8 @@
     \coordinate (levelleft)  at (3,3.7);
     \coordinate (levelright) at (5,3.7);
     \draw[level] (levelleft) -- (levelright);
-    \node at (levelleft)  [anchor=south east] {$2_2^+$};
-    \node at (levelright) [anchor=south west] {990};
+    \node at (3.5,3.7) [anchor=south east] {$2_2^+$};
+    \node at (4.2,3.7) [anchor=south west] {990};
     \draw[line width=2pt, ->, >=triangle 60] (4,3.7) -- node[fill=white] {459} (4,2);
     % Dotted lines
     \draw[connect] (levelright) -- (6.5,3.7);
@@ -77,15 +50,38 @@
     %  }
     %% First gamma transition
     %\draw[line width=2pt, ->, >=triangle 60] (4,11.9) -- node[right=4pt] {202} (4,11.2);
-
     %%%
     %%% 2nd right band
     %%%
     \coordinate (levelleft)  at (6,6);
     \coordinate (levelright) at (8,6);
     \draw[level] (levelleft) -- (levelright);
-    \node at (levelleft)  [anchor=south east] {$0_2^{(+)}$};
-    \node at (levelright) [anchor=south west] {1599};
+    \node at (6.7,6) [anchor=south east] {$0_2^{(+)}$};
+    \node at (7.2,6) [anchor=south west] {1599};
     \draw[line width=2pt, ->, >=triangle 60] (7.5,6) -- node[fill=white] {1068} (7.5,2);
-    \draw[line width=2pt, ->, >=triangle 60] (6.5,6) -- node[fill=white] {609} (6.5,3.7);    
+    \draw[line width=2pt, ->, >=triangle 60] (6.5,6) -- node[fill=white] {609}  (6.5,3.7);
+    %%%
+    %%% 3rd right band
+    %%%
+    % Lower 3rd right band
+    \coordinate (levelleft)  at (9,6.1);
+    \coordinate (levelright) at (11,6.1);
+    \draw[level] (levelleft) -- (levelright);
+    \node at (9.7,6.1)  [anchor=south east] {$0_3^{(+)}$};
+    \node at (10.2,6.1) [anchor=south west] {1628};
+    \draw[line width=2pt, ->, >=triangle 60] (10,6.1) -- node[fill=white] {1098} (10,2);
+    %% Higher 3rd right band
+    %\foreach \level / \state / \energy in {12.1/10^+/3211, 13.8/12^+/3653, 16.6/14^+/4404, 20.3/16^+/5398}
+    %  { 
+    %    \draw[level] (9,\level) -- (11,\level);
+    %    \node at (9,\level) [anchor=south east] {$\state$};
+    %    \node at (11,\level) [anchor=south west] {$\energy$};
+    %  }
+    %% Gamma transitions
+    %\foreach \endlevel / \startlevel / \gamma in {12.1/13.8/442, 13.8/16.6/751, 16.6/20.3/994}
+    %  { 
+    %    \draw[line width=2pt, ->, >=triangle 60] (10,\startlevel) -- node[fill=white] {\gamma} (10,\endlevel);
+    %  }
+    %% First gamma transition
+    %\draw[line width=2pt, ->, >=triangle 60] (10,12.1) -- node[left=3pt] {241} (10,11.2);
 \end{tikzpicture}

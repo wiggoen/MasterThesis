@@ -1548,15 +1548,33 @@ outputfile.root:Bcut:Tcut
 The :Bcut:Tcut ending are the names of the cuts in the file. The first cut is the beam-like and the second is the target-like. 
 These names can be chosen otherwise, but they must match the names set in the first step. 
 
+\autoref{fig:part_wcut} shows the cuts of the beam and target for the detected particle events. 
+These cuts are used in the Doppler correction of the \ga-rays. 
+\textcolor{red}{What more can I say?}
 
-\bigskip
+\begin{figure}[ht]
+	\centering
+	% GammaPlot.cpp
+	% particle_events_with_cut()
+	\includegraphics[width=\textwidth]{../Plots/plotting/particle-events-wcut.png}
+	\caption{Detected particle events with cuts.}
+	\label{fig:part_wcut}
+\end{figure}
 
 
-\textcolor{red}{Figures....}
+\autoref{fig:B_dcB_cid} ... \textcolor{red}{what can I say about this plot?}
+
+\begin{figure}[ht]
+	\centering
+	% GammaPlot.cpp
+	% beam_gated_dcB_gammas_core("setup_Coulex.txt", "d")
+	\includegraphics[width=\textwidth]{../Plots/plotting/B_dcB_cid.png}
+	\caption{Beam gated prompt, Doppler corrected \ga-rays. Core ID 20 is removed, see \autoref{sec:BDS}.}
+	\label{fig:B_dcB_cid}
+\end{figure}
 
 
-\bigskip
-
+\autoref{tab:DGF}, \textcolor{red}{not sure how to make this table. How is the histogram names and the calibration coefficients linked?}
 
 \begin{table}[ht] 
 	\centering 
@@ -1566,18 +1584,15 @@ These names can be chosen otherwise, but they must match the names set in the fi
 \end{table}
 
 
-\bigskip
 
-
-The Miniball spectrometer \cite{MB-spect} \newline
-p. 8: \newline
-\textbf{Efficiency and resolution:}
-left bottom: \newline
-The application of an add-back (AB) routine involves the summing of the energies of two coincident gamma rays within 100 ns in neighboring cores on the same cluster detector. This situation corresponds to a Compton-scattered \ga-ray event where the energy of the \ga-ray is shared between two or more crystals in the same triple cluster detector. For higher-energy \ga-rays, where scattering from one crystal into its neighbor is quite likely, this improves the efficiency, but for low-energy \ga-rays, where scattering is less likely, summing effects actually reduce the efficiency. For this reason a cut-off is normally applied and AB is only performed for energies above this threshold. \newline
+%The Miniball spectrometer \cite{MB-spect} \newline
+%p. 8: \newline
+%\textbf{Efficiency and resolution:}
+%left bottom: \newline
+%The application of an add-back (AB) routine involves the summing of the energies of two coincident gamma rays within 100 ns in neighboring cores on the same cluster detector. This situation corresponds to a Compton-scattered \ga-ray event where the energy of the \ga-ray is shared between two or more crystals in the same triple cluster detector. For higher-energy \ga-rays, where scattering from one crystal into its neighbor is quite likely, this improves the efficiency, but for low-energy \ga-rays, where scattering is less likely, summing effects actually reduce the efficiency. For this reason a cut-off is normally applied and AB is only performed for energies above this threshold. \newline
 
 
 \subsection{Doppler correction}\label{ssec:Doppler}
-
 In order to perform the Doppler correction, the interaction point angles in the Miniball frame of reference has to be known. 
 \autoref{fig:MB-angles} shows a sketch of the Miniball cluster geometry and \autoref{tab:Geo} gives the angles and distance of the different clusters.
 The parameters $\theta$, $\phi$ and $R$ describes the position of the central axis of the detector clusters, while $\alpha$ describes the orientation about the axis of the cluster. All these parameters are needed to calculate the position of the segments or the position of a point determined by the pulse-shape analysis. 
@@ -1603,8 +1618,6 @@ The geometry parameters of the Miniball clusters has to be written into the cali
 \end{table}
 
 
-
-
 Because of the significant velocity of the scattered particles, the emitted \ga-rays from the particle de-excitation has a Doppler shifted \ga-energy given by 
 \begin{equation}\label{eq:DS}
 	E_\gamma = \frac{E_\gamma^{'}}{\gamma (1 - \beta \cos \theta)}
@@ -1620,35 +1633,21 @@ where ($\theta_p, \phi_p$) and ($\theta_\gamma, \phi_\gamma$) are the detection 
 
 
 
-
-
-
 \subsection{Broken detector segments}\label{sec:BDS}
+The innermost ring of the CD was very damaged by the bombardment of particles hitting it, so it had to be removed from the data set. 
+It was impossible to separate the beam and target peaks as shown by \autoref{fig:BDS_R1}.
+This was unfortunate since the ring 1 has the most statistics. 
+Si detectors don't last forever, it was "old" and supposed to be changed after our experiment. 
 
-CD: ring 1 + Quadrant 4, front ring 16, back strip 1 \newline
+On the back side of the CD, one pixel was acting weird compared to the other back strips in the same quadrant. 
+Secular strip 1 (B1) gated on annular strip 16 in quadrant 4 showed a lot more counts than all of the other strips as shown by \autoref{fig:BDS_B1}. 
+There was also other rings where B1 was a bit off, but not nearly as much as in the named pixel. 
+Maybe B1 should have been excluded from the data set, but it was not in this thesis.
 
-\autoref{fig:BDS_B1} shows one pixel where back strip 1 (B1) is acting weird compared to the other back strips. There are other rings where B1 is a bit off, but not nearly as much as in this pixel. Maybe B1 should be excluded, but in this thesis, it was used. 
+In \autoref{fig:B_dcB_cid}, core ID 20 was removed because it was a broken segment. 
+Core ID 15 shows fewer counts than the neighbors, this is because it was a cross-talk issue involving a dead segment in detector 18A (cluster 5, core 0, segment 1 and 2). 
+It means that some events had to be vetoed to avoid double-peaking, and this reduces the efficiency. 
 
-\bigskip
-
-The innermost ring of the CD was very damaged by the bombardment of particles hitting it, so we had to remove the innermost ring from the data set (making the total centroids to collect to be 1500). 
-In the innermost ring, it was impossible to separate the beam and target peaks.
-This is unfortunate since the innermost ring has the most statistics, but Si detectors don't last forever. 
-It was old and supposed to be changed after our experiment. 
-We also found something weird with quadrant 4 secular strip 1 (Q4\_b1), it shows a lot more counts than all the other back strips. 
-Excluding detector strips is easy, the only thing to do is to set gain and offset to -1 (or gain to 0 and offset to -1). 
-That will make the energy calibration negative, and fall out of the scope. 
-It is the way it is usually done for dead CD strips or dead \ga-detectors. 
-
-\bigskip
-
-HPGe: Core ID 20? Other? Check vetoed segments
-
-\bigskip
-
-The thing with core ID 15 is a cross-talk issue involving a dead segment in detector 18A. It means that some events have to be vetoed to avoid double-peaking and this reduces the efficiency. You can see this list of vetoed detectors in Addback.hh line 193. In my most recent version, I am also vetoing segment number 106 for this reason.
-
-\bigskip
 
 \begin{figure}[ht]
 	\centering
@@ -1656,19 +1655,24 @@ The thing with core ID 15 is a cross-talk issue involving a dead segment in dete
 		\centering
 		% plot_quadrants("setup_Sm.txt", "f", 1, 0, 1, 0, 3500, 8500)
 		\includegraphics[width=\textwidth]{../Plots/plotting/Q1-4_f1.png}
-		\caption{CD front ring 1 (innermost ring).}
+		\caption{CD front ring 1 (innermost ring). It is impossible to separate \Pb\ from \Sm.}
 		\label{fig:BDS_R1}
 	\end{subfigure}
 	\begin{subfigure}{\textwidth}
 		\centering
 		% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
 		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
-		\caption{CD back strip 1 gated on front ring 16 (outermost ring) in quadrant 4.}
+		\caption{CD back strip 1 gated on front ring 16 (outermost ring) in quadrant 4. B1 shows a lot more counts than the other strips arount channel 800.}
 		\label{fig:BDS_B1}
 	\end{subfigure}
-	\caption{LAB vs. CM frame.}
+	\caption{Broken detector segments in the CD.}
 	\label{fig:BDS}
 \end{figure}
+
+
+Excluding detector strips is easy, the only thing to do is to set gain and offset to -1, or gain to 0 and offset to -1. 
+That will make the energy calibration negative, and fall out of the scope. 
+It is the way it is usually done for dead CD strips or dead \ga-detectors. 
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
@@ -1698,10 +1702,35 @@ $\bullet$ discussion: if you get \ga-spectrum for \Sm\ $\rightarrow$ to explain 
 \begin{figure}[ht]
 	\centering
 	\input{Images/Level-scheme-140Sm.tikz}
-	\caption{Level scheme for \Sm. Adapted from Klintefjord.}
+	\caption{Level scheme for \Sm.}
 	\label{fig:levels}
 \end{figure}
 
+\bigskip
+
+\autoref{fig:gg_dcB} ...
+
+\begin{figure}[ht]
+	\centering
+	% GammaPlot.cpp
+	% gg_matrix_dcB("setup_Coulex.txt", "d")
+	\includegraphics[width=\textwidth]{../Plots/plotting/gg_dcB.png}
+	\caption{\ga-\ga\ matrix, Doppler corrected for beam.}
+	\label{fig:gg_dcB}
+\end{figure}
+
+
+\autoref{fig:gam_dcB} ...
+
+\begin{figure}[ht]
+	\centering
+	% GammaPlot.cpp
+	% gg_matrix_dcB("setup_Coulex.txt", "d")
+	\includegraphics[width=\textwidth]{../Plots/plotting/gam_dcB.png}
+	\caption{Total statistics for \ga-rays, 
+      background subtracted, Doppler corrected for scattered projectile.}
+	\label{fig:gam_dcB}
+\end{figure}
 
 
 
