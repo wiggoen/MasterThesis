@@ -795,22 +795,22 @@ where the file of interest is the first one. The \textit{OnBeam.root}-files are 
 \section{Detector calibration}
 
 
-\textcolor{Magenta}{Tilbakemelding: \newline 
-start with explaining the general idea for the calibration: \newline 
-determine centroids of peaks in spectra, compare with simulations (kinematics, energy loss) to get linear coefficients (gain + offset). You could show spectra for 2 rings: one where it is ok to get the 2 centroids for Sm and Pb, and one where it is difficult $\rightarrow$ use additional data (Ni?) \newline
-Sectors: cover wide angular range $\rightarrow$ no sharp peaks  \newline
-Solution: gate on rings to see peaks in sectors and calibrate. \newline
-Idea: \newline
-1. produce spectra \newline
-2. set thresholds: example, explain criteria \newline
-3. find calibration coefficients $\rightarrow$ see above \newline
-explain strategy, show examples... \newline
-4. time calibration 
-} \newline
-
-\textcolor{Magenta}{ 
-if you try to write this step-by-step cook book, you could introduce your scripts wherever is the right place to use them. 
-}\newline
+%\textcolor{Magenta}{Tilbakemelding: \newline 
+%start with explaining the general idea for the calibration: \newline 
+%determine centroids of peaks in spectra, compare with simulations (kinematics, energy loss) to get linear coefficients (gain + offset). You could show spectra for 2 rings: one where it is ok to get the 2 centroids for Sm and Pb, and one where it is difficult $\rightarrow$ use additional data (Ni?) \newline
+%Sectors: cover wide angular range $\rightarrow$ no sharp peaks  \newline
+%Solution: gate on rings to see peaks in sectors and calibrate. \newline
+%Idea: \newline
+%1. produce spectra \newline
+%2. set thresholds: example, explain criteria \newline
+%3. find calibration coefficients $\rightarrow$ see above \newline
+%explain strategy, show examples... \newline
+%4. time calibration 
+%} \newline
+%
+%\textcolor{Magenta}{ 
+%if you try to write this step-by-step cook book, you could introduce your scripts wherever is the right place to use them. 
+%}\newline
 
 The general idea of the calibration is to make sure that the energy spectra from the detectors have the same physical features, that the detectors show the same energy distribution at the same position for the same kind of particles or \ga-rays hitting the same or the angular similarly place in the detectors.
 Calibration of the detectors minimize the measurement uncertainty by making the detectors more accurate and consistent.
@@ -841,27 +841,25 @@ The relationship can be written as
 \end{align}
 where the peak energies are obtained from a simulation of the Coulomb excitation experiment and the channel numbers are obtained from the raw data of the actual experiment.
 
-
 An assumption when calibrating is that the energy on the front side and the back side of the detector is the same. 
 This is not entirely correct, since there will be a small energy loss when the particle goes through the front side, but in most cases this is negligible.
 
 
-\textcolor{red}{Si noe om time calibration (\autoref{ssec:time_cal}) og thresholds (\autoref{ssec:threshold}) her. Henvis til seksjonene.} 
+%\textcolor{red}{Si noe om time calibration (\autoref{ssec:time_cal}) og thresholds (\autoref{ssec:threshold}) her. Henvis til seksjonene.} 
 
-The time calibration will be discussed in \autoref{ssec:time_cal}.
+%The time calibration will be discussed in \autoref{ssec:time_cal}.
 
 
 \subsection{Simulation}
 
 
-\textcolor{Magenta}{Tilbakemelding: \newline 
-what are the ingredients for this simulation? \newline
-simple 2-body kinematics: energy of projectile, scattering angle of projectile $\implies$ energy of scattered projectile, \{angle, energy\} of binary partner (target recoil) \newline
-Stopping powers (which models?) $\rightarrow$ SRIM \newline
-Slowing of the particles in the target and in the dead layer of Si
-}
+%\textcolor{Magenta}{Tilbakemelding: \newline 
+%what are the ingredients for this simulation? \newline
+%simple 2-body kinematics: energy of projectile, scattering angle of projectile $\implies$ energy of scattered projectile, \{angle, energy\} of binary partner (target recoil) \newline
+%Stopping powers (which models?) $\rightarrow$ SRIM \newline
+%Slowing of the particles in the target and in the dead layer of Si
+%}\newline
 
-\bigskip
 
 To calibrate the data, we need to know the expected energy of the centroids of the peaks. 
 This was done by simulating the experiment using the program \texttt{kinsim3} \cite{kinsim} written by Dr. Liam Gaffney. 
@@ -1593,6 +1591,7 @@ These cuts are used in the Doppler correction of the \ga-rays.
 
 
 \subsection{Doppler correction}\label{ssec:Doppler}
+\textcolor{red}{Does this belong in the theory chapter?}\newline
 In order to perform the Doppler correction, the interaction point angles in the Miniball frame of reference has to be known. 
 \autoref{fig:MB-angles} shows a sketch of the Miniball cluster geometry and \autoref{tab:Geo} gives the angles and distance of the different clusters.
 The parameters $\theta$, $\phi$ and $R$ describes the position of the central axis of the detector clusters, while $\alpha$ describes the orientation about the axis of the cluster. All these parameters are needed to calculate the position of the segments or the position of a point determined by the pulse-shape analysis. 
