@@ -284,8 +284,19 @@ ENSAR2: European Nuclear Science and Applications Research - 2 \url{http://www.e
 % ----------------------------------------------------------------------------------------------------------------------
 
 \chapter{Introduction}
+\epigraph{\textit{"If you are not confused by quantum physics then you haven't really understood it."}}{\textit{– Niels Bohr}}
+
 \textcolor{red}{+ Motivation}
 
+\bigskip
+
+\Sm\ ($T_{1/2} = 14.82$ min)
+
+\bigskip
+
+experiment code: IS558, which was titled Shape Transition and Coexistence in Neutron-Deficient Rare Earth Isotopes
+
+\bigskip
 
 The experiment has been done before, with lower energy (and another target), Malin Klintefjord. \url{http://urn.nb.no/URN:NBN:no-56121} \newline
  
@@ -323,36 +334,25 @@ All of my scripts are available in my GitHub repository found at \\ \url{https:/
 % ----------------------------------------------------------------------------------------------------------------------
 
 \chapter{Theory}
-table of nuclides (HFB-style): \url{http://www-phynu.cea.fr/science_en_ligne/carte_potentiels_microscopiques/carte_potentiel_nucleaire_eng.htm}
+\epigraph{\textit{"I think I can safely say that nobody understands quantum mechanics."}}{\textit{– Richard Feynman}}
 
-$\beta-\gamma$ triangle: \url{http://www-phynu.cea.fr/science_en_ligne/carte_potentiels_microscopiques/noyaux/zz62/zz62nn78all_eng.html}
+\textcolor{Magenta}{Tilbakemelding: \newline 
+shape coexistence often found near closed shells. Example: neutron deficient Hg nuclei (Z = 80 just below 82 shell closure, N $\sim$ 104: neutron mid-shell). \newline
+\Sm: N = 78, just below N = 82 shell closure, Z = 62: mid-shell. \newline
+Typical indication for shape coexistence: $0^+$ states (often at low energy). \newline 
+\Sm\ was thought to have a low-lying $0^+$ state [Firestone], but this state was shown to be $2^+$ [Suoranczyk?]. Indication for $0^+$ states around 1.5 MeV. \newline 
+One of the objectives of this experiment: clarify the nature/structure of these $0^+$ states. \newline 
+Shape transition: Sm-144 (Z = 62, N = 82) spherical. Adding neutrons: transition of N = 90 from spherical to prolate deformed $\rightarrow$ shape-phase transition, so called X(5) critical-point symmetry. \newline
+Taking out neutrons: very neutron-deficient Sm nuclei are also prolate deformed (e.g. Sm-132), but for \Sm: indication for triaxiality/\ga-softness [Klintefjord] $\rightarrow$ another form of shape-phase transition/critical point behavior $\implies$ E(5) [Iachello?]. \Sm\ could be one of the best examples for E(5) symmetry $\implies$ need transition probabilities from higher-lying states to confirm.} \newline
 
-\begin{table}[ht] 
-    \centering 
-    \caption{Values of the fundamental physical constants from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
-	\input{Table-data/Units.tex}
-	\label{tab:units}
-\end{table}
-
-\bigskip
-
-Isotope notation:
-\begin{align*}
-	^A_Z\text{X}_N^Q
-\end{align*}
-where $X$ is the chemical symbol of the element, $A$ is the nucleon number (mass number, $A = Z + N$), $Z$ is the atomic number (proton number), $N$ is the neutron number and $Q$ is the charge ($Q = Z$ protons $- ~i$ electrons). 
-
-\bigskip
-
-Why CoulEx? \url{https://iks32.fys.kuleuven.be/wiki/brix/images/5/58/10_20151123_Illana_BriX15_web.pdf} \newline
-
-
-Magic numbers: 2, 8, 20, 28, 50, 82, 126 \newline
-Maria Goeppert Mayer “discovered” them in $\sim$1945. Observation of periodicity in binding energy $\implies$ shell model for nuclei. \newline
-Eugene Wigner believed in liquid-drop model, did not trust new theory $\implies$ called these numbers “magic”. \newline
-Source: \url{https://ocw.mit.edu/courses/nuclear-engineering/22-02-introduction-to-applied-nuclear-physics-spring-2012/lecture-notes/MIT22_02S12_lec01.pdf}
-
-\bigskip
+\textcolor{red}{Some suggestions:} \newline
+$\bullet$ general things about nuclei shapes \newline
+- multipole expansion, shape parameters (5 parameters, 3 for space, 2 for deformation $\beta$, \ga), ... \newline
+- quadrupole moments: intrinsic (body-fixed frame), spectroscopic (lab frame)  \newline
+- transition probabilities, el.magn. matrix elements  \newline
+- rotations and vibrations $\rightarrow$ energy spectra, B(E2) values  \newline
+- Casten triangle (spherical vibrator, deformed rotor, \ga-soft + X(5), E(5)), expected spectrum for E(5) nuclei \newline
+$\bullet$ the basics of Coulomb excitation (COULEX)
 
 Quadrupole deformation of nuclei. \newline
 
@@ -373,28 +373,65 @@ COULEX: \newline
 
 \bigskip
 
-\textcolor{Magenta}{Tilbakemelding: \newline 
-shape coexistence often found near closed shells. Example: neutron deficient Hg nuclei (Z = 80 just below 82 shell closure, N $\sim$ 104: neutron mid-shell). \newline
-\Sm: N = 78, just below N = 82 shell closure, Z = 62: mid-shell. \newline
-Typical indication for shape coexistence: $0^+$ states (often at low energy). \newline 
-\Sm\ was thought to have a low-lying $0^+$ state [Firestone], but this state was shown to be $2^+$ [Suoranczyk?]. Indication for $0^+$ states around 1.5 MeV. \newline 
-One of the objectives of this experiment: clarify the nature/structure of these $0^+$ states. \newline 
-Shape transition: Sm-144 (Z = 62, N = 82) spherical. Adding neutrons: transition of N = 90 from spherical to prolate deformed $\rightarrow$ shape-phase transition, so called X(5) critical-point symmetry. \newline
-Taking out neutrons: very neutron-deficient Sm nuclei are also prolate deformed (e.g. Sm-132), but for \Sm: indication for triaxiality/\ga-softness [Klintefjord] $\rightarrow$ another form of shape-phase transition/critical point behavior $\implies$ E(5) [Iachello?]. \Sm\ could be one of the best examples for E(5) symmetry $\implies$ need transition probabilities from higher-lying states to confirm.} \newline
+Why CoulEx? \url{https://iks32.fys.kuleuven.be/wiki/brix/images/5/58/10_20151123_Illana_BriX15_web.pdf} \newline
+
+\bigskip
+
+\subsection*{Magic numbers}
+The magic numbers in the nuclear shell model is 
+\begin{align}
+	2, ~8, ~20, ~28, ~50, ~82, ~126
+\end{align}
+Maria Goeppert Mayer "discovered" them around 1945. She gave W. M. Elsasser credits for being the first to remark that such numbers exists. [cite: The Shell Model, M. G. Mayer]
 
 
-\textcolor{red}{Some suggestions:} \newline
-$\bullet$ general things about nuclei shapes \newline
-- multipole expansion, shape parameters (5 parameters, 3 for space, 2 for deformation $\beta$, \ga), ... \newline
-- quadrupole moments: intrinsic (body-fixed frame), spectroscopic (lab frame)  \newline
-- transition probabilities, el.magn. matrix elements  \newline
-- rotations and vibrations $\rightarrow$ energy spectra, B(E2) values  \newline
-- Casten triangle (spherical vibrator, deformed rotor, \ga-soft + X(5), E(5)), expected spectrum for E(5) nuclei \newline
-
-$\bullet$ the basics of Coulomb excitation (COULEX)
+Magic numbers: 2, 8, 20, 28, 50, 82, 126 \newline
+Maria Goeppert Mayer “discovered” them in $\sim$1945. Observation of periodicity in binding energy $\implies$ shell model for nuclei. \newline
+Eugene Wigner believed in liquid-drop model, did not trust new theory $\implies$ called these numbers “magic”. \newline
+Source: \url{https://ocw.mit.edu/courses/nuclear-engineering/22-02-introduction-to-applied-nuclear-physics-spring-2012/lecture-notes/MIT22_02S12_lec01.pdf}
 
 
 \bigskip
+\textcolor{red}{Intro?}
+
+Nuclear physics is the study of atomic nuclei. 
+
+In the atomic shell model, the shells are filled with electrons in order of increasing energy. 
+This model can explain the complicated details of atomic structure.  
+In nuclear physics, a similar approach was used to explain the nuclear structure. \cite{Krane}
+
+
+The Pauli exclusion principle declares that "two identical fermions cannot occupy the same state". \cite{Griffiths}
+
+Isotope notation:
+\begin{align*}
+	^A_Z\text{X}_N^Q
+\end{align*}
+where $X$ is the chemical symbol of the element, $A$ is the nucleon number (mass number, $A = Z + N$), $Z$ is the atomic number (proton number), $N$ is the neutron number and $Q$ is the charge ($Q = Z$ protons $- ~i$ electrons). 
+
+
+\bigskip
+
+\section{Coulomb excitation}
+
+
+
+\bigskip
+
+table of nuclides (HFB-style): \url{http://www-phynu.cea.fr/science_en_ligne/carte_potentiels_microscopiques/carte_potentiel_nucleaire_eng.htm}
+
+$\beta-\gamma$ triangle: \url{http://www-phynu.cea.fr/science_en_ligne/carte_potentiels_microscopiques/noyaux/zz62/zz62nn78all_eng.html}
+
+\begin{table}[ht] 
+    \centering 
+    \caption{Values of the fundamental physical constants from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
+	\input{Table-data/Units.tex}
+	\label{tab:units}
+\end{table}
+
+
+\bigskip
+
 
 LISE++ \cite{LISE}
 
@@ -493,35 +530,117 @@ Multi-step Coulomb excitation with radioactive beam, isotope separation on-line 
 % ----------------------------------------------------------------------------------------------------------------------
 
 \chapter{Coulomb excitation experiment}
+\epigraph{\textit{"If I could remember the names of all those particles, I'd be a botanist."}}{\textit{– Enrico Fermi}}
+
 \section{ISOLDE at CERN}
-The acronym ISOLDE stands for Isotope Separator On Line DEvice. ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland.  \autoref{fig:accelerators} shows the CERN accelerator complex, where ISOLDE is located beside the Proton Synchrotron Booster (PSB). The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted. The High Intensity and Energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. 
+ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland. \autoref{fig:accelerators} shows the CERN accelerator complex, where ISOLDE is located beside the Proton Synchrotron Booster (PSB), in the lower right marked by a green box. The acronym ISOLDE stands for Isotope Separator On Line DEvice. The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted. The High Intensity and Energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. 
 
-Most of the around 4000 characterized nuclides are radioactive  \cite{CoN}. In many cases it is not possible to make radioactive nuclei targets and perform an experiment because of the short half-life of the nucleus of interest. To study these radioactive nuclei, RIBs are used on stable targets. One way of obtaining a RIB is to use the Isotope Separator On Line (ISOL) method. In the ISOL method, two accelerator systems is needed. The first accelerator is used to produce the radioactive atoms at rest, and the second accelerator is used to accelerate these atoms \cite{ISOL}. 
+In general, it is very challenging to study radioactive, short lived nuclei. 
+The newest edition of the Karlsruhe Nuclide Chart have nuclear data of over 4000 nuclides, and most of these are radioactive \cite{CoN}. 
+In many cases it is not possible to make radioactive nuclei targets and perform an experiment because of the short half-life of the nucleus of interest. 
+To study these radioactive nuclei, RIBs are used on stable targets. 
+One way of obtaining a RIB is to use the Isotope Separator On Line (ISOL) method. 
+The three main reactions of producing radioactive atoms with the ISOL method are spallation, fragmentation and fission. 
+Nuclear spallation is the process in which light fragments of the target are ejected due to the high-energy impact of the incoming beam. 
+Fragmentation is the splitting of a compound into smaller particles or unstable ions. 
+In fission an atomic nucleus is split into two or more nuclei.
+In the ISOL method, two accelerator systems are needed. 
+The first accelerator is used to produce the radioactive atoms in a primary target, and the second accelerator is used to accelerate these atoms into a secondary target \cite{ISOLDE-web, Lindroos, ISOL}. 
+In RIB facilities the intensity is generally a bit lower compared to stable beam facilities, which is a big challenge. 
+ISOL facilities operate around the Coulomb barrier in terms of energy, making them suitable for Coulomb excitation and particle transfer reactions. 
 
-In RIB facilities the energy and intensity is generally lower compared to stable beam facilities. This makes it suitable for Coulomb excitation and particle transfer reactions. The beam is the isotope of interest and since it is traveling with a significant velocity ($v/c$ values of a few percent), the emitted \ga-rays from de-excitation may have large Doppler shifts. Since the detectors have a finite solid angle, it can lead to a sizable Doppler broadening. When the detection system has high granularity, the Doppler shifts and broadening can be corrected for. If the angle between the recoiling nucleus and the \ga-ray can be determined accurately, Doppler correction can be applied \cite{MB-spect}.
+The beam at the RIB facilities consists of, as the name implies, radioactive isotopes. 
+In contrast to conventional facilities where the target is made out of the isotope of interest, the investigated isotope is the beam accelerated into a target.
+The velocity of the beam is significant with $v/c$ values of a few percent. 
+In the electromagnetic (EM) interaction with the target, the beam gets excited into a higher energy state.
+When the beam isotopes de-excite, they emit \ga-rays which can be observed to have large Doppler shifts.
+A sizable Doppler broadening can be observed in the \ga-rays due to the finite solid angle of the detectors. 
+When the detection system has high granularity, the Doppler shifts and broadening can be corrected for. 
+If the angle between the recoiling nucleus and the \ga-ray can be determined accurately, Doppler correction can be applied \cite{MB-spect}.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{Images/CERN-accelerators.png}
-	\caption{The CERN accelerator complex, adapted from \cite{CERN-AC}. ISOLDE, marked in the green box, gets accelerated protons from LINAC 2 and the PS Booster.}
+	\caption{The CERN accelerator complex, adapted from \cite{CERN-AC}. ISOLDE, marked with a green box, receives accelerated protons from LINAC 2 and the PS Booster.}
 	\label{fig:accelerators}
 \end{figure}
 
 
 \section{Experimental setup}
 \subsection{Beam production}
-\autoref{fig:Coulex} shows a sketch of the experimental setup used in the \Sm\ Coulomb excitation experiment. A continuous flow of accelerated proton beam bunches from the PSB comes into the ISOLDE facility and collide with a thick production target. The proton beam has an energy of 1.4 GeV and an intensity up to 2 $\mu$A. Two proton beam bunches is separated by 1.2 s \cite{TIF, TIF2013}. ISOLDE typically takes 50\% \cite{MB-spect} of all proton bunches form the PSB, the rest goes to the Large Hadron Collider (LHC) and other experiments shown in \autoref{fig:accelerators}. In the reaction between the proton beam and the production target, radioactive nuclides are produced in spallation, fission or fragmentation reactions (basically smashing the target into pieces) \cite{ISOLDE-web}. The production target is chosen from a stable region heavier than the nucleus of interest. In our experiment, a production target of tantalum (Ta, $Z = 73$) was used, producing the elements in the chart of nuclides up to Ta. A large amount of different isotopes is produced in this way, and the challenge is to extract the nucleus of interest. To obtain the nucleus of interest, we first have to use a method of selecting the atom of interest, and then the nucleus of interest. 
+\autoref{fig:Coulex} shows a sketch of the experimental setup of the \Sm\ Coulomb excitation experiment. 
+Accelerated proton beam bunches from the PSB comes into the ISOLDE facility and collide with a thick production target, the primary target. 
+Two proton beam bunches are separated by 1.2 s.
+The proton beam has an energy of 1.4 GeV and an intensity up to 2 $\mu$A \cite{TIF, TIF2013}. 
+ISOLDE typically takes 50\% \cite{MB-spect} of all proton bunches form the PSB, the rest goes to the Large Hadron Collider (LHC) and the other experiments shown in \autoref{fig:accelerators}. 
+The target material is chosen depending on the RIB of interest. 
+If the requested RIB is neutron-rich, then fission is the production process and a primary target of uranium ($^{238}$U) is chosen. 
+In this experiment, a neutron-deficient RIB was requested, and a primary target of tantalum (Ta, $Z = 73$) was chosen.
+The production target is selected from a region in the chart of nuclides containing stable nuclei that are heavier than the nucleus of interest.
+When the proton beam collides with the primary target, the target is smashed into pieces and radioactive nuclides in the chart of nuclides up to Ta are produced.
+In this way, a large range of isotopes are produced. 
+The remaining challenge is to extract the isotope of interest in order to create a RIB. 
+Before the isotope of interest can be obtained, a method of selecting the chemical element of interest has to be used.
 
-To get the atomic element of interest, one idea is to use a method of selective ionization and then a high voltage electrostatic field to extract the ions. Electronic transitions are characteristic for each chemical element. A laser with precisely tuned wavelength can obtain the photon energy that matches the electronic transition energies in the atom \cite{RILIS-web, RILIS2013}. Thus we can use one laser to excite an electron to a specific excited electron-state in the atom, a second laser to excite electrons further to another excited electron-sate and a third laser to kick out the electron. In this way we only ionize the atomic element of interest. There could be contaminants from surface ionization (atoms that collide with the walls of the ion source), but this is detectable. Using periods of laser on and off, we can detect the resulting contaminants in the beam. The Resonance Ionization Laser Ion Source (RILIS) is based on the method of step-wise (2-3 step) excitation and ionization of the atom. It is an element-selective process which is used to produce ion beams of the correct element \cite{RILIS}. In this experiment RILIS was used to select samarium (Sm) with atomic number $Z = 62$. 
+\begin{figure}[ht]
+	\centering
+	\input{Images/Coulex-setup.tikz}
+	\caption{The Coulomb excitation setup at ISOLDE. Adapted from \cite{Klintefjord}. See text for information.}
+	\label{fig:Coulex}
+\end{figure}
 
-At this point we have a continuous beam of Sm ions of 60 keV energy (the target is on a 60 kV high voltage platform) \cite{ISOLDE-web, TIF}. The next step in the process is to have mass separation, and we need to give the continuous beam a fine structure, because the post-accelerator cannot accept a continuous beam coming in, it accelerates bunches. The beam can collide in one of two target stations, either the General Purpose Separator (GPS) or the High Resolution Separator (HRS). The GPS has one bending magnet and can deliver beams of different masses ($\pm 13 \%$ of the central beam line mass) simultaneously into three beam lines, while the HRS has two bending magnets with high mass resolving power which delivers the beam into the main (central) beam line \cite{GPS, TIF}. In this experiment the GPS was used to select the isotope of Sm with mass number $A = 140$. 
+To get the atomic element of interest, one approach is to use a method of selective ionization and then a high voltage electrostatic field to extract the ions. 
+Electronic transitions are characteristic for each chemical element. 
+A laser with precisely tuned wavelength can obtain the photon energy that matches the electronic transition energies in the atom \cite{RILIS-web, RILIS2013}. 
+Thus we can use one laser to excite an electron to a specific excited electron-state in the atom, a second laser to excite electrons further to another excited electron-sate and a third laser to remove the electron. 
+In this way we only ionize the atomic element of interest. 
 
-Now we have a continuous beam of \Sm. The mass separator also gets rid of contaminants that come out of RILIS but have different mass. There could still be isobaric contaminants from surface ionization but luckily there is very little surface ionization for the neighboring elements of Sm. In the Radioactive beam EXperiment TRAP (REXTRAP) we collect the \Sm\ ions, so that we can release them in bunches that are matched to the fine structure of the LINear ACcelerator (LINAC). REXTRAP is a penning trap which has the tasks of accumulation, bunching and cooling of the RIB \cite{HIE-ISOLDE, REXTRAP1, REXTRAP2}. The ions are released in bunches and transfered to the REX Electron Beam Ion Source (REXEBIS).
+A common challenge is contaminants from surface ionization, that is atoms that collide with the walls of the ion source. 
+This can be significant, even dominant in some cases, but in this experiment it was not a problem. 
+Sm has the lowest ionization potential of the rare earth elements. 
+In any case it needs to be monitored using laser on/off measurements. 
+By periodically switching the laser on and off, the resulting contaminants in the beam can be detected.
 
-REXEBIS is a charge breeder where the RIB is bred to a high charge state \cite{REXEBIS}, with a mass-to-charge ($A/q$) ratio typically between 2.5 and 4.5 \cite{Post-acc}. REXEBIS releases the beam with a certain energy through a mass separator and into the HIE-ISOLDE LINAC \cite{HIE-ISOLDE}. To accelerate the charged ions (the beam) to high energy, we need highly charged ions. The EBIS blasts off more electrons from Sm, which leaves the nucleus in a high charge state, going from \Sm$^{+1}$ to \Sm$^{+34}$ ($A/q \approx 4.1$). The longer the ions stay in REXEBIS, the higher the charge state becomes. We get a distribution of charge states, and we loose those that have the wrong charge state because the LINAC can only accept one charge state \cite{REX-web, HIE-web, EBIS2002, EBIS2010}.
+The Resonance Ionization Laser Ion Source (RILIS) is based on the method of step-wise (2-3 step) excitation and ionization of the atom. 
+It is an element-selective process which is used to produce ion beams of the desired element \cite{RILIS}. 
+In this experiment RILIS was used to select samarium (Sm) with atomic number $Z = 62$. 
+After RILIS has selected Sm, we have a continuous beam of Sm ions of 60 keV energy. The target is on a 60 kV high voltage platform \cite{ISOLDE-web, TIF}. 
 
-The HIE-ISOLDE LINAC accelerates the beam of \Sm\ ($T_{1/2} = 14.82$ min) \textcolor{red}{with excellent purity} to 4.65 MeV/u (total energy 651 MeV) through the beam line, and magnets bend the beam into the Miniball spectrometer, where the particles and \ga-rays are detected. This experiment was one of the first Miniball experiments with the new upgraded superconducting accelerator. 
+The next step in the process is to perform a mass separation, and then to give the continuous beam a time structure. 
+The post-accelerator cannot accept an incoming continuous beam, it accelerates bunches. 
+The beam may hit one of two target stations; either the General Purpose Separator (GPS) or the High Resolution Separator (HRS). 
+The GPS has one bending magnet and can deliver beams of different masses simultaneously into three beam lines, while the HRS has two bending magnets with high mass resolving power which delivers the beam into the main beam line. 
+Both separators feed the beam lines in the experimental hall. 
+The two extra beam lines that the GPS can feed, can have an isotope mass difference of $\pm 13 \%$ compared to the main beam line isotope mass \cite{GPS, TIF}.
+Even though the HRS have a high mass resolving power, $M/\Delta M > 5000$, it is not sufficient resolving power to separate the isobars, which is why RILIS had to be used.
+In this experiment the GPS was used to select the isotope of Sm with mass number $A = 140$. 
+The mass separator also excludes the contaminants that exits RILIS with a different mass than $A = 140$.
+In principle, isobaric contaminants from surface ionization can still be present in the beam.
+Luckily, the neighboring elements of Sm produces very little surface ionization.
 
+Following the GPS, a continuous beam of \Sm is obtained. 
+In the Radioactive beam EXperiment TRAP (REXTRAP), the \Sm\ ions are collected in order to release them in bunches that are matched to the time structure of the LINear ACcelerator (LINAC). 
+REXTRAP is a penning trap which has the tasks of accumulation, bunching and cooling of the RIB \cite{HIE-ISOLDE, REXTRAP1, REXTRAP2}. 
+The ions are released in bunches and transfered to the REX Electron Beam Ion Source (REXEBIS).
+
+REXEBIS is a charge breeder where the RIB obtains a high charge state \cite{REXEBIS}, with a mass-to-charge ($A/q$) ratio typically between 2.5 and 4.5 \cite{Post-acc}.
+In REXEBIS more electrons in the RIB are removed through interaction with a high-intensity electron beam. 
+The longer the ions stay in REXEBIS, the higher the charge state becomes. 
+The EBIS blasts off more electrons from Sm, which leaves the nucleus in a high charge state, going from \Sm$^{+1}$ to \Sm$^{+34}$ with $A/q \approx 4.1$. 
+To accelerate the charged ions, that is the beam, to high energy, the beam must consist of highly charged ions. 
+Inside REXEBIS we get a distribution of charge states.
+The LINAC can only accept one charge state, so the parts of the RIB that have the wrong charge state is lost \cite{REX-web, HIE-web, EBIS2002, EBIS2010}.
+REXEBIS releases the beam with a certain energy through another mass separator and into the HIE-ISOLDE LINAC \cite{HIE-ISOLDE}. 
+
+The HIE-ISOLDE LINAC accelerates the beam of \Sm\ with excellent purity to 4.65 MeV/u (total energy 651 MeV) through the beam line. 
+Magnets bend the beam into the Miniball spectrometer, where the beam hits a secondary target of \Pb. 
+In the EM interaction between the beam and the secondary target, the beam particles gets excited. 
+A lot of \Sm particles from the beam and \Pb particles from the secondary target fly onwards to the particle detector. 
+On their way to the particle detector, the beam particles de-excite and emits \ga-rays which is detected by the \ga-detectors. 
+This experiment was one of the first Miniball experiments with the new upgraded superconducting accelerator, the HIE-ISOLDE LINAC. 
+
+
+\subsection{Sources of beam contaminants}
 To have a successful experiment, the purity of the beam is of great importance. Contaminants in the beam can come from different sources  \cite{MB-spect}. From the primary target we can have:
 \begin{itemize}
 	\item isobaric contaminants which are inseparable by the mass separator because of the same mass number
@@ -535,22 +654,21 @@ and from stable isotopes the contaminants can come from:
 \end{itemize}
 
 
-\begin{figure}[ht]
-	\centering
-	\input{Images/Coulex-setup.tikz}
-	\caption{The Coulomb excitation setup at ISOLDE (experiment code: IS558, which was titled Shape Transition and Coexistence in Neutron-Deficient Rare Earth Isotopes). Adapted from \cite{Klintefjord}.}
-	\label{fig:Coulex}
-\end{figure}
+\subsection{The secondary target}
+For the current experiment, a target consisting of \Pb\ with a thickness of 1.4 mg/cm$^2$ was chosen. 
+It is quite difficult to excite $^{208}_{~82}$Pb$_{126}$ as it is a doubly magic nuclei, and it is therefore well suited for the experiment. 
+In that way, transitions from the target will not complicate the spectrum.
+With a target consisting of the highest possible $Z$ of a stable isotope ($Z$ = 82), the excitation probability of \Sm is maximized. 
 
+\Pb\ has no quadrupole deformation.
+The first excited state is of octupole vibration with an energy of 2615 keV, a half-life of $T_{1/2} = 16.7$ ps and a spin and parity of $J^\pi = 3^-$.
+There is a probability of seeing a little bit of the first excited state in the spectrum. 
+This happens if the EM interaction is almost head on, and the target hits one of the inner rings.
 
-\subsection{Target}
-As a target, \Pb\ with a thickness of 1.4 mg/cm$^2$ was chosen. The reason for the choice is that it is very hard to excite \Pb\ since it's doubly magic. We wanted the highest possible $Z ~(= 82)$ of a stable isotope to get maximum excitation probability. 
+Another advantage of this experiment was that there was no need for \ga\ normalization. 
+From the previous experiment \cite{Klintefjord2016} and from lifetime measurements \cite{BelloGarrote2015}, the $B(E2, 0_1^+ \rightarrow 2_1^+$) value of \Sm\ was \textcolor{red}{?extracted / obtained / calculated?}. 
 
-Since we don't need normalization (because we have the $B(E2, 0_1^+ \rightarrow 2_1^+$) from the previous experiment \cite{Klintefjord2016} and from lifetime measurement \cite{BelloGarrote2015}), we have chosen a target that is very hard to excite, so transitions from the target will not complicate the spectrum.
-
-\Pb\ has no quadrupole deformation, the first excited state (2615 keV, $T_{1/2} = 16.7$ ps) is of octupole vibration ($J^\pi = 3^-$). If we are \textcolor{red}{lucky/unlucky?} we might see a little bit of this first excited state in the spectrum. This happens if the "collision" is almost head on, and the target hits one of the inner rings.
-
-Unfortunately there was a finger print on the target, so even before beginning the experiment, we have some contamination (probably carbon).
+Unfortunately there was a finger print on the target, so even before beginning the experiment, there was some contamination (probably carbon).
 
 
 \subsection{Miniball spectrometer}
@@ -559,7 +677,7 @@ Unfortunately there was a finger print on the target, so even before beginning t
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\linewidth]{Images/IMG3849.JPG}
-	\caption{Overview picture of the Miniball spectrometer. \\ Photo by: Trond Wiggo Johansen.}
+	\caption{An overview picture of the Miniball spectrometer. The target chamber is in the middle of the picture, surrounded by the \ga-detector array. Photo by: Trond Wiggo Johansen.}
 	\label{fig:MBSpect}
 \end{figure}
 
@@ -569,15 +687,40 @@ The target chamber is a hollow sphere made out of a machined out, single piece o
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\linewidth]{Images/Target-wheel.png}
-	\caption{The target wheel can hold up to six different targets. Position 6 has the target \Pb\ with thickness 1.4 mg/cm$^2$. \\ Photo by: Dr. Liam Gaffney, date: 07.08.2017.}
+	\includegraphics[width=0.8\linewidth]{Images/Target-wheel.png}
+	\caption{The target wheel can hold up to six different targets. Position 1 and 2 are holes with a diameter of 3 and 12 mm respectively. They are used for beam tuning. Position 3 and 4 has \Pb\ targets with thickness 2.5 and 0.7 mg/cm$^2$ respectively. Position 5 had 13 layers of $^{27}$Al foil. Position 6 has the target \Pb\ with thickness 1.4 mg/cm$^2$, which was the secondary target used in the experiment. Photo by: Dr. Liam Gaffney, date: 07.08.2017.}
 	\label{fig:TWheel}
 \end{figure}
 
 
 \subsubsection{Particle detector, DSSSD (CD)}
-To detect the scattered beam and target nuclei, a segmented Double Sided Silicon Strip Detector (DSSSD) composed of four quadrants was used. The DSSSD looks very like an audio Compact Disc (CD), and hence it is called the CD. In the front of the CD, one quadrant consists of 16 annular strips (rings) with a pitch of 2 mm, while the back consists of 24 sector (radial) strips with a pitch of 3.5$^\circ$. The innermost strip has an inner radius of the active area of 9 mm, while the outermost strip has an outer radius of the active area of 40.9 mm. There are in total 160 discrete detector elements for all four quadrants (64 in front, 96 in back). Each quadrant is connected to its own Analog to Digital Converter (ADC). Because of lack of available channels in the ADC, the sector strips in the back are paired up, so that it is effectively 12 sector strips in the back side. The CD detector has a total area of 5000 mm$^2$, where the active area is approximately 93$\%$. The silicon wafer thickness is between 50 $\mu$m and 1000 $\mu$m with a dead layer of 0.3 to 0.8 $\mu$m of aluminium. For simplicity the dead layer thickness is usually assumed to be 0.7 $\mu$m \cite{NWarr-CD, MB-spect}. \autoref{tab:CD_spec} shows some of the specifications of the CD and \autoref{fig:CD-FB} shows a sketch of the front and back side. 
-The distance\footnote{The distance was measured using a $\alpha$-source ($^{226}$Ra). The source has a thickness of 1.23 mm, which needs to be factored in so that the target to CD distance is the CD to source distance plus the source thickness, that is 25.78(12) mm + 1.23 mm = 27.01 mm. This source data was reanalyzed since the original log entry, giving a 0.03 mm difference. From private communications at ISOLDE in August 2018, the distance from the target to the CD was determined to be 26.98 mm with a $\sim$1 mm uncertainty."} from the target to the CD was 26.98 mm ($\pm$ 1 mm). In the laboratory (LAB) reference frame the CD has a angular coverage between 18.4$^\circ$ and 56.6$^\circ$. An extensive description of the CD can be found in \cite{CD-DSSSD}.
+To detect the scattered beam and target nuclei, a segmented Double Sided Silicon Strip Detector (DSSSD) composed of four quadrants was used. 
+\autoref{fig:CD-FB} shows a sketch of the front and back side. 
+The DSSSD looks very like an audio Compact Disc (CD), and hence it is called the CD. 
+In the front of the CD, one quadrant consists of 16 annular strips (rings) with a pitch of 2 mm, while the back consists of 24 sector (radial) strips with a pitch of 3.5$^\circ$. 
+The innermost strip has an inner radius of the active area of 9 mm, while the outermost strip has an outer radius of the active area of 40.9 mm. 
+The active area is the area in which a particle can be detected, the detectable surface. 
+In total, there are 160 discrete detector elements for all four quadrants (64 in front, 96 in back). 
+Each quadrant is connected to its own Analog to Digital Converter (ADC). 
+As a result of too few available channels in the ADC, the sector strips in the back are paired up.
+In consequence, it is effectively 12 strips at the back side of the CD. 
+The whole CD detector has a total area of 5000 mm$^2$, where approximately 93$\%$ of the detector consists of a detectable surface. 
+In Coulomb excitation experiments the silicon wafer thickness is usually 500 $\mu$m.
+The silicon wafer is the thin slice of semiconductor which can detect the incoming particles. 
+For simplicity the dead layer thickness is usually assumed to be 0.7 $\mu$m \cite{NWarr-CD, MB-spect}. 
+\autoref{tab:CD_spec} shows some of the specifications of the CD.  
+The distance from the target to the CD was 27 $\pm$ 1 mm. 
+In the laboratory (LAB) reference frame the CD has a angular coverage between 18.4$^\circ$ and 56.6$^\circ$. An extensive description of the CD can be found in \cite{CD-DSSSD}.
+
+%\footnote{The distance was measured using a $\alpha$-source ($^{226}$Ra). The source has a thickness of 1.23 mm, which has to be accounted for. The target to CD distance is therefore the CD to source distance plus the source thickness, that is 25.78(12) mm + 1.23 mm = 27.01 mm. This source data was reanalyzed, giving a 0.03 mm discrepancy form the original log entry. In private communications at ISOLDE in August 2018, the distance from the target to the CD was determined to be 26.98 mm with a $\sim$1 mm uncertainty.}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\linewidth]{Images/CD.png}
+	\caption{CD sketch, adapted from \cite{NWarr-CD}. On the left is the front side of the CD. The numbering of the strips goes from strip 0 (outermost) to strip 15 (innermost). Quadrants are numbered in clockwise direction with respect to the beam direction, so that left is 1, up is 2, right is 3 and down is 4. On the right side is the back side of the CD. The numbering of the strips goes from strip 0 to strip 23 in counter-clockwise direction viewed from this side. Quadrants are numbered in clockwise direction with respect to the beam direction. From this perspective right is 1, up is 2, left is 3 and down is 4.}
+	\label{fig:CD-FB}
+\end{figure}
+
 
 \begin{table}[ht] 
     \centering 
@@ -587,25 +730,14 @@ The distance\footnote{The distance was measured using a $\alpha$-source ($^{226}
 \end{table}
 
 
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\input{Images/CD-front.tikz}
-		\caption{CD front: The numbering of the strips goes from strip 0 (outermost) to strip 15 (innermost). Quadrants are numbered in clockwise direction with respect to the beam direction, so that left is 1, up is 2, right is 3 and down is 4.}
-		\label{fig:CD-F}
-	\end{subfigure}
-	\begin{subfigure}{\textwidth}
-		\input{Images/CD-back.tikz}
-		\caption{CD back: The numbering of the strips goes from strip 0 to strip 23 in counter-clockwise direction viewed from this side. Quadrants are numbered in clockwise direction with respect to the beam direction. From this perspective right is 1, up is 2, left is 3 and down is 4.}
-		\label{fig:CD-B}
-	\end{subfigure}
-	\caption{CD sketch, adapted from \cite{NWarr-CD}.}
-	\label{fig:CD-FB}
-\end{figure}
-
-
-\subsubsection{\texorpdfstring{$\gamma$}{Gamma} detectors, high-purity germanium (HPGe)}
-In Coulomb excitation experiments the target chamber is surrounded by the \ga\ detectors as shown in \autoref{fig:MBSpectCU}. The \ga-ray spectrometer consists of a total of 24 six-fold segmented High-Purity Germanium (HPGe) crystals, which are divided into 8 clusters of 3 crystals each. Each crystal is encapsulated and segmented into 6 parts, making a total of 144 segments. For maximum efficiency, the detectors are placed in a compact geometry around the target chamber \cite{NWarr-HPGe, MB-spect}. The detector-array can cover a solid angle of about 60\% of 4$\pi$, when the optimum distance between the target chamber and the HPGe-clusters is achieved. The average energy resolution at $E_\gamma = 1.3$ MeV is 2.3 keV \cite{Butler2017}. From each detector we get seven signals in total for each event, one from the core and six from each segment. \textcolor{red}{This requires 168 channels for data aquisition.} The shapes of these signals is analyzed to get information of the position. Because of the segmentation of the detector, a better Doppler correction can be performed compared to using the whole crystal. During operation the HPGe-clusters needs to be cooled down by liquid nitrogen and there is an automated filling system in place for this \cite{NWarr-HPGe}. 
+\subsubsection{The high-purity germanium (HPGe) \texorpdfstring{$\gamma$}{Gamma} detectors}
+In Coulomb excitation experiments, the target chamber is surrounded by the \ga\ detectors as displayed in \autoref{fig:MBSpectCU}. The \ga-ray spectrometer consists of a total of 24 six-fold segmented High-Purity Germanium (HPGe) crystals, which are divided into 8 clusters of 3 crystals each. Each crystal is encapsulated and segmented into 6 parts, making a total of 144 segments. For maximum efficiency, the detectors are placed in a compact geometry around the target chamber \cite{NWarr-HPGe, MB-spect}. The detector-array can cover a solid angle of about 60\% of 4$\pi$, when the optimum distance between the target chamber and the HPGe-clusters is achieved. The average energy resolution at $E_\gamma = 1.3$ MeV is 2.3 keV \cite{Butler2017}. 
+\autoref{fig:HPGe} shows a sketch of one triple-cluster of the HPGe \ga-detector array.
+From each detector we get seven signals in total for each event, one from the core and six from each segment. 
+This requires 168 channels for data acquisition. 
+The shapes of these signals are analyzed to provide information about the energy and time of the \ga-ray, in addition to the detection position within the detector cluster.
+Compared to using the whole crystal, a better Doppler correction can be performed when the \ga-detectors are segmented. 
+During operation the HPGe-clusters needs to be cooled down by liquid nitrogen which is provided by the automated filling system \cite{NWarr-HPGe}. 
 
 \begin{figure}[ht]
 	\centering
@@ -615,22 +747,65 @@ In Coulomb excitation experiments the target chamber is surrounded by the \ga\ d
 \end{figure}
 
 
-\section{Data acquisition system}
-Signals from the CD and the HPGe clusters are read out by the ADC and Digital Gamma Finder (DGF) modules and sent to a Personal Computer (PC) in the Data AcQuisition (DAQ) room at ISOLDE where the data is then stored. The collection of data is done by the \MBOU\ \cite{Maraboou} DAQ system \cite{MB-spect}. It is split in two parts as shown in \autoref{fig:MARaBOOU}, one front-end part based on the Multi Branch System (MBS) \cite{MBS} and one back-end part based on the ROOT framework \cite{ROOT}. The front-end takes care of data readout, event building and data transportation, while the back-end takes care of the setup, run control, histogramming, data analysis and data storage. The system can manage high counting rates without dead time, where the limitation is essentially only pile-up. The ADCs and TDCs can buffer up to 32 events at a time \cite{MB-spect}. 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.4\linewidth]{Images/HPGe.png}
+	\caption{HPGe triple-cluster sketch, adapted from \cite{Rosiak}. Each cluster is segmented into 6 parts. The core signal is marked by the black dot in the middle of the left crystal.}
+	\label{fig:HPGe}
+\end{figure}
 
+
+\section{The data acquisition system}
+Signals from the CD and the HPGe clusters are read out by the ADC and Digital Gamma Finder (DGF) modules and sent to a Personal Computer (PC) in the Data AcQuisition (DAQ) room at ISOLDE. 
+The data is then stored in a PC. 
+The collection of data is done by the \MBOU\ \cite{Maraboou} DAQ system \cite{MB-spect}. 
+It is split in two parts, as presented in \autoref{fig:MARaBOOU}, one front-end part based on the Multi Branch System (MBS) \cite{MBS} and one back-end part based on the ROOT framework \cite{ROOT}.
+The front-end takes care of data readout, event building and data transportation, while the back-end takes care of the setup, run control, histogramming, data analysis and data storage. 
+The system can manage high counting rates without dead time. 
+For a detection system, the dead time is the time after a readout of events where the system is unable to record another event. 
+The ADCs and TDCs can buffer up to 32 events at a time \cite{MB-spect}. 
+Essentially, the largest limitation to the DAQ system is pile-up, which is when the detection system starts processing another event before the previous event was finished. 
+The events adds on top of each other, which leads to loss of information from both events.
+
+During an experiment, the ROOT back end is mostly used to inspect the experiment live. 
+As will be detailed in \autoref{ch:DA}, the offline ROOT analysis is very time consuming, and is largely performed after the experiment. 
+This is the main part of the thesis.
 
 \begin{figure}[ht]
 	\centering
-	\input{Images/MARaBOOU.tikz}
+	\includegraphics[width=\linewidth]{Images/MARaBOOU.png}
 	\caption{\protect\MBOU\ tasks, adapted from \cite{Maraboou}.}
 	\label{fig:MARaBOOU}
+\end{figure}
+
+
+\section{The time structure}
+\autoref{fig:ITS} shows a schematic of the ISOLDE time structure. 
+The Miniball data acquisition is happening during two time windows, the "on-beam" and "off-beam" windows. 
+When REXEBIS releases the beam to the HIE-ISOLDE LINAC, a signal is also sent to generate the on-beam window. 
+This window, called the "slow extraction mode" was 800 $\mu$s, but in 2011 it was extended to 1 ms, because the method of extraction of the beam was improved. 
+All the data are read out after the on-beam window. 
+This causes the DAQ to become dead for a while, so the next on-beam window is triggered when the DAQ is operable again.
+The off-beam window starts 60 $\mu$s after the end of a readout, triggered by the disappearance of the DAQ is inoperable signal, to then allow the ADCs and TDCs time to start. 
+In the off-beam window, which has the same duration of time as the on-beam window, data recordings of the background is conducted.
+After the off-beam window closes, a readout of the records is triggered.
+It is then possible to subtract the windows from each other to get the beam contribution. 
+The DAQ system records the signals from each detector segment, which is individually time-stamped. 
+With these records, a full reconstruction of the real events and coincidences are possible \cite{NWarr-el}. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{Images/Time-structure.png}
+	\caption{Schematic of the ISOLDE time structure. (A) The supercycle of proton beam bunches with a width of $\approx 100 ~\mu$s from the PSB separated by 1.2 s. The black vertical lines shows an allocation of the the bunches which the ISOLDE production target receives, while the others are distributed to other experiments. (B) The release profile of radionuclides from the production target, which is heavily modulated by the PSB cycle. (C+D) REXTRAP and REXEBIS beam bunches, synchronized with (E) the radio frequency (RF) window of the HIE-ISOLDE LINAC. (F) The "on-beam" and "off-beam" time window of 800 $\mu$s using the Miniball setup. Figure courtesy of J. van de Walle \cite{HI-TDR}.}
+	\label{fig:ITS}
 \end{figure}
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 
-\chapter{Data analysis}  
+\chapter{Data analysis}\label{ch:DA}
+\epigraph{\textit{"Not everything that can be counted counts, and not everything that counts can be counted."}}{\textit{– William Bruce Cameron}}
 
 In this chapter, the various programs and scripts applied in the detector calibration and data analysis will be introduced. 
 Scripts developed in the present thesis work for the fitting procedures are slightly based on scripts written by Ville Virtanen\footnote{Ville Virtanen is a student from University of Jyväskylä.} and Dr. Liam Gaffney\footnote{Dr. Liam Gaffney is a research fellow at ISOLDE, affiliated with Miniball.}. 
@@ -1337,35 +1512,10 @@ It is likely that it is some noise events or charge sharing that comes below the
 
 
 
-\subsection{Time structure and calibration}\label{ssec:time_cal}
+\subsection{Time calibration}\label{ssec:time_cal}
 Each quadrant of the CD is independently connected to a Time to Digital Converter (TDC), which keeps track of the time of registered particle-\ga\ \textcolor{red}{(and particle-\ga-\ga)?} coincidences. 
 The ADCs and DGFs record an energy and a time-stamp with 25 ns ticks. 
 It is the multiplicity of the output of the DGFs that is used to generate the \ga\ signal, which in turn is used to make the particle-\ga\ coincidence.
-
-\textcolor{red}{----------}\newline
-\textcolor{red}{Does this belong to chapter 3?}\newline
-\autoref{fig:ITS} shows a schematic of the ISOLDE time structure. 
-The Miniball data acquisition is happening during two time windows, the "on-beam" and "off-beam" windows. 
-When REXEBIS releases the beam to the HIE-ISOLDE LINAC, a signal is also sent to generate the on-beam window. 
-This window called the "slow extraction mode" was 800 $\mu$s, but in 2011 it was extended to 1 ms, because the method of extraction of the beam was improved. 
-All the data are read out after the on-beam window. 
-This causes the DAQ to become dead for a while, so the next on-beam window is triggered when the DAQ is operable again.
-The off-beam window starts 60 $\mu$s after the end of a readout, triggered by the disappearance of the DAQ is inoperable signal, to then allow the ADCs and TDCs time to start. 
-In the off-beam window, which has the same duration of time as the on-beam window, data recordings of the background is conducted.
-After the off-beam window closes, a readout of the records is triggered.
-It is then possible to subtract the windows from each other to get the beam contribution. 
-The DAQ system records the signals from each detector segment, which is individually time-stamped. 
-With these records, a full reconstruction of the real events and coincidences is possible \cite{NWarr-el}. 
-\newline
-\textcolor{red}{----------}\newline
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{Images/Time-structure.png}
-	\caption{Schematic of the ISOLDE time structure. (A) The supercycle of proton beam bunches with a width of $\approx 100 ~\mu$s from the PSB separated by 1.2 s. The black vertical lines shows an allocation of the the bunches which the ISOLDE production target receives, while the others are distributed to other experiments. (B) The release profile of radionuclides from the production target, which is heavily modulated by the PSB cycle. (C+D) REXTRAP and REXEBIS beam bunches, synchronized with (E) the radio frequency (RF) window of the HIE-ISOLDE LINAC. (F) The "on-beam" and "off-beam" time window of 800 $\mu$s using the Miniball setup. Figure courtesy of J. van de Walle \cite{HI-TDR}.}
-	\label{fig:ITS}
-\end{figure}
-
 
 The purpose of the time calibration is to align the time spectra so that a prompt time gate can be set. In this way it is possible to correlate particles and \ga-rays. Using the \texttt{ParticlePlot.cpp} script, the ADC time offset spectra can be extracted by the following commands
 \begin{lstlisting}[language=sh]
