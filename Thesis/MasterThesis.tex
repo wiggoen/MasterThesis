@@ -533,30 +533,7 @@ Multi-step Coulomb excitation with radioactive beam, isotope separation on-line 
 \epigraph{\textit{"If I could remember the names of all those particles, I'd be a botanist."}}{\textit{– Enrico Fermi}}
 
 \section{ISOLDE at CERN}
-ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland. \autoref{fig:accelerators} shows the CERN accelerator complex, where ISOLDE is located beside the Proton Synchrotron Booster (PSB), in the lower right marked by a green box. The acronym ISOLDE stands for Isotope Separator On Line DEvice. The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted. The High Intensity and Energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. 
-
-In general, it is very challenging to study radioactive, short lived nuclei. 
-The newest edition of the Karlsruhe Nuclide Chart have nuclear data of over 4000 nuclides, and most of these are radioactive \cite{CoN}. 
-In many cases it is not possible to make radioactive nuclei targets and perform an experiment because of the short half-life of the nucleus of interest. 
-To study these radioactive nuclei, RIBs are used on stable targets. 
-One way of obtaining a RIB is to use the Isotope Separator On Line (ISOL) method. 
-The three main reactions of producing radioactive atoms with the ISOL method are spallation, fragmentation and fission. 
-Nuclear spallation is the process in which light fragments of the target are ejected due to the high-energy impact of the incoming beam. 
-Fragmentation is the splitting of a compound into smaller particles or unstable ions. 
-In fission an atomic nucleus is split into two or more nuclei.
-In the ISOL method, two accelerator systems are needed. 
-The first accelerator is used to produce the radioactive atoms in a primary target, and the second accelerator is used to accelerate these atoms into a secondary target \cite{ISOLDE-web, Lindroos, ISOL}. 
-In RIB facilities the intensity is generally a bit lower compared to stable beam facilities, which is a big challenge. 
-ISOL facilities operate around the Coulomb barrier in terms of energy, making them suitable for Coulomb excitation and particle transfer reactions. 
-
-The beam at the RIB facilities consists of, as the name implies, radioactive isotopes. 
-In contrast to conventional facilities where the target is made out of the isotope of interest, the investigated isotope is the beam accelerated into a target.
-The velocity of the beam is significant with $v/c$ values of a few percent. 
-In the electromagnetic (EM) interaction with the target, the beam gets excited into a higher energy state.
-When the beam isotopes de-excite, they emit \ga-rays which can be observed to have large Doppler shifts.
-A sizable Doppler broadening can be observed in the \ga-rays due to the finite solid angle of the detectors. 
-When the detection system has high granularity, the Doppler shifts and broadening can be corrected for. 
-If the angle between the recoiling nucleus and the \ga-ray can be determined accurately, Doppler correction can be applied \cite{MB-spect}.
+ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland. \autoref{fig:accelerators} shows the CERN accelerator complex, where ISOLDE is located beside the Proton Synchrotron Booster (PSB), in the lower right marked by a green box. The acronym ISOLDE stands for Isotope Separator On Line DEvice. The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted. The High Intensity and Energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. The present experiment was one of the first Miniball experiments with the former newly upgraded superconducting LINear ACcelerator (LINAC), the HIE-ISOLDE LINAC. \textcolor{red}{Jeg har ikke funnet tall på hvor høyt den gikk, men en plass mellom 5-7.5 MeV/u.}
 
 \begin{figure}[ht]
 	\centering
@@ -565,83 +542,124 @@ If the angle between the recoiling nucleus and the \ga-ray can be determined acc
 	\label{fig:accelerators}
 \end{figure}
 
+In general, it is very challenging to study radioactive, short lived nuclei. 
+The newest edition of the Karlsruhe Nuclide Chart have nuclear data of over 4000 nuclides, and most of these are radioactive \cite{CoN}. 
+In many cases it is not possible produce a target of a radioactive nuclei and to perform experiments due to the short half-life of the involved nucleus. 
+To study these radioactive nuclei, RIBs are accelerated at stable targets. 
+
+The beam at the RIB facilities consists of, as the name implies, radioactive isotopes. 
+In contrast to conventional facilities where the target is made out of the isotope of interest, the investigated isotope is the beam accelerated into a target.
+The velocity of the beam is significant, with $v/c$ values of a few percent. 
+
+One way of obtaining a RIB is to use the Isotope Separator On Line (ISOL) method. 
+There are three main reactions for producing radioactive atoms with the ISOL method; spallation, fragmentation and fission. 
+Nuclear spallation is the process in which light fragments of the target are ejected due to the high-energy impact of the incoming beam. 
+Fragmentation is the splitting of a target compound into smaller particles or unstable ions. 
+In fission, a nucleus is split into two or more nuclei.
+When applying the ISOL method, two accelerator systems are required. 
+The first accelerator is used to produce the radioactive atoms by spallation, fragmentation or fission of the primary target nuclei. 
+Then, the second accelerator is used to accelerate the RIB atoms into a secondary target \cite{ISOLDE-web, Lindroos, ISOL}. 
+
+In RIB facilities, the intensity is generally a bit lower compared to stable beam facilities, which is a big challenge. 
+In terms of energy, ISOL facilities operate around the Coulomb barrier, making them suitable for Coulomb excitation and particle transfer reactions. 
+
+In the electromagnetic (EM) interaction with the target, the beam gets excited into a higher energy state.
+When the beam isotopes de-excite, they emit \ga-rays, which \textcolor{red}{??? can be / are ???} observed to have large Doppler shifts.
+Due to the finite solid angle of the detectors, a sizable Doppler broadening can be observed in the \ga-rays. 
+When the detection system has high granularity, that is, that the system consists of many segmented detectors, the Doppler shifts and broadening can be corrected for. 
+If the angle between the recoiling nucleus and the \ga-ray can be determined accurately, a Doppler correction can be applied \cite{MB-spect}, as described in \textcolor{red}{Section ??? [theory / data analysis]}.
+
 
 \section{Experimental setup}
+
+\textcolor{Magenta}{Tilbakemelding:\newline
+Detaljer om eksperimentet. 1. Når. 2. Hvor lenge varte det. 3. Forskningsgrupper som samarbeider om eksp. 4. Nevne / minne leser på hva som er målet med eksp. og grovt hvordan det gjøres.
+} 
+\textcolor{red}{Dette tenkte jeg å ha i innledningen..}
+
 \subsection{Beam production}
 \autoref{fig:Coulex} shows a sketch of the experimental setup of the \Sm\ Coulomb excitation experiment. 
 Accelerated proton beam bunches from the PSB comes into the ISOLDE facility and collide with a thick production target, the primary target. 
 Two proton beam bunches are separated by 1.2 s.
 The proton beam has an energy of 1.4 GeV and an intensity up to 2 $\mu$A \cite{TIF, TIF2013}. 
 ISOLDE typically takes 50\% \cite{MB-spect} of all proton bunches form the PSB, the rest goes to the Large Hadron Collider (LHC) and the other experiments shown in \autoref{fig:accelerators}. 
-The target material is chosen depending on the RIB of interest. 
-If the requested RIB is neutron-rich, then fission is the production process and a primary target of uranium ($^{238}$U) is chosen. 
-In this experiment, a neutron-deficient RIB was requested, and a primary target of tantalum (Ta, $Z = 73$) was chosen.
-The production target is selected from a region in the chart of nuclides containing stable nuclei that are heavier than the nucleus of interest.
-When the proton beam collides with the primary target, the target is smashed into pieces and radioactive nuclides in the chart of nuclides up to Ta are produced.
-In this way, a large range of isotopes are produced. 
-The remaining challenge is to extract the isotope of interest in order to create a RIB. 
-Before the isotope of interest can be obtained, a method of selecting the chemical element of interest has to be used.
 
 \begin{figure}[ht]
 	\centering
 	\input{Images/Coulex-setup.tikz}
-	\caption{The Coulomb excitation setup at ISOLDE. Adapted from \cite{Klintefjord}. See text for information.}
+	\caption{The Coulomb excitation setup at ISOLDE for the present experiment. Adapted from \cite{Klintefjord}. See text for information.}
 	\label{fig:Coulex}
 \end{figure}
 
-To get the atomic element of interest, one approach is to use a method of selective ionization and then a high voltage electrostatic field to extract the ions. 
+The production target material is chosen depending on the RIB of interest. 
+If the requested RIB is neutron-rich, a primary target of uranium ($^{238}$U) is chosen, and the beam will be produced by fission of the target nuclei.
+\textcolor{red}{??? Nytt avsnitt ???} In this experiment, a neutron-deficient RIB was requested, and a primary target of tantalum (Ta, $Z = 73$) was chosen.
+The production target is selected from a region in the chart of nuclides containing stable nuclei that are heavier than the nucleus of interest.
+When the proton beam collides with the primary target, the target is smashed into pieces, and radioactive isotopes with proton number up to Ta are produced.
+In this way, a large range of isotopes are produced. 
+
+The remaining challenge is to extract the isotope of interest in order to create a RIB. 
+Before the desired isotope can be obtained, a method of selecting the chemical element of interest have to be used.
+One approach is to use a method of selective ionization and then a high voltage electrostatic field to extract the ions. 
 Electronic transitions are characteristic for each chemical element. 
-A laser with precisely tuned wavelength can obtain the photon energy that matches the electronic transition energies in the atom \cite{RILIS-web, RILIS2013}. 
-Thus we can use one laser to excite an electron to a specific excited electron-state in the atom, a second laser to excite electrons further to another excited electron-sate and a third laser to remove the electron. 
-In this way we only ionize the atomic element of interest. 
+A laser with a precisely tuned wavelength can obtain the photon energy that matches the electronic transition energies in the atom perfectly \cite{RILIS-web, RILIS2013}. 
+Thus we can use one laser to excite an electron to a specific excited electron-state in the atom, a second laser to excite electrons further to another excited electron-sate and a third laser to remove the electron entirely. 
+In this way, we only ionize the element required to produce the beam. 
 
-A common challenge is contaminants from surface ionization, that is atoms that collide with the walls of the ion source. 
-This can be significant, even dominant in some cases, but in this experiment it was not a problem. 
-Sm has the lowest ionization potential of the rare earth elements. 
-In any case it needs to be monitored using laser on/off measurements. 
-By periodically switching the laser on and off, the resulting contaminants in the beam can be detected.
-
-The Resonance Ionization Laser Ion Source (RILIS) is based on the method of step-wise (2-3 step) excitation and ionization of the atom. 
+The Resonance Ionization Laser Ion Source (RILIS) is based on the method of step-wise (2-3 step) excitation and ionization of an atom. 
 It is an element-selective process which is used to produce ion beams of the desired element \cite{RILIS}. 
-In this experiment RILIS was used to select samarium (Sm) with atomic number $Z = 62$. 
-After RILIS has selected Sm, we have a continuous beam of Sm ions of 60 keV energy. The target is on a 60 kV high voltage platform \cite{ISOLDE-web, TIF}. 
+In this experiment, RILIS was used to select samarium (Sm) with atomic number $Z = 62$. 
+After RILIS has selected Sm, we have a continuous beam of Sm ions at an energy of 60 keV. 
+The primary target is on a 60 kV high voltage platform \textcolor{red}{??? Hva betyr dette? Er det viktig? ???} \cite{ISOLDE-web, TIF}. 
 
-The next step in the process is to perform a mass separation, and then to give the continuous beam a time structure. 
-The post-accelerator cannot accept an incoming continuous beam, it accelerates bunches. 
-The beam may hit one of two target stations; either the General Purpose Separator (GPS) or the High Resolution Separator (HRS). 
-The GPS has one bending magnet and can deliver beams of different masses simultaneously into three beam lines, while the HRS has two bending magnets with high mass resolving power which delivers the beam into the main beam line. 
-Both separators feed the beam lines in the experimental hall. 
+After the ionization of the beam, the next step in the process is to perform a mass separation.
+The goal of the mass separation is to obtain a beam only containing the isotopes with the desired mass number, and to exclude the contaminants that exits RILIS. 
+By using a set of magnets, the separator purifies the RIB, but in principle, isobaric contaminants may still be present in the beam after the separation. 
+Luckily, the neighboring elements of Sm produces very little surface ionization. 
+Therefore, few contaminants are expected to be present in the beam after the separator. 
+Different sources of beam contaminants are discussed in \autoref{ssec:bcontaminants}.
+
+\textcolor{red}{Skal jeg putte inn en tegning av esperiment-hallen? evt. i appendix? Og/eller bare fjerne info om HRS under her? HRS blir ikke brukt, og jeg har ikke nevnt noen av alle de andre oppsettene i eksperiment-hallen.} \newline
+At ISOLDE, the beam may hit one of two target stations after RILIS; either the General Purpose Separator (GPS) or the High Resolution Separator (HRS). 
+Both separators feed the beam lines in the experimental hall, but only one separator is active during an experiment. 
+The HRS combine two bending magnets with high mass resolving power, delivering the beam into the main beam line. 
+Even though the HRS have a high mass resolving power, $M/\Delta M > 5000$, it is not sufficient resolving power to separate the isobars, which is why RILIS and the GPS had to be used instead.
+The GPS has one bending magnet and can deliver beams containing isotopes of different mass numbers simultaneously into three beam lines. 
 The two extra beam lines that the GPS can feed, can have an isotope mass difference of $\pm 13 \%$ compared to the main beam line isotope mass \cite{GPS, TIF}.
-Even though the HRS have a high mass resolving power, $M/\Delta M > 5000$, it is not sufficient resolving power to separate the isobars, which is why RILIS had to be used.
 In this experiment the GPS was used to select the isotope of Sm with mass number $A = 140$. 
-The mass separator also excludes the contaminants that exits RILIS with a different mass than $A = 140$.
-In principle, isobaric contaminants from surface ionization can still be present in the beam.
-Luckily, the neighboring elements of Sm produces very little surface ionization.
 
-Following the GPS, a continuous beam of \Sm is obtained. 
-In the Radioactive beam EXperiment TRAP (REXTRAP), the \Sm\ ions are collected in order to release them in bunches that are matched to the time structure of the LINear ACcelerator (LINAC). 
+Following the GPS, a continuous beam of \Sm\ is obtained. 
+The post-accelerator cannot accept an incoming continuous beam, it can only accelerate bunches.
+In the Radioactive beam EXperiment TRAP (REXTRAP), the \Sm\ ions are collected in order to release them in bunches that are matched to the time structure of the HIE-ISOLDE LINAC. 
 REXTRAP is a penning trap which has the tasks of accumulation, bunching and cooling of the RIB \cite{HIE-ISOLDE, REXTRAP1, REXTRAP2}. 
-The ions are released in bunches and transfered to the REX Electron Beam Ion Source (REXEBIS).
+The ions are released in bunches and transfered to the REX Electron Beam Ion Source (REXEBIS), see \autoref{fig:Coulex}.
 
 REXEBIS is a charge breeder where the RIB obtains a high charge state \cite{REXEBIS}, with a mass-to-charge ($A/q$) ratio typically between 2.5 and 4.5 \cite{Post-acc}.
-In REXEBIS more electrons in the RIB are removed through interaction with a high-intensity electron beam. 
+In REXEBIS, even more electrons of the RIB atoms are removed through the interaction with a high-intensity electron beam. 
 The longer the ions stay in REXEBIS, the higher the charge state becomes. 
 The EBIS blasts off more electrons from Sm, which leaves the nucleus in a high charge state, going from \Sm$^{+1}$ to \Sm$^{+34}$ with $A/q \approx 4.1$. 
+
 To accelerate the charged ions, that is the beam, to high energy, the beam must consist of highly charged ions. 
-Inside REXEBIS we get a distribution of charge states.
-The LINAC can only accept one charge state, so the parts of the RIB that have the wrong charge state is lost \cite{REX-web, HIE-web, EBIS2002, EBIS2010}.
-REXEBIS releases the beam with a certain energy through another mass separator and into the HIE-ISOLDE LINAC \cite{HIE-ISOLDE}. 
+Inside REXEBIS a distribution of charge states are obtained, but the HIE-ISOLDE LINAC can only accept one charge state.
+Therefore, only the parts of the RIB containing the correct charge state is accelerated, the remainder of the beam is lost \cite{REX-web, HIE-web, EBIS2002, EBIS2010}.
+REXEBIS releases the beam with a certain energy through another mass separator before guiding the RIB into the HIE-ISOLDE LINAC. This second mass separator removes residual gas (beam contaminants) from the beam released from REXEBIS \cite{HIE-ISOLDE}. 
 
-The HIE-ISOLDE LINAC accelerates the beam of \Sm\ with excellent purity to 4.65 MeV/u (total energy 651 MeV) through the beam line. 
-Magnets bend the beam into the Miniball spectrometer, where the beam hits a secondary target of \Pb. 
-In the EM interaction between the beam and the secondary target, the beam particles gets excited. 
-A lot of \Sm particles from the beam and \Pb particles from the secondary target fly onwards to the particle detector. 
-On their way to the particle detector, the beam particles de-excite and emits \ga-rays which is detected by the \ga-detectors. 
-This experiment was one of the first Miniball experiments with the new upgraded superconducting accelerator, the HIE-ISOLDE LINAC. 
+The HIE-ISOLDE LINAC accelerates the beam of \Sm\ with excellent purity to 4.65 MeV/u, or a total energy of 651 MeV, through the beam line. 
+Several magnets bend the beam into the Miniball spectrometer, where the beam hits the secondary target of \Pb. 
+The beam particles get excited due to the electromagnetic interaction with the target.
+There is a very small probability of exciting the target, explained in \autoref{ssec:Pb}.
+As the \Sm\ particles from the beam fly towards the particle detector, before they are detected, they de-excite by emitting \ga-rays, which are detected by the \ga-detectors.
+The detector system records information about the angles and energy with a good time resolution. 
+In this way, particle-\ga\ coincidences can be reconstructed to obtain Doppler-corrected \ga-spectra  in order to analyze the Coulomb excitation of \Sm.
 
 
-\subsection{Sources of beam contaminants}
-To have a successful experiment, the purity of the beam is of great importance. Contaminants in the beam can come from different sources  \cite{MB-spect}. From the primary target we can have:
+\subsection{Sources of beam contaminants}\label{ssec:bcontaminants}
+To have a successful experiment, the purity of the beam is of great importance. Contaminants in the beam can come from several different sources. 
+A common experimental challenge are contaminants from surface ionization, that is, atoms that collide with the walls of the ion source. 
+This can be significant, even dominant in some cases. 
+However, surface ionization was not an issue in the present experiment due to the fact that Sm has the lowest ionization potential of the rare earth elements. 
+In any case, the beam contaminants are monitored by periodically switching the laser on and off.
+Arising from the primary target we may have \cite{MB-spect}:
 \begin{itemize}
 	\item isobaric contaminants which are inseparable by the mass separator because of the same mass number
 	\item isotopes with an integer multiple of both mass and charge
@@ -652,27 +670,35 @@ and from stable isotopes the contaminants can come from:
 	\item residual gas in REXEBIS (e.g. C, O)
 	\item components of REXEBIS (e.g. La from the cathode)
 \end{itemize}
+More information on contaminants can be found in \cite{HIE-ISOLDE, RILIS, MB-spect}.
+
+\textcolor{Magenta}{Tilbakemelding: \newline
+Blir litt lange setninger for en liste øverst. Skriv om til tekst eller del opp i flere setninger. \newline
+"with an integer multiple of both mass an charge" er litt uforklarlig? \newline
+}
 
 
-\subsection{The secondary target}
+\subsection{The secondary target}\label{ssec:Pb}
 For the current experiment, a target consisting of \Pb\ with a thickness of 1.4 mg/cm$^2$ was chosen. 
+Unfortunately, there was a finger print on the target, implying \textcolor{red}{??? a / an additional ???} contamination (probably carbon).
+
 It is quite difficult to excite $^{208}_{~82}$Pb$_{126}$ as it is a doubly magic nuclei, and it is therefore well suited for the experiment. 
-In that way, transitions from the target will not complicate the spectrum.
-With a target consisting of the highest possible $Z$ of a stable isotope ($Z$ = 82), the excitation probability of \Sm is maximized. 
+In that way, transitions from the target will not complicate the \ga-ray spectrum.
+With a target consisting of the highest possible $Z$ of a stable isotope ($Z = 82$), the excitation probability of \Sm\ is maximized. 
 
 \Pb\ has no quadrupole deformation.
-The first excited state is of octupole vibration with an energy of 2615 keV, a half-life of $T_{1/2} = 16.7$ ps and a spin and parity of $J^\pi = 3^-$.
-There is a probability of seeing a little bit of the first excited state in the spectrum. 
-This happens if the EM interaction is almost head on, and the target hits one of the inner rings.
-
-Another advantage of this experiment was that there was no need for \ga\ normalization. 
-From the previous experiment \cite{Klintefjord2016} and from lifetime measurements \cite{BelloGarrote2015}, the $B(E2, 0_1^+ \rightarrow 2_1^+$) value of \Sm\ was \textcolor{red}{?extracted / obtained / calculated?}. 
-
-Unfortunately there was a finger print on the target, so even before beginning the experiment, there was some contamination (probably carbon).
+The first excited state is an octupole vibration with an energy of 2615 keV, a half-life of $T_{1/2} = 16.7$ ps and a \textcolor{red}{??? spin / angular momentum ???} and parity of $J^\pi = 3^-$.
+Therefore, there is a small probability of observing the first excited state of \Pb\ in the \ga-spectrum. 
+The excitation probability for \Pb\ is maximal if the EM interaction is approximately head on, and the ejected target nucleus hits one of the inner particle detector rings.
 
 
 \subsection{Miniball spectrometer}
 \autoref{fig:MBSpect} shows an overview picture of the Miniball spectrometer. 
+
+\textcolor{Magenta}{Tilbakemelding:\newline
+Legg til en intro setning, overfladisk beskriv hvordan Miniball ser ut og i grove trekk hvilke deler den består av.
+}
+\textcolor{red}{Skal jeg ha bilder av Miniball spektrometeret, eller skal jeg fjerne dem? Det er jo ikke akkurat som man ser så veldig masse.. evt. flytte til appendix? (skal i alle fall beholde target wheel)}
 
 \begin{figure}[ht]
 	\centering
@@ -683,27 +709,36 @@ Unfortunately there was a finger print on the target, so even before beginning t
 
 
 \subsubsection{Target chamber}
-The target chamber is a hollow sphere made out of a machined out, single piece of aluminium alloy (AlMg$_3$), with a thin wall and an inner radius of approximately 80 mm. Inside the chamber we find a target wheel and a particle detector. The target wheel can hold up to six different targets as shown in \autoref{fig:TWheel}. The particle detector can be positioned 25 - 31 mm from the target wheel, limited by the space inside the chamber. Outside of the target chamber the average distance from each \ga-detector cluster to the center of the target chamber is approximately 10 cm. The forward detectors and the backward detectors has an angular position $\theta$ of approximately 45$^\circ$ and 135$^\circ$ respectively, compared to the beam line. In the vertical plane, perpendicular to the beam line, the four \ga-detectors in forward and backward position are placed roughly on a circle with a separation of $\phi = 90^\circ$ \cite{MB-spect}.  
+The target chamber is a hollow sphere made out of a machined out, single piece of aluminium alloy (AlMg$_3$), with a thin wall and an inner radius of approximately 80 mm. 
+Inside the chamber we find a target wheel and a particle detector. 
+As shown in \autoref{fig:TWheel}, the target wheel can hold up to six different targets. 
+The particle detector can be positioned 25 - 31 mm from the target wheel, limited by the space inside the chamber. 
+Outside of the target chamber, the average distance from each \ga-detector cluster to the center of the target chamber is approximately 10 cm.
+The forward and the backward \ga-detector clusters are placed in a 45$^\circ$ and 135$^\circ$ angle $\theta$, respectively, compared to the beam line.
+In the vertical plane, perpendicular to the beam line, the four \ga-detector clusters in forward and backward position are placed roughly on a circle with a separation of $\phi = 90^\circ$ \cite{MB-spect}.  
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\linewidth]{Images/Target-wheel.png}
-	\caption{The target wheel can hold up to six different targets. Position 1 and 2 are holes with a diameter of 3 and 12 mm respectively. They are used for beam tuning. Position 3 and 4 has \Pb\ targets with thickness 2.5 and 0.7 mg/cm$^2$ respectively. Position 5 had 13 layers of $^{27}$Al foil. Position 6 has the target \Pb\ with thickness 1.4 mg/cm$^2$, which was the secondary target used in the experiment. Photo by: Dr. Liam Gaffney, date: 07.08.2017.}
+	\caption{The target wheel can hold up to six different targets. Position 1 and 2 are holes with a diameter of 3 and 12 mm respectively. They are used for beam tuning. Position 3 and 4 has \Pb\ targets with thickness 2.5 and 0.7 mg/cm$^2$ respectively. Position 5 has 13 layers of $^{27}$Al foil. Position 6 has the target \Pb\ with thickness 1.4 mg/cm$^2$, which was the secondary target used in the present experiment. Photo by: Dr. Liam Gaffney, date: 07.08.2017.}
 	\label{fig:TWheel}
 \end{figure}
 
 
 \subsubsection{Particle detector, DSSSD (CD)}
 To detect the scattered beam and target nuclei, a segmented Double Sided Silicon Strip Detector (DSSSD) composed of four quadrants was used. 
-\autoref{fig:CD-FB} shows a sketch of the front and back side. 
-The DSSSD looks very like an audio Compact Disc (CD), and hence it is called the CD. 
+\autoref{fig:CD-FB} shows a sketch of the front and back of the detector. 
+The DSSSD resembles an audio Compact Disc (CD), and hence it is called the CD. 
 In the front of the CD, one quadrant consists of 16 annular strips (rings) with a pitch of 2 mm, while the back consists of 24 sector (radial) strips with a pitch of 3.5$^\circ$. 
 The innermost strip has an inner radius of the active area of 9 mm, while the outermost strip has an outer radius of the active area of 40.9 mm. 
-The active area is the area in which a particle can be detected, the detectable surface. 
-In total, there are 160 discrete detector elements for all four quadrants (64 in front, 96 in back). 
-Each quadrant is connected to its own Analog to Digital Converter (ADC). 
+The active area of the detector is the area in which a particle can be detected, the detectable surface. 
+
+In total, there are 160 discrete detector elements for all four quadrants, 64 in front and 96 in back. 
+Each quadrant of the CD is independently connected to a Analog to Digital Converter (ADC) and a Time to Digital Converter (TDC). 
+The TDC keeps track of the time of registered particle-\ga\ \textcolor{red}{??? and particle-\ga-\ga\ ???} coincidences. 
 As a result of too few available channels in the ADC, the sector strips in the back are paired up.
-In consequence, it is effectively 12 strips at the back side of the CD. 
+In consequence, it is effectively 12 strips on the back side of the CD. 
+
 The whole CD detector has a total area of 5000 mm$^2$, where approximately 93$\%$ of the detector consists of a detectable surface. 
 In Coulomb excitation experiments the silicon wafer thickness is usually 500 $\mu$m.
 The silicon wafer is the thin slice of semiconductor which can detect the incoming particles. 
@@ -717,7 +752,15 @@ In the laboratory (LAB) reference frame the CD has a angular coverage between 18
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\linewidth]{Images/CD.png}
-	\caption{CD sketch, adapted from \cite{NWarr-CD}. On the left is the front side of the CD. The numbering of the strips goes from strip 0 (outermost) to strip 15 (innermost). Quadrants are numbered in clockwise direction with respect to the beam direction, so that left is 1, up is 2, right is 3 and down is 4. On the right side is the back side of the CD. The numbering of the strips goes from strip 0 to strip 23 in counter-clockwise direction viewed from this side. Quadrants are numbered in clockwise direction with respect to the beam direction. From this perspective right is 1, up is 2, left is 3 and down is 4.}
+	\caption{CD sketch, adapted from \cite{NWarr-CD}. 
+	On the left is the front side of the CD. 
+	The beam goes into the paper from the perspective of the left drawing.
+	Front (annular) strips are numbered from 0 (outermost) to 15 (innermost). 
+	Quadrants are numbered in clockwise direction with respect to the beam direction, which corresponds to: left is 1, up is 2, right is 3 and down is 4.
+	On the right is the back side of the CD. 
+	The beam comes out of the paper from the perspective of the right drawing.
+	Back (radial) strips are numbered from 0 to 23 in counter-clockwise direction.
+	Viewed from this perspective, the quadrants are numbered as: right is 1, up is 2, left is 3 and down is 4.}
 	\label{fig:CD-FB}
 \end{figure}
 
@@ -731,13 +774,10 @@ In the laboratory (LAB) reference frame the CD has a angular coverage between 18
 
 
 \subsubsection{The high-purity germanium (HPGe) \texorpdfstring{$\gamma$}{Gamma} detectors}
-In Coulomb excitation experiments, the target chamber is surrounded by the \ga\ detectors as displayed in \autoref{fig:MBSpectCU}. The \ga-ray spectrometer consists of a total of 24 six-fold segmented High-Purity Germanium (HPGe) crystals, which are divided into 8 clusters of 3 crystals each. Each crystal is encapsulated and segmented into 6 parts, making a total of 144 segments. For maximum efficiency, the detectors are placed in a compact geometry around the target chamber \cite{NWarr-HPGe, MB-spect}. The detector-array can cover a solid angle of about 60\% of 4$\pi$, when the optimum distance between the target chamber and the HPGe-clusters is achieved. The average energy resolution at $E_\gamma = 1.3$ MeV is 2.3 keV \cite{Butler2017}. 
-\autoref{fig:HPGe} shows a sketch of one triple-cluster of the HPGe \ga-detector array.
-From each detector we get seven signals in total for each event, one from the core and six from each segment. 
-This requires 168 channels for data acquisition. 
-The shapes of these signals are analyzed to provide information about the energy and time of the \ga-ray, in addition to the detection position within the detector cluster.
+In Coulomb excitation experiments, the target chamber is surrounded by the \ga-detectors as displayed in \autoref{fig:MBSpectCU}. 
+The \ga-ray spectrometer consists of a total of 24 six-fold segmented High-Purity Germanium (HPGe) crystals, which are divided into 8 clusters of 3 crystals each. 
+Each crystal is encapsulated and segmented into 6 parts, making a total of 144 segments. 
 Compared to using the whole crystal, a better Doppler correction can be performed when the \ga-detectors are segmented. 
-During operation the HPGe-clusters needs to be cooled down by liquid nitrogen which is provided by the automated filling system \cite{NWarr-HPGe}. 
 
 \begin{figure}[ht]
 	\centering
@@ -746,22 +786,52 @@ During operation the HPGe-clusters needs to be cooled down by liquid nitrogen wh
 	\label{fig:MBSpectCU}
 \end{figure}
 
+For maximum efficiency, the detectors are placed in a compact geometry around the target chamber \cite{NWarr-HPGe, MB-spect}. 
+The detector-array can cover a solid angle of about 60\% of 4$\pi$, when the optimum distance between the target chamber and the HPGe clusters is achieved. 
+The average energy resolution at $E_\gamma = 1.3$ MeV is 2.3 keV \cite{Butler2017}. 
+During operation the HPGe clusters needs to be cooled down by liquid nitrogen which is provided by the automated filling system. 
+
+\autoref{fig:HPGe} shows a sketch of one triple-cluster of the HPGe \ga-detector array, with the corresponding table of all of the clusters positions.
+From each detector we get seven signals in total for each event, one from the core and six from each segment. 
+This requires 168 channels for data acquisition. 
+The shapes of these signals are analyzed to provide information about the energy and time of the \ga-ray, in addition to the detection position within the detector cluster \cite{NWarr-HPGe}.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.4\linewidth]{Images/HPGe.png}
-	\caption{HPGe triple-cluster sketch, adapted from \cite{Rosiak}. Each cluster is segmented into 6 parts. The core signal is marked by the black dot in the middle of the left crystal.}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Images/HPGe2.png}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+    		\input{Table-data/Geometry.tex} \newline % newline lifts the table up one line
+	\end{subfigure}
+	\caption{On the left is a sketch of the HPGe triple-cluster position, adapted from \cite{Rosiak}. 
+	Each cluster is segmented into 6 parts. 
+	The core signal is marked by the blue dots in the middle of each of the three crystals, and the center of the triple-cluster is marked with a red dot. 
+	There are four parameters, $\theta_i$, $\phi_i$, $\alpha_i$ and $R_i$, to determine the position of one triple-cluster.
+	The angles, $\theta_i$ and $\phi_i$, are defined from a right-hand polar coordinate system, as displayed by the sketch.
+	$\alpha_i$ determines the clockwise rotation around the center of the triple-cluster as seen from the target position.
+	$R_i$ is the distance from the middle of the target chamber to the center of one triple-cluster.
+	In the sketch, the secondary target is positioned in origo and the beam direction goes along the $z$-axis \cite{NWarr-Angles, Rosiak}. 
+	On the right side is a table which contains the HPGe triple-cluster parameters for the present experiment, where $i$ denotes the cluster number used in the Miniball setup. 
+	The geometry is used for the Doppler correction, which is discussed in \autoref{ssec:Doppler}.}
 	\label{fig:HPGe}
 \end{figure}
 
 
 \section{The data acquisition system}
-Signals from the CD and the HPGe clusters are read out by the ADC and Digital Gamma Finder (DGF) modules and sent to a Personal Computer (PC) in the Data AcQuisition (DAQ) room at ISOLDE. 
+Signals from the CD and the HPGe clusters are read out by the ADC, TDC and Digital Gamma Finder (DGF) modules and sent to a Personal Computer (PC) in the Data AcQuisition (DAQ) room at ISOLDE. 
 The data is then stored in a PC. 
+The ADCs and DGFs record an energy and a time-stamp with 25 ns ticks. 
+It is the multiplicity of the output of the DGFs that is used to generate the \ga\ signal, which in turn is used to make the particle-\ga\ coincidence.
+
 The collection of data is done by the \MBOU\ \cite{Maraboou} DAQ system \cite{MB-spect}. 
 It is split in two parts, as presented in \autoref{fig:MARaBOOU}, one front-end part based on the Multi Branch System (MBS) \cite{MBS} and one back-end part based on the ROOT framework \cite{ROOT}.
 The front-end takes care of data readout, event building and data transportation, while the back-end takes care of the setup, run control, histogramming, data analysis and data storage. 
-The system can manage high counting rates without dead time. 
+
+The system can manage high counting rates without much dead time. 
 For a detection system, the dead time is the time after a readout of events where the system is unable to record another event. 
 The ADCs and TDCs can buffer up to 32 events at a time \cite{MB-spect}. 
 Essentially, the largest limitation to the DAQ system is pile-up, which is when the detection system starts processing another event before the previous event was finished. 
@@ -780,23 +850,26 @@ This is the main part of the thesis.
 
 
 \section{The time structure}
-\autoref{fig:ITS} shows a schematic of the ISOLDE time structure. 
-The Miniball data acquisition is happening during two time windows, the "on-beam" and "off-beam" windows. 
-When REXEBIS releases the beam to the HIE-ISOLDE LINAC, a signal is also sent to generate the on-beam window. 
-This window, called the "slow extraction mode" was 800 $\mu$s, but in 2011 it was extended to 1 ms, because the method of extraction of the beam was improved. 
+In \autoref{fig:ITS}, a schematic of the ISOLDE time structure is displayed. 
+The Miniball data acquisition occurs during two time windows, the "on-beam" and "off-beam" windows. 
+When REXEBIS releases the beam to the HIE-ISOLDE LINAC, a signal to generate the on-beam window is sent. 
+This window, called the "slow extraction mode" was 800 $\mu$s, but in 2011 it was extended to 1 ms, as the beam extraction method was improved. 
 All the data are read out after the on-beam window. 
-This causes the DAQ to become dead for a while, so the next on-beam window is triggered when the DAQ is operable again.
-The off-beam window starts 60 $\mu$s after the end of a readout, triggered by the disappearance of the DAQ is inoperable signal, to then allow the ADCs and TDCs time to start. 
+During a readout, the DAQ becomes dead for a little while, so the next window is triggered when the DAQ is operable again.
+The off-beam window starts 60 $\mu$s after the end of a readout of the on-beam window.
+This allow the ADCs and TDCs time to start again.
+The time structure of ISOLDE makes it possible to record data again in the off-beam window, before the next beam bunch is sent from REXEBIS.
 In the off-beam window, which has the same duration of time as the on-beam window, data recordings of the background is conducted.
 After the off-beam window closes, a readout of the records is triggered.
-It is then possible to subtract the windows from each other to get the beam contribution. 
+It is then possible to subtract the off-beam window from the on-beam, obtaining only the beam contribution. 
+The next on-beam window is triggered when the DAQ is operable again.
 The DAQ system records the signals from each detector segment, which is individually time-stamped. 
 With these records, a full reconstruction of the real events and coincidences are possible \cite{NWarr-el}. 
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{Images/Time-structure.png}
-	\caption{Schematic of the ISOLDE time structure. (A) The supercycle of proton beam bunches with a width of $\approx 100 ~\mu$s from the PSB separated by 1.2 s. The black vertical lines shows an allocation of the the bunches which the ISOLDE production target receives, while the others are distributed to other experiments. (B) The release profile of radionuclides from the production target, which is heavily modulated by the PSB cycle. (C+D) REXTRAP and REXEBIS beam bunches, synchronized with (E) the radio frequency (RF) window of the HIE-ISOLDE LINAC. (F) The "on-beam" and "off-beam" time window of 800 $\mu$s using the Miniball setup. Figure courtesy of J. van de Walle \cite{HI-TDR}.}
+	\includegraphics[width=0.8\textwidth]{Images/Time-structure.png}
+	\caption{Schematic of the ISOLDE time structure, from \cite{Gaffney}. Figure courtesy of J. van de Walle \cite{HI-TDR}. (A) The supercycle of proton beam bunches with a width of $\approx 100 ~\mu$s from the PSB separated by 1.2 s. The black vertical lines shows an allocation of the the bunches which the ISOLDE production target receives, while the others are distributed to other experiments. (B) The release profile of radionuclides from the production target, which is heavily modulated by the PSB cycle. (C+D) REXTRAP and REXEBIS beam bunches, synchronized with (E) the radio frequency (RF) window of the HIE-ISOLDE LINAC. (F) The "on-beam" and "off-beam" time window of 800 $\mu$s using the Miniball setup.}
 	\label{fig:ITS}
 \end{figure}
 
@@ -900,20 +973,7 @@ A change of the wiring of the CD will probably not happen, but it is possible to
 Calibration coefficients given to the calibration file, which is introduced in later sections, follow the naming convention of \texttt{TreeBuilder} in \autoref{tab:TBvsAQ4}.
 
 
-\begin{table}[ht] 
-	\centering 
-	\caption{CD wiring for Coulomb excitation experiments.}
-	\input{Table-data/ADC.tex}
-	\label{tab:ADC}
-\end{table}
 
-
-\begin{table}[ht] 
-	\centering 
-	\caption{The logic counting and the naming of histograms from \texttt{TreeBuilder} and \texttt{AQ4Sort}.}
-	\input{Table-data/TBvsAQ4.tex}
-	\label{tab:TBvsAQ4}
-\end{table}
 
 
 \section{Data conversion}
@@ -994,7 +1054,7 @@ In this context, the centroids refer to the channels of the maximum height of th
 
 Both detector types in this experiment are semiconductor detectors. 
 Except for silicon (as the CD), semiconductors generally require cooling to low temperatures before they can be operated. 
-The basic principle of operation is that incoming ionizing radiation\footnote{For the CD, the ionizing radiation is the beam or target particles scattered from the reaction, while the ionizing radiation for the HPGe-detectors is the high-energy photons (\ga) from de-excitation of the nuclei.} creates electron-hole pairs in the semi-conducting material which are then collected by an electric field. 
+The basic principle of operation is that incoming ionizing radiation\footnote{For the CD, the ionizing radiation is the beam or target particles scattered from the reaction, while the ionizing radiation for the HPGe detectors is the high-energy photons (\ga) from de-excitation of the nuclei.} creates electron-hole pairs in the semi-conducting material which are then collected by an electric field. 
 The number of electron-hole pairs is proportional to the energy of the incoming radiation to the semiconductor \cite{WRLeo}. 
 
 Assuming a linear correlation between the energy $E$ of the particle (or \ga-ray) and the channel number $n$ of the ADC (or DGF), we get
@@ -1097,12 +1157,7 @@ A general kinematics simulation in the LAB frame is shown in \autoref{fig:kinsim
 \end{table}
 
 
-\begin{figure}[ht]
-	\centering
-    \includegraphics[width=\linewidth]{../Plots/simulation/kin_140Sm_208Pb.png}
-	\caption{Simulation of the kinematics in the LAB frame for \Sm\ on \Pb\ at 4.65 MeV/u. The upper curve is the Sm and the lower curve is the Pb. Smaller angles corresponds to the inner rings and larger angles to the outer rings.}
-	\label{fig:kinsim}
-\end{figure}
+
 
 
 
@@ -1164,27 +1219,9 @@ In logarithmic (log) scale the data looked more Gaussian distributed, but it is 
 For the centroids, it was very hard to tell in log scale how precise the automatic fitting was. 
 It turned out that it was not very precise, so a lot of time was wasted looking at the data in log scale. 
 
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 4, 9, 1, 300, 2400, 1080)
-		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F9.png}
-		\caption{Front strip 9 in quadrant 4.}
-		\label{fig:cal_easy}
-	\end{subfigure}
-	\begin{subfigure}{\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% get_single_plot("setup_Sm.txt", "q4", "b", 0, 1, 16, 12, 200, 1400, 330)
-		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q1_f16_b12.png}
-		\caption{Back strip 12, gated on ring 16 (outermost ring) in quadrant 1.}
-		\label{fig:cal_difficult}
-	\end{subfigure}
-	\caption{Calibration of the CD is not always straightforward. The upper figure shows a front strip, where it is fairly easy to determine the centroids of the particles. The lower figure shows a back strip, where it is actually very difficult to determine where the centroid of \Pb\ is.}
-	\label{fig:cal_ED}
-\end{figure}
+%%
+%% Cal of CD figure moved
+%%
 
 On the front side of the CD, there is effectively only two measuring points per angle interval. 
 If the contaminant in the spectra was known and if it only consists of one element, it could have been a third measuring point.  
@@ -1219,7 +1256,8 @@ The gray boxes related to the \ga-calibration will be discussed in \autoref{ssec
 
 \begin{figure}[ht]
 	\centering
-	\input{Images/Calibration-flow-chart.tikz}
+	%\input{Images/Calibration-flow-chart.tikz}
+	\includegraphics[width=0.9\textwidth]{Images/Flowchart.png}
 	\caption{Flowchart of the programs, scripts and files used in the user calibration. The relative paths of these programs and scripts is shown in \autoref{tab:paths}.}
 	\label{fig:cal_FC}
 \end{figure}
@@ -1295,7 +1333,7 @@ To explain this we have to look at the two-dimensional (2D) spectrum in \autoref
 
 \begin{figure}[ht]
 	\centering
-	\begin{subfigure}{\textwidth}
+	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
 		% ParticlePlot.cpp
 		% get_single_plot("setup_Sm.txt", "tb", "f", 1, 4, 4, 1, 270, 670, 15500)
@@ -1303,7 +1341,7 @@ To explain this we have to look at the two-dimensional (2D) spectrum in \autoref
 		\caption{Annular strip 4 in quadrant 4. At higher energies, there is a double-peak structure of \Sm.}
 		\label{fig:bump}
 	\end{subfigure}
-	\begin{subfigure}{\textwidth}
+	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
 		% ParticlePlot.cpp
 		% plot_single_front_back_energy("setup_Sm.txt", 4, "user")
@@ -1318,49 +1356,52 @@ To explain this we have to look at the two-dimensional (2D) spectrum in \autoref
 
 In \autoref{fig:cal_CD} the energy of every strip is shown for each quadrant separately. \textcolor{red}{What can I say about these plots?}
 
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% plot_front_back_energy("setup_Sm.txt", "online")
-		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-online.png}
-		\caption{Online calibration for the CD showing the four quadrants. It generally looks quite good, but there is a number of the secular strips (back side) that have the wrong gains.}
-		\label{fig:cal_online}
-	\end{subfigure}
-	\begin{subfigure}{\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% plot_front_back_energy("setup_Sm.txt", "user")
-		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-user.png}
-		\caption{User calibration for the CD showing the four quadrants. This is actually the online calibration without the innermost ring, which was broken.}
-		\label{fig:cal_user}
-	\end{subfigure}
-	\caption{Back energy vs. front energy for each quadrant of the CD.}
-	\label{fig:cal_OU}
-\end{figure}
+%\begin{figure}[ht]
+%	\centering
+%	\begin{subfigure}{\textwidth}
+%		\centering
+%		% ParticlePlot.cpp
+%		% plot_front_back_energy("setup_Sm.txt", "online")
+%		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-online.png}
+%		\caption{Online calibration for the CD showing the four quadrants. It generally looks quite good, but there is a number of the secular strips (back side) that have the wrong gains.}
+%		\label{fig:cal_online}
+%	\end{subfigure}
+%	\begin{subfigure}{\textwidth}
+%		\centering
+%		% ParticlePlot.cpp
+%		% plot_front_back_energy("setup_Sm.txt", "user")
+%		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-user.png}
+%		\caption{User calibration for the CD showing the four quadrants. This is actually the online calibration without the innermost ring, which was broken.}
+%		\label{fig:cal_user}
+%	\end{subfigure}
+%	\caption{Back energy vs. front energy for each quadrant of the CD.}
+%	\label{fig:cal_OU}
+%\end{figure}
 
 
+%\begin{figure}[ht]
+%	\centering
+%	\begin{subfigure}{\textwidth}
+%		\centering
+%		% ParticlePlot.cpp		
+%		% CD_energy("setup_Sm.txt", "f")
+%		\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_f-strip_all_Q.png}
+%		\caption{CD front. Ring number 16 is the outermost ring and ring number 1 is the innermost ring.}
+%		\label{fig:cal_CD_front}
+%	\end{subfigure}
+%	%%
+%	%%
+%	\caption{Energy vs. strip number for each quadrant of the CD.}
+%	\label{fig:cal_CD}
+%\end{figure}
+
 \begin{figure}[ht]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\centering
-		% ParticlePlot.cpp		
-		% CD_energy("setup_Sm.txt", "f")
-		\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_f-strip_all_Q.png}
-		\caption{CD front. Ring number 16 is the outermost ring and ring number 1 is the innermost ring.}
-		\label{fig:cal_CD_front}
-	\end{subfigure}
-	\begin{subfigure}{\textwidth}
 		\centering
 		% ParticlePlot.cpp	
 		% CD_energy("setup_Sm.txt", "b")
 		\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_b-strip_all_Q.png}
 		\caption{CD back. A number of the secular strips have the wrong gains.}
 		\label{fig:cal_CD_back}
-	\end{subfigure}
-	\caption{Energy vs. strip number for each quadrant of the CD.}
-	\label{fig:cal_CD}
 \end{figure}
 
 
@@ -1416,27 +1457,27 @@ For each ADC channel, the threshold can, and should be set.
 One should define the threshold for each ADC channel to be above this peak.
 After a correct calibration is applied, the pedestal will be calibrated out of the physical energy range.
 
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% check_pedestal("setup_Sm.txt", "f", 2, 4, 60)
-		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q2_f4.png}
-		\caption{Pedestal from annular strip 4 in quadrant 2.}
-		\label{fig:Pedestal_f}
-	\end{subfigure}
-	\begin{subfigure}{\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% check_pedestal("setup_Sm.txt", "b", 3, 8, 70)
-		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q3_b8.png}
-		\caption{Pedestal from secular strip 8 in quadrant 3.}
-		\label{fig:Pedestal_b}
-	\end{subfigure}
-	\caption{The pedestal from charge sharing in the front and back side of the CD.}
-	\label{fig:Pedestal}
-\end{figure}
+%\begin{figure}[ht]
+%	\centering
+%	\begin{subfigure}{\textwidth}
+%		\centering
+%		% ParticlePlot.cpp
+%		% check_pedestal("setup_Sm.txt", "f", 2, 4, 60)
+%		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q2_f4.png}
+%		\caption{Pedestal from annular strip 4 in quadrant 2.}
+%		\label{fig:Pedestal_f}
+%	\end{subfigure}
+%	\begin{subfigure}{\textwidth}
+%		\centering
+%		% ParticlePlot.cpp
+%		% check_pedestal("setup_Sm.txt", "b", 3, 8, 70)
+%		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q3_b8.png}
+%		\caption{Pedestal from secular strip 8 in quadrant 3.}
+%		\label{fig:Pedestal_b}
+%	\end{subfigure}
+%	\caption{The pedestal from charge sharing in the front and back side of the CD.}
+%	\label{fig:Pedestal}
+%\end{figure}
 
 \textsl{MiniballCoulexSort} does perform some tricks to try to recover the correct energy and position of the particles, but that depends on counting the number of strips that fire. 
 The default threshold is set to channel 100 if none is given in the calibration file.
@@ -1451,25 +1492,71 @@ These values were also put into the online calibration file.
 
 \begin{figure}[ht]
 	\centering
-	\begin{subfigure}{\textwidth}
+	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
-		% ParticlePlot.cpp
-		% check_single_threshold("setup_Sm.txt", "f", 1, 11, 2100, 1500)
-		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_f11.png}
-		\caption{Annular strip 11 in quadrant 1.}
-		\label{fig:Threshold_f}
+		% GammaPlot.cpp
+		% check_single_threshold("setup_Sm.txt", "f", 4, 2, 3300, 8000)
+		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_f2.png}
+		\caption{Front strip 2 in quadrant 4.}
+		\label{fig:th_f}
 	\end{subfigure}
-	\begin{subfigure}{\textwidth}
+	\hfill 
+	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
-		% ParticlePlot.cpp
-		% check_single_threshold("setup_Sm.txt", "b", 1, 6, 2800, 1500)
-		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_b6.png}
-		\caption{Secular strip 6 in quadrant 1.}
-		\label{fig:Threshold_b}
+		% GammaPlot.cpp
+		% check_single_threshold("setup_Sm.txt", "b", 4, 6, 2700, 2000)
+    		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_b6.png}
+		\caption{Back strip 6 in quadrant 4.}
+		\label{fig:th_b}
 	\end{subfigure}
-	\caption{The threshold, marked with a red dotted line, set for one front and one back strip of the CD.}
-	\label{fig:Threshold}
+	\caption{\textcolor{red}{???}}
+	\label{fig:threshold}
 \end{figure}
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 4, 9, 1, 300, 2400, 1080)
+		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F9.png}
+		\caption{Front strip 9 in quadrant 4.}
+		\label{fig:cal_easy}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% get_single_plot("setup_Sm.txt", "q4", "b", 0, 1, 16, 12, 200, 1400, 330)
+		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q1_f16_b12.png}
+		\caption{Back strip 12, gated on ring 16 (outermost ring) in quadrant 1.}
+		\label{fig:cal_difficult}
+	\end{subfigure}
+	\caption{Calibration of the CD is not always straightforward. The upper figure shows a front strip, where it is fairly easy to determine the centroids of the particles. The lower figure shows a back strip, where it is actually very difficult to determine where the centroid of \Pb\ is.}
+	\label{fig:cal_ED}
+\end{figure}
+
+
+%\begin{figure}[ht]
+%	\centering
+%	\begin{subfigure}{\textwidth}
+%		\centering
+%		% ParticlePlot.cpp
+%		% check_single_threshold("setup_Sm.txt", "f", 1, 11, 2100, 1500)
+%		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_f11.png}
+%		\caption{Annular strip 11 in quadrant 1.}
+%		\label{fig:Threshold_f}
+%	\end{subfigure}
+%	\begin{subfigure}{\textwidth}
+%		\centering
+%		% ParticlePlot.cpp
+%		% check_single_threshold("setup_Sm.txt", "b", 1, 6, 2800, 1500)
+%		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_b6.png}
+%		\caption{Secular strip 6 in quadrant 1.}
+%		\label{fig:Threshold_b}
+%	\end{subfigure}
+%	\caption{The threshold, marked with a red dotted line, set for one front and one back strip of the CD.}
+%	\label{fig:Threshold}
+%\end{figure}
 
 
 The key spectra to look at are \autoref{fig:part} and \autoref{fig:CD_debug}. 
@@ -1483,14 +1570,14 @@ This can only happen when the front energy is below the software threshold set b
 It is likely that it is some noise events or charge sharing that comes below the threshold. 
 
 
-\begin{figure}[ht]
-	\centering
-	% ParticlePlot.cpp
-	% energy_vs_ring("setup_Sm.txt")
-	\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_ring_all.png}
-	\caption{Energy vs. ring number all quadrants of the CD combined. The upper yellow curve is \Sm, the middle one is \Pb\ and the lower one is the contaminant. Ring 1, which is removed, is the innermost ring and ring 16 is the outermost ring.}
-	\label{fig:part}
-\end{figure}
+%\begin{figure}[ht]
+%	\centering
+%	% ParticlePlot.cpp
+%	% energy_vs_ring("setup_Sm.txt")
+%	\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_ring_all.png}
+%	\caption{Energy vs. ring number all quadrants of the CD combined. The upper yellow curve is \Sm, the middle one is \Pb\ and the lower one is the contaminant. Ring 1, which is removed, is the innermost ring and ring 16 is the outermost ring.}
+%	\label{fig:part}
+%\end{figure}
 
 
 \begin{figure}[ht]
@@ -1513,10 +1600,6 @@ It is likely that it is some noise events or charge sharing that comes below the
 
 
 \subsection{Time calibration}\label{ssec:time_cal}
-Each quadrant of the CD is independently connected to a Time to Digital Converter (TDC), which keeps track of the time of registered particle-\ga\ \textcolor{red}{(and particle-\ga-\ga)?} coincidences. 
-The ADCs and DGFs record an energy and a time-stamp with 25 ns ticks. 
-It is the multiplicity of the output of the DGFs that is used to generate the \ga\ signal, which in turn is used to make the particle-\ga\ coincidence.
-
 The purpose of the time calibration is to align the time spectra so that a prompt time gate can be set. In this way it is possible to correlate particles and \ga-rays. Using the \texttt{ParticlePlot.cpp} script, the ADC time offset spectra can be extracted by the following commands
 \begin{lstlisting}[language=sh]
 $ cd ~/GitHub/MasterThesis/Scripts/plotting
@@ -1700,14 +1783,28 @@ These names can be chosen otherwise, but they must match the names set in the fi
 These cuts are used in the Doppler correction of the \ga-rays. 
 \textcolor{red}{What more can I say?}
 
+
 \begin{figure}[ht]
 	\centering
-	% GammaPlot.cpp
-	% particle_events_with_cut()
-	\includegraphics[width=\textwidth]{../Plots/plotting/particle-events-wcut.png}
-	\caption{Detected particle events with cuts.}
-	\label{fig:part_wcut}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% GammaPlot.cpp
+		% particle_events_with_cut()
+		\includegraphics[width=\textwidth]{../Plots/plotting/particle-events-wcut.png}
+		\caption{Detected particle events. The upper curve marked inside the full lines is the Sm and the lower curve marked inside the dotted lines is the Pb. The contaminant is under the Pb area.}
+		\label{fig:part_wcut}
+	\end{subfigure}
+	\hfill 
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+    		\includegraphics[width=\textwidth]{../Plots/simulation/kin_140Sm_208Pb.png}
+		\caption{Simulated kinematics. The upper curve is the Sm and the lower curve is the Pb.}
+		\label{fig:kinsim}
+	\end{subfigure}
+	\caption{Detected and simulated particle events of \Sm\ on \Pb\ at 4.65 MeV/u in the LAB frame. Smaller angles corresponds to the inner rings and larger angles to the outer rings.}
+	\label{fig:part_events}
 \end{figure}
+
 
 
 \autoref{fig:B_dcB_cid} ... \textcolor{red}{what can I say about this plot?}
@@ -1739,11 +1836,15 @@ These cuts are used in the Doppler correction of the \ga-rays.
 %left bottom: \newline
 %The application of an add-back (AB) routine involves the summing of the energies of two coincident gamma rays within 100 ns in neighboring cores on the same cluster detector. This situation corresponds to a Compton-scattered \ga-ray event where the energy of the \ga-ray is shared between two or more crystals in the same triple cluster detector. For higher-energy \ga-rays, where scattering from one crystal into its neighbor is quite likely, this improves the efficiency, but for low-energy \ga-rays, where scattering is less likely, summing effects actually reduce the efficiency. For this reason a cut-off is normally applied and AB is only performed for energies above this threshold. \newline
 
+\textcolor{red}{Hører dette kanskje til i introduksjonen? Eller skal det være i dette kap?}\newline
+For the present experiment, no normalization of the \ga-detectors were required.
+From the previous experiment \cite{Klintefjord2016} and from lifetime measurements \cite{BelloGarrote2015}, the $B(E2, 0_1^+ \rightarrow 2_1^+$) value of \Sm\ was \textcolor{red}{?extracted / obtained / calculated?}. 
+
 
 \subsection{Doppler correction}\label{ssec:Doppler}
 \textcolor{red}{Does this belong in the theory chapter?}\newline
 In order to perform the Doppler correction, the interaction point angles in the Miniball frame of reference has to be known. 
-\autoref{fig:MB-angles} shows a sketch of the Miniball cluster geometry and \autoref{tab:Geo} gives the angles and distance of the different clusters.
+\autoref{fig:HPGe} shows a sketch of the Miniball cluster geometry and \autoref{tab:Geo} gives the angles and distance of the different clusters.
 The parameters $\theta$, $\phi$ and $R$ describes the position of the central axis of the detector clusters, while $\alpha$ describes the orientation about the axis of the cluster. All these parameters are needed to calculate the position of the segments or the position of a point determined by the pulse-shape analysis. 
 The interaction point is determined either from the segment with the largest energy or using a pulse-shape analysis. 
 In the first case, the position of the center of each segment has to be known.
@@ -1751,27 +1852,14 @@ In the second case, geometrical information to relate the time-to-steepest slope
 This is built into \texttt{MiniballCoulexSort}, which does the geometrical calculations. 
 The geometry parameters of the Miniball clusters has to be written into the calibration file. 
 
-\begin{figure}[ht]
-	\centering
-	\input{Images/MB-angles.tikz}
-	\caption{Miniball angles, where $i$ denotes cluster number from \autoref{tab:Geo} and the $z$-axis is the beam direction. The angles, $\theta$ and $\phi$, are defined from a right-hand polar coordinate system, while the angle $\alpha$ determines the clockwise rotation around the center of the triple-cluster as seen from the target position \cite{NWarr-Angles, Rosiak}.}
-	\label{fig:MB-angles}
-\end{figure}
 
-
-\begin{table}[ht] 
-	\centering 
-	\caption{Geometry to the center of the Miniball HPGe clusters (red dot in \autoref{fig:MB-angles}) for the Doppler correction.}
-	\input{Table-data/Geometry.tex}
-	\label{tab:Geo}
-\end{table}
 
 
 Because of the significant velocity of the scattered particles, the emitted \ga-rays from the particle de-excitation has a Doppler shifted \ga-energy given by 
 \begin{equation}\label{eq:DS}
 	E_\gamma = \frac{E_\gamma^{'}}{\gamma (1 - \beta \cos \theta)}
 \end{equation}
-where $E_\gamma$ is the \ga-energy detected in the LAB frame, $E_\gamma^{'}$ is the \ga-energy in the nucleus' frame of reference, $\beta = \frac{v}{c}$, $v$ is the nucleus' velocity, $c$ is the speed of light, $\theta$ is the angle of the emitted \ga-ray with respect to the nucleus' direction of motion and $\gamma = 1/\sqrt{1 - \beta^2}$ is the Lorentz factor. Since both the CD and the HPGe-array are segmented, the emission angle $\theta$ of the \ga-ray can be calculated by 
+where $E_\gamma$ is the \ga-energy detected in the LAB frame, $E_\gamma^{'}$ is the \ga-energy in the nucleus' frame of reference, $\beta = \frac{v}{c}$, $v$ is the nucleus' velocity, $c$ is the speed of light, $\theta$ is the angle of the emitted \ga-ray with respect to the nucleus' direction of motion and $\gamma = 1/\sqrt{1 - \beta^2}$ is the Lorentz factor. Since both the CD and the HPGe array are segmented, the emission angle $\theta$ of the \ga-ray can be calculated by 
 \begin{equation}\label{eq:DSA}
 	\cos \theta = \sin \theta_p \sin \theta_\gamma \cos (\phi_p - \phi_\gamma) + \cos \theta_p \cos \theta_\gamma
 \end{equation}
@@ -1798,26 +1886,33 @@ Core ID 15 shows fewer counts than the neighbors, this is because it was a cross
 It means that some events had to be vetoed to avoid double-peaking, and this reduces the efficiency. 
 
 
+%\begin{figure}[ht]
+%	\centering
+%	\begin{subfigure}{\textwidth}
+%		\centering
+%		% plot_quadrants("setup_Sm.txt", "f", 1, 0, 1, 0, 3500, 8500)
+%		\includegraphics[width=\textwidth]{../Plots/plotting/Q1-4_f1.png}
+%		\caption{CD front ring 1 (innermost ring). It is impossible to separate \Pb\ from \Sm.}
+%		\label{fig:BDS_R1}
+%	\end{subfigure}
+%	\begin{subfigure}{\textwidth}
+%		\centering
+%		% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
+%		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
+%		\caption{CD back strip 1 gated on front ring 16 (outermost ring) in quadrant 4. B1 shows a lot more counts than the other strips arount channel 800.}
+%		\label{fig:BDS_B1}
+%	\end{subfigure}
+%	\caption{Broken detector segments in the CD.}
+%	\label{fig:BDS}
+%\end{figure}
+
 \begin{figure}[ht]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\centering
-		% plot_quadrants("setup_Sm.txt", "f", 1, 0, 1, 0, 3500, 8500)
-		\includegraphics[width=\textwidth]{../Plots/plotting/Q1-4_f1.png}
-		\caption{CD front ring 1 (innermost ring). It is impossible to separate \Pb\ from \Sm.}
-		\label{fig:BDS_R1}
-	\end{subfigure}
-	\begin{subfigure}{\textwidth}
 		\centering
 		% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
 		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
 		\caption{CD back strip 1 gated on front ring 16 (outermost ring) in quadrant 4. B1 shows a lot more counts than the other strips arount channel 800.}
 		\label{fig:BDS_B1}
-	\end{subfigure}
-	\caption{Broken detector segments in the CD.}
-	\label{fig:BDS}
 \end{figure}
-
 
 Excluding detector strips is easy, the only thing to do is to set gain and offset to -1, or gain to 0 and offset to -1. 
 That will make the energy calibration negative, and fall out of the scope. 
@@ -2365,6 +2460,32 @@ export PATH=$HOME/GitHub/Miniball/MiniballCoulexSort/lib:$PATH
 export PATH=$HOME/GitHub/Miniball/MiniballCoulexSort/bin:$PATH
 \end{lstlisting}
 The DYLD\_LIBRARY\_PATH is used on Mac only. On other systems, use \newline LD\_LIBRARY\_PATH instead. You need to locate the \textit{lib} and \textit{bin} folders for both ROOT and \textsl{MiniballCoulexSort} and change them to fit your system, and in addition you need the build folder of your ROOT install.
+
+
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
+
+\chapter{Miniball wiring}
+
+\section{CD wiring and naming of histograms}
+
+\begin{table}[ht] 
+	\centering 
+	\caption{CD wiring for Coulomb excitation experiments.}
+	\input{Table-data/ADC.tex}
+	\label{tab:ADC}
+\end{table}
+
+
+\begin{table}[ht] 
+	\centering 
+	\caption{The logic counting and the naming of histograms from \texttt{TreeBuilder} and \texttt{AQ4Sort}.}
+	\input{Table-data/TBvsAQ4.tex}
+	\label{tab:TBvsAQ4}
+\end{table}
+
+
+
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 
 \chapter{CD simulation}\label{ch:cd_sim}

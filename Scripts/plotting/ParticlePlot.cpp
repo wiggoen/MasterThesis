@@ -990,9 +990,83 @@ void check_single_threshold(std::string setup_file, std::string detector_side,
   pos = (quadrant-1)*(adc.rings+adc.strips) + channel;
   x_value = element->parameters.at(pos);
   line = new TLine(x_value, 0, x_value, histogram->GetBinContent(x_value)*2);
+  line->SetLineWidth(4);
   line->SetLineColor(kRed);
   line->SetLineStyle(kDashed);
   line->Draw("SAME");
+
+  /*
+  // -- Q4 F2 ----------
+  // Write on plot
+  TLatex latex;
+  latex.SetTextSize(0.05);
+  // Coordinates: x, y
+  latex.DrawLatex(300, 4000, "Pedestal");
+  latex.DrawLatex(350, 2750, "Threshold");
+  latex.DrawLatex(400, 1500, "Contaminant");
+  latex.DrawLatex(1760, 1500, "^{208}Pb");
+  latex.DrawLatex(2670, 4000, "^{140}Sm");
+  // Draw arrows on plot
+  // Coordinates: x-min, y-min, x-max, y-max
+  // Pedestal
+  TArrow *arrow_P = new TArrow(280, 4200, 100, 4200, 0.015, "|>");
+  arrow_P->SetAngle(40);     // Angle of the arrow tip
+  arrow_P->SetLineWidth(2);
+  arrow_P->Draw();
+  // Threshold
+  TArrow *arrow_T = new TArrow(350, 2750, 165, 1400, 0.015, "|>");
+  arrow_T->SetAngle(40);     // Angle of the arrow tip
+  arrow_T->SetLineWidth(2);
+  arrow_T->Draw();
+  // Contaminant
+  TArrow *arrow_C = new TArrow(400, 1400, 300, 1000, 0.015, "|>");
+  arrow_C->SetAngle(40);     // Angle of the arrow tip
+  arrow_C->SetLineWidth(2);
+  arrow_C->Draw();
+  // Pb
+  TArrow *arrow_Pb = new TArrow(1925, 1400, 1925, 500, 0.015, "|>");
+  arrow_Pb->SetAngle(40);     // Angle of the arrow tip
+  arrow_Pb->SetLineWidth(2);
+  arrow_Pb->Draw();
+  // Sm
+  TArrow *horisontal_arrow_Sm = new TArrow(2650, 4200, 2490, 4200, 0.015, "|>");
+  horisontal_arrow_Sm->SetAngle(40);     // Angle of the arrow tip
+  horisontal_arrow_Sm->SetLineWidth(2);
+  horisontal_arrow_Sm->Draw();
+  TArrow *vertical_arrow_Sm = new TArrow(2850, 3900, 2850, 1300, 0.015, "|>");
+  vertical_arrow_Sm->SetAngle(40);     // Angle of the arrow tip
+  vertical_arrow_Sm->SetLineWidth(2);
+  vertical_arrow_Sm->Draw();
+  // -------------------
+  */
+  /*
+  // -- Q4 B6 ----------
+  // Write on plot
+  TLatex latex;
+  latex.SetTextSize(0.05);
+  // Coordinates: x, y
+  latex.DrawLatex(300, 1700, "Pedestal");
+  latex.DrawLatex(350, 1300, "Threshold");
+  latex.DrawLatex(500, 900, "Contaminant");
+  // Draw arrow on plot
+  // Coordinates: x-min, y-min, x-max, y-max
+  // Pedestal
+  TArrow *arrow_P = new TArrow(290, 1750, 120, 1750, 0.015, "|>");
+  arrow_P->SetAngle(40);     // Angle of the arrow tip
+  arrow_P->SetLineWidth(2);
+  arrow_P->Draw();
+  // Threshold
+  TArrow *arrow_T = new TArrow(350, 1300, 215, 1045, 0.015, "|>");
+  arrow_T->SetAngle(40);     // Angle of the arrow tip
+  arrow_T->SetLineWidth(2);
+  arrow_T->Draw();
+  // Contaminant
+  TArrow *arrow_C = new TArrow(500, 900, 430, 730, 0.015, "|>");
+  arrow_C->SetAngle(40);     // Angle of the arrow tip
+  arrow_C->SetLineWidth(2);
+  arrow_C->Draw();
+  // -------------------
+  */
  
   canvas->SaveAs(Form("../../Plots/plotting/Threshold_Q%d_%s%d.png", quadrant, detector_side.c_str(), strip));
 }
