@@ -1254,13 +1254,7 @@ This calibration file is then used to sort the data once more with \texttt{Q4S.s
 To visualize plots after a new calibration, either ROOT or \texttt{ParticlePlot.cpp} can be used. 
 The gray boxes related to the \ga-calibration will be discussed in \autoref{ssec:gamma}.
 
-\begin{figure}[ht]
-	\centering
-	%\input{Images/Calibration-flow-chart.tikz}
-	\includegraphics[width=0.9\textwidth]{Images/Flowchart.png}
-	\caption{Flowchart of the programs, scripts and files used in the user calibration. The relative paths of these programs and scripts is shown in \autoref{tab:paths}.}
-	\label{fig:cal_FC}
-\end{figure}
+%% Flowchart
 
 The downfall of the automatic centroid collector came when trying it on the secular strips of the CD. 
 There is just too much individual differences to calibrate the secular strips with a simple script given a channel range for all 12 back strips. 
@@ -1308,6 +1302,8 @@ An explanation of why the innermost ring was removed can be found in  \autoref{s
 As \autoref{fig:cal_user} shows, the calibration of the CD got better by removing the innermost ring. 
 The most visibly lines which did not fit $y = x$ vanished, implying that most of the problem was in fact the coefficients of ring 1. 
 
+
+
 In several strips in quadrant 1 and 4, there was a double-peak structure of \Sm\ like the one in \autoref{fig:bump}. 
 To explain this we have to look at the two-dimensional (2D) spectrum in \autoref{fig:EFBQ4}, which can be divided into four parts \cite{Rosiak}:
 \begin{itemize}
@@ -1331,27 +1327,7 @@ To explain this we have to look at the two-dimensional (2D) spectrum in \autoref
 	Because of the connection of two neighboring strips, the charge is split among them and it is added up to the total charge.
 \end{itemize}
 
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% get_single_plot("setup_Sm.txt", "tb", "f", 1, 4, 4, 1, 270, 670, 15500)
-		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F4_cal.png}
-		\caption{Annular strip 4 in quadrant 4. At higher energies, there is a double-peak structure of \Sm.}
-		\label{fig:bump}
-	\end{subfigure}
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% plot_single_front_back_energy("setup_Sm.txt", 4, "user")
-		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q4-user-drawing.png}
-		\caption{Back energy vs. front energy for quadrant 4 of the CD. A similar figure to figures 39 and 40 in \cite{Rosiak}.}
-	\label{fig:EFBQ4}
-	\end{subfigure}
-	\caption{(a) The second peak of \Sm\ can be explained by region 2 from (b). For more information, see text.}
-	\label{fig:FBE}
-\end{figure}
+
 
 
 In \autoref{fig:cal_CD} the energy of every strip is shown for each quadrant separately. \textcolor{red}{What can I say about these plots?}
@@ -1395,15 +1371,8 @@ In \autoref{fig:cal_CD} the energy of every strip is shown for each quadrant sep
 %	\label{fig:cal_CD}
 %\end{figure}
 
-\begin{figure}[ht]
-		\centering
-		% ParticlePlot.cpp	
-		% CD_energy("setup_Sm.txt", "b")
-		\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_b-strip_all_Q.png}
-		\caption{CD back. A number of the secular strips have the wrong gains.}
-		\label{fig:cal_CD_back}
-\end{figure}
 
+%%  cal CD back
 
 An example of how to use \texttt{Q4S.sh} with \texttt{TreeBuilder} is shown below
 \begin{lstlisting}[language=]
@@ -1436,6 +1405,28 @@ input file(s):
 output file: Sm_user-AQ4Sort-2019-06-24.root
 $ mv Sm_user-AQ4Sort-2019-06-24.root ../../Sorted_data/
 \end{lstlisting}
+
+
+\begin{figure}[htb]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% GammaPlot.cpp
+		% particle_events_with_cut()
+		\includegraphics[width=\textwidth]{../Plots/plotting/particle-events-wcut.png}
+		\caption{Detected particle events. The upper curve marked inside the full lines is the Sm and the lower curve marked inside the dotted lines is the Pb. The contaminant is under the Pb area.}
+		\label{fig:part_wcut}
+	\end{subfigure}
+	\hfill 
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+    		\includegraphics[width=\textwidth]{../Plots/simulation/kin_140Sm_208Pb.png}
+		\caption{Simulated kinematics. The upper curve is the Sm and the lower curve is the Pb.}
+		\label{fig:kinsim}
+	\end{subfigure}
+	\caption{Detected and simulated particle events of \Sm\ on \Pb\ at 4.65 MeV/u in the LAB frame. Smaller angles corresponds to the inner rings and larger angles to the outer rings.}
+	\label{fig:part_events}
+\end{figure}
 
 
 \bigskip
@@ -1490,51 +1481,7 @@ It is easier to set thresholds in linear scale than logarithmic, because in log 
 These values were also put into the online calibration file.
 
 
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% GammaPlot.cpp
-		% check_single_threshold("setup_Sm.txt", "f", 4, 2, 3300, 8000)
-		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_f2.png}
-		\caption{Front strip 2 in quadrant 4.}
-		\label{fig:th_f}
-	\end{subfigure}
-	\hfill 
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% GammaPlot.cpp
-		% check_single_threshold("setup_Sm.txt", "b", 4, 6, 2700, 2000)
-    		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_b6.png}
-		\caption{Back strip 6 in quadrant 4.}
-		\label{fig:th_b}
-	\end{subfigure}
-	\caption{\textcolor{red}{???}}
-	\label{fig:threshold}
-\end{figure}
-
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 4, 9, 1, 300, 2400, 1080)
-		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F9.png}
-		\caption{Front strip 9 in quadrant 4.}
-		\label{fig:cal_easy}
-	\end{subfigure}
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% get_single_plot("setup_Sm.txt", "q4", "b", 0, 1, 16, 12, 200, 1400, 330)
-		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q1_f16_b12.png}
-		\caption{Back strip 12, gated on ring 16 (outermost ring) in quadrant 1.}
-		\label{fig:cal_difficult}
-	\end{subfigure}
-	\caption{Calibration of the CD is not always straightforward. The upper figure shows a front strip, where it is fairly easy to determine the centroids of the particles. The lower figure shows a back strip, where it is actually very difficult to determine where the centroid of \Pb\ is.}
-	\label{fig:cal_ED}
-\end{figure}
-
+%% BIG FIGURE, 4 plots ++
 
 %\begin{figure}[ht]
 %	\centering
@@ -1569,7 +1516,6 @@ Debug ID 20 is when no particle can be found, because there is no energy registe
 This can only happen when the front energy is below the software threshold set by the user in the calibration file and the back energy is either in a broken strip or is also below the software threshold. 
 It is likely that it is some noise events or charge sharing that comes below the threshold. 
 
-
 %\begin{figure}[ht]
 %	\centering
 %	% ParticlePlot.cpp
@@ -1579,24 +1525,24 @@ It is likely that it is some noise events or charge sharing that comes below the
 %	\label{fig:part}
 %\end{figure}
 
-
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
-	% ParticlePlot.cpp
-	% check_cd_debug("setup_Sm.txt", "user")
-	\includegraphics[width=\textwidth]{../Plots/plotting/cd_debug-user.png}
-	\caption{CD debugging. The debug IDs are explained by \autoref{tab:CD_debug}.}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% check_cd_debug("setup_Sm.txt", "user")
+		\includegraphics[width=\textwidth]{../Plots/plotting/cd_debug-user.png}
+		\caption{}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+    		\input{Table-data/CD_debug.tex} \newline % newline lifts the table up one line
+    		\caption{}
+	\end{subfigure}
+	\caption{On the left side is a histogram of the CD debugging. The IDs on the x-axis is explained by the table on the right side. The IDs show the number of strips fired at the front and back side of the CD.}
 	\label{fig:CD_debug}
 \end{figure}
-
-
-\begin{table}[ht] 
-	\centering 
-	\caption{CD debugging shows the number of strips fired at the front and back side of the CD.}
-	\input{Table-data/CD_debug.tex}
-	\label{tab:CD_debug}
-\end{table}
-
 
 
 \subsection{Time calibration}\label{ssec:time_cal}
@@ -1784,26 +1730,7 @@ These cuts are used in the Doppler correction of the \ga-rays.
 \textcolor{red}{What more can I say?}
 
 
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% GammaPlot.cpp
-		% particle_events_with_cut()
-		\includegraphics[width=\textwidth]{../Plots/plotting/particle-events-wcut.png}
-		\caption{Detected particle events. The upper curve marked inside the full lines is the Sm and the lower curve marked inside the dotted lines is the Pb. The contaminant is under the Pb area.}
-		\label{fig:part_wcut}
-	\end{subfigure}
-	\hfill 
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-    		\includegraphics[width=\textwidth]{../Plots/simulation/kin_140Sm_208Pb.png}
-		\caption{Simulated kinematics. The upper curve is the Sm and the lower curve is the Pb.}
-		\label{fig:kinsim}
-	\end{subfigure}
-	\caption{Detected and simulated particle events of \Sm\ on \Pb\ at 4.65 MeV/u in the LAB frame. Smaller angles corresponds to the inner rings and larger angles to the outer rings.}
-	\label{fig:part_events}
-\end{figure}
+
 
 
 
@@ -1906,17 +1833,140 @@ It means that some events had to be vetoed to avoid double-peaking, and this red
 %	\label{fig:BDS}
 %\end{figure}
 
+%\begin{figure}[ht]
+%		\centering
+%		% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
+%		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
+%		\caption{CD back strip 1 gated on front ring 16 (outermost ring) in quadrant 4. B1 shows a lot more counts than the other strips arount channel 800.}
+%		\label{fig:BDS_B1}
+%\end{figure}
+
+
 \begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
-		% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
+		% ParticlePlot.cpp
+		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 1, 1, 1, 0, 2500, 8000)
+		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q1_F1.png}
+		\caption{Ring 1 in quadrant 1.}
+		\label{fig:BDS_R1}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+    		% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
 		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
 		\caption{CD back strip 1 gated on front ring 16 (outermost ring) in quadrant 4. B1 shows a lot more counts than the other strips arount channel 800.}
 		\label{fig:BDS_B1}
+	\end{subfigure}
+	\caption{Broken detector strips.}
+	\label{fig:BDS}
 \end{figure}
+
+
+
 
 Excluding detector strips is easy, the only thing to do is to set gain and offset to -1, or gain to 0 and offset to -1. 
 That will make the energy calibration negative, and fall out of the scope. 
 It is the way it is usually done for dead CD strips or dead \ga-detectors. 
+
+\newpage
+
+\begin{figure}[ht]
+	\centering
+	%\input{Images/Calibration-flow-chart.tikz}
+	\includegraphics[width=0.9\textwidth]{Images/Flowchart.png}
+	\caption{Flowchart of the programs, scripts and files used in the user calibration. The relative paths of these programs and scripts is shown in \autoref{tab:paths}.}
+	\label{fig:cal_FC}
+\end{figure}
+
+\newpage
+
+% ParticlePlot.cpp
+% get_single_plot("setup_Sm.txt", "tb", "f", 1, 4, 4, 1, 270, 670, 15500)
+%\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F4_cal.png}
+
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% plot_single_front_back_energy("setup_Sm.txt", 1, "online")
+		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-online.png}
+		\caption{Online calibration. Back energy vs. front energy for quadrant 4 of the CD.}
+		\label{fig:bump}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% plot_single_front_back_energy("setup_Sm.txt", 4, "user")
+		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q4-user-drawing.png}
+		\caption{User calibration. Back energy vs. front energy for quadrant 4 of the CD. A similar figure to figures 39 and 40 in \cite{Rosiak}.}
+	\label{fig:EFBQ4}
+	\end{subfigure}
+	\caption{\textcolor{red}{Fiks figur-tekst siden den er feil... henvis til riktig figur.} (a) The second peak of \Sm\ can be explained by region 2 from (b). For more information, see text.}
+	\label{fig:FBE}
+\end{figure}
+
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% GammaPlot.cpp
+		% check_single_threshold("setup_Sm.txt", "f", 4, 2, 3300, 8000)
+		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_f2.png}
+		\caption{Front strip 2 in quadrant 4. At higher energies, there is a double-peak structure of \Sm.}
+		\label{fig:th_f}
+	\end{subfigure}
+	\hfill 
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% GammaPlot.cpp
+		% check_single_threshold("setup_Sm.txt", "b", 4, 6, 2700, 2000)
+    		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_b6.png}
+		\caption{Back strip 6 in quadrant 4.}
+		\label{fig:th_b}
+	\end{subfigure}
+	%\caption{\textcolor{red}{???}}
+	%\label{fig:threshold}
+	%\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 4, 9, 1, 300, 2400, 1080)
+		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F9.png}
+		\caption{Front strip 9 in quadrant 4.}
+		\label{fig:cal_easy}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% get_single_plot("setup_Sm.txt", "q4", "b", 0, 1, 16, 12, 200, 1400, 330)
+		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q1_f16_b12.png}
+		\caption{Back strip 12, gated on ring 16 (outermost ring) in quadrant 1.}
+		\label{fig:cal_difficult}
+	\end{subfigure}
+	\caption{Calibration of the CD is not always straightforward. The upper figure shows a front strip, where it is fairly easy to determine the centroids of the particles. The lower figure shows a back strip, where it is actually very difficult to determine where the centroid of \Pb\ is.}
+	\label{fig:cal_ED}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+		\centering
+		% ParticlePlot.cpp	
+		% CD_energy("setup_Sm.txt", "b")
+		\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_b-strip_all_Q.png}
+		\caption{CD back. A number of the secular strips have the wrong gains.}
+		\label{fig:cal_CD_back}
+\end{figure}
+
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
