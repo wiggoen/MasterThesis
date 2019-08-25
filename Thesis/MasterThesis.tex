@@ -111,6 +111,7 @@
   #1,
 }
 
+%% Source: http://www.tedpavlic.com/post_preamble_for_journal_of_math_bio.php
 %% We need to redefine \autoref. We should use 
 %% abbreviations inside the sentence and full names 
 %% at the beginning of sentences. Additionally,
@@ -145,16 +146,18 @@
 
 % \autoref is used inside a sentence 
 % (this is a renew of the standard)
+% OBS! Note the "%" at the end of all lines. This is to prevent a leading space when using autoref.
 \let\orgautoref\autoref
 \renewcommand{\autoref}
         {%\def\equationautorefname{Eq.}%
 		 %\def\figureautorefname{Fig.}%
 	  	 % \def\subfigureautorefname{Fig.}%
-		 % \def\sectionautorefname{Sec.}%
+		 \def\sectionautorefname{Section}% % \def\sectionautorefname{Sec.}%
 		 \def\subsectionautorefname{Section}% % \def\subsectionautorefname{Sec.}%
 		 \def\subsubsectionautorefname{Section}% % \def\subsubsectionautorefname{Sec.}%
 		 % \def\Itemautorefname{item}%
 		 % \def\tableautorefname{Tab.}%        
+		 \def\chapterautorefname{Chapter}% large initial capital
           \orgautoref}
 
 % \autorefs is plural for inside a sentence
@@ -235,7 +238,7 @@ Computational Physics Group, Professor Morten Hjorth-Jensen
 
 CERN-ISOLDE, Dr. Liam Gaffney
 
-Ville Virtanen from University of Jyväskylä for tips on scripts. 
+Ville Virtanen from University of Jyväskylä for helping me getting started on the scripts. 
 
 Lillefy, FFU, Fysikkforeningen
 
@@ -524,6 +527,18 @@ Multi-step Coulomb excitation with radioactive beam, isotope separation on-line 
 	\item \MBOU\ file formatting: \url{https://www-old.mll-muenchen.de/marabou/htmldoc/marabou/IOSpec.html}
 \end{itemize}
 
+\section*{\textcolor{red}{Notes}}
+\begin{itemize}
+	\item Kjør en M2R for å se på output. Kjør også en Q4S for å se på output uten -vl, og sjekk timing?
+	\item Sjekk sensorveiledning
+	\item Estimering av usikkerhet?
+	\item Pile-up (accidental coincidence) i plott?
+	\item Lag tabell med DGF + kalibreringsfila
+	\item Sjekk sortering med de forskjellige flaggene, -singles, -addback, -reject
+	\item Sjekk ut event-greia Liam sendte
+\end{itemize}
+
+
 \newpage
 
 % ----------------------------------------------------------------------------------------------------------------------
@@ -533,7 +548,8 @@ Multi-step Coulomb excitation with radioactive beam, isotope separation on-line 
 \epigraph{\textit{"If I could remember the names of all those particles, I'd be a botanist."}}{\textit{– Enrico Fermi}}
 
 \section{ISOLDE at CERN}
-ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland. \autoref{fig:accelerators} shows the CERN accelerator complex, where ISOLDE is located beside the Proton Synchrotron Booster (PSB), in the lower right marked by a green box. The acronym ISOLDE stands for Isotope Separator On Line DEvice. The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted. The High Intensity and Energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. The present experiment was one of the first Miniball experiments with the former newly upgraded superconducting LINear ACcelerator (LINAC), the HIE-ISOLDE LINAC. \textcolor{red}{Jeg har ikke funnet tall på hvor høyt den gikk, men en plass mellom 5-7.5 MeV/u.}
+ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland. \autoref{fig:accelerators} shows the CERN accelerator complex, where ISOLDE is located beside the Proton Synchrotron Booster (PSB), in the lower right marked by a green box. The acronym ISOLDE stands for Isotope Separator On Line DEvice. The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted. The High Intensity and Energy upgrade (HIE-ISOLDE) have made it possible to deliver energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. The present experiment was one of the first Miniball experiments with the former newly upgraded superconducting LINear ACcelerator (LINAC), the HIE-ISOLDE LINAC. 
+It could deliver beam energies up to 7.5 MeV/u in July 2017 \cite{CERN-news}.
 
 \begin{figure}[ht]
 	\centering
@@ -576,6 +592,9 @@ If the angle between the recoiling nucleus and the \ga-ray can be determined acc
 Detaljer om eksperimentet. 1. Når. 2. Hvor lenge varte det. 3. Forskningsgrupper som samarbeider om eksp. 4. Nevne / minne leser på hva som er målet med eksp. og grovt hvordan det gjøres.
 } 
 \textcolor{red}{Dette tenkte jeg å ha i innledningen..}
+\textcolor{Magenta}{Tilbakemelding 2:\newline
+Det kan fort bli for detaljert for innledningskapittelet, jeg tenker innledningen er litt mer svevende uten alt for mange spesifikke detaljer. Dette kap heter jo eksp setup og skal fråtse i detaljer. MEN det er lov til å gjenta seg selv, det er lenge siden innledningen, så ikke farlig om litt blir gjentatt (leseren kan ha glemt hva du sa i innledningen innen de leser her). 
+} 
 
 \subsection{Beam production}
 \autoref{fig:Coulex} shows a sketch of the experimental setup of the \Sm\ Coulomb excitation experiment. 
@@ -593,7 +612,7 @@ ISOLDE typically takes 50\% \cite{MB-spect} of all proton bunches form the PSB, 
 
 The production target material is chosen depending on the RIB of interest. 
 If the requested RIB is neutron-rich, a primary target of uranium ($^{238}$U) is chosen, and the beam will be produced by fission of the target nuclei.
-\textcolor{red}{??? Nytt avsnitt ???} In this experiment, a neutron-deficient RIB was requested, and a primary target of tantalum (Ta, $Z = 73$) was chosen.
+In this experiment, a neutron-deficient RIB was requested, and a primary target of tantalum (Ta, $Z = 73$) was chosen.
 The production target is selected from a region in the chart of nuclides containing stable nuclei that are heavier than the nucleus of interest.
 When the proton beam collides with the primary target, the target is smashed into pieces, and radioactive isotopes with proton number up to Ta are produced.
 In this way, a large range of isotopes are produced. 
@@ -610,7 +629,7 @@ The Resonance Ionization Laser Ion Source (RILIS) is based on the method of step
 It is an element-selective process which is used to produce ion beams of the desired element \cite{RILIS}. 
 In this experiment, RILIS was used to select samarium (Sm) with atomic number $Z = 62$. 
 After RILIS has selected Sm, we have a continuous beam of Sm ions at an energy of 60 keV. 
-The primary target is on a 60 kV high voltage platform \textcolor{red}{??? Hva betyr dette? Er det viktig? ???} \cite{ISOLDE-web, TIF}. 
+\textcolor{blue}{The primary target is on a 60 kV high voltage platform} \textcolor{red}{??? Hva betyr dette? Er det viktig? ???} \cite{ISOLDE-web, TIF}. 
 
 After the ionization of the beam, the next step in the process is to perform a mass separation.
 The goal of the mass separation is to obtain a beam only containing the isotopes with the desired mass number, and to exclude the contaminants that exits RILIS. 
@@ -619,11 +638,10 @@ Luckily, the neighboring elements of Sm produces very little surface ionization.
 Therefore, few contaminants are expected to be present in the beam after the separator. 
 Different sources of beam contaminants are discussed in \autoref{ssec:bcontaminants}.
 
-\textcolor{red}{Skal jeg putte inn en tegning av esperiment-hallen? evt. i appendix? Og/eller bare fjerne info om HRS under her? HRS blir ikke brukt, og jeg har ikke nevnt noen av alle de andre oppsettene i eksperiment-hallen.} \newline
 At ISOLDE, the beam may hit one of two target stations after RILIS; either the General Purpose Separator (GPS) or the High Resolution Separator (HRS). 
 Both separators feed the beam lines in the experimental hall, but only one separator is active during an experiment. 
 The HRS combine two bending magnets with high mass resolving power, delivering the beam into the main beam line. 
-Even though the HRS have a high mass resolving power, $M/\Delta M > 5000$, it is not sufficient resolving power to separate the isobars, which is why RILIS and the GPS had to be used instead.
+Even though the HRS have a high mass resolving power, $M/\Delta M > 5000$, it is not sufficient resolving power to separate the isobars, which is why RILIS and the GPS was used in the current experiment.
 The GPS has one bending magnet and can deliver beams containing isotopes of different mass numbers simultaneously into three beam lines. 
 The two extra beam lines that the GPS can feed, can have an isotope mass difference of $\pm 13 \%$ compared to the main beam line isotope mass \cite{GPS, TIF}.
 In this experiment the GPS was used to select the isotope of Sm with mass number $A = 140$. 
@@ -631,7 +649,7 @@ In this experiment the GPS was used to select the isotope of Sm with mass number
 Following the GPS, a continuous beam of \Sm\ is obtained. 
 The post-accelerator cannot accept an incoming continuous beam, it can only accelerate bunches.
 In the Radioactive beam EXperiment TRAP (REXTRAP), the \Sm\ ions are collected in order to release them in bunches that are matched to the time structure of the HIE-ISOLDE LINAC. 
-REXTRAP is a penning trap which has the tasks of accumulation, bunching and cooling of the RIB \cite{HIE-ISOLDE, REXTRAP1, REXTRAP2}. 
+REXTRAP is a penning trap which \textcolor{red}{??? has the tasks of / tasks are ???} accumulation, bunching and cooling of the RIB \cite{HIE-ISOLDE, REXTRAP1, REXTRAP2}. 
 The ions are released in bunches and transfered to the REX Electron Beam Ion Source (REXEBIS), see \autoref{fig:Coulex}.
 
 REXEBIS is a charge breeder where the RIB obtains a high charge state \cite{REXEBIS}, with a mass-to-charge ($A/q$) ratio typically between 2.5 and 4.5 \cite{Post-acc}.
@@ -642,13 +660,14 @@ The EBIS blasts off more electrons from Sm, which leaves the nucleus in a high c
 To accelerate the charged ions, that is the beam, to high energy, the beam must consist of highly charged ions. 
 Inside REXEBIS a distribution of charge states are obtained, but the HIE-ISOLDE LINAC can only accept one charge state.
 Therefore, only the parts of the RIB containing the correct charge state is accelerated, the remainder of the beam is lost \cite{REX-web, HIE-web, EBIS2002, EBIS2010}.
-REXEBIS releases the beam with a certain energy through another mass separator before guiding the RIB into the HIE-ISOLDE LINAC. This second mass separator removes residual gas (beam contaminants) from the beam released from REXEBIS \cite{HIE-ISOLDE}. 
+REXEBIS releases the beam with a specific energy through another mass separator before guiding the RIB into the HIE-ISOLDE LINAC. 
+The purpose of the second mass separator is to remove residual gas (beam contaminants) from the beam exiting REXEBIS \cite{HIE-ISOLDE}. 
 
 The HIE-ISOLDE LINAC accelerates the beam of \Sm\ with excellent purity to 4.65 MeV/u, or a total energy of 651 MeV, through the beam line. 
 Several magnets bend the beam into the Miniball spectrometer, where the beam hits the secondary target of \Pb. 
 The beam particles get excited due to the electromagnetic interaction with the target.
-There is a very small probability of exciting the target, explained in \autoref{ssec:Pb}.
-As the \Sm\ particles from the beam fly towards the particle detector, before they are detected, they de-excite by emitting \ga-rays, which are detected by the \ga-detectors.
+%There is a very small probability of exciting the target, explained in \autoref{ssec:Pb}.
+As the \Sm\ particles from the beam fly towards the particle detector, they de-excite by emitting \ga-rays, which are then detected by the \ga-detectors.
 The detector system records information about the angles and energy with a good time resolution. 
 In this way, particle-\ga\ coincidences can be reconstructed to obtain Doppler-corrected \ga-spectra  in order to analyze the Coulomb excitation of \Sm.
 
@@ -672,11 +691,10 @@ and from stable isotopes the contaminants can come from:
 \end{itemize}
 More information on contaminants can be found in \cite{HIE-ISOLDE, RILIS, MB-spect}.
 
-\textcolor{Magenta}{Tilbakemelding: \newline
-Blir litt lange setninger for en liste øverst. Skriv om til tekst eller del opp i flere setninger. \newline
-"with an integer multiple of both mass an charge" er litt uforklarlig? \newline
-}
-
+%\textcolor{Magenta}{Tilbakemelding: \newline
+%Blir litt lange setninger for en liste øverst. Skriv om til tekst eller del opp i flere setninger. \newline
+%"with an integer multiple of both mass an charge" er litt uforklarlig? \newline
+%}
 
 \subsection{The secondary target}\label{ssec:Pb}
 For the current experiment, a target consisting of \Pb\ with a thickness of 1.4 mg/cm$^2$ was chosen. 
@@ -687,8 +705,8 @@ In that way, transitions from the target will not complicate the \ga-ray spectru
 With a target consisting of the highest possible $Z$ of a stable isotope ($Z = 82$), the excitation probability of \Sm\ is maximized. 
 
 \Pb\ has no quadrupole deformation.
-The first excited state is an octupole vibration with an energy of 2615 keV, a half-life of $T_{1/2} = 16.7$ ps and a \textcolor{red}{??? spin / angular momentum ???} and parity of $J^\pi = 3^-$.
-Therefore, there is a small probability of observing the first excited state of \Pb\ in the \ga-spectrum. 
+The first excited state is an octupole vibration with an energy of 2615 keV, a half-life of $T_{1/2} = 16.7$ ps and a spin and parity of $J^\pi = 3^-$.
+Therefore, \textcolor{red}{??? there is / it is / there are ???} a small probability of observing the first excited state of \Pb\ in the \ga-spectrum. 
 The excitation probability for \Pb\ is maximal if the EM interaction is approximately head on, and the ejected target nucleus hits one of the inner particle detector rings.
 
 
@@ -827,7 +845,7 @@ The data is then stored in a PC.
 The ADCs and DGFs record an energy and a time-stamp with 25 ns ticks. 
 It is the multiplicity of the output of the DGFs that is used to generate the \ga\ signal, which in turn is used to make the particle-\ga\ coincidence.
 
-The collection of data is done by the \MBOU\ \cite{Maraboou} DAQ system \cite{MB-spect}. 
+The collection of data is done by the \MBOU\ \cite{Maraboou, Maraboou-web} DAQ system \cite{MB-spect}. 
 It is split in two parts, as presented in \autoref{fig:MARaBOOU}, one front-end part based on the Multi Branch System (MBS) \cite{MBS} and one back-end part based on the ROOT framework \cite{ROOT}.
 The front-end takes care of data readout, event building and data transportation, while the back-end takes care of the setup, run control, histogramming, data analysis and data storage. 
 
@@ -887,6 +905,7 @@ Presently the code has only a minor resemblance to the original code.
 The remaining Python and bash scripts are written and developed by the author.
 All of the scripts written in C/C++ are dependent on the ROOT 6 framework, a C/C++ data analysis framework developed and maintained at CERN.
 
+Information about the computer setup and environment can be found in \autoref{a:computer_environment}. There is also a section containing the relative path of programs, scripts and files from this thesis.
 
 \section{Data handling}
 The raw data from Miniball experiments essentially\footnote{The format is not entirely correct, since it has identification of where the particle and \ga\ hit. 
@@ -937,7 +956,7 @@ To get from the raw data to the Doppler-corrected \ga-spectra, the code is divid
 		\item event building
 		\begin{itemize}
 			\item calibrate detectors and apply thresholds
-			\item use particle-\ga\ coincidences (correlations) to build events
+			\item use particle-\ga\ coincidences (correlations) to build events \textcolor{red}{hører kanskje egentlig til CLXAna..}
 			\item store everything in a three structure for easy access
 		\end{itemize}
 	\end{itemize}
@@ -947,17 +966,32 @@ To get from the raw data to the Doppler-corrected \ga-spectra, the code is divid
 	\end{itemize}
 \end{enumerate}
 
-For the CD, \texttt{TreeBuilder}\footnote{\texttt{TreeBuilder} is found in the \textit{$\sim$/GitHub/Miniball/MiniballCoulexSort/TreeBuilder} directory.} sorts each quadrant for itself, but it is not possible to see each pixel of the detector. 
-In the front, each annular strip can be viewed and in the back each secular strip can be viewed as a whole, the back strip contains the energy information of all of the 16 annular strips. 
-The secular strips cover a wide angular range, thus they show no sharp peaks.
+\bigskip
+
+\texttt{MedToRoot} in \autoref{sec:data_conversion}.
+
+\texttt{TreeBuilder} will be discussed in \autoref{ssec:online_cal}.
+
+\texttt{AQ4Sort} in \autoref{ssec:user_cal}.
+
+\texttt{CLXAna} in \autoref{ssec:gamma}.
+
+\bigskip
+
+\textcolor{red}{flytte til der det er litt mer relvant?}\newline
+For the CD, \texttt{TreeBuilder} sorts each quadrant for itself, but it is not possible to see each pixel of the detector. 
+In the front, each annular strip can be viewed and in the back each radial strip can be viewed as a whole, the back strip contains the energy information of all of the 16 annular strips. 
+The radial strips cover a wide angular range, thus they show no sharp peaks.
 \texttt{TreeBuilder} also takes a number of command line flag options. 
 If the \textit{-cdpad} flag option is not used, then there will be no particle events, because they come into the CD. 
 Other flag options will be introduced later in the chapter.
 
-One program that is mentioned in the Miniball GitHub repository, but not showed how to use, is the \texttt{AQ4Sort}\footnote{\texttt{AQ4Sort} is also found in the \textit{$\sim$/GitHub/Miniball/MiniballCoulexSort/TreeBuilder} directory.}. 
+One program that is mentioned in the Miniball GitHub repository, but not showed how to use, is the \texttt{AQ4Sort}. 
 It is used in the same way as the \texttt{TreeBuilder} script, but it sorts the histograms in another way and it does not take any command line flag options. 
 \texttt{AQ4Sort} is used before and during the calibration of the particle detector, because it gives information about every single ring and every single back strip (the "pixels" of the CD). 
-These pixels are used for calibration and are made by gating on the annular (front) rings to see peaks in the secular (back) strips. 
+These pixels are used for calibration and are made by gating on the annular (front) rings to see peaks in the radial (back) strips. 
+
+
 
 
 \subsection{Counting and naming convention}
@@ -976,7 +1010,7 @@ Calibration coefficients given to the calibration file, which is introduced in l
 
 
 
-\section{Data conversion}
+\section{Data conversion}\label{sec:data_conversion}
 In order to analyze the data in the ROOT framework, the first part of the code is just to convert the \textit{.med}-files produced by \MBOU\ into \textit{.root}-files with the program \texttt{MedToRoot}. 
 To avoid copy and paste the commands used with \texttt{MedToRoot} in the terminal for every data file, a bash script called \texttt{M2R.sh} was made to do this. 
 It uses \texttt{MedToRoot} to take in as many files as you want, and convert it in one go. 
@@ -1028,7 +1062,6 @@ where the file of interest is the first one. The \textit{OnBeam.root}-files are 
 
 
 \section{Detector calibration}
-
 
 %\textcolor{Magenta}{Tilbakemelding: \newline 
 %start with explaining the general idea for the calibration: \newline 
@@ -1087,14 +1120,12 @@ This is not entirely correct, since there will be a small energy loss when the p
 
 \subsection{Simulation}
 
-
 %\textcolor{Magenta}{Tilbakemelding: \newline 
 %what are the ingredients for this simulation? \newline
 %simple 2-body kinematics: energy of projectile, scattering angle of projectile $\implies$ energy of scattered projectile, \{angle, energy\} of binary partner (target recoil) \newline
 %Stopping powers (which models?) $\rightarrow$ SRIM \newline
 %Slowing of the particles in the target and in the dead layer of Si
 %}\newline
-
 
 To calibrate the data, we need to know the expected energy of the centroids of the peaks. 
 This was done by simulating the experiment using the program \texttt{kinsim3} \cite{kinsim} written by Dr. Liam Gaffney. 
@@ -1151,17 +1182,17 @@ A general kinematics simulation in the LAB frame is shown in \autoref{fig:kinsim
 
 \begin{table}[ht] 
     \centering 
-    \caption{The mid ring CD angles in the LAB frame, with a distance from the target to the CD of 26.98 mm. Ring 1 is the innermost ring and ring 16 is the outermost ring. The centroid energies comes from simulation with \texttt{kinsim3}. $E_t$ is the energy of the target particle (Pb) and $E_b$ is the energy of the beam particle (Sm).}
+    \caption{The mid ring CD angles in the LAB frame, with a distance from the target to the CD of 26.98 mm. 
+    Ring 1 is the innermost ring and ring 16 is the outermost ring. 
+    The centroid energies comes from simulation with \texttt{kinsim3}. 
+    $E_t$ is the energy of the secondary target particle (Pb) and $E_b$ is the energy of the beam particle (Sm).}
 	\input{Table-data/CD.tex}
 	\label{tab:CD_angles}
 \end{table}
 
 
 
-
-
-
-\subsection{Online calibration of the particle detector}
+\subsection{Online calibration of the particle detector}\label{ssec:online_cal}
 Every year there is a campaign at ISOLDE, where the staff configures a settingsfile if there are any changes in the setup system. 
 In addition the staff makes a calibration file containing the calibration coefficients for the CD and the Miniball \ga-detector array. 
 For the calibration of the CD, a cocktail beam composed of different isotopes is accelerated into a specific target. 
@@ -1202,26 +1233,111 @@ root [1] plot_front_back_energy("setup_Sm.txt", "online")
 ... <showing output from script>
 \end{lstlisting}
 
-\autoref{fig:cal_online} shows the back vs. front energy (online calibration) for the four different quadrants of the CD. 
+\autoref{fig:CD_cal_online} shows the back vs. front energy (online calibration) for the one quadrant of the CD. 
 The plots shows a part of a line for each front and back strip. An indication of a good calibration is when all detectors lie on a linear line ($y = x$), meaning that the front side and the back side of the CD has detected the same energy. 
 From the figure we see that not all detectors fit the line, indicating that there are some calibration coefficients wrong in some of the strips.
-One major problem with the online calibration is that a number of the back strips have the wrong gains as shown in \autoref{fig:cal_CD_back}.
+One major problem with the online calibration is that a number of the back strips have the wrong gains as shown in \autoref{fig:CD_cal_back}.
 
+\begin{figure}[htb]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% plot_single_front_back_energy("setup_Sm.txt", 1, "online")
+		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-online.png}
+		\caption{}
+		\label{fig:CD_cal_online}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% plot_single_front_back_energy("setup_Sm.txt", 4, "user")
+		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q4-user-drawing.png}
+		\caption{}
+		\label{fig:EFBQ4}
+	\end{subfigure}
+	%
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% single_CD_energy("setup_Sm.txt", "b", 1)
+		\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_b-strip_Q1.png}
+		\caption{}
+		\label{fig:CD_cal_back}
+	\end{subfigure}
+	\caption{Back energy vs. front energy for one quadrant of the CD in (a+b). 
+	(a) Quadrant 1 using online calibration.
+	(b) Quadrant 4 using user calibration. A similar figure to figures 39 and 40 in \cite{Rosiak}.
+	(c) Quadrant 1 of the back side of the CD. A number of the radial strips have the wrong gains.
+	See text for more information.}
+	\label{fig:FBE}
+\end{figure}
+
+% ParticlePlot.cpp
+% get_single_plot("setup_Sm.txt", "tb", "f", 1, 4, 4, 1, 270, 670, 15500)
+%\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F4_cal.png}
 
 
 \subsection{User calibration of the particle detector}\label{ssec:user_cal}
 An ambitious goal of the calibration was to make a program that could automatically fit the centroid of the peaks needed. 
 It turned out to be very difficult, and it became more and more manual labor. 
 Because of the complex peak shapes, it is very hard to do an automatic fitting it seems. 
-\autoref{fig:cal_ED} shows one strip that is easy to calibrate and one that is difficult to calibrate.
+As an example, \autoref{fig:CD_cal_easy} displays one strip that is easy to calibrate and \autoref{fig:CD_cal_difficult} shows one strip that is difficult to calibrate.
 The peaks demands very much individual care, which is very difficult to do with a automatic program. 
 In logarithmic (log) scale the data looked more Gaussian distributed, but it is not the case in linear scale. 
 For the centroids, it was very hard to tell in log scale how precise the automatic fitting was. 
 It turned out that it was not very precise, so a lot of time was wasted looking at the data in log scale. 
 
-%%
-%% Cal of CD figure moved
-%%
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% GammaPlot.cpp
+		% check_single_threshold("setup_Sm.txt", "f", 4, 2, 3300, 8000)
+		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_f2.png}
+		\caption{}
+		\label{fig:th_f}
+	\end{subfigure}
+	\hfill 
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% GammaPlot.cpp
+		% check_single_threshold("setup_Sm.txt", "b", 4, 6, 2700, 2000)
+    		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_b6.png}
+		\caption{}
+		\label{fig:th_b}
+	\end{subfigure}
+	%\label{fig:threshold}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 4, 9, 1, 300, 2400, 1080)
+		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F9.png}
+		\caption{}
+		\label{fig:CD_cal_easy}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% get_single_plot("setup_Sm.txt", "q4", "b", 0, 1, 16, 12, 200, 1400, 330)
+		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q1_f16_b12.png}
+		\caption{}
+		\label{fig:CD_cal_difficult}
+	\end{subfigure}
+	\caption{\textbf{(a)} Front strip 2 in quadrant 4. 
+	At higher energies, there is a double-peak structure of \Sm. 
+	The second peak of \Sm\ can be explained by region 2 from \autoref{fig:EFBQ4}
+	\textbf{(b)} Back strip 6 in quadrant 4.
+	\textbf{(c)} Front strip 9 in quadrant 4. 
+	In this strip it is fairly easy to determine the centroids of the particles.
+	\textbf{(d)} Back strip 12, gated on ring 16 (outermost ring) in quadrant 1. 
+	The calibration of the CD is not always straightforward. 
+	It is actually very difficult to determine where the centroid of \Pb\ is.
+	See text for more information.}
+	\label{fig:cal_ED}
+\end{figure}
 
 On the front side of the CD, there is effectively only two measuring points per angle interval. 
 If the contaminant in the spectra was known and if it only consists of one element, it could have been a third measuring point.  
@@ -1235,10 +1351,10 @@ For this purpose, the program \texttt{AQ4Sort} is used.
 It operates the same files as \texttt{TreeBuilder} does, but with the purpose of making every combination of gates on front and back strips so that the front and back centroids for every "pixel" of the detector is available.
 
 The total amount of annular strips to calibrate on the front side of the CD is 64, since there is 4 quadrants with 16 rings. 
-On the back side, there is effectively 48 secular strips, 4 quadrants with 12 strips.
-To fully calibrate the CD, we need all the centroids of the peaks from both sides, 128 centroids (64 annular strips $\cdot$ 2 peaks/strip) on the front side and 1536 centroids (48 secular strips $\cdot$ 2 peaks/strip $\cdot$ 16 rings) on the back side. 
+On the back side, there is effectively 48 radial strips, 4 quadrants with 12 strips.
+To fully calibrate the CD, we need all the centroids of the peaks from both sides, 128 centroids (64 annular strips $\cdot$ 2 peaks/strip) on the front side and 1536 centroids (48 radial strips $\cdot$ 2 peaks/strip $\cdot$ 16 rings) on the back side. 
 This gives a total of 1664 centroids to extract, which is not a task one would like to do manually.
-For a quick calibration, or a bare minimum calibration, one needs two peaks in each annular strip and two peaks in each secular strip, making it 224 centroids.
+For a quick calibration, or a bare minimum calibration, one needs two peaks in each annular strip and two peaks in each radial strip, making it 224 centroids.
 By taking more centroids, which is generally a good idea, it is possible to check for non-linearities or instabilities in time.
 It makes the calibration more precise.
 
@@ -1247,24 +1363,30 @@ The idea was to use the \textbf{kinsim3()} function from \texttt{kinsim3.cc} to 
 This data could either be analyzed in ROOT with the \textbf{TBrowser()} or through different functions in \texttt{ParticlePlot.cpp}. 
 From either ROOT or \texttt{ParticlePlot.cpp}, information about the range of the peaks and guesses of the centroids of Pb and Sm would be written down in input files used in \texttt{ParticleFit.cpp}. 
 Here the automatic fitting would have used the input files to fit the peaks, collect the centroids and written them to output files which would have been used as input files in \texttt{particle-calibration.py}. 
-In this Python script, the centroids would have been plotted and a linear regression method using least squares of a first degree polynomial fit\footnote{Polynomial fit: \url{https://docs.scipy.org/doc/numpy/reference/generated/numpy.polyfit.html}} would have fitted a line to re-produce the points as best as possible. 
+In this Python script, the centroids would have been plotted and a linear regression method using least squares of a first degree polynomial fit \cite{Polyfit} would have fitted a line to re-produce the points as best as possible. 
 It would also write the gains and offsets to separate output files, which would be used as input in \texttt{ADC\_generator.py}. 
 This Python script will write the calibration coefficients to the terminal, and from there it is possible to copy and paste it into the calibration file \textit{IS5558-user.cal}. 
 This calibration file is then used to sort the data once more with \texttt{Q4S.sh} using \texttt{TreeBuilder} and the new calibration coefficients.
 To visualize plots after a new calibration, either ROOT or \texttt{ParticlePlot.cpp} can be used. 
 The gray boxes related to the \ga-calibration will be discussed in \autoref{ssec:gamma}.
 
-%% Flowchart
+\begin{figure}[ht]
+	\centering
+	%\input{Images/Calibration-flow-chart.tikz}
+	\includegraphics[width=0.8\textwidth]{Images/Flowchart.png}
+	\caption{Flowchart of the programs, scripts and files used in the user calibration. The relative paths of these programs and scripts is shown in \autoref{tab:paths}.}
+	\label{fig:cal_FC}
+\end{figure}
 
-The downfall of the automatic centroid collector came when trying it on the secular strips of the CD. 
-There is just too much individual differences to calibrate the secular strips with a simple script given a channel range for all 12 back strips. 
+The downfall of the automatic centroid collector came when trying it on the radial strips of the CD. 
+There is just too much individual differences to calibrate the radial strips with a simple script given a channel range for all 12 back strips. 
 This was discovered way too late. 
 There isn't any range to "rule them all", at least since the fitting function can behave very strange given a too small or too big range.
 Another problem is the complex shape of the peaks.
 To implement a proper automatic fitting program, one would have to find a function with a negatively-skewed distribution, where most of the data values are concentrated on the right side of the distribution graph. 
 Sadly this was discovered too late to implement it. 
 
-In some spectra it was very hard to determine the centroid of the Pb peaks, as shown in \autoref{fig:cal_difficult}. 
+In some spectra it was very hard to determine the centroid of the Pb peaks, as shown in \autoref{fig:CD_cal_difficult}. 
 To try to solve this problem, additional data from an experiment conducted right before this one was applied. 
 The experiment was IS553, $^{144}$Ba on $^{58}$Ni, and the reason for trying additional data was to try to get calibration for the lower energy spectra. 
 But sadly the data from the IS553 experiment was a bad fit with this experiment. 
@@ -1299,7 +1421,7 @@ It was anyways decided to stick with the online calibration for this thesis sinc
 A lot of time have been used on scripts, and then the auto-fitting was a much harder problem than first expected because of the shape of the peaks.
 The user calibration of the CD is basically the online calibration without the innermost ring. 
 An explanation of why the innermost ring was removed can be found in  \autoref{sec:BDS}. 
-As \autoref{fig:cal_user} shows, the calibration of the CD got better by removing the innermost ring. 
+As \autoref{fig:cal_FB} shows, the calibration of the CD got better by removing the innermost ring. 
 The most visibly lines which did not fit $y = x$ vanished, implying that most of the problem was in fact the coefficients of ring 1. 
 
 
@@ -1323,7 +1445,7 @@ To explain this we have to look at the two-dimensional (2D) spectrum in \autoref
 	 On the back side, the strips are coupled to a positive voltage which protects against the induction of an artificially higher energy by the front side charge sharing. 
 	These phenomena are discussed in detail in \cite{Grassi2014, Kramberger2002}.
 	\item Region 4: This structure originates from the same place as region 2.
-	These events occur because of the paired up secular strips on the back side of the CD.  
+	These events occur because of the paired up radial strips on the back side of the CD.  
 	Because of the connection of two neighboring strips, the charge is split among them and it is added up to the total charge.
 \end{itemize}
 
@@ -1339,8 +1461,8 @@ In \autoref{fig:cal_CD} the energy of every strip is shown for each quadrant sep
 %		% ParticlePlot.cpp
 %		% plot_front_back_energy("setup_Sm.txt", "online")
 %		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-online.png}
-%		\caption{Online calibration for the CD showing the four quadrants. It generally looks quite good, but there is a number of the secular strips (back side) that have the wrong gains.}
-%		\label{fig:cal_online}
+%		\caption{Online calibration for the CD showing the four quadrants. It generally looks quite good, but there is a number of the radial strips (back side) that have the wrong gains.}
+%		\label{fig:CD_cal_online}
 %	\end{subfigure}
 %	\begin{subfigure}{\textwidth}
 %		\centering
@@ -1348,7 +1470,7 @@ In \autoref{fig:cal_CD} the energy of every strip is shown for each quadrant sep
 %		% plot_front_back_energy("setup_Sm.txt", "user")
 %		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-4-user.png}
 %		\caption{User calibration for the CD showing the four quadrants. This is actually the online calibration without the innermost ring, which was broken.}
-%		\label{fig:cal_user}
+%		\label{fig:cal_FB}
 %	\end{subfigure}
 %	\caption{Back energy vs. front energy for each quadrant of the CD.}
 %	\label{fig:cal_OU}
@@ -1407,6 +1529,9 @@ $ mv Sm_user-AQ4Sort-2019-06-24.root ../../Sorted_data/
 \end{lstlisting}
 
 
+
+
+
 \begin{figure}[htb]
 	\centering
 	\begin{subfigure}[t]{0.49\textwidth}
@@ -1463,7 +1588,7 @@ After a correct calibration is applied, the pedestal will be calibrated out of t
 %		% ParticlePlot.cpp
 %		% check_pedestal("setup_Sm.txt", "b", 3, 8, 70)
 %		\includegraphics[width=\textwidth]{../Plots/plotting/Pedestal_Q3_b8.png}
-%		\caption{Pedestal from secular strip 8 in quadrant 3.}
+%		\caption{Pedestal from radial strip 8 in quadrant 3.}
 %		\label{fig:Pedestal_b}
 %	\end{subfigure}
 %	\caption{The pedestal from charge sharing in the front and back side of the CD.}
@@ -1498,7 +1623,7 @@ These values were also put into the online calibration file.
 %		% ParticlePlot.cpp
 %		% check_single_threshold("setup_Sm.txt", "b", 1, 6, 2800, 1500)
 %		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q1_b6.png}
-%		\caption{Secular strip 6 in quadrant 1.}
+%		\caption{Radial strip 6 in quadrant 1.}
 %		\label{fig:Threshold_b}
 %	\end{subfigure}
 %	\caption{The threshold, marked with a red dotted line, set for one front and one back strip of the CD.}
@@ -1768,6 +1893,7 @@ For the present experiment, no normalization of the \ga-detectors were required.
 From the previous experiment \cite{Klintefjord2016} and from lifetime measurements \cite{BelloGarrote2015}, the $B(E2, 0_1^+ \rightarrow 2_1^+$) value of \Sm\ was \textcolor{red}{?extracted / obtained / calculated?}. 
 
 
+
 \subsection{Doppler correction}\label{ssec:Doppler}
 \textcolor{red}{Does this belong in the theory chapter?}\newline
 In order to perform the Doppler correction, the interaction point angles in the Miniball frame of reference has to be known. 
@@ -1797,6 +1923,8 @@ where ($\theta_p, \phi_p$) and ($\theta_\gamma, \phi_\gamma$) are the detection 
 
 
 
+
+
 \subsection{Broken detector segments}\label{sec:BDS}
 The innermost ring of the CD was very damaged by the bombardment of particles hitting it, so it had to be removed from the data set. 
 It was impossible to separate the beam and target peaks as shown by \autoref{fig:BDS_R1}.
@@ -1804,7 +1932,7 @@ This was unfortunate since the ring 1 has the most statistics.
 Si detectors don't last forever, it was "old" and supposed to be changed after our experiment. 
 
 On the back side of the CD, one pixel was acting weird compared to the other back strips in the same quadrant. 
-Secular strip 1 (B1) gated on annular strip 16 in quadrant 4 showed a lot more counts than all of the other strips as shown by \autoref{fig:BDS_B1}. 
+Radial strip 1 (B1) gated on annular strip 16 in quadrant 4 showed a lot more counts than all of the other strips as shown by \autoref{fig:BDS_B1}. 
 There was also other rings where B1 was a bit off, but not nearly as much as in the named pixel. 
 Maybe B1 should have been excluded from the data set, but it was not in this thesis.
 
@@ -1871,102 +1999,6 @@ It means that some events had to be vetoed to avoid double-peaking, and this red
 Excluding detector strips is easy, the only thing to do is to set gain and offset to -1, or gain to 0 and offset to -1. 
 That will make the energy calibration negative, and fall out of the scope. 
 It is the way it is usually done for dead CD strips or dead \ga-detectors. 
-
-\newpage
-
-\begin{figure}[ht]
-	\centering
-	%\input{Images/Calibration-flow-chart.tikz}
-	\includegraphics[width=0.9\textwidth]{Images/Flowchart.png}
-	\caption{Flowchart of the programs, scripts and files used in the user calibration. The relative paths of these programs and scripts is shown in \autoref{tab:paths}.}
-	\label{fig:cal_FC}
-\end{figure}
-
-\newpage
-
-% ParticlePlot.cpp
-% get_single_plot("setup_Sm.txt", "tb", "f", 1, 4, 4, 1, 270, 670, 15500)
-%\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F4_cal.png}
-
-
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% plot_single_front_back_energy("setup_Sm.txt", 1, "online")
-		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q1-online.png}
-		\caption{Online calibration. Back energy vs. front energy for quadrant 4 of the CD.}
-		\label{fig:bump}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% plot_single_front_back_energy("setup_Sm.txt", 4, "user")
-		\includegraphics[width=\textwidth]{../Plots/plotting/E_f_b_Q4-user-drawing.png}
-		\caption{User calibration. Back energy vs. front energy for quadrant 4 of the CD. A similar figure to figures 39 and 40 in \cite{Rosiak}.}
-	\label{fig:EFBQ4}
-	\end{subfigure}
-	\caption{\textcolor{red}{Fiks figur-tekst siden den er feil... henvis til riktig figur.} (a) The second peak of \Sm\ can be explained by region 2 from (b). For more information, see text.}
-	\label{fig:FBE}
-\end{figure}
-
-
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% GammaPlot.cpp
-		% check_single_threshold("setup_Sm.txt", "f", 4, 2, 3300, 8000)
-		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_f2.png}
-		\caption{Front strip 2 in quadrant 4. At higher energies, there is a double-peak structure of \Sm.}
-		\label{fig:th_f}
-	\end{subfigure}
-	\hfill 
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% GammaPlot.cpp
-		% check_single_threshold("setup_Sm.txt", "b", 4, 6, 2700, 2000)
-    		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_b6.png}
-		\caption{Back strip 6 in quadrant 4.}
-		\label{fig:th_b}
-	\end{subfigure}
-	%\caption{\textcolor{red}{???}}
-	%\label{fig:threshold}
-	%\centering
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 4, 9, 1, 300, 2400, 1080)
-		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q4_F9.png}
-		\caption{Front strip 9 in quadrant 4.}
-		\label{fig:cal_easy}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% get_single_plot("setup_Sm.txt", "q4", "b", 0, 1, 16, 12, 200, 1400, 330)
-		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q1_f16_b12.png}
-		\caption{Back strip 12, gated on ring 16 (outermost ring) in quadrant 1.}
-		\label{fig:cal_difficult}
-	\end{subfigure}
-	\caption{Calibration of the CD is not always straightforward. The upper figure shows a front strip, where it is fairly easy to determine the centroids of the particles. The lower figure shows a back strip, where it is actually very difficult to determine where the centroid of \Pb\ is.}
-	\label{fig:cal_ED}
-\end{figure}
-
-\newpage
-
-\begin{figure}[ht]
-		\centering
-		% ParticlePlot.cpp	
-		% CD_energy("setup_Sm.txt", "b")
-		\includegraphics[width=\textwidth]{../Plots/plotting/E_vs_b-strip_all_Q.png}
-		\caption{CD back. A number of the secular strips have the wrong gains.}
-		\label{fig:cal_CD_back}
-\end{figure}
-
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
@@ -2073,6 +2105,10 @@ determine Coulomb excitation yields. These yields will then, in a second step, b
 GOSIA and GOSIA2 analysis?
 
 \url{https://www.pas.rochester.edu/~cline/Gosia/Gosia_Manual_20110609.pdf}
+
+\bigskip
+
+Look for an updated version of \textsl{MiniballCoulexSort} and ask Dr. Liam Gaffney if there are any new considerations of how to use it with data from 2017.
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
@@ -2385,9 +2421,10 @@ Substituting back the variable names from \autoref{fig:LAB-CM} into \autoref{eq:
 	\theta_t &= \tfrac{1}{2} (\pi - \theta_b^{'}) ~[ \text{radians} ] = \tfrac{1}{2} (180^\circ - \theta_b^{'}) ~[ \text{degrees} ]
 \end{align}
 
+
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
-\chapter{Computer setup and environment}
+\chapter{Computer setup and environment}\label{a:computer_environment}
 Some calibration code is based on the codes of Ville Virtanen and Dr. Liam Gaffney. Other code/scripts have been written by the author in C++ / Python.
 
 \section{The computer}
@@ -2428,7 +2465,7 @@ The relative path of the ROOT framework is
 \end{lstlisting}
 
 
-\subsection{Relative path of programs and scripts}
+\subsection{Relative path of programs, scripts and files}
 \autoref{tab:paths} shows the relative path of programs, scripts and files used in this thesis. 
 The settingsfile \textit{MBSettings2017\_CLX\_IS558.dat}, and calibration files \textit{IS558-online.cal} and \textit{IS558-user.cal}, used in this experiment can be found in the directory specified in the table, but when used directly with \textsl{MiniballCoulexSort} the default path is \textit{$\sim$/GitHub/Miniball/MiniballCoulexSort/config}.
 The file \textit{setup\_Sm.txt} is in the table twice, this is because it is two files with the same name, one for plotting and one for fitting.

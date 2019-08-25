@@ -1307,6 +1307,86 @@ void CD_energy(std::string setup_file, std::string detector_side) {
 }
 
 
+void single_CD_energy(std::string setup_file, std::string detector_side, int quadrant) {
+  /*
+      Plots data sorted from TreeBuilder. Energy in MeV.
+      Plots energy vs ring number for the one quadrant of the CD.
+      Choices: ("f")ront or ("b")ack side. Quadrant 1-4.
+      Counting on front side: f1 (innermost ring) to f16 (outermost ring).
+      Front side: logarithmic z-axis.
+      Back  side: linear      z-axis.
+  */
+  ADC adc;
+  Element *element = new Element();
+
+  element->read_setup_file(setup_file);
+
+  if ( !(detector_side == "b" || detector_side == "f")) {
+    std::cout << "Invalid option. Choose detector side (b)ack or (f)ront." << std::endl;
+  }
+
+  TFile *infile = new TFile(element->ADC_infile.c_str(), "UPDATE");
+
+  TCanvas *canvas = nullptr;
+  std::string canvas_name = Form("Energy vs strip number, Q%d", quadrant);
+  canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
+  TH1F *histogram = nullptr;
+  std::string histogram_name;
+  std::string detector_side_name;
+  float label_size = 0.05;
+  float margin_size = 0.13;
+  int x_max = 0;
+
+  if (detector_side == "f") {
+      detector_side_name = "front";
+      x_max = 15;
+  } else if (detector_side == "b") {
+      detector_side_name = "back";
+      x_max = 11;
+  }
+
+  histogram_name = Form("CD_spec/CD_%s_energy_%d", detector_side_name.c_str(), quadrant-1);
+
+  //std::cout << "Histogram: " << histogram_name << std::endl;
+
+  histogram = (TH1F *)infile->Get(histogram_name.c_str());
+  histogram->Draw("colz");
+  histogram->SetAxisRange(-0.5, x_max, "X");
+  histogram->SetStats(0);                      // Remove stats
+  histogram->SetLabelSize(label_size, "xyz");  // Label size for x-, y- and z-axis
+  histogram->SetTitleSize(label_size, "xy");   // Text  size for x- and y-axis
+  histogram->GetYaxis()->SetTitleOffset(1.0);  // Move y-axis text a little closer
+  histogram->SetTitle(Form("Q%d", quadrant));  // Changing titles
+  gStyle->SetTitleSize(label_size, "t");       // Title size
+  gPad->SetLeftMargin(margin_size);
+  gPad->SetRightMargin(margin_size);
+  gPad->SetBottomMargin(margin_size);
+
+  if (detector_side == "f") {
+    // Set logarithmic z-axis
+    gPad->SetLogz();
+    // Change label on x-axis for correct counting of front side plots
+    histogram->GetXaxis()->ChangeLabel(1,-1,-1,-1,-1,-1,"16");
+    histogram->GetXaxis()->ChangeLabel(2,-1,-1,-1,-1,-1,"14");
+    histogram->GetXaxis()->ChangeLabel(3,-1,-1,-1,-1,-1,"12");
+    histogram->GetXaxis()->ChangeLabel(4,-1,-1,-1,-1,-1,"10");
+    histogram->GetXaxis()->ChangeLabel(5,-1,-1,-1,-1,-1,"8");
+    histogram->GetXaxis()->ChangeLabel(6,-1,-1,-1,-1,-1,"6");
+    histogram->GetXaxis()->ChangeLabel(7,-1,-1,-1,-1,-1,"4");
+    histogram->GetXaxis()->ChangeLabel(8,-1,-1,-1,-1,-1,"2");
+  } else if (detector_side == "b") {
+    // Change label on x-axis for correct counting of back side plots
+    histogram->GetXaxis()->ChangeLabel(1,-1,-1,-1,-1,-1,"1");
+    histogram->GetXaxis()->ChangeLabel(2,-1,-1,-1,-1,-1,"3");
+    histogram->GetXaxis()->ChangeLabel(3,-1,-1,-1,-1,-1,"5");
+    histogram->GetXaxis()->ChangeLabel(4,-1,-1,-1,-1,-1,"7");
+    histogram->GetXaxis()->ChangeLabel(5,-1,-1,-1,-1,-1,"9");
+    histogram->GetXaxis()->ChangeLabel(6,-1,-1,-1,-1,-1,"11");
+  }
+  canvas->SaveAs(Form("../../Plots/plotting/E_vs_%s-strip_Q%d.png", detector_side.c_str(), quadrant));
+}
+
+
 void get_single_plot(std::string setup_file, std::string sorter, std::string detector_side, 
                      bool use_calibrated, int quadrant, int ring, int strip = 1,
                      int x_min = 0, int x_max = 3000, int y_max = 12000) {
