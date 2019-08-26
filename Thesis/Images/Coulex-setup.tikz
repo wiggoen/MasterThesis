@@ -23,8 +23,8 @@
     % Arrows
     \draw[->,>=stealth,line width=1.5pt]      (P)   -- (PT);
     \draw[->,>=stealth,line width=1.5pt]      (PT)  -- (R);
-    \draw[->,blue,>=stealth,line width=1.5pt] (R)   -- (G)   node[anchor=south, pos=0.45] {$^{140}$Sm$^{1+}$};
-    \draw[->,blue,>=stealth,line width=1.5pt] (G)   -- (RXT);
+    \draw[->,blue,>=stealth,line width=1.5pt] (R)   -- (G)   node[anchor=south, pos=0.45] {Sm$^{1+}$};
+    \draw[->,blue,>=stealth,line width=1.5pt] (G)   -- (RXT) node[anchor=east, pos=0.45] {$^{140}$Sm$^{1+}$};
     \draw[->,blue,>=stealth,line width=1.5pt] (RXT) -- (RXE);
     \draw[->,blue,>=stealth,line width=1.5pt] (RXE) -- (LIN) node[anchor=north, pos=0.45, outer sep=5mm] {$^{140}$Sm$^{34+}$};
     \draw[->,blue,>=stealth,line width=1.5pt] (LIN) -- (origo);
