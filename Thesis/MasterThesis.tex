@@ -347,10 +347,12 @@ All of my scripts are available in my GitHub repository found at \\ \url{https:/
 shape coexistence often found near closed shells. Example: neutron deficient Hg nuclei (Z = 80 just below 82 shell closure, N $\sim$ 104: neutron mid-shell). \newline
 \Sm: N = 78, just below N = 82 shell closure, Z = 62: mid-shell. \newline
 Typical indication for shape coexistence: $0^+$ states (often at low energy). \newline 
-\Sm\ was thought to have a low-lying $0^+$ state [Firestone], but this state was shown to be $2^+$ [Suoranczyk?]. Indication for $0^+$ states around 1.5 MeV. \newline 
+\Sm\ was thought to have a low-lying $0^+$ state [Firestone, \cite{Firestone}], but this state was shown to be $2^+$ [Samorajczyk, \cite{Samorajczyk2015}]. Indication for $0^+$ states around 1.5 MeV. \newline 
 One of the objectives of this experiment: clarify the nature/structure of these $0^+$ states. \newline 
 Shape transition: Sm-144 (Z = 62, N = 82) spherical. Adding neutrons: transition of N = 90 from spherical to prolate deformed $\rightarrow$ shape-phase transition, so called X(5) critical-point symmetry. \newline
-Taking out neutrons: very neutron-deficient Sm nuclei are also prolate deformed (e.g. Sm-132), but for \Sm: indication for triaxiality/\ga-softness [Klintefjord] $\rightarrow$ another form of shape-phase transition/critical point behavior $\implies$ E(5) [Iachello?]. \Sm\ could be one of the best examples for E(5) symmetry $\implies$ need transition probabilities from higher-lying states to confirm.} \newline
+Taking out neutrons: very neutron-deficient Sm nuclei are also prolate deformed (e.g. Sm-132), but for \Sm: indication for triaxiality/\ga-softness [Klintefjord] $\rightarrow$ another form of shape-phase transition/critical point behavior $\implies$ E(5) [Iachello, \cite{Iachello2000}]. \Sm\ could be one of the best examples for E(5) symmetry $\implies$ need transition probabilities from higher-lying states to confirm. \newline
+Casten \cite{Casten2000}.
+} \newline
 
 \textcolor{red}{Some suggestions:} \newline
 $\bullet$ general things about nuclei shapes \newline
@@ -385,17 +387,17 @@ Why CoulEx? \url{https://iks32.fys.kuleuven.be/wiki/brix/images/5/58/10_20151123
 \bigskip
 
 \subsection*{Magic numbers}
+
 The magic numbers in the nuclear shell model is 
-\begin{align}
+\begin{align*}
 	2, ~8, ~20, ~28, ~50, ~82, ~126
-\end{align}
-Maria Goeppert Mayer "discovered" them around 1945. She gave W. M. Elsasser credits for being the first to remark that such numbers exists. [cite: The Shell Model, M. G. Mayer]
+\end{align*}
+They are one of the main features that shell structure is built upon. Maria Goeppert Mayer discovered them around 1945 from observation of periodicity in binding energy. She gave W. Elsasser credits for being the first to remark that such numbers exists, as early as 1933. Eugene Wigner believed in the liquid drop model and did not trust the new theory. He called these numbers "magic" \cite{Mayer1964, MIT-OCW}. 
+
+The reason why the numbers are called magic numbers, is that a magic number of protons or neutrons makes the nucleus unusually stable independent of the other nucleon number \cite{Mayer1964}. 
+A nucleon is either a proton or a neutron, it is a common term for both. 
 
 
-Magic numbers: 2, 8, 20, 28, 50, 82, 126 \newline
-Maria Goeppert Mayer “discovered” them in $\sim$1945. Observation of periodicity in binding energy $\implies$ shell model for nuclei. \newline
-Eugene Wigner believed in liquid-drop model, did not trust new theory $\implies$ called these numbers “magic”. \newline
-Source: \url{https://ocw.mit.edu/courses/nuclear-engineering/22-02-introduction-to-applied-nuclear-physics-spring-2012/lecture-notes/MIT22_02S12_lec01.pdf}
 
 
 \bigskip
@@ -477,6 +479,24 @@ LISE++ \cite{LISE}
 	\label{fig:LAB-CM}
 \end{figure}
 
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{Images/cea-Single-particle-level-scheme-140Sm.png}
+	\caption{Single particle level scheme \Sm.}
+	\label{fig:cea_lvl}
+\end{figure}
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{Images/cea-Triaxial-map-140Sm.png}
+	\caption{Triaxial map \Sm.}
+	\label{fig:cea_tri}
+\end{figure}
+
+
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 \newpage
@@ -533,6 +553,7 @@ Multi-step Coulomb excitation with radioactive beam, isotope separation on-line 
 
 \section*{\textcolor{red}{Notes}}
 \begin{itemize}
+	\item Gjør manuell redigering av Mendeley-referanser. Formatter med LaTeX.
 	\item Kjør en M2R for å se på output. Kjør også en Q4S for å se på output uten -vl, og sjekk timing?
 	\item Sjekk sensorveiledning
 	\item Estimering av usikkerhet?
@@ -2040,7 +2061,7 @@ $\bullet$ discussion: if you get \ga-spectrum for \Sm\ $\rightarrow$ to explain 
 \begin{figure}[ht]
 	\centering
 	\input{Images/Level-scheme-140Sm.tikz}
-	\caption{Level scheme for \Sm.}
+	\caption{Level scheme for \Sm, based on \cite{Klintefjord, NNDC-levels}}
 	\label{fig:levels}
 \end{figure}
 
