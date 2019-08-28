@@ -386,35 +386,18 @@ Why CoulEx? \url{https://iks32.fys.kuleuven.be/wiki/brix/images/5/58/10_20151123
 
 \newpage
 
-\subsection{FYS4570 course:}
+\section{Nuclear shapes}
+
 \begin{itemize}
-	\item Nuclear structure
-	\begin{itemize}
-		\item Liquid drop model
-		\item Nuclear mass and binding
-		\item fission
-		\item pairing
-		\item shell structure
-		\item spin-orbit coupling
-		\item single-particle states
-		\item electromagnetic moments
-		\item nuclear shapes
-		\item deformed shell model
-		\item Strutinsky method
-		\item level density 
-		\item collective rotation and vibration
-		\item particle-rotor model
-		\item cranking model
-	\end{itemize}
-	\item Nuclear reactions
-	\begin{itemize}
-		\item Coulomb excitation 
-		\item direct reactions
-		\item multi-nucleon transfer
-		\item fusion-evaporation
-		\item fragmentation and spallation
-	\end{itemize}
+	\item Quadrupole deformation
+	\item Overgangssannsynligheter
 \end{itemize}
+
+
+
+
+
+\section{Coulomb excitation}
 
 \newpage
 
@@ -477,63 +460,90 @@ spin and parity?
 \bigskip
 
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.8\textwidth]{Images/Lund-convention.png}
-	\caption{Lund convention.}
-	\label{fig:deformation}
-\end{figure}
+
 
 \newpage
 
 
-\subsection*{Nuclear vibrations}
-A way to understand nuclear vibration is to imagine a liquid drop vibrating at high frequency. 
-The average shape of the liquid drop is spherical, but the instantaneous shape is not.
-\autoref{fig:vibrating-nucleus} displays a sketch of a vibrating nucleus.
-One way to parameterize the instantaneous surface of the liquid drop is to describe it by a vector $R(\theta, \phi)$ pointing from the origin to a surface point ($\theta, \phi$) \cite{Krane}.
-This is called the multipole expansion is given by the following equation
-\begin{equation}
-	R(\theta, \phi) = R_0 \left( 1 + a_{00} + \sum^\infty_{\lambda = 1} \sum^{+\lambda}_{\mu = -\lambda} a^{*}_{\lambda \mu} Y_{\lambda \mu}(\theta, \phi) \right)
+\subsection*{Nuclear deformation}
+A way to understand nuclear deformation is to imagine a liquid drop vibrating \textcolor{red}{??? and/or rotating ???} at high frequency. 
+The average shape of the nucleus (liquid drop) is spherical, but the instantaneous shape is not.
+\autoref{fig:vibrating-nucleus} displays a sketch of a deformed vibrating nucleus.
+One way to parameterize the instantaneous surface of the nucleus is to describe it by a vector \textbf{R} pointing from the origin to a surface point given by the angles $\theta$ and $\phi$ \cite{Krane}.
+This is called the multipole expansion, and is given by the following equation
+\begin{equation}\label{eq:Rfull}
+	\mathbf{R}(\theta, \phi) = R_0 \left( 1 + a_{00} + \sum^\infty_{\lambda = 1} \sum^{+\lambda}_{\mu = -\lambda} a_{\lambda \mu} Y_{\lambda \mu}(\theta, \phi) \right)
 \end{equation}
-where $R_0$ is the radius of the sphere, $a_{00}$ describes volume changes, $a_{\lambda \mu}$ are the expansion coefficients (the amplitude of the spherical harmonics), $\lambda$ is the multipole, $\mu$ is the order of the expansion, $\theta$ and $\phi$ are the intrinsic angles and $Y_{\lambda \mu}$ are the spherical harmonics \cite{Krane, RS, Klintefjord}. 
+where $R_0$ is the radius of the sphere, $a_{00}$ describes volume changes, $a_{\lambda \mu}$ are \textcolor{red}{the expansion coefficients (or the deformation parameters) or the amplitude of} the spherical harmonics $Y_{\lambda \mu}$, $\lambda$ is the multipole, $\mu$ is the order of the expansion and $\theta$ and $\phi$ are the intrinsic angles \cite{Krane, RS, Klintefjord}. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Images/vibrating-nucleus.png}
+	\caption{A deformed vibrating nucleus, adapted from \cite{Krane}. The dotted lines represent the spherical equilibrium shape. See text for more information.}
+	\label{fig:vibrating-nucleus}
+\end{figure}
+
+By assuming incompressibility of the nucleus, the volume is kept constant as
+\begin{align*}
+	V = \frac{4}{3} \pi R_0^3
+\end{align*}
 Further we have that
 \begin{equation}\label{eq:radius}
 	R_0 = r_0 A^{1/3}
 \end{equation}
 where $r_0 \approx 1.2$ fm and $A$ is the mass number of the nucleus.
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.6\textwidth]{Images/vibrating-nucleus.png}
-	\caption{A vibrating nucleus, adapted from \cite{Krane}. The dotted lines represent the spherical equilibrium shape.}
-	\label{fig:vibrating-nucleus}
-\end{figure}
+The expansion coefficients, $a_{\lambda \mu}$, can be time dependent and can thus describe a vibration or rotation in space of the nucleus. 
+By reflection symmetry, the expansion coefficients are required to keep the equality $a_{\lambda \mu} = a_{\lambda, -\mu}$ \cite{Krane}.
+Up to second order, the expansion coefficients are given as
+\begin{equation}
+	a_{00} = -\frac{1}{4\pi} \sum_{\lambda > 1, \mu} | a_{\lambda\mu} |^2
+\end{equation}
 
-The expansion coefficients are required by reflection symmetry to keep the equality $a_{\lambda \mu} = a_{\lambda, -\mu}$.
-
-By assuming incompressibility of the liquid drop, the volume is kept constant as
-\begin{align*}
-	V = \frac{4}{3} \pi R_0^3
-\end{align*}
-\textcolor{red}{ble det selvmotsigelse nå fra $a_{00}$? kan $a_{00}$ fjernes på noen måte?}
-
-
-
-\autoref{fig:vibrational-modes} shows a sketch of the four lowest vibrational modes. 
-A dipole vibration, $\lambda = 1$, describes a translation of the whole system. 
+A dipole vibration, $\lambda = 1$, describes a translation of the whole system, and this is not very interesting in it self. 
 Translational motion of a system deals with the effect that forces have on motion. 
+By putting the origin of the coordinate system in the center of mass, it is possible to fix and exclude the $a_{1\mu}$ parameters, and thus also $a_{00}$ \cite{RS}. 
+If we restrict the system to small deformations, we get that $a_{1\mu} = 0$ and thus $a_{00} = 0$.
+\autoref{eq:Rfull} is then reduced to
+\begin{equation}\label{eq:Rmid}
+	\mathbf{R}(\theta, \phi) = R_0 \left( 1 +  \sum^\infty_{\lambda = 2} \sum^{+\lambda}_{\mu = -\lambda} a_{\lambda \mu} Y_{\lambda \mu}(\theta, \phi) \right)
+\end{equation}
 
-The quadrupole vibration, $\lambda = 2$, is the most important \textcolor{red}{??? mode / shape ???}. \textcolor{red}{Hvorfor var det det igjen?} 
-It is the dominant feature in almost all nuclei. 
+Other conditions is that $\textcolor{red}{??? R / \mathbf{R} ???}$ should be invariant under reflection and rotation of the coordinate system. 
+That means $R$ should be unchanged by transformations of the coordinate system.
+By further choosing the $z$-axis as symmetry axis, we end up in a special case where all $a_{\lambda \mu}$ vanishes except when $\mu = 0$. 
+These special parameters, $a_{\lambda 0}$, are called $\beta_2$.
+
+\autoref{fig:vibrational-modes} shows a sketch of the three lowest vibrational modes. 
+The quadrupole vibration, $\lambda = 2$, is the most important mode.
+It describes the shape of the nucleus and is the dominant feature in almost all (\textcolor{red}{deformed?}) nuclei. 
 With the low multipolarity, the quadrupole vibration is the first available vibrational mode for low-energy excitation in nuclei.
 In almost all even-even nuclei there is a low-lying state with $J^\pi = 2^+$, and near closed shells it is possible to distinguish the second harmonic states as well ($J^\pi = 0^+, 2^+, 4^+$).
 
-For $\lambda = 2$, there is five parameters of $a_{2\mu}$, where only two parameters describe the shape and the three others describe the orientation in space (Euler angles $\Omega = (\alpha, \beta, \gamma)$). 
-It is possible to align the deformed shape in a coordinate system such that only two parameters are needed to describe the system (shape).
-
-Octupole vibration, $\lambda = 3$, with $J^\pi = 3^-$ can be seen in many nuclei.
-In nuclei where the shell structure makes the quadrupole modes occur at very high energies, such as in doubly magic nuclei, the octupole state is often the lowest excited state.
+For $\lambda = 2$, there is five parameters of $a_{2\mu}$. 
+Two parameters describe the shape and the three others describe the orientation in space. %(Euler angles $\Omega = (\alpha, \beta, \gamma)$). 
+It is possible to align the deformed shape in a coordinate system such that only two parameters are needed to describe the system, the shape of the nucleus.
+With a suitable rotation, we can achieve 
+\begin{align*}
+	a_{21} &=  a_{2,-1} = 0 \\
+	a_{22} &= a_{2,-2} 
+\end{align*}
+leaving two independent parameters, $a_{20}$ and $a_{22}$. 
+With Hill-Wheeler \cite{Hill-Wheeler} coordinates ($\beta$, $\gamma$) they become
+\begin{align}
+	a_{20} &= \beta \cos \gamma \\
+	a_{22} &= \frac{1}{\sqrt{2}} \beta \sin \gamma
+\end{align}
+where $\beta$ is axial deformation (deformation magnitude) and $\gamma$ is triaxial deformation (shape parameter).
+From this we have
+\begin{equation}
+	\sum_\mu | a_{2\mu} |^2 = a_{20}^2 + 2a_{22}^2 = \beta^2
+\end{equation}
+and \autoref{eq:Rmid} becomes
+\begin{equation}
+	\mathbf{R}(\theta, \phi) = R_0 \left( 1 +  \sum^\infty_{\lambda = 2} \sum^{+\lambda}_{\mu = -\lambda} a_{\lambda \mu} Y_{\lambda \mu}(\theta, \phi) \right)
+\end{equation}
+in the special case when $\lambda = 2$ \cite{RS}.
 
 \begin{figure}[ht]
 	\centering
@@ -548,21 +558,20 @@ In nuclei where the shell structure makes the quadrupole modes occur at very hig
 %(e) Hexadecapole, $\lambda = 4$, $a_{40} < 0$.
 
 
+Octupole vibration, $\lambda = 3$, with $J^\pi = 3^-$ can be seen in many nuclei.
+In nuclei where the shell structure makes the quadrupole modes occur at very high energies, such as in doubly magic nuclei, the octupole state is often the lowest excited state.
+
 Lund convention is used to describe the shapes.
 
-\textcolor{red}{Bruk \cite{RS} til å komme fram til $a_{20}$ og $a_{22}$?}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Images/Lund-convention.png}
+	\caption{Lund convention.}
+	\label{fig:Lund-convention}
+\end{figure}
 
-With a rotation, we can achieve 
-\begin{align*}
-	a_{21} &=  a_{2,-1} = 0 \\
-	a_{22} &= a_{2,-2} 
-\end{align*}
-leaving two independent parameters, $a_{20}$ and $a_{22}$. 
-\begin{align*}
-	a_{20} &= \beta \cos \gamma \\
-	a_{22} &= \frac{1}{\sqrt{2}} \beta \sin \gamma
-\end{align*}
-where $\beta$ is axial deformation and $\gamma$ is triaxial deformation.
+
+
 
 
 \bigskip
