@@ -384,21 +384,39 @@ COULEX: \newline
 
 Why CoulEx? \url{https://iks32.fys.kuleuven.be/wiki/brix/images/5/58/10_20151123_Illana_BriX15_web.pdf} \newline
 
-\bigskip
+\newpage
 
-\subsection*{Magic numbers}
+\subsection{FYS4570 course:}
+\begin{itemize}
+	\item Nuclear structure
+	\begin{itemize}
+		\item Liquid drop model
+		\item Nuclear mass and binding
+		\item fission
+		\item pairing
+		\item shell structure
+		\item spin-orbit coupling
+		\item single-particle states
+		\item electromagnetic moments
+		\item nuclear shapes
+		\item deformed shell model
+		\item Strutinsky method
+		\item level density 
+		\item collective rotation and vibration
+		\item particle-rotor model
+		\item cranking model
+	\end{itemize}
+	\item Nuclear reactions
+	\begin{itemize}
+		\item Coulomb excitation 
+		\item direct reactions
+		\item multi-nucleon transfer
+		\item fusion-evaporation
+		\item fragmentation and spallation
+	\end{itemize}
+\end{itemize}
 
-The magic numbers in the nuclear shell model is 
-\begin{align*}
-	2, ~8, ~20, ~28, ~50, ~82, ~126
-\end{align*}
-They are one of the main features that shell structure is built upon. Maria Goeppert Mayer discovered them around 1945 from observation of periodicity in binding energy. She gave W. Elsasser credits for being the first to remark that such numbers exists, as early as 1933. Eugene Wigner believed in the liquid drop model and did not trust the new theory. He called these numbers "magic" \cite{Mayer1964, MIT-OCW}. 
-
-The reason why the numbers are called magic numbers, is that a magic number of protons or neutrons makes the nucleus unusually stable independent of the other nucleon number \cite{Mayer1964}. 
-A nucleon is either a proton or a neutron, it is a common term for both. 
-
-
-
+\newpage
 
 \bigskip
 \textcolor{red}{Intro?}
@@ -414,9 +432,168 @@ The Pauli exclusion principle declares that "two identical fermions cannot occup
 
 Isotope notation:
 \begin{align*}
-	^A_Z\text{X}_N^Q
+	^A_Z\text{X}_N^q
 \end{align*}
-where $X$ is the chemical symbol of the element, $A$ is the nucleon number (mass number, $A = Z + N$), $Z$ is the atomic number (proton number), $N$ is the neutron number and $Q$ is the charge ($Q = Z$ protons $- ~i$ electrons). 
+where $X$ is the chemical symbol of the element, $A$ is the nucleon number (mass number, $A = Z + N$), $Z$ is the atomic number (proton number), $N$ is the neutron number and $q$ is the charge ($q = Z$ protons $- ~i$ electrons). 
+
+
+\bigskip
+
+\subsection*{Magic numbers}
+
+The magic numbers in the nuclear shell model are for the protons and neutrons, respectively
+\begin{align*}
+	Z &= 2, ~8, ~20, ~28, ~50, ~82 \\
+	N &= 2, ~8, ~20, ~28, ~50, ~82 ~\text{and}~ 126
+\end{align*}
+These series of numbers corresponds to the filling of shells.
+They are one of the main features that shell structure is built upon. 
+Maria Goeppert Mayer discovered them around 1945 from observation of periodicity in binding energy. 
+She gave W. Elsasser credits for being the first to remark that such numbers exists, from an article he wrote in 1933. 
+Eugene Wigner believed in the liquid drop model and did not trust the new theory. 
+He called these numbers "magic" \cite{Mayer1964, MIT-OCW}. 
+
+The reason why the numbers are called magic numbers, is that a magic number of protons or neutrons makes the nucleus unusually stable independent of the other nucleon number \cite{Mayer1964}. 
+Magic nuclei are more stable than their neighboring nuclei. \textcolor{red}{er alle magiske mer stabile, eller finnes det unntak her? mener å huske det var en diskusjon om dette på pauserommet på kjernefysikk en gang, men husker ikke hva konklusjonen var.}
+A nucleon is either a proton or a neutron, it is a common term for both. 
+
+A single closed shell nucleus is a nucleus which have $Z$ or $N$ as a magic number, while a doubly closed shell nucleus have both $Z$ and $N$ as magic numbers. 
+These nuclei have an extra binding energy compared to the predictions of the semi-empirical mass formula \cite{NR}.
+
+\bigskip
+
+
+Test basic nuclear: \cite{Heyde}
+
+
+\bigskip
+
+Deformation leads to a more stable nuclei. The nucleus can win energy.
+
+\bigskip
+
+spin and parity?
+
+\bigskip
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Images/Lund-convention.png}
+	\caption{Lund convention.}
+	\label{fig:deformation}
+\end{figure}
+
+\newpage
+
+
+\subsection*{Nuclear vibrations}
+A way to understand nuclear vibration is to imagine a liquid drop vibrating at high frequency. 
+The average shape of the liquid drop is spherical, but the instantaneous shape is not.
+\autoref{fig:vibrating-nucleus} displays a sketch of a vibrating nucleus.
+One way to parameterize the instantaneous surface of the liquid drop is to describe it by a vector $R(\theta, \phi)$ pointing from the origin to a surface point ($\theta, \phi$) \cite{Krane}.
+This is called the multipole expansion is given by the following equation
+\begin{equation}
+	R(\theta, \phi) = R_0 \left( 1 + a_{00} + \sum^\infty_{\lambda = 1} \sum^{+\lambda}_{\mu = -\lambda} a^{*}_{\lambda \mu} Y_{\lambda \mu}(\theta, \phi) \right)
+\end{equation}
+where $R_0$ is the radius of the sphere, $a_{00}$ describes volume changes, $a_{\lambda \mu}$ are the expansion coefficients (the amplitude of the spherical harmonics), $\lambda$ is the multipole, $\mu$ is the order of the expansion, $\theta$ and $\phi$ are the intrinsic angles and $Y_{\lambda \mu}$ are the spherical harmonics \cite{Krane, RS, Klintefjord}. 
+Further we have that
+\begin{equation}\label{eq:radius}
+	R_0 = r_0 A^{1/3}
+\end{equation}
+where $r_0 \approx 1.2$ fm and $A$ is the mass number of the nucleus.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Images/vibrating-nucleus.png}
+	\caption{A vibrating nucleus, adapted from \cite{Krane}. The dotted lines represent the spherical equilibrium shape.}
+	\label{fig:vibrating-nucleus}
+\end{figure}
+
+The expansion coefficients are required by reflection symmetry to keep the equality $a_{\lambda \mu} = a_{\lambda, -\mu}$.
+
+By assuming incompressibility of the liquid drop, the volume is kept constant as
+\begin{align*}
+	V = \frac{4}{3} \pi R_0^3
+\end{align*}
+\textcolor{red}{ble det selvmotsigelse nå fra $a_{00}$? kan $a_{00}$ fjernes på noen måte?}
+
+
+
+\autoref{fig:vibrational-modes} shows a sketch of the four lowest vibrational modes. 
+A dipole vibration, $\lambda = 1$, describes a translation of the whole system. 
+Translational motion of a system deals with the effect that forces have on motion. 
+
+The quadrupole vibration, $\lambda = 2$, is the most important \textcolor{red}{??? mode / shape ???}. \textcolor{red}{Hvorfor var det det igjen?} 
+It is the dominant feature in almost all nuclei. 
+With the low multipolarity, the quadrupole vibration is the first available vibrational mode for low-energy excitation in nuclei.
+In almost all even-even nuclei there is a low-lying state with $J^\pi = 2^+$, and near closed shells it is possible to distinguish the second harmonic states as well ($J^\pi = 0^+, 2^+, 4^+$).
+
+For $\lambda = 2$, there is five parameters of $a_{2\mu}$, where only two parameters describe the shape and the three others describe the orientation in space (Euler angles $\Omega = (\alpha, \beta, \gamma)$). 
+It is possible to align the deformed shape in a coordinate system such that only two parameters are needed to describe the system (shape).
+
+Octupole vibration, $\lambda = 3$, with $J^\pi = 3^-$ can be seen in many nuclei.
+In nuclei where the shell structure makes the quadrupole modes occur at very high energies, such as in doubly magic nuclei, the octupole state is often the lowest excited state.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Images/vibration-modes-3.png}
+	\caption{\textcolor{red}{??? Vibrational modes / Nuclear shapes ???}, adapted from \cite{Krane}. The dotted lines represent the spherical equilibrium shape.
+	(a) Dipole, $\lambda = 1$. 
+	(b) Quadrupole, $\lambda = 2$. 
+	(c) Octupole, $\lambda = 3$.}
+	\label{fig:vibrational-modes}
+\end{figure}
+%(d) Hexadecapole, $\lambda = 4$, $a_{40} > 0$. \cite{RS}
+%(e) Hexadecapole, $\lambda = 4$, $a_{40} < 0$.
+
+
+Lund convention is used to describe the shapes.
+
+\textcolor{red}{Bruk \cite{RS} til å komme fram til $a_{20}$ og $a_{22}$?}
+
+With a rotation, we can achieve 
+\begin{align*}
+	a_{21} &=  a_{2,-1} = 0 \\
+	a_{22} &= a_{2,-2} 
+\end{align*}
+leaving two independent parameters, $a_{20}$ and $a_{22}$. 
+\begin{align*}
+	a_{20} &= \beta \cos \gamma \\
+	a_{22} &= \frac{1}{\sqrt{2}} \beta \sin \gamma
+\end{align*}
+where $\beta$ is axial deformation and $\gamma$ is triaxial deformation.
+
+
+\bigskip
+
+Quadrupole moments:
+
+
+\bigskip
+
+Shapes: \newline
+Prolate: american football \\
+Oblate: pumpkin \\
+Triaxial: kiwi fruit  
+
+\bigskip
+
+
+
+
+\bigskip
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{Images/symmetry-triangle.png}
+	\caption{Symmetry triangle, from \cite{Casten2006}.}
+	\label{fig:sym-triangle}
+\end{figure}
+
+
+
 
 
 \bigskip
@@ -2038,6 +2215,7 @@ It is the way it is usually done for dead CD strips or dead \ga\ detectors.
 
 
 \chapter{Experimental results and discussion}
+\epigraph{\textit{"In physics, you don't have to go around making trouble for yourself – nature does it for you."}}{\textit{– Frank Wilczek}}
 
 
 Very pure beam (\textcolor{red}{did we have statistics of this?}) - resultat til avhandling. sjekk etter doppler-korrigering. Nd-contaminasjon? i så fall veldig lite, 1-2 prosent?
@@ -2096,6 +2274,8 @@ $\bullet$ discussion: if you get \ga-spectrum for \Sm\ $\rightarrow$ to explain 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 \chapter{Summary and outlook}
+\epigraph{\textit{"Nothing happens until something moves."}}{\textit{– Albert Einstein}}
+
 
 Future work: Better calibration of particle detectors and \ga\ detectors (online not perfect). Take into account the shape of the peaks $\implies$ calibrate the particle detectors manually.. Takes a lot of time! But maybe less than trying to fit all in a script? If someone only knew and told this story...
 
