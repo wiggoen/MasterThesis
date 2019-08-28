@@ -354,6 +354,8 @@ Taking out neutrons: very neutron-deficient Sm nuclei are also prolate deformed 
 Casten \cite{Casten2000}.
 } \newline
 
+\newpage
+
 \textcolor{red}{Some suggestions:} \newline
 $\bullet$ general things about nuclei shapes \newline
 - multipole expansion, shape parameters (5 parameters, 3 for space, 2 for deformation $\beta$, \ga), ... \newline
@@ -384,24 +386,18 @@ COULEX: \newline
 
 Why CoulEx? \url{https://iks32.fys.kuleuven.be/wiki/brix/images/5/58/10_20151123_Illana_BriX15_web.pdf} \newline
 
-\newpage
-
-\section{Nuclear shapes}
-
-\begin{itemize}
-	\item Quadrupole deformation
-	\item Overgangssannsynligheter
-\end{itemize}
-
-
-
-
-
-\section{Coulomb excitation}
-
-\newpage
-
 \bigskip
+
+table of nuclides (HFB-style): \url{http://www-phynu.cea.fr/science_en_ligne/carte_potentiels_microscopiques/carte_potentiel_nucleaire_eng.htm}
+
+$\beta-\gamma$ triangle: \url{http://www-phynu.cea.fr/science_en_ligne/carte_potentiels_microscopiques/noyaux/zz62/zz62nn78all_eng.html}
+
+LISE++ \cite{LISE}
+
+\newpage
+
+\section{Notes}
+
 \textcolor{red}{Intro?}
 
 Nuclear physics is the study of atomic nuclei. 
@@ -421,6 +417,14 @@ where $X$ is the chemical symbol of the element, $A$ is the nucleon number (mass
 
 
 \bigskip
+
+Test basic nuclear: \cite{Heyde}
+
+\bigskip
+
+spin and parity?
+
+\newpage
 
 \subsection*{Magic numbers}
 
@@ -443,29 +447,15 @@ A nucleon is either a proton or a neutron, it is a common term for both.
 A single closed shell nucleus is a nucleus which have $Z$ or $N$ as a magic number, while a doubly closed shell nucleus have both $Z$ and $N$ as magic numbers. 
 These nuclei have an extra binding energy compared to the predictions of the semi-empirical mass formula \cite{NR}.
 
-\bigskip
-
-
-Test basic nuclear: \cite{Heyde}
-
-
-\bigskip
-
-Deformation leads to a more stable nuclei. The nucleus can win energy.
-
-\bigskip
-
-spin and parity?
-
-\bigskip
-
-
-
 
 \newpage
 
 
-\subsection*{Nuclear deformation}
+\section{Nuclear shapes}
+
+Deformation leads to a more stable nuclei. The nucleus can win energy. \textcolor{red}{finn en passende plass..}
+
+\subsection{Nuclear / quadrupole deformation}
 A way to understand nuclear deformation is to imagine a liquid drop vibrating \textcolor{red}{??? and/or rotating ???} at high frequency. 
 The average shape of the nucleus (liquid drop) is spherical, but the instantaneous shape is not.
 \autoref{fig:vibrating-nucleus} displays a sketch of a deformed vibrating nucleus.
@@ -541,14 +531,14 @@ From this we have
 \end{equation}
 and \autoref{eq:Rmid} becomes
 \begin{equation}
-	\mathbf{R}(\theta, \phi) = R_0 \left( 1 +  \sum^\infty_{\lambda = 2} \sum^{+\lambda}_{\mu = -\lambda} a_{\lambda \mu} Y_{\lambda \mu}(\theta, \phi) \right)
+	\mathbf{R}(\theta, \phi) = R_0 \left( 1 + \beta \sqrt{\frac{5}{16\pi}} (\cos \gamma (3\cos^2 \theta - 1) + \sqrt{3} \sin \gamma \sin^2 \theta \cos 2\phi) \right)
 \end{equation}
 in the special case when $\lambda = 2$ \cite{RS}.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth]{Images/vibration-modes-3.png}
-	\caption{\textcolor{red}{??? Vibrational modes / Nuclear shapes ???}, adapted from \cite{Krane}. The dotted lines represent the spherical equilibrium shape.
+	\caption{Vibrational modes, adapted from \cite{Krane}. The dotted lines represent the spherical equilibrium shape.
 	(a) Dipole, $\lambda = 1$. 
 	(b) Quadrupole, $\lambda = 2$. 
 	(c) Octupole, $\lambda = 3$.}
@@ -557,47 +547,72 @@ in the special case when $\lambda = 2$ \cite{RS}.
 %(d) Hexadecapole, $\lambda = 4$, $a_{40} > 0$. \cite{RS}
 %(e) Hexadecapole, $\lambda = 4$, $a_{40} < 0$.
 
-
 Octupole vibration, $\lambda = 3$, with $J^\pi = 3^-$ can be seen in many nuclei.
 In nuclei where the shell structure makes the quadrupole modes occur at very high energies, such as in doubly magic nuclei, the octupole state is often the lowest excited state.
 
-Lund convention is used to describe the shapes.
+\autoref{fig:Nuclear-shapes} shows a sketch of three different deformed nuclear shapes. \textcolor{red}{denne ble litt overflødig når jeg fikk inn formene i fig. 2.4.}
 
-\begin{figure}[ht]
+%Lund convention is used to describe the shapes.
+%\begin{figure}[ht]
+%	\centering
+%	\includegraphics[width=0.8\textwidth]{Images/Lund-convention.png}
+%	\caption{Lund convention.}
+%	\label{fig:Lund-convention}
+%\end{figure}
+
+\begin{figure}[htb]
 	\centering
-	\includegraphics[width=0.8\textwidth]{Images/Lund-convention.png}
-	\caption{Lund convention.}
-	\label{fig:Lund-convention}
+	\includegraphics[width=0.8\textwidth]{Images/nuclear-shapes.png}
+	\caption{Nuclear shapes, adapted from \cite{MSU-shapes}. 
+	(a) The prolate shape looks like an American football. 
+	(b) The oblate shape looks like a pumpkin. 
+	(c) The triaxial shape looks like a kiwi fruit. 
+	%It is at $30^\circ$ in \autoref{fig:Lund-convention} using the Lund convention, between the prolate and the oblate shape.
+	}
+	\label{fig:Nuclear-shapes}
 \end{figure}
 
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Images/Triaxial-map-drawing.png}
+	\caption{Collective excitations for \Sm, adapted from \cite{Hilaire2007, CEA}. \textcolor{red}{\Sm\ looks like a \ga-soft vibrator? See lecture FYS4570 18. Sept 2018.}}
+	\label{fig:cea_tri}
+\end{figure}
+
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Images/cea-CoN-adjusted.png}
+	\caption{Chart of nuclides for deformed nuclei, from \cite{Hilaire2007, CEA}. \Sm\ is inside the pink ring, to the left of the yellow square.}
+	\label{fig:cea_CoN}
+\end{figure}
+
+
+\subsection{Quadrupole moments}
+
+\subsection{Transition probability (\textcolor{red}{cross sections?})}
 
 
 
-\bigskip
-
-Quadrupole moments:
-
-
-\bigskip
-
-Shapes: \newline
-Prolate: american football \\
-Oblate: pumpkin \\
-Triaxial: kiwi fruit  
-
-\bigskip
+\section{Coulomb excitation}
 
 
 
 
-\bigskip
 
+
+
+
+
+
+
+\newpage
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{Images/symmetry-triangle.png}
-	\caption{Symmetry triangle, from \cite{Casten2006}.}
+	\caption{Symmetry triangle, from \cite{Casten2006}. \textcolor{red}{Det er ikke sikkert denne skal være med.}}
 	\label{fig:sym-triangle}
 \end{figure}
 
@@ -607,15 +622,6 @@ Triaxial: kiwi fruit
 
 \bigskip
 
-\section{Coulomb excitation}
-
-
-
-\bigskip
-
-table of nuclides (HFB-style): \url{http://www-phynu.cea.fr/science_en_ligne/carte_potentiels_microscopiques/carte_potentiel_nucleaire_eng.htm}
-
-$\beta-\gamma$ triangle: \url{http://www-phynu.cea.fr/science_en_ligne/carte_potentiels_microscopiques/noyaux/zz62/zz62nn78all_eng.html}
 
 \begin{table}[ht] 
     \centering 
@@ -625,10 +631,6 @@ $\beta-\gamma$ triangle: \url{http://www-phynu.cea.fr/science_en_ligne/carte_pot
 \end{table}
 
 
-\bigskip
-
-
-LISE++ \cite{LISE}
 
 \begin{table}[ht] 
     \centering 
@@ -667,20 +669,17 @@ LISE++ \cite{LISE}
 
 
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{Images/cea-Single-particle-level-scheme-140Sm.png}
-	\caption{Single particle level scheme \Sm.}
-	\label{fig:cea_lvl}
-\end{figure}
+%\begin{figure}[ht]
+%	\centering
+%	\includegraphics[width=\textwidth]{Images/cea-Single-particle-level-scheme-140Sm.png}
+%	\caption{Single particle level scheme \Sm.}
+%	\label{fig:cea_lvl}
+%\end{figure}
 
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{Images/cea-Triaxial-map-140Sm.png}
-	\caption{Triaxial map \Sm.}
-	\label{fig:cea_tri}
-\end{figure}
+
+
+
 
 
 % ----------------------------------------------------------------------------------------------------------------------
