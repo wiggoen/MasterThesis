@@ -290,44 +290,82 @@ ENSAR2: European Nuclear Science and Applications Research - 2 \url{http://www.e
 \epigraph{\textit{"If you are not confused by quantum physics then you haven't really understood it."}}{\textit{– Niels Bohr}}
 
 
+The atom was long believed to be the smallest unit of matter, but now we know that this is not true, we have subatomic particles. 
+In the early 1800s, the first evidence-based theories started to be developed around the atom.
+Still, it would take almost 100 years before an atom model was proposed and the nucleus was discovered. 
+In 1909, the famous Rutherford experiment took place.
+The experiment was the bombardment of $\alpha$-particles into a gold (metal) foil, to observe how the particles scattered.
+Rutherford and his helpers, Hans Geiger and Ernest Marsden, expected the particles to pass straight through, with little deflection. 
+They were surprised when this did not happen, and the explanation was that there was a positively charged nucleus at the center of the atom. 
+In 1913, Niels Bohr proposed his model of the atom, laying the basis of atomic theory.
+As late as 1932, the neutron was discovered. 
+
+The atomic shell model can explain the complicated details of atomic structure.
+In the atomic shell model, the electron shells are filled with electrons in order of increasing energy.
+By studying the ionization energy of electrons, a clear indication for "magic" numbers at 2, 8, 10, 18, 36, 54 and 86 was obtained \cite{Heyde}. 
+These numbers correspond to the noble gases in the periodic table.
 
 Nuclear physics is the study of atomic nuclei. 
-The nucleus consists of protons and neutrons. 
-A nucleon is either a proton or a neutron, it is a common term for both. 
-
-
-In nuclear physics, an analogy to the atomic shell model is used to explain nuclear structure, the nuclear shell model \cite{Krane}. 
-
-In the atomic shell model, the shells are filled with electrons in order of increasing energy. 
-This model can explain the complicated details of atomic structure.  
-
+The nucleus consists of positively charged protons and uncharged neutrons, together called nucleons. 
+In nuclear physics, an analogous model to the atomic shell model is used to explain nuclear structure.
+This model is called the nuclear shell model. 
 In the nuclear shell model, nucleons (protons or neutrons) are filled into shells in order of increasing energy. 
 The shells of protons and neutrons are independent of each other. 
 
-%The Pauli exclusion principle declares that "two identical fermions cannot occupy the same state". \cite{Griffiths}
-An extensive description of the nuclear shell model can be found in \cite{Krane}.
+The magic numbers in the nuclear shell model are for the protons and neutrons individually
+\begin{align*}
+	Z &= 2, ~8, ~20, ~28, ~50, ~82 \\
+	N &= 2, ~8, ~20, ~28, ~50, ~82 ~\text{and}~ 126
+\end{align*}
+These series of numbers corresponds to the filling of shells.
+They are one of the main features that shell structure is built upon. 
+A single closed shell nucleus is a nucleus where either $Z$ or $N$ are a magic number, while for a doubly closed shell nucleus both $Z$ and $N$ are magic numbers. 
+These nuclei have an extra binding energy compared to the predictions of the semi-empirical mass formula \cite{NR}.
+
+Maria Goeppert Mayer discovered the magic numbers around 1945 from observation of periodicity in binding energy. 
+She gave W. Elsasser credits for being the first to remark that such numbers exists, from an article he wrote in 1933. 
+Eugene Wigner believed in the liquid drop model and did not trust the new theory. 
+He called these numbers "magic" \cite{Mayer1964, MIT-OCW}. 
+The reason why the numbers are called magic numbers, is that a magic number of protons or neutrons makes the nucleus unusually stable compared to the neighboring non-magic nuclei \cite{Mayer1964}. 
+\textcolor{red}{er alle magiske mer stabile, eller finnes det unntak her? mener å huske det var en diskusjon om dette på pauserommet på kjernefysikk en gang, men husker ikke hva konklusjonen var. Hva med Ni-56, Ni-78, Sn-100 og Sn-132 som er dobbelt magiske og radioaktive?}
 
 
+There are many different ways of describing various properties of nuclei, e.g. radius, mass, binding energy, spin, parity, electromagnetic moments and excited states.
+There are both macroscopic and microscopic models, such as the liquid drop model and the shell model. 
 
-
-This thesis will not go into details about the liquid drop model, the nuclear shell model or other nuclear model, because there is no comparison of the data to any theoretical models.
+This thesis will not go into details about the liquid drop model, the nuclear shell model or other nuclear models, because there is no comparison of the data to any theoretical models.
 Some models will be mentioned in order to explain other phenomena.
+Extensive descriptions of the liquid drop model and the shell model can be found in \cite{Krane}.
 
+
+%The Pauli exclusion principle declares that "two identical fermions cannot occupy the same state". \cite{Griffiths}
 
 \section{Nomenclature}
+This section will explain the different symbols and units used throughout the thesis.
 
-Isotope notation:
+Isotopes are atoms of the same chemical element that differ in the number of nucleons.
+The isotope notation is as follows
 \begin{align*}
 	^A_Z\text{X}_N^q
 \end{align*}
-where $X$ is the chemical symbol of the element, $A$ is the nucleon number (mass number, $A = Z + N$), $Z$ is the atomic number (proton number), $N$ is the neutron number and $q$ is the charge ($q = Z$ protons $- ~i$ electrons). 
+where $X$ is the chemical symbol of the element, $A = Z + N$ is the mass number (the number of nucleons), $Z$ is the proton number, $N$ is the neutron number and $q$ is the charge where $q = Z$ protons $- ~i$ electrons. 
 
+\autoref{tab:units} shows the physical constants, their SI units and their SI derived units, and
+\autoref{tab:SI-prefixes} shows the metric SI prefixes.
+SI is The International System of Units, which is built upon seven base units.
 
-\begin{table}[ht] 
+\begin{table}[htb] 
     \centering 
     \caption{Values of the fundamental physical constants from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
 	\input{Table-data/Units.tex}
 	\label{tab:units}
+\end{table}
+
+\begin{table}[htb] 
+    \centering 
+    \caption{Metric SI prefixes from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
+	\input{Table-data/SI-prefixes.tex}
+	\label{tab:SI-prefixes}
 \end{table}
 
 
@@ -341,7 +379,7 @@ New HIE-ISOLDE: energies up to 10 MeV/u $\implies$ we can choose high-Z target (
 
 \bigskip
 
-\Sm\ ($T_{1/2} = 14.82$ min)
+\Sm\ ($T_{1/2} = 14.82$ min), Lanthanide from the periodic table.
 
 \bigskip
 
@@ -445,30 +483,7 @@ spin and parity?
 
 \newpage
 
-\subsection*{Magic numbers}
-Maria Goeppert Mayer discovered the magic numbers around 1945 from observation of periodicity in binding energy. 
-She gave W. Elsasser credits for being the first to remark that such numbers exists, from an article he wrote in 1933. 
-Eugene Wigner believed in the liquid drop model and did not trust the new theory. 
-He called these numbers "magic" \cite{Mayer1964, MIT-OCW}. 
 
-The reason why the numbers are called magic numbers, is that a magic number of protons or neutrons makes the nucleus unusually stable compared to the neighboring non-magic nuclei \cite{Mayer1964}. 
-
-The magic numbers in the nuclear shell model are for the protons and neutrons individually
-\begin{align*}
-	Z &= 2, ~8, ~20, ~28, ~50, ~82 \\
-	N &= 2, ~8, ~20, ~28, ~50, ~82 ~\text{and}~ 126
-\end{align*}
-These series of numbers corresponds to the filling of shells.
-They are one of the main features that shell structure is built upon. 
-
-A single closed shell nucleus is a nucleus where either $Z$ or $N$ are a magic number, while for a doubly closed shell nucleus both $Z$ and $N$ are magic numbers. 
-These nuclei have an extra binding energy compared to the predictions of the semi-empirical mass formula \cite{NR}.
-
-The liquid drop model is explained extensively in \cite{Krane}.
-
-\textcolor{red}{er alle magiske mer stabile, eller finnes det unntak her? mener å huske det var en diskusjon om dette på pauserommet på kjernefysikk en gang, men husker ikke hva konklusjonen var.}
-
-\newpage
 
 
 \section{Nuclear shapes}\label{sec:shapes}
