@@ -289,7 +289,55 @@ ENSAR2: European Nuclear Science and Applications Research - 2 \url{http://www.e
 \chapter{Introduction}
 \epigraph{\textit{"If you are not confused by quantum physics then you haven't really understood it."}}{\textit{– Niels Bohr}}
 
-\textcolor{red}{+ Motivation}
+
+
+Nuclear physics is the study of atomic nuclei. 
+The nucleus consists of protons and neutrons. 
+A nucleon is either a proton or a neutron, it is a common term for both. 
+
+
+In nuclear physics, an analogy to the atomic shell model is used to explain nuclear structure, the nuclear shell model \cite{Krane}. 
+
+In the atomic shell model, the shells are filled with electrons in order of increasing energy. 
+This model can explain the complicated details of atomic structure.  
+
+In the nuclear shell model, nucleons (protons or neutrons) are filled into shells in order of increasing energy. 
+The shells of protons and neutrons are independent of each other. 
+
+%The Pauli exclusion principle declares that "two identical fermions cannot occupy the same state". \cite{Griffiths}
+An extensive description of the nuclear shell model can be found in \cite{Krane}.
+
+
+
+
+This thesis will not go into details about the liquid drop model, the nuclear shell model or other nuclear model, because there is no comparison of the data to any theoretical models.
+Some models will be mentioned in order to explain other phenomena.
+
+
+\section{Nomenclature}
+
+Isotope notation:
+\begin{align*}
+	^A_Z\text{X}_N^q
+\end{align*}
+where $X$ is the chemical symbol of the element, $A$ is the nucleon number (mass number, $A = Z + N$), $Z$ is the atomic number (proton number), $N$ is the neutron number and $q$ is the charge ($q = Z$ protons $- ~i$ electrons). 
+
+
+\begin{table}[ht] 
+    \centering 
+    \caption{Values of the fundamental physical constants from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
+	\input{Table-data/Units.tex}
+	\label{tab:units}
+\end{table}
+
+
+\section{Motivation for the experiment}
+
+\textcolor{Magenta}{Tilbakemelding: \newline 
+old REX-ISOLDE post-accelerator limited to 2.8 MeV/u (low Coulomb excitation cross section, low probability for multi-step excitation). Mo target was chosen to maximize cross section at this energy, and to normalize B(E2; $0^+ \rightarrow 2^+$) value in \Sm\ to the well-known B(E2) value for the target. \newline
+New HIE-ISOLDE: energies up to 10 MeV/u $\implies$ we can choose high-Z target (Pb) $\implies$ high Coulex cross section, especially for multi-step. Also: B(E2) for \Sm\ now known from previous experiment (and a lifetime measurement) $\implies$ no need for normalization: we can use the known B(E2; $0^+ \rightarrow 2^+$) to nomalize the transition probabilities for the higher-lying transitions. Chosen 4.7 MeV/u as the highest possible energy that is safe for Pb (distance of closest approach large enough to exclude nuclear interaction.)} \newline
+
+
 
 \bigskip
 
@@ -315,44 +363,28 @@ Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclea
 
 \bigskip
 
-COULomb EXcitation (COULEX)
+The nucleus can have many different shapes, and this experiment is related to the shapes of the nucleus. 
+\autoref{fig:Nuclear-shapes} shows a sketch of three different nuclear shapes. 
+\autoref{sec:shapes} will discuss different nuclear shapes.
 
-\bigskip
-
-\textcolor{Magenta}{Tilbakemelding: \newline 
-old REX-ISOLDE post-accelerator limited to 2.8 MeV/u (low Coulomb excitation cross section, low probability for multi-step excitation). Mo target was chosen to maximize cross section at this energy, and to normalize B(E2; $0^+ \rightarrow 2^+$) value in \Sm\ to the well-known B(E2) value for the target. \newline
-New HIE-ISOLDE: energies up to 10 MeV/u $\implies$ we can choose high-Z target (Pb) $\implies$ high Coulex cross section, especially for multi-step. Also: B(E2) for \Sm\ now known from previous experiment (and a lifetime measurement) $\implies$ no need for normalization: we can use the known B(E2; $0^+ \rightarrow 2^+$) to nomalize the transition probabilities for the higher-lying transitions. Chosen 4.7 MeV/u as the highest possible energy that is safe for Pb (distance of closest approach large enough to exclude nuclear interaction.)} \newline
-
-
-All of my scripts are available in my GitHub repository found at \\ \url{https://github.com/wiggoen/MasterThesis}.
-
-\bigskip
-
-\textbf{COULEX links:}
-\begin{itemize}
-	\item \url{https://www.researchgate.net/profile/Jacek_Wojciechowski/publication/268366137_Application_of_Genetic_Algorithm_with_Real_Representation_to_COULEX_Data_Analysis/links/54b913850cf269d8cbf72ed4.pdf}
-	\item \url{https://core.ac.uk/download/pdf/76649116.pdf}
-	\item \url{http://oregonstate.edu/instruct/ch374/ch418518/Chapter%2010%20NUCLEAR%20REACTIONS.pdf}
-\end{itemize}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Images/nuclear-shapes.png}
+	\caption{Nuclear shapes, adapted from \cite{MSU-shapes}. 
+	The shape of (a) looks like an American football, while the shape of (b) looks like a pumpkin and (c) looks like a kiwi fruit. 
+	\textcolor{red}{Skal jeg legge på bilder av fruktene også?}}
+	\label{fig:Nuclear-shapes}
+\end{figure}
 
 
 
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 
-\chapter{Theory}
+\chapter{Theory}\label{ch:theory}
 \epigraph{\textit{"I think I can safely say that nobody understands quantum mechanics."}}{\textit{– Richard Feynman}}
 
-\textcolor{Magenta}{Tilbakemelding: \newline 
-shape coexistence often found near closed shells. Example: neutron deficient Hg nuclei (Z = 80 just below 82 shell closure, N $\sim$ 104: neutron mid-shell). \newline
-\Sm: N = 78, just below N = 82 shell closure, Z = 62: mid-shell. \newline
-Typical indication for shape coexistence: $0^+$ states (often at low energy). \newline 
-\Sm\ was thought to have a low-lying $0^+$ state [Firestone, \cite{Firestone}], but this state was shown to be $2^+$ [Samorajczyk, \cite{Samorajczyk2015}]. Indication for $0^+$ states around 1.5 MeV. \newline 
-One of the objectives of this experiment: clarify the nature/structure of these $0^+$ states. \newline 
-Shape transition: Sm-144 (Z = 62, N = 82) spherical. Adding neutrons: transition of N = 90 from spherical to prolate deformed $\rightarrow$ shape-phase transition, so called X(5) critical-point symmetry. \newline
-Taking out neutrons: very neutron-deficient Sm nuclei are also prolate deformed (e.g. Sm-132), but for \Sm: indication for triaxiality/\ga-softness [Klintefjord] $\rightarrow$ another form of shape-phase transition/critical point behavior $\implies$ E(5) [Iachello, \cite{Iachello2000}]. \Sm\ could be one of the best examples for E(5) symmetry $\implies$ need transition probabilities from higher-lying states to confirm. \newline
-Casten \cite{Casten2000}.
-} \newline
+
 
 \newpage
 
@@ -396,24 +428,11 @@ LISE++ \cite{LISE}
 
 \newpage
 
-\section{Notes}
-
-\textcolor{red}{Intro?}
-
-Nuclear physics is the study of atomic nuclei. 
-
-In the atomic shell model, the shells are filled with electrons in order of increasing energy. 
-This model can explain the complicated details of atomic structure.  
-In nuclear physics, a similar approach was used to explain the nuclear structure. \cite{Krane}
+\section{...}
 
 
-The Pauli exclusion principle declares that "two identical fermions cannot occupy the same state". \cite{Griffiths}
 
-Isotope notation:
-\begin{align*}
-	^A_Z\text{X}_N^q
-\end{align*}
-where $X$ is the chemical symbol of the element, $A$ is the nucleon number (mass number, $A = Z + N$), $Z$ is the atomic number (proton number), $N$ is the neutron number and $q$ is the charge ($q = Z$ protons $- ~i$ electrons). 
+
 
 
 \bigskip
@@ -427,49 +446,51 @@ spin and parity?
 \newpage
 
 \subsection*{Magic numbers}
+Maria Goeppert Mayer discovered the magic numbers around 1945 from observation of periodicity in binding energy. 
+She gave W. Elsasser credits for being the first to remark that such numbers exists, from an article he wrote in 1933. 
+Eugene Wigner believed in the liquid drop model and did not trust the new theory. 
+He called these numbers "magic" \cite{Mayer1964, MIT-OCW}. 
 
-The magic numbers in the nuclear shell model are for the protons and neutrons, respectively
+The reason why the numbers are called magic numbers, is that a magic number of protons or neutrons makes the nucleus unusually stable compared to the neighboring non-magic nuclei \cite{Mayer1964}. 
+
+The magic numbers in the nuclear shell model are for the protons and neutrons individually
 \begin{align*}
 	Z &= 2, ~8, ~20, ~28, ~50, ~82 \\
 	N &= 2, ~8, ~20, ~28, ~50, ~82 ~\text{and}~ 126
 \end{align*}
 These series of numbers corresponds to the filling of shells.
 They are one of the main features that shell structure is built upon. 
-Maria Goeppert Mayer discovered them around 1945 from observation of periodicity in binding energy. 
-She gave W. Elsasser credits for being the first to remark that such numbers exists, from an article he wrote in 1933. 
-Eugene Wigner believed in the liquid drop model and did not trust the new theory. 
-He called these numbers "magic" \cite{Mayer1964, MIT-OCW}. 
 
-The reason why the numbers are called magic numbers, is that a magic number of protons or neutrons makes the nucleus unusually stable independent of the other nucleon number \cite{Mayer1964}. 
-Magic nuclei are more stable than their neighboring nuclei. \textcolor{red}{er alle magiske mer stabile, eller finnes det unntak her? mener å huske det var en diskusjon om dette på pauserommet på kjernefysikk en gang, men husker ikke hva konklusjonen var.}
-A nucleon is either a proton or a neutron, it is a common term for both. 
-
-A single closed shell nucleus is a nucleus which have $Z$ or $N$ as a magic number, while a doubly closed shell nucleus have both $Z$ and $N$ as magic numbers. 
+A single closed shell nucleus is a nucleus where either $Z$ or $N$ are a magic number, while for a doubly closed shell nucleus both $Z$ and $N$ are magic numbers. 
 These nuclei have an extra binding energy compared to the predictions of the semi-empirical mass formula \cite{NR}.
 
+The liquid drop model is explained extensively in \cite{Krane}.
+
+\textcolor{red}{er alle magiske mer stabile, eller finnes det unntak her? mener å huske det var en diskusjon om dette på pauserommet på kjernefysikk en gang, men husker ikke hva konklusjonen var.}
 
 \newpage
 
 
-\section{Nuclear shapes}
+\section{Nuclear shapes}\label{sec:shapes}
 
 Deformation leads to a more stable nuclei. The nucleus can win energy. \textcolor{red}{finn en passende plass..}
 
 \subsection{Nuclear / quadrupole deformation}
-A way to understand nuclear deformation is to imagine a liquid drop vibrating \textcolor{red}{??? and/or rotating ???} at high frequency. 
-The average shape of the nucleus (liquid drop) is spherical, but the instantaneous shape is not.
+A way to understand nuclear deformation is to imagine a liquid drop vibrating \textcolor{red}{??? and/or rotating ???} at \textcolor{red}{??? high / a ???} frequency. 
+In this imagined picture, the average shape of the liquid drop nucleus is spherical, but the instantaneous shape is not.
 \autoref{fig:vibrating-nucleus} displays a sketch of a deformed vibrating nucleus.
 One way to parameterize the instantaneous surface of the nucleus is to describe it by a vector \textbf{R} pointing from the origin to a surface point given by the angles $\theta$ and $\phi$ \cite{Krane}.
 This is called the multipole expansion, and is given by the following equation
 \begin{equation}\label{eq:Rfull}
 	\mathbf{R}(\theta, \phi) = R_0 \left( 1 + a_{00} + \sum^\infty_{\lambda = 1} \sum^{+\lambda}_{\mu = -\lambda} a_{\lambda \mu} Y_{\lambda \mu}(\theta, \phi) \right)
 \end{equation}
-where $R_0$ is the radius of the sphere, $a_{00}$ describes volume changes, $a_{\lambda \mu}$ are \textcolor{red}{the expansion coefficients (or the deformation parameters) or the amplitude of} the spherical harmonics $Y_{\lambda \mu}$, $\lambda$ is the multipole, $\mu$ is the order of the expansion and $\theta$ and $\phi$ are the intrinsic angles \cite{Krane, RS, Klintefjord}. 
+where $R_0$ is the radius of the sphere, $a_{00}$ describes volume changes, $a_{\lambda \mu}$ are the expansion coefficients, or the deformation parameters. 
+The parametrization involves the spherical harmonics $Y_{\lambda \mu}$, where $\lambda$ is the multipole, $\mu$ is the order of the expansion and $\theta$ and $\phi$ are the intrinsic angles \cite{Krane, RS, Klintefjord}. 
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Images/vibrating-nucleus.png}
-	\caption{A deformed vibrating nucleus, adapted from \cite{Krane}. The dotted lines represent the spherical equilibrium shape. See text for more information.}
+	\caption{A deformed vibrating nucleus, adapted from \cite{Krane}. In the drawing, the dotted lines represent the spherical equilibrium shape. The drawing is an exaggeration of reality, because exaggeration \textcolor{red}{??? promotes / develops ???} \textcolor{red}{??? understanding / knowledge ???}. See text for more information. \textcolor{red}{det jeg prøvde å si var: fordi overdrivelse fremmer forståelse.}}
 	\label{fig:vibrating-nucleus}
 \end{figure}
 
@@ -491,7 +512,7 @@ Up to second order, the expansion coefficients are given as
 \end{equation}
 
 A dipole vibration, $\lambda = 1$, describes a translation of the whole system, and this is not very interesting in it self. 
-Translational motion of a system deals with the effect that forces have on motion. 
+Translational motion describes the motion of a system. 
 By putting the origin of the coordinate system in the center of mass, it is possible to fix and exclude the $a_{1\mu}$ parameters, and thus also $a_{00}$ \cite{RS}. 
 If we restrict the system to small deformations, we get that $a_{1\mu} = 0$ and thus $a_{00} = 0$.
 \autoref{eq:Rfull} is then reduced to
@@ -499,20 +520,33 @@ If we restrict the system to small deformations, we get that $a_{1\mu} = 0$ and 
 	\mathbf{R}(\theta, \phi) = R_0 \left( 1 +  \sum^\infty_{\lambda = 2} \sum^{+\lambda}_{\mu = -\lambda} a_{\lambda \mu} Y_{\lambda \mu}(\theta, \phi) \right)
 \end{equation}
 
-Other conditions is that $\textcolor{red}{??? R / \mathbf{R} ???}$ should be invariant under reflection and rotation of the coordinate system. 
-That means $R$ should be unchanged by transformations of the coordinate system.
+Another condition is that $\textcolor{red}{??? R / \mathbf{R} ???}$ should be invariant under reflection and rotation of the coordinate system, that is, $R$ should be unchanged by transformations of the coordinate system.
 By further choosing the $z$-axis as symmetry axis, we end up in a special case where all $a_{\lambda \mu}$ vanishes except when $\mu = 0$. 
-These special parameters, $a_{\lambda 0}$, are called $\beta_2$.
+This is the assumption of axial symmetry.
+The special parameters, $a_{\lambda 0}$, are called $\beta_2$.
 
-\autoref{fig:vibrational-modes} shows a sketch of the three lowest vibrational modes. 
+\autoref{fig:vibrational-modes} shows a sketch of the three lowest \textcolor{red}{possible?} vibrational modes. 
 The quadrupole vibration, $\lambda = 2$, is the most important mode.
-It describes the shape of the nucleus and is the dominant feature in almost all (\textcolor{red}{deformed?}) nuclei. 
-With the low multipolarity, the quadrupole vibration is the first available vibrational mode for low-energy excitation in nuclei.
-In almost all even-even nuclei there is a low-lying state with $J^\pi = 2^+$, and near closed shells it is possible to distinguish the second harmonic states as well ($J^\pi = 0^+, 2^+, 4^+$).
+It describes the shape of the nucleus and is the dominant feature in most of the (\textcolor{red}{deformed?}) nuclei. 
+With low multipolarity, the quadrupole vibration is the first available vibrational mode for low-energy excitation in nuclei.
+In almost all even-even nuclei there is a low-lying state with $J^\pi = 2^+$, and near closed shells it is possible to distinguish the second harmonic states as well ($J^\pi = 0^+, 2^+, 4^+$). 
+\textcolor{red}{Hvorfor blir spinnene dette igjen?}
 
-For $\lambda = 2$, there is five parameters of $a_{2\mu}$. 
-Two parameters describe the shape and the three others describe the orientation in space. %(Euler angles $\Omega = (\alpha, \beta, \gamma)$). 
-It is possible to align the deformed shape in a coordinate system such that only two parameters are needed to describe the system, the shape of the nucleus.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Images/vibration-modes-3.png}
+	\caption{Vibrational modes, adapted from \cite{Krane}. The dotted lines represent the spherical equilibrium shape.
+	(a) Dipole, $\lambda = 1$. 
+	(b) Quadrupole, $\lambda = 2$. 
+	(c) Octupole, $\lambda = 3$.}
+	\label{fig:vibrational-modes}
+\end{figure}
+%(d) Hexadecapole, $\lambda = 4$, $a_{40} > 0$. \cite{RS}
+%(e) Hexadecapole, $\lambda = 4$, $a_{40} < 0$.
+
+For $\lambda = 2$, there are five parameters of $a_{2\mu}$ ($\mu \in \{ -2, -1, 0, 1, 2 \}$). 
+Two parameters describe the shape, and in addition there are three parameters describing the orientation in space. %(Euler angles $\Omega = (\alpha, \beta, \gamma)$). 
+It is possible to align the deformed shape in a coordinate system such that only two parameters are needed to describe the shape of the nucleus.
 With a suitable rotation, we can achieve 
 \begin{align*}
 	a_{21} &=  a_{2,-1} = 0 \\
@@ -529,56 +563,47 @@ From this we have
 \begin{equation}
 	\sum_\mu | a_{2\mu} |^2 = a_{20}^2 + 2a_{22}^2 = \beta^2
 \end{equation}
-and \autoref{eq:Rmid} becomes
+and in the special case when $\lambda = 2$, \autoref{eq:Rmid} becomes
 \begin{equation}
 	\mathbf{R}(\theta, \phi) = R_0 \left( 1 + \beta \sqrt{\frac{5}{16\pi}} (\cos \gamma (3\cos^2 \theta - 1) + \sqrt{3} \sin \gamma \sin^2 \theta \cos 2\phi) \right)
 \end{equation}
-in the special case when $\lambda = 2$ \cite{RS}.
+by using the spherical harmonics $Y_{20}$ and $Y_{2,\pm 2}$ \cite{RS}.
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.8\textwidth]{Images/vibration-modes-3.png}
-	\caption{Vibrational modes, adapted from \cite{Krane}. The dotted lines represent the spherical equilibrium shape.
-	(a) Dipole, $\lambda = 1$. 
-	(b) Quadrupole, $\lambda = 2$. 
-	(c) Octupole, $\lambda = 3$.}
-	\label{fig:vibrational-modes}
-\end{figure}
-%(d) Hexadecapole, $\lambda = 4$, $a_{40} > 0$. \cite{RS}
-%(e) Hexadecapole, $\lambda = 4$, $a_{40} < 0$.
-
-Octupole vibration, $\lambda = 3$, with $J^\pi = 3^-$ can be seen in many nuclei.
-In nuclei where the shell structure makes the quadrupole modes occur at very high energies, such as in doubly magic nuclei, the octupole state is often the lowest excited state.
-
-\autoref{fig:Nuclear-shapes} shows a sketch of three different deformed nuclear shapes. \textcolor{red}{denne ble litt overflødig når jeg fikk inn formene i fig. 2.4.}
-
-%Lund convention is used to describe the shapes.
-%\begin{figure}[ht]
-%	\centering
-%	\includegraphics[width=0.8\textwidth]{Images/Lund-convention.png}
-%	\caption{Lund convention.}
-%	\label{fig:Lund-convention}
-%\end{figure}
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=0.8\textwidth]{Images/nuclear-shapes.png}
-	\caption{Nuclear shapes, adapted from \cite{MSU-shapes}. 
-	(a) The prolate shape looks like an American football. 
-	(b) The oblate shape looks like a pumpkin. 
-	(c) The triaxial shape looks like a kiwi fruit. 
-	%It is at $30^\circ$ in \autoref{fig:Lund-convention} using the Lund convention, between the prolate and the oblate shape.
-	}
-	\label{fig:Nuclear-shapes}
-\end{figure}
-
+\textcolor{red}{finn en måte å inkludere \autoref{fig:cea_tri} + forklare \ga-soft.}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Images/Triaxial-map-drawing.png}
-	\caption{Collective excitations for \Sm, adapted from \cite{Hilaire2007, CEA}. \textcolor{red}{\Sm\ looks like a \ga-soft vibrator? See lecture FYS4570 18. Sept 2018.}}
+	\caption{Collective excitations / Potential surface for \Sm, adapted from \cite{Hilaire2007, CEA}. \textcolor{red}{\Sm\ looks like a so-called \ga-soft vibrator? See lecture FYS4570 18. Sept 2018.}}
 	\label{fig:cea_tri}
 \end{figure}
+
+Octupole vibration, $\lambda = 3$, with $J^\pi = 3^-$ can be seen in many nuclei.
+In nuclei where the shell structure makes the quadrupole modes occur at very high energies, such as in doubly magic nuclei, the octupole state is often the lowest excited state.
+
+
+\textcolor{red}{Tror dette må i innledningen på en aller annen måte... + må fjerne noe sånn at jeg slipper å snakke om X(5) og E(5). Det kan en fremtidig PhD-student eller Post-doc gjøre..} \newline
+\autoref{fig:cea_CoN} displays the chart of nuclides for deformed nuclei. 
+The red lines in the figure corresponds to the magic numbers (the filling of shells). 
+Around the red lines, the nuclei are marked with a gray color, meaning that there is no deformation. 
+Between the red lines, where the shells are not filled, or half-filled, the nuclei are deformed and marked by a different color than gray. 
+
+Shape coexistence is often found near closed shells. 
+A typical indication for shape coexistence is $0^+$ states often at low energy. 
+
+$^{140}_{62}$Sm$_{78}$: Just below $N = 82$ shell closure. $Z = 62$: mid shell. 
+
+\Sm\ was thought to have a low-lying $0^+$ state \cite{Firestone}, but this state was shown to be $2^+$ \cite{Samorajczyk2015}. 
+
+Indication of $0^+$ states around 1.5 MeV. 
+
+One object of this experiment is to clarify the nature/structure of these $0^+$ states. 
+
+Shape transition: $^{144}_{62}$Sm$_{82}$ spherical. 
+Adding neutrons: transition of $N = 90$ from spherical to prolate deformed implies a shape-phase transition, a so-called $X(5)$ critical-point symmetry.
+
+Taking out neutrons: very neutron-deficient Sm nuclei are also prolate deformed (e.g. Sm-132), but for \Sm: indication for triaxiality/\ga-softness \cite{Klintefjord}, another form of shape-phase transition / critical point behavior, E(5) \cite{Iachello2000}. 
+\Sm\ could be one of the best examples of E(5) symmetry, need transition probabilities from higher-lying states to confirm. 
 
 
 \begin{figure}[htb]
@@ -589,6 +614,9 @@ In nuclei where the shell structure makes the quadrupole modes occur at very hig
 \end{figure}
 
 
+
+
+
 \subsection{Quadrupole moments}
 
 \subsection{Transition probability (\textcolor{red}{cross sections?})}
@@ -597,39 +625,23 @@ In nuclei where the shell structure makes the quadrupole modes occur at very hig
 
 \section{Coulomb excitation}
 
+\bigskip
 
-
-
-
-
-
-
-
-
-
-\newpage
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{Images/symmetry-triangle.png}
-	\caption{Symmetry triangle, from \cite{Casten2006}. \textcolor{red}{Det er ikke sikkert denne skal være med.}}
-	\label{fig:sym-triangle}
-\end{figure}
-
-
-
+\textbf{COULEX links:}
+\begin{itemize}
+	\item \url{https://www.researchgate.net/profile/Jacek_Wojciechowski/publication/268366137_Application_of_Genetic_Algorithm_with_Real_Representation_to_COULEX_Data_Analysis/links/54b913850cf269d8cbf72ed4.pdf}
+	\item \url{https://core.ac.uk/download/pdf/76649116.pdf}
+	\item \url{http://oregonstate.edu/instruct/ch374/ch418518/Chapter%2010%20NUCLEAR%20REACTIONS.pdf}
+\end{itemize}
 
 
 \bigskip
 
 
-\begin{table}[ht] 
-    \centering 
-    \caption{Values of the fundamental physical constants from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
-	\input{Table-data/Units.tex}
-	\label{tab:units}
-\end{table}
+COULomb EXcitation (COULEX)
 
+
+\bigskip
 
 
 \begin{table}[ht] 
@@ -669,12 +681,6 @@ In nuclei where the shell structure makes the quadrupole modes occur at very hig
 
 
 
-%\begin{figure}[ht]
-%	\centering
-%	\includegraphics[width=\textwidth]{Images/cea-Single-particle-level-scheme-140Sm.png}
-%	\caption{Single particle level scheme \Sm.}
-%	\label{fig:cea_lvl}
-%\end{figure}
 
 
 
@@ -1118,6 +1124,8 @@ The remaining Python and bash scripts are written and developed by the author.
 All of the scripts written in C/C++ are dependent on the ROOT 6 framework, a C/C++ data analysis framework developed and maintained at CERN.
 
 Information about the computer setup and environment can be found in \autoref{a:computer_environment}. There is also a section containing the relative path of programs, scripts and files from this thesis.
+
+All of my scripts are available in my GitHub repository found at \\ \url{https://github.com/wiggoen/MasterThesis}.
 
 \section{Data handling}
 The raw data from Miniball experiments essentially\footnote{The format is not entirely correct, since it has identification of where the particle and \ga\ hit. 
