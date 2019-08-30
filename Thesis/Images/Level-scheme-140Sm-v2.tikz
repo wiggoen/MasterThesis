@@ -1,0 +1,68 @@
+\begin{tikzpicture}[
+    level/.style = { ultra thick, black },
+    connect/.style = { dotted, black },
+    notice/.style = { draw, rectangle callout, callout relative pointer={#1} },
+    label/.style = { text width=2cm }
+    ]
+    %%% Picture made by normalizing energy to the 2+ state (531) and choosing it to be 
+    %%% 2 units of y in height. E.g.: 990/(531/2) = 3.7
+    %%%
+    %%% Ground state band
+    %%%
+    % Levels, states, energy
+    \foreach \level / \state / \energy in {0/0_1^+/0, 2/2_1^+/531, 4.7/4_1^+/1246, 7.8/6_1^+/2082, 11.2/8_1^+/2970}
+      { 
+        \draw[level] (0,\level) -- (2,\level);
+        \node at (0.5,\level) [anchor=south east] {$\state$};
+        \node at (1.2,\level) [anchor=south west] {$\energy$};
+      }
+    % Gamma transitions
+    \foreach \endlevel / \startlevel / \gamma in {0/2/531, 2/4.7/715, 4.7/7.8/836, 7.8/11.2/888}
+      { 
+        \draw[line width=2pt, ->, >=triangle 60] (1,\startlevel) -- node[fill=white] {\gamma} (1,\endlevel);
+      }
+    % Dotted lines
+    \draw[connect] (-2,0)  -- (0,0);
+    \draw[connect] (2,2)   -- (10,2);
+    \draw[connect] (5,3.7) -- (7,3.7);
+    \draw[connect] (2,4.7) -- (6.2,4.7);
+    %%%
+    %%% 1st right band
+    %%%
+    % Lower 1st right band
+    \coordinate (levelleft)  at (3,3.7);
+    \coordinate (levelright) at (5,3.7);
+    \draw[level] (levelleft) -- (levelright);
+    \node at (3.5,3.7) [anchor=south east] {$2_2^+$};
+    \node at (4.2,3.7) [anchor=south west] {990};
+    \draw[line width=2pt, ->, >=triangle 60] (4,3.7) -- node[fill=white] {460} (4,2);
+    %%%
+    %%% 2nd right band
+    %%%
+    \coordinate (levelleft)  at (6,6);
+    \coordinate (levelright) at (8,6);
+    \draw[level] (levelleft) -- (levelright);
+    \node at (6.7,6) [anchor=south east] {$0_2^{+}$};
+    \node at (7.2,6) [anchor=south west] {1599};
+    \draw[line width=2pt, ->, >=triangle 60] (7.8,6) -- node[fill=white] {1068} (7.8,2);
+    \draw[line width=2pt, ->, >=triangle 60] (7,6) -- node[fill=white] {609}  (7,3.7);
+    \draw[line width=2pt, ->, >=triangle 60] (6.2,6) -- node[fill=white] {352}  (6.2,4.7);
+    %%%
+    %%% 3rd right band
+    %%%
+    \coordinate (levelleft)  at (9,6.1);
+    \coordinate (levelright) at (11,6.1);
+    \draw[level] (levelleft) -- (levelright);
+    \node at (9.7,6.1)  [anchor=south east] {$0_3^{(+)}$};
+    \node at (10.2,6.1) [anchor=south west] {1628};
+    \draw[line width=2pt, ->, >=triangle 60] (10,6.1) -- node[fill=white] {1098} (10,2);
+    %%%
+    %%% 1st left band
+    %%%
+    \coordinate (levelleft)  at (-3,3.34);
+    \coordinate (levelright) at (-1,3.34);
+    \draw[level] (levelleft) -- (levelright);
+    \node at (-2.1,3.34) [anchor=south east] {(1,2)};
+    \node at (-1.8,3.34) [anchor=south west] {1420};
+    \draw[line width=2pt, ->, >=triangle 60] (-2,3.34) -- node[fill=white] {1420} (-2,0);
+\end{tikzpicture}
