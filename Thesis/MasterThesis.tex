@@ -396,7 +396,7 @@ In 2017, there was an upgrade of the ISOLDE facility, which lead to the possibil
 This allows for Coulomb excitation of \Sm\ at higher energies than the previous experiment.
 In turn, this implied that it was possible to choose a high-$Z$ target (Pb) to give a high COULomb EXcitation (COULEX) cross section, especially for multi-step.
 A beam energy of 4.7 MeV/u was chosen as the highest possible energy for safe COULEX for Pb.
-Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interaction.
+COULEX will be discussed in \autoref{sec:Coulex}.
 Excited states up to at least the $8^+$ state at 2970 keV are expected to be populated with this energy.
 Maybe also currently unknown states will be populated.
 This will give a greater understanding of the low-lying nuclear structure in \Sm.
@@ -566,15 +566,17 @@ With a suitable rotation, we can achieve
 leaving two independent parameters, $a_{20}$ and $a_{22}$. 
 With Hill-Wheeler \cite{Hill-Wheeler} coordinates ($\beta$, $\gamma$) they become
 \begin{align}
-	a_{20} &= \beta \cos \gamma \\
-	a_{22} &= \frac{1}{\sqrt{2}} \beta \sin \gamma
+	a_{20} &= \beta \cos \gamma \label{eq:a-param1} \\
+	a_{22} &= \frac{1}{\sqrt{2}} \beta \sin \gamma \label{eq:a-param2}
 \end{align}
-where $\beta$ is axial deformation (deformation magnitude) and $\gamma$ is triaxial deformation (shape parameter).
-From this we have
+where $\beta$ is axial deformation (deformation magnitude) and $\gamma$ is triaxial deformation (shape parameter). 
+$\gamma = 0$ and $\beta > 0$ corresponds to  the prolate deformed shape, while $\gamma = 0$ and $\beta < 0$ corresponds to the oblate shape. 
+The triaxial shape is obtained when $0 < \gamma < \tfrac{\pi}{3}$.
+Further we have
 \begin{equation}
 	\sum_\mu | a_{2\mu} |^2 = a_{20}^2 + 2a_{22}^2 = \beta^2
 \end{equation}
-and in the special case when $\lambda = 2$, \autoref{eq:Rmid} becomes
+In the special case when $\lambda = 2$, \autoref{eq:Rmid} becomes
 \begin{equation}
 	\mathbf{R}(\theta, \phi) = R_0 \left( 1 + \beta \sqrt{\frac{5}{16\pi}} (\cos \gamma (3\cos^2 \theta - 1) + \sqrt{3} \sin \gamma \sin^2 \theta \cos 2\phi) \right)
 \end{equation}
@@ -602,6 +604,13 @@ In nuclei where the shell structure makes the quadrupole modes occur at very hig
 
 intrinsic (body-fixed frame), spectroscopic (lab frame)
 
+electromagnetic multipole moments
+
+\begin{align}
+	B(E2; 0^+ \rightarrow 2^+) = \langle 0^+| E2 | 2^+ \rangle^2
+\end{align}
+
+bringing information on $Q_s$ and relative signs of matrix elements $\rightarrow$ direct distinguish between prolate and oblate shape
 
 \subsection{Transition probabilities (\textcolor{red}{cross sections?})}
 
@@ -609,27 +618,37 @@ el.magn. matrix elements
 
 
 
-\section{Coulomb excitation}
+\section{The Coulomb excitation method}\label{sec:Coulex}
 
-the basics of Coulomb excitation (COULEX)
+COULomb EXcitation (COULEX) is an experimental method to excite a nucleus by an inelastic collision with another nucleus through the electromagnetic interaction. 
+In order to ensure that the interaction is purely electromagnetic in nature - and not nuclear - a safe energy is chosen for the \textcolor{red}{??? reaction / interaction ???}. 
+Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interaction.
+This method is very useful for studying collective excitations and shapes of nuclei, as they are often connected by electric quadrupole transitions.  
+
+
+
+\autoref{fig:scattering} shows sketches of the scattering process in the LABoratory (LAB) and Center of Mass (CM) frame of reference. 
+In the LAB frame, a beam particle approaches the target with a velocity $\mathbf{u}$ in a straight line in the absence of the repulsive force. 
+Both the beam and target particles are scattered with a velocity $\mathbf{v}_b$ and $\mathbf{v}_t$ respectively.
+The distance, $b$, is called the impact parameter and is the vertical distance between the beam and target particle. 
+The angles $\theta_b$ and $\theta_t$ are the scattering angles for the beam and target particle respectively. 
+$V_{cm}$ is the center of mass velocity. 
+A small angle $\theta_b$ means forward scattering of the beam, a larger distance between the beam particle and the target particle, a weaker electromagnetic (EM) field and less excitation probability. 
+A large angle $\theta_b$ means backward scattering of the beam, a closer distance between the beam particle and the target particle, a stronger EM field and a higher excitation probability.
+In the CM frame, the center of mass velocity is zero, and the velocities and angles are marked by an apostrophe to separate between the two frames of reference.
 
 
 \bigskip
 
 COULEX: \newline
-- nucleus excited by electromagnetic interaction. \newline
+- transition energies and intensities $\rightarrow$ determine new excited levels and study deformation \newline
 - de-excitation $\rightarrow$ gamma
-
-\bigskip
-
-Why CoulEx? \url{https://iks32.fys.kuleuven.be/wiki/brix/images/5/58/10_20151123_Illana_BriX15_web.pdf} \newline
 
 
 \bigskip
 
 \textbf{COULEX links:}
 \begin{itemize}
-	\item \url{https://www.researchgate.net/profile/Jacek_Wojciechowski/publication/268366137_Application_of_Genetic_Algorithm_with_Real_Representation_to_COULEX_Data_Analysis/links/54b913850cf269d8cbf72ed4.pdf}
 	\item \url{https://core.ac.uk/download/pdf/76649116.pdf}
 	\item \url{http://oregonstate.edu/instruct/ch374/ch418518/Chapter%2010%20NUCLEAR%20REACTIONS.pdf}
 \end{itemize}
@@ -638,15 +657,38 @@ Why CoulEx? \url{https://iks32.fys.kuleuven.be/wiki/brix/images/5/58/10_20151123
 \bigskip
 
 
-COULomb EXcitation (COULEX)
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{Images/scattering.png}
+	\caption{Scattering in different frames of reference.
+	(a) Scattering in the LABoratory (LAB) frame. 
+	(b) Scattering in the Center of Mass (CM) frame. 
+	See text for more information.}
+	\label{fig:scattering}
+\end{figure}
 
+%\begin{figure}[ht]
+%	\centering
+%	\begin{subfigure}{\textwidth}
+%		\input{Images/LAB-frame.tikz}
+%		\caption{}
+%		\label{fig:LAB}
+%	\end{subfigure}
+%	\begin{subfigure}{\textwidth}
+%		\input{Images/CM-frame.tikz}
+%		\caption{}
+%		\label{fig:CM}
+%	\end{subfigure}
+%	\caption{Scattering in different frames of reference.
+%	(a) Scattering in the LABoratory (LAB) frame. A small angle $\theta_b$ means forward scattering of the beam, a larger distance between the beam particle and the target particle, a weaker electromagnetic (EM) field and less excitation probability. A large angle $\theta_b$ means backward scattering of the beam, a closer distance between the beam particle and the target particle, a stronger EM field and a higher excitation probability.
+%	(b) Scattering in the Center of Mass (CM) frame.}
+%	\label{fig:LAB-CM}
+%\end{figure}
 
-\bigskip
-
-
-\begin{table}[ht] 
+\begin{table}[htb] 
     \centering 
-    \caption{LAB vs. CM. Based on LAB input angles from $\theta_b$ and $\theta_t$. From LISE++ kinematics calculator (reaction from the middle of the target).}
+    \caption{LAB and CM angles, based on LAB input angles from $\theta_b$ and $\theta_t$. 
+    Calculations are done with the LISE++ \cite{LISE} kinematics calculator with a reaction from the middle of the target.}
 	\label{tab:LABvsCM}
     \begin{subtable}{0.45\textwidth}
     		\centering
@@ -662,26 +704,6 @@ COULomb EXcitation (COULEX)
 	\end{subtable}
 \end{table}
 
-
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}{\textwidth}
-		\input{Images/LAB-frame.tikz}
-		\caption{Scattering in the laboratory (LAB) frame. A small angle $\theta_b$ means forward scattering of the beam, a larger distance between the beam particle and the target particle, a weaker electromagnetic (EM) field and less excitation probability. A large angle $\theta_b$ means backward scattering of the beam, a closer distance between the beam particle and the target particle, a stronger EM field and a higher excitation probability.}
-		\label{fig:LAB}
-	\end{subfigure}
-	\begin{subfigure}{\textwidth}
-		\input{Images/CM-frame.tikz}
-		\caption{Center of mass (CM) frame.}
-		\label{fig:CM}
-	\end{subfigure}
-	\caption{LAB vs. CM frame.}
-	\label{fig:LAB-CM}
-\end{figure}
-
-
-
-LISE++ \cite{LISE}
 
 
 
@@ -2323,6 +2345,7 @@ Coulomb excitation yields. These yields will then, in a second step, be compared
 \bigskip
 
 Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclear deformation). 
+
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------

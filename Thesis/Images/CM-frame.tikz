@@ -16,10 +16,10 @@
     \draw[dotted] (Tdown)  -- (Bup);    % 180 degree line
     \draw[dotted] (-0.5,0) -- (1.5,0);  % angle help line
     % Particle paths
-    \draw[red,loosely dashed]  (Bleft) .. controls (-0.5,0.5) and (0.5,0.5) .. (Bup);
+    \draw[red,loosely dashed]  (Bleft)  .. controls (-0.5,0.5) and (0.5,0.5)   .. (Bup);
     \draw[blue,loosely dashed] (Tright) .. controls (0.5,-0.5) and (-0.5,-0.5) .. (Tdown);
     % Impact parameter
-    \draw[<->, >=stealth] (-3,0.5) -- node[left] {a} (-3,-0.5);
+    \draw[<->, >=stealth] (-3,0.5) -- node[left] {b} (-3,-0.5);
     % Center of mass
     \draw[fill=black] (origo) circle[radius=0.07cm] node {};
     % Angles

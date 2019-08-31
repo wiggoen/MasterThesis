@@ -17,10 +17,10 @@
     \draw[dotted] (origo) -- (Bup);   % particle angle line
     \draw[dotted] (origo) -- (2,-2);  % target angle line
     % Particle paths
-    \draw[red,loosely dashed]  (Bleft) .. controls (-0.5,0.5) and (0.5,0.5) .. (Bup);
-    \draw[blue,loosely dashed] (Tstart) .. controls (0.5,-0.5) and (1,-1) .. (Tdown);
+    \draw[red,loosely dashed]  (Bleft)  .. controls (-0.5,0.5) and (0.5,0.5) .. (Bup);
+    \draw[blue,loosely dashed] (Tstart) .. controls (0.5,-0.5) and (1,-1)    .. (Tdown);
     % Impact parameter
-    \draw[<->, >=stealth] (-3,0.5) -- node[left] {a} (-3,-0.5);
+    \draw[<->, >=stealth] (-3,0.5) -- node[left] {b} (-3,-0.5);
     % Center of mass
     \draw[fill=black] (origo) circle[radius=0.07cm] node {};
     \draw[->, >=stealth] (origo) -- (1.5,0) node[right] {$\textbf{V}_{cm}$}; % CM help line
