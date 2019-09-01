@@ -27,6 +27,7 @@
 	calc
 }
 \usepackage{stackengine}
+\usepackage{revsymb} % used for lambda-bar
 
 %---
 
@@ -282,7 +283,6 @@ ENSAR2: European Nuclear Science and Applications Research - 2 \url{http://www.e
 
 \tableofcontents
 
-
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 
@@ -513,7 +513,7 @@ Further we have that
 \begin{equation}\label{eq:radius}
 	R_0 = r_0 A^{1/3}
 \end{equation}
-where $r_0 \approx 1.2$ fm and $A$ is the mass number of the nucleus.
+where $r_0 \approx 1.25$ fm and $A$ is the mass number of the nucleus.
 
 The expansion coefficients, $a_{\lambda \mu}$, can be time dependent and can thus describe a vibration or rotation in space of the nucleus. 
 By reflection symmetry, the expansion coefficients are required to keep the equality $a_{\lambda \mu} = a_{\lambda, -\mu}$ \cite{Krane}.
@@ -593,6 +593,7 @@ by using the spherical harmonics $Y_{20}$ and $Y_{2,\pm 2}$ \cite{RS}.
 
 Octupole vibration, $\lambda = 3$, with $J^\pi = 3^-$ can be seen in many nuclei.
 In nuclei where the shell structure makes the quadrupole modes occur at very high energies, such as in doubly magic nuclei, the octupole state is often the lowest excited state.
+The octupole deformation has a pear shape.
 
 
 
@@ -619,16 +620,18 @@ el.magn. matrix elements
 
 
 \section{The Coulomb excitation method}\label{sec:Coulex}
-
-COULomb EXcitation (COULEX) is an experimental method to excite a nucleus by an inelastic collision with another nucleus through the electromagnetic interaction. 
-In order to ensure that the interaction is purely electromagnetic in nature - and not nuclear - a safe energy is chosen for the \textcolor{red}{??? reaction / interaction ???}. 
+COULomb EXcitation (COULEX) is an experimental method to excite a nucleus by an inelastic scattering with another nucleus through the electromagnetic interaction. 
+The elastic Coulomb scattering process is also known as Rutherford scattering.
+In order to ensure that the interaction is purely electromagnetic in nature – and not nuclear – a safe energy is chosen for the \textcolor{red}{??? reaction / interaction ???}. 
 Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interaction.
 This method is very useful for studying collective excitations and shapes of nuclei, as they are often connected by electric quadrupole transitions.  
-
-
+Transition energies and intensities can be used to determine new excited levels and study deformation.
+An extensive description of Coulomb excitation can be found in \cite{Alder1956, EE-Coulex}.
 
 \autoref{fig:scattering} shows sketches of the scattering process in the LABoratory (LAB) and Center of Mass (CM) frame of reference. 
 In the LAB frame, a beam particle approaches the target with a velocity $\mathbf{u}$ in a straight line in the absence of the repulsive force. 
+The beam particle gets excited by the electromagnetic interaction with the target particle. 
+This excitation is an unstable energy state and soon thereafter it will de-excite, sending out a \ga-ray.
 Both the beam and target particles are scattered with a velocity $\mathbf{v}_b$ and $\mathbf{v}_t$ respectively.
 The distance, $b$, is called the impact parameter and is the vertical distance between the beam and target particle. 
 The angles $\theta_b$ and $\theta_t$ are the scattering angles for the beam and target particle respectively. 
@@ -636,25 +639,50 @@ $V_{cm}$ is the center of mass velocity.
 A small angle $\theta_b$ means forward scattering of the beam, a larger distance between the beam particle and the target particle, a weaker electromagnetic (EM) field and less excitation probability. 
 A large angle $\theta_b$ means backward scattering of the beam, a closer distance between the beam particle and the target particle, a stronger EM field and a higher excitation probability.
 In the CM frame, the center of mass velocity is zero, and the velocities and angles are marked by an apostrophe to separate between the two frames of reference.
+\autoref{tab:scattering} shows the corresponding scattering angles from the reaction. 
+The Coulomb scattering kinematics can be approximated by an elastic collision.
+In \autoref{ch:scattering}, a calculation of the two-particle elastic collision is performed.
+
+In the semi-classical approach of Coulomb excitation theory, the projectile and target is assumed to move on hyperbolic paths. 
+This approach does not take into account the energy loss during the excitation process.
+
+When the beam particle approaches the target particle, the beam particle reaches a minimum separation distance which is dependent on $b$. 
+In a head-on collision, $b = 0$ and the particles reach the distance of closest approach. 
+In safe COULEX, the distance of closest approach is chosen by 
+\begin{equation}
+	d > R_b + R_t + d_s = 1.25 (A_b^{1/3} + A_t^{1/3}) + 5~\text{[fm]}
+\end{equation}
+where $R_b$ and $R_t$ is the radii of the beam and target nuclei respectively, 
+$A_b$ and $A_t$ is the mass number of the beam and target nuclei respectively and $d_s = 5$ fm is an additional safety distance \cite{Cline1986}.
 
 
-\bigskip
-
-COULEX: \newline
-- transition energies and intensities $\rightarrow$ determine new excited levels and study deformation \newline
-- de-excitation $\rightarrow$ gamma
 
 
-\bigskip
+The differential cross section, $d\sigma$, for Rutherford scattering is given by 
+\begin{equation}
+	\frac{d\sigma}{d\Omega} = \left( \frac{Z_b Z_t e^2}{8 \pi \varepsilon_0 m v_0^{' 2}} \right)^2 \cdot \frac{1}{\sin^4 \left( \frac{\theta_b^{'}}{2} \right)}
+\end{equation}
+where $d\Omega$ is the solid angle, $Z_b$ and $Z_t$ is the proton number of the beam and target nuclei respectively, $e$ is the elementary charge, $\varepsilon_0$ is the electric permittivity in vacuum, $m$ is the mass of the beam particle, $v_0^{'}$ is the velocity of the beam particle in the center of mass frame and $\theta_b^{'}$ is the beam particle angle in the center of mass frame \cite{Krane}.
 
-\textbf{COULEX links:}
-\begin{itemize}
-	\item \url{https://core.ac.uk/download/pdf/76649116.pdf}
-	\item \url{http://oregonstate.edu/instruct/ch374/ch418518/Chapter%2010%20NUCLEAR%20REACTIONS.pdf}
-\end{itemize}
+The kinetic energy, $E^{'}$, in the CM frame is given by
+\begin{equation}
+	E^{'} = \frac{A_t}{A_b + A_t} E_{b}
+\end{equation}
+where $A_b$ and $A_t$ is the mass number of the beam and target nuclei and $E_{b}$ is the kinetic energy of the beam particle in the LAB frame \cite{Niedermaier}.
 
 
-\bigskip
+One requirement in the semi-classical approach is that the de Broglie wavelength, $\lambdabar$, must be small compared to the impact parameter $b$.
+
+\begin{equation}
+	\eta = \frac{b}{2\lambdabar} = \frac{Z_p Z_t e^2}{\hbar \nu}
+\end{equation}
+
+"The Sommerfeld parameter $\eta$ relates half the distance of closest approach to the de Broglie wavelength of the projectile, and for $\eta \gg 1$, the semi-classical approximation is fairly accurate." \cite{Cline1969}
+
+
+
+
+
 
 
 \begin{figure}[htb]
@@ -687,9 +715,12 @@ COULEX: \newline
 
 \begin{table}[htb] 
     \centering 
-    \caption{LAB and CM angles, based on LAB input angles from $\theta_b$ and $\theta_t$. 
-    Calculations are done with the LISE++ \cite{LISE} kinematics calculator with a reaction from the middle of the target.}
-	\label{tab:LABvsCM}
+    \caption{Scattering of \Sm\ on \Pb\ with beam energy 4.65 MeV/u.
+    Calculations are done with the LISE++ \cite{LISE} kinematics calculator with a reaction from the middle of the target.
+    The LAB and CM frame angles are based on the LAB input angles from $\theta_b$ and $\theta_t$. 
+    In (b) there are angles marked with red color. 
+    These are overlapping with the CM angles in (a), making a total of 24 unique angles in the CM frame.}
+	\label{tab:scattering}
     \begin{subtable}{0.45\textwidth}
     		\centering
 		\caption{$\theta_b \in [22.0^\circ, 56.7^\circ]$.}
@@ -704,58 +735,6 @@ COULEX: \newline
 	\end{subtable}
 \end{table}
 
-
-
-
-
-
-
-% ----------------------------------------------------------------------------------------------------------------------
-% ----------------------------------------------------------------------------------------------------------------------
-\newpage
-
-\chapter*{\textcolor{red}{NOTES TO BE REMOVED!!}}
-
-\section*{\textcolor{red}{Sjekk sensorveiledning!!}}
-
-\section*{\textcolor{red}{Fjern blå linker in-text før innlevering!!}}
-
-\section*{\textcolor{red}{Experimental setup - other info sources}}
-\begin{itemize}
-	\item ISOL \& Post acceleration: \url{https://www.euroschoolonexoticbeams.be/site/files/nlp/LNP700_contrib2.pdf}
-	\item ISOL RIB (2004): \url{http://accelconf.web.cern.ch/AccelConf/e04/PAPERS/TUXCH01.PDF}
-	\item RIB (2017): \url{http://iopscience.iop.org/article/10.1088/1361-6471/aa990f/pdf}
-	\item RIB: \url{http://publications.lib.chalmers.se/records/fulltext/175494/local_175494.pdf}
-	\item RIB: \url{https://www.sciencedirect.com/science/article/pii/S0168583X02018864}
-	\item Post-accelerated beams ISOLDE: \url{http://iopscience.iop.org/article/10.1088/1361-6471/aa78ca}
-	\item PSB: \url{https://www.sciencedirect.com/science/article/pii/0168583X92959079}
-	\item PSB: \url{https://home.cern/science/accelerators/proton-synchrotron-booster}
-	\item RILIS ISOLDE: \url{https://www.sciencedirect.com/science/article/pii/S0168583X13008914}
-	\item HIE-ISOLDE publications: \url{http://hie-isolde-project.web.cern.ch/hie-isolde-publications}
-	\item Miniball pictures: \url{https://cds.cern.ch/record/844871?ln=en}
-	\item The MINIBALL array \cite{MBarray}
-\end{itemize}
-
-\textcolor{red}{DAQ:}
-\begin{itemize}
-	\item \MBOU\ web page: \url{https://www-old.mll-muenchen.de/marabou/htmldoc/}
-	\item \MBOU\ file formatting: \url{https://www-old.mll-muenchen.de/marabou/htmldoc/marabou/IOSpec.html}
-\end{itemize}
-
-\section*{\textcolor{red}{Notes}}
-\begin{itemize}
-	\item Gjør manuell redigering av Mendeley-referanser. Formatter med LaTeX.
-	\item Kjør en M2R for å se på output. Kjør også en Q4S for å se på output uten -vl, og sjekk timing?
-	\item Sjekk sensorveiledning
-	\item Estimering av usikkerhet?
-	\item Pile-up (accidental coincidence) i plott?
-	\item Lag tabell med DGF + kalibreringsfila
-	\item Sjekk sortering med de forskjellige flaggene, -singles, -addback, -reject
-	\item Sjekk ut event-greia Liam sendte
-\end{itemize}
-
-
-\newpage
 
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
@@ -1535,7 +1514,7 @@ By doing a function fit, Gaussian or other, the centroids of the peaks for both 
 On the front side of the CD, \autoref{eq:offset} and \autoref{eq:gain} can be used to calculate the calibration coefficients.
 For more than two centroids per strip, as the back side of the CD have, linear regression is used to find the best fit of the calibration coefficients.
 
-Calibrating the back strips of the CD is the same as the front, however because they cover a large range of angles in the $\theta$ direction (according to \autoref{fig:LAB}), a gate on one of the front strips is needed to define an angle and thereby an energy. 
+Calibrating the back strips of the CD is the same as the front, however because they cover a large range of angles in the $\theta$ direction (according to the LAB frame in \autoref{fig:scattering}), a gate on one of the front strips is needed to define an angle and thereby an energy. 
 For this purpose, the program \texttt{AQ4Sort} is used. 
 It operates the same files as \texttt{TreeBuilder} does, but with the purpose of making every combination of gates on front and back strips so that the front and back centroids for every "pixel" of the detector is available.
 
@@ -2384,9 +2363,11 @@ Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclea
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
-\chapter{Two-particle collision}
+\chapter{Two-particle elastic collision}\label{ch:scattering}
 \section{Laboratory (LAB) frame of reference}\label{sec:LAB}
-The angles of the two-particle collision in the laboratory frame from \autoref{fig:LAB} is calculated in this section. A general approach is used to make it easier to hold track of the parameters. From the figure we can express the velocities as
+The angles of the two-particle collision in the laboratory frame from \autoref{fig:scattering} is calculated in this section. 
+A general approach is used to make it easier to hold track of the parameters. 
+From the figure we can express the velocities as
 \begin{align}\label{eq:2p-LAB-collision}
 \begin{split}
 	 \boldsymbol{u} &= \boldsymbol{u}_1 = u \boldsymbol{\hat{x}}  \\
@@ -2401,14 +2382,14 @@ Conservation of momentum gives
 \begin{align*}%\label{eq:comom}
 	m_1 \boldsymbol{u}_1 &= m_1 \boldsymbol{v}_1 + m_2 \boldsymbol{v}_2
 \end{align*}
-which in x-direction can be expressed as
+which in $x$-direction can be expressed as
 \begin{align}\label{eq:comx}
 	m_1 u &= m_1 v_1 \cos \theta + m_2 v_2 \cos \varphi  \nonumber\\
 	m_1 (u - v_1 \cos \theta) &= m_2 v_2 \cos \varphi  \nonumber\\
 	\frac{m_1}{m_2} (u - v_1 \cos \theta) &= v_2 \cos \varphi  \nonumber\\
 	\alpha (u - v_1 \cos \theta) &= v_2 \cos \varphi
 \end{align}
-and in y-direction can be expressed as
+and in $y$-direction can be expressed as
 \begin{align}\label{eq:comy}
 	0 &= m_1 v_1 \sin \theta - m_2 v_2 \sin \varphi \nonumber\\
 	m_1 v_1 \sin \theta &= m_2 v_2 \sin \varphi \nonumber\\
@@ -2424,7 +2405,8 @@ Conservation of energy gives
 	\alpha (u^2 - v_1^2) &= v_2^2
 \end{align}
 
-We now have three equations (\autoref{eq:comx} - \autoref{eq:coe}) with four unknown quantities ($v_1, \theta, v_2, \varphi$). Using the target angle $\varphi$ as an independent variable, we can find expressions for the other three variables. 
+We now have three equations, \autoref{eq:comx} - \autoref{eq:coe}, with four unknown quantities ($v_1, \theta, v_2, \varphi$). 
+Using the target angle $\varphi$ as an independent variable, we can find expressions for the other three variables. 
 
 Squaring \autoref{eq:comx} 
 \begin{align*}%\label{eq:c}
@@ -2476,7 +2458,8 @@ Substituting \autoref{eq:comcoe} into \autoref{eq:coesub} we get
     v_1^2 &= u^2 \left(1 - 4 \left( \frac{\alpha}{(1 + \alpha)^2} \right) \cos^2 \varphi  \right)  \nonumber\\
     v_1 &= u \sqrt{1 - 4 \frac{\alpha}{M} \cos^2 \varphi}
 \end{align}
-where $\alpha/M = \alpha/(1 + \alpha)^2$. The ratio of \autoref{eq:comy} and \autoref{eq:comx2} gives
+where $\alpha/M = \alpha/(1 + \alpha)^2$. 
+The ratio of \autoref{eq:comy} and \autoref{eq:comx2} gives
 \begin{align}\label{eq:comxy}
 	\frac{\alpha v_1 \sin \theta}{\alpha v_1 \cos \theta} &= \frac{v_2 \sin \varphi}{\alpha u - v_2 \cos \varphi}  \nonumber\\
 	\tan \theta &= \frac{v_2 \sin \varphi}{\alpha u - v_2 \cos \varphi}
@@ -2491,14 +2474,15 @@ Inserting \autoref{eq:comcoe} into \autoref{eq:comxy} gives
 	\tan \theta &= \frac{\sin 2\varphi}{\alpha - \cos 2\varphi}  \nonumber\\
 	\theta &= \arctan \left( \frac{\sin 2\varphi}{\alpha - \cos 2\varphi} \right)
 \end{align}
-Substituting back the variable names from \autoref{fig:LAB} into \autoref{eq:tanBgen} gives
+Substituting back the variable names from the LAB frame in \autoref{fig:scattering} into \autoref{eq:tanBgen} gives
 \begin{align}\label{eq:tanB}
 	\theta_b &= \arctan \left( \frac{\sin 2\theta_t}{\alpha - \cos 2\theta_t} \right)
 \end{align}
 
 
 \section{Center of mass (CM) frame of reference}
-Using the same approach as \autoref{sec:LAB}. From figure \autoref{fig:CM} we can express the velocities as
+Using the same approach as \autoref{sec:LAB}. 
+From the CM frame in \autoref{fig:scattering} we can express the velocities as
 \begin{align}\label{eq:2p-CM-collision}
 \begin{split}
 	 \boldsymbol{u}_1^{'} &= u_1^{'} \boldsymbol{\hat{x}} \\
@@ -2507,7 +2491,8 @@ Using the same approach as \autoref{sec:LAB}. From figure \autoref{fig:CM} we ca
 	\boldsymbol{v}_t^{'} &= \boldsymbol{v}_2^{'} = v_2^{'} (-\cos \theta^{'} \boldsymbol{\hat{x}} - \sin \theta^{'} \boldsymbol{\hat{y}}) = -v_2^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}})
 \end{split}
 \end{align}
-where $\boldsymbol{u}_1^{'}$ and $\boldsymbol{v}_1^{'}$ is the initial and final velocity of the projectile $m_b = m_1$ respectively, and $\boldsymbol{u}_2^{'}$ and $\boldsymbol{v}_2^{'}$ is the initial and final velocity of the target $m_t = m_2$ respectively. The angle $\theta_b^{'} = \theta^{'}$ is the projectile angle. 
+where $\boldsymbol{u}_1^{'}$ and $\boldsymbol{v}_1^{'}$ is the initial and final velocity of the projectile $m_b = m_1$ respectively, and $\boldsymbol{u}_2^{'}$ and $\boldsymbol{v}_2^{'}$ is the initial and final velocity of the target $m_t = m_2$ respectively. 
+The angle $\theta_b^{'} = \theta^{'}$ is the projectile angle. 
 
 In the center of mass (CM) frame of reference, the position of the center of mass is given by
 \begin{align}\label{eq:CMpos}
@@ -2519,7 +2504,8 @@ and the velocity is
 	= \frac{d}{dt} \left( \frac{m_1 \boldsymbol{r}_1 + m_2 \boldsymbol{r}_2}{m_1 + m_2} \right)
 	= \frac{m_1 \boldsymbol{u}_1^{'} + m_2 \boldsymbol{u}_2^{'}}{m_1 + m_2}
 \end{align}
-At the origin of the CM frame, $\boldsymbol{R} = 0$, which implies $\boldsymbol{V} = 0$. The total momentum before the collision is
+At the origin of the CM frame, $\boldsymbol{R} = 0$, which implies $\boldsymbol{V} = 0$. 
+The total momentum before the collision is
 \begin{align}\label{eq:ucm}
 	m_1 \boldsymbol{u}_1^{'} + m_2 \boldsymbol{u}_2^{'} &= 0  \nonumber\\
 	m_2 u_2^{'} &= -m_1 u_1^{'} \nonumber\\
@@ -2563,7 +2549,7 @@ Galilean transformations describes the relationship between the LAB frame and th
 	 t^{'} &= t \\
 \end{align*}
 
-Using the same approach as \autoref{sec:LAB}. In the LAB frame \autoref{fig:LAB}, conservation of momentum is given by
+Using the same approach as \autoref{sec:LAB}. In the LAB frame of \autoref{fig:scattering}, conservation of momentum is given by
 \begin{align}\label{eq:comlab}
 	m_1 \boldsymbol{u}_1 + m_2 \boldsymbol{u}_2 &= m_1 \boldsymbol{v}_1 + m_2 \boldsymbol{v}_2 = (m_1 + m_2)\boldsymbol{V}
 \end{align}
@@ -2581,11 +2567,11 @@ Using Galilean transformations, the connection between $\boldsymbol{v}_1^{'}$ an
 	\boldsymbol{v}_1^{'} &= \boldsymbol{v}_1 - \boldsymbol{V} \nonumber\\
 	\boldsymbol{v}_1 &= \boldsymbol{v}_1^{'} + \boldsymbol{V}
 \end{align}
-which in x-direction gives
+which in $x$-direction gives
 \begin{align}\label{eq:vcmvx}
 	v_1 \cos \theta &= v_1^{'} \cos \theta^{'} + V
 \end{align}
-and in y-direction gives
+and in $y$-direction gives
 \begin{align}\label{eq:vcmvy}
 	v_1 \sin \theta &= v_1^{'} \sin \theta^{'}
 \end{align}
@@ -2595,7 +2581,8 @@ The ratio of \autoref{eq:vcmvy} and \autoref{eq:vcmvx} gives
 	\tan \theta &= \frac{\sin \theta^{'}}{\cos \theta^{'} + \frac{V}{v_1^{'}}} \nonumber\\
 	\tan \theta &= \frac{\sin \theta^{'}}{\frac{V}{v_1^{'}} + \cos \theta^{'}}
 \end{align}
-We need to reformulate the velocity ratio. Substitution from \autoref{eq:u2u1} gives
+We need to reformulate the velocity ratio. 
+Substitution from \autoref{eq:u2u1} gives
 \begin{align}\label{eq:Vou}
 	\frac{V}{v_1^{'}} = \frac{V}{u_1^{'}}
 \end{align}
@@ -2617,7 +2604,7 @@ Substituting \autoref{eq:Vouea} into \autoref{eq:vcmvxy} gives
 	\tan \theta &= \frac{\sin \theta^{'}}{\alpha + \cos \theta^{'}}  \nonumber\\
 	\theta &= \arctan \left( \frac{\sin \theta^{'}}{\alpha + \cos \theta^{'}} \right)
 \end{align}
-Substituting back the variable names from \autoref{fig:CM} into \autoref{eq:tanB1} gives
+Substituting back the variable names from the CM frame of \autoref{fig:scattering} into \autoref{eq:tanB1} gives
 \begin{align}\label{eq:tanB1n}
 	\theta_b &= \arctan \left( \frac{\sin \theta_b^{'}}{\alpha + \cos \theta_b^{'}} \right)
 \end{align}
@@ -2627,12 +2614,12 @@ Using Galilean transformations, the connection between $\boldsymbol{v}_2^{'}$ an
 	\boldsymbol{v}_2^{'} &= \boldsymbol{v}_2 - \boldsymbol{V} \nonumber\\
 	\boldsymbol{v}_2 &= \boldsymbol{v}_2^{'} + \boldsymbol{V}
 \end{align}
-which in x-direction gives
+which in $x$-direction gives
 \begin{align}\label{eq:vcmvx2}
 	v_2 \cos \varphi &= -v_2^{'} \cos \theta^{'} + V \nonumber\\
 	v_2 \cos \varphi &= V - v_2^{'} \cos \theta^{'}
 \end{align}
-and in y-direction gives
+and in $y$-direction gives
 \begin{align}\label{eq:vcmvy2}
 	v_2 \sin \varphi &= v_2^{'} \sin \theta^{'}
 \end{align}
@@ -2641,7 +2628,8 @@ The ratio of \autoref{eq:vcmvy2} and \autoref{eq:vcmvx2} gives
 	\frac{v_2 \sin \varphi}{v_2 \cos \varphi} &= \frac{v_2^{'} \sin \theta^{'}}{V - v_2^{'} \cos \theta^{'}} \nonumber\\
 	\tan \varphi &= \frac{\sin \theta^{'}}{\frac{V}{v_2^{'}} - \cos \theta^{'}}
 \end{align}
-We need to reformulate the velocity ratio. Substitution from \autoref{eq:vcm} and \autoref{eq:u2u1} gives
+We need to reformulate the velocity ratio. 
+Substitution from \autoref{eq:vcm} and \autoref{eq:u2u1} gives
 \begin{align}\label{eq:Vou2}
 	\frac{V}{v_2^{'}} &= \frac{V}{\alpha v_1^{'}} = \frac{V}{\alpha u_1^{'}}
 \end{align}
@@ -2654,7 +2642,7 @@ Substituting \autoref{eq:Vouea2} into \autoref{eq:vcmvxy2} gives
 	\tan \varphi &= \frac{\sin \theta^{'}}{1 - \cos \theta^{'}} = \frac{1}{\frac{1 - \cos \theta^{'}}{\sin \theta^{'}}} = \frac{1}{\tan \frac{\theta^{'}}{2}} = \cot \frac{\theta^{'}}{2} \nonumber\\
 	\varphi &= \tfrac{1}{2} (\pi - \theta^{'}) ~[ \text{radians} ] = \tfrac{1}{2} (180^\circ - \theta^{'}) ~[ \text{degrees} ]
 \end{align}
-Substituting back the variable names from \autoref{fig:LAB-CM} into \autoref{eq:tanT} gives
+Substituting back the variable names from \autoref{fig:scattering} into \autoref{eq:tanT} gives
 \begin{align}\label{eq:tanTgen}
 	\theta_t &= \tfrac{1}{2} (\pi - \theta_b^{'}) ~[ \text{radians} ] = \tfrac{1}{2} (180^\circ - \theta_b^{'}) ~[ \text{degrees} ]
 \end{align}
