@@ -357,13 +357,14 @@ The isotope notation is as follows
 \end{align*}
 where $X$ is the chemical symbol of the element, $A = Z + N$ is the mass number (the number of nucleons), $Z$ is the proton number, $N$ is the neutron number and $q$ is the charge where $q = Z$ protons $- ~i$ electrons. 
 
-\autoref{tab:units} shows the physical constants, their SI units and their SI derived units, and
+\autoref{tab:units} shows the physical constants and energy equivalents, their SI units and their SI derived units, and
 \autoref{tab:SI-prefixes} shows the metric SI prefixes.
 SI, abbreviated from the French Le Syst{\`{e}}me International d'Unit{\'{e}}s, is The International System of Units, which is built upon seven base units.
+When mentioning the mass of a particle, it is usually given in units of atomic mass unit $u$.
 
 \begin{table}[htb] 
     \centering 
-    \caption{Values of the fundamental physical constants from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
+    \caption{Values of the fundamental physical constants and energy equivalents from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
 	\input{Table-data/Units.tex}
 	\label{tab:units}
 \end{table}
@@ -622,11 +623,11 @@ el.magn. matrix elements
 \section{The Coulomb excitation method}\label{sec:Coulex}
 COULomb EXcitation (COULEX) is an experimental method to excite a nucleus by an inelastic scattering with another nucleus through the electromagnetic interaction. 
 The elastic Coulomb scattering process is also known as Rutherford scattering.
-In order to ensure that the interaction is purely electromagnetic in nature – and not nuclear – a safe energy is chosen for the \textcolor{red}{??? reaction / interaction ???}. 
-Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interaction.
+Inelastic Coulomb scattering is called Coulomb excitation.
 This method is very useful for studying collective excitations and shapes of nuclei, as they are often connected by electric quadrupole transitions.  
 Transition energies and intensities can be used to determine new excited levels and study deformation.
 An extensive description of Coulomb excitation can be found in \cite{Alder1956, EE-Coulex}.
+
 
 \autoref{fig:scattering} shows sketches of the scattering process in the LABoratory (LAB) and Center of Mass (CM) frame of reference. 
 In the LAB frame, a beam particle approaches the target with a velocity $\mathbf{u}$ in a straight line in the absence of the repulsive force. 
@@ -643,32 +644,89 @@ In the CM frame, the center of mass velocity is zero, and the velocities and ang
 The Coulomb scattering kinematics can be approximated by an elastic collision.
 In \autoref{ch:scattering}, a calculation of the two-particle elastic collision is performed.
 
+
 In the semi-classical approach of Coulomb excitation theory, the projectile and target is assumed to move on hyperbolic paths. 
 This approach does not take into account the energy loss during the excitation process.
 
 
-The differential cross section, $d\sigma$, for Rutherford scattering is given by 
-\begin{equation}
-	\frac{d\sigma}{d\Omega} = \left( \frac{Z_b Z_t e^2}{8 \pi \varepsilon_0 m v_0^{' 2}} \right)^2 \cdot \frac{1}{\sin^4 \left( \frac{\theta_b^{'}}{2} \right)}
-\end{equation}
-where $d\Omega$ is the solid angle, $Z_b$ and $Z_t$ is the proton number of the beam and target nuclei respectively, $e$ is the elementary charge, $\varepsilon_0$ is the electric permittivity in vacuum, $m$ is the mass of the beam particle, $v_0^{'}$ is the velocity of the beam particle in the CM frame and $\theta_b^{'}$ is the beam particle scattering angle in the CM frame \cite{Krane}.
 
 
-When the beam particle approaches the target particle, the beam particle reaches a minimum separation distance $d$ which is dependent on $b$. 
-In a head-on collision, $b = 0$ and the particles reach the distance of closest approach $d$. 
-In safe COULEX, the distance of closest approach is chosen by the condition
-\begin{equation}
-	d \geq d_{min} = R_b + R_t + d_s = 1.25 (A_b^{1/3} + A_t^{1/3}) + 5~\text{[fm]}
-\end{equation}
-where $R_b$ and $R_t$ is the radii of the beam and target nuclei respectively, 
-$A_b$ and $A_t$ is the mass number of the beam and target nuclei respectively and $d_s = 5$ fm is an additional safety distance \cite{Cline1986}.
+
+\bigskip
 
 \subsubsection*{\textcolor{red}{Rediger under her...}}
 
-Half-distance of closest approach, $a$, in a head-on collision
+In order to ensure that the interaction is purely electromagnetic in nature – and not nuclear – a safe energy is chosen for the \textcolor{red}{??? reaction / interaction ???}. 
+Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interaction.
+When the beam particle approaches the target particle, the beam particle reaches a minimum separation distance $d$ which is dependent on $b$. 
+In a head-on collision, $b = 0$ and the particles reach the distance of closest approach $d_{min}$. 
+In safe COULEX, the distance of closest approach is chosen by the condition
+\begin{align}
+	d \geq d_{min} &= d_C + d_s \nonumber \\
+	&= R_b + R_t + d_s \nonumber \\
+	&= r_0 (A_b^{1/3} + A_t^{1/3}) + d_s \nonumber \\
+	&= 1.25 (A_b^{1/3} + A_t^{1/3}) + 5~\text{[fm]}
+\end{align}
+where $R_b$ and $R_t$ is the radii of the beam and target nuclei respectively, 
+$A_b$ and $A_t$ is the mass number of the beam and target nuclei respectively and $d_s = 5$ fm is an additional safety distance \cite{Cline1986}.
+
+$d_C$ is the Coulomb interaction distance \cite{RBass}.
+
+The distance of closest approach, $d$, is the distance between the center of both nuclei. 
+It is given by
 \begin{equation}
-	 a = \tfrac{1}{2} d = 0.72 \cdot \frac{Z_b Z_t e^2}{\frac{1}{2} m v_0^2} \cdot \frac{A_b + A_t}{A_t} 
+	d = a \left( 1 + \csc \left( \frac{\theta_b^{'}}{2} \right) \right) = a \left( 1 + \frac{1}{\sin \left( \frac{\theta_b^{'}}{2} \right)} \right) ~[\text{fm}]
 \end{equation}
+where $\theta_b^{'}$ is the scattering angle of the beam in the CM frame and $a$ is half the distance of closest approach in a head-on collision ($\theta_b^{'} = 180^\circ$) given by
+% a = 0.72 \cdot \frac{Z_b Z_t e^2}{\frac{1}{2} m v_0^2} \cdot \frac{A_b + A_t}{A_t} 
+\begin{equation}
+	 a = \tfrac{1}{2} d = \frac{Z_b Z_t e^2}{m_r v_i^2} ~[\text{fm}]
+\end{equation}
+$Z_b$ and $Z_t$ is the proton number of the beam and target, respectively. 
+The elementary charge is $e$, the initial velocity of the beam is $v_i$ and $m_r$ is the reduced mass of the beam and target given by
+\begin{align}
+	 m_r &= m_b \frac{A_b A_t}{A_b + A_t} = m_b A_r  ~\left[ \tfrac{\text{MeV}}{\text{c}^2} \right]
+	 &
+	 A_r &= \frac{A_b A_t}{A_b + A_t}
+\end{align}
+where $m_b$ is the mass of the beam particle, and $A_r$ is the reduced mass number of the beam and target \cite{RBass, EE-Coulex}. 
+
+
+
+
+Impact parameter
+\begin{equation}
+	b = \sqrt{d^2 - 2ad} = a \cot \left( \tfrac{\theta_b^{'}}{2} \right)
+\end{equation}
+
+
+
+
+One requirement in the semi-classical approach is that the asymptotic wavelength of relative motion of the beam, that is the de Broglie wavelength $\lambdabar = \hbar/\mu v_i$, must be small compared to the distance of closest approach $d$ \cite{RBass, EE-Coulex}.
+The ratio of half the distance of closest approach and the de Broglie wavelength defines the Sommerfeld parameter, $\eta$, which measures the strength of the Coulomb interaction \cite{Cline1969}.
+It is given by
+\begin{equation}
+	\eta = \frac{d}{2\lambdabar} = \frac{a}{\lambdabar} = \frac{Z_b Z_t e^2}{m_r v_i^2} = \frac{Z_b Z_t e^2}{\hbar v_i} \approx 0.72 \frac{Z_b Z_t}{A_r E_b}
+\end{equation}
+where $E_b = \tfrac{1}{2} m_b v_i^2$ is the initial kinetic energy of the beam given in MeV/A \cite{RBass}.
+
+A principal assumption for describing the relative motion of the particles in the CM frame by hyperbolic paths is that $\eta \gg 1$.
+In the semi-classical approach, this is fairly accurate \cite{Cline1969}. 
+The factor 0.72 comes from 
+\begin{align}
+	\frac{e^2}{2} = \frac{(\sqrt{1.4399764 ~[\text{MeV} \cdot \text{fm}]})^2}{2} \approx 0.72 ~[\text{MeV} \cdot \text{fm}]
+\end{align}
+
+
+
+
+The maximum beam energy, $E_{b, max}^{'}$, is chosen from the special case when $\theta_b^{'} = 180^\circ$
+\begin{align}
+	E_{b, max}^{'} &= 0.72 \cdot \frac{A_b + A_t}{A_t} \cdot \frac{Z_b Z_t}{d_{min}} \left( 1 + \frac{1}{\sin \left( \frac{\theta_b^{'}}{2} \right)} \right) \nonumber \\
+	&= 1.44 \cdot \frac{A_b + A_t}{A_t} \cdot \frac{Z_b Z_t}{1.25 (A_b^{1/3} + A_t^{1/3}) + 5} ~[\text{MeV}]
+\end{align}
+where ...
+\cite{Klintefjord}
 
 %The kinetic energy, $E^{'}$, in the CM frame is given by
 %\begin{equation}
@@ -676,43 +734,74 @@ Half-distance of closest approach, $a$, in a head-on collision
 %\end{equation}
 %where $A_b$ and $A_t$ is the mass number of the beam and target nuclei and $E_{b}$ is the kinetic energy of the beam particle in the LAB frame \cite{Niedermaier}.
 
-Impact parameter
-\begin{equation}
-	b = \sqrt{d^2 - 2ad} = a \cot \left( \tfrac{\theta_b^{'}}{2} \right)
-\end{equation}
-Distance of closest approach
-\begin{equation}
-	d = a \left( 1 + \frac{1}{\sin \left( \frac{\theta_b^{'}}{2} \right)} \right)
-\end{equation}
 
+\bigskip
 
-The maximum beam energy, $E_{b, max}^{'}$, is chosen from the special case when $\theta_b^{'} = 180^\circ$
+Adiabaticity parameter \cite{Niedermaier}
+\begin{equation}
+	\xi = \frac{\tau_c}{\tau_n} = \frac{a}{\hbar v_0}  \Delta E_{if}
+\end{equation}
+where $\Delta E_{if}$ is the excitation energy difference.
+
+"For large values of $\xi$ the reaction becomes adiabatic, hindering the excitation process, while for values of $\xi \rightarrow 0$ the scattering happens as a very prompt event. If the conditions $\eta \gg 1$ and $\xi \rightarrow 0$ are fulfilled, a semi- classical treatment of the Coulomb excitation is a very good approximation. In the present work all presented experiments fulfill these conditions."
+
+\bigskip
+
+"For point like charges, the scattering cross section is given by the Rutherford cross section."
+
+The differential scattering cross section, $d\sigma_R$, is given by the the classical Rutherford formula (for point like charges)
 \begin{align}
-	E_{b, max}^{'} &= 0.72 \cdot \frac{A_b + A_t}{A_t} \cdot \frac{Z_b Z_t}{d_{min}} \left( 1 + \frac{1}{\sin \left( \frac{\theta_b^{'}}{2} \right)} \right) \nonumber \\
-	&= 1.44 \cdot \frac{A_b + A_t}{A_t} \cdot \frac{Z_b Z_t}{1.25 (A_b^{1/3} + A_t^{1/3}) + 5} 
+	\frac{d\sigma_R}{d\Omega} 
+	&= \frac{a^2}{4 \sin \left( \tfrac{\theta_b^{'}}{2} \right)} \nonumber \\
+	&= \left( \frac{Z_b Z_t e^2}{4\pi \varepsilon_0}  \right)^2 \left( \frac{1}{4 E_b}  \right)^2 \cdot \frac{1}{\sin^4 \left( \frac{\theta_b^{'}}{2} \right)} \nonumber \\	
+	&= \left( \frac{Z_b Z_t e^2}{8 \pi \varepsilon_0 m_b v_0^{' 2}} \right)^2 \cdot \frac{1}{\sin^4 \left( \frac{\theta_b^{'}}{2} \right)} 
 \end{align}
-where ...
-\cite{Klintefjord}
-\textcolor{red}{Hvor kommer faktoren 0.72 fra?}
+where $d\Omega$ is the solid angle, $Z_b$ and $Z_t$ is the proton number of the beam and target nuclei respectively, $e$ is the elementary charge, $\varepsilon_0$ is the electric permittivity in vacuum, $m_b$ is the mass of the beam particle, $v_0^{'}$ is the velocity of the beam particle in the CM frame and $\theta_b^{'}$ is the beam particle scattering angle in the CM frame \cite{Klintefjord, Krane, EE-Coulex}.
 
 
+"Let us assume here for simplicity that only the target nucleus is excited and that the probability of finding this nucleus in the state $|n\rangle$ after the collision is $P_n$. The differential cross section for the inelastic scattering to the state $|n\rangle$ is then given by" \cite{EE-Coulex}
+
+"For the scattering of point-like objects with an extended nucleus, the differential inelastic cross section is given by"
+
+The differential cross section, $d\sigma_{i \rightarrow f}$, for Rutherford scattering is given by 
+\begin{align}
+	\frac{d\sigma_{i \rightarrow f}}{d\Omega} 
+	&= \frac{d\sigma_R}{d\Omega} \cdot P_{i \rightarrow f} 
+\end{align}
+ \cite{EE-Coulex}.
+where $P_{i \rightarrow f}$ is the excitation probability.
 
 
+\bigskip
 
-One requirement in the semi-classical approach is that the de Broglie wavelength, $\lambdabar$, must be small compared to the impact parameter $b$.
 
-"The Sommerfeld parameter measures the strength of the Coulomb interaction:"
 \begin{equation}
-	\eta = \frac{d}{2\lambdabar} = \frac{Z_p Z_t e^2}{\hbar v}
+	P_{i \rightarrow f} = \frac{1}{2I_i + 1} \sum_{M_i, M_f} | a_{if}^2 |
 \end{equation}
-where .... $v$ is the relative velocity of the nuclei in the CM frame.
 
-"If the Sommerfeld parameter is significantly larger than unity ($\eta \gg 1$), one may describe the relative motion of the particles by classical hyperbolic orbits."
+\begin{equation}
+	a_{if} = \frac{1}{i\hbar} \int_{-\infty}^{\infty} e^{i \frac{\Delta E}{\hbar} t} \langle f | H(t) | i \rangle ~dt
+\end{equation}
+$\Delta E = E_f - E_i$, $M_i$ and $M_f$ is the angular momentum projections of initial and final states, respectively. 
+\cite{Klintefjord}
 
-"The Sommerfeld parameter $\eta$ relates half the distance of closest approach to the de Broglie wavelength of the projectile, and for $\eta \gg 1$, the semi-classical approximation is fairly accurate." \cite{Cline1969}
+
+\bigskip
+
+"The relation of the reduced transition probability between the excitation $B(E2 \uparrow)$ and the decay $B(E2 \downarrow)$ of the nuclear state is given by"
+\begin{equation}
+	B(E2; I_f \rightarrow I_i) = \frac{2I_i + 1}{2I_f + 1} B(E2; I_i \rightarrow I_f)
+\end{equation}
+
+\bigskip
+
+"In case of an E2 transition between ground state $0_1^+$ and the first excited state $2_1^+$, we obtain"
+\begin{align}
+	B(E2; 0_1^+ \rightarrow 2_1^+) = 5 \cdot B(E2; 2_1^+ \rightarrow 0_1^+)
+\end{align} 
 
 
-
+\newpage
 
 
 \begin{figure}[htb]
