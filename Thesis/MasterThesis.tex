@@ -609,6 +609,10 @@ The octupole deformation has a pear shape.
 
 \subsection{Quadrupole moments}
 
+\textcolor{blue}{"The deformation parameter, $\beta$, is related to the intrinsic quadrupole moment, $Q_0$ given by"} \cite{Klintefjord}.
+
+\bigskip
+
 intrinsic (body-fixed frame), spectroscopic (lab frame)
 
 electromagnetic multipole moments
@@ -633,43 +637,33 @@ This method is very useful for studying collective excitations and shapes of nuc
 Transition energies and intensities can be used to determine new excited levels and study deformation.
 An extensive description of Coulomb excitation can be found in \cite{Alder1956, EE-Coulex}.
 
-
 \autoref{fig:scattering} shows sketches of the scattering process in the LABoratory (LAB) and Center of Mass (CM) frame of reference. 
 In the LAB frame, a beam particle approaches the target with a velocity $\mathbf{u}$ in a straight line in the absence of the repulsive force. 
 The beam particle gets excited by the electromagnetic interaction with the target particle. 
 This excitation is an unstable energy state and soon thereafter it will de-excite, sending out a \ga-ray.
 Both the beam and target particles are scattered with a velocity $\mathbf{v}_b$ and $\mathbf{v}_t$ respectively.
 The distance, $b$, is called the impact parameter and is the vertical distance between the beam and target particle. 
-The angles $\theta_b$ and $\theta_t$ are the scattering angles for the beam and target particle respectively. 
+The angles $\theta_b$ and $\theta_t$ are the scattering angles for the beam and target particle, respectively. 
 $V_{cm}$ is the center of mass velocity. 
 A small angle $\theta_b$ means forward scattering of the beam, a larger distance between the beam particle and the target particle, a weaker electromagnetic (EM) field and less excitation probability. 
-A large angle $\theta_b$ means backward scattering of the beam, a closer distance between the beam particle and the target particle, a stronger EM field and a higher excitation probability.
+A large angle $\theta_b$ means backward scattering of the beam, a closer distance between the beam particle and the target particle, a stronger EM field and higher excitation probability.
 In the CM frame, the center of mass velocity is zero, and the velocities and angles are marked by an apostrophe to separate between the two frames of reference.
 \autoref{tab:scattering} shows the corresponding scattering angles from the reaction. 
 The Coulomb scattering kinematics can be approximated by an elastic collision.
 In \autoref{ch:scattering}, a calculation of the two-particle elastic collision is performed.
 
+\subsubsection*{\textcolor{red}{Burde jeg brukt projectile and target under her?}}
 
-In the semi-classical approach of Coulomb excitation theory, the projectile and target is assumed to move on hyperbolic paths. 
+In the semi-classical approach of Coulomb excitation theory, the projectile (beam) and target is assumed to move on hyperbolic paths. 
 This approach does not take into account the energy loss during the excitation process.
-
-
-
-
-
-\bigskip
-
-\subsubsection*{\textcolor{red}{Rediger under her...}}
-
+When the beam particle approaches the target particle, the beam particle reaches a minimum separation distance, $d$, which is dependent on the impact parameter $b$. 
 The distance of closest approach, $d$, is the distance between the center of both nuclei. 
-In a head-on collision, $b = 0$ and the particles reach the distance of closest approach $d$. 
-When the beam particle approaches the target particle, the beam particle reaches a minimum separation distance $d$ which is dependent on $b$. 
-It is given by
+In a head-on collision, $b = 0$ and the particles reach the distance of closest approach $d$, which is given by
 \begin{equation}
-	d = a \left( 1 + \csc \left( \frac{\theta_b^{'}}{2} \right) \right) = a \left( 1 + \frac{1}{\sin \left( \frac{\theta_b^{'}}{2} \right)} \right) ~[\text{fm}]
+	d\left( \theta_b^{'} \right) = a \left( 1 + \csc \left( \frac{\theta_b^{'}}{2} \right) \right) = a \left( 1 + \frac{1}{\sin \left( \frac{\theta_b^{'}}{2} \right)} \right) ~[\text{fm}]
 \end{equation}
-where $\theta_b^{'}$ is the scattering angle of the beam in the CM frame and $a$ is half the distance of closest approach in a head-on collision ($\theta_b^{'} = 180^\circ$) given by
-% a = 0.72 \cdot \frac{Z_b Z_t e^2}{\frac{1}{2} m v_0^2} \cdot \frac{A_b + A_t}{A_t} 
+The scattering angle of the beam in the CM frame is $\theta_b^{'}$.
+Half the distance of closest approach, $a$, in a head-on collision ($\theta_b^{'} = 180^\circ$) is given by
 \begin{equation}
 	 a = \tfrac{1}{2} d = \frac{Z_b Z_t e^2}{m_r v_i^2} ~[\text{fm}]
 \end{equation}
@@ -681,26 +675,18 @@ The elementary charge is $e$, the initial velocity of the beam is $v_i$ and $m_r
 	 A_r &= \frac{A_b A_t}{A_b + A_t}
 \end{align}
 where $m_b$ is the mass of the beam particle, and $A_r$ is the reduced mass number of the beam and target \cite{RBass, EE-Coulex}. 
-
-
-
-Impact parameter
+The impact parameter can be expressed as
 \begin{equation}
-	b = \sqrt{d^2 - 2ad} = a \cot \left( \tfrac{\theta_b^{'}}{2} \right)
+	b = a \cot \left( \tfrac{\theta_b^{'}}{2} \right)
 \end{equation}
 
-
-
-
-
-One requirement in the semi-classical approach is that the asymptotic wavelength of relative motion of the beam, that is the de Broglie wavelength $\lambdabar = \hbar/\mu v_i$, must be small compared to the distance of closest approach $d$ \cite{RBass, EE-Coulex}.
+One requirement in the semi-classical approach is that the asymptotic wavelength of relative motion of the beam, that is the de Broglie wavelength ${\lambdabar = \hbar/m_r v_i}$, must be small compared to the distance of closest approach, $d$ \cite{RBass, EE-Coulex}.
 The ratio of half the distance of closest approach and the de Broglie wavelength defines the Sommerfeld parameter, $\eta$, which measures the strength of the Coulomb interaction \cite{Cline1969}.
 It is given by
 \begin{equation}
 	\eta = \frac{d}{2\lambdabar} = \frac{a}{\lambdabar} = \frac{Z_b Z_t e^2}{m_r v_i^2} = \frac{Z_b Z_t e^2}{\hbar v_i} \approx 0.72 \frac{Z_b Z_t}{A_r E_b}
 \end{equation}
 where $E_b = \tfrac{1}{2} m_b v_i^2$ is the initial kinetic energy of the beam given in MeV/u \cite{RBass}.
-
 A principal assumption for describing the relative motion of the particles in the CM frame by hyperbolic paths is that $\eta \gg 1$.
 In the semi-classical approach, this is fairly accurate \cite{Cline1969}. 
 The factor 0.72 comes from 
@@ -708,45 +694,140 @@ The factor 0.72 comes from
 	\frac{e^2}{2} = \frac{(\sqrt{1.4399764 ~[\text{MeV} \cdot \text{fm}]})^2}{2} \approx 0.72 ~[\text{MeV} \cdot \text{fm}]
 \end{align}
 
-\bigskip
-
-Adiabaticity parameter 
+Another important parameter is the adiabaticity parameter, $\xi$, which is given by 
 \begin{equation}
 	\xi = \frac{a}{\hbar v_i}  \Delta E = \frac{Z_b Z_t e^2}{\hbar v_i} \cdot \frac{\Delta E}{2E_b} = \eta \cdot \frac{\Delta E}{2E_b}
 \end{equation}
-where $\Delta E = E_f - E_i$ is the excitation energy difference.
-\cite{Niedermaier, NaR}
+The probability of exciting the nucleus from a initial state $|i\rangle$ to a final state $|f\rangle$ with excitation energy difference $\Delta E = E_f - E_i$ is dependent on the adiabaticity parameter \cite{Niedermaier, NaR, RBass}.
+If $\xi \ll 1$ the reaction process is sudden and the excitation probability is largest, while if $\xi \gg 1$ the reaction becomes adiabatic, which means that the reaction process becomes hindered. 
+The excitation probability decreases exponentially with increasing $\xi$. 
+A semi-classical approach of the Coulomb excitation is a good approximation if the conditions $\eta \gg 1$ and $\xi \ll 1$ are fulfilled.
+This means that the energy transfer has negligible influence of the motion and thus  
+\begin{equation}
+	\frac{\Delta E}{E_b} \ll 1
+\end{equation}
+which will not hold for all states $|f\rangle$.
+The conditions are fulfilled for states with a considerable excitation probability \cite{EE-Coulex, RBass}.
 
-\textcolor{blue}{"For large values of $\xi$ the reaction becomes adiabatic, hindering the excitation process, while for values of $\xi \rightarrow 0$ the scattering happens as a very prompt event. If the conditions $\eta \gg 1$ and $\xi \rightarrow 0$ are fulfilled, a semi-classical treatment of the Coulomb excitation is a very good approximation. In the present work all presented experiments fulfill these conditions."}
+For point-like charges, the differential scattering cross section, $d\sigma_R$, is given by the the classical Rutherford formula
+\begin{align}
+	\frac{d\sigma_R}{d\Omega} 
+	&= \frac{a^2}{4 \sin \left( \tfrac{\theta_b^{'}}{2} \right)} \nonumber \\
+	&= \left( \frac{Z_b Z_t e^2}{4\pi \varepsilon_0}  \right)^2 \left( \frac{1}{4 E_b}  \right)^2 \cdot \frac{1}{\sin^4 \left( \frac{\theta_b^{'}}{2} \right)} \nonumber \\	
+	&= \left( \frac{Z_b Z_t e^2}{8 \pi \varepsilon_0 m_b v_0^{' 2}} \right)^2 \cdot \frac{1}{\sin^4 \left( \frac{\theta_b^{'}}{2} \right)} 
+\end{align}
+where $d\Omega$ is the solid angle, $Z_b$ and $Z_t$ is the proton number of the beam and target nuclei respectively, $e$ is the elementary charge, $\varepsilon_0$ is the electric permittivity in vacuum, $m_b$ is the mass of the beam particle, $v_i^{'}$ is the initial velocity of the beam particle in the CM frame and $\theta_b^{'}$ is the beam particle scattering angle in the CM frame \cite{Klintefjord, Krane, EE-Coulex}.
+
+Under the condition, $\xi \ll 1$, the differential cross section, $d\sigma_{i \rightarrow f}$, for inelastic scattering of point-like objects from the initial state $|i\rangle$ to the final state $|f\rangle$ is given by 
+\begin{align}
+	\frac{d\sigma_{i \rightarrow f}}{d\Omega} 
+	&= \frac{d\sigma_R}{d\Omega} \cdot P_{i \rightarrow f} 
+\end{align}
+The excitation probability, $P_{i \rightarrow f}$, is given by
+\begin{equation}
+	P_{i \rightarrow f} = \frac{1}{2I_i + 1} \sum_{M_i, M_f} | a_{if} |^2
+\end{equation}
+where $I_i$ is the \textcolor{red}{??? spin / angular momentum ???} of the state $|i\rangle$, $M_i$ and $M_f$ is the angular momentum projections of initial and final states, respectively \cite{EE-Coulex, NaR}.
+$a_{if}$ is the excitation amplitudes summed over all magnetic substates, which can be expressed by
+\begin{equation}
+	a_{if} = \frac{1}{i\hbar} \int_{-\infty}^{\infty} e^{i \frac{\Delta E}{\hbar} t} \langle f | H(t) | i \rangle ~dt
+\end{equation}
+where $\Delta E = E_f - E_i$ is the energy difference of the final and initial state, respectively, $H(t)$ is the time-dependent electromagnetic interaction between the beam and the target \cite{Klintefjord, Niedermaier, NaR}.
+
+The total electric excitation cross section from a state $|i\rangle$ to a state $|f\rangle$ is given by
+\begin{equation}
+	\sigma_E = \sum_\lambda \sigma_{E \lambda}
+\end{equation}
+with
+\begin{equation}\label{cross_E}
+	\sigma_{E \lambda} = \left( \frac{Z_b e}{\hbar v_i} \right)^2 a^{-2 \lambda + 2} B(E \lambda; I_i \rightarrow I_f) f_{E \lambda} (\xi)
+\end{equation}
+and
+\begin{equation}
+	f_{E \lambda} (\xi) = \int_\Omega df_{E \lambda} (\theta_b^{'}, \xi)
+\end{equation}
+where $B(E \lambda)$ is the reduced transition probability \cite{EE-Coulex}.
+
+\subsubsection*{\textcolor{red}{Rediger under her..}}
+
+\autoref{cross_E}: \textcolor{blue}{"In this expression $B(E \lambda; I_i \rightarrow I_f)$ is the reduced transition probability associated with the radiative transition of multipole order $E \lambda$. It is related to the nuclear matrix elements of the electric multipole operator by the formula"} \cite{EE-Coulex}
+
+\begin{equation}
+	B(E \lambda; I_i \rightarrow I_f) = \frac{1}{2I_i + 1} | \langle f | \mathcal{M}(E \lambda)| i \rangle |^2 
+\end{equation}
+
+
+% $\sigma \lambda$ multipolarity, $\sigma \in \{ E, M \}$.
+\cite{Niedermaier, NaR, EE-Coulex}
+
+\textcolor{blue}{"$f_{E \lambda}$ is a function depending on $\xi$ and on the multipolarity. For $E2$ transitions and $\xi \ll 1$ the value is close to 1. From the reduced transiton probabilities, one can deduce tje deformation properties. For example, for $\lambda = 2$"} \cite{NaR}.
+\begin{equation}
+	\sigma \approx \left( \frac{Z_b e}{\hbar v_i} \right)^2 a^{-2} = \left( \frac{mv_i}{Z_t e\hbar} \right)^2
+\end{equation}
 
 \bigskip
 
-In order to ensure that the interaction is purely electromagnetic in nature – and not nuclear – a safe energy is chosen for the \textcolor{red}{??? reaction / interaction ???}. 
-The energy is below the Coulomb barrier.
+Magnetic excitation: \cite{EE-Coulex}
+
+\textcolor{blue}{"The total magnetic cross section is conveniently written"}
+
+\begin{equation}
+	\sigma_M = \sum_\lambda \sigma_{M \lambda} = \left( \frac{Z_b e}{\hbar c} \right)^2 \sum_\lambda a^{-2 \lambda + 2} B(M \lambda; I_i \rightarrow I_f) f_{M \lambda} (\xi)
+\end{equation}
+
+the formulas are very similar, but notice the $1/c$ in the first fraction. In addition there are the switching of $E$ to $M$.
+
+\bigskip
+
+\textcolor{blue}{"The relation of the reduced transition probability between the excitation $B(E2 \uparrow)$ and the decay $B(E2 \downarrow)$ of the nuclear state is given by"}
+\begin{equation}
+	B(E2; I_f \rightarrow I_i) = \frac{2I_i + 1}{2I_f + 1} B(E2; I_i \rightarrow I_f)
+\end{equation}
+
+
+
+
+$m(\sigma \lambda)$; multipole operator. $\sigma \lambda$ multipolarity, $\sigma \in {E, M}$.
+
+\bigskip
+
+\textcolor{blue}{"In case of an E2 transition between ground state $0_1^+$ and the first excited state $2_1^+$, we obtain"}
+\begin{align}
+	B(E2; 0_1^+ \rightarrow 2_1^+) = 5 \cdot B(E2; 2_1^+ \rightarrow 0_1^+)
+\end{align} 
+
+
+\subsubsection*{Safe COULEX}
+
+In order to ensure that the interaction is purely electromagnetic in nature, and not nuclear, a safe energy is chosen for the reaction. 
+The energy is supposed to be below the Coulomb barrier.
 Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interaction.
-In safe COULEX, the safety distance is chosen by the condition
+The safety distance, $d_{safe}$, in safe COULEX is chosen by the condition
 \begin{align}
 	d_{safe} \geq d_{min} &= d_C + d_s \nonumber \\
 	&= R_b + R_t + d_s \nonumber \\
 	&= r_0 (A_b^{1/3} + A_t^{1/3}) + d_s \nonumber \\
 	&= 1.25 (A_b^{1/3} + A_t^{1/3}) + 5~\text{[fm]}
 \end{align}
-where $R_b$ and $R_t$ is the radii of the beam and target nuclei respectively, 
-$A_b$ and $A_t$ is the mass number of the beam and target nuclei respectively and $d_s = 5$ fm is an additional safety distance \cite{Cline1986}.
+where $d_{min}$ is a way to approximate the distance of closest approach.
+$d_C$ is the Coulomb interaction distance.
+$d_s = 5$ fm is an additional safety distance.
+$R_b$ and $R_t$ is the radii of the beam and target nuclei respectively, 
+$A_b$ and $A_t$ is the mass number of the beam and target nuclei, respectively \cite{RBass, Cline1986}.
 
-$d_C$ is the Coulomb interaction distance \cite{RBass}.
-
-
-The maximum beam energy in the LAB frame, $E_{b, max}$, is chosen from the special case when $\theta_b = 180^\circ$
+The maximum beam energy in the LAB frame, $E_{b, max}$, is chosen from the special case when $\theta_b^{'} = 180^\circ$
 \begin{align}
-	E_{b, max} 
-	&= \frac{Z_b Z_t e^2}{A_r d_{min}} \cdot \frac{2}{1 + \csc \left( \frac{\theta_b}{2} \right)} \\
+	E_{b, max} (\theta_b^{'})
+	&= \frac{Z_b Z_t e^2}{A_r d_{min}} \cdot \frac{2}{1 + \csc \left( \frac{\theta_b^{'}}{2} \right)} \\
 	&\approx \frac{Z_b Z_t}{A_r} \cdot \frac{1.44}{1.25 (A_b^{1/3} + A_t^{1/3}) + 5} ~\left[ \tfrac{\text{MeV}}{\text{u}} \right]
 \end{align}
 where ...
 \cite{Klintefjord, RBass}
 
 \textcolor{red}{Dette blir 4.63 MeV/u for Sm på Pb. Hvordan ble 4.7 MeV/u regnet ut?}
+
+
+
 
 
 \textcolor{blue}{"Only the CM energy $E_{cm}$ and the relative momentum $P_{cm}$ are available for the reaction. The remainder is translational energy (recoil energy) of the total system"} \cite{NaR}.
@@ -762,84 +843,7 @@ where $A_b$ and $A_t$ is the mass number of the beam and target nuclei and $E_{b
 
 
 
-\bigskip
-
-\textcolor{blue}{"For point like charges, the scattering cross section is given by the Rutherford cross section."}
-
-The differential scattering cross section, $d\sigma_R$, is given by the the classical Rutherford formula (for point like charges)
-\begin{align}
-	\frac{d\sigma_R}{d\Omega} 
-	&= \frac{a^2}{4 \sin \left( \tfrac{\theta_b^{'}}{2} \right)} \nonumber \\
-	&= \left( \frac{Z_b Z_t e^2}{4\pi \varepsilon_0}  \right)^2 \left( \frac{1}{4 E_b}  \right)^2 \cdot \frac{1}{\sin^4 \left( \frac{\theta_b^{'}}{2} \right)} \nonumber \\	
-	&= \left( \frac{Z_b Z_t e^2}{8 \pi \varepsilon_0 m_b v_0^{' 2}} \right)^2 \cdot \frac{1}{\sin^4 \left( \frac{\theta_b^{'}}{2} \right)} 
-\end{align}
-where $d\Omega$ is the solid angle, $Z_b$ and $Z_t$ is the proton number of the beam and target nuclei respectively, $e$ is the elementary charge, $\varepsilon_0$ is the electric permittivity in vacuum, $m_b$ is the mass of the beam particle, $v_0^{'}$ is the velocity of the beam particle in the CM frame and $\theta_b^{'}$ is the beam particle scattering angle in the CM frame \cite{Klintefjord, Krane, EE-Coulex}.
-
-
-
-\textcolor{blue}{"If $\xi \ll 1$ the process is sudden. Under this condition, the differential cross section is given as a product of the Rutherford cross section and an excitation probability, $P$."} \cite{NaR}
-
-The differential cross section, $d\sigma_{i \rightarrow f}$, for inelastic scattering of point-like objects from the state $|i\rangle$ to $|f\rangle$ is given by \cite{EE-Coulex} 
-\begin{align}
-	\frac{d\sigma_{i \rightarrow f}}{d\Omega} 
-	&= \frac{d\sigma_R}{d\Omega} \cdot P_{i \rightarrow f} 
-\end{align}
-where $P_{i \rightarrow f}$ is the excitation probability. 
-$P_{i \rightarrow f}$ is given by
-\begin{equation}
-	P_{i \rightarrow f} = \frac{1}{2I_i + 1} \sum_{M_i, M_f} | a_{if} |^2
-\end{equation}
-where $I_i$ is the \textcolor{red}{??? spin / angular momentum ???} of the state $|i\rangle$, $M_i$ and $M_f$ is the angular momentum projections of initial and final states, respectively.
-$a_{if}$ is the excitation amplitudes summed over all magnetic substates, which can be expressed by
-\begin{equation}
-	a_{if} = \frac{1}{i\hbar} \int_{-\infty}^{\infty} e^{i \frac{\Delta E}{\hbar} t} \langle f | H(t) | i \rangle ~dt
-\end{equation}
-where $\Delta E = E_f - E_i$ is the energy difference of the final and initial state, respectively, $H(t)$ is the time-dependent electromagnetic interaction between the beam and the target \cite{Klintefjord, Niedermaier, NaR}.
-
-
-
-total cross section for electric multipole excitation
-\begin{equation}
-	\sigma_{E \lambda} = \left( \frac{Z_b e}{\hbar v_i} \right)^2 a^{-2 \lambda + 2} B(E \lambda) f_{E \lambda} (\xi)
-\end{equation}
-
-where $B(E \lambda)$ is the reduced transition probability.
-
-\begin{equation}
-	f_{E \lambda} (\xi) = \int_{\theta_{b, min}^{'}}^{\theta_{b, max}^{'}} \frac{df_{E \lambda} (\theta_b^{'}, \xi)}{d\Omega} ~d\Omega
-\end{equation}
-
-\cite{Niedermaier, NaR}
-
-\textcolor{blue}{"$f_{E \lambda}$ is a function depending on $\xi$ and on the multipolarity. For $E2$ transitions and $\xi \ll 1$ the value is close to 1. From the reduced transiton probabilities, one can deduce tje deformation properties. For example, for $\lambda = 2$"} \cite{NaR}.
-\begin{equation}
-	\sigma \approx \left( \frac{Z_b e}{\hbar v_i} \right)^2 a^{-2} = \left( \frac{mv_i}{Z_t e\hbar} \right)^2
-\end{equation}
-
-\bigskip
-
-$m(\sigma \lambda)$; multipole operator. $\sigma \lambda$ multipolarity, $\sigma \in {E, M}$.
-
-
-
-\bigskip
-
-\textcolor{blue}{"The relation of the reduced transition probability between the excitation $B(E2 \uparrow)$ and the decay $B(E2 \downarrow)$ of the nuclear state is given by"}
-\begin{equation}
-	B(E2; I_f \rightarrow I_i) = \frac{2I_i + 1}{2I_f + 1} B(E2; I_i \rightarrow I_f)
-\end{equation}
-
-
-\begin{equation}
-	B(E2; I_i \rightarrow I_f) = \frac{1}{2I_i + 1} | \langle f | \mathcal{M}(EL)| i \rangle |^2 
-\end{equation}
-
-\bigskip
-
-\textcolor{blue}{"In case of an E2 transition between ground state $0_1^+$ and the first excited state $2_1^+$, we obtain"}
-\begin{align}
-	B(E2; 0_1^+ \rightarrow 2_1^+) = 5 \cdot B(E2; 2_1^+ \rightarrow 0_1^+)
-\end{align} 
+\subsubsection*{\textcolor{red}{Må man referere til alle ligninger som har nummer, eller kan de stå med nummer uten å referere til?}}
 
 
 \newpage
@@ -895,6 +899,10 @@ $m(\sigma \lambda)$; multipole operator. $\sigma \lambda$ multipolarity, $\sigma
 	\end{subtable}
 \end{table}
 
+
+\section{\texorpdfstring{$\gamma$}{Gamma} decay}
+
+\textcolor{red}{Skal jeg ha en seksjon med gamma? Allowed and forbidden states?}
 
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
