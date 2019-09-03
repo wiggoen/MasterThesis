@@ -735,70 +735,48 @@ $a_{if}$ is the excitation amplitudes summed over all magnetic substates, which 
 where $\Delta E = E_f - E_i$ is the energy difference of the final and initial state, respectively, $H(t)$ is the time-dependent electromagnetic interaction between the beam and the target \cite{Klintefjord, Niedermaier, NaR}.
 
 The total electric excitation cross section from a state $|i\rangle$ to a state $|f\rangle$ is given by
-\begin{equation}
+\begin{equation}\label{tot_sig_E}
 	\sigma_E = \sum_\lambda \sigma_{E \lambda}
 \end{equation}
 with
-\begin{equation}\label{cross_E}
+\begin{equation}\label{sig_E}
 	\sigma_{E \lambda} = \left( \frac{Z_b e}{\hbar v_i} \right)^2 a^{-2 \lambda + 2} B(E \lambda; I_i \rightarrow I_f) f_{E \lambda} (\xi)
 \end{equation}
-and
-\begin{equation}
-	f_{E \lambda} (\xi) = \int_\Omega df_{E \lambda} (\theta_b^{'}, \xi)
-\end{equation}
-where $B(E \lambda)$ is the reduced transition probability \cite{EE-Coulex}.
-
-\subsubsection*{\textcolor{red}{Rediger under her..}}
-
-\autoref{cross_E}: \textcolor{blue}{"In this expression $B(E \lambda; I_i \rightarrow I_f)$ is the reduced transition probability associated with the radiative transition of multipole order $E \lambda$. It is related to the nuclear matrix elements of the electric multipole operator by the formula"} \cite{EE-Coulex}
-
+The reduced transition probability, $B(E \lambda)$, is related to the matrix elements of the electric multipole order by
 \begin{equation}
 	B(E \lambda; I_i \rightarrow I_f) = \frac{1}{2I_i + 1} | \langle f | \mathcal{M}(E \lambda)| i \rangle |^2 
 \end{equation}
-
-
-% $\sigma \lambda$ multipolarity, $\sigma \in \{ E, M \}$.
-\cite{Niedermaier, NaR, EE-Coulex}
-
-\textcolor{blue}{"$f_{E \lambda}$ is a function depending on $\xi$ and on the multipolarity. For $E2$ transitions and $\xi \ll 1$ the value is close to 1. From the reduced transiton probabilities, one can deduce tje deformation properties. For example, for $\lambda = 2$"} \cite{NaR}.
+and the Coulomb excitation function, $f_{E \lambda} (\xi)$ is given by
 \begin{equation}
-	\sigma \approx \left( \frac{Z_b e}{\hbar v_i} \right)^2 a^{-2} = \left( \frac{mv_i}{Z_t e\hbar} \right)^2
+	f_{E \lambda} (\xi) = \int_\Omega df_{E \lambda} (\theta_b^{'}, \xi)
+\end{equation}
+where the integration is performed over all scattering angles of the solid angle $\Omega$ in the CM frame \cite{Niedermaier, EE-Coulex}.
+The Coulomb excitation function is dependent on $\xi$ and the multipolarity. 
+In a special case with $E2$ transitions and $\xi \ll 1$, the function is $f_{E \lambda} (\xi) \approx 1$.
+From the reduced transition probabilities with $\lambda = 2$, it is possible to show that \autoref{sig_E} becomes \cite{NaR}
+\begin{equation}
+	\sigma_{E2} \approx \left( \frac{Z_b e}{\hbar v_i} \right)^2 a^{-2} = \left( \frac{mv_i}{Z_t e\hbar} \right)^2
 \end{equation}
 
-\bigskip
-
-Magnetic excitation: \cite{EE-Coulex}
-
-\textcolor{blue}{"The total magnetic cross section is conveniently written"}
-
-\begin{equation}
-	\sigma_M = \sum_\lambda \sigma_{M \lambda} = \left( \frac{Z_b e}{\hbar c} \right)^2 \sum_\lambda a^{-2 \lambda + 2} B(M \lambda; I_i \rightarrow I_f) f_{M \lambda} (\xi)
-\end{equation}
-
-the formulas are very similar, but notice the $1/c$ in the first fraction. In addition there are the switching of $E$ to $M$.
-
-\bigskip
-
-\textcolor{blue}{"The relation of the reduced transition probability between the excitation $B(E2 \uparrow)$ and the decay $B(E2 \downarrow)$ of the nuclear state is given by"}
+There is a relation of the reduced transition probability between the excitation $B(E2 \uparrow)$ and the decay $B(E2 \downarrow)$ of a state, which is given by 
 \begin{equation}
 	B(E2; I_f \rightarrow I_i) = \frac{2I_i + 1}{2I_f + 1} B(E2; I_i \rightarrow I_f)
 \end{equation}
 
-
-
-
-$m(\sigma \lambda)$; multipole operator. $\sigma \lambda$ multipolarity, $\sigma \in {E, M}$.
-
-\bigskip
-
-\textcolor{blue}{"In case of an E2 transition between ground state $0_1^+$ and the first excited state $2_1^+$, we obtain"}
+For an $E2$ transition from the ground state $0_1^+$ and the first excited state $2_1^+$, we have the relation
 \begin{align}
 	B(E2; 0_1^+ \rightarrow 2_1^+) = 5 \cdot B(E2; 2_1^+ \rightarrow 0_1^+)
 \end{align} 
+This means that the excitation probability has five times more final substates to go to, compared to the decay probability.
+
+Similarly to the total electric cross section, the total magnetic cross section can be expressed as \cite{EE-Coulex}
+\begin{equation}
+	\sigma_M = \sum_\lambda \sigma_{M \lambda} = \left( \frac{Z_b e}{\hbar c} \right)^2 \sum_\lambda a^{-2 \lambda + 2} B(M \lambda; I_i \rightarrow I_f) f_{M \lambda} (\xi)
+\end{equation}
+The equations are very similar, but notice the $1/c$ in the first fraction, in addition to the switching of $E$ to $M$.
 
 
-\subsubsection*{Safe COULEX}
-
+\subsection{Safe COULEX}
 In order to ensure that the interaction is purely electromagnetic in nature, and not nuclear, a safe energy is chosen for the reaction. 
 The energy is supposed to be below the Coulomb barrier.
 Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interaction.
@@ -809,44 +787,34 @@ The safety distance, $d_{safe}$, in safe COULEX is chosen by the condition
 	&= r_0 (A_b^{1/3} + A_t^{1/3}) + d_s \nonumber \\
 	&= 1.25 (A_b^{1/3} + A_t^{1/3}) + 5~\text{[fm]}
 \end{align}
-where $d_{min}$ is a way to approximate the distance of closest approach.
-$d_C$ is the Coulomb interaction distance.
-$d_s = 5$ fm is an additional safety distance.
-$R_b$ and $R_t$ is the radii of the beam and target nuclei respectively, 
-$A_b$ and $A_t$ is the mass number of the beam and target nuclei, respectively \cite{RBass, Cline1986}.
+where $d_{min}$ is a way to approximate the distance of closest approach by the Coulomb interaction distance, $d_C$, and an additional safety distance, $d_s = 5$ fm.
+$R_b$ and $R_t$ is the radii of the beam and target nuclei, respectively, and $A_b$ and $A_t$ is the mass number of the beam and target nuclei, respectively \cite{RBass, Cline1986}.
 
-The maximum beam energy in the LAB frame, $E_{b, max}$, is chosen from the special case when $\theta_b^{'} = 180^\circ$
+The maximum beam energy in the LAB frame, $E_{b, max}$, is chosen from the special case when $\theta_b^{'} = 180^\circ$ \cite{Klintefjord, RBass}
 \begin{align}
 	E_{b, max} (\theta_b^{'})
 	&= \frac{Z_b Z_t e^2}{A_r d_{min}} \cdot \frac{2}{1 + \csc \left( \frac{\theta_b^{'}}{2} \right)} \\
 	&\approx \frac{Z_b Z_t}{A_r} \cdot \frac{1.44}{1.25 (A_b^{1/3} + A_t^{1/3}) + 5} ~\left[ \tfrac{\text{MeV}}{\text{u}} \right]
 \end{align}
-where ...
-\cite{Klintefjord, RBass}
 
 \textcolor{red}{Dette blir 4.63 MeV/u for Sm på Pb. Hvordan ble 4.7 MeV/u regnet ut?}
 
 
 
-
-
-\textcolor{blue}{"Only the CM energy $E_{cm}$ and the relative momentum $P_{cm}$ are available for the reaction. The remainder is translational energy (recoil energy) of the total system"} \cite{NaR}.
+For the reaction, only the energy, $E^{'}$, and relative momentum in the CM frame is available, while the remainder is recoil energy, $E_t$, of the total system
 \begin{equation}
 	E_t = \frac{A_b}{A_b + A_t} E_b
 \end{equation}
-
-The kinetic energy, $E^{'}$, in the CM frame is given by
+In the CM frame, the kinetic energy is given by
 \begin{equation}
 	E^{'} = E_b - E_t = \frac{A_t}{A_b + A_t} E_{b}
 \end{equation}
 where $A_b$ and $A_t$ is the mass number of the beam and target nuclei and $E_{b}$ is the kinetic energy of the beam particle in the LAB frame \cite{Niedermaier, NaR}.
 
 
-
 \subsubsection*{\textcolor{red}{Må man referere til alle ligninger som har nummer, eller kan de stå med nummer uten å referere til?}}
 
 
-\newpage
 
 
 \begin{figure}[htb]
@@ -899,6 +867,7 @@ where $A_b$ and $A_t$ is the mass number of the beam and target nuclei and $E_{b
 	\end{subtable}
 \end{table}
 
+\newpage
 
 \section{\texorpdfstring{$\gamma$}{Gamma} decay}
 
