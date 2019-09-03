@@ -361,6 +361,11 @@ where $X$ is the chemical symbol of the element, $A = Z + N$ is the mass number 
 \autoref{tab:SI-prefixes} shows the metric SI prefixes.
 SI, abbreviated from the French Le Syst{\`{e}}me International d'Unit{\'{e}}s, is The International System of Units, which is built upon seven base units.
 When mentioning the mass of a particle, it is usually given in units of atomic mass unit $u$.
+The energy is usually given in $\frac{\text{MeV}}{\text{u}}$ or $\frac{\text{MeV}}{\text{u}}$.
+This comes from 
+\begin{align}
+	\frac{\text{MeV}}{\text{A}} &= \frac{\text{MeV}}{\text{A}}  \frac{\text{A}}{\text{u}} = \frac{\text{MeV}}{\text{u}}  &  1 ~\text{A} &= 1 ~\text{u} \implies 1 = \frac{\text{A}}{\text{u}}
+\end{align}
 
 \begin{table}[htb] 
     \centering 
@@ -380,7 +385,7 @@ When mentioning the mass of a particle, it is usually given in units of atomic m
 \section{Motivation for the experiment}
 
 A similar experiment, with experiment code IS495 titled Coulomb excitation of \Sm, was conducted in 2012 at CERN-ISOLDE.
-The old REX-ISOLDE post-accelerator was limited to a beam energy of 2.85 MeV/A for \Sm\ (samarium), which gave a low Coulomb excitation cross section and a low probability for multi-step excitations. 
+The old REX-ISOLDE post-accelerator was limited to a beam energy of 2.85 MeV/u for \Sm\ (samarium), which gave a low Coulomb excitation cross section and a low probability for multi-step excitations. 
 Therefore, a secondary target of $^{94}_{42}$Mo$_{52}$ (molybdenum) with a thickness of 2 mg/cm$^2$ was chosen to maximize the cross section at this energy.
 An excitation cross section is the probability of an excitation process occurring.
 Excited states up to 1256 keV were populated.
@@ -393,10 +398,10 @@ In the experiment in 2012, previously unknown transition strengths between low-l
 \Sm\ was thought to have a low-lying $0^+$ state \cite{Firestone}, but this state was shown to be $2^+$ \cite{Samorajczyk2015}. 
 The results of the experiment indicated a weak quadrupole deformation with a strong triaxiality and \ga-softness.
 
-In 2017, there was an upgrade of the ISOLDE facility, which lead to the possibility of delivering beam energies up to 7.5 MeV/A. 
+In 2017, there was an upgrade of the ISOLDE facility, which lead to the possibility of delivering beam energies up to 7.5 MeV/u. 
 This allows for Coulomb excitation of \Sm\ at higher energies than the previous experiment.
 In turn, this implied that it was possible to choose a high-$Z$ target (Pb) to give a high COULomb EXcitation (COULEX) cross section, especially for multi-step.
-A beam energy of 4.7 MeV/A was chosen as the highest possible energy for safe COULEX for Pb.
+A beam energy of 4.7 MeV/u was chosen as the highest possible energy for safe COULEX for Pb.
 COULEX will be discussed in \autoref{sec:Coulex}.
 Excited states up to at least the $8^+$ state at 2970 keV are expected to be populated with this energy.
 Maybe also currently unknown states will be populated.
@@ -656,23 +661,9 @@ This approach does not take into account the energy loss during the excitation p
 
 \subsubsection*{\textcolor{red}{Rediger under her...}}
 
-In order to ensure that the interaction is purely electromagnetic in nature – and not nuclear – a safe energy is chosen for the \textcolor{red}{??? reaction / interaction ???}. 
-Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interaction.
-When the beam particle approaches the target particle, the beam particle reaches a minimum separation distance $d$ which is dependent on $b$. 
-In a head-on collision, $b = 0$ and the particles reach the distance of closest approach $d_{min}$. 
-In safe COULEX, the distance of closest approach is chosen by the condition
-\begin{align}
-	d \geq d_{min} &= d_C + d_s \nonumber \\
-	&= R_b + R_t + d_s \nonumber \\
-	&= r_0 (A_b^{1/3} + A_t^{1/3}) + d_s \nonumber \\
-	&= 1.25 (A_b^{1/3} + A_t^{1/3}) + 5~\text{[fm]}
-\end{align}
-where $R_b$ and $R_t$ is the radii of the beam and target nuclei respectively, 
-$A_b$ and $A_t$ is the mass number of the beam and target nuclei respectively and $d_s = 5$ fm is an additional safety distance \cite{Cline1986}.
-
-$d_C$ is the Coulomb interaction distance \cite{RBass}.
-
 The distance of closest approach, $d$, is the distance between the center of both nuclei. 
+In a head-on collision, $b = 0$ and the particles reach the distance of closest approach $d$. 
+When the beam particle approaches the target particle, the beam particle reaches a minimum separation distance $d$ which is dependent on $b$. 
 It is given by
 \begin{equation}
 	d = a \left( 1 + \csc \left( \frac{\theta_b^{'}}{2} \right) \right) = a \left( 1 + \frac{1}{\sin \left( \frac{\theta_b^{'}}{2} \right)} \right) ~[\text{fm}]
@@ -693,11 +684,11 @@ where $m_b$ is the mass of the beam particle, and $A_r$ is the reduced mass numb
 
 
 
-
 Impact parameter
 \begin{equation}
 	b = \sqrt{d^2 - 2ad} = a \cot \left( \tfrac{\theta_b^{'}}{2} \right)
 \end{equation}
+
 
 
 
@@ -708,7 +699,7 @@ It is given by
 \begin{equation}
 	\eta = \frac{d}{2\lambdabar} = \frac{a}{\lambdabar} = \frac{Z_b Z_t e^2}{m_r v_i^2} = \frac{Z_b Z_t e^2}{\hbar v_i} \approx 0.72 \frac{Z_b Z_t}{A_r E_b}
 \end{equation}
-where $E_b = \tfrac{1}{2} m_b v_i^2$ is the initial kinetic energy of the beam given in MeV/A \cite{RBass}.
+where $E_b = \tfrac{1}{2} m_b v_i^2$ is the initial kinetic energy of the beam given in MeV/u \cite{RBass}.
 
 A principal assumption for describing the relative motion of the particles in the CM frame by hyperbolic paths is that $\eta \gg 1$.
 In the semi-classical approach, this is fairly accurate \cite{Cline1969}. 
@@ -717,37 +708,63 @@ The factor 0.72 comes from
 	\frac{e^2}{2} = \frac{(\sqrt{1.4399764 ~[\text{MeV} \cdot \text{fm}]})^2}{2} \approx 0.72 ~[\text{MeV} \cdot \text{fm}]
 \end{align}
 
+\bigskip
 
+Adiabaticity parameter 
+\begin{equation}
+	\xi = \frac{a}{\hbar v_i}  \Delta E = \frac{Z_b Z_t e^2}{\hbar v_i} \cdot \frac{\Delta E}{2E_b} = \eta \cdot \frac{\Delta E}{2E_b}
+\end{equation}
+where $\Delta E = E_f - E_i$ is the excitation energy difference.
+\cite{Niedermaier, NaR}
 
+\textcolor{blue}{"For large values of $\xi$ the reaction becomes adiabatic, hindering the excitation process, while for values of $\xi \rightarrow 0$ the scattering happens as a very prompt event. If the conditions $\eta \gg 1$ and $\xi \rightarrow 0$ are fulfilled, a semi-classical treatment of the Coulomb excitation is a very good approximation. In the present work all presented experiments fulfill these conditions."}
 
-The maximum beam energy, $E_{b, max}^{'}$, is chosen from the special case when $\theta_b^{'} = 180^\circ$
+\bigskip
+
+In order to ensure that the interaction is purely electromagnetic in nature – and not nuclear – a safe energy is chosen for the \textcolor{red}{??? reaction / interaction ???}. 
+The energy is below the Coulomb barrier.
+Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interaction.
+In safe COULEX, the safety distance is chosen by the condition
 \begin{align}
-	E_{b, max}^{'} &= 0.72 \cdot \frac{A_b + A_t}{A_t} \cdot \frac{Z_b Z_t}{d_{min}} \left( 1 + \frac{1}{\sin \left( \frac{\theta_b^{'}}{2} \right)} \right) \nonumber \\
-	&= 1.44 \cdot \frac{A_b + A_t}{A_t} \cdot \frac{Z_b Z_t}{1.25 (A_b^{1/3} + A_t^{1/3}) + 5} ~[\text{MeV}]
+	d_{safe} \geq d_{min} &= d_C + d_s \nonumber \\
+	&= R_b + R_t + d_s \nonumber \\
+	&= r_0 (A_b^{1/3} + A_t^{1/3}) + d_s \nonumber \\
+	&= 1.25 (A_b^{1/3} + A_t^{1/3}) + 5~\text{[fm]}
+\end{align}
+where $R_b$ and $R_t$ is the radii of the beam and target nuclei respectively, 
+$A_b$ and $A_t$ is the mass number of the beam and target nuclei respectively and $d_s = 5$ fm is an additional safety distance \cite{Cline1986}.
+
+$d_C$ is the Coulomb interaction distance \cite{RBass}.
+
+
+The maximum beam energy in the LAB frame, $E_{b, max}$, is chosen from the special case when $\theta_b = 180^\circ$
+\begin{align}
+	E_{b, max} 
+	&= \frac{Z_b Z_t e^2}{A_r d_{min}} \cdot \frac{2}{1 + \csc \left( \frac{\theta_b}{2} \right)} \\
+	&\approx \frac{Z_b Z_t}{A_r} \cdot \frac{1.44}{1.25 (A_b^{1/3} + A_t^{1/3}) + 5} ~\left[ \tfrac{\text{MeV}}{\text{u}} \right]
 \end{align}
 where ...
-\cite{Klintefjord}
+\cite{Klintefjord, RBass}
 
-%The kinetic energy, $E^{'}$, in the CM frame is given by
-%\begin{equation}
-%	E^{'} = \frac{A_t}{A_b + A_t} E_{b}
-%\end{equation}
-%where $A_b$ and $A_t$ is the mass number of the beam and target nuclei and $E_{b}$ is the kinetic energy of the beam particle in the LAB frame \cite{Niedermaier}.
+\textcolor{red}{Dette blir 4.63 MeV/u for Sm på Pb. Hvordan ble 4.7 MeV/u regnet ut?}
 
 
-\bigskip
-
-Adiabaticity parameter \cite{Niedermaier}
+\textcolor{blue}{"Only the CM energy $E_{cm}$ and the relative momentum $P_{cm}$ are available for the reaction. The remainder is translational energy (recoil energy) of the total system"} \cite{NaR}.
 \begin{equation}
-	\xi = \frac{\tau_c}{\tau_n} = \frac{a}{\hbar v_0}  \Delta E_{if}
+	E_t = \frac{A_b}{A_b + A_t} E_b
 \end{equation}
-where $\Delta E_{if}$ is the excitation energy difference.
 
-"For large values of $\xi$ the reaction becomes adiabatic, hindering the excitation process, while for values of $\xi \rightarrow 0$ the scattering happens as a very prompt event. If the conditions $\eta \gg 1$ and $\xi \rightarrow 0$ are fulfilled, a semi- classical treatment of the Coulomb excitation is a very good approximation. In the present work all presented experiments fulfill these conditions."
+The kinetic energy, $E^{'}$, in the CM frame is given by
+\begin{equation}
+	E^{'} = E_b - E_t = \frac{A_t}{A_b + A_t} E_{b}
+\end{equation}
+where $A_b$ and $A_t$ is the mass number of the beam and target nuclei and $E_{b}$ is the kinetic energy of the beam particle in the LAB frame \cite{Niedermaier, NaR}.
+
+
 
 \bigskip
 
-"For point like charges, the scattering cross section is given by the Rutherford cross section."
+\textcolor{blue}{"For point like charges, the scattering cross section is given by the Rutherford cross section."}
 
 The differential scattering cross section, $d\sigma_R$, is given by the the classical Rutherford formula (for point like charges)
 \begin{align}
@@ -759,43 +776,67 @@ The differential scattering cross section, $d\sigma_R$, is given by the the clas
 where $d\Omega$ is the solid angle, $Z_b$ and $Z_t$ is the proton number of the beam and target nuclei respectively, $e$ is the elementary charge, $\varepsilon_0$ is the electric permittivity in vacuum, $m_b$ is the mass of the beam particle, $v_0^{'}$ is the velocity of the beam particle in the CM frame and $\theta_b^{'}$ is the beam particle scattering angle in the CM frame \cite{Klintefjord, Krane, EE-Coulex}.
 
 
-"Let us assume here for simplicity that only the target nucleus is excited and that the probability of finding this nucleus in the state $|n\rangle$ after the collision is $P_n$. The differential cross section for the inelastic scattering to the state $|n\rangle$ is then given by" \cite{EE-Coulex}
 
-"For the scattering of point-like objects with an extended nucleus, the differential inelastic cross section is given by"
+\textcolor{blue}{"If $\xi \ll 1$ the process is sudden. Under this condition, the differential cross section is given as a product of the Rutherford cross section and an excitation probability, $P$."} \cite{NaR}
 
-The differential cross section, $d\sigma_{i \rightarrow f}$, for Rutherford scattering is given by 
+The differential cross section, $d\sigma_{i \rightarrow f}$, for inelastic scattering of point-like objects from the state $|i\rangle$ to $|f\rangle$ is given by \cite{EE-Coulex} 
 \begin{align}
 	\frac{d\sigma_{i \rightarrow f}}{d\Omega} 
 	&= \frac{d\sigma_R}{d\Omega} \cdot P_{i \rightarrow f} 
 \end{align}
- \cite{EE-Coulex}.
-where $P_{i \rightarrow f}$ is the excitation probability.
-
-
-\bigskip
-
-
+where $P_{i \rightarrow f}$ is the excitation probability. 
+$P_{i \rightarrow f}$ is given by
 \begin{equation}
-	P_{i \rightarrow f} = \frac{1}{2I_i + 1} \sum_{M_i, M_f} | a_{if}^2 |
+	P_{i \rightarrow f} = \frac{1}{2I_i + 1} \sum_{M_i, M_f} | a_{if} |^2
 \end{equation}
-
+where $I_i$ is the \textcolor{red}{??? spin / angular momentum ???} of the state $|i\rangle$, $M_i$ and $M_f$ is the angular momentum projections of initial and final states, respectively.
+$a_{if}$ is the excitation amplitudes summed over all magnetic substates, which can be expressed by
 \begin{equation}
 	a_{if} = \frac{1}{i\hbar} \int_{-\infty}^{\infty} e^{i \frac{\Delta E}{\hbar} t} \langle f | H(t) | i \rangle ~dt
 \end{equation}
-$\Delta E = E_f - E_i$, $M_i$ and $M_f$ is the angular momentum projections of initial and final states, respectively. 
-\cite{Klintefjord}
+where $\Delta E = E_f - E_i$ is the energy difference of the final and initial state, respectively, $H(t)$ is the time-dependent electromagnetic interaction between the beam and the target \cite{Klintefjord, Niedermaier, NaR}.
+
+
+
+total cross section for electric multipole excitation
+\begin{equation}
+	\sigma_{E \lambda} = \left( \frac{Z_b e}{\hbar v_i} \right)^2 a^{-2 \lambda + 2} B(E \lambda) f_{E \lambda} (\xi)
+\end{equation}
+
+where $B(E \lambda)$ is the reduced transition probability.
+
+\begin{equation}
+	f_{E \lambda} (\xi) = \int_{\theta_{b, min}^{'}}^{\theta_{b, max}^{'}} \frac{df_{E \lambda} (\theta_b^{'}, \xi)}{d\Omega} ~d\Omega
+\end{equation}
+
+\cite{Niedermaier, NaR}
+
+\textcolor{blue}{"$f_{E \lambda}$ is a function depending on $\xi$ and on the multipolarity. For $E2$ transitions and $\xi \ll 1$ the value is close to 1. From the reduced transiton probabilities, one can deduce tje deformation properties. For example, for $\lambda = 2$"} \cite{NaR}.
+\begin{equation}
+	\sigma \approx \left( \frac{Z_b e}{\hbar v_i} \right)^2 a^{-2} = \left( \frac{mv_i}{Z_t e\hbar} \right)^2
+\end{equation}
+
+\bigskip
+
+$m(\sigma \lambda)$; multipole operator. $\sigma \lambda$ multipolarity, $\sigma \in {E, M}$.
+
 
 
 \bigskip
 
-"The relation of the reduced transition probability between the excitation $B(E2 \uparrow)$ and the decay $B(E2 \downarrow)$ of the nuclear state is given by"
+\textcolor{blue}{"The relation of the reduced transition probability between the excitation $B(E2 \uparrow)$ and the decay $B(E2 \downarrow)$ of the nuclear state is given by"}
 \begin{equation}
 	B(E2; I_f \rightarrow I_i) = \frac{2I_i + 1}{2I_f + 1} B(E2; I_i \rightarrow I_f)
 \end{equation}
 
+
+\begin{equation}
+	B(E2; I_i \rightarrow I_f) = \frac{1}{2I_i + 1} | \langle f | \mathcal{M}(EL)| i \rangle |^2 
+\end{equation}
+
 \bigskip
 
-"In case of an E2 transition between ground state $0_1^+$ and the first excited state $2_1^+$, we obtain"
+\textcolor{blue}{"In case of an E2 transition between ground state $0_1^+$ and the first excited state $2_1^+$, we obtain"}
 \begin{align}
 	B(E2; 0_1^+ \rightarrow 2_1^+) = 5 \cdot B(E2; 2_1^+ \rightarrow 0_1^+)
 \end{align} 
@@ -834,7 +875,7 @@ $\Delta E = E_f - E_i$, $M_i$ and $M_f$ is the angular momentum projections of i
 
 \begin{table}[htb] 
     \centering 
-    \caption{Scattering of \Sm\ on \Pb\ with beam energy 4.65 MeV/A.
+    \caption{Scattering of \Sm\ on \Pb\ with beam energy 4.65 MeV/u.
     Calculations are done with the LISE++ \cite{LISE} kinematics calculator with a reaction from the middle of the target.
     The LAB and CM frame angles are based on the LAB input angles from $\theta_b$ and $\theta_t$. 
     In (b) there are angles marked with red color. 
@@ -863,7 +904,7 @@ $\Delta E = E_f - E_i$, $M_i$ and $M_f$ is the angular momentum projections of i
 
 \section{ISOLDE at CERN}
 ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland. \autoref{fig:accelerators} shows the CERN accelerator complex, where ISOLDE is located beside the Proton Synchrotron Booster (PSB), in the lower right marked by a green box. The acronym ISOLDE stands for Isotope Separator On Line DEvice. The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted  \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. 
-The High Intensity and Energy upgrade (HIE-ISOLDE) made it possible to deliver beam energies up to 7.5 MeV/A in July 2017 \cite{CERN-news}. 
+The High Intensity and Energy upgrade (HIE-ISOLDE) made it possible to deliver beam energies up to 7.5 MeV/u in July 2017 \cite{CERN-news}. 
 The present experiment was one of the first Miniball experiments with the upgraded superconducting LINear ACcelerator (LINAC), the HIE-ISOLDE LINAC. 
 Further upgrades, after the present experiment, have made it possible to deliver beam energies up to 10 MeV/$u$ in 2018 \cite{HIE-ISOLDE}. 
 
@@ -979,7 +1020,7 @@ Therefore, only the parts of the RIB containing the correct charge state is acce
 REXEBIS releases the beam with a specific energy through another mass separator before guiding the RIB into the HIE-ISOLDE LINAC. 
 The purpose of the second mass separator is to remove residual gas (beam contaminants) from the beam exiting REXEBIS \cite{HIE-ISOLDE}. 
 
-The HIE-ISOLDE LINAC accelerates the beam of \Sm\ with excellent purity to 4.65 MeV/A, or a total energy of 651 MeV, through the beam line. 
+The HIE-ISOLDE LINAC accelerates the beam of \Sm\ with excellent purity to 4.65 MeV/u, or a total energy of 651 MeV, through the beam line. 
 Several magnets bend the beam into the Miniball spectrometer, where the beam hits the secondary target of \Pb. 
 The beam particles get excited due to the electromagnetic interaction with the target.
 %There is a very small probability of exciting the target, explained in \autoref{ssec:Pb}.
@@ -1468,7 +1509,7 @@ void kinsim3( int Zb, int Zt, double Ab, double At,
 	long Nevts = 1E6, string srim_dir = "../srim" )
 \end{lstlisting}
 \textcolor{red}{is $x$ the channel or the energy in this case?} \newline
-where \textit{Zb} and \textit{Zt} is the proton number of the beam and target respectively, \textit{Ab} and \textit{At} is the mass number of the beam and target respectively, \textit{thick} is the target thickness in mg/cm$^2$, \textit{Eb} is the beam energy in MeV/A, \textit{dEb} is the \textcolor{red}{??? distribution ???} of the beam energy in MeV/A, \textit{Ex} is the excitation energy, \textit{res} is the detector resolution in percent, \textit{cd\_dist} is the distance form the target to the CD in mm, \textit{flat} is the choice of a uniform or angular distribution, \textit{Nevts} is the number of events and \textit{srim\_dir} is the relative path of the SRIM directory.
+where \textit{Zb} and \textit{Zt} is the proton number of the beam and target respectively, \textit{Ab} and \textit{At} is the mass number of the beam and target respectively, \textit{thick} is the target thickness in mg/cm$^2$, \textit{Eb} is the beam energy in MeV/u, \textit{dEb} is the \textcolor{red}{??? distribution ???} of the beam energy in MeV/u, \textit{Ex} is the excitation energy, \textit{res} is the detector resolution in percent, \textit{cd\_dist} is the distance form the target to the CD in mm, \textit{flat} is the choice of a uniform or angular distribution, \textit{Nevts} is the number of events and \textit{srim\_dir} is the relative path of the SRIM directory.
 
 \texttt{kinsim3} was run with the following commands in the terminal to do the simulation
 \begin{lstlisting}[language=sh]
@@ -2168,7 +2209,7 @@ These cuts are used in the Doppler correction of the \ga-rays.
 		\caption{}
 		\label{fig:kinsim}
 	\end{subfigure}
-	\caption{Detected and simulated particle events of \Sm\ on \Pb\ at 4.65 MeV/A in the LAB frame. Smaller angles corresponds to the inner rings and larger angles to the outer rings.
+	\caption{Detected and simulated particle events of \Sm\ on \Pb\ at 4.65 MeV/u in the LAB frame. Smaller angles corresponds to the inner rings and larger angles to the outer rings.
 	(a) Detected particle events. The upper curve marked inside the full lines is the Sm and the lower curve marked inside the dotted lines is the Pb. The contaminant is underneath the Pb area. 	
 	(b) Simulated kinematics. The upper curve is the Sm and the lower curve is the Pb.
 	}
