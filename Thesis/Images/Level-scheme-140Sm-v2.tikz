@@ -21,48 +21,98 @@
       { 
         \draw[line width=2pt, ->, >=triangle 60] (1,\startlevel) -- node[fill=white] {\gamma} (1,\endlevel);
       }
+    % Definition of y-values
+    \def \yvalueLA{5.35}; % E level = 1420
+    \def \yvalueLB{7.59}; % E level = 2015
+    \def \GBtwo{2};       % E level =  531
+    \def \GBfour{4.7};    % E level = 1246
+    \def \yvalueRA{3.7};  % E level =  990
+    \def \yvalueRB{8.63}; % E level = 2290
+    \def \yvalueRC{9.35}; % E level = 2482
+    \def \yvalueRD{6};    % E level = 1599
+    \def \yvalueRE{8.6};  % E level = 2284
+    \def \yvalueRF{6.1};  % E level = 1628
+    \def \yvalueRG{7.28}; % E level = 1933
     % Dotted lines
-    \draw[connect] (-2,0)  -- (0,0);
-    \draw[connect] (2,2)   -- (10,2);
-    \draw[connect] (5,3.7) -- (7,3.7);
-    \draw[connect] (2,4.7) -- (6.2,4.7);
-    %%%
-    %%% 1st right band
-    %%%
-    % Lower 1st right band
-    \coordinate (levelleft)  at (3,3.7);
-    \coordinate (levelright) at (5,3.7);
+    \draw[connect] (-3  ,0)         -- ( 0  ,0);         % Ground state level
+    \draw[connect] ( 2  ,\GBtwo)    -- (15.0,\GBtwo);    % 2_1+ level
+    \draw[connect] ( 4  ,\yvalueRA) -- (10.5,\yvalueRA); % 2_2+ level
+    \draw[connect] (-1.5,\GBfour)   -- ( 0  ,\GBfour);   % 4_1+ level (left)
+    \draw[connect] ( 2  ,\GBfour)   -- ( 7.5,\GBfour);   % 4_1+ level (right)
+    %%
+    %% Right side of ground state band
+    %%
+    % E level = 990
+    \coordinate (levelleft)  at (2.0,\yvalueRA);
+    \coordinate (levelright) at (4.0,\yvalueRA);
     \draw[level] (levelleft) -- (levelright);
-    \node at (3.5,3.7) [anchor=south east] {$2_2^+$};
-    \node at (4.2,3.7) [anchor=south west] {990};
-    \draw[line width=2pt, ->, >=triangle 60] (4,3.7) -- node[fill=white] {460} (4,2);
-    %%%
-    %%% 2nd right band
-    %%%
-    \coordinate (levelleft)  at (6,6);
-    \coordinate (levelright) at (8,6);
+    \node at (2.5,\yvalueRA) [anchor=south east] {$2_2^+$};
+    \node at (3.2,\yvalueRA) [anchor=south west] {990};
+    \draw[line width=2pt,->,>=triangle 60] (3.0,\yvalueRA) -- node[fill=white] {460} (3.0,\GBtwo);
+    % E level = 2290
+    \coordinate (levelleft)  at (2.5,\yvalueRB);
+    \coordinate (levelright) at (5.0,\yvalueRB);
     \draw[level] (levelleft) -- (levelright);
-    \node at (6.7,6) [anchor=south east] {$0_2^{+}$};
-    \node at (7.2,6) [anchor=south west] {1599};
-    \draw[line width=2pt, ->, >=triangle 60] (7.8,6) -- node[fill=white] {1068} (7.8,2);
-    \draw[line width=2pt, ->, >=triangle 60] (7,6) -- node[fill=white] {609}  (7,3.7);
-    \draw[line width=2pt, ->, >=triangle 60] (6.2,6) -- node[fill=white] {352}  (6.2,4.7);
-    %%%
-    %%% 3rd right band
-    %%%
-    \coordinate (levelleft)  at (9,6.1);
-    \coordinate (levelright) at (11,6.1);
+    \node at (3.5,\yvalueRB) [anchor=south east] {$(1,2)_2$};
+    \node at (4.2,\yvalueRB) [anchor=south west] {2290};
+    \draw[line width=2pt,->,>=triangle 60] (3.0,\yvalueRB) -- node[fill=white] {1299} (3.0,\yvalueRA);
+    \draw[line width=2pt,->,>=triangle 60] (4.5,\yvalueRB) -- node[fill=white] {1759} (4.5,\GBtwo);
+    % E level = 2482
+    \coordinate (levelleft)  at (5.0,\yvalueRC);
+    \coordinate (levelright) at (8.5,\yvalueRC);
     \draw[level] (levelleft) -- (levelright);
-    \node at (9.7,6.1)  [anchor=south east] {$0_3^{(+)}$};
-    \node at (10.2,6.1) [anchor=south west] {1628};
-    \draw[line width=2pt, ->, >=triangle 60] (10,6.1) -- node[fill=white] {1098} (10,2);
-    %%%
-    %%% 1st left band
-    %%%
-    \coordinate (levelleft)  at (-3,3.34);
-    \coordinate (levelright) at (-1,3.34);
+    \node at (6.1,\yvalueRC) [anchor=south east] {$(1,2)^{+}$};
+    \node at (7.7,\yvalueRC) [anchor=south west] {2482};
+    \draw[line width=2pt,->,>=triangle 60] (8.0,\yvalueRC) -- node[fill=white] {883}  (8.0,\yvalueRD);
+    \draw[line width=2pt,->,>=triangle 60] (6.5,\yvalueRC) -- node[fill=white] {1491} (6.5,\yvalueRA);
+    \draw[line width=2pt,->,>=triangle 60] (5.5,\yvalueRC) -- node[fill=white] {1952} (5.5,\GBtwo);
+    % E level = 1599
+    \coordinate (levelleft)  at ( 7,\yvalueRD);
+    \coordinate (levelright) at (10,\yvalueRD);
     \draw[level] (levelleft) -- (levelright);
-    \node at (-2.1,3.34) [anchor=south east] {(1,2)};
-    \node at (-1.8,3.34) [anchor=south west] {1420};
-    \draw[line width=2pt, ->, >=triangle 60] (-2,3.34) -- node[fill=white] {1420} (-2,0);
+    \node at (7.5,\yvalueRD) [anchor=south east] {$0_2^{+}$};
+    \node at (9.2,\yvalueRD) [anchor=south west] {1599};
+    \draw[line width=2pt,->,>=triangle 60] (7.5,\yvalueRD) -- node[fill=white] {352}  (7.5,\GBfour);
+    \draw[line width=2pt,->,>=triangle 60] (8.5,\yvalueRD) -- node[fill=white] {609}  (8.5,\yvalueRA);
+    \draw[line width=2pt,->,>=triangle 60] (9.5,\yvalueRD) -- node[fill=white] {1068} (9.5,\GBtwo);
+    % E level = 2284
+    \coordinate (levelleft)  at ( 8.5,\yvalueRE);
+    \coordinate (levelright) at (12.0,\yvalueRE);
+    \draw[level] (levelleft) -- (levelright);
+    \node at ( 9.0,\yvalueRE) [anchor=south east] {$2_3^{+}$};
+    \node at (11.2,\yvalueRE) [anchor=south west] {2284};
+    \draw[line width=2pt,->,>=triangle 60] ( 9.0,\yvalueRE) -- node[fill=white] {685}  ( 9.0,\yvalueRD);
+    \draw[line width=2pt,->,>=triangle 60] (10.5,\yvalueRE) -- node[fill=white] {1294} (10.5,\yvalueRA);
+    \draw[line width=2pt,->,>=triangle 60] (11.5,\yvalueRE) -- node[fill=white] {1753} (11.5,\GBtwo);
+    % E level = 1628
+    \coordinate (levelleft)  at (12.0,\yvalueRF);
+    \coordinate (levelright) at (14.0,\yvalueRF);
+    \draw[level] (levelleft) -- (levelright);
+    \node at (12.7,\yvalueRF) [anchor=south east] {$0_3^{(+)}$};
+    \node at (13.2,\yvalueRF) [anchor=south west] {1628};
+    \draw[line width=2pt,->,>=triangle 60] (13.0,\yvalueRF) -- node[fill=white] {1098} (13.0,\GBtwo);
+    % E level = 1933
+    \coordinate (levelleft)  at (14.0,\yvalueRG);
+    \coordinate (levelright) at (16.0,\yvalueRG);
+    \draw[level] (levelleft) -- (levelright);
+    \node at (15.2,\yvalueRG) [anchor=south east] {$(0,1,2)$};
+    \node at (15.2,\yvalueRG) [anchor=south west] {1933};
+    \draw[line width=2pt,->,>=triangle 60] (15.0,\yvalueRG) -- node[fill=white] {1402} (15.0,\GBtwo);
+    %%
+    %% Left side of ground state band
+    %%
+    % E level = 1420
+    \coordinate (levelleft)  at (-4.0,\yvalueLA);
+    \coordinate (levelright) at (-2.0,\yvalueLA);
+    \draw[level] (levelleft) -- (levelright);
+    \node at (-3.0,\yvalueLA) [anchor=south east] {$(1,2)_1$};
+    \node at (-2.8,\yvalueLA) [anchor=south west] {1420};
+    \draw[line width=2pt,->,>=triangle 60] (-3.0,\yvalueLA) -- node[fill=white] {1420} (-3.0,0.0);
+    % E level = 2015
+    \coordinate (levelleft)  at (-2.5,\yvalueLB);
+    \coordinate (levelright) at (-0.5,\yvalueLB);
+    \draw[level] (levelleft) -- (levelright);
+    \node at (-2.2,\yvalueLB) [anchor=south east] {5};
+    \node at (-1.3,\yvalueLB) [anchor=south west] {2015};
+    \draw[line width=2pt,->,>=triangle 60] (-1.5,\yvalueLB) -- node[fill=white] {769} (-1.5,\GBfour);
 \end{tikzpicture}
