@@ -980,7 +980,7 @@ The reduced transition probabilities are not the same if the spin states are int
 \begin{table}[htb] 
     \centering 
     \caption{\ga\ selection rules. Electric transitions are more likely than magnetic transitions of the same multipole $\lambda$. There are no \ga\ transitions with $\lambda = 0$, that is no $I_i = 0 \rightarrow I_f = 0$. The $0 \rightarrow 0$ transitions proceed via internal conversion or internal pair creation.}
-	\input{Table-data/Gamma.tex}
+	\input{Table-data/Gamma-rules.tex}
 	\label{tab:gamma_sel}
 \end{table}
 
@@ -1353,21 +1353,28 @@ With these records, a full reconstruction of the real events and coincidences ar
 \epigraph{\textit{"Not everything that can be counted counts, and not everything that counts can be counted."}}{\textit{– William Bruce Cameron}}
 
 In this chapter, the various programs and scripts applied in the detector calibration and data analysis will be introduced. 
-Scripts developed in the present thesis work for the fitting procedures are slightly based on scripts written by Ville Virtanen\footnote{Ville Virtanen is a student from University of Jyväskylä.} and Dr. Liam Gaffney\footnote{Dr. Liam Gaffney is a research fellow at ISOLDE, affiliated with Miniball.}. 
-The codes have been further developed and heavily re-written in the current work. 
-Presently the code has only a minor resemblance to the original code. 
+\textcolor{red}{Not only scripts, but also the method in general is introduced.}
+Scripts developed in the present thesis work for the fitting procedures are inspired by scripts written by Ville Virtanen\footnote{Ville Virtanen is a student from University of Jyväskylä.} and Dr. Liam Gaffney\footnote{Dr. Liam Gaffney is a research fellow at ISOLDE, affiliated with Miniball.}. 
+%The codes have been further developed and heavily re-written in the current work. 
+%Presently, the code has only a minor resemblance to the original code. 
 The remaining Python and bash scripts are written and developed by the author.
-All of the scripts written in C/C++ are dependent on the ROOT 6 framework, a C/C++ data analysis framework developed and maintained at CERN.
+All of the scripts written in C/C++ are dependent on the ROOT 6 framework \cite{ROOT}, a C/C++ data analysis framework developed and maintained at CERN.
 
 Information about the computer setup and environment can be found in \autoref{a:computer_environment}. There is also a section containing the relative path of programs, scripts and files from this thesis.
 
 All of my scripts are available in my GitHub repository found at \\ \url{https://github.com/wiggoen/MasterThesis}.
 
 \section{Data handling}
-The raw data from Miniball experiments essentially\footnote{The format is not entirely correct, since it has identification of where the particle and \ga\ hit. 
-A more detailed format is: identification, time, particle energy (front strip, back strip), \ga\ energy (cluster, crystal, segment), etc.} comes in list mode (identification, energy, time), where every line is an event. 
-It is stored in \textit{.med}-files, MBS Event Data or also known as Miniball Event Data, with the naming convention \textit{140Sm\_208Pb\_pos6\_0xy.med} for this experiment, where \textit{x} and \textit{y} are numbers between 0 and 9. 
 The goal of the data analysis is to obtain Doppler-corrected \ga-spectra with various conditions on particles and angles, in order to analyze the Coulomb excitation of \Sm. 
+\textcolor{red}{mangler myk overgangssetning..}
+Generally speaking, the raw data files from Miniball experiments are formatted in so-called "list mode", where every new line contains the identification, energy and time of one single event\footnote{In truth, the format contains more information, identifying where the particle and \ga-ray hit the detectors.}.
+%The format is not entirely correct, since it has identification of where the particle and \ga\ hit. 
+%A more detailed format is: identification, time, particle energy (front strip, back strip), \ga\ energy (cluster, crystal, segment), etc.
+All of the experimental data is stored in \textit{.med}-files, also known as Miniball Event Data, with a standard file naming convention. 
+For example, \textit{140Sm\_208Pb\_pos6\_xyz.med} is the file name for the current experiment. 
+Here \textit{x}, \textit{y} and \textit{z} are numbers between 0 and 9 which together tells the run number of the data acquisition. 
+The \textit{140Sm\_208Pb} refers to the beam and secondary target and \textit{pos6} means that the target wheel uses position 6 for the secondary target, see \autoref{fig:TWheel}.
+A general rule of data acquisition is to split the data over several run files to limit the file size and the probability of corrupt files or data loss.
 
 %\begin{lstlisting}[language=]
 %$ cd ~/GitHub/MasterThesis/Raw_data/Sm
@@ -1395,75 +1402,43 @@ The goal of the data analysis is to obtain Doppler-corrected \ga-spectra with va
 % dgfData.fUserValues[6] = 26112 , 60811 , 32766 , 0 , 38240 , 60811
 %\end{lstlisting}
 
-For Miniball experiment data, the preferred sorting and analysis code is \textsl{MiniballCoulexSort} \cite{MBCS}. 
-The main steps of how to download, install\footnote{If the \textbf{make} step fails, try doing a \textbf{make clean} and then \textbf{make}. The program might think that it is already built.} and use it is outlined in the \textit{README.md} file in the GitHub repository of Miniball, linked in the reference. 
-The program is written in C/C++ and depends on the ROOT framework. 
-It is under constant development at CERN-ISOLDE under the management of Dr. Liam Gaffney. 
-Unfortunately the code isn't very well documented, so it takes some time to learn what it does and how to use it. 
-To get from the raw data to the Doppler-corrected \ga-spectra, the code is divided into a three step procedure:
+For Miniball experimental data, the preferred sorting and analysis code is \textsl{MiniballCoulexSort} \cite{MBCS}.
+The code has been developed by several contributors from the Miniball collaboration over the years. 
+Unfortunately, both the procedure and the code is lacking documentation, making it quite time demanding to learn how to run the code and to understand how it works.
+Now it is under constant development at CERN-ISOLDE under the management of Dr. Liam Gaffney. 
+The main steps of how to download, install\footnote{If the \textbf{make} step fails, try doing a \textbf{make clean} and then \textbf{make}. The program might think that it is already built.} and use \textsl{MiniballCoulexSort} is outlined in the \textit{README.md} file in the GitHub repository of Miniball \cite{MBCS}. 
+\textsl{MiniballCoulexSort} is written in C/C++ and depends on the ROOT framework. 
+
+To get from the raw data to the Doppler-corrected \ga-spectra, the data analysis code is divided into a three step procedure which can be summarized by the following subroutines:
 
 \begin{enumerate}
-	\item \texttt{MedToRoot}
-	\begin{itemize}
-		\item converts the raw data to ROOT format
-	\end{itemize}
-	\item \texttt{TreeBuilder} / \texttt{AQ4Sort}
-	\begin{itemize}
-		\item event building
+	\item \texttt{MedToRoot} converts the raw data files to ROOT format. This is discussed in  \autoref{sec:data_conversion}.
+	\item \texttt{TreeBuilder} performs the event building by
 		\begin{itemize}
-			\item calibrate detectors and apply thresholds
-			\item use particle-\ga\ coincidences (correlations) to build events \textcolor{red}{hører kanskje egentlig til CLXAna..}
-			\item store everything in a three structure for easy access
+			\item calibrating detectors and apply channel thresholds for the ADCs
+			\item using particle-\ga\ coincidences (correlations), that is the code figures out which \ga\ belongs to which particle
+			\item storing everything in a tree structure for easy access
 		\end{itemize}
-	\end{itemize}
-	\item \texttt{CLXAna}
-	\begin{itemize}
-		\item apply gates on particles and perform Doppler correction
-		\item Coulomb excitaiton analysis
-	\end{itemize}
+		This is discussed in \autoref{ssec:online_cal}.
+	\item \texttt{CLXAna} applies the gates on the particles and performs the Doppler correction. This is discussed in \autoref{ssec:gamma}.
 \end{enumerate}
-
-\bigskip
-
-\texttt{MedToRoot} in \autoref{sec:data_conversion}.
-
-\texttt{TreeBuilder} will be discussed in \autoref{ssec:online_cal}.
-
-\texttt{AQ4Sort} in \autoref{ssec:user_cal}.
-
-\texttt{CLXAna} in \autoref{ssec:gamma}.
-
-\texttt{kinsim3} in \autoref{ssec:kinsim}
-
-\bigskip
-
-\textcolor{red}{flytte til der det er litt mer relvant?}\newline
-For the CD, \texttt{TreeBuilder} sorts each quadrant for itself, but it is not possible to see each pixel of the detector. 
-In the front, each annular strip can be viewed and in the back each radial strip can be viewed as a whole, the back strip contains the energy information of all of the 16 annular strips. 
-The radial strips cover a wide angular range, thus they show no sharp peaks as displayed by \autoref{fig:th_b}.
-\texttt{TreeBuilder} also takes a number of command line flag options. 
-If the \textit{-cdpad} flag option is not used, then there will be no particle events, because they come into the CD. 
-Other flag options will be introduced later in the chapter.
-
-One program that is mentioned in the Miniball GitHub repository, but not showed how to use, is the \texttt{AQ4Sort}. 
-It is used in the same way as the \texttt{TreeBuilder} script, but it sorts the histograms in another way and it does not take any command line flag options. 
-\texttt{AQ4Sort} is used before and during the calibration of the particle detector, because it gives information about every single ring and every single back strip, the "pixels" of the CD. 
-These pixels are used for calibration and are made by gating on the annular (front) rings to see peaks in the radial (back) strips. 
 
 
 
 
 \subsection{Counting and naming convention}
-The numbering of the CD rings and strips are different in different programs and scripts. 
+
+When analyzing data using the \textsl{MiniballCoulexSort} code, the user have to be aware of the numbering of the CD.
+The numbering of the CD rings and strips are different in the various programs and scripts. 
 Histograms sorted by \texttt{TreeBuilder} starts counting from 0 (outermost ring) to 15 (innermost ring) as showed in \autoref{fig:CD-FB}. 
-\texttt{AQ4Sort} starts from 1 (outermost ring) to 16 (innermost ring), shifted compared to \texttt{TreeBuilder}.
-For calibrated spectra, \texttt{TreeBuilder} shows the energy in MeV, while \texttt{AQ4Sort} shows energy in keV.
-The simulation program \texttt{kinsim3} counts from 1 (innermost ring) to 16 (outermost ring), the opposite of \texttt{AQ4Sort}. 
-It is easy to be confused by all the different counting, but this thesis will try to use the counting order of \texttt{kinsim3} for the CD, it seems like the most logic way of counting. 
-\autoref{tab:ADC} shows the CD wiring.
-A change of the wiring of the CD will probably not happen, but it is possible to choose a logic order of counting software wise.
-\autoref{tab:TBvsAQ4} shows a comparison of the logic counting and the histogram naming from \texttt{TreeBuilder} and \texttt{AQ4Sort}.
-Calibration coefficients given to the calibration file, which is introduced in later sections, follow the naming convention of \texttt{TreeBuilder} in \autoref{tab:TBvsAQ4}.
+\texttt{AQ4Sort}, discussed in \autoref{ssec:user_cal}, starts from 1 (outermost ring) to 16 (innermost ring), shifted by 1 unit compared to the \texttt{TreeBuilder} numbering.
+The simulation program \texttt{kinsim3}, discussed in \autoref{ssec:kinsim}, counts from 1 (innermost ring) to 16 (outermost ring), the opposite of \texttt{AQ4Sort}. 
+For calibrated spectra, \texttt{TreeBuilder} shows the energy in MeV, while \texttt{AQ4Sort} shows the energy in keV.
+To avoid further confusion, this thesis will apply the numbering system of \texttt{kinsim3} for the front side of the CD.
+\textcolor{red}{Må jeg også her nevne baksiden for \texttt{TreeBuilder} og \texttt{AQ4Sort}?}
+\autoref{tab:ADC} shows the signal cable wiring of the CD into the ADC.
+\autoref{tab:TBvsAQ4} shows a comparison of the chosen way of counting and the histogram naming from \texttt{TreeBuilder} and \texttt{AQ4Sort}.
+
 
 
 
@@ -1653,6 +1628,34 @@ A general kinematics simulation in the LAB frame is shown in \autoref{fig:kinsim
 
 
 \subsection{Online calibration of the particle detector}\label{ssec:online_cal}
+
+Calibration coefficients given to the calibration file, which is introduced in later sections, follow the naming convention of \texttt{TreeBuilder} in \autoref{tab:TBvsAQ4}. 
+\textcolor{red}{Finne en passende plassering.}
+
+\subsubsection*{\textcolor{red}{Flytt til relevant plass...}}
+For the CD detector, \texttt{TreeBuilder} sorts each quadrant for itself.
+Therefore, it is not possible to examine each individual pixel of the detector. 
+In the front (back) each annular (radial) strip can be viewed as a whole.
+\texttt{TreeBuilder} produces spectra for each detector strip, that is for each ring on the front side and for each sector on the back side. 
+Several command line flag options are available for the \texttt{TreeBuilder} subroutine.
+The \textit{-cdpad} flag option must be applied in order to create particle events. 
+If the option is ignored, no particle events are built since the particles are detected in the CD.
+
+The radial strips cover a large range of scattering angles (the whole radius of the CD). 
+Because the particle energy depends strongly on the scattering angle, the spectra for the radial strips are washed out and show no clear energy (channel) peaks as displayed by \autoref{fig:th_b}.
+For the energy calibration of the sectors on the back it is necessary to sort particle coincidence spectra between front rings and back sectors, that is spectra for each pixel of the detector.
+Since these spectra are only needed for calibration, a separate code is used to produce them.
+In addition to the \texttt{TreeBuilder} code, the \texttt{AQ4Sort} code is found in the Miniball GitHub repository \cite{MBCS}.
+There exist no documentation or \textit{README} file explaining how to run the \texttt{AQ4Sort} subroutine. 
+It can be operated in a similar way to the \texttt{TreeBuilder} code, but it does not take any command line flag options.
+\texttt{AQ4Sort} is used before and during the calibration of the particle detector.
+Compared to \texttt{TreeBuilder}, \texttt{AQ4Sort} sorts the histograms in a different way.
+By using \texttt{AQ4Sort}, every single front strip and back strip, that is every pixel of the CD, can be viewed. 
+Therefore, it is possible to gate on a peak in the annular (front) ring and align it with a peak in the corresponding radial (back) strip, thus calibrating the particle detector. \newline
+\textcolor{red}{$<$ - - - - - - - - - - $>$}\newline
+
+
+
 Every year there is a campaign at ISOLDE, where the staff configures a settingsfile if there are any changes in the setup system. 
 In addition the staff makes a calibration file containing the calibration coefficients for the CD and the \textcolor{red}{??? Miniball \ga\ detector / HPGe detector ???} array. 
 For the calibration of the CD, a cocktail beam composed of different isotopes is accelerated into a specific target. 
@@ -2494,6 +2497,16 @@ $\bullet$ discussion: if you get \ga-spectrum for \Sm\ $\rightarrow$ to explain 
 	\label{fig:levels}
 \end{figure}
 
+
+\begin{table}[htb] 
+    \centering 
+    \caption{\ga\ transitions... based on \cite{Klintefjord, NNDC-levels}.}
+	\input{Table-data/Gamma-transitions.tex}
+	\label{tab:gamma_trans}
+\end{table}
+
+
+
 \bigskip
 
 \autoref{fig:gg_dcB} ...
@@ -3034,13 +3047,13 @@ The DYLD\_LIBRARY\_PATH is used on Mac only. On other systems, use \newline LD\_
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
-\chapter{Miniball wiring}
+\chapter{Counting and naming convention}
 
-\section{CD wiring and naming of histograms}
+\section{Signal cable wiring of the CD and naming of histograms}
 
 \begin{table}[ht] 
 	\centering 
-	\caption{CD wiring for Coulomb excitation experiments.}
+	\caption{Signal cable wiring of the CD into the ADCs for Coulomb excitation experiments.}
 	\input{Table-data/ADC.tex}
 	\label{tab:ADC}
 \end{table}
@@ -3048,7 +3061,7 @@ The DYLD\_LIBRARY\_PATH is used on Mac only. On other systems, use \newline LD\_
 
 \begin{table}[ht] 
 	\centering 
-	\caption{The logic counting and the naming of histograms from \texttt{TreeBuilder} and \texttt{AQ4Sort}.}
+	\caption{The chosen way of counting for the CD and the naming of histograms from \texttt{TreeBuilder} and \texttt{AQ4Sort}.}
 	\input{Table-data/TBvsAQ4.tex}
 	\label{tab:TBvsAQ4}
 \end{table}
