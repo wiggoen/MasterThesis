@@ -328,8 +328,6 @@ She gave Walter Maurice Elsasser credits for being the first to remark that such
 Eugene Wigner believed in the liquid drop model and did not trust the new theory. 
 He called these numbers "magic" \cite{Mayer1964, MIT-OCW}. 
 The reason why the numbers are called magic numbers, is that a magic number of protons or neutrons makes the nucleus unusually stable compared to the neighboring non-magic nuclei \cite{Mayer1964}. 
-\textcolor{red}{er alle magiske mer stabile, eller finnes det unntak her? mener å huske det var en diskusjon om dette på pauserommet på kjernefysikk en gang, men husker ikke hva konklusjonen var. Hva med Ni-56, Ni-78, Sn-100 og Sn-132 som er dobbelt magiske og radioaktive?}
-
 
 There are many different ways of describing various properties of nuclei, e.g. radius, mass, binding energy, spin, parity, electromagnetic moments and excited states.
 There are both macroscopic and microscopic models, such as the liquid drop model and the shell model. 
@@ -338,66 +336,79 @@ This thesis will not go into details about the liquid drop model, the nuclear sh
 Some models will be mentioned in order to explain other phenomena.
 Extensive descriptions of the liquid drop model, the semi-empirical mass formula and the shell model can be found in \cite{Krane}.
 
-
-\textcolor{red}{spin and parity?}
-
-\textcolor{red}{Må jeg nå, siden jeg har nevnt disse modellene, skrive kort hva de omhandler?}
-
 \textcolor{red}{Si noe om appendix + GitHub?}
 
-%The Pauli exclusion principle declares that "two identical fermions cannot occupy the same state". \cite{Griffiths}
-
-
-\section{Nomenclature}
-This section will explain the different symbols and units used throughout the thesis.
-
-Isotopes are atoms of the same chemical element that differ in the number of nucleons.
-The isotope notation is as follows
-\begin{align*}
-	^A_Z\text{X}_N^q
-\end{align*}
-where $X$ is the chemical symbol of the element, $A = Z + N$ is the mass number (the number of nucleons), $Z$ is the proton number, $N$ is the neutron number and $q$ is the charge where $q = Z$ protons $- ~i$ electrons. 
-
-\autoref{tab:units} shows the physical constants and energy equivalents, their SI units and their SI derived units, and
-\autoref{tab:SI-prefixes} shows the metric SI prefixes.
-SI, abbreviated from the French Le Syst{\`{e}}me International d'Unit{\'{e}}s, is The International System of Units, which is built upon seven base units.
-When mentioning the mass of a particle, it is usually given in units of atomic mass unit $u$.
-The energy is usually given in $\frac{\text{MeV}}{\text{u}}$ or $\frac{\text{MeV}}{\text{u}}$.
+Beam energies are usually given in $\frac{\text{keV}}{\text{u}}$ or $\frac{\text{MeV}}{\text{u}}$.
 This comes from 
 \begin{align}
 	\frac{\text{MeV}}{\text{A}} &= \frac{\text{MeV}}{\text{A}}  \frac{\text{A}}{\text{u}} = \frac{\text{MeV}}{\text{u}}  &  1 ~\text{A} &= 1 ~\text{u} \implies 1 = \frac{\text{A}}{\text{u}}
 \end{align}
+where $A$ is the mass number and $u$ is the atomic mass unit.
 
-\begin{table}[htb] 
-    \centering 
-    \caption{Values of the fundamental physical constants and energy equivalents from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
-	\input{Table-data/Units.tex}
-	\label{tab:units}
-\end{table}
+%The Pauli exclusion principle declares that "two identical fermions cannot occupy the same state". \cite{Griffiths}
 
-\begin{table}[htb] 
-    \centering 
-    \caption{Metric SI prefixes from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
-	\input{Table-data/SI-prefixes.tex}
-	\label{tab:SI-prefixes}
-\end{table}
+%\section{Nomenclature}
+%This section will explain the different symbols and units used throughout the thesis.
+%
+%Isotopes are atoms of the same chemical element that differ in the number of nucleons.
+%The isotope notation is as follows
+%\begin{align*}
+%	^A_Z\text{X}_N^q
+%\end{align*}
+%where $X$ is the chemical symbol of the element, $A = Z + N$ is the mass number (the number of nucleons), $Z$ is the proton number, $N$ is the neutron number and $q$ is the charge where $q = Z$ protons $- ~i$ electrons. 
+%
+%\autoref{tab:units} shows the physical constants and energy equivalents, their SI units and their SI derived units, and
+%\autoref{tab:SI-prefixes} shows the metric SI prefixes.
+%SI, abbreviated from the French Le Syst{\`{e}}me International d'Unit{\'{e}}s, is The International System of Units, which is built upon seven base units.
+%When mentioning the mass of a particle, it is usually given in units of atomic mass unit $u$.
+%The energy is usually given in $\frac{\text{keV}}{\text{u}}$ or $\frac{\text{MeV}}{\text{u}}$.
+%This comes from 
+%\begin{align}
+%	\frac{\text{MeV}}{\text{A}} &= \frac{\text{MeV}}{\text{A}}  \frac{\text{A}}{\text{u}} = \frac{\text{MeV}}{\text{u}}  &  1 ~\text{A} &= 1 ~\text{u} \implies 1 = \frac{\text{A}}{\text{u}}
+%\end{align}
+%
+%\begin{table}[htb] 
+%    \centering 
+%    \caption{Values of the fundamental physical constants and energy equivalents from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
+%	\input{Table-data/Units.tex}
+%	\label{tab:units}
+%\end{table}
+%
+%\begin{table}[htb] 
+%    \centering 
+%    \caption{Metric SI prefixes from the National Institute of Standards and Technology (NIST) Physics Laboratory \cite{units}.}
+%	\input{Table-data/SI-prefixes.tex}
+%	\label{tab:SI-prefixes}
+%\end{table}
 
 
 \section{Motivation for the experiment}
 
+\textcolor{blue}{I would start by pointing out some of these things:
+study the evolution of nuclear shapes in the chain of Sm isotopes when moving away from 144Sm at the N=82 shell closure
+possibility for shape coexistence
+measure observables related to the nuclear shape such as B(E2) values and quadrupole moments
+the comparison of such measurements with theoretical calculations can be used to benchmark nuclear models.
+Only afterwards I would explain that a similar experiment was performed before, and now we want to extend the measurement.}
+
+\bigskip
+
 A similar experiment, with experiment code IS495 titled \textit{Coulomb excitation of} \Sm, was conducted in 2012 at CERN-ISOLDE.
 The old REX-ISOLDE post-accelerator was limited to a beam energy of 2.85 MeV/u for \Sm\ (samarium), which gave a low Coulomb excitation cross section and a low probability for multi-step excitations. 
-Therefore, a secondary target of $^{94}_{42}$Mo$_{52}$ (molybdenum) with a thickness of 2 mg/cm$^2$ was chosen to maximize the cross section at this energy.
-An excitation cross section is the probability of an excitation process occurring.
+At that time, a secondary target of $^{94}_{42}$Mo$_{52}$ (molybdenum) with a thickness of 2 mg/cm$^2$ was chosen to maximize the cross section at this energy.
+From the excitation cross section it is possible to extract electromagnetic matrix elements, which are the observables that can be related to the nuclear shape.
 Excited states up to 1256 keV were populated.
 One goal of the experiment was to deduce the $B(E2)$ values and quadrupole moments of low-lying states in neutron-deficient \Sm\ using multi-step Coulomb excitation.
-Another goal was to normalize the $B(E2; 0^+ \rightarrow 2^+)$ value in \Sm\ to the well-known $B(E2)$ value for the Mo target, that is the transition strengths in the excited $^{94}$Mo target.
-Out of that experiment (and another experiment) came a PhD thesis by Malin Klintefjord, titled \textit{Evolution of deformation and collectivity away from magic numbers} \cite{Klintefjord}, in addition to three articles \cite{Klintefjord2015, Samorajczyk2015, Klintefjord2016} on \Sm.
+A normalization of the $B(E2; 0^+ \rightarrow 2^+)$ value for \Sm\ to the well-known $B(E2)$ value for the Mo target, that is the transition strengths in the excited $^{94}$Mo target, was performed in order to extract the other $B(E2)$ values for \Sm.
+It is necessary to know how many particles there are in the beam to determine a cross section.
+This is difficult to measure.
+Since the $B(E2)$ value of Mo was known, the excitation probability for Mo could be used to figure out how many particles there were in the beam, and hence get the excitation probabilities for Sm.
+Out of the IS495 experiment (and another experiment) came a PhD thesis by Malin Klintefjord, titled \textit{Evolution of deformation and collectivity away from magic numbers} \cite{Klintefjord}, in addition to three articles \cite{Klintefjord2015, Samorajczyk2015, Klintefjord2016} on \Sm.
 
 In the experiment in 2012, previously unknown transition strengths between low-lying states in \Sm\ was extracted. 
-\ga\ intensities as a function of particle scattering angle was studied to get information about the first excited $2^+$ state.
+\ga\ intensities as a function of particle scattering angle was studied to get information about the first and second excited $2^+$ state, in addition to the first $4^+$ state.
 \Sm\ was thought to have a low-lying $0^+$ state \cite{Firestone}, but this state was shown to be $2^+$ \cite{Samorajczyk2015}. 
-The results of the experiment indicated a weak quadrupole deformation with a strong triaxiality and \ga-softness.
+The results of the experiment indicated a weak quadrupole deformation with a strong triaxiality or \ga-softness.
 
 In 2017, there was an upgrade of the ISOLDE facility, which lead to the possibility of delivering beam energies up to 7.5 MeV/u. 
 This allows for Coulomb excitation of \Sm\ at higher energies than the previous experiment.
@@ -412,13 +423,13 @@ With a new experiment, it will also be easier to interpret the nuclear shape of 
 For the present experiment, no normalization of the transition probabilities were required.
 From the previous experiment \cite{Klintefjord2016} and from lifetime measurements \cite{BelloGarrote2015}, the $B(E2, 0_1^+ \rightarrow 2_1^+$) value of \Sm\ was obtained. 
 This can be used to normalize the transition probabilities for the higher-lying transitions.
-\textcolor{red}{Hva var denne verdien, slik at jeg kan skrive den ned. Er det B(E2) som skal brukes til normering, eller er det matriseelementet? Skjønte ikke helt da jeg leste artikkelen.}
+\textcolor{red}{Skal jeg gi $B(E2, 0_1^+ \rightarrow 2_1^+$) verdien eksplisitt?}
 
 The goal of the master thesis is to analyze the data from the experiment which was conducted between 8th and 14th of August in 2017.  
 The experiment from 2017 had the experiment code IS558 and was titled \textit{Shape Transition and Coexistence in Neutron-Deficient Rare Earth Isotopes}.
 Samarium (Sm) comes from the lanthanide series of chemical elements, which are known as rare-earth elements.
 \Sm\ is a radioactive isotope with a ground state half-life ($T_{1/2}$) of 14.82 min. 
-It is a neutron-deficient nuclei close to the proton drip line.
+It is a neutron-deficient nuclei compared to the line of stability.
 
 The nucleus can have many different shapes, and this experiment is related to the shapes of the nucleus. 
 \autoref{fig:Nuclear-shapes} shows a sketch of three different nuclear shapes. 
@@ -434,14 +445,16 @@ The nucleus can have many different shapes, and this experiment is related to th
 
 The shape of an atomic nucleus is determined by macroscopic and microscopic effects. 
 Nuclei with filled proton or neutron shells, that is magic nuclei, generally have a spherical shape, while nuclei with open shells gain energy by taking on a deformed shape.
-Deformation leads to a more stable nucleus.
+Deformation leads to a more stable nucleus only in the case of open shell nuclei.
 The shape of the nucleus can change drastically by adding or removing protons or neutrons.
 Some nuclei exhibit what is called shape coexistence, that is the coexistence of quantum states that correspond to different shapes.
 Shape coexistence is often found near closed shells. 
 A typical indication for shape coexistence is $0^+$ states often at low energy. 
-$^{140}_{~62}$Sm$_{78}$ is just below the $N = 82$ shell closure, with a $Z = 62$ mid shell. 
-There is an indication of $0^+$ states around 1.5 MeV. 
-One object of this experiment is to clarify the nature/structure of these $0^+$ states. 
+One of the best examples for shape coexistence is the Hg (mercury) isotopes at neutron mid shell, around $^{186}_{~80}$Hg$_{106}$. 
+They are at $Z = 80$, just below the proton shell closure, $Z = 82$, and at neutron mid shell.
+$^{140}_{~62}$Sm$_{78}$ is just below the neutron shell closure, $N = 82$, with a proton mid shell at $Z = 62$. 
+In \Sm, there is an indication of $0^+$ states around 1.5 MeV. 
+One objective of this experiment is to clarify the nature/structure of these $0^+$ states. 
 The underlying nuclear structure of nuclei are used as benchmarks for theoretical models.
 
 \autoref{fig:cea_CoN} displays the chart of nuclides for deformed nuclei. 
@@ -451,17 +464,23 @@ Between the red lines, where the shells are not filled, or half-filled, the nucl
 
 Nuclei in the rare-earth region, especially the samarium (Sm) isotopes, exhibits a veriety of shape effects. 
 The Sm isotope $^{144}_{~62}$Sm$_{82}$ has a closed neutron shell, and has a spherical shape.
-By adding neutrons to $^{144}$Sm, the deformation changes to an elongated (prolate) quadrupole shape. 
-\textcolor{blue}{A transition from spherical to prolate deformed implies a shape-phase transition, a so-called critical point symmetry.} \textcolor{red}{Beveger jeg meg ut på farlige områder med denne setningen? Jeg har ikke eksplisitt nevnt X(5), men det er det det er...}
+By adding neutrons to $^{144}$Sm, the deformation changes very rapidly to an elongated (prolate) quadrupole shape at neutron number $N = 90$. 
+The transition from spherical to prolate deformed shape at $N = 90$ can be interpreted as a shape-phase transition (with the neutron number as control parameter), and  $^{152}$Sm happens to lie at the critical point of this phase transition \cite{Casten2001}.
 \autoref{fig:Sm-shapes} shows that theory predicts a transition from spherical to prolate shapes occurs in the Sm isotopes between $N = 82$ and $N = 94$.
 Theory also predicts that a flattened (oblate) quadrupole shapes occur below the $N = 82$ shell closure. 
 Taking out more neutrons going to very neutron-deficient Sm nuclei, e.g. $^{132}$Sm, are also prolate deformed. 
 Shape coexistence is possible for certain regions of $N$ and $Z$.
 An earlier experiment studying \Sm\ at CERN-ISOLDE found a triaxial shape for this isotope, that is a shape where all three principal axis of the ellipsoid have different lengths.
 \Sm\ can therefore be considered to lie at the critical point of a phase-shape transition from spherical to deformed, and from prolate to oblate shape.
-\textcolor{blue}{In the previous experiment, there was an indication for triaxiality/\ga-softness \cite{Klintefjord} for \Sm, another form of shape-phase transition / critical point behavior, E(5) \cite{Iachello2000}. 
-\Sm\ could be one of the best examples of E(5) symmetry, need transition probabilities from higher-lying states to confirm.} \textcolor{red}{Denne må vel bort? Ellers er jeg ute å kjøre i teoriland...}
+%\textcolor{blue}{In the previous experiment, there was an indication for triaxiality/\ga-softness \cite{Klintefjord} for \Sm, another form of shape-phase transition / critical point behavior, E(5) \cite{Iachello2000}. 
+%\Sm\ could be one of the best examples of E(5) symmetry, need transition probabilities from higher-lying states to confirm.} \textcolor{red}{Denne må vel bort? Ellers er jeg ute å kjøre i teoriland...}
+The previous experiment found an indication for \ga-softness (or potential triaxial shape). 
+\Sm\ has therefore a transitional character between spherical and deformed shape, and at the same time in between prolate and oblate shape.
+Theoretical models make predictions for nuclei with such symmetries \cite{Iachello2000}, and the present experiment are aiming to test these predictions.
+
 Transition probabilities and quadrupole moments between several excited states in \Sm\ are still unknown.
+With this experiment we want to measure $B(E2)$ values and quadrupole moments for higher-lying states.
+Especially transitions from excited $0^+$ states will give information about possible shape coexistence or critical-point symmetry. 
 
 \begin{figure}[ht]
 	\centering
@@ -495,8 +514,17 @@ Transition probabilities and quadrupole moments between several excited states i
 \section{Nuclear shapes}\label{sec:shapes}
 
 \subsection{Nuclear deformation}
-A way to understand nuclear deformation is to imagine a liquid drop vibrating \textcolor{red}{??? and/or rotating ???} at \textcolor{red}{??? high / a ???} frequency. 
-In this imagined picture, the average shape of the liquid drop nucleus is spherical, but the instantaneous shape is not.
+\textcolor{red}{Halp...}
+%A way to understand nuclear deformation is to imagine a liquid drop vibrating \textcolor{red}{??? and/or rotating ???} at \textcolor{red}{??? high / a ???} frequency. 
+%In this imagined picture, the average shape of the liquid drop nucleus is spherical, but the instantaneous shape is not.
+It is natural to imagine nuclei as tiny spheres.
+Although the nucleus is a fuzzy quantum object, we can still associate a macroscopic shape with it.
+Thus we can define shape parameters that quantify the degree of deformation in the intrinsic system of the nucleus. 
+These shapes can fluctuate (vibrations), and a deformed nucleus can also rotate in space.
+The intrinsic shape does not change in case of rotation, but the description in the laboratory frame becomes time dependent. 
+Although we can associate a deformation, it is not necessarily rigid. 
+The moment of intertia is typically smaller than for a rigid system of the same deformation (think raw vs. boiled egg).
+
 \autoref{fig:vibrating-nucleus} displays a sketch of a deformed vibrating nucleus.
 One way to parameterize the instantaneous surface of the nucleus is to describe it by a vector \textbf{R} pointing from the origin to a surface point given by the angles $\theta$ and $\phi$ \cite{Krane}.
 This is called the multipole expansion, and is given by the following equation
@@ -509,7 +537,7 @@ The parametrization involves the spherical harmonics $Y_{\lambda \mu}$, where $\
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Images/vibrating-nucleus.png}
-	\caption{A deformed vibrating nucleus, adapted from \cite{Krane}. In the drawing, the dotted lines represent the spherical equilibrium shape. The drawing is an exaggeration of reality, because exaggeration \textcolor{red}{??? promotes / develops ???} \textcolor{red}{??? understanding / knowledge ???}. See text for more information. \textcolor{red}{det jeg prøvde å si var: fordi overdrivelse fremmer forståelse.}}
+	\caption{A deformed vibrating nucleus, adapted from \cite{Krane}. In the drawing, the dotted lines represent the spherical equilibrium shape. The drawing is an exaggerated to visualize the effect. See text for more information.}
 	\label{fig:vibrating-nucleus}
 \end{figure}
 
@@ -524,14 +552,16 @@ Further we have that
 where $r_0 \approx 1.25$ fm and $A$ is the mass number of the nucleus.
 
 The expansion coefficients, $a_{\lambda \mu}$, can be time dependent and can thus describe a vibration or rotation in space of the nucleus. 
-By reflection symmetry, the expansion coefficients are required to keep the equality $a_{\lambda \mu} = a_{\lambda, -\mu}$ \cite{Krane}.
+%By reflection symmetry, the expansion coefficients are required to keep the equality $a_{\lambda \mu} = a_{\lambda, -\mu}$ \cite{Krane}.
 Up to second order, the expansion coefficients are given as
 \begin{equation}
 	a_{00} = -\frac{1}{4\pi} \sum_{\lambda > 1, \mu} | a_{\lambda\mu} |^2
 \end{equation}
 
-A dipole vibration, $\lambda = 1$, describes a translation of the whole system, and this is not very interesting in it self. 
+\autoref{fig:vibrational-modes} shows a examples for changes in dipole, quadrupole and octupole parameters.
+The dipole term, $\lambda = 1$, describes a translation of the whole system, and this is not very interesting in it self. 
 Translational motion describes the motion of a system. 
+Higher-order deformations play a role only in a few selected regions of the nuclear chart, and a large majority of nuclei can be described by quadrupole ($\lambda = 2$) shapes.
 By putting the origin of the coordinate system in the center of mass, it is possible to fix and exclude the $a_{1\mu}$ parameters, and thus also $a_{00}$ \cite{RS}. 
 If we restrict the system to small deformations, we get that $a_{1\mu} = 0$ and thus $a_{00} = 0$.
 \autoref{eq:Rfull} is then reduced to
@@ -539,17 +569,21 @@ If we restrict the system to small deformations, we get that $a_{1\mu} = 0$ and 
 	\mathbf{R}(\theta, \phi) = R_0 \left( 1 +  \sum^\infty_{\lambda = 2} \sum^{+\lambda}_{\mu = -\lambda} a_{\lambda \mu} Y_{\lambda \mu}(\theta, \phi) \right)
 \end{equation}
 
-Another condition is that $\textcolor{red}{??? R / \mathbf{R} ???}$ should be invariant under reflection and rotation of the coordinate system, that is, $R$ should be unchanged by transformations of the coordinate system.
-By further choosing the $z$-axis as symmetry axis, we end up in a special case where all $a_{\lambda \mu}$ vanishes except when $\mu = 0$. 
-This is the assumption of axial symmetry.
-The special parameters, $a_{\lambda 0}$, are called $\beta_2$.
+Another condition is that $\mathbf{R}$ should be invariant under reflection and rotation of the coordinate system, that is, $R$ should be unchanged by transformations of the coordinate system.
+%By further choosing the $z$-axis as symmetry axis, we end up in a special case where all $a_{\lambda \mu}$ vanishes except when $\mu = 0$. 
+%This is the assumption of axial symmetry.
+%The special parameters, $a_{\lambda 0}$, are called $\beta_2$.
 
-\autoref{fig:vibrational-modes} shows a sketch of the three lowest \textcolor{red}{possible?} vibrational modes. 
-The quadrupole vibration, $\lambda = 2$, is the most important mode.
-It describes the shape of the nucleus and is the dominant feature in most of the (\textcolor{red}{deformed?}) nuclei. 
-With low multipolarity, the quadrupole vibration is the first available vibrational mode for low-energy excitation in nuclei.
+The quadrupole deformation, $\lambda = 2$, is the most important mode.
+It describes the shape of the nucleus and is the dominant feature in most of the deformed nuclei. 
+In nuclei with spherical shape, the quadrupole vibrations are the lowest mode of collective excitations.
+Deformed nuclei, on the other hand, have low-lying rotational states.
+%With low multipolarity, the quadrupole vibration is the first available vibrational mode for low-energy excitation in nuclei.
 In almost all even-even nuclei there is a low-lying state with $J^\pi = 2^+$, and near closed shells it is possible to distinguish the second harmonic states as well ($J^\pi = 0^+, 2^+, 4^+$). 
-\textcolor{red}{Hvorfor blir spinnene dette igjen?}
+A quadrupole vibration has spin 2 and is connected via an electric quadrupole transition to the ground state. 
+For a two-phonon excitation, two quadrupole excitation couples, each of which has spin 2.
+If you have two spin vectors, they can couple to spin 0, 2 and 4, they cannot couple to odd spins if there is axial symmetry.
+\textcolor{red}{Skal jeg forklare phonon?}
 
 \begin{figure}[ht]
 	\centering
@@ -591,15 +625,16 @@ In the special case when $\lambda = 2$, \autoref{eq:Rmid} becomes
 by using the spherical harmonics $Y_{20}$ and $Y_{2,\pm 2}$ \cite{RS}.
 
 \textcolor{red}{finn en måte å inkludere \autoref{fig:cea_tri} + forklare \ga-soft.}
+\textcolor{blue}{After these explanations you can say that the equilibrium shape of a nucleus can be characterized by a potential energy surface (PES) in the beta-gamma plane (if we restrict the deformation to quadrupole shapes). You could perhaps add three generic PES for the 3 extreme cases: spherical vibrator, deformed rotor, gamma-soft rotor (see e.g. fig.13.13 in Heyde). The steeper a minimum in the PES, the more rigid is the deformation. Accordingly, a more shallow potential means that the shape is softer against vibrations. Two competing shapes (shape coexistence) would show up as two minima in the PES. Then you could say a few words about the PES of 140Sm: It is essentially flat in both beta and gamma direction. That is consistent with our earlier interpretation of 140Sm as a transition nucleus in between spherical and deformed and in between prolate and oblate shape. In principle, the potential can be reasonably well approximated by a square well potential, in which case the Schrödinger equation can be solved analytically. This is exactly what the E(5) model does.}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Images/Triaxial-map-drawing.png}
-	\caption{Potential energy surface for \Sm, adapted from \cite{Hilaire2007, CEA}. \textcolor{red}{\Sm\ looks like a so-called \ga-soft vibrator? See lecture FYS4570 18. Sept 2018.}}
+	\caption{Potential energy surface for \Sm, adapted from \cite{Hilaire2007, CEA}. \textcolor{red}{\Sm\ looks like a mix of vibrator and prolate rotor?}}
 	\label{fig:cea_tri}
 \end{figure}
 
-Octupole vibration, $\lambda = 3$, with $J^\pi = 3^-$ can be seen in many nuclei.
+Octupole vibration, $\lambda = 3$, with $J^\pi = 3^-$ can be seen in many nuclei in certain regions of the nuclear chart, where orbitals with a spin difference of 3 are available near the Fermi surface.
 In nuclei where the shell structure makes the quadrupole modes occur at very high energies, such as in doubly magic nuclei, the octupole state is often the lowest excited state.
 The octupole deformation has a pear shape.
 
@@ -616,6 +651,9 @@ An extensive description of Coulomb excitation can be found in \cite{Alder1956, 
 \autoref{fig:scattering} shows sketches of the scattering process in the LABoratory (LAB) and Center of Mass (CM) frame of reference. 
 In the LAB frame, a beam particle approaches the target with a velocity $\mathbf{u}$ in a straight line in the absence of the repulsive force. 
 The beam particle gets excited by the electromagnetic interaction with the target particle. 
+It is of course also possible that the target nucleus gets excited, or that there is no excitation, that is elastic scattering. 
+It is even possible, although not very likely, that both target an projectile get excited simultaneously.
+We are only considering the case where the projectile gets excited.
 This excitation is an unstable energy state and soon thereafter it will de-excite, sending out a \ga-ray.
 Both the beam and target particles are scattered with a velocity $\mathbf{v}_b$ and $\mathbf{v}_t$ respectively.
 The distance, $b$, is called the impact parameter and is the vertical distance between the beam and target particle. 
@@ -625,8 +663,14 @@ A small angle $\theta_b$ means forward scattering of the beam, a larger distance
 A large angle $\theta_b$ means backward scattering of the beam, a closer distance between the beam particle and the target particle, a stronger EM field and higher excitation probability.
 In the CM frame, the center of mass velocity is zero, and the velocities and angles are marked by an apostrophe to separate between the two frames of reference.
 \autoref{tab:scattering} shows the corresponding scattering angles from the reaction. 
+\textcolor{blue}{perhaps you need to mention that our detector covers the angles from 22-57 deg in the lab, and that it is divided up in rings that correspond to the angles shown in the table. As it is now, it is difficult to understand where these angles come from. You could either move these tables to the experimental chapter, and refer to discussion of kinematics in the theory chapter, or you leave it here, but mention that these are our detector angles, and refer to the discussion of the experimental setup that will follow.}
+
 The Coulomb scattering kinematics can be approximated by an elastic collision.
 In \autoref{ch:scattering}, a calculation of the two-particle elastic collision is performed.
+
+
+
+
 
 \begin{figure}[htb]
 	\centering
@@ -713,8 +757,9 @@ It is given by
 	\eta = \frac{d}{2\lambdabar} = \frac{a}{\lambdabar} = \frac{Z_b Z_t e^2}{m_r v_i^2} = \frac{Z_b Z_t e^2}{\hbar v_i} \approx 0.72 \frac{Z_b Z_t}{A_r E_b}
 \end{equation}
 where $E_b = \tfrac{1}{2} m_b v_i^2$ is the initial kinetic energy of the beam given in MeV/u \cite{RBass}.
-A principal assumption for describing the relative motion of the particles in the CM frame by hyperbolic paths is that $\eta \gg 1$.
-In the semi-classical approach, this is fairly accurate \cite{Cline1969}. 
+A requirement for describing the relative motion of the particles in the CM frame by hyperbolic paths is that $\eta \gg 1$.
+%In the case of Coulomb excitation with heavy ions, the semi-classical approach and assumption of classical trajectories are justified.
+%In the semi-classical approach, this is fairly accurate \cite{Cline1969}. 
 The factor 0.72 comes from 
 \begin{align}
 	\frac{e^2}{2} = \frac{(\sqrt{1.4399764 ~[\text{MeV} \cdot \text{fm}]})^2}{2} \approx 0.72 ~[\text{MeV} \cdot \text{fm}]
@@ -722,8 +767,9 @@ The factor 0.72 comes from
 
 Another important parameter is the adiabaticity parameter, $\xi$, which is given by 
 \begin{equation}
-	\xi = \frac{a}{\hbar v_i}  \Delta E = \frac{Z_b Z_t e^2}{\hbar v_i} \cdot \frac{\Delta E}{2E_b} = \eta \cdot \frac{\Delta E}{2E_b}
+	\xi = \frac{\tau_c}{\tau_{ex}} = \frac{a}{\hbar v_i}  \Delta E = \frac{Z_b Z_t e^2}{\hbar v_i} \cdot \frac{\Delta E}{2E_b} = \eta \cdot \frac{\Delta E}{2E_b}
 \end{equation}
+where $\tau_c = \frac{a}{v_i}$ is the collision time and $\tau_{ex} = \frac{\hbar}{\Delta E}$ is the excitation time.
 The probability of exciting the nucleus from a initial state $|i\rangle$ to a final state $|f\rangle$ with excitation energy difference $\Delta E = E_f - E_i$ is dependent on the adiabaticity parameter \cite{Niedermaier, NaR, RBass}.
 If $\xi \ll 1$ the reaction process is sudden and the excitation probability is largest, while if $\xi \gg 1$ the reaction becomes adiabatic, which means that the reaction process becomes hindered. 
 The excitation probability decreases exponentially with increasing $\xi$. 
@@ -753,7 +799,7 @@ The excitation probability, $P_{i \rightarrow f}$, is given by
 \begin{equation}
 	P_{i \rightarrow f} = \frac{1}{2I_i + 1} \sum_{M_i, M_f} | a_{if} |^2
 \end{equation}
-where $I_i$ is the \textcolor{red}{??? spin / angular momentum ???} of the state $|i\rangle$, $M_i$ and $M_f$ is the angular momentum projections of initial and final states, respectively \cite{EE-Coulex, NaR}.
+where $I_i$ is the spin of the state $|i\rangle$, $M_i$ and $M_f$ is the angular momentum projections of initial and final states, respectively \cite{EE-Coulex, NaR}.
 $a_{if}$ is the excitation amplitudes summed over all magnetic substates, which can be expressed by
 \begin{equation}
 	a_{if} = \frac{1}{i\hbar} \int_{-\infty}^{\infty} e^{i \frac{\Delta E}{\hbar} t} \langle f | H(t) | i \rangle ~dt
@@ -800,6 +846,8 @@ Similarly to the total electric cross section, the total magnetic cross section 
 	\sigma_M = \sum_\lambda \sigma_{M \lambda} = \left( \frac{Z_b e}{\hbar c} \right)^2 \sum_\lambda a^{-2 \lambda + 2} B(M \lambda; I_i \rightarrow I_f) f_{M \lambda} (\xi)
 \end{equation}
 The equations are very similar, but notice the $1/c$ in the first fraction, in addition to the switching of $E$ to $M$.
+This means that magnetic excitations are suppressed by a factor $(v/c)^2$, which means that magnetic excitations do not play any role in practice.
+The excitation process is purely electric, but the decay of the excited states can be both electric and magnetic.
 
 
 \subsection{Safe COULEX}
@@ -822,6 +870,7 @@ The maximum beam energy in the LAB frame, $E_{b, max}$, is chosen from the speci
 	&= \frac{Z_b Z_t e^2}{A_r d_{min}} \cdot \frac{2}{1 + \csc \left( \frac{\theta_b^{'}}{2} \right)} \\
 	&\approx \frac{Z_b Z_t}{A_r} \cdot \frac{1.44}{1.25 (A_b^{1/3} + A_t^{1/3}) + 5} ~\left[ \tfrac{\text{MeV}}{\text{u}} \right]
 \end{align}
+
 
 \textcolor{red}{Dette blir 4.63 MeV/u for Sm på Pb. Hvordan ble 4.7 MeV/u regnet ut?}
 
@@ -1546,23 +1595,6 @@ where the peak energies, $E$, are obtained from a simulation of the Coulomb exci
 During the calibration, it is assumed that the energy on the front side and the back side of the detector are the same. \textcolor{red}{Er dette lov å si, eller skal jeg bare fjerne det?}
 
 
-\subsubsection*{\textcolor{red}{Rediger her.. Flytt til passende seksjoner...}}
- in the CD denoted by $p$ for particle (or \ga\ detectors denoted by \ga), at least two measuring points are needed, e.g. the peak energy of Sm and the peak energy of Pb for a given angle (or the peak of Eu and Ba explained in \autoref{ssec:gamma}). 
-The relationship can be written as 
-\begin{align}
-	g_p &= \frac{E_{\text{Sm}} - E_{\text{Pb}}}{n_{\text{Sm}} - n_{\text{Pb}}}
-	&
-	\Bigg( g_\gamma &= \frac{E_{\text{Eu}} - E_{\text{Ba}}}{n_{\text{Eu}} - n_{\text{Ba}}} \Bigg)
-\end{align}
-
-\textcolor{blue}{I would discuss the particle and gamma calibrations separately, since the procedures are quite different. You have many lines in both Eu and Ba, so you get many data points and can do a linear (or quadratic) fit.}
-
-
-%\textcolor{red}{Si noe om time calibration (\autoref{ssec:time_cal}) og thresholds (\autoref{ssec:threshold}) her. Henvis til seksjonene.} 
-
-%The time calibration will be discussed in \autoref{ssec:time_cal}.
-
-
 \subsection{Kinematic simulation}\label{ssec:kinsim}
 To calibrate the data, we need to calculate the expected energy of the centroids of the peaks in the energy spectrum. 
 This was done by simulating the experiment using the program \texttt{kinsim3} \cite{kinsim} written by Dr. Liam Gaffney. 
@@ -1660,6 +1692,7 @@ After every experiment, a calibration file has to be made to find out if it is b
 When a campaign is run at ISOLDE, the staff configures a settings-file and continuously updates it according to new changes in the system setup.
 In addition the staff makes a calibration file containing the calibration coefficients for the CD and the Miniball \ga\ detector array. 
 For the calibration of the CD, a cocktail beam composed of different isotopes is accelerated into a specific target. 
+An advantage of the cocktail beam is that all peaks are obtained under the same conditions using a thin target, so the peaks are narrower and easier to fit.
 For the calibration of the \ga\ detectors, usually two \ga\ sources are placed in the target position.
 The data from these runs are used to create the so-called online calibration file. 
 It contains the calibration coefficients for the ADCs and DGFs in addition to the Miniball geometry.
@@ -1680,7 +1713,7 @@ Several command line flag options are available for the \texttt{TreeBuilder} sub
 The \textit{-cdpad} flag option must be applied in order to create particle events. 
 If the option is ignored, no particle events are built since the particles are detected in the CD.
 
-\autoref{fig:CD_cal_online} shows the back vs. front energy (online calibration) for the one quadrant of the CD. \textcolor{red}{referere til hele figuren og nevne user cal også?}
+\autoref{fig:FBE} shows the back vs. front energy for the one quadrant of the CD for both online and user calibration.
 The plots shows a part of a line for each front and back strip. 
 An indication of a good calibration is when all detectors lie on a linear diagonal line ($y = x$), meaning that the front side and the back side of the CD has detected the same energy. 
 From the figure we see that not all detectors fit the line, indicating that some of the strips have incorrect calibration coefficients.
@@ -1697,57 +1730,146 @@ On the back side, there is effectively 48 radial strips, 4 quadrants with 12 str
 To fully calibrate the CD, we need all the centroids of the peaks from both sides, 128 centroids (64 annular strips $\cdot$ 2 peaks/strip) on the front side and 1536 centroids (48 radial strips $\cdot$ 2 peaks/strip $\cdot$ 16 rings) on the back side. 
 This gives a total of 1664 centroids to extract, which is not a task one would like to do manually.
 
+Every ADC channel for the CD needs calibration coefficients.
 For a quick and less precise calibration, one needs two peaks in each annular strip and two peaks in each radial strip, making it 224 centroids.
 By including more that two centroids, it is possible to check for non-linearities or instabilities in time.
 \textcolor{red}{Hva betyr instabilities in time? Er det bare et annet ord for ikke-lineariteter?}
-One would like to have calibration coefficients for low, mid and high energies, e.g. from ring 1, 8 and 16 as a minimum to cover the angular distribution. \textcolor{red}{dette er litt mer komplisert. man må ha alle kalibreringskoeffisienter for alle ADC-kanaler. dvs. må ha full kalibrering på forsiden. på baksiden kalibrerer man hver stripe, men for å dekke hele vinkel-området kan man f.eks. velge ring 1, 8 og 16 eller noe slikt.}
 
-Calibrating the back strips of the CD is the same as the front, however because they cover a large range of angles in the $\theta$ direction (according to the LAB frame in \autoref{fig:scattering}), a gate on one of the front strips is needed to define an angle and thereby an energy. 
-For this purpose, the program \texttt{AQ4Sort} is used. 
-It operates on the same files as \texttt{TreeBuilder}, but with the purpose of making every combination of gates on front and back strips so that the front and back centroids for every "pixel" of the detector is available. \textcolor{red}{Dette er forklart tidligere? Få inn info om AQ4Sort her..}
+Calibrating the back strips of the CD is the same as the front.
+However, the radial strips cover a large range of scattering angles (the whole radius of the CD). 
+Because the particle energy depends strongly on the scattering angle, the spectra for the radial strips are washed out and show no clear energy (channel) peaks as displayed by \autoref{fig:th_b}.
+For the energy calibration of the sectors on the back it is necessary to sort particle coincidence spectra between front rings and back sectors, that is spectra for each pixel of the detector.
+Since these spectra are only needed for calibration, a separate code is used to produce them.
+In addition to the \texttt{TreeBuilder} code, the \texttt{AQ4Sort} code is found in the Miniball GitHub repository \cite{MBCS}.
+There exist no documentation or \textit{README} file explaining how to run the \texttt{AQ4Sort} subroutine. 
+It can be operated in a similar way to the \texttt{TreeBuilder} code, but it does not take any command line flag options.
+\texttt{AQ4Sort} is used before and during the calibration of the particle detector.
+Compared to \texttt{TreeBuilder}, \texttt{AQ4Sort} sorts the histograms in a different way.
+By using \texttt{AQ4Sort}, every single front strip and back strip combination, that is every pixel of the CD, can be viewed. 
+Therefore, it is possible to gate on a peak in the annular (front) ring and align it with a peak in the corresponding radial (back) strip, thus calibrating the particle detector. 
+For the radial strips, it is preferable to at least extract centroids for low, mid and high energies to cover the angular range of the strip. 
+For example gated on ring 1, 8 and 16. 
+%Calibrating the back strips of the CD is the same as the front, however because they cover a large range of angles in the $\theta$ direction (according to the LAB frame in \autoref{fig:scattering}), a gate on one of the front strips is needed to define an angle and thereby an energy. 
+%For this purpose, the program \texttt{AQ4Sort} is used. 
+%It operates on the same files as \texttt{TreeBuilder}, but with the purpose of making every combination of gates on front and back strips so that the front and back centroids for every "pixel" of the detector is available. 
+%From \texttt{TreeBuilder}, only the front side calibration coefficients of the CD can be extracted. 
+%For the back side, \texttt{AQ4Sort} has to be used.
 
+At least two measuring points are needed to calibrate one strip of the CD.
 On the front side of the CD, there is effectively only two measuring points per angle interval. 
-If the contaminant in the spectra was known and if it only consists of one element, it could have been a third measuring point for a centroid in the calibration. \textcolor{red}{Kanskje bare fjerne denne setningen om kontaminasjonen..?}
+%If the contaminant in the spectra was known and if it only consists of one element, it could have been a third measuring point for a centroid in the calibration. 
 On the back side of the CD there are two peaks per gated annular strip that can be fitted, so per back strip a maximum of 32 measuring points. 
 By utilizing a built in ROOT fitting function, Gaussian or other, the centroids of the peaks for both Sm and Pb can be extracted. 
 On the front side of the CD, \autoref{eq:offset} and \autoref{eq:gain} can be used to calculate the calibration coefficients.
-For more than two centroids per strip, as the back side of the CD have, linear regression is used to find the best fit of the calibration coefficients. \textcolor{red}{Få inn infor om baksiden av CD. + cite til lin.reg?}
+From \autoref{eq:offset} and \autoref{eq:gain} we have more specifically
+\begin{align}\label{eq:GPandA}
+	g_p &= \frac{E_{\text{Sm}} - E_{\text{Pb}}}{n_{\text{Sm}} - n_{\text{Pb}}} &  a &= E_{Sm} - g_p \cdot n_{Sm}
+\end{align}
+where the $g_p$ is the gain for the particle, $a$ is the offset and $n$ is the channel number.
+For more than two centroids per strip, as the back side of the CD have, a linear regression method is used to find the best fit of the calibration coefficients.
+The linear regression method is using least squares of a 1st degree polynomial \cite{Polyfit} to fit a line that re-produces the centroid points as best as possible, where the slope corresponds to the gain and the constant term corresponds to the offset.
 
 An ambitious goal of the calibration of the current data set was to make a program that could automatically fit the centroid of the desired energy peaks by means of the ROOT framework. 
 As will be explained in the current section, the task faced several difficulties, and in the end required a great deal of manual labor from the user.
 
-The peaks in the histograms have quite complex shapes.
-\autoref{fig:CD_cal_easy} displays a strip that the automatic fitting handles well, while \autoref{fig:CD_cal_difficult} shows an example of a strip that is challenging to fit.
-In \autoref{fig:CD_cal_easy} it is fairly easy to determine the centroids of the particle peaks.
-The shape of the \Pb\ peak in \autoref{fig:CD_cal_difficult} is very irregular and it is difficult to determine the centroid of the peak because of the overlapping contaminant at lower energies.
+In order to streamline the calibration process a bash script called \texttt{Q4S.sh} was written. 
+\texttt{Q4S.sh} uses either \texttt{TreeBuilder} or \texttt{AQ4Sort} to sort large numbers of data files in one go.
+The \textit{OnBeam.root}-files are loaded into \texttt{TreeBuilder} via \texttt{Q4S.sh} with the commands
+%\begin{lstlisting}[language=sh]
+%$ cd ~/GitHub/MasterThesis/Scripts/sorting 
+%$ ./Q4S.sh Sm online TB
+%... <showing output from script>
+%\end{lstlisting}
+%$ mv Sm_online-TreeBuilder-2019-06-24.root ../../Sorted_data/
+%After the sorting, the file was moved to a folder of sorted data with the \textbf{mv} command, and the relative path was given to the \textit{setup\_Sm.txt} file used as input in the \texttt{ParticlePlot.cpp} script. 
+%This script was made to extract different histograms from the \textit{.root}-file generated by either \texttt{TreeBuilder} or \texttt{AQ4Sort}.
+%The script has to be loaded into the ROOT framework to work, because it was built to utilize the power of the framework.
+%Histograms extracted from this step go through some formatting changes, to make them more presentable.
+%To run the \texttt{ParticlePlot.cpp} in interaction with ROOT, the following commands are used
+%\begin{lstlisting}[language=sh]
+%$ cd ~/GitHub/MasterThesis/Scripts/plotting 
+%$ root
+%root [0] .L ParticlePlot.cpp++
+%root [1] plot_front_back_energy("setup_Sm.txt", "online")
+%... <showing output from script>
+%\end{lstlisting}
+%An example of how to use \texttt{Q4S.sh} with \texttt{TreeBuilder} is shown below
+\begin{lstlisting}[language=]
+$ cd ~/GitHub/MasterThesis/Scripts/sorting 
+$ ./Q4S.sh Sm user TB
+--- TreeBuilder ---
+input file(s):
+... <shows a list of all input files>
+output file: Sm_user-TreeBuilder-2019-06-20.root
+calibration file: ../../Miniball-config/IS558-user.cal
+WeightPR: 0.75
+Particle distribution:
+ Q0 fired: 12243817
+ Q1 fired: 12277727
+ Q2 fired: 11479362
+ Q3 fired: 10936096
+Finished.
+\end{lstlisting}
+%$ mv Sm_user-TreeBuilder-2019-06-20.root ../../Sorted_data/
+In the output, there is a line reading WeightPR: 0.75. 
+This parameter is needed when calibrating the \ga\ detectors explained in \autoref{ssec:gamma}. 
+%A similar example of how to use \texttt{Q4S.sh} with \texttt{AQ4Sort} is shown below
+%\begin{lstlisting}[language=]
+%$ ./Q4S.sh Sm user Q4
+%Info: No flag option for 'AQ4Sort'. Ignoring optional flag.
+%--- AQ4Sort ---
+%calibration file: ../../Miniball-config/IS558-user.cal
+%input file(s):
+%... <shows a list of all input files>
+%output file: Sm_user-AQ4Sort-2019-06-24.root
+%$ mv Sm_user-AQ4Sort-2019-06-24.root ../../Sorted_data/
+%\end{lstlisting}
 
-In logarithmic (log) $y$-scale, the data appears to be more Gaussian distributed, while the contrary is not the case in the linear y-scale. 
-The automatic fitting worked better when a log y-scale was applied.
-Unfortunately, as it turned out, the precision of the fit performed in log y-scale was not satisfactory.
-Therefore, the automatic fitting procedure was abandoned.
-One should be careful to inspect the quality of the fit on a linear scale, as it is more difficult to see deviations on a logarithmic scale. 
-\textcolor{red}{Må jeg splitte figuren siden jeg ikke refererer til (a) og (b) enda? Bare tenkte de var greie å ha sammen..}
+\autoref{fig:cal_FC} shows a flowchart of the programs, scripts and files used in the user calibration. 
+The strategy to perform the calibration of the CD is to combine the simulated data from \texttt{kinsim3.cc} and the experimental data sorted with \texttt{AQ4Sort} in order to obtain the calibration coefficients.
+\texttt{kinsim3} delivers the energy centroids in \autoref{eq:GPandA}, while \texttt{AQ4Sort} delivers the channel numbers.
+These two data sets are analyzed using ROOT through different functions in the \texttt{ParticlePlot.cpp} script. 
+Information about the range of the peaks and guesses of the centroids of Pb and Sm is written into input files used in \texttt{ParticleFit.cpp}. 
+Here, the automatic fitting collects the centroids of both data sets and write them into output files which is used as input in \texttt{particle-calibration.py}. 
+This Python script plots the centroids and uses the linear regression method to extract the gain and offset values.
+The values are written out into separate output files which are used as input in \texttt{ADC\_generator.py}. 
+This Python script writes the calibration coefficients to the terminal, and from there they are copied and pasted into the calibration file \textit{IS5558-user.cal}.
+The calibration coefficients given to the calibration file follow the naming convention of \texttt{TreeBuilder} in \autoref{tab:TBvsAQ4}. 
+This new calibration file is then used to sort the data once more with \texttt{Q4S.sh}, but using \texttt{TreeBuilder} this time.
+To visualize plots after a new calibration, ROOT or \texttt{ParticlePlot.cpp} is used. 
+The gray boxes related to the \ga-calibration are discussed in \autoref{ssec:gamma}.
 
 \begin{figure}[ht]
 	\centering
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% GammaPlot.cpp
-		% check_single_threshold("setup_Sm.txt", "f", 4, 2, 3300, 8000)
-		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_f2.png}
-		\caption{}
-		\label{fig:th_f}
-	\end{subfigure}
-	\hfill 
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% GammaPlot.cpp
-		% check_single_threshold("setup_Sm.txt", "b", 4, 6, 2700, 2000)
-    		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_b6.png}
-		\caption{}
-		\label{fig:th_b}
-	\end{subfigure}
-	%\label{fig:threshold}
+	%\input{Images/Calibration-flow-chart.tikz}
+	\includegraphics[width=0.8\textwidth]{Images/Flowchart.png}
+	\caption{Flowchart of the programs, scripts and files applied in the user calibration. The relative paths of these programs and scripts are shown in \autoref{tab:paths}.}
+	\label{fig:cal_FC}
+\end{figure}
+
+Several issues arose as the method of the automatic fitting was developed. 
+The biggest complication was discovered when the method was tested on the radial strips of the CD.
+There is just too much individual differences in the peak shapes to calibrate the radial strips with a simple script.
+% given a channel range for all 12 back strips. 
+The fitting function can behave very strange given a too small or too big range.
+Another problem is the complex shape of the peaks. 
+\autoref{fig:CD_cal_easy} displays a strip that the automatic fitting handles well, while \autoref{fig:CD_cal_difficult} shows an example of a strip that is challenging to fit.
+In \autoref{fig:CD_cal_easy} it is fairly easy to determine the centroids of the particle peaks.
+The shape of the \Pb\ peak in \autoref{fig:CD_cal_difficult} is very irregular and it is difficult to determine the centroid of the peak because of the overlapping contaminant at lower energies.
+%In some spectra it was very difficult to determine the centroid of the Pb peaks especially at low energy, as shown in \autoref{fig:CD_cal_difficult}. 
+In most cases the peak shapes are not Gaussian. 
+%Looking at the energy vs. channel plots, we clearly saw that a Gaussian fit of the energy peaks did not describe the data.
+A ROOT built in function of a 4th degree polynomial was tested to fit the complex peak shapes. 
+The predefined ROOT function 
+\begin{equation}
+	f(x) = p_0 + p_1 \cdot x + p_2 \cdot x^2 + p_3 \cdot x^3 + p_4 \cdot x^4
+\end{equation}
+fits the values of the parameters automatically, given a initial guess by the user. 
+Unfortunately, the 4th degree polynomial did not describe the peak shapes well either.
+To implement a proper automatic fitting program, one would have to find a function with a negatively-skewed distribution, where most of the data values are concentrated on the right side of the distribution graph. 
+
+\begin{figure}[ht]
+	\centering
 	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
 		% ParticlePlot.cpp
@@ -1765,84 +1887,22 @@ One should be careful to inspect the quality of the fit on a linear scale, as it
 		\caption{}
 		\label{fig:CD_cal_difficult}
 	\end{subfigure}
-	\caption{\textbf{(a)} Front strip number 2 in quadrant 4. 
-	At higher energies, there is a double-peak structure of \Sm. 
-	The second peak of \Sm\ can be explained by region 2 from \autoref{fig:EFBQ4}.
-	\textbf{(b)} Back strip number 6 in quadrant 4.
-	\textbf{(c)} Front strip number 9 in quadrant 4. 
-	\textbf{(d)} Back strip 12, gated on ring 16 (outermost ring) in quadrant 1. 
+	\caption{\textbf{(a)} Front strip number 9 in quadrant 4. 
+	\textbf{(b)} Back strip 12, gated on ring 16 (outermost ring) in quadrant 1. 
 	See text for more information.}
 	\label{fig:cal_ED}
 \end{figure}
 
-\subsubsection*{\textcolor{red}{Rediger her...}}
-Calibration coefficients given to the calibration file, which is introduced in later sections, follow the naming convention of \texttt{TreeBuilder} in \autoref{tab:TBvsAQ4}. 
-\textcolor{red}{Finne en passende plassering.} + The calibration of the CD is not always straightforward.
+In logarithmic (log) $y$-scale, the data appears to be more Gaussian distributed, while the contrary is not the case in the linear y-scale. 
+The automatic fitting worked better when a log y-scale was applied.
+Unfortunately, as it turned out, the precision of the fit performed in log y-scale was not satisfactory.
+Therefore, the automatic fitting procedure was abandoned.
+One should be careful to inspect the quality of the fit on a linear scale, as it is more difficult to see deviations on a logarithmic scale. 
 
-
-
-\bigskip
-
-\textcolor{blue}{the use of conjunctive is a bit strange here. perhaps you could say it in this way: The strategy to perform the calibration was such and such. Then you can explain what did not work, and what you did instead.}
-
-\textcolor{magenta}{Her snakker du i "whould have" -form som jeg ikke helt forstår. Mener du at dette er det du ønsket at programmet skulle gjøre, men det ble aldri helt slik? Hvis du har all denne koden som gjør (nesten) alle disse tingene må du bruke nåtid og til slutt minne leseren på at det var ikke det som ble brukt likevel.  
-Her trenger jeg at du forklarer den generelle ideen du ønsker deg i de store linjene før du går inn i detaljene. 
-Kanskje dette avsnittet passer bra rett etter at du har forklart hvorfor det var vanskelig å gjøre fittingen automatisk (nåværende første avsnitt i denne seksjonen)}
-
-\autoref{fig:cal_FC} shows a flowchart of the programs, scripts and files used in the user calibration. 
-\textcolor{red}{Nevn figure mye tidligere? F.eks ved intro til M2R eller Q4S?}
-The idea was to use the \textbf{kinsim3()} function from \texttt{kinsim3.cc} to simulate the data and the \texttt{Q4S.sh} script to sort the experimental data with \texttt{AQ4Sort} to get each pixel of the CD. 
-This data could either be analyzed in ROOT with the \textbf{TBrowser()} or through different functions in \texttt{ParticlePlot.cpp}. 
-From either ROOT or \texttt{ParticlePlot.cpp}, information about the range of the peaks and guesses of the centroids of Pb and Sm would be written down in input files used in \texttt{ParticleFit.cpp}. 
-Here the automatic fitting would have used the input files to fit the peaks, collect the centroids and written them to output files which would have been used as input files in \texttt{particle-calibration.py}. 
-In this Python script, the centroids would have been plotted and a linear regression method using least squares of a first degree polynomial fit \cite{Polyfit} would have fitted a line to re-produce the points as best as possible. 
-It would also write the gains and offsets to separate output files, which would be used as input in \texttt{ADC\_generator.py}. 
-This Python script will write the calibration coefficients to the terminal, and from there it is possible to copy and paste it into the calibration file \textit{IS5558-user.cal}. 
-This calibration file is then used to sort the data once more with \texttt{Q4S.sh} using \texttt{TreeBuilder} and the new calibration coefficients.
-To visualize plots after a new calibration, either ROOT or \texttt{ParticlePlot.cpp} can be used. 
-The gray boxes related to the \ga-calibration are discussed in \autoref{ssec:gamma}.
-
-\begin{figure}[ht]
-	\centering
-	%\input{Images/Calibration-flow-chart.tikz}
-	\includegraphics[width=0.8\textwidth]{Images/Flowchart.png}
-	\caption{Flowchart of the programs, scripts and files applied in the user calibration. The relative paths of these programs and scripts are shown in \autoref{tab:paths}.}
-	\label{fig:cal_FC}
-\end{figure}
-
-
-Several issues arose as the method of the automatic fitting was developed. 
-The biggest complication was discovered when the method was tested on the radial strips of the CD.
-There is just too much individual differences in the peak shapes to calibrate the radial strips with a simple script.
-% given a channel range for all 12 back strips. 
-The fitting function can behave very strange given a too small or too big range.
-Another problem is the complex shape of the peaks. \textcolor{red}{Forklart lenger opp, slå sammen og lag eget avsnitt...}
-To implement a proper automatic fitting program, one would have to find a function with a negatively-skewed distribution \textcolor{red}{Når du snakker om figuren lenger opp bør du beskrive hvordan toppene ser ut og trekke inn denne distr. vs. Gaussis. }, where most of the data values are concentrated on the right side of the distribution graph. 
-\textcolor{red}{Når alle utfordringene til den automatiske metoden er nevnt sier du at metoden ble abandoned grunnet alle utfordringene. 
-Ord til å bruke: complications, obstacles, difficulties, issues, challenges...}
-
-
-
-
-\bigskip
-
-\textcolor{red}{Må skrives om og eller fjernes...}\newline
-In principle it is possible to get a linear calibration for the current experiment from the data set alone. 
-The data needs to be compared with the simulated spectra. 
-A large number of peaks must be fitted, which requires automated routines.
-For certain angles, the peaks are very difficult to fit because of peak shapes, overlapping peaks, etc. 
-A possible solution is to combine the data with another data set where the additional peaks for the angles where it is difficult to fit the Pb in the data. 
-The problem is that the other data set needs to be compared with another simulation, and both changing physical conditions during the two experiments and systematic uncertainties related to two separate simulations make it difficult to extract a consistent calibration. 
-The approach of combining two data sets resulted in a worse calibration compared to the online calibration. 
-The quality of the data can be estimated by looking at how well the data lie on the diagonal line when plotting front against back energy.
-The approach with the cocktail beam has advantages, all peaks obtained under the same conditions using a thin target, so the peaks are more narrow and easier to fit. 
-
-\bigskip
-
-In some spectra it was very difficult to determine the centroid of the Pb peaks especially at low energy, as shown in \autoref{fig:CD_cal_difficult}. \textcolor{red}{Dette er nevnt lenger opp...}
-
+On lower energies, there are problems to properly extract the centroids.
 To overcome this challenge, additional data obtained during experiment IS553 conducted immediately before the present experiment was applied in the detector calibration.
 Unfortunately, the attempt including the data from experiment IS553 to improve the calibration was unsuccessful.
+The quality of the data can be estimated by looking at how well the data lie on the diagonal line when plotting front against back energy.
 %The experiment was IS553, $^{144}$Ba on $^{58}$Ni, and the reason for trying additional data was to try to get calibration for the lower energy spectra. 
 %It may be that the energy loss or target thickness was wrong, or that the beam energy was different, or that the simulation didn't account for all the details of the stopping. 
 %The only way to get a good calibration is to have as much data as possible and then kick out the bad data until there is a good fit. 
@@ -1851,34 +1911,36 @@ Unfortunately, the attempt including the data from experiment IS553 to improve t
 %The fitting just didn't seem reliable.
 %It gave a steeper slope than the online calibration.
 %By looking at the front vs. back energy plots, the diagonal lines were almost disappearing in the middle, and they were a lot broader than the online calibration. 
-
-One big problem of not using the IS553 data, was that it was not possible to get any good calibration coefficients for front ring 16 and maybe also ring 15.
-But this problem was also found in the IS553 data. 
-\textcolor{red}{mener du at problemet dere forsøkte å løse med ditt eksp fantes også i det andre datasettet?}
-It would have been nice with some low-energy points as well as high-energy points in order to do the calibration. 
-\textcolor{red}{er dette angående at noen av toppene er veldig flate? I så fall er handler det om noe annet en resten av dette avsnittet.}
-
+%One big problem of not using the IS553 data, was that it was not possible to get any good calibration coefficients for front ring 16 and maybe also ring 15 (the two outermost rings).
+%But this problem was also found in the IS553 data, even though the beam energy was less than the present experiment. 
 When energy peaks from IS553 was included in the user calibration of the current experiment, the calibration appeared to look worse. 
 Firstly, the diagonal line in the front vs. back energy spectra was not as defined as the online calibration in \autoref{fig:CD_cal_online}.
 Secondly, the off-diagonal events seemed to increase, implying that there was an increase in the mismatch of front and back events. 
 The latter could be due to the visualization coming from the $z$-scale, since there are a different number of events in the quadrants. 
+%It would have been nice with some low-energy points as well as high-energy points in order to do the calibration. 
 
-\textcolor{red}{....Hvordan forklare noe man ikke ser i figur? dette var fra det gamle datasettet.. figuren eksisterer ikke lenger.}
-Looking at the energy vs. channel plots, we clearly saw that a Gaussian fit of the energy peaks did not describe the data.
-The ROOT built in function of a 4th degree polynomial was tested to fit the complex peak shapes. 
-The predefined ROOT function 
-\begin{equation}
-	f(x) = p_0 + p_1 \cdot x + p_2 \cdot x^2 + p_3 \cdot x^3 + p_4 \cdot x^4
-\end{equation}
-fits the values of the parameters automatically, given a initial guess by the user. 
-Unfortunately, the 4th degree polynomial did not describe the peak shapes well either.
+%In principle it is possible to get a linear calibration for the current experiment from the data set alone. 
+%The data needs to be compared with the simulated spectra. 
+%A large number of peaks must be fitted, which requires automated routines.
+%For certain angles, the peaks are very difficult to fit because of peak shapes, overlapping peaks, etc. 
+%A possible solution is to combine the data with another data set where the additional peaks for the angles where it is difficult to fit the Pb in the data. 
+%The problem is that the other data set needs to be compared with another simulation, and both changing physical conditions during the two experiments and systematic uncertainties related to two separate simulations make it difficult to extract a consistent calibration. 
+%The approach of combining two data sets resulted in a worse calibration compared to the online calibration. 
+%The quality of the data can be estimated by looking at how well the data lie on the diagonal line when plotting front against back energy.
+%The approach with the cocktail beam has advantages, all peaks obtained under the same conditions using a thin target, so the peaks are more narrow and easier to fit. 
 
+%To summarize, there was a dedicated online calibration run a few months before the experiment. 
+%Since conditions change over time, the calibration had to be checked if it was still valid. 
+%A better calibration was attempted with the experimental data, but it turned out to be difficult.
+%Additional data, taken just the week before, was tried combining with the present experimental data, but this was unsuccessful. 
+%Although it is possible to get a linear calibration for the current experiment from the data set alone, it is a difficult task, and the results were not as good as the online calibration. 
+%The online detector calibration was in this case very stable.
+
+In principle it is possible to get a linear calibration for the current experiment from the data set alone. 
 Given the numerous complications of the automatic fitting procedure described above, the method was discarded altogether. 
 Although plentiful of time was used to develop scripts for the auto-fitting method, it was decided to apply the online calibration in the end.
-As we will see in \autoref{sec:BDS}, the main issue of the calibration was in fact the calibration coefficients of the innermost ring.
-
-
-
+As we will see in \autoref{sec:BDS}, the main issue of the online calibration was in fact the calibration coefficients of the innermost ring.
+The user calibration file is basically the online calibration file without the innermost ring.
 
 
 \begin{figure}[htb]
@@ -1909,38 +1971,13 @@ As we will see in \autoref{sec:BDS}, the main issue of the calibration was in fa
 		\caption{}
 		\label{fig:CD_cal_back}
 	\end{subfigure}
-	\caption{Back energy vs. front energy for one quadrant of the CD in (a+b). 
-	(a) Quadrant 1 using online calibration.
-	(b) Quadrant 4 using user calibration. The marked regions are similar to figures 39 and 40 in \cite{Rosiak}.
-	(c) Quadrant 1 of the back side of the CD. A number of the radial strips have incorrect gains.
+	\caption{Back energy vs. front energy for one quadrant of the CD in \textbf{(a+b)}. 
+	\textbf{(a)} Quadrant 1 using online calibration.
+	\textbf{(b)} Quadrant 4 using user calibration. The marked regions are explained in \autoref{ssec:DPS} and are similar to figures 39 and 40 in \cite{Rosiak}.
+	\textbf{(c)} Quadrant 1 of the back side of the CD using user calibration. A number of the radial strips have incorrect gains, as they don't lie on the straight line.
 	See text for more information.}
 	\label{fig:FBE}
 \end{figure}
-
-
-\textcolor{red}{egen subsec?}\newline
-In several strips in quadrant 1 and 4, there was a double-peak structure of \Sm\ similar to the peaks displayed in \autoref{fig:th_f}. 
-To explain this we have to look at the two-dimensional (2D) spectrum in \autoref{fig:EFBQ4}, which can be divided into four parts \cite{Rosiak}:
-\begin{itemize}
-	\item Region 1: The measured energy at the front and back side of the CD are equal, which indicates that they are linearly correlated.
-	\item Region 2: In these events the detected energy is lower at the back side, while at the front side the energy is artificially increased. 
-	One explanation of this is if the energy is detected in one strip on the front side, but is shared between two neighboring strips on the back side.
-	The reduced energy on the back side only occurs when the impact position is close to or inside the dead layer between two strips. 
-	The current from the two neighboring strips can possibly induce an artificially higher energy to the front side of the CD. 
-	A similar phenomenon has been observed in segmented HPGe detectors discussed in detail in \cite{Bruyneel2006a, Bruyneel2006b, Bruyneel, Descovich2005, Abt2017}.	
-	Another explanation is that there are some charge trapping and charge recombination of the particle-hole pairs. 
-	This causes a Pulse-Height Defect (PHD) in the detector signal, which is discussed in detail in \cite{Miller1962, Wilkins1971}.
-	
-	The second Sm-peak at higher energies in \autoref{fig:th_f} comes from the projection of the 2D spectrum from \autoref{fig:EFBQ4} onto the x-axis.
-	\item Region 3: This area has a similar, but different pattern to region 2. 
-	The detected energy is lower at the front side, while it is higher at the back side of the CD. 
-	Here, the reduced energy on the front side originates from charge sharing between neighboring annular strips if the incoming particle hits close to or inside the dead layer. 
-	 On the back side, the strips are coupled to a positive voltage which protects against the induction of an artificially higher energy by the front side charge sharing. 
-	These phenomena are discussed in detail in \cite{Grassi2014, Kramberger2002}.
-	\item Region 4: This structure originates from the same place as region 2.
-	These events occur because of the paired up radial strips on the back side of the CD.  
-	Because of the connection of two neighboring strips, the charge is split among them and it is added up to the total charge.
-\end{itemize}
 
 %\begin{figure}[ht]
 %	\centering
@@ -1980,96 +2017,160 @@ To explain this we have to look at the two-dimensional (2D) spectrum in \autoref
 %	\label{fig:cal_CD}
 %\end{figure}
 
-An example of how to use \texttt{Q4S.sh} with \texttt{TreeBuilder} is shown below
-\begin{lstlisting}[language=]
-$ cd ~/GitHub/MasterThesis/Scripts/sorting 
-$ ./Q4S.sh Sm user TB
---- TreeBuilder ---
-input file(s):
-... <shows a list of all input files>
-output file: Sm_user-TreeBuilder-2019-06-20.root
-calibration file: ../../Miniball-config/IS558-user.cal
-WeightPR: 0.75
-Particle distribution:
- Q0 fired: 12243817
- Q1 fired: 12277727
- Q2 fired: 11479362
- Q3 fired: 10936096
-Finished.
-$ mv Sm_user-TreeBuilder-2019-06-20.root ../../Sorted_data/
-\end{lstlisting}
-In the output, there is a line reading WeightPR: 0.75. 
-This parameter is needed when calibrating the \ga\ detectors explained in \autoref{ssec:gamma}. 
-A similar example of how to use \texttt{Q4S.sh} with \texttt{AQ4Sort} is shown below
-\begin{lstlisting}[language=]
-$ ./Q4S.sh Sm user Q4
-Info: No flag option for 'AQ4Sort'. Ignoring optional flag.
---- AQ4Sort ---
-calibration file: ../../Miniball-config/IS558-user.cal
-input file(s):
-... <shows a list of all input files>
-output file: Sm_user-AQ4Sort-2019-06-24.root
-$ mv Sm_user-AQ4Sort-2019-06-24.root ../../Sorted_data/
-\end{lstlisting}
+
+\subsection{Double peak structure}\label{ssec:DPS}
+In several strips in quadrant 1 and 4, there was a double-peak structure of \Sm\ similar to the peaks displayed in \autoref{fig:th_f}. 
+To explain this we have to look at the two-dimensional (2D) spectrum in \autoref{fig:EFBQ4}, which can be divided into four parts \cite{Rosiak}:
+\begin{itemize}
+	\item Region 1: The measured energy at the front and back side of the CD are equal, which indicates that they are linearly correlated.
+	\item Region 2: In these events the detected energy is lower at the back side, while at the front side the energy is artificially increased. 
+	One explanation of this is if the energy is detected in one strip on the front side, but is shared between two neighboring strips on the back side.
+	The reduced energy on the back side only occurs when the impact position is close to or inside the dead layer between two strips. 
+	The current from the two neighboring strips can possibly induce an artificially higher energy to the front side of the CD. 
+	A similar phenomenon has been observed in segmented HPGe detectors discussed in detail in \cite{Bruyneel2006a, Bruyneel2006b, Bruyneel, Descovich2005, Abt2017}.	
+	Another explanation is that there are some charge trapping and charge recombination of the particle-hole pairs. 
+	This causes a Pulse-Height Defect (PHD) in the detector signal, which is discussed in detail in \cite{Miller1962, Wilkins1971}.
+	
+	The second Sm-peak at higher energies in \autoref{fig:th_f} comes from the projection of the 2D spectrum from \autoref{fig:EFBQ4} onto the x-axis.
+	\item Region 3: This area has a similar, but different pattern to region 2. 
+	The detected energy is lower at the front side, while it is higher at the back side of the CD. 
+	Here, the reduced energy on the front side is likely to originate from charge sharing between neighboring annular strips if the incoming particle hits close to or inside the dead layer. 
+	 On the back side, the strips are coupled to a positive voltage which protects against the induction of an artificially higher energy by the front side charge sharing. 
+	These phenomena are discussed in detail in \cite{Grassi2014, Kramberger2002}.
+	\item Region 4: This structure originates from the same effects as region 2.
+	These events occur because of the paired up radial strips on the back side of the CD.  
+	Because of the connection of two neighboring strips, the charge is split among them and it is added up to the total charge.
+\end{itemize}
+
+\begin{figure}[htb]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% GammaPlot.cpp
+		% check_single_threshold("setup_Sm.txt", "f", 4, 2, 3300, 8000)
+		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_f2.png}
+		\caption{}
+		\label{fig:th_f}
+	\end{subfigure}
+	\hfill 
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% GammaPlot.cpp
+		% check_single_threshold("setup_Sm.txt", "b", 4, 6, 2700, 2000)
+    		\includegraphics[width=\textwidth]{../Plots/plotting/Threshold_Q4_b6.png}
+		\caption{}
+		\label{fig:th_b}
+	\end{subfigure}
+	\caption{\textbf{(a)} Front strip number 2 in quadrant 4. 
+	At higher energies, there is a double-peak structure of \Sm. 
+	The second peak of \Sm\ can be explained by region 2 from \autoref{fig:EFBQ4}.
+	\textbf{(b)} Back strip number 6 in quadrant 4.
+	See text for more information.}
+	\label{fig:threshold}
+\end{figure}
 
 
-
-\bigskip
-
-
-\textcolor{red}{bakside cal}\newline
-The radial strips cover a large range of scattering angles (the whole radius of the CD). 
-Because the particle energy depends strongly on the scattering angle, the spectra for the radial strips are washed out and show no clear energy (channel) peaks as displayed by \autoref{fig:th_b}.
-For the energy calibration of the sectors on the back it is necessary to sort particle coincidence spectra between front rings and back sectors, that is spectra for each pixel of the detector.
-Since these spectra are only needed for calibration, a separate code is used to produce them.
-In addition to the \texttt{TreeBuilder} code, the \texttt{AQ4Sort} code is found in the Miniball GitHub repository \cite{MBCS}.
-There exist no documentation or \textit{README} file explaining how to run the \texttt{AQ4Sort} subroutine. 
-It can be operated in a similar way to the \texttt{TreeBuilder} code, but it does not take any command line flag options.
-\texttt{AQ4Sort} is used before and during the calibration of the particle detector.
-Compared to \texttt{TreeBuilder}, \texttt{AQ4Sort} sorts the histograms in a different way.
-By using \texttt{AQ4Sort}, every single front strip and back strip, that is every pixel of the CD, can be viewed. 
-Therefore, it is possible to gate on a peak in the annular (front) ring and align it with a peak in the corresponding radial (back) strip, thus calibrating the particle detector. 
-\newline ..... From \texttt{TreeBuilder}, only the front side calibration coefficients of the CD can be extracted. 
-For the back side, \texttt{AQ4Sort} has to be used.
-\newline\textcolor{red}{- - - - - - -}
-
-\textcolor{red}{finn plass}\newline
-In order to streamline the calibration process a bash script called \texttt{Q4S.sh} was written. 
-\texttt{Q4S.sh} uses either \texttt{TreeBuilder} or \texttt{AQ4Sort} to sort large numbers of data files in one go.
-The \textit{OnBeam.root}-files are loaded into \texttt{TreeBuilder} via \texttt{Q4S.sh} with the commands
-\begin{lstlisting}[language=sh]
-$ cd ~/GitHub/MasterThesis/Scripts/sorting 
-$ ./Q4S.sh Sm online TB
-... <showing output from script>
-\end{lstlisting}
-%$ mv Sm_online-TreeBuilder-2019-06-24.root ../../Sorted_data/
-%After the sorting, the file was moved to a folder of sorted data with the \textbf{mv} command, and the relative path was given to the \textit{setup\_Sm.txt} file used as input in the \texttt{ParticlePlot.cpp} script. 
-%This script was made to extract different histograms from the \textit{.root}-file generated by either \texttt{TreeBuilder} or \texttt{AQ4Sort}.
-%The script has to be loaded into the ROOT framework to work, because it was built to utilize the power of the framework.
-%Histograms extracted from this step go through some formatting changes, to make them more presentable.
-%To run the \texttt{ParticlePlot.cpp} in interaction with ROOT, the following commands are used
-%\begin{lstlisting}[language=sh]
-%$ cd ~/GitHub/MasterThesis/Scripts/plotting 
-%$ root
-%root [0] .L ParticlePlot.cpp++
-%root [1] plot_front_back_energy("setup_Sm.txt", "online")
-%... <showing output from script>
-%\end{lstlisting}
-\textcolor{red}{ - - - - - - - }
-
-
-\subsection{Threshold}\label{ssec:threshold}
-The continuum of events at low energy comes from charge sharing between the strips.
-\autoref{fig:th_f} and \autoref{fig:th_b} shows the big peak of the charge sharing on the front and back side of the CD respectively. 
-This peak is called the "pedestal", because it is like a massive statue in front of the interesting data. 
+\subsection{CD threshold}\label{ssec:threshold}
+In the CD, the continuum of events at low energy comes from charge sharing between the strips.
+\autoref{fig:threshold} shows the big peak of the charge sharing on the front and back side of the CD. 
+This peak is called the "pedestal". 
 For the very heavy ions, the total amount of charge deposited gets split between neighboring strips of the CD. 
 There is a single common gate for each ADC, containing channels from one CD quadrant. 
-Therefore, when there is an event in one strip of the CD, all channels are read out, but the channels without a real event read a "zero" energy.
+Therefore, when there is an event in one strip of the CD, all channels are read out, but the channels without a real event read a non-zero energy.
 These are the events in the pedestal.
+\textsl{MiniballCoulexSort} perform a few tricks to try to recover the correct energy and position of the particles. 
+The energy and position of the particles depends on counting the number of strips that fire.
+
 A software threshold is applied to cut away the pedestal. 
 For each ADC channel, the threshold can, and should be set. 
-One should define the threshold for each ADC channel to be above this peak.
-After a correct calibration is applied, the pedestal will be calibrated out of the physical energy range.
+If no threshold is given in the calibration file, the default threshold is set to channel 100.
+One should define the threshold for each ADC channel to be above the pedestal peak.
+If the threshold is set too low, pedestal events are included in the \textcolor{red}{??? spectra / other stuff / Coulex something ???} and it will get things wrong. \textcolor{red}{Jeg vet ikke hva som går galt, dette var forklaringen jeg fikk.....:(}
+If the threshold is too high, several charge-sharing events will be leading to false particle energy.
+After a correct calibration and threshold is applied, the pedestal will be calibrated out of the physical energy range, meaning it is cut away in the spectra.
+
+The goal is to not include the pedestal, and not to cut away too many continuum events.
+It is easier to set thresholds in linear scale than logarithmic, because in it is difficult to see where to correctly set the limit. 
+\autoref{fig:th_f} and \autoref{fig:th_b} shows the software threshold set in the calibration file on the front and back side for one strip on each side.
+To verify that the implemented threshold is correct, it is very useful to check the so-called "debug" histogram from \texttt{TreeBuilder} displayed in \autoref{fig:CD_debug} and the detected particle events in \autoref{fig:part_wcut}.
+\autoref{fig:CD_debug} is a histogram of how many strips of the CD fired per particle.
+It counts how many particles have lead to $x$ strips fired on the front side and $y$ strips fired on the back side. 
+The table in \autoref{fig:CD_debug_table} explains the different debug IDs, that is lists the $x$-axis of \autoref{fig:CD_debug}. 
+The goal of the threshold is to have a lot more counts in CD debug ID 0 compared to ID 3.
+If we have too many debug ID = 3, then the threshold is too low. 
+If we have a large continuum/background in \autoref{fig:part_wcut}, the thresholds are too high. 
+This way, it is possible to test different values for the threshold and choose the best suited value.
+The code yields debug ID 20 when no particle can be found, that is there is no energy registered in either the front or the back strips. 
+This can only happen when the front energy is below the software threshold set by the user in the calibration file and the back energy is either in a broken strip, or below the software threshold. 
+Charge sharing and noise events will in general also occur below the threshold.
+Therefore, it is expected that debug ID 20 always have a significant number of counts.
+
+
+\begin{figure}[htb]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% check_cd_debug("setup_Sm.txt", "user")
+		\includegraphics[width=\textwidth]{../Plots/plotting/cd_debug-user.png}
+		\caption{}
+		\label{fig:CD_debug}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+    		\input{Table-data/CD_debug.tex} \newline % newline lifts the table up one line
+    		\caption{}
+    		\label{fig:CD_debug_table}
+	\end{subfigure}
+	\caption{\textbf{(a)} A histogram of the CD debugging after a user threshold is set. The IDs on the $x$-axis are explained by the table in \textbf{(b)}. The IDs show the number of strips fired at the front and back side of the CD.}
+	\label{fig:CD_debug_both}
+\end{figure}
+
+
+
+\subsection{Time calibration}\label{ssec:time_cal}
+The purpose of the time calibration is to align the time spectra so that a time gate can be set. 
+In this way it is possible to correlate particles and \ga-rays. 
+\texttt{TreeBuilder} generates time offset histograms. 
+The histograms displays the time difference between a detected particle and \ga\ with 25 ns ticks\footnote{In computers, the system time represents the passage of time. The system time is measured as counting the number of ticks since a starting date. Clock ticks generally refer to the system clock, which runs at a certain frequency, typically in Ghz. This means that there are billions of clock ticks (or cycles) per second. 25 ns ticks refers to one tick per 25 ns, meaning the ADC has a system clock or a CPU running at 40 Mhz.}.
+Using the \texttt{ParticlePlot.cpp} script, the ADC time offset spectra can be extracted by the following commands
+\begin{lstlisting}[language=sh]
+$ cd ~/GitHub/MasterThesis/Scripts/plotting
+$ root
+root [0] .L ParticlePlot.cpp++
+root [1] check_ADC_time_offsets("setup_Sm.txt")
+\end{lstlisting}
+%or they can be manually reached by
+%\begin{lstlisting}[language=sh]
+%$ cd ~/GitHub/MasterThesis/Sorted_data
+%$ root Sm_user-TreeBuilder-2019-06-20.root
+%root [1] new TBrowser()
+%\end{lstlisting}
+%In the browser, the histograms are named \textit{tdiff\_gp\_i}, where \textit{i} is a number between 0 and 3 implying quadrant 1 to 4. 
+%They lie within the \textit{.root}-file without a folder. 
+%\autoref{fig:ADC_dt} shows the time offsets for the CD. 
+\autoref{fig:ADC_dt} displays the time offsets of all the quadrants of the CD.
+Here, the time offset values are defined as the $x$-value of the maximum peak height.
+The peak values, that is the time offsets, may change depending on the amount of data sorted.
+Therefore, it is wise to double check the time offsets when more data is added to the \textit{.root}-file. 
+After the peak values have been collected, they should be written into the calibration file together with the updated threshold. 
+Then, the \texttt{Q4S.sh} script with \texttt{TreeBuilder} should be re-run to implement the changes in the calibration file. 
+The time offsets utilized in this experiment was the following
+\begin{lstlisting}[language=sh]
+# ADC time offsets (ticks)
+adc_0.TimeOffset:  0
+adc_1.TimeOffset:  -2
+adc_2.TimeOffset:  -3
+adc_3.TimeOffset:  5
+\end{lstlisting}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{../Plots/plotting/tdiff_gp_0-3-user.png}
+	\caption{ADC time offsets for the four quadrants of the CD. See text for information.}
+	\label{fig:ADC_dt}
+\end{figure}
 
 %\begin{figure}[ht]
 %	\centering
@@ -2092,17 +2193,6 @@ After a correct calibration is applied, the pedestal will be calibrated out of t
 %	\caption{The pedestal from charge sharing in the front and back side of the CD.}
 %	\label{fig:Pedestal}
 %\end{figure}
-
-\textsl{MiniballCoulexSort} does perform some tricks to try to recover the correct energy and position of the particles, but that depends on counting the number of strips that fire. 
-The default threshold is set to channel 100 if none is given in the calibration file.
-In some cases this is too much and in others this is not enough. 
-If the threshold is set too low, pedestal events are included and it will get things wrong. 
-If the threshold is too high, some events that have charge sharing will be missed and this leads to getting the wrong energy for the particle.
-The goal is to not include the pedestal, and don't cut away too many events from the continuum.
-It is easier to set thresholds in linear scale than logarithmic, because in log scale the threshold value will decrease very much and it is difficult to see where to set the limit. 
-\autoref{fig:th_f} and \autoref{fig:th_b} shows the software threshold set in the user calibration file on the front and back side for one strip on each side.
-These values were also put into the online calibration file.
-
 
 %% BIG FIGURE, 4 plots ++
 
@@ -2128,19 +2218,6 @@ These values were also put into the online calibration file.
 %	\label{fig:Threshold}
 %\end{figure}
 
-
-The key spectra to look at are \autoref{fig:CD_debug} and \autoref{fig:part_wcut}. 
-\autoref{fig:CD_debug} shows how many particles have strips fired on the front side or back side of the CD. 
-It counts how many particles have $x$ strips fired on the front side and $y$ strips fired on the back side. 
-The table added to \autoref{fig:CD_debug} explains the different debug IDs. 
-The goal is to have a lot more counts in CD debug ID 0 compared to ID 3.
-If we have too many debug ID = 3, then the threshold is too low. 
-If we have a large continuum/background in \autoref{fig:part_wcut}, the thresholds are too high. 
-The best thing to do is to play about with different values to see what is best.
-Debug ID 20 is when no particle can be found, because there is no energy registered in either the front or the back strips. 
-This can only happen when the front energy is below the software threshold set by the user in the calibration file and the back energy is either in a broken strip or is also below the software threshold. 
-It is likely that it is some noise events or charge sharing that comes below the threshold. 
-
 %\begin{figure}[ht]
 %	\centering
 %	% ParticlePlot.cpp
@@ -2150,67 +2227,24 @@ It is likely that it is some noise events or charge sharing that comes below the
 %	\label{fig:part}
 %\end{figure}
 
-\begin{figure}[htb]
-	\centering
-	\begin{subfigure}[b]{0.49\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% check_cd_debug("setup_Sm.txt", "user")
-		\includegraphics[width=\textwidth]{../Plots/plotting/cd_debug-user.png}
-		\caption{}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.49\textwidth}
-		\centering
-    		\input{Table-data/CD_debug.tex} \newline % newline lifts the table up one line
-    		\caption{}
-	\end{subfigure}
-	\caption{(a) A histogram of the CD debugging. The IDs on the $x$-axis are explained by the table in (b). The IDs show the number of strips fired at the front and back side of the CD.}
-	\label{fig:CD_debug}
-\end{figure}
-
-
-\subsection{Time calibration}\label{ssec:time_cal}
-The purpose of the time calibration is to align the time spectra so that a prompt time gate can be set. In this way it is possible to correlate particles and \ga-rays. Using the \texttt{ParticlePlot.cpp} script, the ADC time offset spectra can be extracted by the following commands
-\begin{lstlisting}[language=sh]
-$ cd ~/GitHub/MasterThesis/Scripts/plotting
-$ root
-root [0] .L ParticlePlot.cpp++
-root [1] check_ADC_time_offsets("setup_Sm.txt")
-\end{lstlisting}
-or they can be manually reached by
-\begin{lstlisting}[language=sh]
-$ cd ~/GitHub/MasterThesis/Sorted_data
-$ root Sm_user-TreeBuilder-2019-06-20.root
-root [1] new TBrowser()
-\end{lstlisting}
-In the browser, the histograms are named \textit{tdiff\_gp\_i}, where \textit{i} is a number between 0 and 3 implying quadrant 1 to 4. 
-They lie within the \textit{.root}-file without a folder. \autoref{fig:ADC_dt} shows the time offsets for the CD. 
-The peaks of these plots have the interesting $x$-axis values. 
-Zooming into the peaks, it is very clear what the value in each quadrant is. 
-The values can change depending on the amount of data sorted, so it is wise to double check them when more data is added to the \textit{.root}-file. 
-After the peak values have been collected, they should be written into the calibration file under ADC time offsets (ticks). 
-The time offsets of this experiment was the following
-\begin{lstlisting}[language=sh]
-# ADC time offsets (ticks)
-adc_0.TimeOffset:  0
-adc_1.TimeOffset:  -2
-adc_2.TimeOffset:  -3
-adc_3.TimeOffset:  5
-\end{lstlisting}
-After the software threshold and ADC time offsets are added to the calibration file, a re-run of the \texttt{Q4S.sh}-step with \texttt{TreeBuilder} and the updated calibration file has to be conducted.
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{../Plots/plotting/tdiff_gp_0-3-user.png}
-	\caption{ADC time offsets for the four quadrants of the CD.}
-	\label{fig:ADC_dt}
-\end{figure}
-
-
-
 \subsection{Calibration of the \texorpdfstring{$\gamma$}{gamma} detectors}\label{ssec:gamma}
-The online calibration of the \ga\ detectors is quite good for most detectors in a certain energy range, because it is designed to be that way. 
+
+\subsubsection*{\textcolor{red}{Rediger her.. Flytt til passende seksjoner...}}
+ in the CD denoted by $p$ for particle (or \ga\ detectors denoted by \ga), at least two measuring points are needed, e.g. the peak energy of Sm and the peak energy of Pb for a given angle (or the peak of Eu and Ba explained in \autoref{ssec:gamma}). 
+The relationship can be written as 
+\begin{align}
+	g_p &= \frac{E_{\text{Sm}} - E_{\text{Pb}}}{n_{\text{Sm}} - n_{\text{Pb}}}
+	&
+	\Bigg( g_\gamma &= \frac{E_{\text{Eu}} - E_{\text{Ba}}}{n_{\text{Eu}} - n_{\text{Ba}}} \Bigg)
+\end{align}
+
+\textcolor{blue}{I would discuss the particle and gamma calibrations separately, since the procedures are quite different. You have many lines in both Eu and Ba, so you get many data points and can do a linear (or quadratic) fit.}
+
+\bigskip
+
+The online calibration is designed in such a way that the calibration of the \ga\ detectors is quite acceptable in a certain energy range.
+
+
 During the setup of the experiment, a hardware calibration of the \ga\ detectors was performed. 
 The gains of each DGF are matched so that the online analysis is more straightforward.
 However, there are non-linearities and drifting offsets and gains over time that have to be corrected for with a proper calibration using the \Ba\ and \Eu\ source data collected in the end of the experiment. The \Ba\ and \Eu\ sources are placed at the target position simultaneously, back to back, and the data is also used to determine the relative efficiency of the Miniball spectrometer. 
@@ -2669,7 +2703,9 @@ Coulomb excitation yields. These yields will then, in a second step, be compared
 
 Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclear deformation). 
 
+\bigskip
 
+the experiment can help figure out if the triaxial deformation is rigid or soft.
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
