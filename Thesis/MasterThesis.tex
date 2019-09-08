@@ -839,7 +839,14 @@ For an $E2$ transition from the ground state $0_1^+$ and the first excited state
 \begin{align}
 	B(E2; 0_1^+ \rightarrow 2_1^+) = 5 \cdot B(E2; 2_1^+ \rightarrow 0_1^+)
 \end{align} 
-This means that the excitation probability has five times more final substates to go to, compared to the decay probability.
+This means that the excitation probability has five times more final substates to go to, compared to the decay probability as displayed by \autoref{fig:transitions}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Images/transitions.png}
+	\caption{\textbf{(a)} Excitation probability. \textbf{(b)} Decay probability.}
+	\label{fig:transitions}
+\end{figure}
 
 Similarly to the total electric cross section, the total magnetic cross section can be expressed as \cite{EE-Coulex}
 \begin{equation}
@@ -871,10 +878,9 @@ The maximum beam energy in the LAB frame, $E_{b, max}$, is chosen from the speci
 	&\approx \frac{Z_b Z_t}{A_r} \cdot \frac{1.44}{1.25 (A_b^{1/3} + A_t^{1/3}) + 5} ~\left[ \tfrac{\text{MeV}}{\text{u}} \right]
 \end{align}
 
-
-\textcolor{red}{Dette blir 4.63 MeV/u for Sm på Pb. Hvordan ble 4.7 MeV/u regnet ut?}
-
-
+%For \Sm\ on \Pb\ the safe beam energy is 4.63 MeV/u. 
+%The experiment was run with a beam energy of 4.65 MeV/u, so it is really at the limit of what can be considered safe for head-on collisions.
+%The maximum CM angle covered with the setup is $136^\circ$, so for the angular range that is covered by the experiment, the beam energy is safe.
 
 For the reaction, only the energy, $E^{'}$, and relative momentum in the CM frame is available, while the remainder is recoil energy, $E_t$, of the total system
 \begin{equation}
@@ -887,10 +893,6 @@ In the CM frame, the kinetic energy is given by
 where $A_b$ and $A_t$ is the mass number of the beam and target nuclei and $E_{b}$ is the kinetic energy of the beam particle in the LAB frame \cite{Niedermaier, NaR}.
 
 
-\subsubsection*{\textcolor{red}{Må man referere til alle ligninger som har nummer, eller kan de stå med nummer uten å referere til?}}
-
-
-
 \subsection{Electric quadrupole moments}
 
 The electric quadrupole moment is a parameter that describes the charge distribution of a nucleus and thus its shape.
@@ -898,9 +900,7 @@ In the classical definition it is given by
 \begin{align}
 	Q_{ij} = \int \rho(\mathbf{r}) (3r_i r_j - r^2 \delta_{ij}) ~d^3 \mathbf{r}
 \end{align}
-where $\rho$ is the charge density distribution, $\mathbf{r} = (x, y, z)$ are the Cartesian coordinates. 
-\textcolor{red}{Hva er $r_i$ og $r_j$?}
-and
+where $\rho$ is the charge density distribution, $\mathbf{r} = (r_1, r_2, r_3) = (x, y, z)$ are the Cartesian coordinates, $i,j \in \{ 1, 2, 3 \}$ and
 \begin{align}
 	\delta_{ij} =
     \begin{cases}
@@ -923,7 +923,7 @@ In the same way as $Q_{20}$, it is possible to define
 \begin{align}
 	Q_{22} &= \sqrt{\frac{16\pi}{5}} \int \rho(\mathbf{r}) r^2 Y_{22}(\theta, \phi) ~d \mathbf{r}
 \end{align}
-All quadrupole shapes can be described by $Q_{20}$ and $Q_{22}$.
+All quadrupole shapes can be described by $Q_{20}$ and $Q_{22}$ in a similar way as all quadrupole shapes can be described by $\beta$ and \ga. These are the definitions of the quadrupole moment in the intrinsic frame of the nucleus.
 
 For a state with spin $I$ we can observe the spectroscopic quadrupole moment
 \begin{align}
@@ -934,7 +934,6 @@ where $\hat{Q}_2$ is the electric multipole operator \cite{RS} from
 \begin{align}
 	\hat{Q}_{\lambda \mu} = \int \rho(\mathbf{r}) r^\lambda Y_{\lambda \mu}(\theta, \phi) ~d^3 \mathbf{r}
 \end{align}
-\textcolor{red}{Må sikkert forklare flere parametre over her...}
 The spectroscopic quadrupole moment is what we can observe in the LAB frame.
 Here we see that $I = 0$ or $\tfrac{1}{2}$ gives $Q_s = 0$, which means that a nucleus with these spins can have intrinsic deformation, but it cannot be measured via the spectroscopic quadrupole moment \cite{ELP}.  
 
@@ -946,14 +945,11 @@ It is related to the spectroscopic quadrupole moment via
 where $K$ is the projection of total angular momentum onto the body-fixed symmetry axis.
 $K$ is only defined if there is a symmetry axis, that is if the nucleus has rotational symmetry.
 If the total angular momentum is perpendicular to the symmetry axis, then $K = 0$.
-The intrinsic quadrupole moment, $Q_0$, reflects the nuclear deformation, $\beta$, and is related via \cite{Klintefjord}
+The intrinsic quadrupole moment, $Q_0$, reflects the nuclear deformation, $\beta$, and is related via \cite{Klintefjord, LOBNER1970}
 \begin{align}
 	Q_0 &= \int \rho(\mathbf{r}) (3z^2 - r^2) ~d \mathbf{r} \nonumber \\
-	&= \frac{3}{\sqrt{5\pi}} Ze R^2 \beta &&\cite{RS} \\
-	&= \frac{3}{\sqrt{5\pi}} Z R^2 (\beta + \textcolor{blue}{0.16}\beta^2) &&\cite{Klintefjord} \\
-	&= \frac{3}{\sqrt{5\pi}} Z R^2 (\beta + \textcolor{purple}{0.36}\beta^2) &&\cite{ELP}
+	&\approx \frac{3}{\sqrt{5\pi}} Z R^2 (\beta + 0.16 \beta^2)
 \end{align}
-\textcolor{red}{??? Hva er riktig ???}\newline
 If the intrinsic shape is prolate, $Q_0 > 0$, the measurements shows an oblate shape in the laboratory frame, $Q_s < 0$.
 A prolate deformed nucleus that is rotating rapidly about the perpendicular axis appears to be oblate.
 Obtaining information on $Q_s$ and the relative signs of matrix elements can help us to directly distinguish between prolate and oblate shape.
@@ -992,16 +988,7 @@ Transition with lowest multipolarity are most likely ($\lambda$ small).
     \end{cases}
 \end{align}
 
-\textcolor{blue}{"The $E\lambda$ transition probability is estimated to be"} \cite{Krane}
-\begin{align}
-	T(E\lambda) \approx \frac{8\pi (\lambda + 1)}{\lambda [(2\lambda + 1)!!]^2} \frac{e^2}{4\pi \varepsilon_0 \hbar c} \left( \frac{E_\gamma}{\hbar c} \right)^{2\lambda + 1} \left( \frac{3}{\lambda + 3} \right)^2 c R^{2\lambda}
-\end{align}
 
-\textcolor{blue}{"The result for the $M\lambda$ transition probability is"} \cite{Krane}
-\begin{align}
-	T(M\lambda) \approx & \frac{8\pi (\lambda + 1)}{\lambda [(2\lambda + 1)!!]^2} \frac{e^2}{4\pi \varepsilon_0 \hbar c} \left( \frac{E_\gamma}{\hbar c} \right)^{2\lambda + 1} \left( \frac{3}{\lambda + 3} \right)^2 c R^{2\lambda - 2} \nonumber \\
- & \cdot \left( \mu_p - \frac{1}{\lambda + 1} \right)^2 \left( \frac{\hbar}{m_p c} \right)^2
-\end{align}
 
 
 Transition rates of high multipolarity are relatively unlikely.
@@ -1017,6 +1004,7 @@ where $\hat{O}_{\lambda \mu} \in \{ \hat{E}_{\lambda \mu}, \hat{M}_{\lambda \mu}
 	&= \frac{1}{2I_i + 1} | \langle I_f | \hat{O}_{\lambda \mu} | I_i \rangle |^2
 \end{align}
 is the reduced transition probability.
+By measuring transition probabilities it is possible to measure $B(E2)$ values (and other multipolarities), and these quantities are closely related to the nuclear shape and can be compared to theoretical calculations.
 
 \begin{align}
 	| \langle I_f | \hat{O}_{\lambda \mu} | I_i \rangle |^2 &= | \langle I_i | \hat{O}_{\lambda \mu} | I_f \rangle |^2 &  B(\sigma \lambda; I_f \rightarrow I_i) &\neq B(\sigma \lambda; I_i \rightarrow I_f)
@@ -1034,13 +1022,18 @@ The reduced transition probabilities are not the same if the spin states are int
 \end{table}
 
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=0.6\textwidth]{Images/transitions.png}
-	\caption{(a) Excitation probability. (b) Decay probability.}
-	\label{fig:transitions}
-\end{figure}
 
+
+%\textcolor{blue}{"The $E\lambda$ transition probability is estimated to be"} \cite{Krane}
+%\begin{align}
+%	T(E\lambda) \approx \frac{8\pi (\lambda + 1)}{\lambda [(2\lambda + 1)!!]^2} \frac{e^2}{4\pi \varepsilon_0 \hbar c} \left( \frac{E_\gamma}{\hbar c} \right)^{2\lambda + 1} \left( \frac{3}{\lambda + 3} \right)^2 c R^{2\lambda}
+%\end{align}
+
+%\textcolor{blue}{"The result for the $M\lambda$ transition probability is"} \cite{Krane}
+%\begin{align}
+%	T(M\lambda) \approx & \frac{8\pi (\lambda + 1)}{\lambda [(2\lambda + 1)!!]^2} \frac{e^2}{4\pi \varepsilon_0 \hbar c} \left( \frac{E_\gamma}{\hbar c} \right)^{2\lambda + 1} \left( \frac{3}{\lambda + 3} \right)^2 c R^{2\lambda - 2} \nonumber \\
+% & \cdot \left( \mu_p - \frac{1}{\lambda + 1} \right)^2 \left( \frac{\hbar}{m_p c} \right)^2
+%\end{align}
 
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
