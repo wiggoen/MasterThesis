@@ -641,7 +641,6 @@ void total_statistics_s_and_a() {
   histogram->Draw("SAME");  // Singles
   histogram->SetStats(0);   // Remove stats
   
-  histogram_addback->GetYaxis()->SetTitle("Counts/keV");  // Change y-axis title
   histogram_addback->SetTitle("");                        // Removing title
   histogram_addback->SetStats(0);                         // Remove stats
   histogram_addback->SetLabelSize(label_size, "xy");      // Label size for x- and y-axis
