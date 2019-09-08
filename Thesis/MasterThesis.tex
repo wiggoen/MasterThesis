@@ -2573,67 +2573,65 @@ It is the way it is usually done for dead CD strips or dead \ga\ detectors.
 \epigraph{\textit{"In physics, you don't have to go around making trouble for yourself – nature does it for you."}}{\textit{– Frank Wilczek}}
 
 
-Very pure beam (\textcolor{red}{did we have statistics of this?}) - resultat til avhandling. sjekk etter doppler-korrigering. Nd-contaminasjon? i så fall veldig lite, 1-2 prosent?
-
 \textcolor{Magenta}{Tilbakemelding: \newline
-we would have to look at the \ga-spectra to identify any contaminants. There may be a little bit of Nd-140 in the beam, but if so, it is very little (judging from on-line spectra).}
+$\bullet$ Motivation: to explain what is known, and which transition probabilities you want to measure. Perhaps also to explain what theory predicts. \newline
+$\bullet$ Discussion: if you get \ga-spectrum for \Sm\ $\rightarrow$ to explain what you see.}
 
+From the previous experiment, the $B(E2)$ values at low-lying states was obtained.
 
-\bigskip
+From the present experiment it is expected that excited sates up to $8^+$ is populated. 
+\autoref{tab:gamma_trans} displays the known \ga\ transitions for excited \Sm\ up to the $8^+$ state.
 
+\autoref{fig:levels} displays the level scheme for all known levels of \Sm\ up to the $8^+$ state at 2970 keV. 
 
-Level scheme (from Klintefjord?)\newline
-
-\textcolor{Magenta}{Tilbakemelding: \newline
-at some point you should show the level scheme. \newline
-$\bullet$ motivation: to explain what is known, and which transition probabilities you want to measure.  \newline
-Perhaps also to explain what theory predicts. \newline
-$\bullet$ discussion: if you get \ga-spectrum for \Sm\ $\rightarrow$ to explain what you see.}
-
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{Images/Level-scheme-140Sm-v2.png}
-	\caption{Level scheme for \Sm, based on \cite{Klintefjord, NNDC-levels}. The energies are given in keV.}
-	\label{fig:levels}
-\end{figure}
 
 
 \begin{table}[htb] 
     \centering 
-    \caption{\ga\ transitions... based on \cite{Klintefjord, NNDC-levels}.}
+    \caption{Known \ga\ transitions based on \cite{Klintefjord, NNDC-levels}. 
+    \textcolor{red}{Er kolonnetitlene selvforklarende eller må jeg si hva de er?}    
+    The column "Visible in \ga\ spectrum" tells if it is possible to see the transition in \autoref{fig:gam_dcB}.}
 	\input{Table-data/Gamma-transitions.tex}
 	\label{tab:gamma_trans}
 \end{table}
 
 
+\autoref{fig:gam_dcB} ...
+The transition probabilites, $B(E2)$, are relatively strong in the ground state band. 
 
-\bigskip
+The $0_2^+$ and $0_3^{(+)}$ states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence. 
 
-\autoref{fig:gg_dcB} ...
+
+
+\begin{figure}[htb]
+	\centering
+	% GammaPlot.cpp
+	% total_statistics("setup_Coulex.txt", "d")
+	% total_statistics_s_and_a()
+	\includegraphics[width=\textwidth]{../Plots/plotting/gam_dcB_s_and_a.png}
+	\caption{Total statistics for \ga-rays, background subtracted, Doppler corrected for scattered projectile. The blue curve is sorted with singles, and the red curve is sorted with add-back. The green arrows marks some of the energy levels in the level scheme.}
+	\label{fig:gam_dcB}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{Images/Level-scheme-140Sm-v2.png}
+	\caption{Level scheme for \Sm\ based on \cite{Klintefjord, NNDC-levels}. The energies are given in keV and are rounded to the nearest integer.}
+	\label{fig:levels}
+\end{figure}
+
+
+
+\autoref{fig:gg_dcB} displays the \ga\ga-matrix Doppler corrected for the beam.
 
 \begin{figure}[ht]
 	\centering
 	% GammaPlot.cpp
 	% gg_matrix_dcB("setup_Coulex.txt", "d")
 	\includegraphics[width=\textwidth]{../Plots/plotting/gg_dcB.png}
-	\caption{\ga-\ga\ matrix, Doppler corrected for beam.}
+	\caption{\ga-\ga\ matrix Doppler corrected for beam.}
 	\label{fig:gg_dcB}
 \end{figure}
-
-
-\autoref{fig:gam_dcB} ...
-
-\begin{figure}[ht]
-	\centering
-	% GammaPlot.cpp
-	% gg_matrix_dcB("setup_Coulex.txt", "d")
-	\includegraphics[width=\textwidth]{../Plots/plotting/gam_dcB.png}
-	\caption{Total statistics for \ga-rays, 
-      background subtracted, Doppler corrected for scattered projectile.}
-	\label{fig:gam_dcB}
-\end{figure}
-
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
@@ -2699,6 +2697,13 @@ Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclea
 \bigskip
 
 the experiment can help figure out if the triaxial deformation is rigid or soft.
+
+\bigskip
+
+Very pure beam (\textcolor{red}{did we have statistics of this?}) - resultat til avhandling. sjekk etter doppler-korrigering. Nd-contaminasjon? i så fall veldig lite, 1-2 prosent?
+
+\textcolor{Magenta}{Tilbakemelding: \newline
+we would have to look at the \ga-spectra to identify any contaminants. There may be a little bit of Nd-140 in the beam, but if so, it is very little (judging from on-line spectra).}
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
