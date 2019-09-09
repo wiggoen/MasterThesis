@@ -6,8 +6,8 @@ the_date=$(date +%F)
 function usage {
     echo "Usage of $0:"
     echo "Provide one command line argument; '-flag'"
-    echo "e.g. '-d' to run Coulomb excitation analysis on data."
-    echo "Argument flag choice: '-d' (default), '-s' (singles), '-a' (addback), '-r' (reject)."
+    echo "e.g. '-s' to run Coulomb excitation analysis on data."
+    echo "Argument flag choice: '-d' or '-s' (singles), '-a' (addback), '-r' (reject)."
     echo "Flags are based on which sorted input file you want to run Coulomb excitation analysis on."
     echo "Number of arguments: $argument_counter arguments."
     echo "Argument list: $arguments"
@@ -21,6 +21,7 @@ else
     # Read first command line argument
     case "$1" in
         -d)
+            # The default option is in fact the same as the singles option
             input_file="../../Sorted_data/Sm_user-TreeBuilder-2019-06-20.root"
             config_file="../../Miniball-config/config-IS558.dat"
             cut_file="../../Sorted_data/outputfile.root"

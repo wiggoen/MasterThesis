@@ -2217,6 +2217,7 @@ In addition, the data from the calibration run can be used to determine the rela
 
 The quality of this calibration has been carefully checked.
 It was concluded to be very acceptable, meaning there was no need to improve on it. 
+Even if the resolution had been improved by 0.1 keV for the source data, once the Doppler broadening gets into play, it makes no difference.
 \autoref{fig:gamma_comparison} displays all 144 \ga\ detector segments plotted on top of each other. 
 The alignment of the segments are very satisfactory.
 
@@ -2245,20 +2246,19 @@ From \autoref{eq:offset} and \autoref{eq:gain} we have more specifically
 \end{align}
 where $\Gamma$ can be either Eu or Ba.
 
-
-
 In a similar manner to the particle detector calibration, the \ga\ detector calibration can be performed.
 The gray boxes in \autoref{fig:cal_FC} emphasizes the program flow of the \ga\ detector calibration. 
 The idea is to use the \texttt{Q4S.sh} script to sort the experimental data with \texttt{TreeBuilder}.
-Then, the \ga\ histograms would have been analyzed by means of ROOT using the \texttt{GammaPlot.cpp} script.
+Then, the \ga\ histograms are analyzed by means of ROOT using the \texttt{GammaPlot.cpp} script.
 Histograms used for \ga\ detector calibration sorted by \texttt{TreeBuilder} use the naming convention $\textit{E\_gam\_seg}\_c\_d\_s$, where $c \in [0, 7]$ is the cluster number, $d \in [0, 2]$ is the detector number and $s \in [0, 6]$ is the segment number.
 The core signal is $s = 0$ as displayed in \autoref{fig:HPGe}.
 
-To perform the fitting, \texttt{GammaFit.cpp} would require the energy centroids as input.
+To perform the fitting, \texttt{GammaFit.cpp} would require the energy centroids as input. 
+This script was never written, but the idea is the same as the particle calibration.
 Currently, the Python scripts \texttt{DGF\_generator.py} and \texttt{Geometry\_generator.py} reproduces the calibration coefficients and geometry parameters from the online calibration. 
 These scripts need to be modified if a new calibration is performed.
 The final output of the \ga\ calibration would then have been pasted into the calibration file \textit{IS558-user.cal}.
-After the calibration coefficients and the geometry parameters are added to the calibration file, the \texttt{TreeBuilder} have to be re-run, utilizing the updated calibration file.
+After the calibration coefficients and the geometry parameters are added to the calibration file, the \texttt{TreeBuilder} program have to be re-run, utilizing the updated calibration file.
 
 The next step is to run \texttt{CLXAna}.
 \texttt{CLXAna} applies the Doppler correction in order to get the Doppler-corrected \ga-spectra to analyze the Coulomb excitation of \Sm.
@@ -2291,17 +2291,15 @@ In order to not copy and paste all command into the command line, a script named
 It uses the configuration file \textit{config-IS558.dat} and the graphical cut file \textit{outputfile.root}. 
 In addition it takes one command line flag, specifying the sorting method:
 \begin{lstlisting}[language=]
-'-d' (default)
 '-s' (singles) 
 '-a' (addback) 
 '-r' (reject)
 \end{lstlisting}
-\textcolor{red}{As it turns out, the default and singles method are the same.}
-
+If no command line flag is given, the singles method is used by default.
 An example of running the script and the output given by \texttt{CLXAna} is shown below
 \begin{lstlisting}[language=]
-$ ./Coulex.sh -d
---- Coulex: default ---
+$ ./Coulex.sh -s
+--- Coulex: singles ---
 Input parameters:
 Zb = 62
 Ab = 140
@@ -2332,10 +2330,9 @@ Finished.
 \end{lstlisting}
 A detailed explanation of the input parameters is provided in \autoref{sec:CLXAna}.
 
-\autoref{fig:part_wcut} shows the cuts of the beam and target for the detected particle events as the solid and dotted lines. 
+\autoref{fig:part_wcut} shows the cuts of the beam and target for the detected particle events. 
+% as the solid and dotted lines. 
 These graphical cuts are used in the Doppler correction of the \ga-rays. 
-\textcolor{red}{comment on how much the light contaminant bothers you?} 
-
 
 \begin{figure}[htb]
 	\centering
@@ -2356,7 +2353,7 @@ These graphical cuts are used in the Doppler correction of the \ga-rays.
 	\end{subfigure}
 	\caption{Detected and simulated particle events of \Sm\ on \Pb\ at 4.65 MeV/u in the LAB frame. Smaller angles corresponds to the inner rings and larger angles to the outer rings.
 	\textbf{(a)} The data enclosed by the solid upper and dotted lower lines are the detected particle events of Sm and Pb, respectively. 
-	On lower angles it is difficult to separate the lower solid line from the upper dotted line, but this is visible at higher angles.
+	At smaller angles it is difficult to separate the lower solid line from the upper dotted line, but this is visible at larger angles.
 	Underneath and outside the Pb area, the contaminant is displayed in yellow.
 	\textbf{(b)} The simulated kinematics, where the upper curve corresponds to Sm events and the lower curve corresponds to Pb events.
 	}
@@ -2369,13 +2366,12 @@ If there was anything wrong with the detector angles, it would not display lines
 Also the width of the lines indicates that the particle calibration is quite good. 
 If there were systematic deviations in the particle calibration, it would have shown up as irregularities in this plot.
 
-
 \begin{figure}[ht]
 	\centering
 	% GammaPlot.cpp
 	% beam_gated_dcB_gammas_core("setup_Coulex.txt", "d")
 	\includegraphics[width=\textwidth]{../Plots/plotting/B_dcB_cid.png}
-	\caption{Beam gated prompt, Doppler corrected \ga-rays. Core ID 20 is removed, see \autoref{sec:BDS}. \textcolor{red}{Perhaps add a similar plot for the source data (without DC of course)?}}
+	\caption{Beam gated prompt, Doppler corrected \ga-rays from \texttt{CLXAna}. Core ID 20 is removed, see \autoref{sec:BDS}. \textcolor{blue}{Perhaps add a similar plot for the source data (without DC of course)?} \textcolor{red}{This is not source data...}}
 	\label{fig:B_dcB_cid}
 \end{figure}
 
@@ -2396,7 +2392,10 @@ If there were systematic deviations in the particle calibration, it would have s
 
 
 \subsection{Doppler correction}\label{ssec:Doppler}
-\textcolor{red}{Minn leseren på hvorfor  vi trenger å gjøre Doppler igjen?}\newline
+The scattered beam particles travel with a significant velocity.
+When the particles de-excite, they emit \ga-rays which can be observed to have large Doppler shifts.
+To get the correct \ga\ energies, a Doppler correction must be performed.
+
 In order to perform the Doppler correction, the angles of the interaction points in the Miniball frame of reference has to be known. 
 \autoref{fig:HPGe} shows a sketch of the Miniball cluster geometry and the associated table gives the angles and distance of the different clusters.
 The parameters $\theta$, $\phi$ and $R$ describes the position of the central axis of the detector clusters, while $\alpha$ describes the orientation about the axis of the cluster. 
