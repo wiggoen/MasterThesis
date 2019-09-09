@@ -296,8 +296,8 @@ In the early 1800s, the first evidence-based theories started to be developed ar
 Still, it would take almost a 100 years before a model of the atom resembling our current theories was proposed and the nucleus was discovered. 
 
 In 1911, the famous so-called Rutherford experiment took place.
-At the suggestion of Ernest Rutherford did Hans Geiger and Ernest Marsden bombard $\alpha$-particles into a thin gold (metal) foil, and observed the scattering of the particles.
-Rutherford, Geiger and Marsden, expected the $\alpha$-particles to pass straight through the foil, with little deflection. 
+At the suggestion of Ernest Rutherford, Hans Geiger and Ernest Marsden bombarded $\alpha$-particles into a thin gold (metal) foil, and observed the scattering of the particles.
+Rutherford, Geiger and Marsden expected the $\alpha$-particles to pass straight through the foil, with little deflection. 
 They were surprised when this did not happen, the $\alpha$-particles were observed to have a large spread in scattering angles, sometimes over 90$^\circ$!
 To explain the astonishing results, the existence of a positively charged nucleus at the center of the atom was proposed. 
 
@@ -329,7 +329,7 @@ These series of numbers are one of the main features that shell structure is bui
 A single closed shell nucleus is a nucleus where either $Z$ or $N$ are a magic number, while for a doubly closed shell nucleus both $Z$ and $N$ are magic numbers. 
 
 Maria Goeppert Mayer discovered the magic numbers around 1945 from observation of periodicity in binding energy. 
-Around every magic number of neutrons or protons, the binding energy of a nucleus would fall. 
+Around / \textcolor{red}{At} every magic number of neutrons or protons, the binding energy of a nucleus would fall / \textcolor{red}{rise}. 
 She noticed that the nuclei with magic numbers had an extra binding energy compared to the predictions of the present model, the semi-empirical mass formula \cite{NR}. 
 The nuclear shell model could explain why nuclei with a magic number of protons or neutrons were unusually stable compared to the neighboring non-magic nuclei \cite{Mayer1964}. 
 She gave Walter Maurice Elsasser credits for being the first to remark that such numbers exists, from an article he wrote in 1933. 
@@ -339,7 +339,7 @@ He was the one to coin the term "magic numbers", in what is understood to be an 
 %He called these numbers "magic" \cite{Mayer1964, MIT-OCW}. 
 %The reason why the numbers are called magic numbers, is that a magic number of protons or neutrons makes the nucleus unusually stable compared to the neighboring non-magic nuclei \cite{Mayer1964}. 
 
-In addition to the nuclear shell model, there exist a multitude of different macroscopic and microscopic models to describe the nucleus. 
+In addition to the nuclear shell model, there exists a multitude of different microscopic and macroscopic models to describe the nucleus. 
 They all share the common goal of describing the various properties of nuclei, e.g. radius, mass, binding energy, spin, parity, electromagnetic moments and excited states.
 
 One of the goals of the present work is to study the nuclear shape of \Sm. \textcolor{red}{Fyll på med litt stoff...}
@@ -1621,7 +1621,7 @@ The main function of \texttt{kinsim3} looks like this
 \begin{lstlisting}[language=c++]
 kinsim3(Zb, Zt, Ab, At, thick, Eb, dEb, Ex, res, cd_dist, flat, Nevts, srim_dir)
 \end{lstlisting}
-where \textit{Zb} and \textit{Zt} is the proton number of the beam and target respectively, \textit{Ab} and \textit{At} is the mass number of the beam and target respectively, \textit{thick} is the target thickness in mg/cm$^2$, \textit{Eb} is the beam energy in MeV/u, \textit{dEb} is the spread of the beam energy in MeV/u, \textit{Ex} is the excitation energy in MeV, \textit{res} is the detector resolution in percent, \textit{cd\_dist} is the distance form the target to the CD in mm, \textit{flat} is the choice of a uniform or angular distribution, \textit{Nevts} is the number of events and \textit{srim\_dir} is the relative path of the SRIM directory.
+where \textit{Zb} and \textit{Zt} is the proton number of the beam and target respectively, \textit{Ab} and \textit{At} is the mass number of the beam and target respectively, \textit{thick} is the target thickness in mg/cm$^2$, \textit{Eb} is the beam energy in MeV/u, \textit{dEb} is the spread of the beam energy in MeV/u, \textit{Ex} is the excitation energy in MeV, \textit{res} is the detector resolution in percent, \textit{cd\_dist} is the distance form the target to the CD in mm, \textit{flat} is the choice of a uniform or angular distribution, \textit{Nevts} is the number of particle events and \textit{srim\_dir} is the relative path of the SRIM directory.
 
 \texttt{kinsim3} was run with the following commands in the terminal to do the simulation
 \begin{lstlisting}[language=sh]
@@ -1639,6 +1639,7 @@ There is of course also a chance for multi-step excitation at larger angles, so 
 In practice, it would only make a small difference if you were looking at a relatively light nucleus at high excitation energy.
 The resolution and the number of events were run with their default values.
 In this simulation the angular distribution was flat (uniform), meaning that the Rutherford cross section was not included. 
+Therefore, the relative intensity between the projectile and target peaks are not the same as in the experiment, but the simulated energies are realistic.
 
 To load \texttt{kinsim3} into ROOT, the \textbf{.L $<$filename$>$} command was used. Adding the '$++$' at the end, forces ROOT to compile the code. 
 After the simulation program was run, the file was moved and renamed with the \textbf{mv} command. 
@@ -1737,9 +1738,11 @@ By utilizing a built in ROOT fitting function, Gaussian or other, the centroids 
 On the front side of the CD, \autoref{eq:offset} and \autoref{eq:gain} can be used to calculate the calibration coefficients.
 From \autoref{eq:offset} and \autoref{eq:gain} we have more specifically
 \begin{align}\label{eq:GPandA}
-	g_p &= \frac{E_{\text{Sm}} - E_{\text{Pb}}}{n_{\text{Sm}} - n_{\text{Pb}}} &  a &= E_{Sm} - g_p \cdot n_{Sm}
+	g_p &= \frac{E_{\text{Sm}} - E_{\text{Pb}}}{n_{\text{Sm}} - n_{\text{Pb}}} 
+	&  
+	a &= E_{\rho} - g_p \cdot n_{\rho}
 \end{align}
-where the $g_p$ is the gain for the particle, $a$ is the offset and $n$ is the channel number.
+where the $g_p$ is the gain for the particle, $a$ is the offset, $n$ is the channel number and $\rho$ can be either Sm or Pb.
 For more than two centroids per strip, as the back side of the CD have, a linear regression method is used to find the best fit of the calibration coefficients.
 The linear regression method is using least squares of a 1st degree polynomial \cite{Polyfit} to fit a line that re-produces the centroid points as best as possible, where the slope corresponds to the gain and the constant term corresponds to the offset.
 
@@ -2203,105 +2206,66 @@ adc_3.TimeOffset:  5
 
 \subsection{Calibration of the \texorpdfstring{$\gamma$}{gamma} detectors}\label{ssec:gamma}
 
-\subsubsection*{\textcolor{red}{Rediger her.. Flytt til passende seksjoner...}}
-
-
-\bigskip
-
 The online calibration is designed in such a way that the calibration of the \ga\ detectors is quite acceptable in a certain energy range.
-
-
-During the setup of the experiment, a hardware calibration of the \ga\ detectors was performed. 
-The gains and offsets of each DGF were provided by the ISOLDE staff in such a way that the online analysis is more straightforward.
-However, there are non-linearities and drifting offsets and gains over time that have to be corrected for with a proper calibration.
+During the setup of the experiment, a hardware and software calibration of the \ga\ detectors was performed by the ISOLDE staff. 
+The gains and offsets of each DGF were provided in such a way that the online analysis is more straightforward.
+In addition, it is easier to monitor the data on-line.
+However, there are non-linearities and drifting offsets and gains over time that might have to be corrected for with a proper calibration.
 Therefore, a calibration run using \Ba\ and \Eu\ was performed at the end of the experiment.
 The \Ba\ and \Eu\ sources were placed in the target position simultaneously, back to back.
-In addition, the data from the calibration run can be used to determine the relative efficiency of the Miniball spectrometer. \textcolor{red}{omformuler denne setningen..}
+In addition, the data from the calibration run can be used to determine the relative efficiency of the Miniball spectrometer.
 
-
-\bigskip
-
-In the calibration run, there might be many \ga\ lines in both Eu and Ba. 
-Therefore, many data points can be used in the calibration.
-The fit can either be linear or quadratic, depending on the detector specification.
-
-From \autoref{eq:offset} and \autoref{eq:gain} we have more specifically
-\begin{align}\label{eq:GGandA}
-	g_\gamma &= \frac{E_{\text{Eu}} - E_{\text{Ba}}}{n_{\text{Eu}} - n_{\text{Ba}}} &  a &= E_{Eu} - g_\gamma \cdot n_{Eu}
-\end{align}
-
-
-
-
-\bigskip
-
-
-A \ga\ detector calibration was already performed during the experiment to be able to monitor the data on-line. 
 The quality of this calibration has been carefully checked.
 It was concluded to be very acceptable, meaning there was no need to improve on it. 
 \autoref{fig:gamma_comparison} displays all 144 \ga\ detector segments plotted on top of each other. 
 The alignment of the segments are very satisfactory.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{../Plots/comparing/gamma_comparison_full.png}
+	\caption{Comparison of all 144 \ga\ detector segments. 
+	Each of the 8 clusters has a different color.}
+	\label{fig:gamma_comparison}
+\end{figure}
 
 Similar to the particle calibration, the online \ga\ calibration was utilized in the present work. 
 The original thesis project included the calibration of the \ga\ detectors by means of an automatic fitting procedure.
 For reasons explained in \autoref{ssec:user_cal}, the fitting procedure was abandoned.
 Nonetheless, the expected program flow including the automatic fitting will be outlined in the following.
 
+In the calibration run, there are many \ga\ lines for both Eu and Ba. 
+Therefore, many data points can be used in the calibration.
+The fit can either be linear or quadratic, depending on the detector specification.
+A simple calibration, with only two centroids can be performed similarly to the particle detector calibration.
+From \autoref{eq:offset} and \autoref{eq:gain} we have more specifically
+\begin{align}\label{eq:GGandA}
+	g_\gamma &= \frac{E_{\text{Eu}} - E_{\text{Ba}}}{n_{\text{Eu}} - n_{\text{Ba}}} 
+	&  
+	a &= E_{\Gamma} - g_\gamma \cdot n_{\Gamma}
+\end{align}
+where $\Gamma$ can be either Eu or Ba.
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{../Plots/comparing/gamma_comparison_full.png}
-	\caption{Comparison of all 144 \ga\ detector segments. Each cluster has a different color.}
-	\label{fig:gamma_comparison}
-\end{figure}
 
 
-\bigskip
-
+In a similar manner to the particle detector calibration, the \ga\ detector calibration can be performed.
 The gray boxes in \autoref{fig:cal_FC} emphasizes the program flow of the \ga\ detector calibration. 
-
-In a similar manner to the particle detector calibration, the ...
-
-
-
 The idea is to use the \texttt{Q4S.sh} script to sort the experimental data with \texttt{TreeBuilder}.
-
-
 Then, the \ga\ histograms would have been analyzed by means of ROOT using the \texttt{GammaPlot.cpp} script.
-
-To perform the fitting, \texttt{GammaFit.cpp} would require the energy centroids as input.
-
-
-Currently, the Python scripts \texttt{DGF\_generator.py} and \texttt{Geometry\_generator.py} reproduces the calibration coefficients and geometry parameters from the online calibration. 
-
-These scripts need to be modified if a new calibration is performed.
-
-The final output of the \ga\ calibration would then have been pasted into the calibration file \textit{IS558-user.cal}.
-
-
-After the calibration coefficients and the geometry parameters are added to the calibration file, the \texttt{TreeBuilder} have to be re-run, utilizing the updated calibration file.
-
-The next step is to do a Doppler correction, as explained in  
-\autoref{ssec:Doppler}. 
-
-
-\texttt{CLXAna} applies the Doppler correction in order to get the Doppler-corrected \ga-spectra to analyze the Coulomb excitation of \Sm.
-
-
-\texttt{CLXAna} makes event trees and energy spectra for both particle and \ga\ detection which can be used for analyzing the Coulomb excitation events.
-
-
-\bigskip
-
-
 Histograms used for \ga\ detector calibration sorted by \texttt{TreeBuilder} use the naming convention $\textit{E\_gam\_seg}\_c\_d\_s$, where $c \in [0, 7]$ is the cluster number, $d \in [0, 2]$ is the detector number and $s \in [0, 6]$ is the segment number.
 The core signal is $s = 0$ as displayed in \autoref{fig:HPGe}.
 
+To perform the fitting, \texttt{GammaFit.cpp} would require the energy centroids as input.
+Currently, the Python scripts \texttt{DGF\_generator.py} and \texttt{Geometry\_generator.py} reproduces the calibration coefficients and geometry parameters from the online calibration. 
+These scripts need to be modified if a new calibration is performed.
+The final output of the \ga\ calibration would then have been pasted into the calibration file \textit{IS558-user.cal}.
+After the calibration coefficients and the geometry parameters are added to the calibration file, the \texttt{TreeBuilder} have to be re-run, utilizing the updated calibration file.
 
-\bigskip
+The next step is to run \texttt{CLXAna}.
+\texttt{CLXAna} applies the Doppler correction in order to get the Doppler-corrected \ga-spectra to analyze the Coulomb excitation of \Sm.
+The theory of the Doppler correction is explained in \autoref{ssec:Doppler}.
+%\texttt{CLXAna} makes event trees and energy spectra for both particle and \ga\ detection which can be used for analyzing the Coulomb excitation events.
 
-
-There are three methods of sorting the events from Miniball; singles, add-back and reject. 
+There are three methods of sorting the events from Miniball in \texttt{CLXAna}; singles, add-back and reject. 
 When applying the singles method, every \ga-ray entering a detector is counted as an event.
 There are no assumptions of Compton scattering in this kind of sorting. 
 This implies that some of the events counted as true events are in fact scattered \ga's corresponding to a different energy.
@@ -2319,53 +2283,21 @@ When applying the reject method for the sorting, all events occurring in neighbo
 The total statistics will therefore be smaller when the reject method is applied. 
 If the amount of total statistics is large, it is possible, or perhaps even an advantage to apply the reject method, as it will give a higher probability of getting the true full energy peaks of the detected \ga-rays. 
 
-
-
-
-
-
-
-
-As mentioned in \autoref{ssec:user_cal}, one line in the output from \texttt{Q4S.sh} using \texttt{TreeBuilder} was
-\begin{lstlisting}[language=]
-WeightPR: 0.75
-\end{lstlisting}
-This value is the one supposed to be used with the \textbf{-bg\_frac} input parameter when using \texttt{CLXAna}.
-Even though the WeightPR value is positive, the input parameter is supposed to be negative.  
-In this thesis, the input parameters used with \texttt{CLXAna} can be found in the \textit{config-IS558.dat} file.
-
-The first time \texttt{CLXAna} is run, every input parameter except \textbf{-cut} needs to be provided. 
-A plot \textcolor{red}{??? sier man histogram om et plott? eller er histogram kun 1D? har vært litt ukonsistent her. ???} of energy vs. LAB angle named "part" is needed in order to make the cut file, and this plot is found inside the \textit{.root}-file sorted by \texttt{CLXAna}.
-It would have been more logical to include this plot in \texttt{TreeBuilder}, but for some reason it is not. 
-There is also a plot named "part" inside the \textit{.root}-file sorted by \texttt{TreeBuilder}, but this contains energy vs. annular strip.
-To make the cut file, the "part" plot from the output file of \texttt{CLXAna} needs to be opened.
-It is also advised to use log scale on the $z$-axis, the draw option "colz" and to zoom into the correct area.
-From this plot, graphical cuts around the beam-like and target-like particles needs to be done separately. 
-After making the cuts, right click and SetName to set the names to "Bcut" and "Tcut" respectively. 
-Then right click and SaveAs, giving the name of a \textit{.root}-file of your choice for each cut separately. 
-The key is the \textit{.root} extension so that it knows which format to use. 
-In this thesis, the files were saved as \textit{Bcut.root} and \textit{Tcut.root} respectively.
-The two files can be added together using a ROOT program called \texttt{hadd}, which is used like this
-\begin{lstlisting}[language=]
-hadd outputfile.root input_file_1.root input_file_2.root 
-\end{lstlisting}
-If the files are supposed to be saved somewhere else, the absolute path can be given.
-With the cut files above, this step was done by
-\begin{lstlisting}[language=]
-$ cd ~/GitHub/ROOT-framework/build/bin
-$ hadd /Users/trondwj/GitHub/MasterThesis/Sorted_data/outputfile.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Bcut.root /Users/trondwj/GitHub/MasterThesis/Sorted_data/Tcut.root 
-\end{lstlisting}
-
-Now that the cut file is made, a second run of \texttt{CLXAna} can be performed. 
+\texttt{CLXAna} has to be run twice in order to complete the sorting correctly.
+In the first run, every input parameter except the graphical cuts have to be provided.
+\autoref{sec:CLXAna} goes through the details of the graphical cuts.
+When the graphical cut file is made, the second run of \texttt{CLXAna} can be completed. 
 In order to not copy and paste all command into the command line, a script named \texttt{Coulex.sh} was made to sort the data with \texttt{CLXAna}. 
-It uses the configuration file \textit{config-IS558.dat} and the cut file \textit{outputfile.root}. 
-In addition it takes one command line flag of the four different options of sorting the data
+It uses the configuration file \textit{config-IS558.dat} and the graphical cut file \textit{outputfile.root}. 
+In addition it takes one command line flag, specifying the sorting method:
 \begin{lstlisting}[language=]
 '-d' (default)
 '-s' (singles) 
 '-a' (addback) 
 '-r' (reject)
 \end{lstlisting}
+\textcolor{red}{As it turns out, the default and singles method are the same.}
+
 An example of running the script and the output given by \texttt{CLXAna} is shown below
 \begin{lstlisting}[language=]
 $ ./Coulex.sh -d
@@ -2398,16 +2330,12 @@ Warning in <TClass::Init>: no dictionary for class trevts is available
 1-particle events = 89020258%)    
 Finished.
 \end{lstlisting}
-As seen above, the cut file \textit{outputfile.root} is provided as  
-\begin{lstlisting}[language=]
-outputfile.root:Bcut:Tcut
-\end{lstlisting}
-The \textit{:Bcut:Tcut} ending are the names of the cuts in the file. The first cut is the beam-like and the second is the target-like. 
-These names can be chosen otherwise, but they must match the names set in the first step. 
+A detailed explanation of the input parameters is provided in \autoref{sec:CLXAna}.
 
-\autoref{fig:part_wcut} shows the cuts of the beam and target for the detected particle events. 
-These cuts are used in the Doppler correction of the \ga-rays. 
-\textcolor{red}{Hva mer kan jeg si?} 
+\autoref{fig:part_wcut} shows the cuts of the beam and target for the detected particle events as the solid and dotted lines. 
+These graphical cuts are used in the Doppler correction of the \ga-rays. 
+\textcolor{red}{comment on how much the light contaminant bothers you?} 
+
 
 \begin{figure}[htb]
 	\centering
@@ -2427,37 +2355,38 @@ These cuts are used in the Doppler correction of the \ga-rays.
 		\label{fig:kinsim}
 	\end{subfigure}
 	\caption{Detected and simulated particle events of \Sm\ on \Pb\ at 4.65 MeV/u in the LAB frame. Smaller angles corresponds to the inner rings and larger angles to the outer rings.
-	(a) Detected particle events. The upper curve marked inside the full lines is the Sm and the lower curve marked inside the dotted lines is the Pb. The contaminant is underneath the Pb area. 	
-	(b) Simulated kinematics. The upper curve is the Sm and the lower curve is the Pb.
+	\textbf{(a)} The data enclosed by the solid upper and dotted lower lines are the detected particle events of Sm and Pb, respectively. 
+	On lower angles it is difficult to separate the lower solid line from the upper dotted line, but this is visible at higher angles.
+	Underneath and outside the Pb area, the contaminant is displayed in yellow.
+	\textbf{(b)} The simulated kinematics, where the upper curve corresponds to Sm events and the lower curve corresponds to Pb events.
 	}
 	\label{fig:part_events}
 \end{figure}
 
 
+\autoref{fig:B_dcB_cid} shows that the Doppler correction works nicely.
+If there was anything wrong with the detector angles, it would not display lines at certain energies after the Doppler correction. 
+Also the width of the lines indicates that the particle calibration is quite good. 
+If there were systematic deviations in the particle calibration, it would have shown up as irregularities in this plot.
 
-
-\autoref{fig:B_dcB_cid} ... \textcolor{red}{what can I say about this plot?}
 
 \begin{figure}[ht]
 	\centering
 	% GammaPlot.cpp
 	% beam_gated_dcB_gammas_core("setup_Coulex.txt", "d")
 	\includegraphics[width=\textwidth]{../Plots/plotting/B_dcB_cid.png}
-	\caption{Beam gated prompt, Doppler corrected \ga-rays. Core ID 20 is removed, see \autoref{sec:BDS}.}
+	\caption{Beam gated prompt, Doppler corrected \ga-rays. Core ID 20 is removed, see \autoref{sec:BDS}. \textcolor{red}{Perhaps add a similar plot for the source data (without DC of course)?}}
 	\label{fig:B_dcB_cid}
 \end{figure}
 
 
-\autoref{tab:DGF}, \textcolor{red}{not sure how to make this table. How is the histogram names and the calibration coefficients linked? Not exactly straightforward.}
-
-\begin{table}[ht] 
-	\centering 
-	\caption{DGF}
-	\input{Table-data/DGF.tex}
-	\label{tab:DGF}
-\end{table}
-
-
+%\autoref{tab:DGF}, \textcolor{red}{not sure how to make this table. How is the histogram names and the calibration coefficients linked? Not exactly straightforward.}
+%\begin{table}[ht] 
+%	\centering 
+%	\caption{DGF}
+%	\input{Table-data/DGF.tex}
+%	\label{tab:DGF}
+%\end{table}
 
 %The Miniball spectrometer \cite{MB-spect} \newline
 %p. 8: \newline
@@ -2466,28 +2395,16 @@ These cuts are used in the Doppler correction of the \ga-rays.
 %The application of an add-back (AB) routine involves the summing of the energies of two coincident gamma rays within 100 ns in neighboring cores on the same cluster detector. This situation corresponds to a Compton-scattered \ga-ray event where the energy of the \ga-ray is shared between two or more crystals in the same triple cluster detector. For higher-energy \ga-rays, where scattering from one crystal into its neighbor is quite likely, this improves the efficiency, but for low-energy \ga-rays, where scattering is less likely, summing effects actually reduce the efficiency. For this reason a cut-off is normally applied and AB is only performed for energies above this threshold. \newline
 
 
-
-
-
-
-\autoref{ssec:Doppler} explains why it is important to know the geometry of the \ga\ detector setup.
-
-
-
 \subsection{Doppler correction}\label{ssec:Doppler}
-\textcolor{red}{Does this belong in the theory chapter?}\newline
-In order to perform the Doppler correction, the interaction point angles in the Miniball frame of reference has to be known. 
+\textcolor{red}{Minn leseren på hvorfor  vi trenger å gjøre Doppler igjen?}\newline
+In order to perform the Doppler correction, the angles of the interaction points in the Miniball frame of reference has to be known. 
 \autoref{fig:HPGe} shows a sketch of the Miniball cluster geometry and the associated table gives the angles and distance of the different clusters.
 The parameters $\theta$, $\phi$ and $R$ describes the position of the central axis of the detector clusters, while $\alpha$ describes the orientation about the axis of the cluster. 
-All these parameters are needed to calculate the position of the segments or the position of a point determined by the pulse-shape analysis. 
+All these parameters are required to calculate the position of the segments or the position of a point determined by the pulse-shape analysis, and have to be added to the calibration file. 
 The interaction point is determined either from the segment with the largest energy or using a pulse-shape analysis. 
-In the first case, the position of the center of each segment has to be known.
-In the second case, geometrical information to relate the time-to-steepest slope and ratio of the mirror charge amplitudes to the angle between the interaction point, the target and the emitted particle need to be known. 
-This is built into \texttt{MiniballCoulexSort}, which does the geometrical calculations. 
-The geometry parameters of the Miniball clusters has to be written into the calibration file. 
-
-
-
+%In the first case, the position of the center of each segment has to be known.
+%In the second case, geometrical information to relate the time-to-steepest slope and ratio of the mirror charge amplitudes to the angle between the interaction point, the target and the emitted particle need to be known. 
+These geometrical calculations are built into \texttt{MiniballCoulexSort}.
 
 Because of the significant velocity of the scattered particles, the emitted \ga-rays from the particle de-excitation has a Doppler shifted \ga\ energy given by 
 \begin{equation}\label{eq:DS}
@@ -2497,7 +2414,7 @@ where $E_\gamma$ is the \ga\ energy detected in the LAB frame, $E_\gamma^{'}$ is
 \begin{equation}\label{eq:DSA}
 	\cos \theta = \sin \theta_p \sin \theta_\gamma \cos (\phi_p - \phi_\gamma) + \cos \theta_p \cos \theta_\gamma
 \end{equation}
-where ($\theta_p, \phi_p$) and ($\theta_\gamma, \phi_\gamma$) are the detection angles of the particle and \ga-ray respectively, ($\theta_p, \theta_\gamma$) are the angles with respect to the beam axis and ($\phi_p, \phi_\gamma$) are the azimuthal angles \textcolor{red}{??? er det forståelig hva azimuthal angles er ???} \cite{RIBF2012, MB-spect}. The Doppler correction factor is found by combining \autoref{eq:DS} and \autoref{eq:DSA} into
+where ($\theta_p, \phi_p$) and ($\theta_\gamma, \phi_\gamma$) are the detection angles of the particle and \ga-ray respectively, ($\theta_p, \theta_\gamma$) are the angles with respect to the beam axis and ($\phi_p, \phi_\gamma$) are the azimuthal angles \cite{RIBF2012, MB-spect}. The Doppler correction factor is found by combining \autoref{eq:DS} and \autoref{eq:DSA} into
 \begin{equation}
 	\frac{E_\gamma^{'}}{E_\gamma} = \gamma (1 - \beta (\sin \theta_p \sin \theta_\gamma \cos (\phi_p - \phi_\gamma) + \cos \theta_p \cos \theta_\gamma))
 \end{equation}
@@ -2507,28 +2424,60 @@ where ($\theta_p, \phi_p$) and ($\theta_\gamma, \phi_\gamma$) are the detection 
 
 
 \subsection{Broken detector segments}\label{sec:BDS}
+
+Si detectors are known to obtain deficiencies when they are old due to the bombardment of the particles from several experiments.
+In fact, the CD was scheduled to be replaced after our experiment. 
+As a result of the kinematics of the setup, the innermost ring of the CD is the most vulnerable as it receives the highest energy impact. 
+As presented in \autoref{fig:BDS_R1}, it is not possible to separate the beam and target peaks of ring number 1. 
+For this reason, all counts obtained in ring number 1 was removed entirely from the data set.
+This was very unfortunate since the innermost ring collected the most statistics.
+
 As \autoref{fig:EFBQ4} shows, the calibration of the CD got better by removing the innermost ring. 
-The most visibly lines which did not fit $y = x$ vanished, implying that most of the problem was in fact the coefficients of ring 1. \textcolor{red}{Finn passende plassering..}
+The most visibly lines which did not fit $y = x$ vanished, implying that most of the problem was in fact the coefficients of ring 1.
 
-\bigskip
+On the back side of the CD, one pixel had an abnormal behavior compared to the other back strips in the same quadrant. 
+Presented in \autoref{fig:BDS_B1}, radial strip 1 (B1) gated on annular strip 16 in quadrant 4 showed a lot more counts than all of the other strips combined. 
 
+In addition, there were several other incidents where B1 presented an irregular behavior, though not as striking as the case discussed above.
+We considered to exclude B1 from the data set, but given that the pixel are in the outermost region of the CD, not giving loads of counts, we decided not to.
+There were not any visible effects in \autoref{fig:EFBQ4} by keeping B1.
 
-The innermost ring of the CD was very damaged by the bombardment of particles hitting it, so it had to be removed from the data set. 
-It was impossible to separate the beam and target peaks as shown by \autoref{fig:BDS_R1}.
-This was unfortunate since ring 1 has the most statistics. 
-Si detectors don't last forever, it was "old" and supposed to be changed after our experiment. 
-The inner ring is the most vulnerable because of the high energy impact. 
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 1, 1, 1, 0, 2500, 8000)
+		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q1_F1.png}
+		\caption{}
+		\label{fig:BDS_R1}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		% ParticlePlot.cpp
+    		% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
+		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
+		\caption{}
+		\label{fig:BDS_B1}
+	\end{subfigure}
+	\caption{Broken detector strips in the CD.
+	(a) Ring 1 in quadrant 1. It is impossible to separate \Pb\ from \Sm.
+	(b) CD back strip 1 gated on front ring 16 (outermost ring) in quadrant 4. B1 shows a lot more counts than the other strips arount channel 800.}
+	\label{fig:BDS}
+\end{figure}
 
-On the back side of the CD, one pixel was acting weird compared to the other back strips in the same quadrant. 
-Radial strip 1 (B1) gated on annular strip 16 in quadrant 4 showed a lot more counts than all of the other strips as shown by \autoref{fig:BDS_B1}. 
-There was also other rings where B1 was a bit off, but not nearly as much as in the named pixel. 
-Maybe B1 should have been excluded from the data set, but it was not in this thesis.
-
-In \autoref{fig:B_dcB_cid}, core ID 20 was removed because it was a broken segment. 
-Core ID 15 shows fewer counts than the neighbors, this is because it was a crosstalk issue involving a dead segment in detector 18A (cluster 5, core 0, segment 1 and 2). 
+From earlier experiments, the ISOLDE staff had observed a few broken detector segments of the \ga\ detector.
+In \autoref{fig:B_dcB_cid}, core ID 20 was removed due to a broken segment. 
+In addition, Core ID 15 displays fewer counts than the neighboring detectors.
+This is due to a crosstalk issue involving a dead segment in detector 18A (cluster 5, core 0, segment 1 and 2). 
 Crosstalk is the phenomenon where a signal transmitted on one channel creates an undesired effect in another channel. 
-It means that some events had to be vetoed to avoid double-peaking, and this reduces the efficiency.
+It means that some events had to be rejected.
+% to avoid double-peaking, and this reduces the efficiency.
 
+In order to exclude a detector segment, the gain and offset is simply set to -1, or the gain is set to 0 and the offset to -1.
+It causes the energy calibration to become negative, and the faulty detector segment falls out of the scope. 
+%It is the way it is usually done for dead CD strips or dead \ga\ detectors. 
 
 
 %\begin{figure}[ht]
@@ -2558,39 +2507,6 @@ It means that some events had to be vetoed to avoid double-peaking, and this red
 %		\caption{CD back strip 1 gated on front ring 16 (outermost ring) in quadrant 4. B1 shows a lot more counts than the other strips arount channel 800.}
 %		\label{fig:BDS_B1}
 %\end{figure}
-
-
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% ParticlePlot.cpp
-		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 1, 1, 1, 0, 2500, 8000)
-		\includegraphics[width=\textwidth]{../Plots/plotting/TB_Q1_F1.png}
-		\caption{}
-		\label{fig:BDS_R1}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[t]{0.49\textwidth}
-		\centering
-		% ParticlePlot.cpp
-    		% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
-		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
-		\caption{}
-		\label{fig:BDS_B1}
-	\end{subfigure}
-	\caption{Broken detector strips in the CD.
-	(a) Ring 1 in quadrant 1. It is impossible to separate \Pb\ from \Sm.
-	(b) CD back strip 1 gated on front ring 16 (outermost ring) in quadrant 4. B1 shows a lot more counts than the other strips arount channel 800.}
-	\label{fig:BDS}
-\end{figure}
-
-
-
-
-Excluding detector strips is easy, the only thing to do is to set gain and offset to $-1$, or gain to $0$ and offset to $-1$. 
-That will make the energy calibration negative, and fall out of the scope. 
-It is the way it is usually done for dead CD strips or dead \ga\ detectors. 
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
@@ -3144,7 +3060,9 @@ export PATH=$HOME/GitHub/Miniball/MiniballCoulexSort/bin:$PATH
 The DYLD\_LIBRARY\_PATH is used on Mac only. On other systems, use \newline LD\_LIBRARY\_PATH instead. You need to locate the \textit{lib} and \textit{bin} folders for both ROOT and \textsl{MiniballCoulexSort} and change them to fit your system, and in addition you need the build folder of your ROOT install.
 
 
-\section{CLXAna}
+\section{CLXAna}\label{sec:CLXAna}
+
+\subsection{Input parameters}
 All input parameters for \texttt{CLXAna} are stated in the GitHub repository of \textsl{MiniballCoulexSort}, but they are not explained in detail. 
 From private communications with Dr. Liam Gaffney, the purpose of several input parameters have been clarified. 
 The compilation parameters may be summarized as:
@@ -3168,6 +3086,43 @@ The compilation parameters may be summarized as:
 	Now, a weighted fraction of the background spectrum can be subtracted from the prompt spectrum, to get rid of uncorrelated background, such as $\beta$-decay that is in random coincidence with particles. 
 	The fraction needed to subtract depends on the width of the time window.
 \end{description}
+
+As mentioned in \autoref{ssec:user_cal}, one line in the output from \texttt{Q4S.sh} using \texttt{TreeBuilder} was
+\begin{lstlisting}[language=]
+WeightPR: 0.75
+\end{lstlisting}
+This value is the one supposed to be used with the \textbf{-bg\_frac} input parameter when using \texttt{CLXAna}.
+Even though the WeightPR value is positive, the input parameter is supposed to be negative.  
+
+
+\subsection{Graphical cuts}
+In this thesis, the input parameters used with \texttt{CLXAna} is found in the \textit{config-IS558.dat} file.
+The first time \texttt{CLXAna} is run, every input parameter except \textbf{-cut} needs to be provided. 
+A plot of energy vs. LAB angle named "part" is needed in order to make the cut file, and this plot is found inside the \textit{.root}-file sorted by \texttt{CLXAna}.
+The reason for this is that CLXAna makes a kinematic reconstruction to get the angle of the particles.
+This can only be done in the last part of the sorting.
+This is why we only get particles against strips from \texttt{TreeBuilder}.
+
+There is also a plot named "part" inside the \textit{.root}-file sorted by \texttt{TreeBuilder}, but this contains energy vs. annular strip.
+To make the cut file, the "part" plot from the output file of \texttt{CLXAna} needs to be opened.
+It is also advised to use log scale on the $z$-axis, the draw option "colz" and to zoom into the correct area.
+From this plot, graphical cuts around the beam particle and target particle events needs to be done separately. 
+After making the cuts, right click and SetName to set the names to "Bcut" and "Tcut" respectively. 
+Then right click and SaveAs, giving the name of a \textit{.root}-file of your choice for each cut separately. 
+The key is the \textit{.root} extension so that it knows which format to use. 
+In this thesis, the files were saved as \textit{Bcut.root} and \textit{Tcut.root} respectively.
+The two files can be added together using a ROOT program called \texttt{hadd}, which is used like this
+\begin{lstlisting}[language=]
+hadd outputfile.root input_file_1.root input_file_2.root 
+\end{lstlisting}
+
+As seen in the output of the \texttt{CLXAna} run in \label{ssec:gamma}, the cut file \textit{outputfile.root} is provided as  
+\begin{lstlisting}[language=]
+outputfile.root:Bcut:Tcut
+\end{lstlisting}
+The \textit{:Bcut:Tcut} ending are the names of the cuts in the file. 
+The first cut is the beam particles and the second is the target particles. 
+These names can be chosen by the user, but they must match the names set in the graphical cuts. 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
@@ -3196,7 +3151,12 @@ The compilation parameters may be summarized as:
 
 
 \chapter{CD simulation}\label{ch:cd_sim}
-On the next page, the CD simulation is showed for each ring. Ring 1 is the innermost ring and ring 16 is the outermost ring. The plots show simulated counts vs. energy, where the first peak (lower energy) is the \Pb\ and the second peak (higher energy) is \Sm. The plots were grabbed from the \textit{.root}-file by the commands
+On the next page, the CD simulation without Rutherford cross section is shown for each ring. 
+Ring 1 is the innermost ring and ring 16 is the outermost ring. 
+The plots show simulated counts vs. energy, where the first peak (lower energy) is the \Pb\ and the second peak (higher energy) is \Sm. 
+%In the simulation, the Rutherford cross section was not included. 
+%The relative intensity between the projectile and target peaks is therefore not the same as in the experiment, but the simulated energies are realistic.
+The plots were grabbed from the \textit{.root}-file by the commands
 
 \begin{lstlisting}[language=sh]
 $ cd ~/GitHub/MasterThesis/Scripts/plotting
@@ -3219,12 +3179,11 @@ root [1] simulation_fit("setup_Sm.txt")
 For the Si dead layer in \texttt{kinsim3}, the SRIM files must have units of MeV/mm. 
 If units of MeV/cm$^2$ are used, the distance on line 359 in \texttt{kinsim3} needs to be changed to the correct units. 
 The correction factor is at the bottom of the SRIM file.
-Line 358 and 359 in \texttt{kinsim3} reads
+Line 358 and 359 in \texttt{kinsim3}, where the factor needs to be changed, reads
 \begin{lstlisting}[language=c++]
 // Correct for dead layer loss
 dist = TMath::Abs( 0.0007 / TMath::Cos( TTh ) );
 \end{lstlisting}
-where the factor needs to be changed.
 
 
 \includepdf[pages={-}, angle=270]{../Plots/simulation/cd_sim_all.pdf}
