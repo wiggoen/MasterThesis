@@ -393,7 +393,7 @@ With a new experiment, it will also be easier to interpret the nuclear shape of 
 For the present experiment, no normalization of the transition probabilities were required.
 From the previous experiment \cite{Klintefjord2016} and from lifetime measurements \cite{BelloGarrote2015}, the $B(E2, 0_1^+ \rightarrow 2_1^+$) value of \Sm\ was obtained. 
 This can be used to normalize the transition probabilities for the higher-lying transitions.
-\textcolor{red}{Skal jeg gi $B(E2, 0_1^+ \rightarrow 2_1^+$) verdien eksplisitt?}
+\textcolor{red}{Skal jeg gi $B(E2, 0_1^+ \rightarrow 2_1^+$) verdien eksplisitt? Jeg gir den i resultat-kap.}
 
 The goal of the master thesis is to analyze the data from the experiment which was conducted between 8th and 14th of August in 2017.  
 The experiment from 2017 had the experiment code IS558 and was titled \textit{Shape Transition and Coexistence in Neutron-Deficient Rare Earth Isotopes}.
@@ -686,8 +686,8 @@ In \autoref{ch:scattering}, a calculation of the two-particle elastic collision 
     \caption{Scattering of \Sm\ on \Pb\ with beam energy 4.65 MeV/u.
     Calculations are done with the LISE++ \cite{LISE} kinematics calculator with a reaction from the middle of the target.
     The LAB and CM frame angles are based on the LAB input angles from $\theta_b$ and $\theta_t$. 
-    In (b) there are angles marked with red color. 
-    These are overlapping with the CM angles in (a), making a total of 24 unique angles in the CM frame.}
+    In \textbf{(b)} there are angles marked with red color. 
+    These are overlapping with the CM angles in \textbf{(a)}, making a total of 24 unique angles in the CM frame marked in black.}
 	\label{tab:scattering}
     \begin{subtable}{0.45\textwidth}
     		\centering
@@ -2512,16 +2512,41 @@ It causes the energy calibration to become negative, and the faulty detector seg
 $\bullet$ Motivation: to explain what is known, and which transition probabilities you want to measure. Perhaps also to explain what theory predicts. \newline
 $\bullet$ Discussion: if you get \ga-spectrum for \Sm\ $\rightarrow$ to explain what you see.}
 
+\bigskip
+
 From the previous experiment, the $B(E2)$ values at low-lying states was obtained.
+A lifetime measurement of the $2_1^+$ state also gave the $B(E2)$ value.
+
+\begin{table}[htb] 
+    \centering 
+    \caption{Known $B(E2)$ values with corresponding errors, from \cite{Klintefjord2016, BelloGarrote2015}. TNA (LNA) is an acronym for Target (Lifetime) Normalization Approach. LM is an acronym for Lifetime Measurement.}
+	\input{Table-data/BE2.tex}
+	\label{tab:BE2}
+\end{table}
+
+From \cite{Klintefjord2015} the spin values of the 990 keV and 1599 keV levels was corrected to $2^+$ and $0^{(+)}$, respectively.
+
+\bigskip
 
 From the present experiment it is expected that excited sates up to $8^+$ is populated. 
 \autoref{tab:gamma_trans} displays the known \ga\ transitions for excited \Sm\ up to the $8^+$ state.
-
-\autoref{fig:levels} displays the level scheme for all known levels of \Sm\ up to the $8^+$ state at 2970 keV. 
+\autoref{fig:levels} displays the level scheme based on \autoref{tab:gamma_trans} for all known levels of \Sm\ up to the $8^+$ state at 2970 keV. 
 Many of the states, but not all, are visible in \autoref{fig:gam_dcB}. 
 There are different reasons for this, \ga\ transitions over 2000 keV are not visible because the histogram only shows energies up to this value.
 Some of the transitions are so low in energy that they disappear inside the Compton continuum.
-Other reasons might be that the excitation probability for the states are low, and thereby the states are not reached, or that the transition intensity is so low that there are almost no counts.
+The excitation probability for some of the states are low, and thereby the states are not reached.
+There might also be states with a low transition intensity leading to very few counts, especially at higher energy.
+
+\autoref{fig:gam_dcB} displays the \ga\ spectrum obtained from \texttt{CLXAna}. 
+A lot of the \ga\ transitions in \autoref{fig:levels} are visible in the spectrum, marked by the black arrows.
+The green arrows marks some of the energy levels in the level scheme, this is a combination of two \ga\ transitions, i.e. a summing of the peaks.
+At very low energy, below the Compton continuum, a peak of \Pb\ x-rays are visible. 
+\textcolor{red}{Hvorfor ser vi disse igjen?}
+
+The transition probabilites, i.e. $B(E2)$, are relatively strong in the ground state band. 
+
+The $0_2^+$ and $0_3^{(+)}$ states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence. 
+
 
 
 \begin{table}[htb] 
@@ -2534,10 +2559,7 @@ Other reasons might be that the excitation probability for the states are low, a
 \end{table}
 
 
-\autoref{fig:gam_dcB} ...
-The transition probabilites, $B(E2)$, are relatively strong in the ground state band. 
 
-The $0_2^+$ and $0_3^{(+)}$ states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence. 
 
 
 
@@ -2547,14 +2569,18 @@ The $0_2^+$ and $0_3^{(+)}$ states can tell us about the shape of the nucleus, i
 	% total_statistics("setup_Coulex.txt", "d")
 	% total_statistics_s_and_a()
 	\includegraphics[width=\textwidth]{../Plots/plotting/gam_dcB_s_and_a.png}
-	\caption{Total statistics for \ga-rays, background subtracted, Doppler corrected for scattered projectile. The blue curve is sorted with singles, and the red curve is sorted with add-back. The green arrows marks some of the energy levels in the level scheme, this is a combination of two or more \ga\ transitions.}
+	\caption{Background subtracted \ga\ spectrum, Doppler corrected for the scattered projectile (the beam).
+	 The blue (red) \ga\ spectrum corresponds to sorting with singles (add-back) in \texttt{CLXAna}.
+	 See text for more information.}
 	\label{fig:gam_dcB}
 \end{figure}
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{Images/Level-scheme-140Sm-v2.png}
-	\caption{Level scheme for \Sm\ based on \cite{Klintefjord, NNDC-levels}. The energies are given in keV and are rounded to the nearest integer.}
+	\caption{Level scheme for \Sm\ based on \cite{Klintefjord, NNDC-levels}. 
+	The energies for the levels and transitions are in keV and are rounded to the nearest integer.
+	See text for more information.}
 	\label{fig:levels}
 \end{figure}
 
@@ -2570,6 +2596,55 @@ The $0_2^+$ and $0_3^{(+)}$ states can tell us about the shape of the nucleus, i
 	\caption{\ga-\ga\ matrix Doppler corrected for beam.}
 	\label{fig:gg_dcB}
 \end{figure}
+
+
+
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Plots/plotting/Projections-combined/B_dcB_x-ProjY_2-4_combined}
+		\caption{}
+		%\label{fig:???}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Plots/plotting/Projections-combined/B_dcB_x-ProjY_5-8_combined}
+		\caption{}
+		%\label{fig:???}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Plots/plotting/Projections-combined/B_dcB_x-ProjY_9-12_combined}
+		\caption{}
+		%\label{fig:???}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Plots/plotting/Projections-combined/B_dcB_x-ProjY_13-16_combined}
+		\caption{}
+		%\label{fig:???}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Plots/plotting/Projections-combined/T_dcB_x-ProjY_5-8_combined.png}
+		\caption{}
+		%\label{fig:???}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Plots/plotting/Projections-combined/T_dcB_x-ProjY_2-4_combined.png}
+		\caption{}
+		%\label{fig:???}
+	\end{subfigure}
+	\caption{\textbf{(a)-(d)} shows when the beam particle hits the CD in the LAB angle, while \textbf{(e)-(f)} shows when the target hits the CD in the LAB angle. Combined they cover the angle range of the beam in the CM frame $\theta_b^{'} \in [36.6^\circ, 136.0^\circ]$.}
+	\label{fig:projections}
+\end{figure}
+
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------

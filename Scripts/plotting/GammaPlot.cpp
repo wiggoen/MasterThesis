@@ -291,8 +291,84 @@ void dcB_x_ProjY(std::string setup_file, std::string sorting, bool is_beam) {
     gPad->SetBottomMargin(margin_size);
     gPad->SetLogy();                              // Log-scale on z-axis
 
-    canvas->SaveAs(Form("../../Plots/plotting/dcB_ProjY/%s-ProjY-%d.png", histogram_name.c_str(), i+1));
+    canvas->SaveAs(Form("../../Plots/plotting/Projections-single/%s-ProjY-%d.png", histogram_name.c_str(), i+1));
   }
+}
+
+
+void dcB_x_ProjY_combine(std::string setup_file, std::string sorting, bool is_beam, int bin1, int bin2) {
+  /*
+      Plotting data sorted by CLXAna.
+      Collects the histogram of beam/target gated by lab angle, background 
+      subtracted gamma-rays, Doppler corrected for scattered projectile, 
+      and performs a projection of y-axis.
+
+      Choose which sorting type to use: 
+      "d" for default, "s" for singles, "a" for add back, "r" for reject.
+      Choose to use beam gated or target gated.
+      Use true, 1 or any number for beam gated spectra.
+      Use false or 0 for target gated spectra.
+
+      Bins start counting from 2.
+  */
+  if (bin1 > bin2) {
+    std::cout << "First bin is larger than second bin." << std::endl;
+  }
+
+  if ( !(bin1 >= 2 && bin1 <= 16) && !(bin2 >= 2 && bin2 <= 16) ) {
+    std::cout << "Invalid option. Choose between bin 2-16." << std::endl;
+  }
+
+  std::string input_file = get_input_file(setup_file, sorting);
+
+  TFile *infile = new TFile(input_file.c_str(), "UPDATE");
+  TCanvas *canvas = nullptr;
+  std::string canvas_name;
+  TH2F *histogram = nullptr;
+  std::string histogram_name;
+  int beam_or_target = 0;
+
+  float label_size = 0.05;
+  float margin_size = 0.13;
+
+  canvas_name = Form("dcB_x");
+  canvas = new TCanvas(canvas_name.c_str(), canvas_name.c_str(), 1280, 800);
+
+  if (is_beam) {
+    histogram_name = Form("B_dcB_x");
+  } else {
+    histogram_name = Form("T_dcB_x");
+    beam_or_target = 1;
+  }
+  histogram = (TH2F *)infile->Get(histogram_name.c_str());
+
+  std::string angle[16] = {"22", "26", "29.1", "32.2", "35.2", "37.9", "40.4", "42.8", 
+                           "45.0", "47.1", "49.0", "50.7", "52.4", "53.9", "55.3", "56.7"};
+
+  std::string CM_angle[2][16] = 
+  {
+    {"36.6", "43.2", "48.2", "53.3", "58.1", "62.4", "66.3", "70.1", "73.5", "76.7", "79.6", "82.1", "84.7", "86.9", "88.9", "91.0"},
+    {"136.0", "128.0", "121.8", "115.6", "109.6", "104.2", "99.2", "94.4", "90.0", "85.8", "82.0", "78.6", "75.2", "72.2", "69.4", "66.6"}
+  };
+
+  TH1D *Y_projection = histogram->ProjectionY(" ", bin1, bin2);
+  Y_projection->SetTitle(Form("LAB: %s[%s-%s deg], CM: B[%s-%s deg]", histogram_name.substr(0, 1).c_str(), angle[bin1-2].c_str(), angle[bin2-1].c_str(),
+                              CM_angle[beam_or_target][bin2-1].c_str(), CM_angle[beam_or_target][bin1-2].c_str())); // Changing titles
+  Y_projection->Draw();
+
+  Y_projection->SetStats(0);                      // Remove stats
+  Y_projection->SetLabelSize(label_size, "xyz");  // Label size for x-, y- and z-axis
+  Y_projection->SetTitleSize(label_size, "xy");   // Text size for x- and y-axis
+  Y_projection->GetYaxis()->SetTitle("Counts");   // Change y-axis title
+  Y_projection->GetYaxis()->SetTitleOffset(0.9);  // Move y-axis text a little closer
+  gStyle->SetTitleSize(label_size, "t");          // Title size
+  //gStyle->SetStatFontSize(0.04);                  // Stats font size
+  gPad->SetLeftMargin(margin_size);
+  gPad->SetRightMargin(margin_size);
+  gPad->SetBottomMargin(margin_size);
+  gPad->SetLogy();                              // Log-scale on z-axis
+
+  canvas->SaveAs(Form("../../Plots/plotting/Projections-combined/%s-ProjY_%d-%d_combined.png", histogram_name.c_str(), bin1, bin2));
 }
 
 
