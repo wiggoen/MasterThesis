@@ -493,6 +493,9 @@ where $A$ is the mass number and $u$ is the atomic mass unit.
 
 The goal of the master thesis is to analyze Coulomb excitation data of \Sm\ from an experiment at CERN-ISOLDE in 2017. The details of the experiment is outlined in \autoref{sec:exp_setup}. 
 
+\bigskip
+
+\textcolor{red}{A goal of the thesis is to document and make the procedure of the data analysis more transparent.}
 
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
@@ -1327,7 +1330,7 @@ The shapes of these signals are analyzed to provide information about the energy
 \end{figure}
 
 
-\section{The data acquisition system}
+\section{The data acquisition system}\label{sec:DAQ}
 Signals from the CD and the HPGe clusters are read out by the ADC, TDC and Digital Gamma Finder (DGF) modules and sent to a Personal Computer (PC) in the Data AcQuisition (DAQ) room at ISOLDE. 
 The data is then stored in a PC. 
 The ADCs and DGFs record an energy and a time-stamp with 25 ns ticks. 
@@ -1387,8 +1390,7 @@ With these records, a full reconstruction of the real events and coincidences ar
 \epigraph{\textit{"Not everything that can be counted counts, and not everything that counts can be counted."}}{\textit{– William Bruce Cameron}}
 
 
-In this chapter, the various programs and scripts applied in the detector calibration and data analysis will be introduced. 
-\textcolor{red}{Not only scripts, but also the method in general is introduced.}
+In this chapter, the general methods of the calibration and data analysis will be outlined. In addition, the various programs and scripts applied in the detector calibration and data analysis will be introduced. 
 Scripts developed in the present thesis work for the fitting procedures were inspired by scripts written by Ville Virtanen\footnote{Ville Virtanen is a student from University of Jyväskylä.} and Dr. Liam Gaffney\footnote{Dr. Liam Gaffney is a research fellow at ISOLDE, affiliated with Miniball.}. 
 The codes have been further developed and heavily re-written in the current work. 
 Presently, the code has only a minor resemblance to the original code. 
@@ -1396,54 +1398,30 @@ The remaining Python and bash scripts are written and developed by the author.
 All of the scripts written in C/C++ are dependent on the ROOT 6 framework \cite{ROOT}, a C/C++ data analysis framework developed and maintained at CERN.
 
 Information about the computer setup and environment used in this thesis can be found in \autoref{a:computer_environment}. In the appendix there is also a section containing the relative path of programs, scripts and files.
-
 All scripts and programs developed in this work are available in the authors GitHub repository \cite{GH-repo}.
 
 
 \section{Data handling}
 The goal of the data analysis is to obtain Doppler-corrected \ga-spectra with various conditions on particles and angles, in order to analyze the Coulomb excitation of \Sm. 
-\textcolor{red}{mangler myk overgangssetning..}
+Before the required information can be extracted from the experimental data, all of the particle and \ga-ray detectors have to be calibrated.
+However, the calibration cannot be performed without proper data handling first.
+
+As described in \autoref{sec:DAQ}, all of the information corresponding to the experiment are handled by the data acquisition and stored in large data files. 
 Generally speaking, the raw data files from Miniball experiments are formatted in so-called "list mode", where every new line contains the identification, energy and time of one single event\footnote{In truth, the format contains more information, identifying where the particle and \ga-ray hit the detectors.}.
 %The format is not entirely correct, since it has identification of where the particle and \ga\ hit. 
 %A more detailed format is: identification, time, particle energy (front strip, back strip), \ga\ energy (cluster, crystal, segment), etc.
 All of the experimental data is stored in \textit{.med}-files, also known as Miniball Event Data, with a standard file naming convention. 
 For example, \textit{140Sm\_208Pb\_pos6\_xyz.med} is the file name for the current experiment. 
-Here \textit{x}, \textit{y} and \textit{z} are numbers between 0 and 9 which together tells the run number of the data acquisition. 
-The \textit{140Sm\_208Pb} refers to the beam and secondary target and \textit{pos6} means that the target wheel uses position 6 for the secondary target, see \autoref{fig:TWheel}.
-A general rule of data acquisition is to split the data over several run files to limit the file size and the probability of corrupt files or data loss.
-
-%\begin{lstlisting}[language=]
-%$ cd ~/GitHub/MasterThesis/Raw_data/Sm
-%$ root 140Sm_208Pb_pos6_008_OnBeam.root
-%root [1] tr->Show(10)
-%======> EVENT:10
-% Event           = (BuiltEvent*)0x7f8db0469010
-% fUniqueID       = 0
-% fBits           = 33554432
-% ebisTime        = 16936792
-% t1Time          = 0
-% superCycleTime  = 65948
-% eventNumber     = 100
-% subEventNumber  = 12
-% dgfData         = (vector<DgfData>*)0x7f8db04690c0
-% dgfData.fUniqueID = 0
-% dgfData.fBits   = 33554432
-% dgfData.fModuleNumber = 18
-% dgfData.fChannel = 0
-% dgfData.fMultiplicity = 1
-% dgfData.fEventTime = 40774
-% dgfData.fEnergy = 583
-% dgfData.fFastTriggerTime = 40799
-% dgfData.fLongFastTriggerTime = 16949087
-% dgfData.fUserValues[6] = 26112 , 60811 , 32766 , 0 , 38240 , 60811
-%\end{lstlisting}
+Here \textit{x}, \textit{y} and \textit{z} are numbers between 0 and 9 which together gives the run number of the data acquisition. 
+The expression \textit{140Sm\_208Pb} refers to the beam and secondary target, and \textit{pos6} means that the target wheel uses position 6 for the secondary target, see \autoref{fig:TWheel}.
+A general rule of the data acquisition is to split the data over several run files to limit the file size, and the probability of corrupt files or data loss.
 
 For Miniball experimental data, the preferred sorting and analysis code is \textsl{MiniballCoulexSort} \cite{MBCS}.
 The code has been developed by several contributors from the Miniball collaboration over the years. 
 Unfortunately, both the procedure and the code is lacking documentation, making it quite time demanding to learn how to run the code and to understand how it works.
-\textcolor{red}{A goal of the thesis is to document and make the procedure more transparent.}
-Now it is under constant development at CERN-ISOLDE under the management of Dr. Liam Gaffney. 
-The main steps of how to download, install\footnote{If the \textbf{make} step fails, try doing a \textbf{make clean} and then \textbf{make}. The program might think that it is already built.} and use \textsl{MiniballCoulexSort} is outlined in the \textit{README.md} file in the GitHub repository of Miniball \cite{MBCS}. 
+A goal of this thesis is to document and make the procedure more transparent.
+Currently is \textsl{MiniballCoulexSort} under constant development at CERN-ISOLDE under the management of Dr. Liam Gaffney. 
+The main steps of how to download, install\footnote{If the \textbf{make} step fails, try doing a \textbf{make clean} and then \textbf{make}. The program might think that it has already been built.} and use \textsl{MiniballCoulexSort} is outlined in the \textit{README.md} file in the GitHub repository of Miniball \cite{MBCS}. 
 \textsl{MiniballCoulexSort} is written in C/C++ and depends on the ROOT framework. 
 
 To get from the raw data to the Doppler-corrected \ga-spectra, the data analysis code is divided into a three step procedure which can be summarized by the following subroutines:
@@ -1452,7 +1430,7 @@ To get from the raw data to the Doppler-corrected \ga-spectra, the data analysis
 	\item \texttt{MedToRoot} converts the raw data files to ROOT format. This is discussed in  \autoref{sec:data_conversion}.
 	\item \texttt{TreeBuilder} performs the event building by
 		\begin{itemize}
-			\item calibrating detectors and apply channel thresholds for the ADCs
+			\item calibrating detectors and applying channel thresholds for the ADCs
 			\item using particle-\ga\ coincidences (correlations), i.e. the code figures out which \ga\ belongs to which particle
 			\item storing everything in a tree structure for easy access
 		\end{itemize}
@@ -1469,9 +1447,13 @@ Histograms sorted by \texttt{TreeBuilder}, discussed in \autoref{ssec:online_cal
 The simulation program \texttt{kinsim3}, discussed in \autoref{ssec:kinsim}, counts from 1 (innermost ring) to 16 (outermost ring), the opposite of \texttt{AQ4Sort}. 
 For calibrated spectra, \texttt{TreeBuilder} shows the energy in MeV, while \texttt{AQ4Sort} shows the energy in keV.
 To avoid further confusion, this thesis will apply the numbering system of \texttt{kinsim3} for the front side of the CD.
-\textcolor{red}{Må jeg også her nevne baksiden for \texttt{TreeBuilder} og \texttt{AQ4Sort}?}
-\autoref{tab:ADC} shows the signal cable wiring of the CD into the ADC.
-\autoref{tab:TBvsAQ4} shows a comparison of the chosen way of counting and the histogram naming from \texttt{TreeBuilder} and \texttt{AQ4Sort}.
+
+For the back side of the CD is \texttt{TreeBuilder} sorting from 0 to 11 in clockwise direction, while \texttt{AQ4Sort} sorts from 1 to 12.
+This thesis will apply the numbering system of \texttt{AQ4Sort} for the back side of the CD.
+
+\autoref{tab:ADC} shows the signal cable wiring of the CD into the ADC. \textcolor{red}{Koble sammen med kap. 3 i steden for...}
+
+\autoref{tab:TBvsAQ4} shows the chosen way of counting and the histogram naming from \texttt{TreeBuilder} and \texttt{AQ4Sort}.
 
 
 \section{Data conversion}\label{sec:data_conversion}
@@ -1479,7 +1461,7 @@ In order to analyze the data with the ROOT framework, the data files have to be 
 \textit{.med} format produced by \MBOU\ into the \textit{.root} format by using the \texttt{MedToRoot} program. 
 To effectively convert all of the data files in one run, a bash script called \texttt{M2R.sh} was written.
 It takes in a user defined number of files and converts all the files in one go by using \texttt{MedToRoot}.
-\texttt{M2R.sh} takes the element name as command line argument\footnote{\texttt{M2R.sh} was initially developed to convert \textit{.med}-files from different experiments, so it is fairly simple to expand the script to sort other data sets.} and if no command line arguments are given, the script will print out an usage description.
+\texttt{M2R.sh} takes the element name as command line argument\footnote{\texttt{M2R.sh} was intentionally developed to convert \textit{.med}-files from different experiments, so it is fairly simple to expand the script to sort other data sets.} and if no command line arguments are given, the script will print out an usage description.
 An example of the terminal use including the output for the \textit{140Sm\_208Pb\_pos6\_0xy.med}-file with \textit{xyz = 008} is as follows: 
 
 % Empty language = plain text
@@ -1523,16 +1505,13 @@ For each file converted with \texttt{MedToRoot}, the program creates four files 
 \end{itemize}
 where the file of interest is the first one. The \textit{OnBeam.root}-files are used in the sorting and event building with \texttt{TreeBuilder} and/or \texttt{AQ4Sort}.
 
-\bigskip
-
-\textcolor{red}{Må kanskje omformuleres under her. Ble litt knot...}\newline
 The "on-beam" and "off-beam" files refers to the time structure explained in \autoref{sec:time_structure} which is connected with the beam production explained in \autoref{ssec:beam_prod}.
-As explained in the previous sections, the ions are trapped and transferred to the REXEBIS where they are charge-bred.
+The ions are trapped and transferred to the REXEBIS where they are charge-bred.
 REXEBIS releases the ions periodically into the HIE-ISOLDE LINAC where they are accelerated. 
 This defines a time structure of the beam and therefore, the events contains a flag from REXEBIS.
-If the REXEBIS flag is "off", then the event is put into the \textit{OffBeam.root}-file.
-The flag "on" means in principle that beam is on, but a more narrow time window with respect to the REXEBIS pulse can be specified. 
-If the flag is "on" and the event is inside the time window, the event is put into the \textit{OnBeam.root}-file.
+If the REXEBIS flag is "off", then the event is inserted into the \textit{OffBeam.root}-file.
+Flag "on" means, in principle, that beam is on, and a more narrow time window with respect to the REXEBIS pulse can be specified. 
+If the flag is "on" and the event is inside the time window, the event is added to the \textit{OnBeam.root}-file.
 Otherwise, if the REXEBIS flag is "on", but the time stamp is outside the window, the event gets sorted into the \textit{OnBeamBackground.root}-file.
 The \textit{Scaler.root}-file are for monitoring the count rates in the individual detectors.
 
@@ -1542,11 +1521,12 @@ The \textit{Scaler.root}-file are for monitoring the count rates in the individu
 %The general idea of the calibration is to make sure that the energy spectra of all the detectors present the same physical features.
 %In other words, for the same kind of particles or \ga-rays hitting the same angle range of the detector, the energy distribution produced by a detector should be aligned into the same position as the other detectors.
 
-Every detector channel, including its electronics\footnote{Electronics like pre-amplifiers, ADCs, etc.} is slightly different. 
+Every detector channel, including its electronics\footnote{Electronics like pre-amplifiers, ADCs, etc.} is slightly different from the other channels. 
 It is therefore necessary to calibrate each detector channel in both energy and time.
-Calibration of the detectors minimize the measurement uncertainty by making the detectors more consistent.
-If the detectors are not properly calibrated, adding spectra from different detectors \textcolor{red}{usikker på hvordan formulere dette. det fører ikke til noe godt, brede topper... you cannot add spectra from different detectors if they are not properly calibrated.}
-By determining the centroids of peaks in the spectra and comparing these with theoretical values obtained by simulating the kinematics of the reaction and energy loss, linear calibration coefficients of the detectors can be obtained. 
+Calibration of the detectors minimize the measurement uncertainty by making sure the detectors are consistent with each other.
+If the detectors are not properly calibrated, adding spectra from different detectors may cause unwanted effects. 
+For example, the true full energy peak may appear wider if one of the spectra in the sum is shifted in energy compared to the other spectra.
+By determining the centroids of peaks in every spectrum, and comparing these with theoretical values obtained by simulating the kinematics of the reaction and energy loss, linear calibration coefficients of the detectors can be obtained. 
 In this context, the centroid\footnote{Normally, the centroid is only the maximum if the peak is symmetric.} of the energy peaks refer to the channel of maximum height in the histogram.
 
 Both the particle and \ga\ detectors applied in this experiment are semiconductor detectors. 
@@ -1563,13 +1543,14 @@ From \autoref{eq:Ego}, the offset $a$ can easily be expressed as
 \begin{equation}\label{eq:offset}
 	a = E - g \cdot n 
 \end{equation}
-To find the gain $g$ at least two measuring points are needed
+To find the gain $g$, at least two measuring points are needed
 \begin{align}\label{eq:gain}
 	g &= \frac{E_2 - E_1}{n_2 - n_1}
 \end{align}
 where the peak energies, $E$, are obtained from a simulation of the Coulomb excitation experiment and the channel numbers, $n$, are obtained from the raw data of the experiment.
+To improve the precision of the calibration coefficients, it is desirable to use several data points to obtain $g$ and $a$ by a linear regression.
 
-During the calibration, it is assumed that the energy on the front side and the back side of the detector are the same. \textcolor{red}{Er dette lov å si, eller skal jeg bare fjerne det?}
+\textcolor{red}{Forklar at kalib.koeff. kan variere med tiden.}
 
 
 \subsection{Kinematic simulation}\label{ssec:kinsim}
@@ -1578,53 +1559,32 @@ This was done by simulating the experiment using the program \texttt{kinsim3} \c
 The purpose of the program is to obtain the kinematics of a Coulomb excitation experiment that utilizes the CD. 
 The simulations calculate the theoretical predictions of the energy distribution of the peaks for each ring in the CD. 
 \texttt{kinsim3} returns simulated spectra for the LAB and CM frame, in addition to every annular strip of the CD.
-The simulated strip spectra of the CD are fitted, their energy centroids are collected and used in the calibration as shown in \autoref{ch:cd_sim}.
-For stopping powers, the program applies SRIM-2013 \cite{SRIM} generated files relevant to the reaction with some random spread.
+The simulated strip spectra of the CD are fitted, their energy centroids are collected and used in the calibration as explained in \autoref{ch:cd_sim}.
 
-The Stopping and Range of Ions in Matter (SRIM) is a Monte Carlo code that simulates the interaction of ions with matter.
-It uses an empirical model, based on systematic measurements. 
-Both electronic and nuclear stopping are modeled, i.e. the interaction of the ions with the electrons in the material and collisions with nuclei.
+\textcolor{red}{Fiks dette når jeg har hjernekapasitet...}
 
-\texttt{kinsim3} also takes into account the energy loss in the dead layer of the detector, which is energy and angle dependent. 
-The simulation considers cross sections in the way that the COULEX probability increases with the CM angle as displayed in \autoref{tab:P_CE}.
-
-\textcolor{red}{Skal jeg fjerne teksten under her? Og tabellen, og det om $P_{CE}$?}\newline
-If the \Sm\ nucleus is excited to the $2^+$ state, there is 531 keV less to give to the particles as kinetic energy. With a 651 MeV beam energy, 531 keV makes very little difference, so it is a surprise that the probability was included. 
-Also assumptions about the $B(E2)$ value have to be made in order to calculate the excitation probability.
-
-\begin{table}[htb] 
-    \centering 
-    \caption{COULEX probability with respect to the CM angle $\theta_b^{'}$ of the beam.}
-	\input{Table-data/P_CE.tex}
-	\label{tab:P_CE}
-\end{table}
-
-\textcolor{red}{Har nevnt dette appendix i innedningen. Flytt og slå sammen?}\newline
 \autoref{ch:cd_sim} shows the simulated energy for each ring of the CD, in addition to the fitted peaks of each ring.
 In the fitting of the simulated (synthetic) data from \texttt{kinsim3}, a Gaussian function with linear background was applied
 \begin{equation}
 	g(x) = c + sx + A e^{-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2}
 \end{equation}
-where \textcolor{red}{??? $x$ is the energy centroid ???}, $c$ is the background constant, $s$ is the background slope, $A$ is the amplitude (Gauss constant), $\mu$ is the mean (expected value) and $\sigma$ is the standard deviation (Gauss width). 
-\autoref{tab:CD_angles} shows the mid ring CD angles in the LAB frame for the front of the CD. 
+where $x$ is the energy centroid, $c$ is the background constant, $s$ is the background slope, $A$ is the amplitude (Gauss constant), $\mu$ is the mean (expected energy value) and $\sigma$ is the standard deviation (Gauss width). 
+\autoref{tab:CD_angles} shows the angles of the center of each CD ring in the LAB frame for the front of the CD. 
 A general kinematics simulation in the LAB frame and the experimental particle spectra is shown in \autoref{fig:part_events}. 
 
 \begin{table}[htb] 
     \centering 
-    \caption{The mid ring CD angles in the LAB frame, with a distance from the target to the CD of 27 mm. 
+    \caption{The angles of the center of each CD ring in the LAB frame, with a distance from the target to the CD of 27 mm. 
     Ring 1 is the innermost ring and ring 16 is the outermost ring. 
-    The centroid energies comes from simulation with \texttt{kinsim3}. 
+    The centroid energies originates from a simulation with \texttt{kinsim3}. 
     $E_t$ is the energy of the secondary target particle (Pb) and $E_b$ is the energy of the beam particle (Sm).}
 	\input{Table-data/CD.tex}
 	\label{tab:CD_angles}
 \end{table}
 
-\textcolor{red}{Flytte til appendix?}\newline
-The main function of \texttt{kinsim3} looks like this
-\begin{lstlisting}[language=c++]
-kinsim3(Zb, Zt, Ab, At, thick, Eb, dEb, Ex, res, cd_dist, flat, Nevts, srim_dir)
-\end{lstlisting}
-where \textit{Zb} and \textit{Zt} is the proton number of the beam and target respectively, \textit{Ab} and \textit{At} is the mass number of the beam and target respectively, \textit{thick} is the target thickness in mg/cm$^2$, \textit{Eb} is the beam energy in MeV/u, \textit{dEb} is the spread of the beam energy in MeV/u, \textit{Ex} is the excitation energy in MeV, \textit{res} is the detector resolution in percent, \textit{cd\_dist} is the distance form the target to the CD in mm, \textit{flat} is the choice of a uniform or angular distribution, \textit{Nevts} is the number of particle events and \textit{srim\_dir} is the relative path of the SRIM directory.
+\texttt{kinsim3} takes into account the energy loss in the dead layer of the detector, which is energy and angle dependent. 
+In addition, the simulation considers cross sections for the COULEX reaction. 
+The COULEX probability increases with the CM angle.
 
 \texttt{kinsim3} was run with the following commands in the terminal to do the simulation
 \begin{lstlisting}[language=sh]
@@ -1636,19 +1596,26 @@ root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 27, false, 1e6, ".
 root [2] .q
 $ mv 140Sm_208Pb_1.4mg_4.65MeVu_d0.02MeVu_res0.6.root ../../MasterThesis/Sorted_data/sim_140Sm_208Pb.root
 \end{lstlisting}
+\textcolor{red}{Må kanskje henvise til appendix her, siden jeg flytta forklaringen?}\newline
+%A detailed explanation of the input parameters is in \autoref{ch:cd_sim}.
 where the energy spread was assumed to be very small. 
-In principle, the excitation energy should have been 0.53 MeV for the excitation to the $2^+$, but the excitation probability is not known beforehand, unless some rough assumptions are made.
-There is of course also a chance for multi-step excitation at larger angles, so an average excitation energy of 1 MeV is not so bad, at least it can be justified.
-In practice, it would only make a small difference if you were looking at a relatively light nucleus at high excitation energy.
+In principle, the excitation energy is expected to be 0.53 MeV for the excitation to the $2^+$ state. 
+The excitation probability is not known beforehand, unless some rough assumptions are made.
+Assuming a chance of multi-step excitation at larger angles, an average excitation energy of 1 MeV is quite reasonable.
+%In practice, it would only make a small difference if you were looking at a relatively light nucleus at high excitation energy.
 The resolution and the number of events were run with their default values.
 In this simulation the angular distribution was flat (uniform), meaning that the Rutherford cross section was not included. 
-Therefore, the relative intensity between the projectile and target peaks are not the same as in the experiment, but the simulated energies are realistic.
+Therefore, the relative intensity between the projectile and target peaks are not identical to the values in the experiment.
+Nonetheless, the simulated energies are realistic.
 
-To load \texttt{kinsim3} into ROOT, the \textbf{.L $<$filename$>$} command was used. Adding the '$++$' at the end, forces ROOT to compile the code. 
-After the simulation program was run, the file was moved and renamed with the \textbf{mv} command. 
+For stopping powers are \texttt{kinsim3} applying SRIM-2013 \cite{SRIM} generated files relevant to the reaction with some random spread.
+SRIM is an abbreviation for Stopping and Range of Ions in Matter, a Monte Carlo code that simulates the interaction of ions with matter.
+It uses an empirical model, based on systematic measurements. 
+Both electronic and nuclear stopping are modeled, i.e. the interaction of the ions with the electrons in the material and collisions with nuclei are simulated.
+
 \texttt{kinsim3} generates pdf-files of the stopping powers automatically. 
 The rest of the plots are available inside the generated \textit{.root}-file. 
-To obtain the energy simulation for each ring, the function \textbf{simulation\_plots()} from the script \texttt{ParticlePlot.cpp} was used. 
+To obtain the energy simulation for each ring, the function \textbf{simulation\_plots()} from the script \texttt{ParticlePlot.cpp} was utilized. 
 \begin{lstlisting}[language=sh]
 $ cd ~/GitHub/MasterThesis/Scripts/plotting
 $ root
@@ -1656,7 +1623,18 @@ root [0] .L ParticlePlot.cpp++
 root [1] simulation_plot("setup_Sm.txt", 1)
 ... <showing output from script>
 \end{lstlisting}
+\textcolor{red}{Appendix-materiale det her også egentlig?}
 
+
+%If the \Sm\ nucleus is excited to the $2^+$ state, there is 531 keV less to give to the particles as kinetic energy. With a 651 MeV beam energy, 531 keV makes very little difference, so it is a surprise that the probability was included. 
+%Also assumptions about the $B(E2)$ value have to be made in order to calculate the excitation probability.
+%
+%\begin{table}[htb] 
+%    \centering 
+%    \caption{COULEX probability with respect to the CM angle $\theta_b^{'}$ of the beam.}
+%	\input{Table-data/P_CE.tex}
+%	\label{tab:P_CE}
+%\end{table}
 
 
 \subsection{Online calibration of the particle detector}\label{ssec:online_cal}
@@ -3303,7 +3281,26 @@ These names can be chosen by the user, but they must match the names set in the 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 
-\chapter{CD simulation}\label{ch:cd_sim}
+\chapter{kinsim3}\label{ch:cd_sim}
+
+\section{The main function}
+The main function of \texttt{kinsim3} looks like this
+\begin{lstlisting}[language=c++]
+kinsim3(Zb, Zt, Ab, At, thick, Eb, dEb, Ex, res, cd_dist, flat, Nevts, srim_dir)
+\end{lstlisting}
+where \textit{Zb} and \textit{Zt} is the proton number of the beam and target respectively, \textit{Ab} and \textit{At} is the mass number of the beam and target respectively, \textit{thick} is the target thickness in mg/cm$^2$, \textit{Eb} is the beam energy in MeV/u, \textit{dEb} is the spread of the beam energy in MeV/u, \textit{Ex} is the excitation energy in MeV, \textit{res} is the detector resolution in percent, \textit{cd\_dist} is the distance form the target to the CD in mm, \textit{flat} is the choice of a uniform or angular distribution, \textit{Nevts} is the number of particle events and \textit{srim\_dir} is the relative path of the SRIM directory.
+
+To load \texttt{kinsim3} into ROOT, the \textbf{.L $<$filename$>$} command was used
+\begin{lstlisting}[language=sh]
+$ cd ~/GitHub/Miniball/kinsim
+$ root
+root [0] .L kinsim3.cc++
+\end{lstlisting}
+Adding the '$++$' at the end, forces ROOT to compile the code. 
+After the simulation program was run, the file was moved and renamed with the \textbf{mv} command. 
+
+
+\section{CD simulation}
 On the next page, the CD simulation without Rutherford cross section is shown for each ring. 
 Ring 1 is the innermost ring and ring 16 is the outermost ring. 
 The plots show simulated counts vs. energy, where the first peak (lower energy) is the \Pb\ and the second peak (higher energy) is \Sm. 
