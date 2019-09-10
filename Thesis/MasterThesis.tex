@@ -355,11 +355,11 @@ One of the goals of the present work is to study the nuclear shape of \Sm. \text
 \subsubsection*{\textcolor{red}{Rediger her...}}
 
 \textcolor{blue}{I would start by pointing out some of these things:
-study the evolution of nuclear shapes in the chain of Sm isotopes when moving away from 144Sm at the N=82 shell closure
-possibility for shape coexistence
-measure observables related to the nuclear shape such as B(E2) values and quadrupole moments
+- study the evolution of nuclear shapes in the chain of Sm isotopes when moving away from 144Sm at the N=82 shell closure
+- possibility for shape coexistence
+- measure observables related to the nuclear shape such as B(E2) values and quadrupole moments
 the comparison of such measurements with theoretical calculations can be used to benchmark nuclear models.
-Only afterwards I would explain that a similar experiment was performed before, and now we want to extend the measurement.}
+- Only afterwards I would explain that a similar experiment was performed before, and now we want to extend the measurement.}
 
 \bigskip
 
@@ -368,7 +368,7 @@ The old REX-ISOLDE post-accelerator was limited to a beam energy of 2.85 MeV/u f
 At that time, a secondary target of $^{94}_{42}$Mo$_{52}$ (molybdenum) with a thickness of 2 mg/cm$^2$ was chosen to maximize the cross section at this energy.
 From the excitation cross section it is possible to extract electromagnetic matrix elements, which are the observables that can be related to the nuclear shape.
 Excited states up to 1256 keV were populated.
-One goal of the experiment was to deduce the $B(E2)$ values and quadrupole moments of low-lying states in neutron-deficient \Sm\ using multi-step Coulomb excitation.
+One goal of the experiment was to deduce the $B(E2)$ values and quadrupole moments of low-lying states in \Sm\ using multi-step Coulomb excitation.
 A normalization of the $B(E2; 0^+ \rightarrow 2^+)$ value for \Sm\ to the well-known $B(E2)$ value for the Mo target, i.e. the transition strengths in the excited $^{94}$Mo target, was performed in order to extract the other $B(E2)$ values for \Sm.
 It is necessary to know how many particles there are in the beam to determine a cross section.
 This is difficult to measure.
@@ -643,15 +643,9 @@ $V_{cm}$ is the center of mass velocity.
 A small angle $\theta_b$ means forward scattering of the beam, a larger distance between the beam particle and the target particle, a weaker electromagnetic (EM) field and less excitation probability. 
 A large angle $\theta_b$ means backward scattering of the beam, a closer distance between the beam particle and the target particle, a stronger EM field and higher excitation probability.
 In the CM frame, the center of mass velocity is zero, and the velocities and angles are marked by an apostrophe to separate between the two frames of reference.
-\autoref{tab:scattering} shows the corresponding scattering angles from the reaction. 
-\textcolor{blue}{perhaps you need to mention that our detector covers the angles from 22-57 deg in the lab, and that it is divided up in rings that correspond to the angles shown in the table. As it is now, it is difficult to understand where these angles come from. You could either move these tables to the experimental chapter, and refer to discussion of kinematics in the theory chapter, or you leave it here, but mention that these are our detector angles, and refer to the discussion of the experimental setup that will follow.}
 
 The Coulomb scattering kinematics can be approximated by an elastic collision.
 In \autoref{ch:scattering}, a calculation of the two-particle elastic collision is performed.
-
-
-
-
 
 \begin{figure}[htb]
 	\centering
@@ -681,27 +675,7 @@ In \autoref{ch:scattering}, a calculation of the two-particle elastic collision 
 %	\label{fig:LAB-CM}
 %\end{figure}
 
-\begin{table}[htb] 
-    \centering 
-    \caption{Scattering of \Sm\ on \Pb\ with beam energy 4.65 MeV/u.
-    Calculations are done with the LISE++ \cite{LISE} kinematics calculator with a reaction from the middle of the target.
-    The LAB and CM frame angles are based on the LAB input angles from $\theta_b$ and $\theta_t$. 
-    In \textbf{(b)} there are angles marked with red color. 
-    These are overlapping with the CM angles in \textbf{(a)}, making a total of 24 unique angles in the CM frame marked in black.}
-	\label{tab:scattering}
-    \begin{subtable}{0.45\textwidth}
-    		\centering
-		\caption{$\theta_b \in [22.0^\circ, 56.7^\circ]$.}
-	 	\label{tab:LABvsCM_b}
-	 	\input{Table-data/LABvsCM_b.tex}
-	\end{subtable}
-	\begin{subtable}{0.45\textwidth}
-		\centering
-		\caption{$\theta_t \in [22.0^\circ, 56.7^\circ]$.}
-		\label{tab:LABvsCM_t}
-		\input{Table-data/LABvsCM_t.tex}
-	\end{subtable}
-\end{table}
+
 
 \subsubsection*{\textcolor{red}{Burde jeg brukt projectile and target under her?}}
 
@@ -1240,11 +1214,13 @@ The silicon wafer is the thin slice of semiconductor which can detect the incomi
 For simplicity the dead layer thickness is usually assumed to be 0.7 $\mu$m \cite{NWarr-CD, MB-spect}. 
 \autoref{tab:CD_spec} shows some of the specifications of the CD.  
 The distance from the target to the CD was 27 $\pm$ 1 mm. 
-In the laboratory (LAB) reference frame the CD has a angular coverage between 18.4$^\circ$ and 56.6$^\circ$. An extensive description of the CD can be found in \cite{CD-DSSSD}.
+In the laboratory (LAB) reference frame the CD covers an angle range between 18.4$^\circ$ and 56.6$^\circ$. 
+The angles are divided up in rings corresponding to the scattering angles in \autoref{tab:scattering}.
+An extensive description of the CD can be found in \cite{CD-DSSSD}.
 
 %\footnote{The distance was measured using a $\alpha$-source ($^{226}$Ra). The source has a thickness of 1.23 mm, which has to be accounted for. The target to CD distance is therefore the CD to source distance plus the source thickness, i.e. 25.78(12) mm + 1.23 mm = 27.01 mm. This source data was reanalyzed, giving a 0.03 mm discrepancy form the original log entry. In private communications at ISOLDE in August 2018, the distance from the target to the CD was determined to be 26.98 mm with a $\sim$1 mm uncertainty.}
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth]{Images/CD.png}
 	\caption{CD sketch, adapted from \cite{NWarr-CD}. 
@@ -1259,12 +1235,33 @@ In the laboratory (LAB) reference frame the CD has a angular coverage between 18
 	\label{fig:CD-FB}
 \end{figure}
 
-
-\begin{table}[ht] 
+\begin{table}[htb] 
     \centering 
     \caption{CD specifications.}
 	\input{Table-data/CD-spec.tex}
 	\label{tab:CD_spec}
+\end{table}
+
+\begin{table}[htb] 
+    \centering 
+    \caption{Scattering of \Sm\ on \Pb\ with beam energy 4.65 MeV/u.
+    Calculations are done with the LISE++ \cite{LISE} kinematics calculator with a reaction from the middle of the target.
+    The LAB and CM frame angles are based on the LAB input angles from $\theta_b$ and $\theta_t$. 
+    In \textbf{(b)} there are angles marked with red color. 
+    These are overlapping with the CM angles in \textbf{(a)}, making a total of 24 unique angles in the CM frame marked in black.}
+	\label{tab:scattering}
+    \begin{subtable}{0.45\textwidth}
+    		\centering
+		\caption{$\theta_b \in [22.0^\circ, 56.7^\circ]$.}
+	 	\label{tab:LABvsCM_b}
+	 	\input{Table-data/LABvsCM_b.tex}
+	\end{subtable}
+	\begin{subtable}{0.45\textwidth}
+		\centering
+		\caption{$\theta_t \in [22.0^\circ, 56.7^\circ]$.}
+		\label{tab:LABvsCM_t}
+		\input{Table-data/LABvsCM_t.tex}
+	\end{subtable}
 \end{table}
 
 
@@ -2539,7 +2536,8 @@ A lifetime measurement of the $2_1^+$ state also gave the $B(E2)$ value \cite{Be
 \bigskip
 
 
-\textcolor{RedViolet}{"It can be expected that more information about the nature of the excited 0+ states and the missing 3+ state will come from a planned Coulomb excitation experiment at the new high intensity energy (HIE) ISOLDE facility which is currently under construction at CERN."} \cite{Samorajczyk2015}
+\textcolor{RedViolet}{"It can be expected that more information about the nature of the excited 0+ states and the missing 3+ state will come from a planned Coulomb excitation experiment at the new high intensity energy (HIE) ISOLDE facility which is currently under construction at CERN."} \cite{Samorajczyk2015}  \newline
+\textcolor{RedViolet}{"expected for such a band, the $3_1^+$ state decays predominantly to the $2_2^+$ state"} \cite{Klintefjord2016}
 
 
 \bigskip
