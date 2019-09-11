@@ -558,7 +558,7 @@ void total_statistics(std::string setup_file, std::string sorting) {
   G990->Draw();
 
   // Coordinates: x, y
-  TLatex LG1068(1080, 10000, "0_{2}^{+} #rightarrow 2_{1}^{+}");     // 1068
+  TLatex LG1068(1080, 10000, "0_{2}^{(+)} #rightarrow 2_{1}^{+}");   // 1068
   LG1068.SetTextSize(0.03);
   LG1068.SetTextAngle(90);
   LG1068.Draw();
@@ -569,7 +569,7 @@ void total_statistics(std::string setup_file, std::string sorting) {
   G1068->Draw();
 
   // Coordinates: x, y
-  TLatex LG1098(1117, 600, "0_{3}^{(+)} #rightarrow 2_{1}^{+}");     // 1098
+  TLatex LG1098(1109, 600, "0_{3}^{+} #rightarrow 2_{1}^{+}");       // 1098
   LG1098.SetTextSize(0.03);
   LG1098.SetTextAngle(90);
   LG1098.Draw();
@@ -626,7 +626,7 @@ void total_statistics(std::string setup_file, std::string sorting) {
   G1420->Draw();
 
   // Coordinates: x, y
-  TLatex LG1599(1612, 10000, "0_{2}^{+}");                           // 1599 (0+)
+  TLatex LG1599(1612, 10000, "0_{2}^{(+)}");                         // 1599 (0(+))
   LG1599.SetTextSize(0.03);
   LG1599.SetTextAngle(90);
   LG1599.Draw();
@@ -639,7 +639,7 @@ void total_statistics(std::string setup_file, std::string sorting) {
   G1599->Draw();
 
   // Coordinates: x, y
-  TLatex LG1628(1649, 600, "0_{3}^{(+)}");                           // 1628 (0+)
+  TLatex LG1628(1641, 600, "0_{3}^{+}");                             // 1628 (0+)
   LG1628.SetTextSize(0.03);
   LG1628.SetTextAngle(90);
   LG1628.Draw();
@@ -841,7 +841,7 @@ void total_statistics_s_and_a() {
   G990->Draw();
 
   // Coordinates: x, y
-  TLatex LG1068(1080, 10000, "0_{2}^{+} #rightarrow 2_{1}^{+}");     // 1068
+  TLatex LG1068(1080, 10000, "0_{2}^{(+)} #rightarrow 2_{1}^{+}");   // 1068
   LG1068.SetTextSize(0.03);
   LG1068.SetTextAngle(90);
   LG1068.Draw();
@@ -852,7 +852,7 @@ void total_statistics_s_and_a() {
   G1068->Draw();
 
   // Coordinates: x, y
-  TLatex LG1098(1117, 600, "0_{3}^{(+)} #rightarrow 2_{1}^{+}");     // 1098
+  TLatex LG1098(1109, 600, "0_{3}^{+} #rightarrow 2_{1}^{+}");       // 1098
   LG1098.SetTextSize(0.03);
   LG1098.SetTextAngle(90);
   LG1098.Draw();
@@ -909,7 +909,7 @@ void total_statistics_s_and_a() {
   G1420->Draw();
 
   // Coordinates: x, y
-  TLatex LG1599(1612, 10000, "0_{2}^{+}");                           // 1599 (0+)
+  TLatex LG1599(1612, 10000, "0_{2}^{(+)}");                         // 1599 (0(+))
   LG1599.SetTextSize(0.03);
   LG1599.SetTextAngle(90);
   LG1599.Draw();
@@ -922,7 +922,7 @@ void total_statistics_s_and_a() {
   G1599->Draw();
 
   // Coordinates: x, y
-  TLatex LG1628(1649, 600, "0_{3}^{(+)}");                           // 1628 (0+)
+  TLatex LG1628(1641, 600, "0_{3}^{+}");                             // 1628 (0+)
   LG1628.SetTextSize(0.03);
   LG1628.SetTextAngle(90);
   LG1628.Draw();

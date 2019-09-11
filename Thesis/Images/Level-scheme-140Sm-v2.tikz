@@ -75,7 +75,7 @@
     \coordinate (levelleft)  at ( 7,\yvalueRD);
     \coordinate (levelright) at (10,\yvalueRD);
     \draw[level] (levelleft) -- (levelright);
-    \node at (7.5,\yvalueRD) [anchor=south east] {$0_2^{+}$};
+    \node at (7.7,\yvalueRD) [anchor=south east] {$0_2^{(+)}$};
     \node at (9.2,\yvalueRD) [anchor=south west] {1599};
     \draw[line width=2pt,->,>=triangle 60] (7.5,\yvalueRD) -- node[fill=white] {352}  (7.5,\GBfour);
     \draw[line width=2pt,->,>=triangle 60] (8.5,\yvalueRD) -- node[fill=white] {609}  (8.5,\yvalueRA);
@@ -94,7 +94,7 @@
     \coordinate (levelleft)  at (12.0,\yvalueRF);
     \coordinate (levelright) at (14.0,\yvalueRF);
     \draw[level] (levelleft) -- (levelright);
-    \node at (12.7,\yvalueRF) [anchor=south east] {$0_3^{(+)}$};
+    \node at (12.5,\yvalueRF) [anchor=south east] {$0_3^{+}$};
     \node at (13.2,\yvalueRF) [anchor=south west] {1628};
     \draw[line width=2pt,->,>=triangle 60] (13.0,\yvalueRF) -- node[fill=white] {1098} (13.0,\GBtwo);
     % E level = 1933

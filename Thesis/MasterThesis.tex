@@ -1562,6 +1562,7 @@ The simulations calculate the theoretical predictions of the energy distribution
 The simulated strip spectra of the CD are fitted, their energy centroids are collected and used in the calibration as explained in \autoref{ch:cd_sim}.
 
 \textcolor{red}{Fiks dette når jeg har hjernekapasitet...}
+A detailed explanation of the input parameters of \texttt{kinsim3} is in \autoref{ch:cd_sim}.
 
 \autoref{ch:cd_sim} shows the simulated energy for each ring of the CD, in addition to the fitted peaks of each ring.
 In the fitting of the simulated (synthetic) data from \texttt{kinsim3}, a Gaussian function with linear background was applied
@@ -1593,11 +1594,9 @@ $ root
 root [0] .L kinsim3.cc++
 root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 27, false, 1e6, "../SRIM")
 ... <showing output from program>
-root [2] .q
-$ mv 140Sm_208Pb_1.4mg_4.65MeVu_d0.02MeVu_res0.6.root ../../MasterThesis/Sorted_data/sim_140Sm_208Pb.root
 \end{lstlisting}
-\textcolor{red}{Må kanskje henvise til appendix her, siden jeg flytta forklaringen?}\newline
-%A detailed explanation of the input parameters is in \autoref{ch:cd_sim}.
+% root [2] .q
+% $ mv 140Sm_208Pb_1.4mg_4.65MeVu_d0.02MeVu_res0.6.root ../../MasterThesis/Sorted_data/sim_140Sm_208Pb.root
 where the energy spread was assumed to be very small. 
 In principle, the excitation energy is expected to be 0.53 MeV for the excitation to the $2^+$ state. 
 The excitation probability is not known beforehand, unless some rough assumptions are made.
@@ -1605,25 +1604,13 @@ Assuming a chance of multi-step excitation at larger angles, an average excitati
 %In practice, it would only make a small difference if you were looking at a relatively light nucleus at high excitation energy.
 The resolution and the number of events were run with their default values.
 In this simulation the angular distribution was flat (uniform), meaning that the Rutherford cross section was not included. 
-Therefore, the relative intensity between the projectile and target peaks are not identical to the values in the experiment.
-Nonetheless, the simulated energies are realistic.
+Therefore, the relative intensity between the projectile and target peaks are not identical to the experiment.
+Nonetheless, the simulated energies are realistic enough to be applied in the calibration.
 
-For stopping powers are \texttt{kinsim3} applying SRIM-2013 \cite{SRIM} generated files relevant to the reaction with some random spread.
+For stopping powers is \texttt{kinsim3} applying SRIM-2013 \cite{SRIM} generated files relevant to the reaction with some random spread.
 SRIM is an abbreviation for Stopping and Range of Ions in Matter, a Monte Carlo code that simulates the interaction of ions with matter.
 It uses an empirical model, based on systematic measurements. 
 Both electronic and nuclear stopping are modeled, i.e. the interaction of the ions with the electrons in the material and collisions with nuclei are simulated.
-
-\texttt{kinsim3} generates pdf-files of the stopping powers automatically. 
-The rest of the plots are available inside the generated \textit{.root}-file. 
-To obtain the energy simulation for each ring, the function \textbf{simulation\_plots()} from the script \texttt{ParticlePlot.cpp} was utilized. 
-\begin{lstlisting}[language=sh]
-$ cd ~/GitHub/MasterThesis/Scripts/plotting
-$ root
-root [0] .L ParticlePlot.cpp++
-root [1] simulation_plot("setup_Sm.txt", 1)
-... <showing output from script>
-\end{lstlisting}
-\textcolor{red}{Appendix-materiale det her også egentlig?}
 
 
 %If the \Sm\ nucleus is excited to the $2^+$ state, there is 531 keV less to give to the particles as kinetic energy. With a 651 MeV beam energy, 531 keV makes very little difference, so it is a surprise that the probability was included. 
@@ -2513,9 +2500,11 @@ It causes the energy calibration to become negative, and the faulty detector seg
 
 With the direction and energy (velocity) of the scattered particle and the direction of the \ga-ray, a Doppler correction can be performed under the assumption that the \ga-ray was emitted from the projectile. 
 The total \ga-ray singles and add-back spectrum corresponding to the CM scattering angles between $36.6^\circ$ and $136.0^\circ$, Doppler corrected for the projectile is displayed in \autoref{fig:gam_dcB}.
+
 As a comparison, the total \ga-ray singles spectrum from the previous experiment is displayed in \autoref{fig:gam_MK}.
-From the experiment in 2017 with the \Pb\ target, a lot more excited states are populated and visible in the spectra compared to the experiment in 2012 with the $^{94}$Mo target.
-By looking at the relative intensity of $2_2^+ \rightarrow 2_1^+$ (460 keV) compared to $2_1^+ \rightarrow 0_1^+$ (531 keV), we see that the probability for multi-step excitations are much greater with the Pb target.
+
+In \autoref{fig:gam_dcB} there is a visible enhanced efficiency for high-energy \ga-rays when using the add-back method. \textcolor{red}{Jeg ser ikke helt hvor mye bedre det blir. Jeg ser at det er tydelig høyere counts rundt 800-1400 keV, og at toppene kanskje kommer litt tydeligere frem.}
+
 
 \begin{figure}[htb]
 	\centering
@@ -2546,13 +2535,48 @@ By looking at the relative intensity of $2_2^+ \rightarrow 2_1^+$ (460 keV) comp
 	\label{fig:gam_compared}
 \end{figure}
 
-In \autoref{fig:gam_dcB} there is a visible enhanced efficiency for high-energy \ga-rays when using the add-back method. \textcolor{red}{Jeg ser ikke helt hvor mye bedre det blir. Jeg ser at det er tydelig høyere counts rundt 800-1400 keV.}
+
+
+\subsubsection*{\textcolor{red}{Rediger her...}}
+
+\textcolor{red}{Discuss all the transitions in \autoref{fig:gam_dcB}, where they are in the level scheme \autoref{fig:levels}, and explain \autoref{tab:gamma_trans}.}
+
+
+%\autoref{fig:gam_dcB} displays the \ga\ spectrum obtained from \texttt{CLXAna}. 
+A lot of the \ga\ transitions in \autoref{fig:levels} are visible in the \autoref{fig:gam_dcB}. 
+%marked by the black arrows.
+The black arrows marks the \ga\ transitions.
+The green arrows marks some of the energy states in the level scheme, this is a combination of two \ga\ transitions, i.e. a summing of the peaks.
+For the very strong transitions there is a certain chance that two \ga-rays hit the same detector, and consequently there is a peak at the energy that corresponds to the sum of the two energies. 
+This effect is enhanced when the add-back method is used, because in this case it is sufficient that two \ga-rays hit the same cluster, as opposed to the same crystal, to end up in the sum peak.
+
+
+At very low energy, below the Compton continuum, a peak of \Pb\ x-rays is visible. 
+When the beam passes through the target, there is a possibility that electrons are removed, which produces x-rays when the holes are filled.
+
+The \ga\ transitions of $8_1^+ \rightarrow 6_1^+$ (888 keV), $6_1^+ \rightarrow 4_1^+$ (836 keV), $4_1^+ \rightarrow 2_1^+$ (715 keV) and $2_1^+ \rightarrow 0_1^+$ (531 keV) constitutes the ground state band.
+The reduced transition probabilites, i.e. $B(E2)$, are relatively strong in the ground state band. 
+
+The $2_2^+ \rightarrow 2_1^+$ (460 keV) transition corresponds to the transition from the 990 keV to the 531 keV state. 
+
+The $0_2^{(+)} \rightarrow 2_1^+$ (1068 keV) transition corresponds to the transition from the 1599 keV to the 531 keV state. 
+
+The spin and parity of the 990 keV \cite{Firestone} and 1599 keV states in \Sm\ was originally thought to be $0^+$ and $2^+$, respectively. 
+An experiment conducted at the Heavy Ion Laboratory of the University of Warsaw corrected the spin values of the 990 keV and 1599 keV states in \Sm\ to be $2^+$ and $0^{(+)}$, respectively \cite{Klintefjord2015, Samorajczyk2015}.
+The 990 keV level is then a very low-lying $2_2^+$, which supports the notion of triaxiality \cite{Klintefjord2016}.
+
+
+
 
 
 \bigskip
 
 % \cite{Klintefjord2015, Samorajczyk2015, Klintefjord2016}
 % \cite{BelloGarrote2015}
+
+%\autoref{fig:gam_dcB}
+%\autoref{fig:levels}
+%\autoref{tab:gamma_trans}
 
 \textcolor{red}{TODO:}
 \begin{itemize}
@@ -2561,24 +2585,13 @@ In \autoref{fig:gam_dcB} there is a visible enhanced efficiency for high-energy 
 \end{itemize}
 
 
-\subsubsection*{\textcolor{red}{Rediger her...}}
 
-\textcolor{red}{Discuss all the transitions in \autoref{fig:gam_dcB}, where they are in the level scheme \autoref{fig:levels}, and explain \autoref{tab:gamma_trans}.}
-
+\bigskip
 
 From the previous experiment at ISOLDE, IS495 in 2012, three excited states of \Sm\ were populated, the first (531 keV) and second (990 keV) excited $2^+$ states, in addition to the first $4^+$ (1246 keV) state.
 The reduced transition probabilities, i.e. $B(E2)$ values for the specified low-lying states was obtained \cite{Klintefjord2015, Klintefjord2016, BelloGarrote2015}.
 
-The spin and parity of the 990 keV \cite{Firestone} and 1599 keV states in \Sm\ was originally thought to be $0^+$ and $2^+$, respectively. 
-An experiment conducted at the Heavy Ion Laboratory of the University of Warsaw corrected the spin values of the 990 keV and 1599 keV states in \Sm\ to be $2^+$ and $0^{(+)}$, respectively \cite{Klintefjord2015, Samorajczyk2015}.
-The 990 keV level is then a very low-lying $2_2^+$, which supports the notion of triaxiality \cite{Klintefjord2016}.
-
-
-
-\bigskip
-
-
-From the present experiment at ISOLDE, IS558 in 2017, it was expected that excited sates up to $8^+$ is populated. 
+From the present experiment at ISOLDE, IS558 in 2017, it was expected that excited sates up to $8^+$ are populated. 
 \autoref{tab:gamma_trans} displays the known \ga\ transitions for excited \Sm\ up to the $8^+$ state.
 \autoref{fig:levels} displays the level scheme based on \autoref{tab:gamma_trans} for all known levels of \Sm\ up to the $8^+$ state at 2970 keV. 
 Many of the states, but not all, are visible in \autoref{fig:gam_dcB}. 
@@ -2587,25 +2600,8 @@ Some of the transitions are so low in energy that they disappear inside the Comp
 The excitation probability for some of the states are low, and thereby the states are not reached.
 There might also be states with a low transition intensity leading to very few counts, especially at higher energy.
 
-\autoref{fig:gam_dcB} displays the \ga\ spectrum obtained from \texttt{CLXAna}. 
-A lot of the \ga\ transitions in \autoref{fig:levels} are visible in the spectrum, marked by the black arrows.
-The green arrows marks some of the energy levels in the level scheme, this is a combination of two \ga\ transitions, i.e. a summing of the peaks.
-For the very strong transitions there is a certain chance that two \ga-rays hit the same detector, and consequently there is a peak at the energy that corresponds to the sum of the two energies. 
-This effect is enhanced when the add-back method is used, because in this case it is sufficient that two \ga-rays hit the same cluster, as opposed to the same crystal, to end up in the sum peak.
-
-At very low energy, below the Compton continuum, a peak of \Pb\ x-rays are visible. 
-When the beam passes through the target, there is a possibility that electrons are removed, which produces x-rays when the holes are filled.
-
-The reduced transition probabilites, i.e. $B(E2)$, are relatively strong in the ground state band. 
-
-The $0_2^+$ and $0_3^{(+)}$ states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence. 
-
-\textcolor{RedViolet}{"It can be expected that more information about the nature of the excited 0+ states and the missing 3+ state will come from a planned Coulomb excitation experiment at the new high intensity energy (HIE) ISOLDE facility which is currently under construction at CERN."} \cite{Samorajczyk2015}  \newline
-\textcolor{RedViolet}{"expected for such a band, the $3_1^+$ state decays predominantly to the $2_2^+$ state"} \cite{Klintefjord2016}
-
-
-
-
+From the experiment in 2017 with the \Pb\ target, a lot more excited states are populated and visible in the spectra compared to the experiment in 2012 with the $^{94}$Mo target.
+By looking at the relative intensity of $2_2^+ \rightarrow 2_1^+$ (460 keV) compared to $2_1^+ \rightarrow 0_1^+$ (531 keV), we see that the probability for multi-step excitations are much greater with the Pb target.
 
 
 
@@ -2622,6 +2618,7 @@ The $0_2^+$ and $0_3^{(+)}$ states can tell us about the shape of the nucleus, i
 
 
 
+
 \begin{table}[htb] 
     \centering 
     \caption{Known \ga\ transitions based on \cite{Klintefjord, NNDC-levels}. 
@@ -2630,6 +2627,36 @@ The $0_2^+$ and $0_3^{(+)}$ states can tell us about the shape of the nucleus, i
 	\input{Table-data/Gamma-transitions.tex}
 	\label{tab:gamma_trans}
 \end{table}
+
+
+
+
+\bigskip
+
+
+
+
+
+The $0_2^{(+)}$ and $0_3^{+}$ states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence. 
+\textcolor{red}{Kan dette eksperimentet verifisere pariteten til $0_2^{(+)}$ tilstanden?}
+
+
+\textcolor{RedViolet}{"It can be expected that more information about the nature of the excited 0+ states and the missing 3+ state will come from a planned Coulomb excitation experiment at the new high intensity energy (HIE) ISOLDE facility which is currently under construction at CERN."} \cite{Samorajczyk2015}  \newline
+\textcolor{RedViolet}{"expected for such a band, the $3_1^+$ state decays predominantly to the $2_2^+$ state"} \cite{Klintefjord2016}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2774,6 +2801,9 @@ we would have to look at the \ga-spectra to identify any contaminants. There may
 
 we don't extract B(E2) values, and don't discuss transition strengths. To extract these is the next step
 
+\bigskip
+
+to get even better results and maybe see some of the low-energy transitions which disappears into the Compton continuum, do a new experiment with Compton suppression, shielded (BGO shield?) \ga\ detectors.
 
 
 % NOT NEEDED
@@ -3307,7 +3337,6 @@ The plots show simulated counts vs. energy, where the first peak (lower energy) 
 %In the simulation, the Rutherford cross section was not included. 
 %The relative intensity between the projectile and target peaks is therefore not the same as in the experiment, but the simulated energies are realistic.
 The plots were grabbed from the \textit{.root}-file by the commands
-
 \begin{lstlisting}[language=sh]
 $ cd ~/GitHub/MasterThesis/Scripts/plotting
 $ root
@@ -3315,6 +3344,17 @@ root [0] .L ParticlePlot.cpp++
 root [1] simulation_plot("setup_Sm.txt", 0)
 ... <showing output from script>
 \end{lstlisting}
+
+%\texttt{kinsim3} generates pdf-files of the stopping powers automatically. 
+%The rest of the plots are available inside the generated \textit{.root}-file. 
+%To obtain the energy simulation for each ring, the function \textbf{simulation\_plots()} from the script \texttt{ParticlePlot.cpp} was utilized. 
+%\begin{lstlisting}[language=sh]
+%$ cd ~/GitHub/MasterThesis/Scripts/plotting
+%$ root
+%root [0] .L ParticlePlot.cpp++
+%root [1] simulation_plot("setup_Sm.txt", 1)
+%... <showing output from script>
+%\end{lstlisting}
 
 The next page after that shows the fitting of the CD simulation, where the red dotted curves shows the fitting of the peaks and the vertical black dotted lines shows the centroids of the peaks.
 
@@ -3327,9 +3367,9 @@ root [1] simulation_fit("setup_Sm.txt")
 \end{lstlisting}
 
 For the Si dead layer in \texttt{kinsim3}, the SRIM files must have units of MeV/mm. 
-If units of MeV/cm$^2$ are used, the distance on line 359 in \texttt{kinsim3} needs to be changed to the correct units. 
+If units of MeV/cm$^2$ are used, the distance on line 359 in \texttt{kinsim3} have to be changed to the correct units. 
 The correction factor is at the bottom of the SRIM file.
-Line 358 and 359 in \texttt{kinsim3}, where the factor needs to be changed, reads
+Line 358 and 359 in \texttt{kinsim3}, where the factor have to be changed, reads
 \begin{lstlisting}[language=c++]
 // Correct for dead layer loss
 dist = TMath::Abs( 0.0007 / TMath::Cos( TTh ) );
