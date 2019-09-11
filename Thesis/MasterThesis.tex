@@ -2500,7 +2500,7 @@ It causes the energy calibration to become negative, and the faulty detector seg
 
 With the direction and energy (velocity) of the scattered particle and the direction of the \ga-ray, a Doppler correction can be performed under the assumption that the \ga-ray was emitted from the projectile. 
 The total \ga-ray singles and add-back spectrum corresponding to the CM scattering angles between $36.6^\circ$ and $136.0^\circ$, Doppler corrected for the projectile is displayed in \autoref{fig:gam_dcB}. 
-As a comparison, the total \ga-ray singles spectrum from the previous experiment is displayed in \autoref{fig:gam_MK}.
+As a comparison, the total \ga-ray singles spectrum from the previous experiment (from 2012) is displayed in \autoref{fig:gam_MK}.
 There is a lot more \ga\ transitions visible from the present experiment in \autoref{fig:gam_dcB} compared to the previous experiment. 
 When sorting the data with the add-back method, there is a visible enhanced efficiency for high-energy \ga-rays, the peaks are more distinct. 
 
@@ -2538,6 +2538,9 @@ The black arrows, except for the first one, in \autoref{fig:gam_dcB} corresponds
 At very low energy, pointed by the first black arrow below the Compton continuum, a peak of \Pb\ x-rays is visible. 
 When the beam passes through the target, there is a possibility that electrons are removed, which produces x-rays when the holes are filled.
 
+The green arrows in \autoref{fig:gam_dcB} corresponds to some of the energy states in the level scheme, which is a combination of two \ga\ transitions, i.e. a summing of the peaks.
+For the very strong transitions there is a certain chance that two \ga-rays hit the same detector, and consequently there is a peak at the energy that corresponds to the sum of the two energies. 
+This effect is enhanced when the add-back method is used, because in this case it is sufficient that two \ga-rays hit the same cluster, as opposed to the same crystal, to end up in the sum peak.
 
 \begin{table}[htb!] 
     \centering 
@@ -2548,13 +2551,13 @@ When the beam passes through the target, there is a possibility that electrons a
 	\label{tab:gamma_trans}
 \end{table}
 
-
-The level scheme in \autoref{fig:levels} is a visualization of the known \ga\ transitions in \autoref{tab:gamma_trans}.
-It displays all the known levels up to the $8^+$ state at 2970 keV. 
-A lot of the \ga\ transitions in \autoref{fig:levels} are visible in the \autoref{fig:gam_dcB}.
-The green arrows in \autoref{fig:gam_dcB} corresponds to some of the energy states in the level scheme, which is a combination of two \ga\ transitions, i.e. a summing of the peaks.
-For the very strong transitions there is a certain chance that two \ga-rays hit the same detector, and consequently there is a peak at the energy that corresponds to the sum of the two energies. 
-This effect is enhanced when the add-back method is used, because in this case it is sufficient that two \ga-rays hit the same cluster, as opposed to the same crystal, to end up in the sum peak.
+A visualization of the known \ga\ transitions in \autoref{tab:gamma_trans} are displayed in \autoref{fig:levels}. 
+The level scheme displays all the known levels up to the $8^+$ state at 2970 keV. 
+Many of the transitions and states, but not all, are visible in \autoref{fig:gam_dcB}.
+There are different reasons for this.
+Some of the transitions are so low in energy that they disappear inside the Compton continuum.
+The excitation probability for some of the states are low, and thereby the states are not reached.
+There might also be states with a low transition intensity leading to very few counts, especially at higher energy.
 
 
 \begin{figure}[htb!]
@@ -2568,15 +2571,8 @@ This effect is enhanced when the add-back method is used, because in this case i
 
 
 The \ga\ transitions of $8_1^+ \rightarrow 6_1^+$ (888 keV), $6_1^+ \rightarrow 4_1^+$ (836 keV), $4_1^+ \rightarrow 2_1^+$ (715 keV) and $2_1^+ \rightarrow 0_1^+$ (531 keV) constitutes the ground state band.
-The reduced transition probabilites, i.e. $B(E2)$, are relatively strong in the ground state band. 
-
-
-The $2_2^+ \rightarrow 2_1^+$ (460 keV) transition corresponds to the transition from the 990 keV to the 531 keV state. 
-
-
-The $0_2^{(+)} \rightarrow 2_1^+$ (1068 keV) transition corresponds to the transition from the 1599 keV to the 531 keV state. 
-
-
+A couple of states worth mentioning are the 990 keV and 1599 keV states.
+They both transition down to the $2_1^+$ state with 460 keV and 1068 keV, respectively.
 The spin and parity of the 990 keV \cite{Firestone} and 1599 keV states in \Sm\ was originally thought to be $0^+$ and $2^+$, respectively. 
 An experiment conducted at the Heavy Ion Laboratory of the University of Warsaw corrected the spin values of the 990 keV and 1599 keV states in \Sm\ to be $2^+$ and $0^{(+)}$, respectively \cite{Klintefjord2015, Samorajczyk2015}.
 The 990 keV level is then a very low-lying $2_2^+$, which supports the notion of triaxiality \cite{Klintefjord2016}.
@@ -2605,9 +2601,33 @@ In the spectrum of \autoref{fig:gam_dcB}, there is no obvious candidate for a tr
 However, the width of the $6_1^+ \rightarrow 4_1^+$ transition at 836 keV is slightly wider than the other transitions. 
 \ga-\ga\ coincidences can be used to investigate if the peak at 836 keV is composed of more than one transition. 
 
-\textcolor{red}{Show coincidence spectra to convince the reader that there is a transition at approximately 845 keV, which is a very good candidate for the missing member of the \ga-band. This new transition and new state will really help to clarify the role of triaxiality.}
+\textcolor{red}{Introduser gamma-gamma matrisen, og så coincidence spectra.}\newline
+\autoref{fig:gg_dcB} displays the \ga\ga-matrix Doppler corrected for the beam.
+
+\begin{figure}[htb]
+	\centering
+	% GammaPlot.cpp
+	% gg_matrix_dcB("setup_Coulex.txt", "d")
+	\includegraphics[width=\textwidth]{../Plots/plotting/gg_dcB.png}
+	\caption{\ga-\ga\ matrix Doppler corrected for beam.}
+	\label{fig:gg_dcB}
+\end{figure}
 
 
+\autoref{fig:check_state} shows a coincidence spectra of \textcolor{red}{??? hvordan presentere denne figuren ???}.
+The transition at approximately 844 keV is a very good candidate for the missing member of the \ga-band. 
+This new transition and new state will really help to clarify the role of triaxiality.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{Images/check_state.png}
+	\caption{\textbf{(a)} A gate on the left flank of the broad peak at 836 keV, showing coincidences with the 715 keV ($4_1^+ \rightarrow 2_1^+$) and 531 keV ($2_1^+ \rightarrow 0_1^+$) transitions.
+	%yrast cascade.
+	\textbf{(b)} Gate on the right flank of the 836 keV peak, showing coincidences with the 460 keV ($2_2^+ \rightarrow 2_1^+$) and 531 keV ($2_1^+ \rightarrow 0_1^+$) transitions.
+	\textbf{(c)} In red, a gate on the 715 keV ($4_1^+ \rightarrow 2_1^+$) transition, showing the 836 keV ($6_1^+ \rightarrow 4_1^+$) and 888 keV ($8_1^+ \rightarrow 6_1^+$) transitions. In blue, a gate on the 460 keV ($2_2^+ \rightarrow 2_1^+$) transition, showing a new transition at 844 keV, presumably from the $3^+$ state belonging to the \ga-vibrational band.
+	}
+	\label{fig:check_state}
+\end{figure}
 
 
 \bigskip
@@ -2615,22 +2635,20 @@ However, the width of the $6_1^+ \rightarrow 4_1^+$ transition at 836 keV is sli
 From the previous experiment at ISOLDE, IS495 in 2012, three excited states of \Sm\ were populated, the first (531 keV) and second (990 keV) excited $2^+$ states, in addition to the first $4^+$ (1246 keV) state.
 The reduced transition probabilities, i.e. $B(E2)$ values for the specified low-lying states was obtained \cite{Klintefjord2015, Klintefjord2016, BelloGarrote2015}.
 
-From the present experiment at ISOLDE, IS558 in 2017, it was expected that excited sates up to $8^+$ are populated. 
+From the present experiment at ISOLDE, IS558 in 2017, excited sates up to $8^+$ were populated. 
 \autoref{tab:gamma_trans} displays the known \ga\ transitions for excited \Sm\ up to the $8^+$ state.
 \autoref{fig:levels} displays the level scheme based on \autoref{tab:gamma_trans} for all known levels of \Sm\ up to the $8^+$ state at 2970 keV. 
-Many of the states, but not all, are visible in \autoref{fig:gam_dcB}. 
-There are different reasons for this.
-Some of the transitions are so low in energy that they disappear inside the Compton continuum.
-The excitation probability for some of the states are low, and thereby the states are not reached.
-There might also be states with a low transition intensity leading to very few counts, especially at higher energy.
+
+
 
 From the experiment in 2017 with the \Pb\ target, a lot more excited states are populated and visible in the spectra compared to the experiment in 2012 with the $^{94}$Mo target.
 By looking at the relative intensity of $2_2^+ \rightarrow 2_1^+$ (460 keV) compared to $2_1^+ \rightarrow 0_1^+$ (531 keV), we see that the probability for multi-step excitations are much greater with the Pb target.
 
+The reduced transition probabilites, i.e. $B(E2)$, are relatively strong in the ground state band. 
 
 
 
-
+\textcolor{red}{Koble B(E2) mot \autoref{fig:projections}.}
 
 
 
@@ -2666,16 +2684,6 @@ The $0_2^{(+)}$ and $0_3^{+}$ states can tell us about the shape of the nucleus,
 
 
 
-\autoref{fig:gg_dcB} displays the \ga\ga-matrix Doppler corrected for the beam.
-
-\begin{figure}[ht]
-	\centering
-	% GammaPlot.cpp
-	% gg_matrix_dcB("setup_Coulex.txt", "d")
-	\includegraphics[width=\textwidth]{../Plots/plotting/gg_dcB.png}
-	\caption{\ga-\ga\ matrix Doppler corrected for beam.}
-	\label{fig:gg_dcB}
-\end{figure}
 
 
 
