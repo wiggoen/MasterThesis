@@ -1959,7 +1959,7 @@ What will later be described as the user calibration file is essentially the onl
 
 
 \subsection{The double peak structure}\label{ssec:DPS}
-In several strips in quadrant 1 and 4, there was a double-peak structure of \Sm\ similar to the peaks displayed in \autoref{fig:th_f}. 
+In several strips of quadrant 1 and 4, there we observe a double-peak structure of \Sm\ similar to the peaks displayed in \autoref{fig:th_f}. 
 To explain this we have to look at the two-dimensional (2D) spectrum in \autoref{fig:EFBQ4}, which can be divided into four parts \cite{Rosiak}:
 \begin{itemize}
 	\item Region 1: The measured energy at the front and back side of the CD are equal, which indicates that they are linearly correlated.
@@ -1979,7 +1979,7 @@ To explain this we have to look at the two-dimensional (2D) spectrum in \autoref
 	These phenomena are discussed in detail in \cite{Grassi2014, Kramberger2002}.
 	\item Region 4: This structure originates from the same effects as region 2.
 	These events occur because of the paired up radial strips on the back side of the CD.  
-	Because of the connection of two neighboring strips, the charge is split among them and it is added up to the total charge.
+	Because of the connection of two neighboring strips, the charge is split among them and added up to the total charge.
 \end{itemize}
 
 \begin{figure}[htb]
@@ -2025,12 +2025,12 @@ A software threshold is applied to cut away the pedestal.
 For each ADC channel, the threshold can, and should be set. 
 If no threshold is given in the calibration file, the default threshold is set to channel 100.
 One should define the threshold for each ADC channel to be above the pedestal peak.
-If the threshold is set too low, pedestal events are included in the \textcolor{red}{??? spectra / other stuff / Coulex something ???} and it will get things wrong. \textcolor{red}{Jeg vet ikke hva som går galt, dette var forklaringen jeg fikk fra Liam.....:(}
+If the threshold is set too low, pedestal events are included in the sorting routine, potentially causing harmful issues.
 If the threshold is too high, several charge-sharing events will be leading to false particle energy.
 After a correct calibration and threshold is applied, the pedestal will be calibrated out of the physical energy range, meaning it is cut away in the spectra.
 
 The goal is to not include the pedestal, and not to cut away too many continuum events.
-It is easier to set thresholds in linear scale than logarithmic, because in it is difficult to see where to correctly set the limit. 
+%It is easier to set thresholds in linear scale than logarithmic, because in it is difficult to see where to correctly set the limit. 
 \autoref{fig:th_f} and \autoref{fig:th_b} shows the software threshold set in the calibration file on the front and back side for one strip on each side.
 To verify that the implemented threshold is correct, it is very useful to check the so-called "debug" histogram from \texttt{TreeBuilder} displayed in \autoref{fig:CD_debug} and the detected particle events in \autoref{fig:part_wcut}.
 \autoref{fig:CD_debug} is a histogram of how many strips of the CD fired per particle.
@@ -2044,7 +2044,6 @@ The code yields debug ID 20 when no particle can be found, i.e. there is no ener
 This can only happen when the front energy is below the software threshold set by the user in the calibration file and the back energy is either in a broken strip, or below the software threshold. 
 Charge sharing and noise events will in general also occur below the threshold.
 Therefore, it is expected that debug ID 20 always have a significant number of counts.
-
 
 \begin{figure}[htb]
 	\centering
@@ -2108,7 +2107,8 @@ adc_3.TimeOffset:  5
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/plotting/tdiff_gp_0-3-user.png}
-	\caption{ADC time offsets for the four quadrants of the CD. See text for information.}
+	\caption{ADC time offsets for the four quadrants of the CD. 
+	See the text for more information.}
 	\label{fig:ADC_dt}
 \end{figure}
 
@@ -2169,47 +2169,47 @@ adc_3.TimeOffset:  5
 
 \subsection{Calibration of the \texorpdfstring{$\gamma$}{gamma} detectors}\label{ssec:gamma}
 
-The online calibration is designed in such a way that the calibration of the \ga\ detectors is quite acceptable in a certain energy range.
-During the setup of the experiment, a hardware and software calibration of the \ga\ detectors was performed by the ISOLDE staff. 
-The gains and offsets of each DGF were provided in such a way that the online analysis is more straightforward.
-In addition, it is easier to monitor the data on-line.
-However, there are non-linearities and drifting offsets and gains over time that might have to be corrected for with a proper calibration.
-Therefore, a calibration run using \Ba\ and \Eu\ was performed at the end of the experiment.
-The \Ba\ and \Eu\ sources were placed in the target position simultaneously, back to back.
+%The online calibration is designed in such a way that the calibration of the \ga\ detectors is quite acceptable in a certain energy range.
+
+
+During the setup of the experiment, a hardware and software calibration of the gamma detectors was performed by the ISOLDE staff, as stated in \autoref{ssec:online_cal}. 
+The gains and offsets of each DGF were provided in such a way that the online analysis is more straightforward. 
+In addition, it is easier to monitor the data on-line. 
+However, the \ga\ detectors have non-linear properties, and the offsets and gains may drift over time, calling for a proper calibration. 
+Therefore, a calibration run using $^{133}$Ba and $^{152}$Eu was performed at the end of the experiment. 
+The $^{133}$Ba and $^{152}$Eu sources were placed in the target position simultaneously, back to back. 
+With the data set from the source run, it possible to verify the quality of the online calibration, and if needed, perform a second calibration. 
 In addition, the data from the calibration run can be used to determine the relative efficiency of the Miniball spectrometer.
 
-The quality of this calibration has been carefully checked.
-It was concluded to be very acceptable, meaning there was no need to improve on it. 
-Even if the resolution had been improved by 0.1 keV for the source data, once the Doppler broadening gets into play, it makes no difference.
-\autoref{fig:gamma_comparison} displays all 144 \ga\ detector segments plotted on top of each other. 
-The alignment of the segments are very satisfactory.
+To investigate the gamma calibration, all of the 144 gamma detector segments from the source run was plotted on top of each other, as displayed in \autoref{fig:gamma_comparison}. 
+The alignment of the segments is excellent, i.e. there is no need to improve the gamma calibration. 
+Even if the resolution had been improved by 0.1 keV by applying the source data, once the Doppler broadening gets into play, it makes no difference. 
+Therefore, the online calibration was applied in the present thesis work, similar to the particle calibration.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{../Plots/comparing/gamma_comparison_full.png}
-	\caption{Comparison of all 144 \ga\ detector segments. 
-	Each of the 8 clusters has a different color.}
+	\caption{Comparison of all 144 \ga\ detector segments from the source run with $^{133}$Ba and $^{152}$Eu. 
+	Each of the 8 clusters are displayed with a different color.}
 	\label{fig:gamma_comparison}
 \end{figure}
 
-Similar to the particle calibration, the online \ga\ calibration was utilized in the present work. 
 The original thesis project included the calibration of the \ga\ detectors by means of an automatic fitting procedure.
 For reasons explained in \autoref{ssec:user_cal}, the fitting procedure was abandoned.
 Nonetheless, the expected program flow including the automatic fitting will be outlined in the following.
 
 In the calibration run, there are many \ga\ lines for both Eu and Ba. 
-Therefore, many data points can be used in the calibration.
+Therefore, many data points can be applied in the calibration.
 The fit can either be linear or quadratic, depending on the detector specification.
-A simple calibration, with only two centroids can be performed similarly to the particle detector calibration.
-From \autoref{eq:offset} and \autoref{eq:gain} we have more specifically
+A simple linear calibration, with only two centroids can be performed similarly to the particle detector calibration.
+From \autoref{eq:offset} and \autoref{eq:gain} we have
 \begin{align}\label{eq:GGandA}
 	g_\gamma &= \frac{E_{\text{Eu}} - E_{\text{Ba}}}{n_{\text{Eu}} - n_{\text{Ba}}} 
 	&  
 	a &= E_{\Gamma} - g_\gamma \cdot n_{\Gamma}
 \end{align}
-where $\Gamma$ can be either Eu or Ba.
+where $\Gamma$ can be peaks from either Eu or Ba.
 
-In a similar manner to the particle detector calibration, the \ga\ detector calibration can be performed.
 The gray boxes in \autoref{fig:cal_FC} emphasizes the program flow of the \ga\ detector calibration. 
 The idea is to use the \texttt{Q4S.sh} script to sort the experimental data with \texttt{TreeBuilder}.
 Then, the \ga\ histograms are analyzed by means of ROOT using the \texttt{GammaPlot.cpp} script.
@@ -2217,14 +2217,17 @@ Histograms used for \ga\ detector calibration sorted by \texttt{TreeBuilder} use
 The core signal is $s = 0$ as displayed in \autoref{fig:HPGe}.
 
 To perform the fitting, \texttt{GammaFit.cpp} would require the energy centroids as input. 
-This script was never written, but the idea is the same as the particle calibration.
+This script was never written, but the general idea is similar to the particle calibration.
 Currently, the Python scripts \texttt{DGF\_generator.py} and \texttt{Geometry\_generator.py} reproduces the calibration coefficients and geometry parameters from the online calibration. 
-These scripts need to be modified if a new calibration is performed.
+These scripts need to be modified if a second, improved calibration is performed.
 The final output of the \ga\ calibration would then have been pasted into the calibration file \textit{IS558-user.cal}.
 After the calibration coefficients and the geometry parameters are added to the calibration file, the \texttt{TreeBuilder} program have to be re-run, utilizing the updated calibration file.
 
-The next step is to run \texttt{CLXAna}.
-\texttt{CLXAna} applies the Doppler correction in order to get the Doppler-corrected \ga-spectra to analyze the Coulomb excitation of \Sm.
+
+
+\subsection{\texorpdfstring{$\gamma$}{gamma} sorting}
+After the completion of the calibration file, the next step is to run \texttt{CLXAna}.
+\texttt{CLXAna} sorts the \ga\ spectra, makes a kinematic reconstruction to get the angle of the particles, and applies the Doppler correction in order to get the Doppler-corrected \ga-spectra to analyze the Coulomb excitation of \Sm.
 The theory of the Doppler correction is explained in \autoref{ssec:Doppler}.
 %\texttt{CLXAna} makes event trees and energy spectra for both particle and \ga\ detection which can be used for analyzing the Coulomb excitation events.
 
@@ -2239,7 +2242,7 @@ The energies of the events that occurred in the separate segments are summed, an
 An advantage of the add-back method is that the full energy of a single \ga-ray, which has undergone a Compton scattering process, can be reconstructed to increase the efficiency.
 A disadvantage of the method is the uncertainty in the assumptions of the addition of several events into a single event. 
 The add-back method can cause an increase in the intensity of \ga-ray sum peaks.
-When utilizing the add-back method, in some cases two individual \ga-rays are added together, making the sum peak stronger.
+When utilizing the add-back method, in some cases two individual \ga-rays are added together, making the sum peak energy higher.
 Thus no correction is performed when separate \ga-rays are added together in the detector \cite{Gaffney, MB-spect}.
 
 When applying the reject method for the sorting, all events occurring in neighboring detectors in the same cluster within a 100 ns time window is excluded as an event. 
@@ -2248,11 +2251,13 @@ If the amount of total statistics is large, it is possible, or perhaps even an a
 
 \texttt{CLXAna} has to be run twice in order to complete the sorting correctly.
 In the first run, every input parameter except the graphical cuts have to be provided.
-\autoref{sec:CLXAna} goes through the details of the graphical cuts.
+\autoref{fig:part_wcut} shows the cuts of the beam and target for the detected particle events.
+These graphical cuts are used in the Doppler correction of the \ga-rays.
+\autoref{ch:MBCS_ROOT} goes through the details of how the graphical cuts are obtained.
 When the graphical cut file is made, the second run of \texttt{CLXAna} can be completed. 
-In order to not copy and paste all command into the command line, a script named \texttt{Coulex.sh} was made to sort the data with \texttt{CLXAna}. 
+In order to not copy and paste all commands into the command line, a script named \texttt{Coulex.sh} was made to sort the data with \texttt{CLXAna}. 
 It uses the configuration file \textit{config-IS558.dat} and the graphical cut file \textit{outputfile.root}. 
-In addition it takes one command line flag, specifying the sorting method:
+In addition, it takes one command line flag, specifying the sorting method:
 \begin{lstlisting}[language=]
 '-s' (singles) 
 '-a' (addback) 
@@ -2291,11 +2296,7 @@ Warning in <TClass::Init>: no dictionary for class trevts is available
 1-particle events = 89020258%)    
 Finished.
 \end{lstlisting}
-A detailed explanation of the input parameters is provided in \autoref{sec:CLXAna}.
-
-\autoref{fig:part_wcut} shows the cuts of the beam and target for the detected particle events. 
-% as the solid and dotted lines. 
-These graphical cuts are used in the Doppler correction of the \ga-rays. 
+A detailed explanation of the input parameters is provided in \autoref{ch:MBCS_ROOT}.
 
 \begin{figure}[htb]
 	\centering
@@ -3150,7 +3151,7 @@ The file \textit{setup\_Sm.txt} is in the table twice, this is because it is two
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 
-\chapter{MiniballCoulexSort and ROOT}
+\chapter{MiniballCoulexSort and ROOT}\label{ch:MBCS_ROOT}
 
 \section{Connecting MiniballCoulexSort with ROOT}
 To connect MiniballCoulexSort with ROOT you need them to share their libraries with each other. This is done with a dynamic loader, which you can find out more about here \cite{ROOTdynLoader}. 
