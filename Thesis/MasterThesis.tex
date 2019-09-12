@@ -2493,7 +2493,13 @@ With the direction and energy (velocity) of the scattered particle and the direc
 The total \ga-ray singles and add-back spectrum corresponding to the CM scattering angles between $36.6^\circ$ and $136.0^\circ$, Doppler corrected for the projectile is displayed in \autoref{fig:gam_dcB}. 
 As a comparison, the total \ga-ray singles spectrum from the previous experiment (from 2012) is displayed in \autoref{fig:gam_MK}.
 There is a lot more \ga\ transitions visible from the present experiment with the \Pb\ target in \autoref{fig:gam_dcB} compared to the previous experiment with the $^{94}$Mo target. 
-By looking at the relative intensity of $2_2^+ \rightarrow 2_1^+$ (460 keV) compared to $2_1^+ \rightarrow 0_1^+$ (531 keV) in both \ga\ spectra, we see that the probability for multi-step excitations are much greater with the Pb target. \textcolor{red}{Kan man se dette direkte av intensiteten? Spiller ikke beam energien også en rolle her, 2.85 MeV/u vs. 4.65 MeV/u?}
+
+Both the higher $Z$ of the target and the higher beam energy contribute to the higher excitation probability of \Sm.  
+A higher excitation energy and a higher spin is reached, as seen by the excitation of states up to $\sim$3 MeV.
+From \autoref{fig:gam_dcB}, we see the population of the $8_1^+$ state, whereas the previous experiment only populated up to the $4_1^+$ state. 
+This is due to the much higher probability of multi-step excitation.
+The higher probability for multi-step excitation can also be seen from the relative intensity of the transitions that require two steps ($2_2^+ \rightarrow 2_1^+$ (460 keV) or $4_1^+ \rightarrow  2_1^+$ (715 keV)) relative to the $2_1^+ \rightarrow  0_1^+$ (531 keV) transition in the two experiments.
+
 When sorting the data with the add-back method, there is a visible enhanced efficiency for high-energy \ga-rays, the peaks are more distinct. 
 
 \begin{figure}[htb!]
@@ -2532,7 +2538,8 @@ When the beam passes through the target, there is a possibility that electrons a
 \begin{table}[htb!] 
     \centering 
     \caption{Known \ga\ transitions in \Sm\ based on \cite{Klintefjord, NNDC-levels}. 
-    $E$ refers to the energy, $J^\pi$ is the spin and parity, $I_\gamma$ is the \textcolor{red}{??? \ga\ intensity ??? Hvis det er intensitet, skal ikke den da summere til 100 innenfor en tilstand? Noen er jo 100, mens andre overganger fra samme tilstand er mindre enn 100.} and $\sigma \lambda$ is the multipolarity. 
+    $E$ refers to the energy, $J^\pi$ is the spin and parity and $\sigma \lambda$ is the multipolarity. 
+    $I_\gamma$ is the relative \ga\ intensity for transitions depopulating a given state, where the strongest transition is normalized to intensity 100.
     The column "Visible in \ga\ spectrum" describes if it is possible to see the transition in \autoref{fig:gam_dcB}.}
 	\input{Table-data/Gamma-transitions.tex}
 	\label{tab:gamma_trans}
@@ -2547,15 +2554,30 @@ An experiment conducted at the Heavy Ion Laboratory of the University of Warsaw 
 The 990 keV level is then a very low-lying $2_2^+$, which supports the notion of triaxiality \cite{Klintefjord2016}.
 \textcolor{red}{Betyr "the notion of triaxiality" at \Sm\ forventes å være triaxial? Og er det snakk om å være triaxial i grunntilstanden pga en lavtliggende $2^+$ eller er \Sm\ triaxial i denne $2^+$ tilstanden?}
 
+\textcolor{red}{Start fiks - - - - - - - - - -}\newline
+\textcolor{ForestGreen}{Jeg tror bare dette var en forklaring til meg, ikke legg til i teksten.}\newline
+notion of triaxiality = forestilling om triaxialitet \newline
+The fact that the second $2^+$ states is so low indicates that the axial symmetry is broken. 
+If you had a stable triaxial shape of the nucleus (in the ground state), you would expect a low-lying $2_2^+$ (and $3_1^+$) state coming from the rotation of the triaxial nucleus. (we talked about this in the nuclear structure course, see f.ex. Davydov and Filippov, Nucl Phys. 8, 237, 1958). A very low $2_2^+$ state would require a stable deformation with gamma near 30 deg. But such cases are rare. A more likely interpretation would be a gamma vibration. In that case you have a deformation with axial symmetry in the ground state, and the $2_2^+$ state is based on the vibration of the shape in gamma direction about the axial equlibrium shape. The energy of the $2_2^+$ state and the $B(E2; 2_2^+ \rightarrow 2_1^+)$ value cannot distinguish between stable triaxial deformation and gamma vibration. The $3^+$ state, on the other hand, is sensitive to these two different types of excitations. This is why the potential new $3^+$ state that we found gives important information on the nuclear shape.
+
+\textcolor{red}{Slutt fiks - - - - - - - - - -}
+
 The green arrows in \autoref{fig:gam_dcB} corresponds to some of the energy states in the level scheme, which is a combination of two \ga\ transitions, i.e. a summing of the peaks.
 For the very strong transitions there is a certain chance that two \ga-rays hit the same detector, and consequently there is a peak at the energy that corresponds to the sum of the two energies. 
 This effect is enhanced when the add-back method is used, because in this case it is sufficient that two \ga-rays hit the same cluster, as opposed to the same crystal, to end up in the sum peak.
 The $0_2^{(+)}$ (1599 keV) and $0_3^{+}$ (1628 keV) states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence. 
-\textcolor{red}{Kan dette eksperimentet verifisere pariteten til $0_2^{(+)}$ tilstanden?}
+
+In Warsaw the angular correlation were measured, and the experiment could only conclude that the multipolarity of the $0_2^{(+)} \rightarrow 2_1+$ transition was quadrupole ($\lambda = 2$). 
+Because E2 and M3 transitions have the same angular distributions, the experiment could not determine the parity. 
+Magnetic excitations are strongly suppressed in Coulomb excitation compared to electric excitations. 
+The fact that the $0_2^{(+)}$ state was populated in the present experiment, already reveal that the parity of the state must be positive, i.e. a $=0^+$ state. 
+There is no way that a $0^-$ state could be populated from a $2^+$ state in Coulomb excitation.
+In cases where the spin of the final state is not known, different assumptions can be used when fitting the electromagnetic matrix elements to the excitation probabilities (as a function of scattering angle). 
+Usually the spin can be determined from the chi-square of the fit.
 
 The peak around the 1420 keV ($(1,2)_1 \rightarrow 0_1^+$) transition is quite broad. 
 This peak might also contain the 1402 keV ($(0,1,2) \rightarrow 2_1^+$) transition from 1933 keV, seen in \autoref{fig:levels} left of the far right transition. 
-Since the 1952 keV peak is also quite broad, it may contain the sum-peak at the 1933 keV level as well.
+Since the 1952 keV peak is also quite broad, it may contain the sum-peak at the 1933 keV level as well. \textcolor{red}{Tegn inn i \autoref{fig:gam_dcB} hvis tid.}
 
 A visualization of all the known \ga\ transitions in \autoref{tab:gamma_trans} are displayed in \autoref{fig:levels}. 
 The level scheme displays all the known levels up to the $8^+$ state at 2970 keV. 
@@ -2570,18 +2592,27 @@ There might also be states with a low transition intensity leading to very few c
 	\includegraphics[width=\textwidth]{Images/Level-scheme-140Sm-v2.png}
 	\caption{Level scheme for \Sm\ based on \cite{Klintefjord, NNDC-levels}. 
 	The energies for the levels and transitions are in keV and are rounded to the nearest integer.
-	See text for more information.}
+	See text for more information. \textcolor{red}{Tegn inn de overgangene vi ikke ser med stiplede linjer.}
+	}
 	\label{fig:levels}
 \end{figure}
 
-In addition to all the transitions visible in the \ga\ spectrum in \autoref{fig:gam_dcB}, it is expected to see a transition from an unknown $3^+$ state which should transition into the $2_2^+$ state \cite{Klintefjord2016, Samorajczyk2015}.
+In addition to all the transitions visible in the \ga\ spectrum in \autoref{fig:gam_dcB}, it is expected to see a transition from an unknown $3^+$ state which should decay mostly into the $2_2^+$ state \cite{Klintefjord2016, Samorajczyk2015}.
 The $3^+$ state is expected as a member of the \ga-vibrational band, which is expected to be built on the $2_2^+$ state.
 Theory predicts that the $3^+$ state should roughly be around 1900 keV.
 In the spectrum of \autoref{fig:gam_dcB}, there is no obvious candidate for a transition from the expected $3^+$ state.
 However, the width of the $6_1^+ \rightarrow 4_1^+$ transition at 836 keV is slightly wider than the other transitions. 
 \ga-\ga\ coincidences can be used to investigate if the peak at 836 keV is composed of more than one transition. 
 \autoref{fig:check_state} shows a coincidence spectra of gates on the left and right flank of the 836 keV peak.
+
+When gating on the left flank of the peak, the spectrum shows coincidences with the transitions of the ground-state band, as expected for a coincidence spectrum with the $6_1^+ \rightarrow 4_1^+$ transition. 
+When gating on the right-hand flank of the peak, however, clear coincidences with the 460 keV ($2_2^+ \rightarrow 2_1^+$) transition appear. 
+These coincidence relationships are confirmed when gating on the 715 keV ($4_1^+ \rightarrow 2_1^+$) and the 460 keV ($2_2^+ \rightarrow 2_1^+$) transitions, respectively. 
+The coincidence spectra show two peaks that are clearly shifted in energy, with the $6_1^+ \rightarrow 4_1^+$ transition at the known energy of 836 keV, and a new, previously unobserved transition at 844 keV. 
+The intensity of the new 844 keV transition is relatively strong, which makes the transition a very good candidate for the expected $3_1^+ \rightarrow 2_2^+$ transition. 
+
 The transition at approximately 844 keV is a very good candidate for the missing member of the \ga-band. 
+\textcolor{blue}{The new transition places the candidate for the $3^+$ state at 1834 keV.}
 This new transition and new state will really help to clarify the role of triaxiality.
 The sum-peak of the assumed $3^+$ and the $2_2^+$ state is 1834 keV, which is close to the rough estimate of around 1900 keV.
 We cannot expect to see a transition down to the ground state from 1834 keV, since it would have been a M3 transition. 
@@ -2589,7 +2620,8 @@ We cannot expect to see a transition down to the ground state from 1834 keV, sin
 
 There is a possible new peak around 1860 keV in \autoref{fig:gam_dcB}. 
 None of the sum-peaks from \autoref{fig:levels} add up to this energy level. 
-\textcolor{red}{Kan det være summen av flere forskjellige overganger, som ikke er åpenbare i level scheme? Som f.eks. 888 ($8_1^+ \rightarrow 6_1^+$) + 460 ($2_2^+ \rightarrow 2_1^+$) + 531 (($2_1^+ \rightarrow 0_1^+$)) = 1879 keV. 888 og 531 er åpenbare, men er det også åpenbart at 460 kommer samtidig? 836 + 460 + 531 = 1827.}
+\textcolor{red}{Kan det være summen av flere forskjellige overganger, som ikke er åpenbare i level scheme? Som f.eks. 888 ($8_1^+ \rightarrow 6_1^+$) + 460 ($2_2^+ \rightarrow 2_1^+$) + 531 (($2_1^+ \rightarrow 0_1^+$)) = 1879 keV. 888 og 531 er åpenbare, men er det også åpenbart at 460 kommer samtidig? 836 + 460 + 531 = 1827.} \newline
+\textcolor{blue}{No, that is very unlikely to have three gamma rays going into the same detector. In any case would they have to form a cascade, i.e. would have to be all in coincidence with each other.}
 
 \begin{figure}[htb]
 	\centering
@@ -2603,7 +2635,7 @@ None of the sum-peaks from \autoref{fig:levels} add up to this energy level.
 \end{figure}
 
 \autoref{fig:gg_dcB} displays the \ga\ga-matrix Doppler corrected for the beam.
-The diagonal lines below 600 keV, comes from the Compton continuum. \textcolor{red}{Is this correct?} 
+The diagonal lines below 600 keV, comes from the Compton continuum. 
 Here, we see defined lines where the constituents of the ground state band is as mentioned before (531 keV, 715 keV, 836 keV and a slim 888 keV line), in addition to the 460 keV line. 
 The 836 keV line is quite broad.
 
@@ -2619,16 +2651,30 @@ The 836 keV line is quite broad.
 
 In the previous experiment at ISOLDE, IS495 in 2012, three excited states of \Sm\ were populated, the first (531 keV) and second (990 keV) excited $2^+$ states, in addition to the first $4^+$ (1246 keV) state.
 The \ga-ray intensities for the specified low-lying states was measured from 5 separate ranges of CM scattering angles, Doppler corrected for the \Sm\ projectiles. 
-These intensities are used to obtain the reduced transition probabilities, i.e. the $B(E2)$ values of the specified low-lying states \cite{Klintefjord2015, Klintefjord2016, BelloGarrote2015}.
+These intensities were used to obtain the reduced transition probabilities, i.e. the $B(E2)$ values of the specified low-lying states \cite{Klintefjord2015, Klintefjord2016, BelloGarrote2015}.
 
 From the present experiment at ISOLDE, IS558 in 2017, excited sates up to $8^+$ were populated. 
 New measurements of the \ga-ray intensities can be performed for 23 separate ranges of CM scattering angles, Doppler corrected for the \Sm\ projectiles, specified by \autoref{tab:scattering}. 
-\autoref{fig:projections} displays the coverage of the CM scattering angle range $\theta_b^{'} \in [36.6^\circ, 136.0^\circ]$ of the beam.
-It is split into 6 parts as an example of the quality of the new measurement, but this can further be split into 23 parts.
+
+\autoref{fig:projections} displays \ga-ray spectra for 6 different ranges of CM scattering angles to illustrate the dependence of the excitation probabilities on the scattering angle. 
+The spectra clearly show that multi-step excitation is much stronger for large scattering angles, when the distance of closest approach is smaller and the strength of the electromagnetic interaction is stronger. 
+\textcolor{red}{Fiks......}
+It is split into 6 parts as an example of the quality of the new measurement.
+
+The silicon detector has 16 rings and consequently covers 16 angular ranges in the laboratory system. 
+When considering the detection of either projectile, target, or for some angles both, the detector covers an angular range from 36.6$^\circ$ to 136.0$^\circ$ in the CM system, which can be divided into 23 independent angular ranges as given in \autoref{tab:scattering}. 
+
 The 23 separate angle ranges will give much more data points compared to the former 5 separate angle ranges.
 By analyzing the 23 CM angle ranges, the precision of the previous measurements of the three $B(E2)$ values will certainly be improved, in addition to measuring many unknown $B(E2)$ values.
 The reduced transition probabilites, i.e. $B(E2)$, are relatively strong in the ground state band. 
 \textcolor{red}{Må jeg si hvordan disse er koblet mot matrise-elementene eller kan jeg la være å si det? Hvis jeg må forklare det, hvordan var det igjen? Hvis jeg ikke må forklare det, kan vi snakke om dette senere.}
+
+\textcolor{red}{Fiks....} \newline 
+Each spectrum for the 23 different angular ranges will provide an independent set of \ga-ray intensities for the various transitions. 
+In the next step of the Coulomb excitation analysis, a set of electromagnetic matrix elements will be fitted to the \ga-ray intensities in a chi square procedure. 
+The known transition probabilities from the previous experiment and known branching ratios can be used to constrain the fit. 
+Since the present experiment provides many more data points compared to the number of free parameters, the experiment will provide both transitional and diagonal matrix elements with good precision. 
+
 
 
 \begin{figure}[htb!]
