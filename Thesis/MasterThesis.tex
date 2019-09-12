@@ -2497,7 +2497,7 @@ With the direction and energy (velocity) of the scattered particle and the direc
 The total \ga-ray singles and add-back spectrum corresponding to the CM scattering angles between $36.6^\circ$ and $136.0^\circ$, Doppler corrected for the projectile is displayed in \autoref{fig:gam_dcB}. 
 As a comparison, the total \ga-ray singles spectrum from the previous experiment (from 2012) is displayed in \autoref{fig:gam_MK}.
 There is a lot more \ga\ transitions visible from the present experiment with the \Pb\ target in \autoref{fig:gam_dcB} compared to the previous experiment with the $^{94}$Mo target. 
-By looking at the relative intensity of $2_2^+ \rightarrow 2_1^+$ (460 keV) compared to $2_1^+ \rightarrow 0_1^+$ (531 keV), we see that the probability for multi-step excitations are much greater with the Pb target. \textcolor{red}{Kan man se dette direkte av intensiteten?}
+By looking at the relative intensity of $2_2^+ \rightarrow 2_1^+$ (460 keV) compared to $2_1^+ \rightarrow 0_1^+$ (531 keV) in both \ga\ spectra, we see that the probability for multi-step excitations are much greater with the Pb target. \textcolor{red}{Kan man se dette direkte av intensiteten? Spiller ikke beam energien også en rolle her, 2.85 MeV/u vs. 4.65 MeV/u?}
 When sorting the data with the add-back method, there is a visible enhanced efficiency for high-energy \ga-rays, the peaks are more distinct. 
 
 \begin{figure}[htb!]
@@ -2528,14 +2528,10 @@ When sorting the data with the add-back method, there is a visible enhanced effi
 	\label{fig:gam_compared}
 \end{figure}
 
-
-The black arrows, except for the first one, in \autoref{fig:gam_dcB} corresponds to the \ga\ transitions which are visible from the known \ga\ transitions in \autoref{tab:gamma_trans}. 
+The black arrows, except for the first one, in \autoref{fig:gam_dcB} corresponds to the known \ga\ transitions in \autoref{tab:gamma_trans}. 
+The far right column of \autoref{tab:gamma_trans} shows which \ga\ transitions are visible in \autoref{fig:gam_dcB}.
 At very low energy, pointed by the first black arrow below the Compton continuum, a peak of \Pb\ x-rays is visible. 
 When the beam passes through the target, there is a possibility that electrons are removed, which produces x-rays when the holes are filled.
-
-The green arrows in \autoref{fig:gam_dcB} corresponds to some of the energy states in the level scheme, which is a combination of two \ga\ transitions, i.e. a summing of the peaks.
-For the very strong transitions there is a certain chance that two \ga-rays hit the same detector, and consequently there is a peak at the energy that corresponds to the sum of the two energies. 
-This effect is enhanced when the add-back method is used, because in this case it is sufficient that two \ga-rays hit the same cluster, as opposed to the same crystal, to end up in the sum peak.
 
 \begin{table}[htb!] 
     \centering 
@@ -2546,6 +2542,25 @@ This effect is enhanced when the add-back method is used, because in this case i
 	\label{tab:gamma_trans}
 \end{table}
 
+The \ga\ transitions of $8_1^+ \rightarrow 6_1^+$ (888 keV), $6_1^+ \rightarrow 4_1^+$ (836 keV), $4_1^+ \rightarrow 2_1^+$ (715 keV) and $2_1^+ \rightarrow 0_1^+$ (531 keV) constitutes the ground state band.
+A couple of states worth mentioning are the 990 keV and 1599 keV states.
+They both transition down to the $2_1^+$ state with 460 keV  and 1068 keV, respectively.
+% ($2_2^+ \rightarrow 2_1^+$) and ($0_2^{(+)} \rightarrow 2_1^+$)
+The spin and parity of the 990 keV \cite{Firestone} and 1599 keV states in \Sm\ was originally thought to be $0^+$ and $2^+$, respectively. 
+An experiment conducted at the Heavy Ion Laboratory of the University of Warsaw corrected the spin values of the 990 keV and 1599 keV states in \Sm\ to be $2^+$ and $0^{(+)}$, respectively \cite{Klintefjord2015, Samorajczyk2015}.
+The 990 keV level is then a very low-lying $2_2^+$, which supports the notion of triaxiality \cite{Klintefjord2016}.
+\textcolor{red}{Betyr "the notion of triaxiality" at \Sm\ forventes å være triaxial? Og er det snakk om å være triaxial i grunntilstanden pga en lavtliggende $2^+$ eller er \Sm\ triaxial i denne $2^+$ tilstanden?}
+
+The green arrows in \autoref{fig:gam_dcB} corresponds to some of the energy states in the level scheme, which is a combination of two \ga\ transitions, i.e. a summing of the peaks.
+For the very strong transitions there is a certain chance that two \ga-rays hit the same detector, and consequently there is a peak at the energy that corresponds to the sum of the two energies. 
+This effect is enhanced when the add-back method is used, because in this case it is sufficient that two \ga-rays hit the same cluster, as opposed to the same crystal, to end up in the sum peak.
+The $0_2^{(+)}$ (1599 keV) and $0_3^{+}$ (1628 keV) states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence. 
+\textcolor{red}{Kan dette eksperimentet verifisere pariteten til $0_2^{(+)}$ tilstanden?}
+
+The peak around the 1420 keV ($(1,2)_1 \rightarrow 0_1^+$) transition is quite broad. 
+This peak might also contain the 1402 keV ($(0,1,2) \rightarrow 2_1^+$) transition from 1933 keV, seen in \autoref{fig:levels} left of the far right transition. 
+Since the 1952 keV peak is also quite broad, it may contain the sum-peak at the 1933 keV level as well.
+
 A visualization of all the known \ga\ transitions in \autoref{tab:gamma_trans} are displayed in \autoref{fig:levels}. 
 The level scheme displays all the known levels up to the $8^+$ state at 2970 keV. 
 Many of the transitions and states, but not all, are visible in \autoref{fig:gam_dcB}.
@@ -2553,7 +2568,6 @@ There are different reasons for this.
 Some of the transitions are so low in energy that they disappear inside the Compton continuum.
 The excitation probability for some of the states are low, and thereby the states are not reached.
 There might also be states with a low transition intensity leading to very few counts, especially at higher energy.
-
 
 \begin{figure}[htb!]
 	\centering
@@ -2564,24 +2578,7 @@ There might also be states with a low transition intensity leading to very few c
 	\label{fig:levels}
 \end{figure}
 
-
-The \ga\ transitions of $8_1^+ \rightarrow 6_1^+$ (888 keV), $6_1^+ \rightarrow 4_1^+$ (836 keV), $4_1^+ \rightarrow 2_1^+$ (715 keV) and $2_1^+ \rightarrow 0_1^+$ (531 keV) constitutes the ground state band.
-A couple of states worth mentioning are the 990 keV and 1599 keV states.
-They both transition down to the $2_1^+$ state with 460 keV and 1068 keV, respectively.
-The spin and parity of the 990 keV \cite{Firestone} and 1599 keV states in \Sm\ was originally thought to be $0^+$ and $2^+$, respectively. 
-An experiment conducted at the Heavy Ion Laboratory of the University of Warsaw corrected the spin values of the 990 keV and 1599 keV states in \Sm\ to be $2^+$ and $0^{(+)}$, respectively \cite{Klintefjord2015, Samorajczyk2015}.
-The 990 keV level is then a very low-lying $2_2^+$, which supports the notion of triaxiality \cite{Klintefjord2016}.
-\textcolor{red}{Betyr "the notion of triaxiality" at \Sm\ forventes å være triaxial? Og er det snakk om grunntilstanden eller en annen tilstand?}
-
-The peak around the 1420 keV ($(1,2)_1 \rightarrow 0_1^+$) transition is quite broad. 
-This peak might also contain the 1402 keV ($(0,1,2) \rightarrow 2_1^+$) transition from 1933 keV, seen in \autoref{fig:levels} left of the far right transition. 
-Since the 1952 keV peak is also quite broad, it may contain the sum-peak at the 1933 keV level as well.
-
-The $0_2^{(+)}$ (1599 keV) and $0_3^{+}$ (1628 keV) states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence. 
-\textcolor{red}{Kan dette eksperimentet verifisere pariteten til $0_2^{(+)}$ tilstanden?}
-
-\textcolor{red}{Den nye tilstanden:}\newline
-In addition to all the transitions visible in the \ga\ spectrum, it is expected to see a transition from an unknown $3^+$ state which should transition into the $2_2^+$ state \cite{Klintefjord2016, Samorajczyk2015}.
+In addition to all the transitions visible in the \ga\ spectrum in \autoref{fig:gam_dcB}, it is expected to see a transition from an unknown $3^+$ state which should transition into the $2_2^+$ state \cite{Klintefjord2016, Samorajczyk2015}.
 (The $3^+$ state is expected as a member of the \ga-vibrational band, which is expected to be built on the $2_2^+$ state.)
 In the spectrum of \autoref{fig:gam_dcB}, there is no obvious candidate for a transition from the expected $3^+$ state.
 However, the width of the $6_1^+ \rightarrow 4_1^+$ transition at 836 keV is slightly wider than the other transitions. 
@@ -2629,11 +2626,12 @@ These intensities are used to obtain the reduced transition probabilities, i.e. 
 
 From the present experiment at ISOLDE, IS558 in 2017, excited sates up to $8^+$ were populated. 
 New measurements of the \ga-ray intensities can be performed for 23 separate ranges of CM scattering angles, Doppler corrected for the \Sm\ projectiles, specified by \autoref{tab:scattering}. 
-\autoref{fig:projections} displays the coverage of the CM scattering angle range $\theta_b^{'} \in [36.6^\circ, 136.0^\circ]$ of the beam split into 6 parts as an example of the quality of the new measurement.
-\textcolor{blue}{du får mange flere datapunkter siden vi kan analysere $>20$ forskjellige vinkler, mens vi kunne dele opp i bare 5 vinkler tidligere.} \newline
+\autoref{fig:projections} displays the coverage of the CM scattering angle range $\theta_b^{'} \in [36.6^\circ, 136.0^\circ]$ of the beam.
+It is split into 6 parts as an example of the quality of the new measurement, but this can further be split into 23 parts.
+The 23 separate angle ranges will give much more data points compared to the former 5 separate angle ranges.
 By analyzing the 23 CM angle ranges, the precision of the previous measurements of the three $B(E2)$ values will certainly be improved, in addition to measuring many unknown $B(E2)$ values.
 The reduced transition probabilites, i.e. $B(E2)$, are relatively strong in the ground state band. 
-\textcolor{red}{Må jeg si hvordan disse er koblet mot matrise-elementene? Og i så fall, hvordan var det igjen?}
+\textcolor{red}{Må jeg si hvordan disse er koblet mot matrise-elementene eller kan jeg la være å si det? Hvis jeg må forklare det, hvordan var det igjen? Hvis jeg ikke må forklare det, kan vi snakke om dette senere.}
 
 
 \begin{figure}[htb!]
