@@ -473,7 +473,7 @@ With a new experiment, it will also be easier to interpret the nuclear shape of 
 For the present experiment, no normalization of the transition probabilities were required.
 From the previous experiment \cite{Klintefjord2016} and from lifetime measurements \cite{BelloGarrote2015}, the $B(E2, 0_1^+ \rightarrow 2_1^+$) value of \Sm\ was obtained. 
 This can be used to normalize the transition probabilities for the higher-lying transitions.
-\textcolor{red}{Skal jeg gi $B(E2, 0_1^+ \rightarrow 2_1^+$) verdien eksplisitt? Jeg gir den i resultat-kap.}
+
 
 
 
@@ -505,8 +505,6 @@ The goal of the master thesis is to analyze Coulomb excitation data of \Sm\ from
 
 
 \section{Nuclear deformation}\label{sec:deformation}
-
-\textcolor{red}{Halp...}
 %A way to understand nuclear deformation is to imagine a liquid drop vibrating \textcolor{red}{??? and/or rotating ???} at \textcolor{red}{??? high / a ???} frequency. 
 %In this imagined picture, the average shape of the liquid drop nucleus is spherical, but the instantaneous shape is not.
 It is natural to imagine nuclei as tiny spheres.
@@ -616,20 +614,40 @@ In the special case when $\lambda = 2$, \autoref{eq:Rmid} becomes
 \end{equation}
 by using the spherical harmonics $Y_{20}$ and $Y_{2,\pm 2}$ \cite{RS}.
 
-\textcolor{red}{finn en måte å inkludere \autoref{fig:cea_tri} + forklare \ga-soft.}
-\textcolor{blue}{After these explanations you can say that the equilibrium shape of a nucleus can be characterized by a potential energy surface (PES) in the beta-gamma plane (if we restrict the deformation to quadrupole shapes). You could perhaps add three generic PES for the 3 extreme cases: spherical vibrator, deformed rotor, gamma-soft rotor (see e.g. fig.13.13 in Heyde). The steeper a minimum in the PES, the more rigid is the deformation. Accordingly, a more shallow potential means that the shape is softer against vibrations. Two competing shapes (shape coexistence) would show up as two minima in the PES. Then you could say a few words about the PES of 140Sm: It is essentially flat in both beta and gamma direction. That is consistent with our earlier interpretation of 140Sm as a transition nucleus in between spherical and deformed and in between prolate and oblate shape. In principle, the potential can be reasonably well approximated by a square well potential, in which case the Schrödinger equation can be solved analytically. This is exactly what the E(5) model does.}
+The equilibrium shape of a nucleus can be characterized by a potential energy surface (PES) in the $\beta$-\ga\ plane if we restrict the deformation to quadrupole shapes. 
+\autoref{fig:collective_modes} displays sketches of three extreme cases of potential energy surfaces; spherical vibrator, deformed rotor and \ga-soft rotor.
+The steeper a minimum in the PES, the more rigid is the deformation. 
+Accordingly, a more shallow potential means that the shape is softer against vibrations. 
+Two competing shapes, i.e. shape coexistence, would show up as two minima in the PES. 
+\autoref{fig:cea_tri} shows the PES of \Sm.
+It is essentially flat in both $\beta$ and \ga\ direction. 
+That is consistent with our earlier interpretation of \Sm\ as a transition nucleus in between spherical and deformed and in between prolate and oblate shape. 
+In principle, the potential can be reasonably well approximated by a square well potential, in which case the Schrödinger equation can be solved analytically. 
+%This is exactly what the E(5) model does.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Images/collective_modes.png}
+	\caption{Potential energy surface, adapted from \cite{Heyde}.
+	\textbf{(a)} Spherical vibrator.
+	\textbf{(b)} Deformed rotor. %, $\beta = 0.5\beta_0$ and $\gamma = 0^\circ$.	
+	\textbf{(c)} \ga-soft rotor.
+	See the text for more information.
+	}
+	\label{fig:collective_modes}
+\end{figure}
+
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Images/Triaxial-map-drawing.png}
-	\caption{Potential energy surface for \Sm, adapted from \cite{Hilaire2007, CEA}. \textcolor{red}{\Sm\ looks like a mix of vibrator and prolate rotor?}}
+	\caption{Potential energy surface for \Sm, adapted from \cite{Hilaire2007, CEA}. 
+	See the text for more information.}
 	\label{fig:cea_tri}
 \end{figure}
 
 Octupole vibration, $\lambda = 3$, with $J^\pi = 3^-$ can be seen in many nuclei in certain regions of the nuclear chart, where orbitals with a spin difference of 3 are available near the Fermi surface.
 In nuclei where the shell structure makes the quadrupole modes occur at very high energies, such as in doubly magic nuclei, the octupole state is often the lowest excited state.
 The octupole deformation has a pear shape.
-
 
 
 \section{The Coulomb excitation method}\label{sec:Coulex}
@@ -688,7 +706,7 @@ In \autoref{ch:scattering}, a calculation of the two-particle elastic collision 
 
 
 
-\subsubsection*{\textcolor{red}{Burde jeg brukt projectile and target under her?}}
+\textcolor{red}{Burde jeg brukt projectile and target under her?}
 
 In the semi-classical approach of Coulomb excitation theory, the projectile (beam) and target is assumed to move on hyperbolic paths. 
 This approach does not take into account the energy loss during the excitation process.
@@ -747,6 +765,44 @@ This means that the energy transfer has negligible influence of the motion and t
 which will not hold for all states $|f\rangle$.
 The conditions are fulfilled for states with a considerable excitation probability \cite{EE-Coulex, RBass}.
 
+
+\subsection{Safe COULEX}
+In order to ensure that the interaction is purely electromagnetic in nature, and not nuclear, a safe energy is chosen for the reaction. 
+The energy is supposed to be below the Coulomb barrier.
+Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interaction.
+The safety distance, $d_{safe}$, in safe COULEX is chosen by the condition
+\begin{align}
+	d_{safe} \geq d_{min} &= d_C + d_s \nonumber \\
+	&= R_b + R_t + d_s \nonumber \\
+	&= r_0 (A_b^{1/3} + A_t^{1/3}) + d_s \nonumber \\
+	&= 1.25 (A_b^{1/3} + A_t^{1/3}) + 5~\text{[fm]}
+\end{align}
+where $d_{min}$ is a way to approximate the distance of closest approach by the Coulomb interaction distance, $d_C$, and an additional safety distance, $d_s = 5$ fm.
+$R_b$ and $R_t$ is the radii of the beam and target nuclei, respectively, and $A_b$ and $A_t$ is the mass number of the beam and target nuclei, respectively \cite{RBass, Cline1986}.
+
+The maximum beam energy in the LAB frame, $E_{b, max}$, is chosen from the special case when $\theta_b^{'} = 180^\circ$ \cite{Klintefjord, RBass}
+\begin{align}
+	E_{b, max} (\theta_b^{'})
+	&= \frac{Z_b Z_t e^2}{A_r d_{min}} \cdot \frac{2}{1 + \csc \left( \frac{\theta_b^{'}}{2} \right)} \\
+	&\approx \frac{Z_b Z_t}{A_r} \cdot \frac{1.44}{1.25 (A_b^{1/3} + A_t^{1/3}) + 5} ~\left[ \tfrac{\text{MeV}}{\text{u}} \right]
+\end{align}
+
+%For \Sm\ on \Pb\ the safe beam energy is 4.63 MeV/u. 
+%The experiment was run with a beam energy of 4.65 MeV/u, so it is really at the limit of what can be considered safe for head-on collisions.
+%The maximum CM angle covered with the setup is $136^\circ$, so for the angular range that is covered by the experiment, the beam energy is safe.
+
+For the reaction, only the energy, $E^{'}$, and relative momentum in the CM frame is available, while the remainder is recoil energy, $E_t$, of the total system
+\begin{equation}
+	E_t = \frac{A_b}{A_b + A_t} E_b
+\end{equation}
+In the CM frame, the kinetic energy is given by
+\begin{equation}
+	E^{'} = E_b - E_t = \frac{A_t}{A_b + A_t} E_{b}
+\end{equation}
+where $A_b$ and $A_t$ is the mass number of the beam and target nuclei and $E_{b}$ is the kinetic energy of the beam particle in the LAB frame \cite{Niedermaier, NaR}.
+
+
+\subsection{Cross sections}
 For point-like charges, the differential scattering cross section, $d\sigma_R$, is given by the the classical Rutherford formula
 \begin{align}
 	\frac{d\sigma_R}{d\Omega} 
@@ -796,24 +852,6 @@ From the reduced transition probabilities with $\lambda = 2$, it is possible to 
 	\sigma_{E2} \approx \left( \frac{Z_b e}{\hbar v_i} \right)^2 a^{-2} = \left( \frac{mv_i}{Z_t e\hbar} \right)^2
 \end{equation}
 
-There is a relation of the reduced transition probability between the excitation $B(E2 \uparrow)$ and the decay $B(E2 \downarrow)$ of a state, which is given by 
-\begin{equation}
-	B(E2; I_f \rightarrow I_i) = \frac{2I_i + 1}{2I_f + 1} B(E2; I_i \rightarrow I_f)
-\end{equation}
-
-For an $E2$ transition from the ground state $0_1^+$ and the first excited state $2_1^+$, we have the relation
-\begin{align}
-	B(E2; 0_1^+ \rightarrow 2_1^+) = 5 \cdot B(E2; 2_1^+ \rightarrow 0_1^+)
-\end{align} 
-This means that the excitation probability has five times more final substates to go to, compared to the decay probability as displayed by \autoref{fig:transitions}.
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=0.6\textwidth]{Images/transitions.png}
-	\caption{\textbf{(a)} Excitation probability. \textbf{(b)} Decay probability.}
-	\label{fig:transitions}
-\end{figure}
-
 Similarly to the total electric cross section, the total magnetic cross section can be expressed as \cite{EE-Coulex}
 \begin{equation}
 	\sigma_M = \sum_\lambda \sigma_{M \lambda} = \left( \frac{Z_b e}{\hbar c} \right)^2 \sum_\lambda a^{-2 \lambda + 2} B(M \lambda; I_i \rightarrow I_f) f_{M \lambda} (\xi)
@@ -823,40 +861,71 @@ This means that magnetic excitations are suppressed by a factor $(v/c)^2$, which
 The excitation process is purely electric, but the decay of the excited states can be both electric and magnetic.
 
 
-\subsection{Safe COULEX}
-In order to ensure that the interaction is purely electromagnetic in nature, and not nuclear, a safe energy is chosen for the reaction. 
-The energy is supposed to be below the Coulomb barrier.
-Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interaction.
-The safety distance, $d_{safe}$, in safe COULEX is chosen by the condition
+\subsection{Transition probabilities}
+
+The transition probability of going from a state $|i\rangle$ to a state $|f\rangle$ is
 \begin{align}
-	d_{safe} \geq d_{min} &= d_C + d_s \nonumber \\
-	&= R_b + R_t + d_s \nonumber \\
-	&= r_0 (A_b^{1/3} + A_t^{1/3}) + d_s \nonumber \\
-	&= 1.25 (A_b^{1/3} + A_t^{1/3}) + 5~\text{[fm]}
+	T_{i \rightarrow f} (\sigma \lambda) = \frac{8\pi (\lambda + 1)}{\lambda \hbar [(2\lambda + 1)!!]^2} \left( \frac{E_\gamma}{\hbar c} \right)^{2\lambda + 1} B(\sigma \lambda; I_i \rightarrow I_f)
 \end{align}
-where $d_{min}$ is a way to approximate the distance of closest approach by the Coulomb interaction distance, $d_C$, and an additional safety distance, $d_s = 5$ fm.
-$R_b$ and $R_t$ is the radii of the beam and target nuclei, respectively, and $A_b$ and $A_t$ is the mass number of the beam and target nuclei, respectively \cite{RBass, Cline1986}.
-
-The maximum beam energy in the LAB frame, $E_{b, max}$, is chosen from the special case when $\theta_b^{'} = 180^\circ$ \cite{Klintefjord, RBass}
+where $\sigma \lambda$ is the multipolarity with $\sigma \in \{ E, M \}$. 
+Transition with the lowest multipolarity, i.e. small $\lambda$, are most likely, while transitions of high multipolarity are relatively unlikely. 
+Electric transitions are more probable than magnetic transitions of the same multipolarity.
+%A gamma quant of multipolarity $\lambda$ carries angular momentum $\lambda \hbar$ with $z$ component $\mu \hbar$.
+The reduced transition probability is
 \begin{align}
-	E_{b, max} (\theta_b^{'})
-	&= \frac{Z_b Z_t e^2}{A_r d_{min}} \cdot \frac{2}{1 + \csc \left( \frac{\theta_b^{'}}{2} \right)} \\
-	&\approx \frac{Z_b Z_t}{A_r} \cdot \frac{1.44}{1.25 (A_b^{1/3} + A_t^{1/3}) + 5} ~\left[ \tfrac{\text{MeV}}{\text{u}} \right]
+	B(\sigma \lambda; I_i \rightarrow I_f) &= \sum_{M_i, M_f} | \langle I_f M_f | \hat{O}_{\lambda \mu} | I_i M_i \rangle |^2  \nonumber \\
+	&= \frac{1}{2I_i + 1} | \langle I_f | \hat{O}_{\lambda \mu} | I_i \rangle |^2
+\end{align}
+ and $\hat{O}_{\lambda \mu} \in \{ \hat{E}_{\lambda \mu}, \hat{M}_{\lambda \mu} \}$ is the electric or magnetic multipole operator.
+By measuring transition probabilities it is possible to measure $B(E2)$ values (and other multipolarities), and these quantities are closely related to the nuclear shape and can be compared to theoretical calculations.
+
+The reduced transition probabilities are not the same if the spin states are interchanged
+\begin{align}
+	B(\sigma \lambda; I_f \rightarrow I_i) &\neq B(\sigma \lambda; I_i \rightarrow I_f)
+\end{align}
+while an interchange of the reduced matrix elements does not matter
+\begin{align}
+	| \langle I_f | \hat{O}_{\lambda \mu} | I_i \rangle |^2 &= | \langle I_i | \hat{O}_{\lambda \mu} | I_f \rangle |^2
+\end{align}
+There is a relation of the reduced transition probability between the excitation $B(E2 \uparrow)$ and the decay $B(E2 \downarrow)$ of a state, which is given by 
+\begin{equation}
+	B(E2; I_f \rightarrow I_i) = \frac{2I_i + 1}{2I_f + 1} B(E2; I_i \rightarrow I_f)
+\end{equation}
+For an $E2$ transition from the ground state $0_1^+$ and the first excited state $2_1^+$, we have the relation
+\begin{align}
+	B(E2; 0_1^+ \rightarrow 2_1^+) = 5 \cdot B(E2; 2_1^+ \rightarrow 0_1^+)
+\end{align} 
+This means that the excitation probability has five times more final substates to go to, compared to the decay probability as displayed by \autoref{fig:transitions}.
+
+\begin{figure}[htb!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Images/transitions.png}
+	\caption{\textbf{(a)} Excitation probability. \textbf{(b)} Decay probability.}
+	\label{fig:transitions}
+\end{figure}
+
+
+\autoref{tab:gamma_sel} shows the \ga\ selection rules where the parity \cite{Krane} is decided by
+\begin{align}
+	\pi (\sigma \lambda) =
+    \begin{cases}
+    		(-1)^\lambda, & \text{for } \sigma \lambda = E\lambda \\
+    		(-1)^{\lambda + 1}, & \text{for } \sigma \lambda = M\lambda
+    \end{cases}
+\end{align}
+and angular momentum conservation gives
+\begin{align}
+ 	| I_i - I_f | \leq \lambda \leq I_i + I_f 
 \end{align}
 
-%For \Sm\ on \Pb\ the safe beam energy is 4.63 MeV/u. 
-%The experiment was run with a beam energy of 4.65 MeV/u, so it is really at the limit of what can be considered safe for head-on collisions.
-%The maximum CM angle covered with the setup is $136^\circ$, so for the angular range that is covered by the experiment, the beam energy is safe.
+\begin{table}[htb!] 
+    \centering 
+    \caption{\ga\ selection rules. Electric transitions are more likely than magnetic transitions of the same multipole $\lambda$. There are no \ga\ transitions with $\lambda = 0$, i.e. no $I_i = 0 \rightarrow I_f = 0$. The $0 \rightarrow 0$ transitions proceed via internal conversion or internal pair creation.}
+	\input{Table-data/Gamma-rules.tex}
+	\label{tab:gamma_sel}
+\end{table}
 
-For the reaction, only the energy, $E^{'}$, and relative momentum in the CM frame is available, while the remainder is recoil energy, $E_t$, of the total system
-\begin{equation}
-	E_t = \frac{A_b}{A_b + A_t} E_b
-\end{equation}
-In the CM frame, the kinetic energy is given by
-\begin{equation}
-	E^{'} = E_b - E_t = \frac{A_t}{A_b + A_t} E_{b}
-\end{equation}
-where $A_b$ and $A_t$ is the mass number of the beam and target nuclei and $E_{b}$ is the kinetic energy of the beam particle in the LAB frame \cite{Niedermaier, NaR}.
+
 
 
 \subsection{Electric quadrupole moments}
@@ -920,86 +989,6 @@ If the intrinsic shape is prolate, $Q_0 > 0$, the measurements shows an oblate s
 A prolate deformed nucleus that is rotating rapidly about the perpendicular axis appears to be oblate.
 Obtaining information on $Q_s$ and the relative signs of matrix elements can help us to directly distinguish between prolate and oblate shape.
 
-
-\subsection{Transition probabilities}
-
-
-Lect. 09.06.18: \newline
-Classical electrodynamics: charge in charge or current distribution $\rightarrow$ EM radiation.\newline
-Oscillating el. charge (dipole) $\rightarrow$ el. dipoile radiation \newline
-Oscillating current in a loop $\rightarrow$ magnetic dipole radiation \newline
-general: EM multipole radiation, multipolarity $\sigma \lambda$, $\sigma \in \{ E, M \}$ \newline
-a gamma quant of multipolarity $\lambda$ carries angular momentum $\lambda \hbar$ with $z$ component $\mu \hbar$
-
-Angular momentum conservation
-\begin{align}
- 	| I_i - I_f | \leq \lambda \leq I_i + I_f 
-\end{align}
-$\mu = m_b - m_t$
-
-if observe: $I_i = 2, I_f = 3$, dipole multipolarity most likely. 
-
-Transition with lowest multipolarity are most likely ($\lambda$ small).
-
-
-\subsection{\textcolor{red}{gamma}}
-
-\textcolor{blue}{"The parity radiation field is"} \cite{Krane}
-
-\begin{align}
-	\pi (\sigma \lambda) =
-    \begin{cases}
-    		(-1)^\lambda, & \text{for } \sigma \lambda = E\lambda \\
-    		(-1)^{\lambda + 1}, & \text{for } \sigma \lambda = M\lambda
-    \end{cases}
-\end{align}
-
-
-
-
-Transition rates of high multipolarity are relatively unlikely.
-
-Transition probabilities
-\begin{align}
-	T_{i \rightarrow f} (\sigma \lambda \mu) = \frac{8\pi (\lambda + 1)}{\lambda \hbar [(2\lambda + 1)!!]^2} \left( \frac{E_\gamma}{\hbar c} \right)^{2\lambda + 1} B(\sigma \lambda; I_i \rightarrow I_f)
-\end{align}
-where $\hat{O}_{\lambda \mu} \in \{ \hat{E}_{\lambda \mu}, \hat{M}_{\lambda \mu} \}$ is the electric or magnetic multipole operator.
-
-\begin{align}
-	B(\sigma \lambda; I_i \rightarrow I_f) &= \sum_{M_i, M_f} | \langle I_f M_f | \hat{O}_{\lambda \mu} | I_i M_i \rangle |^2  \nonumber \\
-	&= \frac{1}{2I_i + 1} | \langle I_f | \hat{O}_{\lambda \mu} | I_i \rangle |^2
-\end{align}
-is the reduced transition probability.
-By measuring transition probabilities it is possible to measure $B(E2)$ values (and other multipolarities), and these quantities are closely related to the nuclear shape and can be compared to theoretical calculations.
-
-\begin{align}
-	| \langle I_f | \hat{O}_{\lambda \mu} | I_i \rangle |^2 &= | \langle I_i | \hat{O}_{\lambda \mu} | I_f \rangle |^2 &  B(\sigma \lambda; I_f \rightarrow I_i) &\neq B(\sigma \lambda; I_i \rightarrow I_f)
-\end{align}
-The reduced transition probabilities are not the same if the spin states are interchanged. 
-
-
-\autoref{tab:gamma_sel} shows the \ga\ selection rules.
-
-\begin{table}[htb] 
-    \centering 
-    \caption{\ga\ selection rules. Electric transitions are more likely than magnetic transitions of the same multipole $\lambda$. There are no \ga\ transitions with $\lambda = 0$, i.e. no $I_i = 0 \rightarrow I_f = 0$. The $0 \rightarrow 0$ transitions proceed via internal conversion or internal pair creation.}
-	\input{Table-data/Gamma-rules.tex}
-	\label{tab:gamma_sel}
-\end{table}
-
-
-
-
-%\textcolor{blue}{"The $E\lambda$ transition probability is estimated to be"} \cite{Krane}
-%\begin{align}
-%	T(E\lambda) \approx \frac{8\pi (\lambda + 1)}{\lambda [(2\lambda + 1)!!]^2} \frac{e^2}{4\pi \varepsilon_0 \hbar c} \left( \frac{E_\gamma}{\hbar c} \right)^{2\lambda + 1} \left( \frac{3}{\lambda + 3} \right)^2 c R^{2\lambda}
-%\end{align}
-
-%\textcolor{blue}{"The result for the $M\lambda$ transition probability is"} \cite{Krane}
-%\begin{align}
-%	T(M\lambda) \approx & \frac{8\pi (\lambda + 1)}{\lambda [(2\lambda + 1)!!]^2} \frac{e^2}{4\pi \varepsilon_0 \hbar c} \left( \frac{E_\gamma}{\hbar c} \right)^{2\lambda + 1} \left( \frac{3}{\lambda + 3} \right)^2 c R^{2\lambda - 2} \nonumber \\
-% & \cdot \left( \mu_p - \frac{1}{\lambda + 1} \right)^2 \left( \frac{\hbar}{m_p c} \right)^2
-%\end{align}
 
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
