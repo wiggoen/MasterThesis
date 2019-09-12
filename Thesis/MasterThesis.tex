@@ -1063,7 +1063,9 @@ ISOLDE typically takes 50\% \cite{MB-spect} of all proton bunches form the PSB, 
 \begin{figure}[ht]
 	\centering
 	\input{Images/Coulex-setup.tikz}
-	\caption{The Coulomb excitation setup at ISOLDE for the present experiment. Adapted from \cite{Klintefjord}. See text for information.}
+	\caption{The Coulomb excitation setup at ISOLDE for the present experiment. 
+	Adapted from \cite{Klintefjord}. 
+	See the text for more information.}
 	\label{fig:Coulex}
 \end{figure}
 
@@ -1280,7 +1282,7 @@ The \ga-ray spectrometer consists of a total of 24 six-fold segmented High-Purit
 Each crystal is encapsulated and segmented into 6 parts, making a total of 144 segments. 
 Compared to using the whole crystal, a better Doppler correction can be performed when the \ga\ detectors are segmented. 
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth]{Images/IMG3917.JPG}
 	\caption{Close up picture of the Miniball spectrometer. The Miniball target chamber is in the middle, surrounded by the triple-cluster encapsulated \ga\ crystals. The beam line goes through the target chamber. \\ Photo by: Trond Wiggo Johansen.}
@@ -1297,7 +1299,7 @@ From each detector we get seven signals in total for each event, one from the co
 This requires 168 channels for data acquisition. 
 The shapes of these signals are analyzed to provide information about the energy and time of the \ga-ray, in addition to the detection position within the detector cluster \cite{NWarr-HPGe}.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\begin{subfigure}[b]{0.49\textwidth}
 		\centering
@@ -1342,7 +1344,7 @@ During an experiment, the ROOT back end is mostly used to inspect the experiment
 As will be detailed in \autoref{ch:DA}, the offline ROOT analysis is very time consuming, and is largely performed after the experiment. 
 This is the main part of the thesis.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\linewidth]{Images/MARaBOOU.png}
 	\caption{\protect\MBOU\ tasks, adapted from \cite{Maraboou}.}
@@ -1367,7 +1369,7 @@ The next on-beam window is triggered when the DAQ is operable again.
 The DAQ system records the signals from each detector segment, which is individually time-stamped. 
 With these records, a full reconstruction of the real events and coincidences are possible \cite{NWarr-el}. 
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.8\textwidth]{Images/Time-structure.png}
 	\caption{Schematic of the ISOLDE time structure, from \cite{Gaffney}. Figure courtesy of J. van de Walle \cite{HI-TDR}. (A) The supercycle of proton beam bunches with a width of $\approx 100 ~\mu$s from the PSB separated by 1.2 s. The black vertical lines shows an allocation of the the bunches which the ISOLDE production target receives, while the others are distributed to other experiments. (B) The release profile of radionuclides from the production target, which is heavily modulated by the PSB cycle. (C+D) REXTRAP and REXEBIS beam bunches, synchronized with (E) the radio frequency (RF) window of the HIE-ISOLDE LINAC. (F) The "on-beam" and "off-beam" time window of 800 $\mu$s using the Miniball setup.}
@@ -1800,7 +1802,7 @@ To implement a proper automatic fitting program, one would have to find a functi
 
 \begin{figure}[htb!]
 	\centering
-	\begin{subfigure}[t]{0.49\textwidth}
+	\begin{subfigure}[b]{0.49\textwidth}
 		\centering
 		% ParticlePlot.cpp
 		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 4, 9, 1, 300, 2400, 1080)
@@ -1809,7 +1811,7 @@ To implement a proper automatic fitting program, one would have to find a functi
 		\label{fig:CD_cal_easy}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[t]{0.49\textwidth}
+	\begin{subfigure}[b]{0.49\textwidth}
 		\centering
 		% ParticlePlot.cpp
 		% get_single_plot("setup_Sm.txt", "q4", "b", 0, 1, 16, 12, 200, 1400, 330)
@@ -2287,7 +2289,7 @@ A detailed explanation of the input parameters is provided in \autoref{ch:MBCS_R
 
 \begin{figure}[htb]
 	\centering
-	\begin{subfigure}[t]{0.49\textwidth}
+	\begin{subfigure}[b]{0.49\textwidth}
 		\centering
 		% GammaPlot.cpp
 		% particle_events_with_cut()
@@ -2296,9 +2298,9 @@ A detailed explanation of the input parameters is provided in \autoref{ch:MBCS_R
 		\label{fig:part_wcut}
 	\end{subfigure}
 	\hfill 
-	\begin{subfigure}[t]{0.49\textwidth}
+	\begin{subfigure}[b]{0.49\textwidth}
 		\centering
-    		\includegraphics[width=\textwidth]{../Plots/simulation/kin_140Sm_208Pb.png}
+    		\includegraphics[width=0.90\textwidth]{../Plots/simulation/kin_140Sm_208Pb.png}
 		\caption{}
 		\label{fig:kinsim}
 	\end{subfigure}
@@ -2398,7 +2400,7 @@ Given the satisfactory calibration displayed in \autoref{fig:EFBQ4} we decided t
 
 \begin{figure}[ht]
 	\centering
-	\begin{subfigure}[t]{0.49\textwidth}
+	\begin{subfigure}[b]{0.49\textwidth}
 		\centering
 		% ParticlePlot.cpp
 		% get_single_plot("setup_Sm.txt", "tb", "f", 0, 1, 1, 1, 0, 2500, 8000)
@@ -2407,11 +2409,11 @@ Given the satisfactory calibration displayed in \autoref{fig:EFBQ4} we decided t
 		\label{fig:BDS_R1}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[t]{0.49\textwidth}
+	\begin{subfigure}[b]{0.49\textwidth}
 		\centering
 		% ParticlePlot.cpp
     		% plot_back_strips("setup_Sm.txt", 4, 16, 0, 0, 1700, 400)
-		\includegraphics[width=\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
+		\includegraphics[width=0.94\textwidth]{../Plots/plotting/bE_Q4_f16_b1-12.png}
 		\caption{}
 		\label{fig:BDS_B1}
 	\end{subfigure}
@@ -2515,7 +2517,7 @@ When sorting the data with the add-back method, there is a visible enhanced effi
 	\end{subfigure}
 	\begin{subfigure}[t]{0.8\textwidth}
 		%\centering
-		\blank{-1cm}
+		%\blank{-1cm}
 		\includegraphics[width=\textwidth]{Images/gam_MK.png}
 		\caption{}
 		\label{fig:gam_MK}
