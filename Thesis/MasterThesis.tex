@@ -1441,7 +1441,7 @@ Histograms sorted by \texttt{TreeBuilder}, discussed in \autoref{ssec:online_cal
 The simulation program \texttt{kinsim3}, discussed in \autoref{ssec:kinsim}, counts from 1 (innermost ring) to 16 (outermost ring), the opposite of \texttt{AQ4Sort}. 
 For calibrated spectra, \texttt{TreeBuilder} shows the energy in MeV, while \texttt{AQ4Sort} shows the energy in keV.
 To avoid further confusion, this thesis will apply the numbering system of \texttt{kinsim3} for the front side of the CD.
-For the back side of the CD is \texttt{TreeBuilder} sorting from 0 to 11 in clockwise direction, while \texttt{AQ4Sort} sorts from 1 to 12.
+For the back side of the CD is \texttt{TreeBuilder} sorting from 0 to 11 in clockwise direction with respect to the beam direction, while \texttt{AQ4Sort} sorts from 1 to 12.
 This thesis will apply the numbering system of \texttt{AQ4Sort} for the back side of the CD.
 \autoref{tab:TBvsAQ4} shows the chosen way of counting and the histogram naming from \texttt{TreeBuilder} and \texttt{AQ4Sort}.
 
@@ -1540,9 +1540,10 @@ To find the gain $g$, at least two measuring points are needed
 where the peak energies, $E$, are obtained from a simulation of the Coulomb excitation experiment and the channel numbers, $n$, are obtained from the raw data of the experiment.
 To improve the precision of the calibration coefficients, it is desirable to use several data points to obtain $g$ and $a$ by a linear regression.
 
-\textcolor{red}{Forklar at kalib.koeff. kan variere med tiden.}
-
+Detectors degrade over time by the high energy impact of particles or \ga's, which implies that the calibration coefficients vary with time.
 By including more than two centroids, it is possible to check for non-linearities or instabilities in time.
+
+
 
 \subsection{Kinematic simulation}\label{ssec:kinsim}
 To calibrate the data, we need to calculate the expected energy of the centroids of the peaks in the energy spectrum. 
@@ -1550,10 +1551,7 @@ This was done by simulating the experiment using the program \texttt{kinsim3} \c
 The purpose of the program is to obtain the kinematics of a Coulomb excitation experiment that utilizes the CD. 
 The simulations calculate the theoretical predictions of the energy distribution of the peaks for each ring in the CD. 
 \texttt{kinsim3} returns simulated spectra for the LAB and CM frame, in addition to every annular strip of the CD.
-The simulated strip spectra of the CD are fitted, their energy centroids are collected and used in the calibration as explained in \autoref{ch:cd_sim}.
-
-\textcolor{red}{Fiks dette når jeg har hjernekapasitet...}
-A detailed explanation of the input parameters of \texttt{kinsim3} is in \autoref{ch:cd_sim}.
+The simulated strip spectra of the CD are fitted, their energy centroids are collected and applied in the calibration as explained in \autoref{ch:cd_sim}.
 
 \autoref{ch:cd_sim} shows the simulated energy for each ring of the CD, in addition to the fitted peaks of each ring.
 In the fitting of the simulated (synthetic) data from \texttt{kinsim3}, a Gaussian function with linear background was applied
@@ -1580,16 +1578,17 @@ In addition, the simulation considers cross sections for the COULEX reaction.
 The COULEX probability increases with the CM angle.
 
 \texttt{kinsim3} was run with the following commands in the terminal to do the simulation
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=]
 $ cd ~/GitHub/Miniball/kinsim
 $ root
 root [0] .L kinsim3.cc++
 root [1] kinsim3(62, 82, 140, 208, 1.4, 4.65, 0.02, 1.0, 0.6, 27, false, 1e6, "../SRIM")
-... <showing output from program>
+... <showing output from the program>
 \end{lstlisting}
 % root [2] .q
 % $ mv 140Sm_208Pb_1.4mg_4.65MeVu_d0.02MeVu_res0.6.root ../../MasterThesis/Sorted_data/sim_140Sm_208Pb.root
-where the energy spread was assumed to be very small. 
+A detailed explanation of the input parameters of \texttt{kinsim3} is in \autoref{ch:cd_sim}.
+In the \texttt{kinsim3} run, the energy spread was assumed to be very small. 
 In principle, the excitation energy is expected to be 0.53 MeV for the excitation to the $2^+$ state. 
 The excitation probability is not known beforehand, unless some rough assumptions are made.
 Assuming a chance of multi-step excitation at larger angles, an average excitation energy of 1 MeV is quite reasonable.
@@ -2159,8 +2158,9 @@ adc_3.TimeOffset:  5
 %	\label{fig:part}
 %\end{figure}
 
+
+
 \subsection{Calibration of the \texorpdfstring{$\gamma$}{gamma} detectors}\label{ssec:gamma}
-%The online calibration is designed in such a way that the calibration of the \ga\ detectors is quite acceptable in a certain energy range.
 During the setup of the experiment, a hardware and software calibration of the gamma detectors was performed by the ISOLDE staff, as stated in \autoref{ssec:online_cal}. 
 The gains and offsets of each DGF were provided in such a way that the online analysis is more straightforward. 
 In addition, it is easier to monitor the data on-line. 
@@ -2190,6 +2190,9 @@ Nonetheless, the expected program flow including the automatic fitting will be o
 In the calibration run, there are many \ga\ lines for both Eu and Ba. 
 Therefore, many data points can be applied in the calibration.
 The fit can either be linear or quadratic, depending on the detector specification.
+The online calibration is designed in such a way that the calibration of the \ga\ detectors is quite acceptable in a certain energy range.
+Detectors are usually not linear, but a linear approximation is often a good fit for the energy range we choose calibration points from. 
+If a more precise calibration is desired, we can choose a quadratic fit.
 A simple linear calibration, with only two centroids can be performed similarly to the particle detector calibration.
 From \autoref{eq:offset} and \autoref{eq:gain} we have
 \begin{align}\label{eq:GGandA}
@@ -2438,6 +2441,8 @@ It causes the energy calibration to become negative, and the faulty detector seg
 %It is the way it is usually done for dead CD strips or dead \ga\ detectors. 
 As explained above, this was only done for ring 1 of the CD.
 
+\bigskip
+
 \textcolor{red}{Finn en overgangssetning til kap. 5.}
 
 
@@ -2491,21 +2496,17 @@ As explained above, this was only done for ring 1 of the CD.
 \epigraph{\textit{"In physics, you don't have to go around making trouble for yourself – nature does it for you."}}{\textit{– Frank Wilczek}}
 
 
-With the direction and energy (velocity) of the scattered particle and the direction of the \ga-ray, a Doppler correction can be performed under the assumption that the \ga-ray was emitted from the projectile. 
-The total \ga-ray singles and add-back spectrum corresponding to the CM scattering angles between $36.6^\circ$ and $136.0^\circ$, Doppler corrected for the projectile is displayed in \autoref{fig:gam_dcB}. 
-When sorting the data with the add-back method, there is a visible enhanced efficiency for high-energy \ga-rays, the peaks are more distinct. 
-
-As a comparison, the total \ga-ray singles spectrum from the previous experiment (from 2012) is displayed in \autoref{fig:gam_MK}.
-There is a lot more \ga\ transitions visible from the present experiment with the \Pb\ target in \autoref{fig:gam_dcB} compared to the previous experiment with the $^{94}$Mo target. 
-
-Both the higher $Z$ of the target and the higher beam energy contribute to the higher excitation probability of \Sm.  
-A higher excitation energy and a higher spin is reached, as seen by the excitation of states up to $\sim$3 MeV.
-From \autoref{fig:gam_dcB}, we see the population of the $8_1^+$ state, whereas the previous experiment only populated up to the $4_1^+$ state. 
-This is due to the much higher probability of multi-step excitation.
-The higher probability for multi-step excitation can also be seen from the relative intensity of the transitions that require two steps, $2_2^+ \rightarrow 2_1^+$ (460 keV) or $4_1^+ \rightarrow  2_1^+$ (715 keV), relative to the $2_1^+ \rightarrow  0_1^+$ (531 keV) transition in the two experiments.
+\textcolor{red}{Introavsnitt..}
+In the present experiment (IS558), a beam of \Sm\ ions were accelerated into a \Pb\ target at 4.65 MeV/u.
 
 
-\begin{figure}[htb!]
+With the direction and energy (velocity) of the scattered particle and the direction of the \ga-ray, a Doppler correction can be performed under the assumption that the \ga-ray was emitted from the projectile.
+In \autoref{fig:gam_dcB}, the total \ga-ray spectrum corresponding to the CM scattering angles between $36.6^\circ$ and $136.0^\circ$, Doppler corrected for the projectile, is displayed.
+The two data sorting methods, singles and add-back, are emphasized by the blue and red colors, respectively.
+When the add-back method is utilized, the efficiency for high-energy \ga-rays is enhanced, i.e. the clarity of the peaks are improved.
+
+
+\begin{figure}[h!t]
 	\centering
 	\begin{subfigure}[t]{\textwidth}
 		\centering
@@ -2524,21 +2525,46 @@ The higher probability for multi-step excitation can also be seen from the relat
 		\label{fig:gam_MK}
 	\end{subfigure}
 	\caption{Background subtracted \ga\ spectrum, Doppler corrected for the scattered projectile (the beam).
-		\textbf{(a)} \Sm\ on \Pb\ at 4.65 MeV/u from the COULEX experiment in 2017.
+		\textbf{(a)} \Sm\ on \Pb\ at 4.65 MeV/u from the COULEX experiment analyzed in the present work, performed in 2017.
 	 	The blue (red) \ga\ spectrum corresponds to sorting with singles (add-back) in \texttt{CLXAna}.
 	 	% \ga\ spectrum in coincidence with a particle in the CD
-		\textbf{(b)} \Sm\ on $^{94}$Mo at 2.85 MeV/u from the COULEX experiment in 2012.  
-		See text for more information. \newline 	
+		\textbf{(b)} \Sm\ on $^{94}$Mo at 2.85 MeV/u from the COULEX experiment performed in 2012 at CERN-ISOLDE \cite{Klintefjord}. 
+		See text for more information. 	
 	 	}
 	\label{fig:gam_compared}
 \end{figure}
 
-The black arrows, except for the first one, in \autoref{fig:gam_dcB} corresponds to the known \ga\ transitions in \autoref{tab:gamma_trans}. 
-The far right column of \autoref{tab:gamma_trans} shows which \ga\ transitions are visible in \autoref{fig:gam_dcB}.
-At very low energy, pointed by the first black arrow below the Compton continuum, a peak of \Pb\ x-rays is visible. 
-When the beam passes through the target, there is a possibility that electrons are removed, which produces x-rays when the holes are filled.
 
-\begin{table}[htb!] 
+The black arrows, except the first one, in \autoref{fig:gam_dcB} corresponds to the \ga\ transitions in \Sm, while the green arrows corresponds to the sum of \ga\ transitions in a cascade.
+In the current experiment, excited states up to the $8^+$ state at 2970 keV were populated.
+The constituents of the ground state band, the \ga\ transitions of $8_1^+ \rightarrow 6_1^+$ (888 keV), $6_1^+ \rightarrow 4_1^+$ (836 keV), $4_1^+ \rightarrow 2_1^+$ (715 keV) and $2_1^+ \rightarrow 0_1^+$ (531 keV) is observed in \autoref{fig:gam_dcB}.
+At very low energy, indicated by the first black arrow below the Compton continuum, a peak of \Pb\ x-rays is visible.
+When the beam passes through the target, there is a possibility of removing electrons, which produces x-rays when the electron holes are filled.
+
+As a comparison, the total \ga-ray singles spectrum from the IS495 experiment at ISOLDE in 2012, is displayed in \autoref{fig:gam_MK}.
+In the IS495 experiment, a beam of \Sm\ ions were accelerated into a $^{94}$Mo target at 2.85 MeV/u.
+Three excited states of \Sm\ were populated, the first (531 keV) and second (990 keV) excited $2^+$ states, in addition to the first $4^+$ (1246 keV) state.
+
+The number of peaks in \autoref{fig:gam_dcB} is larger than the number of peaks in \autoref{fig:gam_MK}.
+For the present experiment, the higher $Z$ of the \Pb\ target, and the higher beam energy contribute to a higher excitation probability of \Sm, as explained in \textcolor{red}{Sec 2?}. 
+Therefore, a higher excitation energy and a higher spin is reached in the present work, compared to the previous experiment (IS495).
+The probability of a multi-step excitation is increased by the experimental conditions in the present work. 
+The increased probability of a multi-step excitation can be observed from the relative intensity of two-step transitions. 
+For instance, the relative intensity of the 460 keV ($2_2^+ \rightarrow 2_1^+$) peak to the 531 keV ($2_1^+ \rightarrow  0_1^+$) peak, in \autoref{fig:gam_dcB} is larger than the relative intensity of the corresponding peaks in \autoref{fig:gam_MK}.
+Similarly, the relative intensity of the 715 keV ($4_1^+ \rightarrow  2_1^+$) peak to the 531 keV ($2_1^+ \rightarrow  0_1^+$) peak is larger in the IS558 experiment compared to the IS495 experiment.
+
+%The black arrows, except for the first one, in \autoref{fig:gam_dcB} corresponds to the known \ga\ transitions in \autoref{tab:gamma_trans}. 
+
+All the known \ga\ transitions up to the $8^+$ state at 2970 keV in \Sm\ are listed in \autoref{tab:gamma_trans}. 
+The far right column in \autoref{tab:gamma_trans} shows which \ga\ transitions are visible in \autoref{fig:gam_dcB}.
+Many of the known transitions, but not all, are visible in \autoref{fig:gam_dcB}, and there are different reasons for this.
+If a \ga\ transition is below 400 keV, it will be swallowed by the Compton continuum.
+The excitation probability for a number of the states are low, and thereby the states are not populated in the present experiment.
+There might also be states with a low transition intensity leading to very few counts, especially at higher energy.
+The level scheme of \Sm\ in \autoref{fig:levels} displays all the \ga\ transitions listed in  \autoref{tab:gamma_trans}, \textcolor{red}{in addition to an unknown state which will be discussed later in this section}. 
+
+
+\begin{table}[ht] 
     \centering 
     \caption{Known \ga\ transitions in \Sm\ based on \cite{Klintefjord, NNDC-levels}. 
     $E$ refers to the energy, $J^\pi$ is the spin and parity and $\sigma \lambda$ is the multipolarity. 
@@ -2548,47 +2574,44 @@ When the beam passes through the target, there is a possibility that electrons a
 	\label{tab:gamma_trans}
 \end{table}
 
-The \ga\ transitions of $8_1^+ \rightarrow 6_1^+$ (888 keV), $6_1^+ \rightarrow 4_1^+$ (836 keV), $4_1^+ \rightarrow 2_1^+$ (715 keV) and $2_1^+ \rightarrow 0_1^+$ (531 keV) constitutes the ground state band.
-A couple of states worth mentioning are the 990 keV and 1599 keV states.
-They both transition down to the $2_1^+$ state with 460 keV  and 1068 keV, respectively.
-% ($2_2^+ \rightarrow 2_1^+$) and ($0_2^{(+)} \rightarrow 2_1^+$)
-The spin and parity of the 990 keV \cite{Firestone} and 1599 keV states in \Sm\ was originally thought to be $0^+$ and $2^+$, respectively. 
-An experiment conducted at the Heavy Ion Laboratory of the University of Warsaw corrected the spin values of the 990 keV and 1599 keV states in \Sm\ to be $2^+$ and $0^{(+)}$, respectively \cite{Klintefjord2015, Samorajczyk2015}.
 
-In Warsaw the angular correlation were measured, and the experiment could only conclude that the multipolarity of the $0_2^{(+)} \rightarrow 2_1^+$ transition was quadrupole ($\lambda = 2$). 
-Because E2 and M3 transitions have the same angular distributions, the experiment could not determine the parity. 
-Magnetic excitations are strongly suppressed in Coulomb excitation compared to electric excitations. 
-The fact that the $0_2^{(+)}$ state was populated in the present experiment, already reveal that the parity of the state must be positive, i.e. a $=0^+$ state. 
-There is no way that a $0^-$ state could be populated from a $2^+$ state in Coulomb excitation.
-In cases where the spin of the final state is not known, different assumptions can be used when fitting the electromagnetic matrix elements to the excitation probabilities (as a function of scattering angle). 
-Usually the spin can be determined from the chi-square of the fit.
-
-The green arrows in \autoref{fig:gam_dcB} corresponds to some of the energy states in the level scheme, which is a combination of two \ga\ transitions, i.e. a summing of the peaks.
-For the very strong transitions there is a certain chance that two \ga-rays hit the same detector, and consequently there is a peak at the energy that corresponds to the sum of the two energies. 
+The green arrows in \autoref{fig:gam_dcB} corresponds to energy states in \autoref{fig:levels}. 
+Therefore, the energy of the green arrows is a combination of two \ga\ transitions, i.e. the sum of the peak energies.
+For the very strong transitions, there is a certain chance that two \ga-rays hit the same detector within the small time window. 
+Consequently we observe a peak at the energy that corresponds to the sum of the two energies.
 This effect is enhanced when the add-back method is used, because in this case it is sufficient that two \ga-rays hit the same cluster, as opposed to the same crystal, to end up in the sum peak.
 The $0_2^{(+)}$ (1599 keV) and $0_3^{+}$ (1628 keV) states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence. 
 
-The peak around the 1420 keV ($(1,2)_1 \rightarrow 0_1^+$) transition is quite broad. 
-This peak might also contain the 1402 keV ($(0,1,2) \rightarrow 2_1^+$) transition from 1933 keV, seen in \autoref{fig:levels} left of the far right transition. 
-Since the 1952 keV peak is also quite broad, it may contain the sum-peak at the 1933 keV level as well. \textcolor{red}{Tegn inn i \autoref{fig:gam_dcB} hvis tid.}
+The 990 keV and 1599 keV states in \Sm\ transition down to the $2_1^+$ state with a \ga-ray energy of 460 keV  and 1068 keV, respectively.
+% ($2_2^+ \rightarrow 2_1^+$) and ($0_2^{(+)} \rightarrow 2_1^+$)
+%The spin and parity of the 990 keV \cite{Firestone} and 1599 keV states was originally assumed to be $0^+$ and $2^+$, respectively. 
+The spin and parity of the 990 keV \cite{Firestone} state was originally assumed to be $0^+$, and $2^+$ for the 1599 keV state.
+An experiment conducted at the Heavy Ion Laboratory (HIL) of the University of Warsaw corrected the spin values of the 990 keV and 1599 keV states in \Sm\ to be $2^+$ and $0^{(+)}$, respectively \cite{Klintefjord2015, Samorajczyk2015}.
+%In the HIL experiment, angular correlation between the \ga-\ga\ transitions were measured. 
+%The experiment could only conclude that the multipolarity of the $0_2^{(+)} \rightarrow 2_1^+$ transition was quadrupole ($\lambda = 2$). 
+Because E2 and M3 transitions have the same angular distributions, the HIL experiment could not determine the parity. 
+%Magnetic excitations are strongly suppressed in Coulomb excitation compared to electric excitations. 
+%In a Coulomb excitation experiment, it is not possible to populate a $0^-$ state from a $2^+$ state.
+Magnetic excitations are strongly suppressed in Coulomb excitation experiments, it is extremely unlikely to populate a $0^-$ state from a $2^+$ state.
+The fact that the $0_2^{(+)}$ state was populated in the present experiment, already reveal that the parity of the state must be positive, i.e. $\pi = +$, which implies that the spin and parity of the 1599 keV state is $I^\pi = 0_2^+$. 
+%In cases where the spin of the final state is not known, different assumptions can be used when fitting the electromagnetic matrix elements to the excitation probabilities (as a function of scattering angle). 
+%Usually the spin can be determined from the chi-square of the fit.
 
-A visualization of all the known \ga\ transitions in \autoref{tab:gamma_trans} are displayed in \autoref{fig:levels}. 
-The level scheme displays all the known levels up to the $8^+$ state at 2970 keV. 
-Many of the transitions and states, but not all, are visible in \autoref{fig:gam_dcB}.
-There are different reasons for this.
-Some of the transitions are so low in energy that they disappear inside the Compton continuum.
-The excitation probability for some of the states are low, and thereby the states are not reached.
-There might also be states with a low transition intensity leading to very few counts, especially at higher energy.
 
-\begin{figure}[htb!]
+\begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\textwidth]{Images/Level-scheme-140Sm-v2.png}
-	\caption{Level scheme for \Sm\ based on \cite{Klintefjord, NNDC-levels}. 
+	\caption{Level scheme for \Sm\ based on the previous knowledge of \cite{Klintefjord, NNDC-levels}. 
 	The energies for the levels and transitions are in keV and are rounded to the nearest integer.
 	See text for more information. \textcolor{red}{Tegn inn de overgangene vi ikke ser med stiplede linjer.}
 	}
 	\label{fig:levels}
 \end{figure}
+
+
+The peak around the 1420 keV ($(1,2)_1 \rightarrow 0_1^+$) transition is quite broad. 
+This peak might also contain the 1402 keV ($(0,1,2) \rightarrow 2_1^+$) transition from 1933 keV, seen in \autoref{fig:levels} left of the far right transition. 
+Since the 1952 keV peak is also quite broad, it may contain the sum-peak at the 1933 keV level as well. \textcolor{red}{Tegn inn i \autoref{fig:gam_dcB} hvis tid.}
 
 In addition to all the transitions visible in the \ga\ spectrum in \autoref{fig:gam_dcB}, it is expected to see a transition from an unknown $3^+$ state which should decay mostly into the $2_2^+$ state \cite{Klintefjord2016, Samorajczyk2015}.
 The $3^+$ state is expected as a member of the \ga-vibrational band, which is expected to be built on the $2_2^+$ state.
@@ -2596,30 +2619,14 @@ Theory predicts that the $3^+$ state should roughly be around 1900 keV.
 In the spectrum of \autoref{fig:gam_dcB}, there is no obvious candidate for a transition from the expected $3^+$ state.
 However, the width of the $6_1^+ \rightarrow 4_1^+$ transition at 836 keV is slightly wider than the other transitions. 
 \ga-\ga\ coincidences can be used to investigate if the peak at 836 keV is composed of more than one transition. 
-\autoref{fig:check_state} shows a coincidence spectra of gates on the left and right flank of the 836 keV peak.
 
+\autoref{fig:check_state} shows a coincidence spectra of gates on the left and right flank of the 836 keV peak.
 When gating on the left flank of the peak, the spectrum shows coincidences with the transitions of the ground-state band, as expected for a coincidence spectrum with the $6_1^+ \rightarrow 4_1^+$ transition. 
 When gating on the right-hand flank of the peak, however, clear coincidences with the 460 keV ($2_2^+ \rightarrow 2_1^+$) transition appear. 
 These coincidence relationships are confirmed when gating on the 715 keV ($4_1^+ \rightarrow 2_1^+$) and the 460 keV ($2_2^+ \rightarrow 2_1^+$) transitions, respectively. 
 The coincidence spectra show two peaks that are clearly shifted in energy, with the $6_1^+ \rightarrow 4_1^+$ transition at the known energy of 836 keV, and a new, previously unobserved transition at 844 keV. 
 The intensity of the new 844 keV transition is relatively strong, which makes the transition a very good candidate for the expected $3_1^+ \rightarrow 2_2^+$ transition. 
 
-The transition at approximately 844 keV is a very good candidate for the missing member of the \ga-band. 
-\textcolor{blue}{The new transition places the candidate for the $3^+$ state at 1834 keV.}
-This new transition and new state will really help to clarify the role of triaxiality.
-The sum-peak of the assumed $3^+$ and the $2_2^+$ state is 1834 keV, which is close to the rough estimate of around 1900 keV.
-We cannot expect to see a transition down to the ground state from 1834 keV, since it would have been a M3 transition. 
-%In principle, there can be a transition from $3^+$ to $4^+$, but there was no sign of this either.
-
-The 990 keV level is then a very low-lying $2_2^+$, which supports the notion of triaxiality \cite{Klintefjord2016}.
-\textcolor{red}{Betyr "the notion of triaxiality" at \Sm\ forventes å være triaxial? Og er det snakk om å være triaxial i grunntilstanden pga en lavtliggende $2^+$ eller er \Sm\ triaxial i denne $2^+$ tilstanden?}
-
-\textcolor{blue}{Du trenger ikke forklare det i detalj, men du kan kanskje si at en lav-liggende $2_2^+$ tilstand er et tegn for trixialitet, som kan enten være statisk eller dynamisk. Ut fra energien til $2_2^+$ tilstanden og $B(E2; 2_2^+ \rightarrow 2_1^+)$ verdien kan man ikke bestemme om den triaxiale deformasjonen er statisk eller dynamisk, men informasjon om $3_1^+$ tilstanden kan hjelpe å finne ut.}
-
-There is a possible new peak around 1860 keV in \autoref{fig:gam_dcB}. 
-None of the sum-peaks from \autoref{fig:levels} add up to this energy level. 
-\textcolor{red}{Kan det være summen av flere forskjellige overganger, som ikke er åpenbare i level scheme? Som f.eks. 888 ($8_1^+ \rightarrow 6_1^+$) + 460 ($2_2^+ \rightarrow 2_1^+$) + 531 (($2_1^+ \rightarrow 0_1^+$)) = 1879 keV. 888 og 531 er åpenbare, men er det også åpenbart at 460 kommer samtidig? 836 + 460 + 531 = 1827.} \newline
-\textcolor{blue}{No, that is very unlikely to have three gamma rays going into the same detector. In any case would they have to form a cascade, i.e. would have to be all in coincidence with each other.}
 
 \begin{figure}[htb]
 	\centering
@@ -2627,52 +2634,63 @@ None of the sum-peaks from \autoref{fig:levels} add up to this energy level.
 	\caption{\textbf{(a)} A gate on the left flank of the broad peak at 836 keV, showing coincidences with the 715 keV ($4_1^+ \rightarrow 2_1^+$) and 531 keV ($2_1^+ \rightarrow 0_1^+$) transitions.
 	%yrast cascade.
 	\textbf{(b)} Gate on the right flank of the 836 keV peak, showing coincidences with the 460 keV ($2_2^+ \rightarrow 2_1^+$) and 531 keV ($2_1^+ \rightarrow 0_1^+$) transitions.
-	\textbf{(c)} In red, a gate on the 715 keV ($4_1^+ \rightarrow 2_1^+$) transition, showing the 836 keV ($6_1^+ \rightarrow 4_1^+$) and 888 keV ($8_1^+ \rightarrow 6_1^+$) transitions. In blue, a gate on the 460 keV ($2_2^+ \rightarrow 2_1^+$) transition, showing a new transition at 844 keV, presumably from the $3^+$ state belonging to the \ga-vibrational band.
-	}
+	\textbf{(c)} In red, a gate on the 715 keV ($4_1^+ \rightarrow 2_1^+$) transition, showing the 836 keV ($6_1^+ \rightarrow 4_1^+$) and 888 keV ($8_1^+ \rightarrow 6_1^+$) transitions. In blue, a gate on the 460 keV ($2_2^+ \rightarrow 2_1^+$) transition, showing a new transition at 844 keV, presumably from the $3^+$ state belonging to the \ga-vibrational band.}
 	\label{fig:check_state}
 \end{figure}
 
-\autoref{fig:gg_dcB} displays the \ga\ga-matrix Doppler corrected for the beam.
+
+The transition at approximately 844 keV is a very good candidate for the missing member of the \ga-band. 
+The new transition places the candidate for the $3^+$ state at 1834 keV, and the transition and the state will really help clarify the role of triaxiality. 
+%This new transition and new state will really help to clarify the role of triaxiality.
+%The sum-peak of the assumed $3^+$ and the $2_2^+$ state is 1834 keV, which is close to the rough estimate of around 1900 keV.
+We cannot expect to see a transition down to the ground state from 1834 keV, since it would have been a M3 transition, i.e. the transition is very improbable due to the high magnetic multipolarity. 
+%In principle, there can be a transition from $3^+$ to $4^+$, but there was no sign of this either.
+
+A low-lying $2_2^+$ state, as the 990 keV state in \Sm, is a sign of triaxiality which can either be static or dynamic \cite{Klintefjord2016}.
+From the energy of the $2_2^+$ state and the $B(E2; 2_2^+ \rightarrow 2_1^+)$ value it is not possible to decide if the triaxial deformation is static or dynamic, but information about the new $3_1^+$ state can help the decision.
+
+There is a possible new peak around 1860 keV in \autoref{fig:gam_dcB}. 
+None of the \ga\ cascades in \autoref{fig:levels} add up to this energy level or transition energy. 
+A cascade is several \ga\ transitions in coincidence with each other.
+It is difficult to decide which state the peak around 1860 keV decays to.
+
+\autoref{fig:gg_dcB} displays the \ga\ga-matrix, Doppler corrected for \Sm.
 The diagonal lines below 600 keV, comes from the Compton continuum. 
 Here, we see defined lines where the constituents of the ground state band is as mentioned before (531 keV, 715 keV, 836 keV and a slim 888 keV line), in addition to the 460 keV line. 
-The 836 keV line is quite broad.
+The 836 keV line is quite broad as seen in \autoref{fig:gam_dcB}.
 
 \begin{figure}[htb!]
 	\centering
 	% GammaPlot.cpp
 	% gg_matrix_dcB("setup_Coulex.txt", "d")
 	\includegraphics[width=\textwidth]{../Plots/plotting/gg_dcB.png}
-	\caption{\ga-\ga\ matrix Doppler corrected for beam (\Sm).}
+	\caption{\ga-\ga\ matrix, Doppler corrected for \Sm. 
+	See the text for more information.}
 	\label{fig:gg_dcB}
 \end{figure}
 
 
-In the previous experiment at ISOLDE, IS495 in 2012, three excited states of \Sm\ were populated, the first (531 keV) and second (990 keV) excited $2^+$ states, in addition to the first $4^+$ (1246 keV) state.
-The \ga-ray intensities for the specified low-lying states was measured from 5 separate ranges of CM scattering angles, Doppler corrected for the \Sm\ projectiles. 
-These intensities were used to obtain the reduced transition probabilities, i.e. the $B(E2)$ values of the specified low-lying states \cite{Klintefjord2015, Klintefjord2016, BelloGarrote2015}.
+The CD has 16 rings an consequently it covers 16 angular ranges in the laboratory system.
+In the IS495 experiment at ISOLDE in 2012, three excited states of \Sm\ were populated, the first (531 keV) and second (990 keV) excited $2^+$ states, in addition to the first $4^+$ (1246 keV) state.
+The CD covered from $49.7^\circ$ to $146^\circ$ in the CM frame for the particles.
+The \ga-ray intensities for the three states was measured from 5 separate ranges of CM scattering angles, Doppler corrected for the \Sm\ projectiles. 
+These intensities were used to obtain the reduced transition probabilities, i.e. the $B(E2)$ values of the states \cite{Klintefjord2015, Klintefjord2016, BelloGarrote2015}.
 
 From the present experiment at ISOLDE, IS558 in 2017, excited sates up to $8^+$ were populated. 
-New measurements of the \ga-ray intensities can be performed for 23 separate ranges of CM scattering angles, Doppler corrected for the \Sm\ projectiles, specified by \autoref{tab:scattering}. 
+%The CD covered from $22.0^\circ$ to $56.7^\circ$ for the particles in the LAB frame, corresponding to $36.6^\circ$ to $136.0^\circ$ in the CM frame for the particles.
+When considering the detection of either projectile, target, or for some angles both, the detector covers an angular range from 36.6$^\circ$ to 136.0$^\circ$ in the CM system, which can be divided into 23 independent angular ranges as given in \autoref{tab:scattering}. 
 
 \autoref{fig:projections} displays \ga-ray spectra for 6 different ranges of CM scattering angles to illustrate the dependence of the excitation probabilities on the scattering angle. 
 The spectra clearly show that multi-step excitation is much stronger for large scattering angles, when the distance of closest approach is smaller and the strength of the electromagnetic interaction is stronger. 
-\textcolor{red}{Fiks......}
-It is split into 6 parts as an example of the quality of the new measurement.
-
-The silicon detector has 16 rings and consequently covers 16 angular ranges in the laboratory system. 
-When considering the detection of either projectile, target, or for some angles both, the detector covers an angular range from 36.6$^\circ$ to 136.0$^\circ$ in the CM system, which can be divided into 23 independent angular ranges as given in \autoref{tab:scattering}. 
 
 The 23 separate angle ranges will give much more data points compared to the former 5 separate angle ranges.
 By analyzing the 23 CM angle ranges, the precision of the previous measurements of the three $B(E2)$ values will certainly be improved, in addition to measuring many unknown $B(E2)$ values.
 The reduced transition probabilites, i.e. $B(E2)$, are relatively strong in the ground state band. 
-\textcolor{red}{Må jeg si hvordan disse er koblet mot matrise-elementene eller kan jeg la være å si det? Hvis jeg må forklare det, hvordan var det igjen? Hvis jeg ikke må forklare det, kan vi snakke om dette senere.}
 
-\textcolor{red}{Fiks....} \newline 
 Each spectrum for the 23 different angular ranges will provide an independent set of \ga-ray intensities for the various transitions. 
-In the next step of the Coulomb excitation analysis, a set of electromagnetic matrix elements will be fitted to the \ga-ray intensities in a chi square procedure. 
+In the next step of the Coulomb excitation analysis, a set of electromagnetic matrix elements will be fitted to the \ga-ray intensities in a chi-square ($\chi^2$) procedure. 
 The known transition probabilities from the previous experiment and known branching ratios can be used to constrain the fit. 
 Since the present experiment provides many more data points compared to the number of free parameters, the experiment will provide both transitional and diagonal matrix elements with good precision. 
-
 
 
 \begin{figure}[htb!]
@@ -2738,6 +2756,32 @@ Since the present experiment provides many more data points compared to the numb
 
 \chapter{Summary and outlook}
 \epigraph{\textit{"Nothing happens until something moves."}}{\textit{– Albert Einstein}}
+
+
+In this thesis, the raw data from the experiment have been presorted and used to produce spectra to calibrate all detectors.
+The calibration process was done in a close collaboration with Dr. Liam Gaffney, the main developer of the \textsl{MiniballCoulexSort} code.
+In a way, this thesis have been a beta-test for the \textsl{MiniballCoulexSort} code development.
+There still remains a lot of work to properly document the codes \textcolor{red}{(outlook)}.
+
+
+
+\textcolor{blue}{For summary and outlook:}
+
+You have worked on the calibration of the data, performed simulations (kinematics, energy loss etc) in the process. It is also an important job to test and double-check everything. Some silicon strips for ex. had to be excluded from the data. At the end you have produced a set of fully calibrated data, and with the kinematic reconstruction you could apply the Doppler correction. Th quality of the spectra is very high, which demonstrates that your calibration is good. You have produced a set of singles spectra as a function of scattering angle which is now ready to be further analysed to obtain the coulex cross sections. You have also produced gamma-gamma matrices which could be analysed to search for new transitions and extend the level scheme.
+
+From the coincidence analysis you found a candidate for the 3+ state of the gamma band, which was previously unknown. This is an important result that will help to better understand the structure of 140Sm. The new state will be a central aspect of the publication that we are going to write about the experiment.
+
+It is always possible to improve a calibration. If you have concrete suggestions of what could be improved, you can of course mention these. My feeling is that it would take a major effort to make even small improvements, so most likely we will continue further with the GOSIA analysis with the spectra that you have produced.
+
+The only calibration that is still missing is a proper efficiency calibration. This will be done by using the Ba and Eu source data.
+
+With your spectra and the efficiency calibration it is possible to extract the intensities for all transitions for all 23 angles. This is the experimental input into GOSIA. Other experimental inputs are the transition strengths of the $2_1^+ \rightarrow 0_1^+$, $4_1^+ \rightarrow 2_1^+$, and $2_2^+ \rightarrow 2_1^+$ from the previous experiment with their uncertainties, and a few gamma-ray branching ratios that are known. Another input that is needed for GOSIA is the level scheme (including the new state). With GOSIA we will perform a chi-square minimization for find the set of EM matrix elements that best reproduces the gamma-ray intensities and other experimental constraints.
+
+Your data set is one of the most detailed ever produced at ISOLDE, with excellent statistics. Your statistics is so good that you could subdivide the data into 23 angular ranges. This means you have many more data points than unknown variables (=matrix elements) in the chi-square fit. We can therefore expect to obtain all transition matrix elements with good precision, and also several diagonal matrix elements (quadrupole moments).
+
+The final step is then to compare the B(E2) values and quadrupole moments with theoretical calculations, similar to what we did in Malin's paper. (Beyond mean-field calculations, shell model, interactive boson model - you haven't discussed these earlier, so I wouldn't say much about the theoretical calculations.)
+
+\textcolor{blue}{- - - - - summary and outlook - - - - -}
 
 
 Future work: Better calibration of particle detectors and \ga\ detectors (online not perfect). Take into account the shape of the peaks $\implies$ calibrate the particle detectors manually.. Takes a lot of time! But maybe less than trying to fit all in a script? If someone only knew and told this story...
