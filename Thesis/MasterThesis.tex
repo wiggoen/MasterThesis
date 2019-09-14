@@ -509,37 +509,44 @@ The goal of the master thesis is to analyze Coulomb excitation data of \Sm\ from
 %In this imagined picture, the average shape of the liquid drop nucleus is spherical, but the instantaneous shape is not.
 It is natural to imagine nuclei as tiny spheres.
 Although the nucleus is a fuzzy quantum object, we can still associate a macroscopic shape with it.
-Thus we can define shape parameters that quantify the degree of deformation in the intrinsic system of the nucleus. 
-These shapes can fluctuate (vibrations), and a deformed nucleus can also rotate in space.
-The intrinsic shape does not change in case of rotation, but the description in the laboratory frame becomes time dependent. 
-Although we can associate a deformation, it is not necessarily rigid. 
-The moment of intertia is typically smaller than for a rigid system of the same deformation (think raw vs. boiled egg).
+Thus, we can define shape parameters that quantify the degree of deformation in the intrinsic system of the nucleus. 
+These shapes can fluctuate (vibrations), and a deformed nucleus can also rotate in space\footnote{The rotation of a spherical nucleus is trivial, since the shape remains identical after any rotation in space. Therefore, a deformation is required to discuss a rotating nucleus.}.
+%The intrinsic shape does not change in case of rotation, 
+In the case of a rotation, the intrinsic shape does not change, but the description in the laboratory frame becomes time dependent. 
+Although we can associate a deformation to a nucleus, the constituent nucleons does not necessarily form a rigid system. 
+The nuclear moment of inertia is typically smaller than for a rigid system of the same deformation, and may, in fact, vary depending on the state of the nuclear system in question.  
+Consider a raw and a boiled egg as an example. 
+The two systems have the same shape, but the system of a boiled egg is closer to a rigid body than a system of a raw egg, and their moment of inertia are not identical.
 
 \autoref{fig:vibrating-nucleus} displays a sketch of a deformed vibrating nucleus.
+The figure illustrates how the shape oscillates between the outer and inner extreme shapes (solid lines) by transitioning through the equilibrium shape of a sphere (dotted lines). 
 One way to parameterize the instantaneous surface of the nucleus is to describe it by a vector \textbf{R} pointing from the origin to a surface point given by the angles $\theta$ and $\phi$ \cite{Krane}.
 This is called the multipole expansion, and is given by the following equation
 \begin{equation}\label{eq:Rfull}
 	\mathbf{R}(\theta, \phi) = R_0 \left( 1 + a_{00} + \sum^\infty_{\lambda = 1} \sum^{+\lambda}_{\mu = -\lambda} a_{\lambda \mu} Y_{\lambda \mu}(\theta, \phi) \right)
 \end{equation}
-where $R_0$ is the radius of the sphere, $a_{00}$ describes volume changes, $a_{\lambda \mu}$ are the expansion coefficients, or the deformation parameters. 
-The parametrization involves the spherical harmonics $Y_{\lambda \mu}$, where $\lambda$ is the multipole, $\mu$ is the order of the expansion and $\theta$ and $\phi$ are the intrinsic angles \cite{Krane, RS, Klintefjord}. 
+where $R_0$ is the radius of the sphere, $a_{00}$ describes volume changes, and $a_{\lambda \mu}$ are the expansion coefficients, or the deformation parameters. 
+The parametrization involves the spherical harmonics $Y_{\lambda \mu}$, where $\lambda$ is the multipole order, $\mu$ is the projection of $\lambda$ and $\theta$ and $\phi$ are the intrinsic angles \cite{Krane, RS, Klintefjord}.
+\autoref{fig:vibrational-modes} displays examples of fluctuations in dipole, quadrupole and octupole parameters ($\lambda$). 
+By assuming incompressibility of the nucleus, the volume is kept constant, given by
+\begin{align*}
+	V = \frac{4}{3} \pi R_0^3
+\end{align*}
+and the nuclear radius can be approximated by 
+\begin{equation}\label{eq:radius}
+	R_0 = r_0 A^{1/3}
+\end{equation}
+where the proportionality constant is given by $r_0 \approx 1.25$ fm and $A$ is the mass number of the nucleus.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Images/vibrating-nucleus.png}
-	\caption{A deformed vibrating nucleus, adapted from \cite{Krane}. In the drawing, the dotted lines represent the spherical equilibrium shape. The drawing is an exaggerated to visualize the effect. See text for more information.}
+	\caption{A deformed vibrating nucleus, adapted from \cite{Krane}. 
+	In the drawing, the dotted lines represent the spherical equilibrium shape. 
+	The drawing is exaggerated to visualize the deformation. 
+	See text for more information.}
 	\label{fig:vibrating-nucleus}
 \end{figure}
-
-By assuming incompressibility of the nucleus, the volume is kept constant as
-\begin{align*}
-	V = \frac{4}{3} \pi R_0^3
-\end{align*}
-Further we have that
-\begin{equation}\label{eq:radius}
-	R_0 = r_0 A^{1/3}
-\end{equation}
-where $r_0 \approx 1.25$ fm and $A$ is the mass number of the nucleus.
 
 The expansion coefficients, $a_{\lambda \mu}$, can be time dependent and can thus describe a vibration or rotation in space of the nucleus. 
 %By reflection symmetry, the expansion coefficients are required to keep the equality $a_{\lambda \mu} = a_{\lambda, -\mu}$ \cite{Krane}.
@@ -548,37 +555,31 @@ Up to second order, the expansion coefficients are given as
 	a_{00} = -\frac{1}{4\pi} \sum_{\lambda > 1, \mu} | a_{\lambda\mu} |^2
 \end{equation}
 
-\autoref{fig:vibrational-modes} shows a examples for changes in dipole, quadrupole and octupole parameters.
-The dipole term, $\lambda = 1$, describes a translation of the whole system, and this is not very interesting in it self. 
-Translational motion describes the motion of a system. 
-Higher-order deformations play a role only in a few selected regions of the nuclear chart, and a large majority of nuclei can be described by quadrupole ($\lambda = 2$) shapes.
+The dipole term, $\lambda = 1$, describes a translation, i.e. the movement, of the whole system, which is uninteresting in it self. 
+%Translational motion describes the motion of a system. 
+A large majority of nuclei can be described by quadrupole ($\lambda = 2$) shapes.
+Higher-order deformations only play a role in a few selected regions of the nuclear chart.
 By putting the origin of the coordinate system in the center of mass, it is possible to fix and exclude the $a_{1\mu}$ parameters, and thus also $a_{00}$ \cite{RS}. 
-If we restrict the system to small deformations, we get that $a_{1\mu} = 0$ and thus $a_{00} = 0$.
-\autoref{eq:Rfull} is then reduced to
+If we restrict the system to small deformations, we achieve $a_{1\mu} = 0$ and thus $a_{00} = 0$.
+Then, \autoref{eq:Rfull} can be reduced to
 \begin{equation}\label{eq:Rmid}
 	\mathbf{R}(\theta, \phi) = R_0 \left( 1 +  \sum^\infty_{\lambda = 2} \sum^{+\lambda}_{\mu = -\lambda} a_{\lambda \mu} Y_{\lambda \mu}(\theta, \phi) \right)
 \end{equation}
 
-Another condition is that $\mathbf{R}$ should be invariant under reflection and rotation of the coordinate system, i.e. $R$ should be unchanged by transformations of the coordinate system.
-%By further choosing the $z$-axis as symmetry axis, we end up in a special case where all $a_{\lambda \mu}$ vanishes except when $\mu = 0$. 
-%This is the assumption of axial symmetry.
-%The special parameters, $a_{\lambda 0}$, are called $\beta_2$.
 
 The quadrupole deformation, $\lambda = 2$, is the most important mode.
 It describes the shape of the nucleus and is the dominant feature in most of the deformed nuclei. 
 In nuclei with spherical shape, the quadrupole vibrations are the lowest mode of collective excitations.
-Deformed nuclei, on the other hand, have low-lying rotational states.
-%With low multipolarity, the quadrupole vibration is the first available vibrational mode for low-energy excitation in nuclei.
-In almost all even-even nuclei there is a low-lying state with $J^\pi = 2^+$, and near closed shells it is possible to distinguish the second harmonic states as well ($J^\pi = 0^+, 2^+, 4^+$). 
-A quadrupole vibration has spin 2 and is connected via an electric quadrupole transition to the ground state. 
-For a two-phonon excitation, two quadrupole excitation couples, each of which has spin 2.
-If you have two spin vectors, they can couple to spin 0, 2 and 4, they cannot couple to odd spins if there is axial symmetry.
-\textcolor{red}{Skal jeg forklare phonon?}
+A quadrupole phonon excitation generates a $2^+$ state. 
+Two-phonon excitations can couple to spins ($0^+,2^+,4^+$). 
+Deformed nuclei, on the other hand, have low lying rotational states, which are characterized by
+$E \propto I(I+1)$.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth]{Images/vibration-modes-3.png}
-	\caption{Vibrational modes, adapted from \cite{Krane}. The dotted lines represent the spherical equilibrium shape.
+	\caption{Vibrational modes, adapted from \cite{Krane}. 
+	The dotted lines represent the spherical equilibrium shape.
 	(a) Dipole, $\lambda = 1$. 
 	(b) Quadrupole, $\lambda = 2$. 
 	(c) Octupole, $\lambda = 3$.}
@@ -601,7 +602,7 @@ With Hill-Wheeler \cite{Hill-Wheeler} coordinates ($\beta$, $\gamma$) they becom
 	a_{20} &= \beta \cos \gamma \label{eq:a-param1} \\
 	a_{22} &= \frac{1}{\sqrt{2}} \beta \sin \gamma \label{eq:a-param2}
 \end{align}
-where $\beta$ is axial deformation (deformation magnitude) and $\gamma$ is triaxial deformation (shape parameter). 
+where $\beta$ is the axial deformation (deformation magnitude) and $\gamma$ is the triaxial deformation (shape parameter). 
 $\gamma = 0$ and $\beta > 0$ corresponds to  the prolate deformed shape, while $\gamma = 0$ and $\beta < 0$ corresponds to the oblate shape. 
 The triaxial shape is obtained when $0 < \gamma < \tfrac{\pi}{3}$.
 Further we have
@@ -2758,31 +2759,44 @@ Since the present experiment provides many more data points compared to the numb
 \epigraph{\textit{"Nothing happens until something moves."}}{\textit{– Albert Einstein}}
 
 
-In this thesis, the raw data from the experiment have been presorted and used to produce spectra to calibrate all detectors.
+\textcolor{red}{Du må ha et summary av hva du har gjort i hele oppgaven + repetere hovedresultatene dine. Delen du har skrevet om fremtidig arbeid er veldig detaljert. Dersom noe av det skulle passe sammen med det i kap 5 kan du vurdere å flytte det opp.}
+
+
+
+In this thesis, data from the Coulomb excitation experiment, IS558, at CERN-ISOLDE have been analyzed. 
+A beam of \Sm\ ions was accelerated into a target of \Pb\ at 4.65 MeV/u.
+The raw data from the experiment was sorted and used to calibrate the particle and \ga-ray detectors.
+A kinematic simulation of the Coulomb excitation experiment/process was used to produce the energy input for the calibration.
 The calibration process was done in a close collaboration with Dr. Liam Gaffney, the main developer of the \textsl{MiniballCoulexSort} code.
 In a way, this thesis have been a beta-test for the \textsl{MiniballCoulexSort} code development.
-There still remains a lot of work to properly document the codes \textcolor{red}{(outlook)}.
+The quality of the online calibration was investigated and found very satisfactory. 
+This calibration was used in the further sorting and analysis of the data set.
+The innermost ring of the particle detector and a few detector segments in the \ga\ detector array was damaged from previous experiments and had to be excluded from the data set.
+At the end, a fully calibrated data set was produced. 
+\texttt{CLXAna} perfomed a kinematic reconstruction and applied a Doppler correction of the \ga-ray spectra.
+
+\textcolor{red}{\ga-spectra med transitions..}
+
+The quality of the spectra is very high, which demonstrates that the calibration is good.
+A set of singles spectra as a function of scattering angle was produced, which is to be further analyzed to obtain the Coulomb excitation cross sections. 
+A \ga-\ga\ matrix was produced, which could be analyzed to search for new transitions and extend the level scheme. 
+
+From the coincidence analysis, a candidate for the $3^+$ state of the \ga-band was found, which was previously unknown. 
+This is an important result that will help to better understand the structure of \Sm. 
+The new state will be a central aspect of the publication that is going to be written about the experiment.
+
+the experiment can help figure out if the triaxial deformation is rigid or soft.
 
 
+\textcolor{red}{Outlook:}\newline
 
-\textcolor{blue}{For summary and outlook:}
+There still remains a lot of work to properly document the \textsl{MiniballCoulexSort} code.
+Look for an updated version of \textsl{MiniballCoulexSort} and ask Dr. Liam Gaffney if there are any new considerations of how to use it with the data set from 2017.
 
-You have worked on the calibration of the data, performed simulations (kinematics, energy loss etc) in the process. It is also an important job to test and double-check everything. Some silicon strips for ex. had to be excluded from the data. At the end you have produced a set of fully calibrated data, and with the kinematic reconstruction you could apply the Doppler correction. Th quality of the spectra is very high, which demonstrates that your calibration is good. You have produced a set of singles spectra as a function of scattering angle which is now ready to be further analysed to obtain the coulex cross sections. You have also produced gamma-gamma matrices which could be analysed to search for new transitions and extend the level scheme.
-
-From the coincidence analysis you found a candidate for the 3+ state of the gamma band, which was previously unknown. This is an important result that will help to better understand the structure of 140Sm. The new state will be a central aspect of the publication that we are going to write about the experiment.
-
-It is always possible to improve a calibration. If you have concrete suggestions of what could be improved, you can of course mention these. My feeling is that it would take a major effort to make even small improvements, so most likely we will continue further with the GOSIA analysis with the spectra that you have produced.
-
-The only calibration that is still missing is a proper efficiency calibration. This will be done by using the Ba and Eu source data.
-
-With your spectra and the efficiency calibration it is possible to extract the intensities for all transitions for all 23 angles. This is the experimental input into GOSIA. Other experimental inputs are the transition strengths of the $2_1^+ \rightarrow 0_1^+$, $4_1^+ \rightarrow 2_1^+$, and $2_2^+ \rightarrow 2_1^+$ from the previous experiment with their uncertainties, and a few gamma-ray branching ratios that are known. Another input that is needed for GOSIA is the level scheme (including the new state). With GOSIA we will perform a chi-square minimization for find the set of EM matrix elements that best reproduces the gamma-ray intensities and other experimental constraints.
-
-Your data set is one of the most detailed ever produced at ISOLDE, with excellent statistics. Your statistics is so good that you could subdivide the data into 23 angular ranges. This means you have many more data points than unknown variables (=matrix elements) in the chi-square fit. We can therefore expect to obtain all transition matrix elements with good precision, and also several diagonal matrix elements (quadrupole moments).
-
-The final step is then to compare the B(E2) values and quadrupole moments with theoretical calculations, similar to what we did in Malin's paper. (Beyond mean-field calculations, shell model, interactive boson model - you haven't discussed these earlier, so I wouldn't say much about the theoretical calculations.)
-
-\textcolor{blue}{- - - - - summary and outlook - - - - -}
-
+Very pure beam, but should in the future analysis check for possible beam contaminants. 
+Check beam composition from laser on/off data.
+Look at the \ga-spectra to identify possible beam contaminants.
+There may be a little bit of $^{140}$Nd in the beam, but if so, it is very little (judging from on-line spectra).
 
 Future work: Better calibration of particle detectors and \ga\ detectors (online not perfect). Take into account the shape of the peaks $\implies$ calibrate the particle detectors manually.. Takes a lot of time! But maybe less than trying to fit all in a script? If someone only knew and told this story...
 
@@ -2791,16 +2805,8 @@ Maybe \texttt{kinsim3} uses too much energy loss in CD?
 If you are using only the Pb and Sm for calibration, and then applying that calibration back to the data, then it should matter if the absolute energies are correct. 
 This is an internal calibration, so that would simply mean that the peaks would have the wrong energy, but they should still be aligned on the front and back.
 
-
-\bigskip
-
-Geometry:
-For the geometry, I am not sure exactly what the best set of angles are. You should produce some spectra to analyse before determining this. In the output file of CLXAna you will find a histogram called B\_dcB\_cid, which is the Doppler corrected spectra vs. each detector. The peak energies should of course be constant as a function of detector number, if they vary, then the angles need to be improved.
-
-
-\bigskip
-
-
+It is always possible to improve the calibration. 
+\textcolor{blue}{If you have concrete suggestions of what could be improved, you can of course mention these. My feeling is that it would take a major effort to make even small improvements, so most likely we will continue further with the GOSIA analysis with the spectra that you have produced.} \newline
 In the Sm data, the issue came in determining the peak centroid or maximum for the experimental data. 
 The peak shape is a convolution of many effects; intrinsic resolution of the detector, the beam energy width, straggling in the target, interaction points in the target, angular width of the detector strip, etc. 
 While the simulation tries to include all these things, it was found that the peak shapes were not exactly the same. 
@@ -2811,51 +2817,43 @@ Then the same feature in the corresponding simulated spectrum can be analyzed.
 The maximum of the peak on the high energy side is not the center of the peak, but roughly equivalent to the maximum. 
 It can be imagined as fitting a Gaussian to the right-hand side, the high-energy side only, as this would be roughly where the centroid is. 
 
+Geometry:
+For the geometry, I am not sure exactly what the best set of angles are. You should produce some spectra to analyse before determining this. In the output file of CLXAna you will find a histogram called B\_dcB\_cid, which is the Doppler corrected spectra vs. each detector. The peak energies should of course be constant as a function of detector number, if they vary, then the angles need to be improved.
+
+%to get even better results and maybe see some of the low-energy transitions which disappears into the Compton continuum, do a new experiment with Compton suppression, shielded (BGO shield?) \ga\ detectors.
+
+
 
 \bigskip
 
-Efficiency calibration ++
+
+The only calibration that is still missing is a proper efficiency calibration. 
+This will be done by using the $^{133}$Ba and $^{152}$Eu source data.
+With the produced spectra and the efficiency calibration it is possible to extract the intensities for all transitions for all 23 CM scattering angles. 
+This is the experimental input into a Coulomb excitation codes named GOSIA \cite{GOSIA}.
+Other experimental inputs are the transition strengths of the $2_1^+ \rightarrow 0_1^+$, $4_1^+ \rightarrow 2_1^+$, and $2_2^+ \rightarrow 2_1^+$ from the previous experiment with their uncertainties, and a few \ga-ray branching ratios that are known. 
+Another input that is needed for GOSIA is the level scheme (including the new state). 
+With GOSIA, a chi-square ($\chi^2$) minimization will be performed for finding the set of electromagnetic matrix elements that best produces the \ga-ray intensities and other experimental constraints.
+
 
 \bigskip
 
-\textcolor{red}{Fra oppgaveteksten:} \newline
+
+The data set is one of the most detailed ever produced at ISOLDE, with excellent statistics. 
+The statistics is so good that it is possible to subdivide the data into 23 angular ranges. 
+This means that there is many more data points than unknown variables (matrix elements) in the $\chi^2$ fit.
+It is therefore expected to obtain all transition matrix elements with good precision, and also several diagonal matrix elements (quadrupole moments).
+
+%Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclear deformation). 
+
+
+The final step is to compare the $B(E2)$ values and quadrupole moments with theoretical calculations, similar to what was done in Malin Klintefjords PhD thesis \cite{Klintefjord}.
+
 determine Coulomb excitation yields. These yields will then, in a second step, be compared to theoretical calculations and transition probabilities and quadrupole moments will be extracted using chi-square minimization procedures.
 
+GOSIA and GOSIA2 analysis? \url{https://www.pas.rochester.edu/~cline/Gosia/Gosia_Manual_20110609.pdf}
 
-GOSIA and GOSIA2 analysis?
 
-\url{https://www.pas.rochester.edu/~cline/Gosia/Gosia_Manual_20110609.pdf}
-
-\bigskip
-
-Look for an updated version of \textsl{MiniballCoulexSort} and ask Dr. Liam Gaffney if there are any new considerations of how to use it with data from 2017.
-
-\bigskip
-
-Coulomb excitation yields. These yields will then, in a second step, be compared to theoretical calculations and transition probabilities and quadrupole moments will be extracted using chi-square minimization procedures.
-
-\bigskip
-
-Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclear deformation). 
-
-\bigskip
-
-the experiment can help figure out if the triaxial deformation is rigid or soft.
-
-\bigskip
-
-Very pure beam (\textcolor{red}{did we have statistics of this?}) - resultat til avhandling. sjekk etter doppler-korrigering. Nd-contaminasjon? i så fall veldig lite, 1-2 prosent? Beam composition, laser on/off.
-
-\textcolor{Magenta}{Tilbakemelding: \newline
-we would have to look at the \ga-spectra to identify any contaminants. There may be a little bit of Nd-140 in the beam, but if so, it is very little (judging from on-line spectra).}
-
-\bigskip
-
-we don't extract B(E2) values, and don't discuss transition strengths. To extract these is the next step
-
-\bigskip
-
-to get even better results and maybe see some of the low-energy transitions which disappears into the Compton continuum, do a new experiment with Compton suppression, shielded (BGO shield?) \ga\ detectors.
 
 
 % NOT NEEDED
@@ -2865,11 +2863,6 @@ to get even better results and maybe see some of the low-energy transitions whic
 %	\input{Table-data/BE2.tex}
 %	\label{tab:BE2}
 %\end{table}
-
-
-% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
-
-
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
