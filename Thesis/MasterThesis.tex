@@ -2771,96 +2771,62 @@ Since the present experiment provides many more data points compared to the numb
 
 
 In this thesis, data from the Coulomb excitation experiment, IS558, at CERN-ISOLDE have been analyzed. 
-A beam of \Sm\ ions was accelerated into a target of \Pb\ at 4.65 MeV/u.
-The raw data from the experiment was sorted and used to calibrate the particle and \ga-ray detectors.
+A beam of \Sm\ ions was accelerated into a target of \Pb\ at 4.65 MeV/u. 
 A kinematic simulation of the Coulomb excitation experiment/process was used to produce the energy input for the calibration.
+The raw data from the experiment was sorted and used to calibrate the particle and \ga-ray detectors.
 The calibration process was done in a close collaboration with Dr. Liam Gaffney, the main developer of the \textsl{MiniballCoulexSort} code.
 In a way, this thesis have been a beta-test for the \textsl{MiniballCoulexSort} code development.
-The quality of the online calibration was investigated and found very satisfactory. 
+The quality of the (online) calibration was investigated and found very satisfactory. 
 This calibration was used in the further sorting and analysis of the data set.
 The innermost ring of the particle detector and a few detector segments in the \ga\ detector array was damaged from previous experiments and had to be excluded from the data set.
 At the end, a fully calibrated data set was produced. 
-\texttt{CLXAna} perfomed a kinematic reconstruction and applied a Doppler correction of the \ga-ray spectra.
 
-\textcolor{red}{\ga-spectra med transitions..}
-
+The \texttt{CLXAna} code performed a kinematic reconstruction and applied a Doppler correction of the \ga-ray spectra.
 The quality of the spectra is very high, which demonstrates that the calibration is good.
+A great number of known states up to and including the $8^+$ state was populated, in addition to two unknown \ga\ transitions. 
+One of the new transitions at approximately 844 keV is assumed to be the missing $3^+$ member of the \ga-vibrational band built on the $2_2^+$ state. 
+This new $3^+ \rightarrow 2_2^+$ transition will really help to clarify the role of triaxial deformation in \Sm.
+Another new transition is approximately 1860 keV. 
+None of the known \ga\ cascades in the level scheme added up to this energy level or transition. 
+From the \ga-spectrum, there is no known candidates for which the 1860 keV transition decays to.
+A \ga-\ga\ matrix was produced, which can be analyzed to search for new transitions and extend the level scheme. 
 A set of singles spectra as a function of scattering angle was produced, which is to be further analyzed to obtain the Coulomb excitation cross sections. 
-A \ga-\ga\ matrix was produced, which could be analyzed to search for new transitions and extend the level scheme. 
+
+
+There still remains a lot of work to properly document the \textsl{MiniballCoulexSort} code.
+If an updated version of the \textsl{MiniballCoulexSort} is applied in the analysis, Dr. Liam Gaffney should be consulted in case there are any new considerations of how to use the code with the data set.
+
+A better, second calibration of the particle detector (CD) is possible since the online calibration was not perfect.
+If a second calibration is being conducted, the shape of the particle peaks have to be taken into account. 
+In the automatic fitting of the experimental data, the issue came in determining the peak centroid. 
+It is probably easier to do the calibration manually for each strip on the front and back side of the CD.
+In the calibration, a second opinion of the kinematic simulation should also be considered.
+%It might take a major effort to make small improvements, so maybe a continuation of further analysis is better.
+
+The beam quality of the experiment is assumed to be very pure, but a future analysis of the \ga\ spectra will identify possible beam contaminants. 
 
 From the coincidence analysis, a candidate for the $3^+$ state of the \ga-band was found, which was previously unknown. 
 This is an important result that will help to better understand the structure of \Sm. 
 The new state will be a central aspect of the publication that is going to be written about the experiment.
-
-the experiment can help figure out if the triaxial deformation is rigid or soft.
-
-
-\textcolor{red}{Outlook:}\newline
-
-There still remains a lot of work to properly document the \textsl{MiniballCoulexSort} code.
-Look for an updated version of \textsl{MiniballCoulexSort} and ask Dr. Liam Gaffney if there are any new considerations of how to use it with the data set from 2017.
-
-Very pure beam, but should in the future analysis check for possible beam contaminants. 
-Check beam composition from laser on/off data.
-Look at the \ga-spectra to identify possible beam contaminants.
-There may be a little bit of $^{140}$Nd in the beam, but if so, it is very little (judging from on-line spectra).
-
-Future work: Better calibration of particle detectors and \ga\ detectors (online not perfect). Take into account the shape of the peaks $\implies$ calibrate the particle detectors manually.. Takes a lot of time! But maybe less than trying to fit all in a script? If someone only knew and told this story...
-
-Use a second opinion on the simulation, maybe try LISE++ or some other simulation program to get the centroids?
-Maybe \texttt{kinsim3} uses too much energy loss in CD? 
-If you are using only the Pb and Sm for calibration, and then applying that calibration back to the data, then it should matter if the absolute energies are correct. 
-This is an internal calibration, so that would simply mean that the peaks would have the wrong energy, but they should still be aligned on the front and back.
-
-It is always possible to improve the calibration. 
-\textcolor{blue}{If you have concrete suggestions of what could be improved, you can of course mention these. My feeling is that it would take a major effort to make even small improvements, so most likely we will continue further with the GOSIA analysis with the spectra that you have produced.} \newline
-In the Sm data, the issue came in determining the peak centroid or maximum for the experimental data. 
-The peak shape is a convolution of many effects; intrinsic resolution of the detector, the beam energy width, straggling in the target, interaction points in the target, angular width of the detector strip, etc. 
-While the simulation tries to include all these things, it was found that the peak shapes were not exactly the same. 
-It might be worthwhile spending a bit of time to play with the parameters and try to get the peak shape as similar as possible. 
-At that point, maybe use a certain feature of the peak, such as the maximum, or the highest energy edge. 
-Or, honestly, it might be better to simply hover the mouse over the correct "feature" of the peak and position it by eye, be it the centroid or the maximum.
-Then the same feature in the corresponding simulated spectrum can be analyzed.
-The maximum of the peak on the high energy side is not the center of the peak, but roughly equivalent to the maximum. 
-It can be imagined as fitting a Gaussian to the right-hand side, the high-energy side only, as this would be roughly where the centroid is. 
-
-Geometry:
-For the geometry, I am not sure exactly what the best set of angles are. You should produce some spectra to analyse before determining this. In the output file of CLXAna you will find a histogram called B\_dcB\_cid, which is the Doppler corrected spectra vs. each detector. The peak energies should of course be constant as a function of detector number, if they vary, then the angles need to be improved.
-
-%to get even better results and maybe see some of the low-energy transitions which disappears into the Compton continuum, do a new experiment with Compton suppression, shielded (BGO shield?) \ga\ detectors.
-
-
-
-\bigskip
-
+This Coulomb experiment can help figure out if the triaxial deformation is rigid or soft in \Sm.
 
 The only calibration that is still missing is a proper efficiency calibration. 
 This will be done by using the $^{133}$Ba and $^{152}$Eu source data.
 With the produced spectra and the efficiency calibration it is possible to extract the intensities for all transitions for all 23 CM scattering angles. 
-This is the experimental input into a Coulomb excitation codes named GOSIA \cite{GOSIA}.
-Other experimental inputs are the transition strengths of the $2_1^+ \rightarrow 0_1^+$, $4_1^+ \rightarrow 2_1^+$, and $2_2^+ \rightarrow 2_1^+$ from the previous experiment with their uncertainties, and a few \ga-ray branching ratios that are known. 
-Another input that is needed for GOSIA is the level scheme (including the new state). 
+This is the experimental input into a Coulomb excitation code named GOSIA \cite{GOSIA}.
+Other experimental inputs are the transition strengths of the $2_1^+ \rightarrow 0_1^+$, $4_1^+ \rightarrow 2_1^+$, and $2_2^+ \rightarrow 2_1^+$ from the previous experiment (IS495) with their uncertainties, and a few \ga-ray branching ratios that are known. 
+Another input that is needed for GOSIA is the level scheme, including the new state. 
 With GOSIA, a chi-square ($\chi^2$) minimization will be performed for finding the set of electromagnetic matrix elements that best produces the \ga-ray intensities and other experimental constraints.
-
-
-\bigskip
-
 
 The data set is one of the most detailed ever produced at ISOLDE, with excellent statistics. 
 The statistics is so good that it is possible to subdivide the data into 23 angular ranges. 
 This means that there is many more data points than unknown variables (matrix elements) in the $\chi^2$ fit.
 It is therefore expected to obtain all transition matrix elements with good precision, and also several diagonal matrix elements (quadrupole moments).
 
-%Expect to measure transition probabilities $B(E2)$ and quadrupole moment (nuclear deformation). 
-
-
 The final step is to compare the $B(E2)$ values and quadrupole moments with theoretical calculations, similar to what was done in Malin Klintefjords PhD thesis \cite{Klintefjord}.
 
-determine Coulomb excitation yields. These yields will then, in a second step, be compared to theoretical calculations and transition probabilities and quadrupole moments will be extracted using chi-square minimization procedures.
 
-GOSIA and GOSIA2 analysis? \url{https://www.pas.rochester.edu/~cline/Gosia/Gosia_Manual_20110609.pdf}
-
-
+%GOSIA and GOSIA2 analysis? \url{https://www.pas.rochester.edu/~cline/Gosia/Gosia_Manual_20110609.pdf}
 
 
 % NOT NEEDED
