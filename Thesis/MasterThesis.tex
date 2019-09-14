@@ -236,6 +236,35 @@ The $3_1^+$ state will especially be important to determine if the triaxial defo
 Another possible unknown transition at approximately 1860 keV is also observed, but there is no indication of where the transition is decaying to in the known level scheme.
 Further analysis is needed to determine the new transitions, and the transition strengths for all the \ga\ transitions obtained in the data set.
 
+
+\bigskip
+
+
+\textcolor{red}{Alternative:}
+
+This thesis analyzed the experimental data of Coulomb excitation of \Sm.
+
+The experiment was carried out at the ISOLDE facility at CERN in 2017, where recent upgrades
+has provided higher energies and intensities for radioactive ion beams compared to previous experiments.
+Silicon detectors were used to determine the energies and angles of scattered particles, and
+germanium detectors to measure \ga-rays from excited states in \Sm.
+
+Excited states up to and including the 8+ state at 2970 keV were populated in the large dataset.
+\textsl{MiniballCoulexSort}, a code which is under development at ISOLDE, were used to sort the data. 
+A fully calibrated data set was obtained, in addition to Doppler corrected spectra for \Sm.
+
+The results from the analysis revealed a number of previously known \ga\ transitions, in
+addition to two unknown transitions, one at approximately 844 keV and one at approximately 1860
+keV. 
+The relatively strong intensity of the new 844 keV transition could explain the missing $3_1^+$ state of the \ga-vibrational band. 
+In \ga-\ga\ coincidences it is assumed/predicted that the $3_1^+$ state mostly decay to the $2_2^+$ state. 
+\textcolor{blue}{(Utdyp hvorfor denne transition er en god fit med den energien(?))}
+The $3_1^+$ state will especially be important to determine if the triaxial deformation in \Sm\ is static or dynamic. \textcolor{blue}{(og hva konkluderte du med?)}
+
+Further analysis is needed to determine the unknown transition(s) at approximately 1860 keV.
+There is no indication of whether the transition(s) is(are) decaying to in the known level scheme.
+
+
 \end{abstract}
 
 
@@ -536,7 +565,7 @@ where the proportionality constant is given by $r_0 \approx 1.25$ fm and $A$ is 
 	\caption{A deformed vibrating nucleus, adapted from \cite{Krane}. 
 	In the drawing, the dotted lines represent the spherical equilibrium shape. 
 	The drawing is exaggerated to visualize the deformation. 
-	See text for more information.}
+	See the text for more information.}
 	\label{fig:vibrating-nucleus}
 \end{figure}
 
@@ -679,7 +708,7 @@ In \autoref{ch:scattering}, a calculation of the two-particle elastic collision 
 	\caption{A visualisation of the separate frames of reference for the scattering reaction relevant to the COULEX.
 	\textbf{(a)} Scattering in the LABoratory (LAB) frame. 
 	\textbf{(b)} Scattering in the Center of Mass (CM) frame. 
-	See text for more information.}
+	See the text for more information.}
 	\label{fig:scattering}
 \end{figure}
 
@@ -1038,9 +1067,8 @@ If the angle between the recoiling nucleus and the \ga-ray can be determined acc
 
 
 \section{Experimental setup}\label{sec:exp_setup}
-
-The Coulomb excitation experiment was a beam of \Sm\ ions accelerated into a target of \Pb\ at an energy 4.65 MeV/u.
-It was conducted between 8th and 14th of August in 2017 at the ISOLDE facility.
+The Coulomb excitation experiment was was conducted at the CERN-ISOLDE facility between 8th and 14th of August in 2017. 
+A beam of \Sm\ ions was accelerated into a target of \Pb\ at 4.65 MeV/u.
 The experiment code was IS558 with the title \textit{Shape Transition and Coexistence in Neutron-Deficient Rare Earth Isotopes}.
 \Sm\ is a radioactive isotope with a ground state half-life ($T_{1/2}$) of 14.82 min, and is a neutron-deficient nuclei compared to the line of stability.
 
@@ -1087,8 +1115,8 @@ In this way, we only ionize the element required to produce the beam.
 The Resonance Ionization Laser Ion Source (RILIS) is based on the method of step-wise (2-3 step) excitation and ionization of an atom. 
 It is an element-selective process which is used to produce ion beams of the desired element \cite{RILIS}. 
 In this experiment, RILIS was used to select samarium (Sm) with atomic number $Z = 62$. 
-After RILIS has selected Sm, we have a continuous beam of Sm$^{+1}$ ions at an energy of 60 keV. 
-\textcolor{blue}{The primary target is on a 60 kV high voltage platform} \textcolor{red}{??? fjerne eller utdype ???} \cite{ISOLDE-web, TIF}. 
+After RILIS has selected Sm, we have a continuous beam of Sm$^{+1}$ ions at an energy of 60 keV  \cite{ISOLDE-web, TIF}. 
+%\textcolor{blue}{The primary target is on a 60 kV high voltage platform.} 
 
 After the ionization of the beam, the next step in the process is to perform a mass separation.
 The goal of the mass separation is to obtain a beam only containing the isotopes with the desired mass number, and to exclude the contaminants that exits RILIS. 
@@ -1170,12 +1198,12 @@ The excitation probability for \Pb\ is maximal if the EM interaction is approxim
 
 
 \subsection{Miniball spectrometer}
+The Miniball spectrometer consists of a particle detector and a \ga\ detector array.
+In the Coulomb excitation experiment, a silicon detector was used to determine the energies and angles of scattered particles, and germanium detectors were used to measure \ga-rays from excited states in \Sm.
+The target chamber, containing the \Pb\ target, looks like a small ball.
 \autoref{fig:MBSpect} shows an overview picture of the Miniball spectrometer. 
+\textcolor{red}{Tilbakemelding: Legg til en intro setning, overfladisk beskriv hvordan Miniball ser ut og i grove trekk hvilke deler den består av.}
 
-\textcolor{Magenta}{Tilbakemelding:\newline
-Legg til en intro setning, overfladisk beskriv hvordan Miniball ser ut og i grove trekk hvilke deler den består av.
-}
-\textcolor{red}{Skal jeg ha bilder av Miniball spektrometeret, eller skal jeg fjerne dem? Det er jo ikke akkurat som man ser så veldig masse.. evt. flytte til appendix? (skal i alle fall beholde target wheel)}
 
 \begin{figure}[ht]
 	\centering
@@ -1215,6 +1243,7 @@ Each quadrant of the CD is independently connected to a Analog to Digital Conver
 The TDC keeps track of the time of registered particle-\ga\ and particle-\ga-\ga\ coincidences. 
 As a result of too few available channels in the ADC, the sector strips in the back are paired up.
 In consequence, it is effectively 12 strips on the back side of the CD. 
+\autoref{tab:ADC} lists the signal cable wiring of the CD into the ADC. 
 
 The whole CD detector has a total area of 5000 mm$^2$, where approximately 93$\%$ of the detector consists of a detectable surface. 
 In Coulomb excitation experiments the silicon wafer thickness is usually 500 $\mu$m.
@@ -1225,9 +1254,6 @@ The distance from the target to the CD was 27 $\pm$ 1 mm.
 In the laboratory (LAB) reference frame the CD covers an angle range between 18.4$^\circ$ and 56.6$^\circ$. 
 The angles are divided up in rings corresponding to the scattering angles in \autoref{tab:scattering}.
 An extensive description of the CD can be found in \cite{CD-DSSSD}.
-
-\textcolor{red}{Finn passende plassering...}\newline
-\autoref{tab:ADC} shows the signal cable wiring of the CD into the ADC. 
 
 %\footnote{The distance was measured using a $\alpha$-source ($^{226}$Ra). The source has a thickness of 1.23 mm, which has to be accounted for. The target to CD distance is therefore the CD to source distance plus the source thickness, i.e. 25.78(12) mm + 1.23 mm = 27.01 mm. This source data was reanalyzed, giving a 0.03 mm discrepancy form the original log entry. In private communications at ISOLDE in August 2018, the distance from the target to the CD was determined to be 26.98 mm with a $\sim$1 mm uncertainty.}
 
@@ -1820,7 +1846,7 @@ To implement a proper automatic fitting program, one would have to find a functi
 	\end{subfigure}
 	\caption{\textbf{(a)} Front strip number 9 in quadrant 4. 
 	\textbf{(b)} Back strip 12, gated on ring 16 (outermost ring) in quadrant 1. 
-	See text for more information.}
+	See the text for more information.}
 	\label{fig:cal_ED}
 \end{figure}
 
@@ -1996,7 +2022,7 @@ To explain this we have to look at the two-dimensional (2D) spectrum in \autoref
 	At higher energies, there is a double-peak structure of \Sm. 
 	The second peak of \Sm\ can be explained by region 2 from \autoref{fig:EFBQ4}.
 	\textbf{(b)} Back strip number 6 in quadrant 4.
-	See text for more information.}
+	See the text for more information.}
 	\label{fig:threshold}
 \end{figure}
 
@@ -2526,7 +2552,7 @@ When the add-back method is utilized, the efficiency for high-energy \ga-rays is
 	 	The blue (red) \ga\ spectrum corresponds to sorting with singles (add-back) in \texttt{CLXAna}.
 	 	% \ga\ spectrum in coincidence with a particle in the CD
 		\textbf{(b)} \Sm\ on $^{94}$Mo at 2.85 MeV/u from the COULEX experiment performed in 2012 at CERN-ISOLDE \cite{Klintefjord}. 
-		See text for more information. 	
+		See the text for more information. 	
 	 	}
 	\label{fig:gam_compared}
 \end{figure}
