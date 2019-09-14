@@ -2578,13 +2578,10 @@ For the very strong transitions, there is a certain chance that two \ga-rays hit
 Consequently, we observe a peak at the energy corresponding to the sum of the two \ga-ray energies.
 This effect is enhanced when the add-back method is utilized, because in this case it is sufficient that two \ga-rays hit the same cluster, as opposed to the same crystal, to end up in the sum peak.
 
-\textcolor{red}{Finn plassering og lag mer kontekst.}\newline
-The $0_2^{(+)}$ (1599 keV) and $0_3^{+}$ (1628 keV) states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence. 
-
 The 990 keV and 1599 keV states in \Sm\ transition down to the $2_1^+$ state with a \ga-ray energy of 460 keV  and 1068 keV, respectively.
 % ($2_2^+ \rightarrow 2_1^+$) and ($0_2^{(+)} \rightarrow 2_1^+$)
-%The spin and parity of the 990 keV \cite{Firestone} and 1599 keV states was originally assumed to be $0^+$ and $2^+$, respectively. 
-The spin and parity of the 990 keV \cite{Firestone} state was originally assumed to be $0^+$, and $2^+$ for the 1599 keV state. \textcolor{red}{Flytt ref til slutten av setningen? Har egentlig bare ref for 990 keV..}
+%The spin and parity of the 990 keV and 1599 keV states was originally assumed to be $0^+$ and $2^+$, respectively \cite{Firestone}. 
+The spin and parity of the 990 keV state was originally assumed to be $0^+$, and $2^+$ for the 1599 keV state  \cite{Firestone}.
 An experiment conducted at the Heavy Ion Laboratory (HIL) at the University of Warsaw corrected the spin values of the 990 keV and 1599 keV states in \Sm\ to be $2^+$ and $0^{(+)}$, respectively \cite{Klintefjord2015, Samorajczyk2015}.
 %In the HIL experiment, angular correlation between the \ga-\ga\ transitions were measured. 
 %The experiment could only conclude that the multipolarity of the $0_2^{(+)} \rightarrow 2_1^+$ transition was quadrupole ($\lambda = 2$). 
@@ -2595,6 +2592,11 @@ Magnetic excitations are strongly suppressed in Coulomb excitation experiments, 
 The fact that the $0_2^{(+)}$ state was populated in the present experiment, already reveal that the parity of the state must be positive, i.e. $\pi = +$, which implies that the spin and parity of the 1599 keV state is $I^\pi = 0_2^+$. 
 %In cases where the spin of the final state is not known, different assumptions can be used when fitting the electromagnetic matrix elements to the excitation probabilities (as a function of scattering angle). 
 %Usually the spin can be determined from the chi-square of the fit.
+
+A typical indication for shape coexistence is $0^+$ states at low energy. 
+In \Sm, there is an indication of two $0^+$ states around 1.6 MeV.
+The $0_2^{(+)}$ (1599 keV) and $0_3^{+}$ (1628 keV) states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence in \Sm.  
+One objective of this experiment is to clarify the structure of these $0^+$ states. 
 
 
 \begin{figure}[ht!]
@@ -2902,30 +2904,34 @@ The file \textit{setup\_Sm.txt} is listed in the table twice, since there exists
 \chapter{MiniballCoulexSort and ROOT}\label{ch:MBCS_ROOT}
 
 \section{Connecting MiniballCoulexSort with ROOT}
-To connect MiniballCoulexSort with ROOT you need them to share their libraries with each other. This is done with a dynamic loader, which you can find out more about here \cite{ROOTdynLoader}. 
-
-You have to make a \textit{.rootrc} file in your home folder on your computer. In the \textit{.rootrc} file you want to write something like this 
+\textsl{MiniballCoulexSort} requires access to the libraries of ROOT. 
+The codes share their libraries by means of a dynamic loader, more information can be found in \cite{ROOTdynLoader}. 
+A \textit{.rootrc} file have to be constructed and saved in the home folder of the computer.
+Roughly, the \textit{.rootrc} file have to contain one line similar to the following
 \begin{lstlisting}[language=]
 Unix.*.Root.DynamicPath:    .:</Users/trondwj/GitHub/ROOT-framework/build/lib>:/Users/trondwj/GitHub/Miniball/MiniballCoulexSort/lib:
 \end{lstlisting}
-This should all be in one line. The first part is to tell the system to use the dynamic loader of ROOT to connect the given paths that follow. In my case the lib folder of the ROOT install was at 
+The first part tells the system to use the dynamic loader of ROOT to connect the following paths. 
+In the present computer setup, the lib folder of the ROOT install was 
 \begin{lstlisting}[language=]
 /Users/trondwj/GitHub/ROOT-framework/build/lib
 \end{lstlisting}
-and the lib folder of the \textsl{MiniballCoulexSort} was at
+and the lib folder of the \textsl{MiniballCoulexSort} was
 \begin{lstlisting}[language=]
 /Users/trondwj/GitHub/Miniball/MiniballCoulexSort/lib
 \end{lstlisting}
-These paths are totally individual, and you will probably not have it in the same place. Therefore these paths must be changed to fit your system. 
+These paths are totally individual, entirely system dependent, it is unlikely that the location on another computer is identical. 
+Therefore, these paths must be changed to fit your system. 
 
-After making the file you either have restart the terminal or you can source the file by writing this in the terminal
+After the construction of the file, the terminal have to be restarted, or the following command can be run in the terminal
 \begin{lstlisting}[language=sh]
 $ source ~/.rootrc
 \end{lstlisting}
 
 
 \section{Running ROOT and MiniballCoulexSort from anywhere in the terminal}
-To run ROOT or the different scripts of \textsl{MiniballCoulexSort} anywhere in the terminal, you have to edit your \textit{.bash\_profile} file [\textit{.bash\_profile} on MacOS, \textit{.bashrc} on Linux]. In the \textit{.bash\_profile} the following commands were used 
+To run ROOT or the different scripts of \textsl{MiniballCoulexSort} anywhere in the terminal, you have to edit your \textit{.bash\_profile}\footnote{\textit{.bash\_profile} on MacOS, \textit{.bashrc} on Linux.} file. 
+In \textit{.bash\_profile} the following commands were used 
 \begin{lstlisting}[language=sh]
 # Run ROOT from anywhere
 export ROOTSYS=$HOME/GitHub/ROOT-framework/build
@@ -2938,72 +2944,80 @@ export DYLD_LIBRARY_PATH=$HOME/GitHub/Miniball/MiniballCoulexSort/lib:$DYLD_LIBR
 export PATH=$HOME/GitHub/Miniball/MiniballCoulexSort/lib:$PATH
 export PATH=$HOME/GitHub/Miniball/MiniballCoulexSort/bin:$PATH
 \end{lstlisting}
-The DYLD\_LIBRARY\_PATH is used on Mac only. On other systems, use \newline LD\_LIBRARY\_PATH instead. You need to locate the \textit{lib} and \textit{bin} folders for both ROOT and \textsl{MiniballCoulexSort} and change them to fit your system, and in addition you need the build folder of your ROOT install.
+The DYLD\_LIBRARY\_PATH is only relevant for Mac users. 
+On other systems, use LD\_LIBRARY\_PATH instead. 
+The paths of the \textit{lib} and \textit{bin} folders of both ROOT and \textsl{MiniballCoulexSort}, in addition to the \textit{build} folder of your ROOT install needs to be inserted in \textit{.bash\_profile}.
+
 
 
 \section{CLXAna}\label{sec:CLXAna}
-
 \subsection{Input parameters}
 All input parameters for \texttt{CLXAna} are stated in the GitHub repository of \textsl{MiniballCoulexSort}, but they are not explained in detail. 
 From private communications with Dr. Liam Gaffney, the purpose of several input parameters have been clarified. 
-The compilation parameters may be summarized as:
+In the following, a minimal working example of the \texttt{CLXAna} usage is listed
+\begin{lstlisting}[language=sh]
+$ CLXAna -c <configuration filename> -cut <cut filename>
+\end{lstlisting}
+Here, "-c" and "-cut" are the so-called flags, followed by the file names of the configuration and the cut file, respectively. 
+The run flags and their purpose may be summarized as:
 \begin{description}[align=left]
-	\item [-c] The configuration file is a file that contains all of the input parameters, except "-cut", in order to not type the parameters into the command line each time.
-	\item [-cut] The cut file  is a root file containing the graphical cuts on the kinematics from the particle histogram, "part" in the output file of \texttt{CLXAna}. 
-	This is the only file path that is not possible to put into the configuration file as stated above. 
-	\newline It seems a bit weird that the input of \texttt{CLXAna} is dependent on one of its output histograms, but it is the way it is for now. 
-	\item [-Ex] Excitation energy of the state that you want to perform the Doppler correction for, given in keV. This is not a significant value.
+	\item [-c] The configuration file, if applied, must contain all of the input parameters, except the "-cut" explained by the following flag.
+	\item [-cut] The cut file must be stored in the \textit{.root} format and contain the graphical cuts of the
+	graphical cuts of the kinematics obtained from the particle histogram named "part" of the output file\footnote{The input of \texttt{CLXAna} is, in fact, dependent on one of its own output histograms. 
+	\texttt{CLXAna} makes a kinematic reconstruction to obtain the angle of the particles, and the "part" histogram can only be obtained with the kinematic reconstruction.} of \texttt{CLXAna}.	 
+	\item [-Ex] To perform the Doppler correction of a specific state. 
+	Provide the excitation energy of the state in keV.
 	\item [-depth] The depth of the interaction in the target in mg/cm$^2$. 
-	Usually assumed to be half of the thickness of the target. 
-	Different values can be tested to see if it improves the Doppler correction.
-	\item [-cdoffset] The rotation of the CD detector in the $\phi$ angle, with a default value of 242.6 degrees. 
-	This can be optimized, but the value is usually around the default value.
+	Usually assumed to be half of the target thickness. 
+	By applying this flag, it is possible to test different thickness values and assess if the Doppler correction was improved. 
+	\item [-cdoffset] The rotation of the CD detector, i.e., the angle offset, with a default value of 242.6$^\circ$. 
+	It is possible to optimize the angle, but the resulting value will most likely be close to the default angle. 
 	\item [-deadlayer] The thickness of the Si dead layer in mm, with a default value of 0.0007 mm.
-	\item [-spededist] Not needed for this experiment.
+	\item [-spededist] Not relevant for this experiment.
 	\item [-bg\_frac] This value depends on the time windows defined in TreeBuilder, which means it should be -0.75 for the current version. 
-	The number can also be checked by taking the ratios of the $\beta$-decay background peaks in the prompt gammas ("p") and random gammas ("r") spectra in the output file of \texttt{CLXAna}.
+	The number can be verified by taking the ratios of the $\beta$-decay background peaks in the prompt gammas ("p") and random gammas ("r") spectra in the output file of \texttt{CLXAna}.
 	This is related to the time window with respect to REXEBIS. 
 	A window is defined for prompt in-beam events, and those outside of the window are sorted into the background spectra. 
 	Now, a weighted fraction of the background spectrum can be subtracted from the prompt spectrum, to get rid of uncorrelated background, such as $\beta$-decay that is in random coincidence with particles. 
-	The fraction needed to subtract depends on the width of the time window.
+	The subtraction fraction required depends on the width of the time window.
 \end{description}
 
-As mentioned in \autoref{ssec:user_cal}, one line in the output from \texttt{Q4S.sh} using \texttt{TreeBuilder} was
+In \autoref{ssec:user_cal}, the output of \texttt{Q4S.sh} using \texttt{TreeBuilder} was listed. 
+The parameter 
 \begin{lstlisting}[language=]
 WeightPR: 0.75
 \end{lstlisting}
-This value is the one supposed to be used with the \textbf{-bg\_frac} input parameter when using \texttt{CLXAna}.
-Even though the WeightPR value is positive, the input parameter is supposed to be negative.  
+is related to the "-bg\_frac" flag of CLXAna. 
+The provided output value is positive, while the corresponding negative value have to be given as input, i.e., "-bg\_frac $<$-WeightPR$>$".
 
 
 \subsection{Graphical cuts}
-In this thesis, the input parameters used with \texttt{CLXAna} is found in the \textit{config-IS558.dat} file.
+In this thesis, the input parameters applied in the \texttt{CLXAna} code are found in the \textit{config-IS558.dat} file.
 The first time \texttt{CLXAna} is run, every input parameter except \textbf{-cut} needs to be provided. 
-A plot of energy vs. LAB angle named "part" is needed in order to make the cut file, and this plot is found inside the \textit{.root}-file sorted by \texttt{CLXAna}.
-The reason for this is that CLXAna makes a kinematic reconstruction to get the angle of the particles.
-This can only be done in the last part of the sorting.
-This is why we only get particles against strips from \texttt{TreeBuilder}.
+A plot of energy vs. LAB angle named "part" is required in order to create the cut file. 
+The "part" plot is found inside the \textit{.root}-file sorted by \texttt{CLXAna}, since \texttt{CLXAna} makes a kinematic reconstruction to obtain the angle of the particles, which can only be done in the last part of the sorting.
+For this reason, it is only possible to look at particles against strips in \textit{.root} files sorted by \texttt{TreeBuilder}.
 
-There is also a plot named "part" inside the \textit{.root}-file sorted by \texttt{TreeBuilder}, but this contains energy vs. annular strip.
-To make the cut file, the "part" plot from the output file of \texttt{CLXAna} needs to be opened.
-It is also advised to use log scale on the $z$-axis, the draw option "colz" and to zoom into the correct area.
-From this plot, graphical cuts around the beam particle and target particle events needs to be done separately. 
-After making the cuts, right click and SetName to set the names to "Bcut" and "Tcut" respectively. 
-Then right click and SaveAs, giving the name of a \textit{.root}-file of your choice for each cut separately. 
-The key is the \textit{.root} extension so that it knows which format to use. 
-In this thesis, the files were saved as \textit{Bcut.root} and \textit{Tcut.root} respectively.
-The two files can be added together using a ROOT program called \texttt{hadd}, which is used like this
+Inside the \textit{.root}-file sorted by \texttt{TreeBuilder}, another plot named "part" exist, but it contains energy vs. annular strip.
+To make the cut file, the "part" plot from the output file of \texttt{CLXAna} have to be opened\footnote{It is advised to use log scale on the $z$-axis of "part" by utilizing the draw option "colz".}.
+From this plot, graphical cuts around the beam and target particle events have to be extracted separately. 
+After making the cuts, right click and choose "SetName" to save the values of the cuts as "Bcut" and "Tcut"\footnote{These names can be chosen freely by the user, but must match the names provided as input when \texttt{CLXAna} is run the second time with the "-cut" flag.} for the beam and target, respectively. 
+%and SetName to set the names to "Bcut" and "Tcut" respectively. 
+Then right click and choose "SaveAs", giving the name of a \textit{.root}-file of your choice for each cut. 
+Make sure to provide the \textit{.root} extension. 
+In this thesis, the files were saved as \textit{Bcut.root} and \textit{Tcut.root}, respectively.
+Then, the two files can be added together using a ROOT program called \texttt{hadd}, which can be run by the following commands
 \begin{lstlisting}[language=]
 hadd outputfile.root input_file_1.root input_file_2.root 
 \end{lstlisting}
 
-As seen in the output of the \texttt{CLXAna} run in \autoref{ssec:gamma}, the cut file \textit{outputfile.root} is provided as  
+
+As described in \autoref{ssec:gamma}, \texttt{CLXAna} have to be run a second time with the "-cut" flag after the graphical cuts have been obtained. 
+For the second run, the cut file is provided by the line
 \begin{lstlisting}[language=]
 outputfile.root:Bcut:Tcut
 \end{lstlisting}
-The \textit{:Bcut:Tcut} ending are the names of the cuts in the file. 
-The first cut is the beam particles and the second is the target particles. 
-These names can be chosen by the user, but they must match the names set in the graphical cuts. 
+where \textit{:Bcut:Tcut} are the names of the cuts chosen in the step described above. 
 
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
@@ -3323,11 +3337,16 @@ Inserting the variable names from \autoref{fig:scattering} into \autoref{eq:tanT
 \chapter{kinsim3}\label{ch:cd_sim}
 
 \section{The main function}
-The main function of \texttt{kinsim3} looks like this
+The main function of \texttt{kinsim3} looks like the following
 \begin{lstlisting}[language=c++]
 kinsim3(Zb, Zt, Ab, At, thick, Eb, dEb, Ex, res, cd_dist, flat, Nevts, srim_dir)
 \end{lstlisting}
-where \textit{Zb} and \textit{Zt} is the proton number of the beam and target respectively, \textit{Ab} and \textit{At} is the mass number of the beam and target respectively, \textit{thick} is the target thickness in mg/cm$^2$, \textit{Eb} is the beam energy in MeV/u, \textit{dEb} is the spread of the beam energy in MeV/u, \textit{Ex} is the excitation energy in MeV, \textit{res} is the detector resolution in percent, \textit{cd\_dist} is the distance form the target to the CD in mm, \textit{flat} is the choice of a uniform or angular distribution, \textit{Nevts} is the number of particle events and \textit{srim\_dir} is the relative path of the SRIM directory.
+where \textit{Zb} and \textit{Zt} are the proton number of the beam and target, respectively. 
+\textit{Ab} and \textit{At} is the mass number of the beam and target, respectively. 
+\textit{thick} is the target thickness in mg/cm$^2$, \textit{Eb} is the beam energy in MeV/u, \textit{dEb} is the spread of the beam energy in MeV/u. 
+\textit{Ex} is the excitation energy in MeV, \textit{res} is the detector resolution in percent, \textit{cd\_dist} is the distance form the target to the CD in mm. 
+\textit{flat} is the choice of a uniform or angular distribution, \textit{Nevts} is the number of particle events and \textit{srim\_dir} is the relative path of the SRIM directory.
+For the Si dead layer in \texttt{kinsim3}, the SRIM files must have units of MeV/mm. 
 
 To load \texttt{kinsim3} into ROOT, the \textbf{.L $<$filename$>$} command was used
 \begin{lstlisting}[language=sh]
@@ -3340,9 +3359,9 @@ After the simulation program was run, the file was moved and renamed with the \t
 
 
 \section{CD simulation}
-On the next page, the CD simulation without Rutherford cross section is shown for each ring. 
+On the subsequent page, the CD simulation without the Rutherford cross section is presented for each ring. 
 Ring 1 is the innermost ring and ring 16 is the outermost ring. 
-The plots show simulated counts vs. energy, where the first peak (lower energy) is the \Pb\ and the second peak (higher energy) is \Sm. 
+The plots display simulated counts vs. energy, where the first peak (at lower energy) is \Pb\ and the second peak (at higher energy) is \Sm. 
 %In the simulation, the Rutherford cross section was not included. 
 %The relative intensity between the projectile and target peaks is therefore not the same as in the experiment, but the simulated energies are realistic.
 The plots were grabbed from the \textit{.root}-file by the commands
@@ -3365,8 +3384,9 @@ root [1] simulation_plot("setup_Sm.txt", 0)
 %... <showing output from script>
 %\end{lstlisting}
 
-The next page after that shows the fitting of the CD simulation, where the red dotted curves shows the fitting of the peaks and the vertical black dotted lines shows the centroids of the peaks.
-
+The page following the CD simulation displays the fitting of the CD simulation. 
+The red dotted curves shows the fitting of the peaks, and the vertical black dotted lines indicate the centroids of the peaks.
+The fitting is performed by running the following commands
 \begin{lstlisting}[language=sh]
 $ cd ~/GitHub/MasterThesis/Scripts/fitting
 $ root
@@ -3375,14 +3395,14 @@ root [1] simulation_fit("setup_Sm.txt")
 ... <showing output from script>
 \end{lstlisting}
 
-For the Si dead layer in \texttt{kinsim3}, the SRIM files must have units of MeV/mm. 
-If units of MeV/cm$^2$ are used, the distance on line 359 in \texttt{kinsim3} have to be changed to the correct units. 
-The correction factor is at the bottom of the SRIM file.
-Line 358 and 359 in \texttt{kinsim3}, where the factor have to be changed, reads
-\begin{lstlisting}[language=c++]
-// Correct for dead layer loss
-dist = TMath::Abs( 0.0007 / TMath::Cos( TTh ) );
-\end{lstlisting}
+
+%If units of MeV/cm$^2$ are used, the distance on line 359 in \texttt{kinsim3} have to be changed to the correct units. 
+%The correction factor is at the bottom of the SRIM file.
+%Line 358 and 359 in \texttt{kinsim3}, where the factor have to be changed, reads
+%\begin{lstlisting}[language=c++]
+%// Correct for dead layer loss
+%dist = TMath::Abs( 0.0007 / TMath::Cos( TTh ) );
+%\end{lstlisting}
 
 
 \includepdf[pages={-}, angle=270]{../Plots/simulation/cd_sim_all.pdf}
