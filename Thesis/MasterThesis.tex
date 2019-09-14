@@ -603,27 +603,28 @@ With Hill-Wheeler \cite{Hill-Wheeler} coordinates ($\beta$, $\gamma$) they becom
 	a_{22} &= \frac{1}{\sqrt{2}} \beta \sin \gamma \label{eq:a-param2}
 \end{align}
 where $\beta$ is the axial deformation (deformation magnitude) and $\gamma$ is the triaxial deformation (shape parameter). 
-$\gamma = 0$ and $\beta > 0$ corresponds to  the prolate deformed shape, while $\gamma = 0$ and $\beta < 0$ corresponds to the oblate shape. 
+If axial symmetry is assumed, $\beta > 0$ and $\gamma = 0$ corresponds to the prolate deformed shape, while $\beta > 0$ and $\gamma = 60^\circ$ corresponds to the oblate shape. 
 The triaxial shape is obtained when $0 < \gamma < \tfrac{\pi}{3}$.
 Further we have
 \begin{equation}
 	\sum_\mu | a_{2\mu} |^2 = a_{20}^2 + 2a_{22}^2 = \beta^2
 \end{equation}
-In the special case when $\lambda = 2$, \autoref{eq:Rmid} becomes
+In the special case of $\lambda = 2$, \autoref{eq:Rmid} becomes
 \begin{equation}
 	\mathbf{R}(\theta, \phi) = R_0 \left( 1 + \beta \sqrt{\frac{5}{16\pi}} (\cos \gamma (3\cos^2 \theta - 1) + \sqrt{3} \sin \gamma \sin^2 \theta \cos 2\phi) \right)
 \end{equation}
 by using the spherical harmonics $Y_{20}$ and $Y_{2,\pm 2}$ \cite{RS}.
 
-The equilibrium shape of a nucleus can be characterized by a potential energy surface (PES) in the $\beta$-\ga\ plane if we restrict the deformation to quadrupole shapes. 
-\autoref{fig:collective_modes} displays sketches of three extreme cases of potential energy surfaces; spherical vibrator, deformed rotor and \ga-soft rotor.
-The steeper a minimum in the PES, the more rigid is the deformation. 
-Accordingly, a more shallow potential means that the shape is softer against vibrations. 
+The equilibrium shape of a nucleus can be characterized by a potential energy surface (PES) in the $\beta$-\ga\ plane if we restrict the deformation to quadrupole shapes ($\lambda = 2$). 
+\autoref{fig:collective_modes} displays sketches of three extreme cases of PES; a spherical vibrator, a deformed rotor and a \ga-soft rotor.
+%The steeper a minimum in the PES, the more rigid is the deformation. 
+In the PES, an increasingly steep minimum implies a more rigid deformation. 
+Accordingly, a more shallow potential suggest that the shape is softer against vibrations. 
 Two competing shapes, i.e. shape coexistence, would show up as two minima in the PES. 
 \autoref{fig:cea_tri} shows the PES of \Sm.
 It is essentially flat in both $\beta$ and \ga\ direction. 
-That is consistent with our earlier interpretation of \Sm\ as a transition nucleus in between spherical and deformed and in between prolate and oblate shape. 
-In principle, the potential can be reasonably well approximated by a square well potential, in which case the Schrödinger equation can be solved analytically. 
+That is consistent with an interpretation of \Sm\ as a transitional nucleus in between spherical and deformed, and in between prolate and oblate shape. 
+%In principle, the potential can be reasonably well approximated by a square well potential, in which case the Schrödinger equation can be solved analytically. 
 %This is exactly what the E(5) model does.
 
 \begin{figure}[htb]
@@ -646,32 +647,35 @@ In principle, the potential can be reasonably well approximated by a square well
 	\label{fig:cea_tri}
 \end{figure}
 
-Octupole vibration, $\lambda = 3$, with $J^\pi = 3^-$ can be seen in many nuclei in certain regions of the nuclear chart, where orbitals with a spin difference of 3 are available near the Fermi surface.
-In nuclei where the shell structure makes the quadrupole modes occur at very high energies, such as in doubly magic nuclei, the octupole state is often the lowest excited state.
-The octupole deformation has a pear shape.
+Octupole vibration, $\lambda = 3$, with $J^\pi = 3^-$ state can be observed in many nuclei in certain regions of the nuclear chart, where orbitals with a spin difference of 3 are available near the Fermi surface.
+In nuclei where the shell structure causes the quadrupole modes to occur at very high energies, such as in doubly magic nuclei, the octupole state is often the lowest excited state.
+The octupole deformation can be described  to have the shape of a pear.
+
 
 
 \section{The Coulomb excitation method}\label{sec:Coulex}
-COULomb EXcitation (COULEX) is an experimental method to excite a nucleus by an inelastic scattering with another nucleus through the electromagnetic interaction. 
+COULomb EXcitation (COULEX) is an experimental method to excite a nucleus by an inelastic scattering with another nucleus by means of the electromagnetic interaction. 
 %The elastic Coulomb scattering process is also known as Rutherford scattering.
 %Inelastic Coulomb scattering is called Coulomb excitation.
-This method is very useful for studying collective excitations and shapes of nuclei, as they are often connected by electric quadrupole transitions.  
+This method is very useful for studying collective excitations and shapes of nuclei, as they are often connected by electric quadrupole (E2) transitions.  
 Transition energies and intensities can be used to determine new excited levels and study deformation.
 An extensive description of Coulomb excitation can be found in \cite{Alder1956, EE-Coulex, Bertulani2009}.
 
-\autoref{fig:scattering} shows sketches of the scattering process in the LABoratory (LAB) and Center of Mass (CM) frame of reference. 
-In the LAB frame, a beam particle approaches the target with a velocity $\mathbf{u}$ in a straight line in the absence of the repulsive force. 
+\autoref{fig:scattering} present two sketches of the scattering process, one in the LABoratory (LAB) frame of reference and one in the Center of Mass (CM) frame of reference. 
+In the LAB frame, a beam particle approaches the target with a velocity $\mathbf{u}$.
+% in a straight line in the absence of the repulsive force. 
 The beam particle gets excited by the electromagnetic interaction with the target particle. 
 It is of course also possible that the target nucleus gets excited, or that there is no excitation, i.e. elastic scattering. 
-It is even possible, although not very likely, that both target an projectile get excited simultaneously.
-We are only considering the case where the projectile gets excited.
-This excitation is an unstable energy state and rapidly thereafter it will de-excite, sending out a \ga-ray.
-Both the beam and target particles are scattered with a velocity $\mathbf{v}_b$ and $\mathbf{v}_t$ respectively.
-The distance, $b$, is called the impact parameter and is the vertical distance between the beam and target particle. 
+It is even possible, although not very likely, that the both target and the projectile get excited simultaneously.
+Here, we are only considering the case where the projectile gets excited.
+%This excitation is an unstable energy state and rapidly thereafter it will de-excite, sending out a \ga-ray.
+As the newly excited energy state is unstable, it will rapidly de-excite after its formation, sending out a \ga-ray. 
+Both the beam and target particles are scattered with a velocity $\mathbf{v}_b$ and $\mathbf{v}_t$, respectively.
+The distance, $b$, is called the impact parameter and is the vertical distance between the beam and target particle, as indicated by the arrows in \autoref{fig:scattering}. 
 $V_{cm}$ is the center of mass velocity. 
-The angles $\theta_b$ and $\theta_t$ are the scattering angles for the beam and target particle, respectively. 
-A small angle $\theta_b$ means forward scattering of the beam, a larger distance between the beam particle and the target particle, a weaker electromagnetic (EM) field and less excitation probability. 
-A large angle $\theta_b$ means backward scattering of the beam, a closer distance between the beam particle and the target particle, a stronger EM field and higher excitation probability.
+The angles $\theta_b$ and $\theta_t$ are the scattering angles of the beam and target particle, respectively. 
+A small angle $\theta_b$ means forward scattering of the beam, a larger distance between the beam particle and the target particle, a weaker electromagnetic (EM) field and a decreased excitation probability. 
+A large angle $\theta_b$ means backward scattering of the beam, a closer distance between the beam particle and the target particle, a stronger EM field and a higher excitation probability.
 In the CM frame, the center of mass velocity is zero, and the velocities and angles are marked by an apostrophe to separate between the two frames of reference.
 
 The Coulomb scattering kinematics can be approximated by an elastic collision.
@@ -680,7 +684,7 @@ In \autoref{ch:scattering}, a calculation of the two-particle elastic collision 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{Images/scattering.png}
-	\caption{Scattering in different frames of reference.
+	\caption{A visualisation of the separate frames of reference for the scattering reaction relevant to the COULEX.
 	\textbf{(a)} Scattering in the LABoratory (LAB) frame. 
 	\textbf{(b)} Scattering in the Center of Mass (CM) frame. 
 	See text for more information.}
@@ -706,9 +710,6 @@ In \autoref{ch:scattering}, a calculation of the two-particle elastic collision 
 %\end{figure}
 
 
-
-\textcolor{red}{Burde jeg brukt projectile and target under her?}
-
 In the semi-classical approach of Coulomb excitation theory, the projectile (beam) and target is assumed to move on hyperbolic paths. 
 This approach does not take into account the energy loss during the excitation process.
 When the beam particle approaches the target particle, the beam particle reaches a minimum separation distance, $d$, which is dependent on the impact parameter $b$. 
@@ -722,15 +723,15 @@ Half the distance of closest approach, $a$, in a head-on collision ($\theta_b^{'
 \begin{equation}
 	 a = \tfrac{1}{2} d = \frac{Z_b Z_t e^2}{m_r v_i^2} ~[\text{fm}]
 \end{equation}
-$Z_b$ and $Z_t$ is the proton number of the beam and target, respectively. 
-The elementary charge is $e$, the initial velocity of the beam is $v_i$ and $m_r$ is the reduced mass of the beam and target given by
+where $Z_b$ and $Z_t$ is the proton number of the beam and target, respectively. 
+The elementary charge is $e$, the initial velocity of the beam is $v_i$, and $m_r$ is the reduced mass of the beam and target given by
 \begin{align}
-	 m_r &= m_b \frac{A_b A_t}{A_b + A_t} = m_b A_r  ~\left[ \tfrac{\text{MeV}}{\text{c}^2} \right]
+	 m_r &= m_b \frac{A_b A_t}{A_b + A_t} = m_b A_r  ~\left[ \tfrac{\text{MeV}}{\text{c}^2} \right],
 	 &
 	 A_r &= \frac{A_b A_t}{A_b + A_t}
 \end{align}
-where $m_b$ is the mass of the beam particle, and $A_r$ is the reduced mass number of the beam and target \cite{RBass, EE-Coulex}. 
-The impact parameter can be expressed as
+Here, $m_b$ is the mass of the beam particle, and $A_r$ is the reduced mass number of the beam and target \cite{RBass, EE-Coulex}. 
+Then, the impact parameter can be expressed as
 \begin{equation}
 	b = a \cot \left( \tfrac{\theta_b^{'}}{2} \right)
 \end{equation}
@@ -743,34 +744,34 @@ It is given by
 \end{equation}
 where $E_b = \tfrac{1}{2} m_b v_i^2$ is the initial kinetic energy of the beam given in MeV/u \cite{RBass}.
 A requirement for describing the relative motion of the particles in the CM frame by hyperbolic paths is that $\eta \gg 1$.
+This condition is generally fulfilled for Coulomb excitation with heavy ions.
 %In the case of Coulomb excitation with heavy ions, the semi-classical approach and assumption of classical trajectories are justified.
 %In the semi-classical approach, this is fairly accurate \cite{Cline1969}. 
-The factor 0.72 comes from 
+The factor 0.72 is derived from 
 \begin{align}
 	\frac{e^2}{2} = \frac{(\sqrt{1.4399764 ~[\text{MeV} \cdot \text{fm}]})^2}{2} \approx 0.72 ~[\text{MeV} \cdot \text{fm}]
 \end{align}
 
-Another important parameter is the adiabaticity parameter, $\xi$, which is given by 
+The probability of exciting the nucleus from a initial state $|i\rangle$ to a final state $|f\rangle$ with excitation energy difference $\Delta E = E_f - E_i$ is dependent on the adiabaticity parameter \cite{Niedermaier, NaR, RBass}, given by 
 \begin{equation}
 	\xi = \frac{\tau_c}{\tau_{ex}} = \frac{a}{\hbar v_i}  \Delta E = \frac{Z_b Z_t e^2}{\hbar v_i} \cdot \frac{\Delta E}{2E_b} = \eta \cdot \frac{\Delta E}{2E_b}
 \end{equation}
-where $\tau_c = \frac{a}{v_i}$ is the collision time and $\tau_{ex} = \frac{\hbar}{\Delta E}$ is the excitation time.
-The probability of exciting the nucleus from a initial state $|i\rangle$ to a final state $|f\rangle$ with excitation energy difference $\Delta E = E_f - E_i$ is dependent on the adiabaticity parameter \cite{Niedermaier, NaR, RBass}.
-If $\xi \ll 1$ the reaction process is sudden and the excitation probability is largest, while if $\xi \gg 1$ the reaction becomes adiabatic, which means that the reaction process becomes hindered. 
+Here, $\tau_c = \frac{a}{v_i}$ is the collision time, and $\tau_{ex} = \frac{\hbar}{\Delta E}$ is the excitation time.
+If $\xi \ll 1$ the reaction process is sudden and the excitation probability is largest, while if $\xi \gg 1$ the reaction becomes adiabatic, which means that the reaction process is hindered. 
 The excitation probability decreases exponentially with increasing $\xi$. 
 A semi-classical approach of the Coulomb excitation is a good approximation if the conditions $\eta \gg 1$ and $\xi \ll 1$ are fulfilled.
 This means that the energy transfer has negligible influence of the motion and thus  
 \begin{equation}
 	\frac{\Delta E}{E_b} \ll 1
 \end{equation}
-which will not hold for all states $|f\rangle$.
-The conditions are fulfilled for states with a considerable excitation probability \cite{EE-Coulex, RBass}.
+which holds only for low-lying states and limits the excitation energy that can be reached \cite{EE-Coulex, RBass}.
+
 
 
 \subsection{Safe COULEX}
-In order to ensure that the interaction is purely electromagnetic in nature, and not nuclear, a safe energy is chosen for the reaction. 
+In order to ensure that the interaction is purely electromagnetic in nature, and not nuclear, a so-called safe energy is chosen for the reaction. 
 The energy is supposed to be below the Coulomb barrier.
-Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interaction.
+Safe COULEX is when the distance of closest approach between the particles is large enough to exclude nuclear interactions.
 The safety distance, $d_{safe}$, in safe COULEX is chosen by the condition
 \begin{align}
 	d_{safe} \geq d_{min} &= d_C + d_s \nonumber \\
@@ -778,29 +779,30 @@ The safety distance, $d_{safe}$, in safe COULEX is chosen by the condition
 	&= r_0 (A_b^{1/3} + A_t^{1/3}) + d_s \nonumber \\
 	&= 1.25 (A_b^{1/3} + A_t^{1/3}) + 5~\text{[fm]}
 \end{align}
-where $d_{min}$ is a way to approximate the distance of closest approach by the Coulomb interaction distance, $d_C$, and an additional safety distance, $d_s = 5$ fm.
+where $d_{min}$ is an approximation of the distance of closest approach by the Coulomb interaction distance, $d_C$, and an additional safety distance, $d_s = 5$ fm.
 $R_b$ and $R_t$ is the radii of the beam and target nuclei, respectively, and $A_b$ and $A_t$ is the mass number of the beam and target nuclei, respectively \cite{RBass, Cline1986}.
 
 The maximum beam energy in the LAB frame, $E_{b, max}$, is chosen from the special case when $\theta_b^{'} = 180^\circ$ \cite{Klintefjord, RBass}
 \begin{align}
 	E_{b, max} (\theta_b^{'})
-	&= \frac{Z_b Z_t e^2}{A_r d_{min}} \cdot \frac{2}{1 + \csc \left( \frac{\theta_b^{'}}{2} \right)} \\
-	&\approx \frac{Z_b Z_t}{A_r} \cdot \frac{1.44}{1.25 (A_b^{1/3} + A_t^{1/3}) + 5} ~\left[ \tfrac{\text{MeV}}{\text{u}} \right]
+	&= \frac{Z_b Z_t e^2}{A_r d_{min}} \frac{2}{1 + \csc \left( \frac{\theta_b^{'}}{2} \right)} \\
+	&\approx \frac{Z_b Z_t}{A_r} \frac{1.44}{1.25 (A_b^{1/3} + A_t^{1/3}) + 5} ~\left[ \tfrac{\text{MeV}}{\text{u}} \right]
 \end{align}
 
 %For \Sm\ on \Pb\ the safe beam energy is 4.63 MeV/u. 
 %The experiment was run with a beam energy of 4.65 MeV/u, so it is really at the limit of what can be considered safe for head-on collisions.
 %The maximum CM angle covered with the setup is $136^\circ$, so for the angular range that is covered by the experiment, the beam energy is safe.
 
-For the reaction, only the energy, $E^{'}$, and relative momentum in the CM frame is available, while the remainder is recoil energy, $E_t$, of the total system
-\begin{equation}
-	E_t = \frac{A_b}{A_b + A_t} E_b
-\end{equation}
 In the CM frame, the kinetic energy is given by
 \begin{equation}
 	E^{'} = E_b - E_t = \frac{A_t}{A_b + A_t} E_{b}
 \end{equation}
 where $A_b$ and $A_t$ is the mass number of the beam and target nuclei and $E_{b}$ is the kinetic energy of the beam particle in the LAB frame \cite{Niedermaier, NaR}.
+The recoil energy, $E_t$, of the total system can be expressed as
+\begin{equation}
+	E_t = \frac{A_b}{A_b + A_t} E_b
+\end{equation}
+For the Coulomb reaction, only the energy, $E^{'}$, and relative momentum in the CM frame is available for the excitation process. 
 
 
 \subsection{Cross sections}
@@ -808,26 +810,29 @@ For point-like charges, the differential scattering cross section, $d\sigma_R$, 
 \begin{align}
 	\frac{d\sigma_R}{d\Omega} 
 	&= \frac{a^2}{4 \sin \left( \tfrac{\theta_b^{'}}{2} \right)} \nonumber \\
-	&= \left( \frac{Z_b Z_t e^2}{4\pi \varepsilon_0}  \right)^2 \left( \frac{1}{4 E_b}  \right)^2 \cdot \frac{1}{\sin^4 \left( \frac{\theta_b^{'}}{2} \right)} \nonumber \\	
-	&= \left( \frac{Z_b Z_t e^2}{8 \pi \varepsilon_0 m_b v_0^{' 2}} \right)^2 \cdot \frac{1}{\sin^4 \left( \frac{\theta_b^{'}}{2} \right)} 
+	&= \left( \frac{Z_b Z_t e^2}{4\pi \varepsilon_0}  \right)^2 \left( \frac{1}{4 E_b}  \right)^2 \frac{1}{\sin^4 \left( \frac{\theta_b^{'}}{2} \right)} \nonumber \\	
+	&= \left( \frac{Z_b Z_t e^2}{8 \pi \varepsilon_0 m_b v_0^{' 2}} \right)^2 \frac{1}{\sin^4 \left( \frac{\theta_b^{'}}{2} \right)} 
 \end{align}
-where $d\Omega$ is the solid angle, $Z_b$ and $Z_t$ is the proton number of the beam and target nuclei respectively, $e$ is the elementary charge, $\varepsilon_0$ is the electric permittivity in vacuum, $m_b$ is the mass of the beam particle, $v_i^{'}$ is the initial velocity of the beam particle in the CM frame and $\theta_b^{'}$ is the beam particle scattering angle in the CM frame \cite{Klintefjord, Krane, EE-Coulex}.
+Here, $d\Omega$ is the solid angle, $Z_b$ and $Z_t$ is the proton number of the beam and target nuclei, respectively. 
+$e$ is the elementary charge, $\varepsilon_0$ is the electric permittivity in vacuum, $m_b$ is the mass of the beam particle. 
+$v_i^{'}$ is the initial velocity of the beam particle in the CM frame and $\theta_b^{'}$ is the beam particle scattering angle in the CM frame \cite{Klintefjord, Krane, EE-Coulex}.
 
-Under the condition, $\xi \ll 1$, the differential cross section, $d\sigma_{i \rightarrow f}$, for inelastic scattering of point-like objects from the initial state $|i\rangle$ to the final state $|f\rangle$ is given by 
+Under the condition $\xi \ll 1$, the differential cross section, $d\sigma_{i \rightarrow f}$, for inelastic scattering of point-like objects from the initial state $|i\rangle$ to the final state $|f\rangle$ is given by 
 \begin{align}
 	\frac{d\sigma_{i \rightarrow f}}{d\Omega} 
 	&= \frac{d\sigma_R}{d\Omega} \cdot P_{i \rightarrow f} 
 \end{align}
-The excitation probability, $P_{i \rightarrow f}$, is given by
+The excitation probability, $P_{i \rightarrow f}$, can be expressed as
 \begin{equation}
 	P_{i \rightarrow f} = \frac{1}{2I_i + 1} \sum_{M_i, M_f} | a_{if} |^2
 \end{equation}
-where $I_i$ is the spin of the state $|i\rangle$, $M_i$ and $M_f$ is the angular momentum projections of initial and final states, respectively \cite{EE-Coulex, NaR}.
+where $I_i$ is the spin of the state $|i\rangle$, and $M_i$ and $M_f$ is the angular momentum projections of initial and final states, respectively \cite{EE-Coulex, NaR}.
 $a_{if}$ is the excitation amplitudes summed over all magnetic substates, which can be expressed by
 \begin{equation}
 	a_{if} = \frac{1}{i\hbar} \int_{-\infty}^{\infty} e^{i \frac{\Delta E}{\hbar} t} \langle f | H(t) | i \rangle ~dt
 \end{equation}
-where $\Delta E = E_f - E_i$ is the energy difference of the final and initial state, respectively, $H(t)$ is the time-dependent electromagnetic interaction between the beam and the target \cite{Klintefjord, Niedermaier, NaR}.
+where $\Delta E = E_f - E_i$ is the energy difference of the final and initial state, respectively. 
+$H(t)$ is the time-dependent electromagnetic interaction between the beam and the target \cite{Klintefjord, Niedermaier, NaR}.
 
 The total electric excitation cross section from a state $|i\rangle$ to a state $|f\rangle$ is given by
 \begin{equation}\label{tot_sig_E}
@@ -847,30 +852,31 @@ and the Coulomb excitation function, $f_{E \lambda} (\xi)$ is given by
 \end{equation}
 where the integration is performed over all scattering angles of the solid angle $\Omega$ in the CM frame \cite{Niedermaier, EE-Coulex}.
 The Coulomb excitation function is dependent on $\xi$ and the multipolarity. 
-In a special case with $E2$ transitions and $\xi \ll 1$, the function is $f_{E \lambda} (\xi) \approx 1$.
-From the reduced transition probabilities with $\lambda = 2$, it is possible to show that \autoref{sig_E} becomes \cite{NaR}
+In the special case of $E2$ transitions and $\xi \ll 1$, we have $f_{E \lambda} (\xi) \approx 1$.
+%From the reduced transition probabilities with $\lambda = 2$, it is possible to show that \autoref{sig_E} becomes
+Setting $\lambda = 2$ and applying $B(E2)$ in \autoref{sig_E}, it can be shown that the electric excitation probability \cite{NaR} can be approximated by: 
 \begin{equation}
 	\sigma_{E2} \approx \left( \frac{Z_b e}{\hbar v_i} \right)^2 a^{-2} = \left( \frac{mv_i}{Z_t e\hbar} \right)^2
 \end{equation}
 
-Similarly to the total electric cross section, the total magnetic cross section can be expressed as \cite{EE-Coulex}
+Similar to the total electric cross section, the total magnetic cross section can be expressed as \cite{EE-Coulex}
 \begin{equation}
 	\sigma_M = \sum_\lambda \sigma_{M \lambda} = \left( \frac{Z_b e}{\hbar c} \right)^2 \sum_\lambda a^{-2 \lambda + 2} B(M \lambda; I_i \rightarrow I_f) f_{M \lambda} (\xi)
 \end{equation}
-The equations are very similar, but notice the $1/c$ in the first fraction, in addition to the switching of $E$ to $M$.
-This means that magnetic excitations are suppressed by a factor $(v/c)^2$, which means that magnetic excitations do not play any role in practice.
+Notice that $E$ has been replaced by $M$, and the $1/c$ factor in the first fraction.
+This means that magnetic excitations are suppressed by a factor $(v/c)^2$, which implies that, in practice, magnetic excitations do not play a significant role.
 The excitation process is purely electric, but the decay of the excited states can be both electric and magnetic.
 
 
-\subsection{Transition probabilities}
 
+\subsection{Transition probabilities}
 The transition probability of going from a state $|i\rangle$ to a state $|f\rangle$ is
 \begin{align}
 	T_{i \rightarrow f} (\sigma \lambda) = \frac{8\pi (\lambda + 1)}{\lambda \hbar [(2\lambda + 1)!!]^2} \left( \frac{E_\gamma}{\hbar c} \right)^{2\lambda + 1} B(\sigma \lambda; I_i \rightarrow I_f)
 \end{align}
 where $\sigma \lambda$ is the multipolarity with $\sigma \in \{ E, M \}$. 
 Transition with the lowest multipolarity, i.e. small $\lambda$, are most likely, while transitions of high multipolarity are relatively unlikely. 
-Electric transitions are more probable than magnetic transitions of the same multipolarity.
+Electric transitions are generally more probable than magnetic transitions of the same multipolarity.
 %A gamma quant of multipolarity $\lambda$ carries angular momentum $\lambda \hbar$ with $z$ component $\mu \hbar$.
 The reduced transition probability is
 \begin{align}
@@ -878,17 +884,18 @@ The reduced transition probability is
 	&= \frac{1}{2I_i + 1} | \langle I_f | \hat{O}_{\lambda \mu} | I_i \rangle |^2
 \end{align}
  and $\hat{O}_{\lambda \mu} \in \{ \hat{E}_{\lambda \mu}, \hat{M}_{\lambda \mu} \}$ is the electric or magnetic multipole operator.
-By measuring transition probabilities it is possible to measure $B(E2)$ values (and other multipolarities), and these quantities are closely related to the nuclear shape and can be compared to theoretical calculations.
+By measuring transition probabilities it is possible to measure $B(E2)$ values (or other multipolarities). 
+These quantities are closely related to the nuclear shape, and can be compared to theoretical calculations.
 
-The reduced transition probabilities are not the same if the spin states are interchanged
+The reduced transition probabilities are not identical if the spin states are interchanged
 \begin{align}
 	B(\sigma \lambda; I_f \rightarrow I_i) &\neq B(\sigma \lambda; I_i \rightarrow I_f)
 \end{align}
-while an interchange of the reduced matrix elements does not matter
+while an interchange of the reduced matrix elements yields an equal result
 \begin{align}
 	| \langle I_f | \hat{O}_{\lambda \mu} | I_i \rangle |^2 &= | \langle I_i | \hat{O}_{\lambda \mu} | I_f \rangle |^2
 \end{align}
-There is a relation of the reduced transition probability between the excitation $B(E2 \uparrow)$ and the decay $B(E2 \downarrow)$ of a state, which is given by 
+The relation of the reduced transition probability between the excitation $B(E2 \uparrow)$ and the decay $B(E2 \downarrow)$ of a state, can be expressed as
 \begin{equation}
 	B(E2; I_f \rightarrow I_i) = \frac{2I_i + 1}{2I_f + 1} B(E2; I_i \rightarrow I_f)
 \end{equation}
@@ -896,7 +903,8 @@ For an $E2$ transition from the ground state $0_1^+$ and the first excited state
 \begin{align}
 	B(E2; 0_1^+ \rightarrow 2_1^+) = 5 \cdot B(E2; 2_1^+ \rightarrow 0_1^+)
 \end{align} 
-This means that the excitation probability has five times more final substates to go to, compared to the decay probability as displayed by \autoref{fig:transitions}.
+%This implies that the excitation probability has five times more final substates to go to, compared to the decay probability as illustrated by \autoref{fig:transitions}.
+For the excitation from a $0_1^+$ to a $2_1^+$ state, there are five times as many final substates available compared to the corresponding de-excitation process, as illustrated by \autoref{fig:transitions}.  
 
 \begin{figure}[htb!]
 	\centering
@@ -906,7 +914,7 @@ This means that the excitation probability has five times more final substates t
 \end{figure}
 
 
-\autoref{tab:gamma_sel} shows the \ga\ selection rules where the parity \cite{Krane} is decided by
+\autoref{tab:gamma_sel} displays the selection rules for \ga\ transitions, where the parity \cite{Krane} is decided by
 \begin{align}
 	\pi (\sigma \lambda) =
     \begin{cases}
@@ -921,16 +929,14 @@ and angular momentum conservation gives
 
 \begin{table}[htb!] 
     \centering 
-    \caption{\ga\ selection rules. Electric transitions are more likely than magnetic transitions of the same multipole $\lambda$. There are no \ga\ transitions with $\lambda = 0$, i.e. no $I_i = 0 \rightarrow I_f = 0$. The $0 \rightarrow 0$ transitions proceed via internal conversion or internal pair creation.}
+    \caption{\ga\ transition selection rules. Electric transitions are more likely than magnetic transitions of the same multipole $\lambda$. There are no \ga\ transitions with $\lambda = 0$, i.e. $I_i = 0 \rightarrow I_f = 0$ is not allowed. The $0 \rightarrow 0$ transitions must proceed via internal conversion or internal pair creation.}
 	\input{Table-data/Gamma-rules.tex}
 	\label{tab:gamma_sel}
 \end{table}
 
 
 
-
 \subsection{Electric quadrupole moments}
-
 The electric quadrupole moment is a parameter that describes the charge distribution of a nucleus and thus its shape.
 In the classical definition it is given by
 \begin{align}
@@ -946,21 +952,21 @@ where $\rho$ is the charge density distribution, $\mathbf{r} = (r_1, r_2, r_3) =
 \end{align}
 is the Kronecker delta.
 It is possible to rotate the frame such that the $z$-axis coincides with the symmetry axis. 
-With axial symmetry \cite{Niedermaier, ELP}, we choose the $z$-axis along the symmetry axis and gets
+With axial symmetry \cite{Niedermaier, ELP}, we choose the $z$-axis along the symmetry axis, yielding
 \begin{align}
 	Q_z &= \int \rho(\mathbf{r}) (3z^2 - r^2) ~d \mathbf{r} \nonumber \\
 	&=  \int \rho(\mathbf{r}) (3\cos^2 \theta - 1) ~d \mathbf{r} \nonumber \\
 	&=  \sqrt{\frac{16\pi}{5}} \int \rho(\mathbf{r}) r^2 Y_{20}(\theta, \phi) ~d \mathbf{r} \nonumber \\
 	&= Q_{20}
 \end{align}
-In this case, the charge distribution is fully characterized by $Q_z$, because symmetry gives $Q_x = Q_y$. 
-$Q_z = 0$ corresponds to a spherical shape, while $Q_z > 0$ corresponds to a prolate shape and $Q_z < 0$ corresponds to a oblate shape.
+Due to the symmetry of the system, we have $Q_x = Q_y$, implying that the charge distribution is fully characterized by $Q_z$. 
+In this case, $Q_z = 0$ corresponds to a spherical shape, while $Q_z > 0$ corresponds to a prolate shape and $Q_z < 0$ corresponds to a oblate shape.
 In the same way as $Q_{20}$, it is possible to define 
 \begin{align}
 	Q_{22} &= \sqrt{\frac{16\pi}{5}} \int \rho(\mathbf{r}) r^2 Y_{22}(\theta, \phi) ~d \mathbf{r}
 \end{align}
-All quadrupole shapes can be described by $Q_{20}$ and $Q_{22}$ in a similar way as all quadrupole shapes can be described by $\beta$ and \ga. These are the definitions of the quadrupole moment in the intrinsic frame of the nucleus.
-
+Using the definitions of $Q_{20}$ and $Q_{22}$, we can now describe all quadrupole shapes in a similar manner to the $\beta$ and \ga\ parameters described in \autoref{sec:deformation}.
+The electric quadrupole moments $Q_{20}$ and $Q_{22}$ are defined in the intrinsic frame of the nucleus.
 For a state with spin $I$ we can observe the spectroscopic quadrupole moment
 \begin{align}
 	Q_s(I) &= \langle I, m = I | \hat{Q}_{20} | I, m = I \rangle \\
@@ -971,9 +977,9 @@ where $\hat{Q}_2$ is the electric multipole operator \cite{RS} from
 	\hat{Q}_{\lambda \mu} = \int \rho(\mathbf{r}) r^\lambda Y_{\lambda \mu}(\theta, \phi) ~d^3 \mathbf{r}
 \end{align}
 The spectroscopic quadrupole moment is what we can observe in the LAB frame.
-Here we see that $I = 0$ or $\tfrac{1}{2}$ gives $Q_s = 0$, which means that a nucleus with these spins can have intrinsic deformation, but it cannot be measured via the spectroscopic quadrupole moment \cite{ELP}.  
+Here we see that $I = 0$ or $\tfrac{1}{2}$ gives $Q_s = 0$, which means that a nucleus with these spins may have intrinsic an deformation, but it cannot be measured via the spectroscopic quadrupole moment \cite{ELP}.  
 
-The intrinsic quadrupole moment, $Q_0$, is in the body-fixed frame.
+The intrinsic quadrupole moment, $Q_0$, is defined in the body-fixed frame.
 It is related to the spectroscopic quadrupole moment via
 \begin{align}
 	Q_s = \frac{3K^2 - I(I+1)}{(I+1)(2I+3)} Q_0
@@ -986,9 +992,10 @@ The intrinsic quadrupole moment, $Q_0$, reflects the nuclear deformation, $\beta
 	Q_0 &= \int \rho(\mathbf{r}) (3z^2 - r^2) ~d \mathbf{r} \nonumber \\
 	&\approx \frac{3}{\sqrt{5\pi}} Z R^2 (\beta + 0.16 \beta^2)
 \end{align}
-If the intrinsic shape is prolate, $Q_0 > 0$, the measurements shows an oblate shape in the laboratory frame, $Q_s < 0$.
-A prolate deformed nucleus that is rotating rapidly about the perpendicular axis appears to be oblate.
-Obtaining information on $Q_s$ and the relative signs of matrix elements can help us to directly distinguish between prolate and oblate shape.
+If the intrinsic shape is prolate, $Q_0 > 0$, the measured spectroscopic quadrupole moment shows an oblate shape in the laboratory frame, $Q_s < 0$.
+Correspondingly, a prolate deformed nucleus rotating rapidly about the perpendicular axis appears to be oblate.
+It is possible to directly distinguish between a prolate or an oblate shape if we obtain information about $Q_s$ and the relative signs of the matrix elements. 
+Nuclei with spin $I = 0$ or $I = \tfrac{1}{2}$ can have an intrinsic deformation, but the shape cannot be measured because $Q_s = 0$. 
 
 
 % ----------------------------------------------------------------------------------------------------------------------
