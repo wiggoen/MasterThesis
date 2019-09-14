@@ -303,7 +303,7 @@ ENSAR2: European Nuclear Science and Applications Research - 2 \url{http://www.e
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 
-\chapter{Introduction}
+\chapter{Introduction}\label{ch:intro}
 \epigraph{\textit{"If you are not confused by quantum physics then you haven't really understood it."}}{\textit{– Niels Bohr}}
 
 
@@ -485,6 +485,8 @@ All scripts and programs developed in this work are available in the authors Git
 \autoref{ch:DA} explains the data analysis method and the usage of the analysis code named \textsl{MiniballCoulexSort}.
 \autoref{ch:results} reveals the extraordinary experimental results.
 \autoref{ch:SO} makes a summary of the thesis and mentions the future work of the Coulomb excitation analysis of \Sm.
+\autoref{ch:acronyms} lists acronyms and abbreviations applied in the thesis. 
+The remainder of the appendix is referenced when required in the text.
 
 
 % ----------------------------------------------------------------------------------------------------------------------
@@ -2494,11 +2496,8 @@ As explained above, this was only done for ring 1 of the CD.
 \epigraph{\textit{"In physics, you don't have to go around making trouble for yourself – nature does it for you."}}{\textit{– Frank Wilczek}}
 
 
-\textcolor{red}{Introavsnitt..}
 In the present experiment (IS558), a beam of \Sm\ ions were accelerated into a \Pb\ target at 4.65 MeV/u.
-
-
-With the direction and energy (velocity) of the scattered particle and the direction of the \ga-ray, a Doppler correction can be performed under the assumption that the \ga-ray was emitted from the projectile.
+Given the direction and energy (velocity) of the scattered particle and the direction of the \ga-ray, a Doppler correction was performed under the assumption that the \ga-ray was emitted from the projectile.
 In \autoref{fig:gam_dcB}, the total \ga-ray spectrum corresponding to the CM scattering angles between $36.6^\circ$ and $136.0^\circ$, Doppler corrected for the projectile, is displayed.
 The two data sorting methods, singles and add-back, are emphasized by the blue and red colors, respectively.
 When the add-back method is utilized, the efficiency for high-energy \ga-rays is enhanced, i.e. the clarity of the peaks are improved.
@@ -2522,7 +2521,7 @@ When the add-back method is utilized, the efficiency for high-energy \ga-rays is
 		\caption{}
 		\label{fig:gam_MK}
 	\end{subfigure}
-	\caption{Background subtracted \ga\ spectrum, Doppler corrected for the scattered projectile (the beam).
+	\caption{Background subtracted \ga\ spectrum, Doppler corrected according to the velocity of the scattered projectile (the beam).
 		\textbf{(a)} \Sm\ on \Pb\ at 4.65 MeV/u from the COULEX experiment analyzed in the present work, performed in 2017.
 	 	The blue (red) \ga\ spectrum corresponds to sorting with singles (add-back) in \texttt{CLXAna}.
 	 	% \ga\ spectrum in coincidence with a particle in the CD
@@ -2535,7 +2534,7 @@ When the add-back method is utilized, the efficiency for high-energy \ga-rays is
 
 The black arrows, except the first one, in \autoref{fig:gam_dcB} corresponds to the \ga\ transitions in \Sm, while the green arrows corresponds to the sum of \ga\ transitions in a cascade.
 In the current experiment, excited states up to the $8^+$ state at 2970 keV were populated.
-The constituents of the ground state band, the \ga\ transitions of $8_1^+ \rightarrow 6_1^+$ (888 keV), $6_1^+ \rightarrow 4_1^+$ (836 keV), $4_1^+ \rightarrow 2_1^+$ (715 keV) and $2_1^+ \rightarrow 0_1^+$ (531 keV) is observed in \autoref{fig:gam_dcB}.
+The constituents of the ground state band, the \ga\ transitions of $8_1^+ \rightarrow 6_1^+$ (888 keV), $6_1^+ \rightarrow 4_1^+$ (836 keV), $4_1^+ \rightarrow 2_1^+$ (715 keV) and $2_1^+ \rightarrow 0_1^+$ (531 keV), are observed in \autoref{fig:gam_dcB}.
 At very low energy, indicated by the first black arrow below the Compton continuum, a peak of \Pb\ x-rays is visible.
 When the beam passes through the target, there is a possibility of removing electrons, which produces x-rays when the electron holes are filled.
 
@@ -2544,22 +2543,22 @@ In the IS495 experiment, a beam of \Sm\ ions were accelerated into a $^{94}$Mo t
 Three excited states of \Sm\ were populated, the first (531 keV) and second (990 keV) excited $2^+$ states, in addition to the first $4^+$ (1246 keV) state.
 
 The number of peaks in \autoref{fig:gam_dcB} is larger than the number of peaks in \autoref{fig:gam_MK}.
-For the present experiment, the higher $Z$ of the \Pb\ target, and the higher beam energy contribute to a higher excitation probability of \Sm, as explained in \textcolor{red}{Sec 2?}. 
-Therefore, a higher excitation energy and a higher spin is reached in the present work, compared to the previous experiment (IS495).
+For the present experiment, the higher $Z$ of the \Pb\ target and the higher beam energy contribute to a higher excitation probability of \Sm, as explained in \autoref{ch:intro}. 
+Therefore, a higher excitation energy and a higher spin states are reached in the present work, compared to the previous experiment (IS495).
 The probability of a multi-step excitation is increased by the experimental conditions in the present work. 
 The increased probability of a multi-step excitation can be observed from the relative intensity of two-step transitions. 
 For instance, the relative intensity of the 460 keV ($2_2^+ \rightarrow 2_1^+$) peak to the 531 keV ($2_1^+ \rightarrow  0_1^+$) peak, in \autoref{fig:gam_dcB} is larger than the relative intensity of the corresponding peaks in \autoref{fig:gam_MK}.
-Similarly, the relative intensity of the 715 keV ($4_1^+ \rightarrow  2_1^+$) peak to the 531 keV ($2_1^+ \rightarrow  0_1^+$) peak is larger in the IS558 experiment compared to the IS495 experiment.
+Similarly, the relative intensity of the 715 keV ($4_1^+ \rightarrow  2_1^+$) peak to the 531 keV ($2_1^+ \rightarrow  0_1^+$) peak is larger in the IS558 experiment, compared to the IS495 experiment.
 
 %The black arrows, except for the first one, in \autoref{fig:gam_dcB} corresponds to the known \ga\ transitions in \autoref{tab:gamma_trans}. 
 
 All the known \ga\ transitions up to the $8^+$ state at 2970 keV in \Sm\ are listed in \autoref{tab:gamma_trans}. 
-The far right column in \autoref{tab:gamma_trans} shows which \ga\ transitions are visible in \autoref{fig:gam_dcB}.
-Many of the known transitions, but not all, are visible in \autoref{fig:gam_dcB}, and there are different reasons for this.
-If a \ga\ transition is below 400 keV, it will be swallowed by the Compton continuum.
-The excitation probability for a number of the states are low, and thereby the states are not populated in the present experiment.
-There might also be states with a low transition intensity leading to very few counts, especially at higher energy.
-The level scheme of \Sm\ in \autoref{fig:levels} displays all the \ga\ transitions listed in  \autoref{tab:gamma_trans}, \textcolor{red}{in addition to an unknown state which will be discussed later in this section}. 
+The far right column in \autoref{tab:gamma_trans} indicates which \ga\ transitions are visible in \autoref{fig:gam_dcB}.
+Many of the known transitions, but not all, are visible in \autoref{fig:gam_dcB}, and there are various reasons for this.
+First, if the energy of a \ga\ transition is below 400 keV, it will be swallowed by the Compton continuum.
+Second, the excitation probability for a number of the states are low, and thereby the states are not populated in the present experiment.
+Third, there might be states with a low transition intensity leading to very few counts in the spectrum, especially at high \ga-ray energy.
+The level scheme of \Sm\ in \autoref{fig:levels} displays all the \ga\ transitions listed in  \autoref{tab:gamma_trans}, in addition to an unknown state which will be discussed below, in the current section. 
 
 
 \begin{table}[ht] 
@@ -2574,17 +2573,19 @@ The level scheme of \Sm\ in \autoref{fig:levels} displays all the \ga\ transitio
 
 
 The green arrows in \autoref{fig:gam_dcB} corresponds to energy states in \autoref{fig:levels}. 
-Therefore, the energy of the green arrows is a combination of two \ga\ transitions, i.e. the sum of the peak energies.
-For the very strong transitions, there is a certain chance that two \ga-rays hit the same detector within the small time window. 
-Consequently we observe a peak at the energy that corresponds to the sum of the two energies.
-This effect is enhanced when the add-back method is used, because in this case it is sufficient that two \ga-rays hit the same cluster, as opposed to the same crystal, to end up in the sum peak.
+The energy of the green arrows is a combination of two \ga\ transitions, i.e. the sum of the transition energies.
+For the very strong transitions, there is a certain chance that two \ga-rays hit the same detector within the narrow time window. 
+Consequently, we observe a peak at the energy corresponding to the sum of the two \ga-ray energies.
+This effect is enhanced when the add-back method is utilized, because in this case it is sufficient that two \ga-rays hit the same cluster, as opposed to the same crystal, to end up in the sum peak.
+
+\textcolor{red}{Finn plassering og lag mer kontekst.}\newline
 The $0_2^{(+)}$ (1599 keV) and $0_3^{+}$ (1628 keV) states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence. 
 
 The 990 keV and 1599 keV states in \Sm\ transition down to the $2_1^+$ state with a \ga-ray energy of 460 keV  and 1068 keV, respectively.
 % ($2_2^+ \rightarrow 2_1^+$) and ($0_2^{(+)} \rightarrow 2_1^+$)
 %The spin and parity of the 990 keV \cite{Firestone} and 1599 keV states was originally assumed to be $0^+$ and $2^+$, respectively. 
-The spin and parity of the 990 keV \cite{Firestone} state was originally assumed to be $0^+$, and $2^+$ for the 1599 keV state.
-An experiment conducted at the Heavy Ion Laboratory (HIL) of the University of Warsaw corrected the spin values of the 990 keV and 1599 keV states in \Sm\ to be $2^+$ and $0^{(+)}$, respectively \cite{Klintefjord2015, Samorajczyk2015}.
+The spin and parity of the 990 keV \cite{Firestone} state was originally assumed to be $0^+$, and $2^+$ for the 1599 keV state. \textcolor{red}{Flytt ref til slutten av setningen? Har egentlig bare ref for 990 keV..}
+An experiment conducted at the Heavy Ion Laboratory (HIL) at the University of Warsaw corrected the spin values of the 990 keV and 1599 keV states in \Sm\ to be $2^+$ and $0^{(+)}$, respectively \cite{Klintefjord2015, Samorajczyk2015}.
 %In the HIL experiment, angular correlation between the \ga-\ga\ transitions were measured. 
 %The experiment could only conclude that the multipolarity of the $0_2^{(+)} \rightarrow 2_1^+$ transition was quadrupole ($\lambda = 2$). 
 Because E2 and M3 transitions have the same angular distributions, the HIL experiment could not determine the parity. 
@@ -2599,31 +2600,37 @@ The fact that the $0_2^{(+)}$ state was populated in the present experiment, alr
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\textwidth]{Images/Level-scheme-140Sm-v2.png}
-	\caption{Level scheme for \Sm\ based on the previous knowledge of \cite{Klintefjord, NNDC-levels}. 
+	\caption{Level scheme for \Sm\ based on the previous knowledge from \cite{Klintefjord, NNDC-levels}. 
 	The energies for the levels and transitions are in keV and are rounded to the nearest integer.
-	See text for more information. \textcolor{red}{Tegn inn de overgangene vi ikke ser med stiplede linjer.}
+	See the text for more information. 
+	\textcolor{red}{Tegn inn de overgangene vi ikke ser med stiplede linjer.}
 	}
 	\label{fig:levels}
 \end{figure}
 
 
-The peak around the 1420 keV ($(1,2)_1 \rightarrow 0_1^+$) transition is quite broad. 
-This peak might also contain the 1402 keV ($(0,1,2) \rightarrow 2_1^+$) transition from 1933 keV, seen in \autoref{fig:levels} left of the far right transition. 
-Since the 1952 keV peak is also quite broad, it may contain the sum-peak at the 1933 keV level as well. \textcolor{red}{Tegn inn i \autoref{fig:gam_dcB} hvis tid.}
+The peak of the 1420 keV ($(1,2)_1 \rightarrow 0_1^+$) transition is quite broad. 
+This peak might contain the 1402 keV ($(0,1,2) \rightarrow 2_1^+$) transition from 1933 keV, at the left side of the rightmost transition in \autoref{fig:levels}.
+Further, the peak at the energy of 1952 keV is similarly broad, and may contain the sum-peak of the 1933 keV level as well. 
+\textcolor{red}{Tegn inn i \autoref{fig:gam_dcB} hvis tid.}
 
-In addition to all the transitions visible in the \ga\ spectrum in \autoref{fig:gam_dcB}, it is expected to see a transition from an unknown $3^+$ state which should decay mostly into the $2_2^+$ state \cite{Klintefjord2016, Samorajczyk2015}.
-The $3^+$ state is expected as a member of the \ga-vibrational band, which is expected to be built on the $2_2^+$ state.
-Theory predicts that the $3^+$ state should roughly be around 1900 keV.
-In the spectrum of \autoref{fig:gam_dcB}, there is no obvious candidate for a transition from the expected $3^+$ state.
+In addition to the transitions visible in the \ga\ spectrum in \autoref{fig:gam_dcB}, a transition from an unknown $3^+$ state is expected.
+This unknown state should predominantly decay into the $2_2^+$ state \cite{Klintefjord2016, Samorajczyk2015}.
+The $3^+$ state is proposed to be a member of the \ga-vibrational band, which is expected to be built on the $2_2^+$ state.
+Theory predicts that the $3^+$ state should lie around 1944 keV.
+In the spectrum of \autoref{fig:gam_dcB}, there is no obvious candidate for a transition from the proposed $3^+$ state.
 However, the width of the $6_1^+ \rightarrow 4_1^+$ transition at 836 keV is slightly wider than the other transitions. 
 \ga-\ga\ coincidences can be used to investigate if the peak at 836 keV is composed of more than one transition. 
-
-\autoref{fig:check_state} shows a coincidence spectra of gates on the left and right flank of the 836 keV peak.
+\autoref{fig:check_state} presents a coincidence spectra of gates on the left and right flank of the 836 keV peak.
 When gating on the left flank of the peak, the spectrum shows coincidences with the transitions of the ground-state band, as expected for a coincidence spectrum with the $6_1^+ \rightarrow 4_1^+$ transition. 
 When gating on the right-hand flank of the peak, however, clear coincidences with the 460 keV ($2_2^+ \rightarrow 2_1^+$) transition appear. 
 These coincidence relationships are confirmed when gating on the 715 keV ($4_1^+ \rightarrow 2_1^+$) and the 460 keV ($2_2^+ \rightarrow 2_1^+$) transitions, respectively. 
 The coincidence spectra show two peaks that are clearly shifted in energy, with the $6_1^+ \rightarrow 4_1^+$ transition at the known energy of 836 keV, and a new, previously unobserved transition at 844 keV. 
-The intensity of the new 844 keV transition is relatively strong, which makes the transition a very good candidate for the expected $3_1^+ \rightarrow 2_2^+$ transition. 
+The new transition places the candidate for the $3^+$ state at 1834 keV, 110 keV below the predicted theoretical energy. 
+We cannot expect to observe a transition down to the ground state from 1834 keV, since it would have been a M3 transition, i.e. the transition is very improbable due to the high magnetic multipolarity.
+
+The intensity of the new 844 keV transition is relatively strong, which makes the transition an excellent candidate for the predicted $3_1^+ \rightarrow 2_2^+$ transition, and a possible member of the \ga-vibrational band. If verified, the new state will, without doubt, help clarify the role of triaxiality in this region of the nuclear chart. 
+\textcolor{red}{Usikker på om det kun gjelder Sm eller om det gjelder nærliggende også.}
 
 
 \begin{figure}[htb]
@@ -2637,25 +2644,19 @@ The intensity of the new 844 keV transition is relatively strong, which makes th
 \end{figure}
 
 
-The transition at approximately 844 keV is a very good candidate for the missing member of the \ga-band. 
-The new transition places the candidate for the $3^+$ state at 1834 keV, and the transition and the state will really help clarify the role of triaxiality. 
-%This new transition and new state will really help to clarify the role of triaxiality.
-%The sum-peak of the assumed $3^+$ and the $2_2^+$ state is 1834 keV, which is close to the rough estimate of around 1900 keV.
-We cannot expect to see a transition down to the ground state from 1834 keV, since it would have been a M3 transition, i.e. the transition is very improbable due to the high magnetic multipolarity. 
-%In principle, there can be a transition from $3^+$ to $4^+$, but there was no sign of this either.
+A low-lying $2_2^+$ state, for example the 990 keV state in \Sm, is a sign of triaxiality which can either be static or dynamic \cite{Klintefjord2016}.
+From the energy of the $2_2^+$ state and the $B(E2; 2_2^+ \rightarrow 2_1^+)$ value it is not possible to determine if the triaxial deformation is static or dynamic, but information related to the newly observed $3_1^+$ state can help the decision.
 
-A low-lying $2_2^+$ state, as the 990 keV state in \Sm, is a sign of triaxiality which can either be static or dynamic \cite{Klintefjord2016}.
-From the energy of the $2_2^+$ state and the $B(E2; 2_2^+ \rightarrow 2_1^+)$ value it is not possible to decide if the triaxial deformation is static or dynamic, but information about the new $3_1^+$ state can help the decision.
-
-There is a possible new peak around 1860 keV in \autoref{fig:gam_dcB}. 
+The peak at 1860 keV in \autoref{fig:gam_dcB}, may prove to be a new state or transition. 
 None of the \ga\ cascades in \autoref{fig:levels} add up to this energy level or transition energy. 
-A cascade is several \ga\ transitions in coincidence with each other.
-It is difficult to decide which state the peak around 1860 keV decays to.
+%A cascade is several \ga\ transitions in coincidence with each other.
+Therefore, it is difficult to conclude on which state the peak at 1860 keV decays to.
 
-\autoref{fig:gg_dcB} displays the \ga\ga-matrix, Doppler corrected for \Sm.
-The diagonal lines below 600 keV, comes from the Compton continuum. 
-Here, we see defined lines where the constituents of the ground state band is as mentioned before (531 keV, 715 keV, 836 keV and a slim 888 keV line), in addition to the 460 keV line. 
-The 836 keV line is quite broad as seen in \autoref{fig:gam_dcB}.
+\autoref{fig:gg_dcB} displays the \ga-\ga\ matrix, Doppler corrected according to \Sm.
+The diagonal lines below 600 keV, originates from the Compton continuum. 
+Here, we observe clearly defined vertical and horizontal lines corresponding to the constituents of the ground state band of \Sm. 
+Summarized, we recognize the energies of the ground state band at 531 keV, 715 keV, 836 keV and 888 keV. The line at 888 keV is quite thin, while the line at 836 keV is quite broad. 
+
 
 \begin{figure}[htb!]
 	\centering
@@ -2668,22 +2669,21 @@ The 836 keV line is quite broad as seen in \autoref{fig:gam_dcB}.
 \end{figure}
 
 
-The CD has 16 rings an consequently it covers 16 angular ranges in the laboratory system.
+The CD has 16 rings, and consequently it covers 16 angular ranges in the laboratory system.
 In the IS495 experiment at ISOLDE in 2012, three excited states of \Sm\ were populated, the first (531 keV) and second (990 keV) excited $2^+$ states, in addition to the first $4^+$ (1246 keV) state.
-The CD covered from $49.7^\circ$ to $146^\circ$ in the CM frame for the particles.
+The CD covered angles from $49.7^\circ$ to $146^\circ$ in the CM frame for the particles.
 The \ga-ray intensities for the three states was measured from 5 separate ranges of CM scattering angles, Doppler corrected for the \Sm\ projectiles. 
 These intensities were used to obtain the reduced transition probabilities, i.e. the $B(E2)$ values of the states \cite{Klintefjord2015, Klintefjord2016, BelloGarrote2015}.
 
 From the present experiment at ISOLDE, IS558 in 2017, excited sates up to $8^+$ were populated. 
 %The CD covered from $22.0^\circ$ to $56.7^\circ$ for the particles in the LAB frame, corresponding to $36.6^\circ$ to $136.0^\circ$ in the CM frame for the particles.
 When considering the detection of either projectile, target, or for some angles both, the detector covers an angular range from 36.6$^\circ$ to 136.0$^\circ$ in the CM system, which can be divided into 23 independent angular ranges as given in \autoref{tab:scattering}. 
-
 \autoref{fig:projections} displays \ga-ray spectra for 6 different ranges of CM scattering angles to illustrate the dependence of the excitation probabilities on the scattering angle. 
-The spectra clearly show that multi-step excitation is much stronger for large scattering angles, when the distance of closest approach is smaller and the strength of the electromagnetic interaction is stronger. 
+The spectra clearly demonstrate that multi-step excitations are more probable at large scattering angles, when the distance of closest approach is smaller, and the strength of the electromagnetic interaction is stronger. 
 
-The 23 separate angle ranges will give much more data points compared to the former 5 separate angle ranges.
-By analyzing the 23 CM angle ranges, the precision of the previous measurements of the three $B(E2)$ values will certainly be improved, in addition to measuring many unknown $B(E2)$ values.
-The reduced transition probabilites, i.e. $B(E2)$, are relatively strong in the ground state band. 
+The 23 separate angle ranges displayed in \autoref{fig:projections} will provide plenty of new data points compared to the former 5 separate angle ranges.
+By analyzing the 23 CM angle ranges, the precision of the previous measurements of the three $B(E2)$ values will certainly be improved, and in addition several unknown $B(E2)$ values will be obtained.
+%The reduced transition probabilites, i.e. $B(E2)$, are relatively strong in the ground state band. 
 
 Each spectrum for the 23 different angular ranges will provide an independent set of \ga-ray intensities for the various transitions. 
 In the next step of the Coulomb excitation analysis, a set of electromagnetic matrix elements will be fitted to the \ga-ray intensities in a chi-square ($\chi^2$) procedure. 
@@ -2835,300 +2835,17 @@ We therefore expect to obtain all transition matrix elements for \Sm\ with a goo
 
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
-\chapter{Two-particle elastic collision}\label{ch:scattering}
-\section{Laboratory (LAB) frame of reference}\label{sec:LAB}
-The angles of the two-particle collision in the laboratory frame from \autoref{fig:scattering} is calculated in this section. 
-A general approach is used to make it easier to hold track of the parameters. 
-From the figure we can express the velocities as
-\begin{align}\label{eq:2p-LAB-collision}
-\begin{split}
-	 \boldsymbol{u} &= \boldsymbol{u}_1 = u \boldsymbol{\hat{x}}  \\
-	 \boldsymbol{u}_2 &= 0  \\
-	 \boldsymbol{v}_b &= \boldsymbol{v}_1 = v_1 (\cos \theta \boldsymbol{\hat{x}} + \sin \theta \boldsymbol{\hat{y}})  \\
-	\boldsymbol{v}_t &= \boldsymbol{v}_2 = v_2 (\cos \varphi \boldsymbol{\hat{x}} - \sin \varphi \boldsymbol{\hat{y}})
-\end{split}
-\end{align}
-where $\boldsymbol{u}_1$ and $\boldsymbol{v}_1$ is the initial and final velocity of the projectile $m_b = m_1$ respectively, and $\boldsymbol{u}_2$ and $\boldsymbol{v}_2$ is the initial and final velocity of the target $m_t = m_2$ respectively. The angles $\theta_b = \theta$ and $\theta_t = \varphi$ are the projectile and target angle respectively. We also introduce a ratio of the projectile mass to the target mass, $\alpha = m_1/m_2$.
-
-Conservation of momentum gives
-\begin{align*}%\label{eq:comom}
-	m_1 \boldsymbol{u}_1 &= m_1 \boldsymbol{v}_1 + m_2 \boldsymbol{v}_2
-\end{align*}
-which in $x$-direction can be expressed as
-\begin{align}\label{eq:comx}
-	m_1 u &= m_1 v_1 \cos \theta + m_2 v_2 \cos \varphi  \nonumber\\
-	m_1 (u - v_1 \cos \theta) &= m_2 v_2 \cos \varphi  \nonumber\\
-	\frac{m_1}{m_2} (u - v_1 \cos \theta) &= v_2 \cos \varphi  \nonumber\\
-	\alpha (u - v_1 \cos \theta) &= v_2 \cos \varphi
-\end{align}
-and in $y$-direction can be expressed as
-\begin{align}\label{eq:comy}
-	0 &= m_1 v_1 \sin \theta - m_2 v_2 \sin \varphi \nonumber\\
-	m_1 v_1 \sin \theta &= m_2 v_2 \sin \varphi \nonumber\\
-	\frac{m_1}{m_2} v_1 \sin \theta &= v_2 \sin \varphi \nonumber\\
-	\alpha v_1 \sin \theta &= v_2 \sin \varphi
-\end{align}
-
-Conservation of energy gives
-\begin{align}\label{eq:coe}
-	\tfrac{1}{2} m_1 \boldsymbol{u}_1^2 &= \tfrac{1}{2} m_1 \boldsymbol{v}_1^2 + \tfrac{1}{2} m_2 \boldsymbol{v}_2^2 \nonumber\\
-	\tfrac{1}{2} m_1 (u^2 - v_1^2) &= \tfrac{1}{2} m_2 v_2^2 \nonumber\\
-	\frac{m_1}{m_2} (u^2 - v_1^2) &= v_2^2 \nonumber\\
-	\alpha (u^2 - v_1^2) &= v_2^2
-\end{align}
-
-We now have three equations, \autoref{eq:comx} - \autoref{eq:coe}, with four unknown quantities ($v_1, \theta, v_2, \varphi$). 
-Using the target angle $\varphi$ as an independent variable, we can find expressions for the other three variables. 
-
-Squaring \autoref{eq:comx} 
-\begin{align*}%\label{eq:c}
-	\alpha^2 (u - v_1 \cos \theta)^2 &= v_2^2 \cos^2 \varphi  \\
-	\alpha^2 (u^2 - 2uv_1 \cos \theta + v_1^2 \cos^2 \theta) &= v_2^2 \cos^2 \varphi
-\end{align*}
-and \autoref{eq:comy}
-\begin{align*}%\label{eq:c}
-	\alpha^2 v_1^2 \sin^2 \theta &= v_2^2 \sin^2 \varphi
-\end{align*}
-and adding them together gives
-\begin{align}\label{eq:av}
-	\alpha^2 (u^2 - 2uv_1 \cos \theta + v_1^2 \cos^2 \theta + v_1^2 \sin^2 \theta) &= v_2^2 (\cos^2 \varphi + \sin^2 \varphi)  \nonumber\\
-	\alpha^2 (u^2 - 2uv_1 \cos \theta + v_1^2) &= v_2^2  \nonumber\\
-	\alpha^2 u^2 - 2\alpha^2 uv_1 \cos \theta + \alpha^2 v_1^2 &= v_2^2  \nonumber\\
-	\alpha^2 v_1^2 &= -\alpha^2 u^2 + 2\alpha^2 uv_1 \cos \theta + v_2^2  \nonumber\\
-	\alpha^2 v_1^2 &= -\alpha^2 u^2 + 2\alpha u (\alpha v_1 \cos \theta) + v_2^2
-\end{align}
-From \autoref{eq:comx} we have
-\begin{align}\label{eq:comx2}
-	\alpha (u - v_1 \cos \theta) &= v_2 \cos \varphi  \nonumber\\
-	\alpha u - \alpha v_1 \cos \theta &= v_2 \cos \varphi  \nonumber\\
-	\alpha v_1 \cos \theta &= \alpha u - v_2 \cos \varphi
-\end{align}
-Substituting for \autoref{eq:comx2} into \autoref{eq:av} we get
-\begin{align}\label{eq:comsq}
-	\alpha^2 v_1^2 &= -\alpha^2 u^2 + 2\alpha u (\alpha u - v_2 \cos \varphi ) + v_2^2  \nonumber\\
-	\alpha^2 v_1^2 &= -\alpha^2 u^2 + 2\alpha^2 u^2 - 2\alpha u v_2 \cos \varphi + v_2^2  \nonumber\\
-	\alpha^2 v_1^2 &= \alpha^2 u^2 - 2\alpha u v_2 \cos \varphi + v_2^2
-\end{align}
-Using \autoref{eq:coe} we get
-\begin{align}\label{eq:coesub}
-    \left( \frac{\alpha}{\alpha} \right) \alpha (u^2 - v_1^2) &= v_2^2  \nonumber\\
-    \alpha^2 (u^2 - v_1^2) &= \alpha v_2^2  \nonumber\\
-	\alpha^2 u^2 - \alpha^2 v_1^2 &= \alpha v_2^2  \nonumber\\
-	\alpha^2 v_1^2 &= \alpha^2 u^2 - \alpha v_2^2
-\end{align}
-Combining \autoref{eq:comsq} and \autoref{eq:coesub} gives
-\begin{align}\label{eq:comcoe}
-    \alpha^2 u^2 - 2\alpha u v_2 \cos \varphi + v_2^2 &= \alpha^2 u^2 - \alpha v_2^2  \nonumber\\
-    v_2^2 + \alpha v_2^2 &= 2\alpha u v_2 \cos \varphi  \nonumber\\
-    v_2^2 (1 + \alpha) &= 2\alpha u v_2 \cos \varphi  \nonumber\\
-    v_2 &= 2 \left( \frac{\alpha}{1 + \alpha} \right) u \cos \varphi 
-\end{align}
-Substituting \autoref{eq:comcoe} into \autoref{eq:coesub} we get
-\begin{align}\label{eq:coesubsub}
-    \alpha^2 v_1^2 &= \alpha^2 u^2 - \alpha \left( 2 \left( \frac{\alpha}{1 + \alpha} \right) u \cos \varphi  \right)^2  \nonumber\\
-    v_1^2 &= u^2 - \frac{1}{\alpha} \left( 4 \left( \frac{\alpha^2}{(1 + \alpha)^2} \right) u^2 \cos^2 \varphi  \right)  \nonumber\\
-    v_1^2 &= u^2 \left(1 - 4 \left( \frac{\alpha}{(1 + \alpha)^2} \right) \cos^2 \varphi  \right)  \nonumber\\
-    v_1 &= u \sqrt{1 - 4 \frac{\alpha}{M} \cos^2 \varphi}
-\end{align}
-where $\alpha/M = \alpha/(1 + \alpha)^2$. 
-The ratio of \autoref{eq:comy} and \autoref{eq:comx2} gives
-\begin{align}\label{eq:comxy}
-	\frac{\alpha v_1 \sin \theta}{\alpha v_1 \cos \theta} &= \frac{v_2 \sin \varphi}{\alpha u - v_2 \cos \varphi}  \nonumber\\
-	\tan \theta &= \frac{v_2 \sin \varphi}{\alpha u - v_2 \cos \varphi}
-\end{align}
-Inserting \autoref{eq:comcoe} into \autoref{eq:comxy} gives
-\begin{align}\label{eq:tanBgen}
-	\tan \theta &= \frac{\left( 2 \left( \frac{\alpha}{1 + \alpha} \right) u \cos \varphi  \right) \sin \varphi}{\alpha u - \left( 2 \left( \frac{\alpha}{1 + \alpha} \right) u \cos \varphi  \right) \cos \varphi}  \nonumber\\
-	\tan \theta &= \frac{\alpha u \left( \frac{1}{1 + \alpha} \right) 2 \sin \varphi \cos \varphi}{\alpha u \left(1 - 2 \left( \frac{1}{1 + \alpha} \right) \cos^2 \varphi \right)}  \nonumber\\
-	\tan \theta &= \frac{\sin 2\varphi}{(1 + \alpha)\left(1 - 2 \left( \frac{1}{1 + \alpha} \right) \cos^2 \varphi \right)}  \nonumber\\
-	\tan \theta &= \frac{\sin 2\varphi}{1 + \alpha - 2 \cos^2 \varphi}  \nonumber\\
-	\tan \theta &= \frac{\sin 2\varphi}{\alpha - (2 \cos^2 \varphi - 1)}  \nonumber\\
-	\tan \theta &= \frac{\sin 2\varphi}{\alpha - \cos 2\varphi}  \nonumber\\
-	\theta &= \arctan \left( \frac{\sin 2\varphi}{\alpha - \cos 2\varphi} \right)
-\end{align}
-Substituting back the variable names from the LAB frame in \autoref{fig:scattering} into \autoref{eq:tanBgen} gives
-\begin{align}\label{eq:tanB}
-	\theta_b &= \arctan \left( \frac{\sin 2\theta_t}{\alpha - \cos 2\theta_t} \right)
-\end{align}
-
-
-\section{Center of mass (CM) frame of reference}
-Using the same approach as \autoref{sec:LAB}. 
-From the CM frame in \autoref{fig:scattering} we can express the velocities as
-\begin{align}\label{eq:2p-CM-collision}
-\begin{split}
-	 \boldsymbol{u}_1^{'} &= u_1^{'} \boldsymbol{\hat{x}} \\
-	 \boldsymbol{u}_2^{'} &= u_2^{'} \boldsymbol{\hat{x}} \\
-	 \boldsymbol{v}_b^{'} &= \boldsymbol{v}_1^{'} = v_1^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}}) \\
-	\boldsymbol{v}_t^{'} &= \boldsymbol{v}_2^{'} = v_2^{'} (-\cos \theta^{'} \boldsymbol{\hat{x}} - \sin \theta^{'} \boldsymbol{\hat{y}}) = -v_2^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}})
-\end{split}
-\end{align}
-where $\boldsymbol{u}_1^{'}$ and $\boldsymbol{v}_1^{'}$ is the initial and final velocity of the projectile $m_b = m_1$ respectively, and $\boldsymbol{u}_2^{'}$ and $\boldsymbol{v}_2^{'}$ is the initial and final velocity of the target $m_t = m_2$ respectively. 
-The angle $\theta_b^{'} = \theta^{'}$ is the projectile angle. 
-
-In the center of mass (CM) frame of reference, the position of the center of mass is given by
-\begin{align}\label{eq:CMpos}
-	\boldsymbol{R} &= \frac{m_1 \boldsymbol{r}_1 + m_2 \boldsymbol{r}_2}{m_1 + m_2}
-\end{align}
-and the velocity is
-\begin{align}\label{eq:Vcm}
-	\boldsymbol{V} &= \frac{d\boldsymbol{R}}{dt}
-	= \frac{d}{dt} \left( \frac{m_1 \boldsymbol{r}_1 + m_2 \boldsymbol{r}_2}{m_1 + m_2} \right)
-	= \frac{m_1 \boldsymbol{u}_1^{'} + m_2 \boldsymbol{u}_2^{'}}{m_1 + m_2}
-\end{align}
-At the origin of the CM frame, $\boldsymbol{R} = 0$, which implies $\boldsymbol{V} = 0$. 
-The total momentum before the collision is
-\begin{align}\label{eq:ucm}
-	m_1 \boldsymbol{u}_1^{'} + m_2 \boldsymbol{u}_2^{'} &= 0  \nonumber\\
-	m_2 u_2^{'} &= -m_1 u_1^{'} \nonumber\\
-	u_2^{'} &= - \frac{m_1}{m_2} u_1^{'} \nonumber\\
-	u_2^{'} &= - \alpha u_1^{'}
-\end{align}
-and after the collision it is
-\begin{align}\label{eq:vcm}
-	m_1 \boldsymbol{v}_1^{'} + m_2 \boldsymbol{v}_2^{'} &= 0  \nonumber\\
-	m_2 \boldsymbol{v}_2^{'} &= -m_1 \boldsymbol{v}_1^{'} \nonumber\\
-	\boldsymbol{v}_2^{'} &= - \frac{m_1}{m_2} \boldsymbol{v}_1^{'} \nonumber\\
-	\boldsymbol{v}_2^{'} &= - \alpha \boldsymbol{v}_1^{'} \nonumber\\
-	-v_2^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}}) &= - \alpha v_1^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}}) \nonumber\\
-	v_2^{'} &= \alpha v_1^{'}
-\end{align}
-Conservation of energy gives
-\begin{align}\label{eq:coecm}
-	\tfrac{1}{2} m_1 u_1^{'2} + \tfrac{1}{2} m_2 u_2^{'2} &= \tfrac{1}{2} m_1 v_1^{'2} + \tfrac{1}{2} m_2 v_2^{'2} \nonumber\\
-	m_1 u_1^{'2} + m_2 u_2^{'2} &= m_1 v_1^{'2} + m_2 v_2^{'2}
-\end{align}
-Substituting \autoref{eq:ucm} and \autoref{eq:vcm} into \autoref{eq:coecm} gives
-\begin{align}\label{eq:u2u1}
-	m_1 u_1^{'2} + m_2 (-\alpha u_1^{'})^2 &= m_1 v_1^{'2} + m_2 (\alpha v_1^{'})^2 \nonumber\\
-	m_1 u_1^{'2} + \alpha^2 m_2 u_1^{'2} &= m_1 v_1^{'2} + \alpha^2 m_2 v_1^{'2} \nonumber\\
-	(m_1 +\alpha^2 m_2) u_1^{'2} &= (m_1 +\alpha^2 m_2) v_1^{'2} \nonumber\\
-	u_1^{'2} &= v_1^{'2} \nonumber\\
-	u_1^{'} &= v_1^{'}
-\end{align}
-Substituting \autoref{eq:u2u1} into \autoref{eq:ucm} gives 
-\begin{align}\label{eq:u2v1}
-	u_2^{'} &= - \alpha v_1^{'}
-\end{align}
-
-
-\section{Connection between the LAB frame and the CM frame}
-Galilean transformations describes the relationship between the LAB frame and the CM frame
-\begin{align*}
-	 x^{'} &= x - vt  & v_x^{'} &= v_x - V_{cm} \\
-	 y^{'} &= y & v_y^{'} &= v_y \\
-	 z^{'} &= z & v_z^{'} &= v_z \\
-	 t^{'} &= t \\
-\end{align*}
-
-Using the same approach as \autoref{sec:LAB}. In the LAB frame of \autoref{fig:scattering}, conservation of momentum is given by
-\begin{align}\label{eq:comlab}
-	m_1 \boldsymbol{u}_1 + m_2 \boldsymbol{u}_2 &= m_1 \boldsymbol{v}_1 + m_2 \boldsymbol{v}_2 = (m_1 + m_2)\boldsymbol{V}
-\end{align}
-which can be written as
-\begin{align}\label{eq:V}
-	m_1 \boldsymbol{u}_1 + m_2 \boldsymbol{u}_2 &= (m_1 + m_2)\boldsymbol{V} \nonumber\\
-	\boldsymbol{V} &= \frac{m_1 \boldsymbol{u}_1 + m_2 \boldsymbol{u}_2}{m_1 + m_2} & \boldsymbol{u}_2& = 0 \nonumber\\
-	\boldsymbol{V} &= \frac{m_1}{m_1 + m_2} \boldsymbol{u}_1 \nonumber\\
-	\boldsymbol{V} &= \frac{\alpha}{1 + \alpha} u \boldsymbol{\hat{x}} \nonumber\\
-	V &= \frac{\alpha}{1 + \alpha} u
-\end{align}
-
-Using Galilean transformations, the connection between $\boldsymbol{v}_1^{'}$ and $\boldsymbol{v}_1$ is expressed as
-\begin{align}\label{eq:vcmv}
-	\boldsymbol{v}_1^{'} &= \boldsymbol{v}_1 - \boldsymbol{V} \nonumber\\
-	\boldsymbol{v}_1 &= \boldsymbol{v}_1^{'} + \boldsymbol{V}
-\end{align}
-which in $x$-direction gives
-\begin{align}\label{eq:vcmvx}
-	v_1 \cos \theta &= v_1^{'} \cos \theta^{'} + V
-\end{align}
-and in $y$-direction gives
-\begin{align}\label{eq:vcmvy}
-	v_1 \sin \theta &= v_1^{'} \sin \theta^{'}
-\end{align}
-The ratio of \autoref{eq:vcmvy} and \autoref{eq:vcmvx} gives
-\begin{align}\label{eq:vcmvxy}
-	\frac{v_1 \sin \theta}{v_1 \cos \theta} &= \frac{v_1^{'} \sin \theta^{'}}{v_1^{'} \cos \theta^{'} + V} \nonumber\\
-	\tan \theta &= \frac{\sin \theta^{'}}{\cos \theta^{'} + \frac{V}{v_1^{'}}} \nonumber\\
-	\tan \theta &= \frac{\sin \theta^{'}}{\frac{V}{v_1^{'}} + \cos \theta^{'}}
-\end{align}
-We need to reformulate the velocity ratio. 
-Substitution from \autoref{eq:u2u1} gives
-\begin{align}\label{eq:Vou}
-	\frac{V}{v_1^{'}} = \frac{V}{u_1^{'}}
-\end{align}
-Using Galilean transformation and \autoref{eq:V} we have that
-\begin{align}\label{u1cm}
-	\boldsymbol{u}_1^{'} &= \boldsymbol{u}_1 - \boldsymbol{V} \nonumber\\
-	u_1^{'} &= u_1 - V \nonumber\\
-	u_1^{'} &= u - \frac{\alpha}{1 + \alpha} u \nonumber\\
-	u_1^{'} &= u \left( 1 - \frac{\alpha}{1 + \alpha} \right) \nonumber\\
-	u_1^{'} &= u \left( \frac{1 + \alpha - \alpha}{1 + \alpha} \right) \nonumber\\
-	u_1^{'} &= \frac{1}{1 + \alpha} u
-\end{align}
-Substituting \autoref{eq:V} and \autoref{u1cm} into \autoref{eq:Vou} gives
-\begin{align}\label{eq:Vouea}
-	\frac{V}{u_1^{'}} &= \frac{\frac{\alpha}{1 + \alpha} u}{\frac{1}{1 + \alpha} u} = \alpha
-\end{align}
-Substituting \autoref{eq:Vouea} into \autoref{eq:vcmvxy} gives
-\begin{align}\label{eq:tanB1}
-	\tan \theta &= \frac{\sin \theta^{'}}{\alpha + \cos \theta^{'}}  \nonumber\\
-	\theta &= \arctan \left( \frac{\sin \theta^{'}}{\alpha + \cos \theta^{'}} \right)
-\end{align}
-Substituting back the variable names from the CM frame of \autoref{fig:scattering} into \autoref{eq:tanB1} gives
-\begin{align}\label{eq:tanB1n}
-	\theta_b &= \arctan \left( \frac{\sin \theta_b^{'}}{\alpha + \cos \theta_b^{'}} \right)
-\end{align}
-
-Using Galilean transformations, the connection between $\boldsymbol{v}_2^{'}$ and $\boldsymbol{v}_2$ is expressed as
-\begin{align}\label{eq:vcmv2}
-	\boldsymbol{v}_2^{'} &= \boldsymbol{v}_2 - \boldsymbol{V} \nonumber\\
-	\boldsymbol{v}_2 &= \boldsymbol{v}_2^{'} + \boldsymbol{V}
-\end{align}
-which in $x$-direction gives
-\begin{align}\label{eq:vcmvx2}
-	v_2 \cos \varphi &= -v_2^{'} \cos \theta^{'} + V \nonumber\\
-	v_2 \cos \varphi &= V - v_2^{'} \cos \theta^{'}
-\end{align}
-and in $y$-direction gives
-\begin{align}\label{eq:vcmvy2}
-	v_2 \sin \varphi &= v_2^{'} \sin \theta^{'}
-\end{align}
-The ratio of \autoref{eq:vcmvy2} and \autoref{eq:vcmvx2} gives
-\begin{align}\label{eq:vcmvxy2}
-	\frac{v_2 \sin \varphi}{v_2 \cos \varphi} &= \frac{v_2^{'} \sin \theta^{'}}{V - v_2^{'} \cos \theta^{'}} \nonumber\\
-	\tan \varphi &= \frac{\sin \theta^{'}}{\frac{V}{v_2^{'}} - \cos \theta^{'}}
-\end{align}
-We need to reformulate the velocity ratio. 
-Substitution from \autoref{eq:vcm} and \autoref{eq:u2u1} gives
-\begin{align}\label{eq:Vou2}
-	\frac{V}{v_2^{'}} &= \frac{V}{\alpha v_1^{'}} = \frac{V}{\alpha u_1^{'}}
-\end{align}
-Substituting \autoref{eq:Vouea} into \autoref{eq:Vou2} gives
-\begin{align}\label{eq:Vouea2}
-	\frac{V}{v_2^{'}} &= \frac{V}{\alpha \frac{V}{\alpha}} = 1
-\end{align}
-Substituting \autoref{eq:Vouea2} into \autoref{eq:vcmvxy2} gives
-\begin{align}\label{eq:tanT}
-	\tan \varphi &= \frac{\sin \theta^{'}}{1 - \cos \theta^{'}} = \frac{1}{\frac{1 - \cos \theta^{'}}{\sin \theta^{'}}} = \frac{1}{\tan \frac{\theta^{'}}{2}} = \cot \frac{\theta^{'}}{2} \nonumber\\
-	\varphi &= \tfrac{1}{2} (\pi - \theta^{'}) ~[ \text{radians} ] = \tfrac{1}{2} (180^\circ - \theta^{'}) ~[ \text{degrees} ]
-\end{align}
-Substituting back the variable names from \autoref{fig:scattering} into \autoref{eq:tanT} gives
-\begin{align}\label{eq:tanTgen}
-	\theta_t &= \tfrac{1}{2} (\pi - \theta_b^{'}) ~[ \text{radians} ] = \tfrac{1}{2} (180^\circ - \theta_b^{'}) ~[ \text{degrees} ]
-\end{align}
-
-
-% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
 
 \chapter{Computer setup and environment}\label{a:computer_environment}
-
-The \textsl{MiniballCoulexSort} code does not require any a lot of computing power to run. \autoref{tab:PC} shows the computer with specifications used for the sorting and data analysis. Since the data from the experiment takes up about 60 GB, the limitation was with the SSD\footnote{The SSD (solid-state drive) is the internal storage device in the computer.}. When running the sorting and event-building programs, the space on the computer rapidly vanishes. 
+The \textsl{MiniballCoulexSort} code does not require extensive computing power to run. 
+\autoref{tab:PC} shows the computer, and its specifications, applied in the sorting and data analysis. 
+In total, the experimental raw data takes up about 60 GB of the disk (SSD). 
+Therefore, the biggest limitation of the computer setup was the SSD\footnote{The SSD (solid-state drive) is the internal storage device in the computer.}. 
+When the sorting and event-building programs were run, the SSD space of the computer rapidly vanished. 
 
 \begin{table}[ht] 
 	\centering 
-	\caption{Computer used for sorting and data analysis.}
+	\caption{The personal computer utilized in the sorting and data analysis.}
 	\label{tab:PC}
 	\begin{tabular}{ll}
 		\hline
@@ -3150,20 +2867,21 @@ The relative path of \textsl{MiniballCoulexSort}, \texttt{kinsim3} and the ROOT 
 ~/GitHub/ROOT-framework/build
 \end{lstlisting}
 
-\autoref{tab:paths} shows the relative path of programs, scripts and files used in this thesis. 
-The settingsfile \textit{MBSettings2017\_CLX\_IS558.dat}, and calibration files \textit{IS558-online.cal} and \textit{IS558-user.cal}, used in this experiment can be found in the directory specified in the table, but when used directly with \textsl{MiniballCoulexSort} the default path is \textit{$\sim$/GitHub/Miniball/MiniballCoulexSort/config}.
-The file \textit{setup\_Sm.txt} is in the table twice, this is because it is two files with the same name, one for plotting and one for fitting.
+\autoref{tab:paths} shows the relative path of programs, scripts and files applied in this thesis. 
+The settingsfile \textit{MBSettings2017\_CLX\_IS558.dat}, and the calibration files \textit{IS558-online.cal} and \textit{IS558-user.cal} relevant to the current experiment can be found in the directory specified in the table. 
+The settings and calibration files are applied directly with \textsl{MiniballCoulexSort}, with the default path \textit{$\sim$/GitHub/Miniball/MiniballCoulexSort/config}.
+The file \textit{setup\_Sm.txt} is listed in the table twice, since there exists two files with identical names, one required for the plotting, and one for the fitting procedure. 
 
-\autoref{tab:run_time} displays the run time for event building with almost all run files.
+\autoref{tab:run_time} displays the run time for the event building with essentially all data files included.
 
-\begin{table}[htb]
+\begin{table}[htb!]
     \centering
     \caption{Relative path of programs, scripts and files.}
 	\input{Table-data/Paths.tex}
 	\label{tab:paths}
 \end{table}
 
-\begin{table}[htb] 
+\begin{table}[htb!] 
 	\centering 
 	\caption{Run time for building event trees, timed with the built in command line script \texttt{time}.}
 	\label{tab:run_time}
@@ -3287,7 +3005,298 @@ The \textit{:Bcut:Tcut} ending are the names of the cuts in the file.
 The first cut is the beam particles and the second is the target particles. 
 These names can be chosen by the user, but they must match the names set in the graphical cuts. 
 
+
 % ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
+
+
+\chapter{Two-particle elastic collision}\label{ch:scattering}
+\section{Laboratory (LAB) frame of reference}\label{sec:LAB}
+The angles of the two-particle collision in the laboratory frame from \autoref{fig:scattering} is calculated in the current section. 
+In the following, a general approach is applied to simplify the notation. 
+From \autoref{fig:scattering} we can express the velocities as
+\begin{align}\label{eq:2p-LAB-collision}
+\begin{split}
+	 \boldsymbol{u} &= \boldsymbol{u}_1 = u \boldsymbol{\hat{x}}  \\
+	 \boldsymbol{u}_2 &= 0  \\
+	 \boldsymbol{v}_b &= \boldsymbol{v}_1 = v_1 (\cos \theta \boldsymbol{\hat{x}} + \sin \theta \boldsymbol{\hat{y}})  \\
+	\boldsymbol{v}_t &= \boldsymbol{v}_2 = v_2 (\cos \varphi \boldsymbol{\hat{x}} - \sin \varphi \boldsymbol{\hat{y}})
+\end{split}
+\end{align}
+where $\boldsymbol{u}_1$ and $\boldsymbol{v}_1$ is the initial and final velocity of the projectile, respectively, and $\boldsymbol{u}_2$ and $\boldsymbol{v}_2$ is the initial and final velocity of the target, respectively. 
+With this notation, the mass of the projectile is $m_b = m_1$, and $m_t = m_2$ is the mass of the target. 
+The angles $\theta_b = \theta$ and $\theta_t = \varphi$ are the projectile and target angle, respectively. 
+We also introduce a ratio of the projectile mass to the target mass, $\alpha = m_1/m_2$.
+Conservation of momentum gives
+\begin{align*}%\label{eq:comom}
+	m_1 \boldsymbol{u}_1 &= m_1 \boldsymbol{v}_1 + m_2 \boldsymbol{v}_2
+\end{align*}
+which in $x$-direction can be expressed as
+\begin{align}\label{eq:comx}
+	m_1 u &= m_1 v_1 \cos \theta + m_2 v_2 \cos \varphi  \nonumber\\
+	m_1 (u - v_1 \cos \theta) &= m_2 v_2 \cos \varphi  \nonumber\\
+	\frac{m_1}{m_2} (u - v_1 \cos \theta) &= v_2 \cos \varphi  \nonumber\\
+	\alpha (u - v_1 \cos \theta) &= v_2 \cos \varphi
+\end{align}
+and in $y$-direction can be expressed as
+\begin{align}\label{eq:comy}
+	0 &= m_1 v_1 \sin \theta - m_2 v_2 \sin \varphi \nonumber\\
+	m_1 v_1 \sin \theta &= m_2 v_2 \sin \varphi \nonumber\\
+	\frac{m_1}{m_2} v_1 \sin \theta &= v_2 \sin \varphi \nonumber\\
+	\alpha v_1 \sin \theta &= v_2 \sin \varphi
+\end{align}
+Conservation of energy gives
+\begin{align}\label{eq:coe}
+	\tfrac{1}{2} m_1 \boldsymbol{u}_1^2 &= \tfrac{1}{2} m_1 \boldsymbol{v}_1^2 + \tfrac{1}{2} m_2 \boldsymbol{v}_2^2 \nonumber\\
+	\tfrac{1}{2} m_1 (u^2 - v_1^2) &= \tfrac{1}{2} m_2 v_2^2 \nonumber\\
+	\frac{m_1}{m_2} (u^2 - v_1^2) &= v_2^2 \nonumber\\
+	\alpha (u^2 - v_1^2) &= v_2^2
+\end{align}
+We now have three equations, \autoref{eq:comx} - \autoref{eq:coe}, with four unknown quantities ($v_1, \theta, v_2, \varphi$). 
+Using the target angle $\varphi$ as an independent variable, we can find expressions for the other three variables. 
+Squaring \autoref{eq:comx} 
+\begin{align*}%\label{eq:c}
+	\alpha^2 (u - v_1 \cos \theta)^2 &= v_2^2 \cos^2 \varphi  \\
+	\alpha^2 (u^2 - 2uv_1 \cos \theta + v_1^2 \cos^2 \theta) &= v_2^2 \cos^2 \varphi
+\end{align*}
+and \autoref{eq:comy}
+\begin{align*}%\label{eq:c}
+	\alpha^2 v_1^2 \sin^2 \theta &= v_2^2 \sin^2 \varphi
+\end{align*}
+and adding them together gives
+\begin{align}\label{eq:av}
+	\alpha^2 (u^2 - 2uv_1 \cos \theta + v_1^2 \cos^2 \theta + v_1^2 \sin^2 \theta) &= v_2^2 (\cos^2 \varphi + \sin^2 \varphi)  \nonumber\\
+	\alpha^2 (u^2 - 2uv_1 \cos \theta + v_1^2) &= v_2^2  \nonumber\\
+	\alpha^2 u^2 - 2\alpha^2 uv_1 \cos \theta + \alpha^2 v_1^2 &= v_2^2  \nonumber\\
+	\alpha^2 v_1^2 &= -\alpha^2 u^2 + 2\alpha^2 uv_1 \cos \theta + v_2^2  \nonumber\\
+	\alpha^2 v_1^2 &= -\alpha^2 u^2 + 2\alpha u (\alpha v_1 \cos \theta) + v_2^2
+\end{align}
+From \autoref{eq:comx} we have
+\begin{align}\label{eq:comx2}
+	\alpha (u - v_1 \cos \theta) &= v_2 \cos \varphi  \nonumber\\
+	\alpha u - \alpha v_1 \cos \theta &= v_2 \cos \varphi  \nonumber\\
+	\alpha v_1 \cos \theta &= \alpha u - v_2 \cos \varphi
+\end{align}
+Substituting for \autoref{eq:comx2} into \autoref{eq:av} we get
+\begin{align}\label{eq:comsq}
+	\alpha^2 v_1^2 &= -\alpha^2 u^2 + 2\alpha u (\alpha u - v_2 \cos \varphi ) + v_2^2  \nonumber\\
+	\alpha^2 v_1^2 &= -\alpha^2 u^2 + 2\alpha^2 u^2 - 2\alpha u v_2 \cos \varphi + v_2^2  \nonumber\\
+	\alpha^2 v_1^2 &= \alpha^2 u^2 - 2\alpha u v_2 \cos \varphi + v_2^2
+\end{align}
+Using \autoref{eq:coe} we get
+\begin{align}\label{eq:coesub}
+    \left( \frac{\alpha}{\alpha} \right) \alpha (u^2 - v_1^2) &= v_2^2  \nonumber\\
+    \alpha^2 (u^2 - v_1^2) &= \alpha v_2^2  \nonumber\\
+	\alpha^2 u^2 - \alpha^2 v_1^2 &= \alpha v_2^2  \nonumber\\
+	\alpha^2 v_1^2 &= \alpha^2 u^2 - \alpha v_2^2
+\end{align}
+Combining \autoref{eq:comsq} and \autoref{eq:coesub} gives
+\begin{align}\label{eq:comcoe}
+    \alpha^2 u^2 - 2\alpha u v_2 \cos \varphi + v_2^2 &= \alpha^2 u^2 - \alpha v_2^2  \nonumber\\
+    v_2^2 + \alpha v_2^2 &= 2\alpha u v_2 \cos \varphi  \nonumber\\
+    v_2^2 (1 + \alpha) &= 2\alpha u v_2 \cos \varphi  \nonumber\\
+    v_2 &= 2 \left( \frac{\alpha}{1 + \alpha} \right) u \cos \varphi 
+\end{align}
+Substituting \autoref{eq:comcoe} into \autoref{eq:coesub} we get
+\begin{align}\label{eq:coesubsub}
+    \alpha^2 v_1^2 &= \alpha^2 u^2 - \alpha \left( 2 \left( \frac{\alpha}{1 + \alpha} \right) u \cos \varphi  \right)^2  \nonumber\\
+    v_1^2 &= u^2 - \frac{1}{\alpha} \left( 4 \left( \frac{\alpha^2}{(1 + \alpha)^2} \right) u^2 \cos^2 \varphi  \right)  \nonumber\\
+    v_1^2 &= u^2 \left(1 - 4 \left( \frac{\alpha}{(1 + \alpha)^2} \right) \cos^2 \varphi  \right)  \nonumber\\
+    v_1 &= u \sqrt{1 - 4 \frac{\alpha}{M} \cos^2 \varphi}
+\end{align}
+where $\alpha/M = \alpha/(1 + \alpha)^2$. 
+The ratio of \autoref{eq:comy} and \autoref{eq:comx2} gives
+\begin{align}\label{eq:comxy}
+	\frac{\alpha v_1 \sin \theta}{\alpha v_1 \cos \theta} &= \frac{v_2 \sin \varphi}{\alpha u - v_2 \cos \varphi}  \nonumber\\
+	\tan \theta &= \frac{v_2 \sin \varphi}{\alpha u - v_2 \cos \varphi}
+\end{align}
+Inserting \autoref{eq:comcoe} into \autoref{eq:comxy} gives
+\begin{align}\label{eq:tanBgen}
+	\tan \theta &= \frac{\left( 2 \left( \frac{\alpha}{1 + \alpha} \right) u \cos \varphi  \right) \sin \varphi}{\alpha u - \left( 2 \left( \frac{\alpha}{1 + \alpha} \right) u \cos \varphi  \right) \cos \varphi}  \nonumber\\
+	\tan \theta &= \frac{\alpha u \left( \frac{1}{1 + \alpha} \right) 2 \sin \varphi \cos \varphi}{\alpha u \left(1 - 2 \left( \frac{1}{1 + \alpha} \right) \cos^2 \varphi \right)}  \nonumber\\
+	\tan \theta &= \frac{\sin 2\varphi}{(1 + \alpha)\left(1 - 2 \left( \frac{1}{1 + \alpha} \right) \cos^2 \varphi \right)}  \nonumber\\
+	\tan \theta &= \frac{\sin 2\varphi}{1 + \alpha - 2 \cos^2 \varphi}  \nonumber\\
+	\tan \theta &= \frac{\sin 2\varphi}{\alpha - (2 \cos^2 \varphi - 1)}  \nonumber\\
+	\tan \theta &= \frac{\sin 2\varphi}{\alpha - \cos 2\varphi}  \nonumber\\
+	\theta &= \arctan \left( \frac{\sin 2\varphi}{\alpha - \cos 2\varphi} \right)
+\end{align}
+Substituting back the variable names from the LAB frame in \autoref{fig:scattering} into \autoref{eq:tanBgen} gives
+\begin{align}\label{eq:tanB}
+	\theta_b &= \arctan \left( \frac{\sin 2\theta_t}{\alpha - \cos 2\theta_t} \right)
+\end{align}
+which is applied in \autoref{tab:scattering} in \autoref{ch:experiment}.
+
+
+\section{Center of mass (CM) frame of reference}\label{sec:CM}
+Using the same notation as in \autoref{sec:LAB}, the velocities in the CM frame (see \autoref{fig:scattering}) can be expressed as
+\begin{align}\label{eq:2p-CM-collision}
+\begin{split}
+	 \boldsymbol{u}_1^{'} &= u_1^{'} \boldsymbol{\hat{x}} \\
+	 \boldsymbol{u}_2^{'} &= u_2^{'} \boldsymbol{\hat{x}} \\
+	 \boldsymbol{v}_b^{'} &= \boldsymbol{v}_1^{'} = v_1^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}}) \\
+	\boldsymbol{v}_t^{'} &= \boldsymbol{v}_2^{'} = v_2^{'} (-\cos \theta^{'} \boldsymbol{\hat{x}} - \sin \theta^{'} \boldsymbol{\hat{y}}) = -v_2^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}})
+\end{split}
+\end{align}
+where $\boldsymbol{u}_1^{'}$ and $\boldsymbol{v}_1^{'}$ is the initial and final velocity of the projectile, respectively, and $\boldsymbol{u}_2^{'}$ and $\boldsymbol{v}_2^{'}$ is the initial and final velocity of the target, respectively. 
+As in the LAB frame, $m_b = m_1$ and $m_t = m_2$, while the angle $\theta_b^{'} = \theta^{'}$ is the projectile angle. 
+In the center of mass (CM) frame of reference, the position of the center of mass is given by
+\begin{align}\label{eq:CMpos}
+	\boldsymbol{R} &= \frac{m_1 \boldsymbol{r}_1 + m_2 \boldsymbol{r}_2}{m_1 + m_2}
+\end{align}
+and the velocity is
+\begin{align}\label{eq:Vcm}
+	\boldsymbol{V} &= \frac{d\boldsymbol{R}}{dt}
+	= \frac{d}{dt} \left( \frac{m_1 \boldsymbol{r}_1 + m_2 \boldsymbol{r}_2}{m_1 + m_2} \right)
+	= \frac{m_1 \boldsymbol{u}_1^{'} + m_2 \boldsymbol{u}_2^{'}}{m_1 + m_2}
+\end{align}
+At the origin of the CM frame, $\boldsymbol{R} = 0$, which implies $\boldsymbol{V} = 0$. 
+The total momentum before the collision is
+\begin{align}\label{eq:ucm}
+	m_1 \boldsymbol{u}_1^{'} + m_2 \boldsymbol{u}_2^{'} &= 0  \nonumber\\
+	m_2 u_2^{'} &= -m_1 u_1^{'} \nonumber\\
+	u_2^{'} &= - \frac{m_1}{m_2} u_1^{'} \nonumber\\
+	u_2^{'} &= - \alpha u_1^{'}
+\end{align}
+and after the collision it is
+\begin{align}\label{eq:vcm}
+	m_1 \boldsymbol{v}_1^{'} + m_2 \boldsymbol{v}_2^{'} &= 0  \nonumber\\
+	m_2 \boldsymbol{v}_2^{'} &= -m_1 \boldsymbol{v}_1^{'} \nonumber\\
+	\boldsymbol{v}_2^{'} &= - \frac{m_1}{m_2} \boldsymbol{v}_1^{'} \nonumber\\
+	\boldsymbol{v}_2^{'} &= - \alpha \boldsymbol{v}_1^{'} \nonumber\\
+	-v_2^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}}) &= - \alpha v_1^{'} (\cos \theta^{'} \boldsymbol{\hat{x}} + \sin \theta^{'} \boldsymbol{\hat{y}}) \nonumber\\
+	v_2^{'} &= \alpha v_1^{'}
+\end{align}
+Conservation of energy gives
+\begin{align}\label{eq:coecm}
+	\tfrac{1}{2} m_1 u_1^{'2} + \tfrac{1}{2} m_2 u_2^{'2} &= \tfrac{1}{2} m_1 v_1^{'2} + \tfrac{1}{2} m_2 v_2^{'2} \nonumber\\
+	m_1 u_1^{'2} + m_2 u_2^{'2} &= m_1 v_1^{'2} + m_2 v_2^{'2}
+\end{align}
+Substituting \autoref{eq:ucm} and \autoref{eq:vcm} into \autoref{eq:coecm} gives
+\begin{align}\label{eq:u2u1}
+	m_1 u_1^{'2} + m_2 (-\alpha u_1^{'})^2 &= m_1 v_1^{'2} + m_2 (\alpha v_1^{'})^2 \nonumber\\
+	m_1 u_1^{'2} + \alpha^2 m_2 u_1^{'2} &= m_1 v_1^{'2} + \alpha^2 m_2 v_1^{'2} \nonumber\\
+	(m_1 +\alpha^2 m_2) u_1^{'2} &= (m_1 +\alpha^2 m_2) v_1^{'2} \nonumber\\
+	u_1^{'2} &= v_1^{'2} \nonumber\\
+	u_1^{'} &= v_1^{'}
+\end{align}
+Substituting \autoref{eq:u2u1} into \autoref{eq:ucm} gives 
+\begin{align}\label{eq:u2v1}
+	u_2^{'} &= - \alpha v_1^{'}
+\end{align}
+which is used in \autoref{sec:LAB_CM_connection}.
+
+
+\section{Connection between the LAB frame and the CM frame}\label{sec:LAB_CM_connection}
+Galilean transformations describes the relationship between the LAB frame and the CM frame
+\begin{align*}
+	 x^{'} &= x - vt  & v_x^{'} &= v_x - V_{cm} \\
+	 y^{'} &= y & v_y^{'} &= v_y \\
+	 z^{'} &= z & v_z^{'} &= v_z \\
+	 t^{'} &= t \\
+\end{align*}
+where $(x, y, z)$ is the Cartesian coordinates and $V_{cm}$ is the velocity of the CM frame. 
+The time in the CM frame and LAB frame is $t^{'}$ and $t$, respectively.
+Applying the same notation as in \autoref{sec:LAB} and \autoref{sec:CM}.
+In the LAB frame of \autoref{fig:scattering}, conservation of momentum is given by
+\begin{align}\label{eq:comlab}
+	m_1 \boldsymbol{u}_1 + m_2 \boldsymbol{u}_2 &= m_1 \boldsymbol{v}_1 + m_2 \boldsymbol{v}_2 = (m_1 + m_2)\boldsymbol{V}
+\end{align}
+which can be written as
+\begin{align}\label{eq:V}
+	m_1 \boldsymbol{u}_1 + m_2 \boldsymbol{u}_2 &= (m_1 + m_2)\boldsymbol{V} \nonumber\\
+	\boldsymbol{V} &= \frac{m_1 \boldsymbol{u}_1 + m_2 \boldsymbol{u}_2}{m_1 + m_2} & \boldsymbol{u}_2& = 0 \nonumber\\
+	\boldsymbol{V} &= \frac{m_1}{m_1 + m_2} \boldsymbol{u}_1 \nonumber\\
+	\boldsymbol{V} &= \frac{\alpha}{1 + \alpha} u \boldsymbol{\hat{x}} \nonumber\\
+	V &= \frac{\alpha}{1 + \alpha} u
+\end{align}
+Using Galilean transformations, the connection between $\boldsymbol{v}_1^{'}$ and $\boldsymbol{v}_1$ is expressed as
+\begin{align}\label{eq:vcmv}
+	\boldsymbol{v}_1^{'} &= \boldsymbol{v}_1 - \boldsymbol{V} \nonumber\\
+	\boldsymbol{v}_1 &= \boldsymbol{v}_1^{'} + \boldsymbol{V}
+\end{align}
+which in $x$-direction gives
+\begin{align}\label{eq:vcmvx}
+	v_1 \cos \theta &= v_1^{'} \cos \theta^{'} + V
+\end{align}
+and in $y$-direction gives
+\begin{align}\label{eq:vcmvy}
+	v_1 \sin \theta &= v_1^{'} \sin \theta^{'}
+\end{align}
+The ratio of \autoref{eq:vcmvy} and \autoref{eq:vcmvx} gives
+\begin{align}\label{eq:vcmvxy}
+	\frac{v_1 \sin \theta}{v_1 \cos \theta} &= \frac{v_1^{'} \sin \theta^{'}}{v_1^{'} \cos \theta^{'} + V} \nonumber\\
+	\tan \theta &= \frac{\sin \theta^{'}}{\cos \theta^{'} + \frac{V}{v_1^{'}}} \nonumber\\
+	\tan \theta &= \frac{\sin \theta^{'}}{\frac{V}{v_1^{'}} + \cos \theta^{'}}
+\end{align}
+We need to reformulate the velocity ratio. 
+Substitution from \autoref{eq:u2u1} gives
+\begin{align}\label{eq:Vou}
+	\frac{V}{v_1^{'}} = \frac{V}{u_1^{'}}
+\end{align}
+Applying the Galilean transformation and \autoref{eq:V} we have that
+\begin{align}\label{u1cm}
+	\boldsymbol{u}_1^{'} &= \boldsymbol{u}_1 - \boldsymbol{V} \nonumber\\
+	u_1^{'} &= u_1 - V \nonumber\\
+	u_1^{'} &= u - \frac{\alpha}{1 + \alpha} u \nonumber\\
+	u_1^{'} &= u \left( 1 - \frac{\alpha}{1 + \alpha} \right) \nonumber\\
+	u_1^{'} &= u \left( \frac{1 + \alpha - \alpha}{1 + \alpha} \right) \nonumber\\
+	u_1^{'} &= \frac{1}{1 + \alpha} u
+\end{align}
+Substituting \autoref{eq:V} and \autoref{u1cm} into \autoref{eq:Vou} gives
+\begin{align}\label{eq:Vouea}
+	\frac{V}{u_1^{'}} &= \frac{\frac{\alpha}{1 + \alpha} u}{\frac{1}{1 + \alpha} u} = \alpha
+\end{align}
+Substituting \autoref{eq:Vouea} into \autoref{eq:vcmvxy} gives
+\begin{align}\label{eq:tanB1}
+	\tan \theta &= \frac{\sin \theta^{'}}{\alpha + \cos \theta^{'}}  \nonumber\\
+	\theta &= \arctan \left( \frac{\sin \theta^{'}}{\alpha + \cos \theta^{'}} \right)
+\end{align}
+Inserting the variable names from the CM frame of \autoref{fig:scattering} into \autoref{eq:tanB1} gives
+\begin{align}\label{eq:tanB1n}
+	\theta_b &= \arctan \left( \frac{\sin \theta_b^{'}}{\alpha + \cos \theta_b^{'}} \right)
+\end{align}
+
+The expression for the second scattering angle can be found in a similar manner. 
+Using Galilean transformations, the connection between $\boldsymbol{v}_2^{'}$ and $\boldsymbol{v}_2$ is expressed as
+\begin{align}\label{eq:vcmv2}
+	\boldsymbol{v}_2^{'} &= \boldsymbol{v}_2 - \boldsymbol{V} \nonumber\\
+	\boldsymbol{v}_2 &= \boldsymbol{v}_2^{'} + \boldsymbol{V}
+\end{align}
+which in $x$-direction gives
+\begin{align}\label{eq:vcmvx2}
+	v_2 \cos \varphi &= -v_2^{'} \cos \theta^{'} + V \nonumber\\
+	v_2 \cos \varphi &= V - v_2^{'} \cos \theta^{'}
+\end{align}
+and in $y$-direction gives
+\begin{align}\label{eq:vcmvy2}
+	v_2 \sin \varphi &= v_2^{'} \sin \theta^{'}
+\end{align}
+The ratio of \autoref{eq:vcmvy2} and \autoref{eq:vcmvx2} gives
+\begin{align}\label{eq:vcmvxy2}
+	\frac{v_2 \sin \varphi}{v_2 \cos \varphi} &= \frac{v_2^{'} \sin \theta^{'}}{V - v_2^{'} \cos \theta^{'}} \nonumber\\
+	\tan \varphi &= \frac{\sin \theta^{'}}{\frac{V}{v_2^{'}} - \cos \theta^{'}}
+\end{align}
+To reformulate the velocity ratio, we substitute \autoref{eq:vcm} into \autoref{eq:u2u1} giving 
+\begin{align}\label{eq:Vou2}
+	\frac{V}{v_2^{'}} &= \frac{V}{\alpha v_1^{'}} = \frac{V}{\alpha u_1^{'}}
+\end{align}
+and inserting \autoref{eq:Vouea} into \autoref{eq:Vou2} gives
+\begin{align}\label{eq:Vouea2}
+	\frac{V}{v_2^{'}} &= \frac{V}{\alpha \frac{V}{\alpha}} = 1
+\end{align}
+and substituting \autoref{eq:Vouea2} into \autoref{eq:vcmvxy2} gives
+\begin{align}\label{eq:tanT}
+	\tan \varphi &= \frac{\sin \theta^{'}}{1 - \cos \theta^{'}} = \frac{1}{\frac{1 - \cos \theta^{'}}{\sin \theta^{'}}} = \frac{1}{\tan \frac{\theta^{'}}{2}} = \cot \frac{\theta^{'}}{2} \nonumber\\
+	\varphi &= \tfrac{1}{2} (\pi - \theta^{'}) ~[ \text{radians} ] = \tfrac{1}{2} (180^\circ - \theta^{'}) ~[ \text{degrees} ]
+\end{align}
+Inserting the variable names from \autoref{fig:scattering} into \autoref{eq:tanT} gives
+\begin{align}\label{eq:tanTgen}
+	\theta_t &= \tfrac{1}{2} (\pi - \theta_b^{'}) ~[ \text{radians} ] = \tfrac{1}{2} (180^\circ - \theta_b^{'}) ~[ \text{degrees} ]
+\end{align}
+
+
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
+
+
 
 \chapter{Signal cable wiring of the CD and naming of histograms}\label{a:signal}
 
