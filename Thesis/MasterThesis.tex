@@ -364,7 +364,7 @@ Nuclei with filled proton or neutron shells, i.e. magic nuclei, generally have a
 
 
 The shape of the nucleus can change drastically by adding or removing protons or neutrons. 
-For instance, a neutron deficient isotope may have a different shape than a neutron rich isotope.
+For instance, a neutron deficient isotope may have a different shape than, for example, an isotope with one less neutron or proton.
 \autoref{fig:cea_CoN} displays the chart of nuclides and their deformation. 
 The red lines corresponds to the magic numbers, i.e. the filling of nuclear shells. 
 At the neutron and proton numbers corresponding to the magic numbers, the isotopes have no deformation, that is, they are spherical, as illustrated by the gray color. 
@@ -384,7 +384,7 @@ At the neutron deficient side, below the $N = 82$ shell closure, $^{138}$Sm and 
 %Taking out more neutrons going to very neutron-deficient Sm nuclei, e.g. $^{132}$Sm, we also see a prolate deformed shape. 
 
 
-\begin{figure}[htb]
+\begin{figure}[htb!]
 	\centering
 	\begin{subfigure}{\textwidth}
 		\centering
@@ -417,12 +417,12 @@ One of the objectives of the present work is to clarify the structure of these $
 %$^{140}_{~62}$Sm$_{78}$ is just below the neutron shell closure, $N = 82$, with a proton mid shell at $Z = 62$. 
 %The underlying nuclear structure is used as benchmarks for theoretical models.
 
-%An earlier, similar experiment, with experiment code IS495 titled \textit{Coulomb excitation of} \Sm, was conducted in 2012 at CERN-ISOLDE.
+%\footnote{Beam energies are usually given in keV/u or MeV/u. This originates from MeV/A = MeV/A $\cdot$ A/u = MeV/u. The conversion factor is 1 A = 1 u $\implies$ 1 = A/u, where $A$ is the mass number of the nucleus and $u$ is the atomic mass unit.}
+
 In 2012, another Coulomb excitation experiment of \Sm, IS495, was conducted at CERN-ISOLDE. 
-The experimental setup at the time was limited to a beam energy\footnote{Beam energies are usually given in keV/u or MeV/u. This originates from MeV/A = MeV/A $\cdot$ A/u = MeV/u. The conversion factor is 1 A = 1 u $\implies$ 1 = A/u, where $A$ is the mass number of the nucleus and $u$ is the atomic mass unit.} of 2.85 MeV/u for \Sm, which gave a lower Coulomb excitation cross section and a lower probability for multi-step excitations, compared to the present experiment. 
+The experimental setup at the time was limited to a lower beam energy, which gave a lower Coulomb excitation cross section and a lower probability for multi-step excitations, compared to the present experiment. 
 The results of the IS495 experiment indicated a weak quadrupole deformation with a strong triaxiality or \ga-softness in \Sm.
-%In a triaxial shape, all three principal axis of the ellipsoid have different lengths.
-\Sm\ has therefore a transitional character between spherical and deformed shape, and at the same time in between prolate and oblate shape.
+\Sm\ has therefore a transitional character between spherical and deformed shape.
 Theoretical models make predictions for nuclei with such symmetries \cite{Iachello2000}, and the present experiment is aiming to test these predictions.
 The current experiment is an extension to the previous experiment. 
 
@@ -1149,6 +1149,7 @@ See \autoref{fig:MBSpect} for an overview picture of the Miniball spectrometer.
 	\label{fig:MBSpect}
 \end{figure}
 
+\newpage
 
 \subsubsection{Target chamber}
 The target chamber is a hollow sphere made out of a machined out, single piece of aluminium alloy (AlMg$_3$), with a thin wall and an inner radius of approximately 80 mm. 
@@ -1262,7 +1263,7 @@ From each detector we get seven signals in total for each event, one from the co
 This requires 168 channels for data acquisition. 
 The shapes of these signals are analyzed to provide information about the energy and time of the \ga-ray, in addition to the detection position within the detector cluster \cite{NWarr-HPGe}.
 
-\begin{figure}[htb]
+\begin{figure}[htb!]
 	\centering
 	\begin{subfigure}[b]{0.49\textwidth}
 		\centering
@@ -1911,6 +1912,7 @@ What will later be described as the user calibration file is essentially the onl
 %	\label{fig:cal_CD}
 %\end{figure}
 
+\newpage
 
 \subsection{The double peak structure}\label{ssec:DPS}
 In several strips of quadrant 1 and 4, we observe a double-peak structure of \Sm\ similar to the peaks displayed in \autoref{fig:th_f}. 
@@ -2454,8 +2456,17 @@ In \autoref{fig:gam_dcB}, the total \ga-ray spectrum corresponding to the CM sca
 The two data sorting methods, singles and add-back, are emphasized by the blue and red colors, respectively.
 When the add-back method is utilized, the efficiency for high-energy \ga-rays is enhanced, i.e. the clarity of the peaks are improved.
 
+The black arrows, except the first one, in \autoref{fig:gam_dcB} corresponds to the \ga\ transitions in \Sm, while the green arrows corresponds to the sum of \ga\ transitions in a cascade.
+In the current experiment, excited states up to the $8^+$ state at 2970 keV were populated.
+The constituents of the ground state band, the \ga\ transitions of $8_1^+ \rightarrow 6_1^+$ (888 keV), $6_1^+ \rightarrow 4_1^+$ (836 keV), $4_1^+ \rightarrow 2_1^+$ (715 keV) and $2_1^+ \rightarrow 0_1^+$ (531 keV), are observed in \autoref{fig:gam_dcB}.
+At very low energy, indicated by the first black arrow below the Compton continuum, a peak of \Pb\ x-rays is visible.
+When the beam passes through the target, there is a possibility of removing electrons, which produces x-rays when the electron holes are filled.
 
-\begin{figure}[h!t]
+As a comparison, the total \ga-ray singles spectrum from the IS495 experiment at ISOLDE in 2012, is displayed in \autoref{fig:gam_MK}.
+In the IS495 experiment, a beam of \Sm\ ions were accelerated into a $^{94}$Mo target at 2.85 MeV/u.
+Three excited states of \Sm\ were populated, the first (531 keV) and second (990 keV) excited $2^+$ states, in addition to the first $4^+$ (1246 keV) state.
+
+\begin{figure}[H]
 	\centering
 	\begin{subfigure}[t]{\textwidth}
 		\centering
@@ -2478,21 +2489,9 @@ When the add-back method is utilized, the efficiency for high-energy \ga-rays is
 	 	The blue (red) \ga\ spectrum corresponds to sorting with singles (add-back) in \texttt{CLXAna}.
 	 	% \ga\ spectrum in coincidence with a particle in the CD
 		\textbf{(b)} \Sm\ on $^{94}$Mo at 2.85 MeV/u from the COULEX experiment performed in 2012 at CERN-ISOLDE \cite{Klintefjord}. 
-		See the text for more information. 	
-	 	}
+		See the text for more information.}
 	\label{fig:gam_compared}
 \end{figure}
-
-
-The black arrows, except the first one, in \autoref{fig:gam_dcB} corresponds to the \ga\ transitions in \Sm, while the green arrows corresponds to the sum of \ga\ transitions in a cascade.
-In the current experiment, excited states up to the $8^+$ state at 2970 keV were populated.
-The constituents of the ground state band, the \ga\ transitions of $8_1^+ \rightarrow 6_1^+$ (888 keV), $6_1^+ \rightarrow 4_1^+$ (836 keV), $4_1^+ \rightarrow 2_1^+$ (715 keV) and $2_1^+ \rightarrow 0_1^+$ (531 keV), are observed in \autoref{fig:gam_dcB}.
-At very low energy, indicated by the first black arrow below the Compton continuum, a peak of \Pb\ x-rays is visible.
-When the beam passes through the target, there is a possibility of removing electrons, which produces x-rays when the electron holes are filled.
-
-As a comparison, the total \ga-ray singles spectrum from the IS495 experiment at ISOLDE in 2012, is displayed in \autoref{fig:gam_MK}.
-In the IS495 experiment, a beam of \Sm\ ions were accelerated into a $^{94}$Mo target at 2.85 MeV/u.
-Three excited states of \Sm\ were populated, the first (531 keV) and second (990 keV) excited $2^+$ states, in addition to the first $4^+$ (1246 keV) state.
 
 The number of peaks in \autoref{fig:gam_dcB} is larger than the number of peaks in \autoref{fig:gam_MK}.
 For the present experiment, the higher $Z$ of the \Pb\ target and the higher beam energy contribute to a higher excitation probability of \Sm, as explained in \autoref{ch:intro}. 
@@ -2512,18 +2511,6 @@ Second, the excitation probability for a number of the states are low, and there
 Third, there might be states with a low transition intensity leading to very few counts in the spectrum, especially at high \ga-ray energy.
 The level scheme of \Sm\ in \autoref{fig:levels} displays all the \ga\ transitions listed in  \autoref{tab:gamma_trans}.
 %, in addition to an unknown state which will be discussed below, in the current section. 
-
-
-\begin{table}[ht] 
-    \centering 
-    \caption{Known \ga\ transitions in \Sm\ based on \cite{Klintefjord, NNDC-levels}. 
-    $E$ refers to the energy, $J^\pi$ is the spin and parity and $\sigma \lambda$ is the multipolarity. 
-    $I_\gamma$ is the relative \ga\ intensity for transitions depopulating a given state, where the strongest transition is normalized to intensity 100.
-    The column "Visible in \ga\ spectrum" describes if it is possible to see the transition in \autoref{fig:gam_dcB}.}
-	\input{Table-data/Gamma-transitions.tex}
-	\label{tab:gamma_trans}
-\end{table}
-
 
 The green arrows in \autoref{fig:gam_dcB} corresponds to energy states in \autoref{fig:levels}. 
 The energy of the green arrows is a combination of two \ga\ transitions, i.e. the sum of the transition energies.
@@ -2545,6 +2532,16 @@ Magnetic excitations are strongly suppressed in Coulomb excitation experiments, 
 The fact that the $0_2^{(+)}$ state was populated in the present experiment, already reveal that the parity of the state must be positive, i.e. $\pi = +$, which implies that the spin and parity of the 1599 keV state is $I^\pi = 0_2^+$. 
 %In cases where the spin of the final state is not known, different assumptions can be used when fitting the electromagnetic matrix elements to the excitation probabilities (as a function of scattering angle). 
 %Usually the spin can be determined from the chi-square of the fit.
+
+\begin{table}[H] 
+    \centering 
+    \caption{Known \ga\ transitions in \Sm\ based on \cite{Klintefjord, NNDC-levels}. 
+    $E$ refers to the energy, $J^\pi$ is the spin and parity and $\sigma \lambda$ is the multipolarity. 
+    $I_\gamma$ is the relative \ga\ intensity for transitions depopulating a given state, where the strongest transition is normalized to intensity 100.
+    The column "Visible in \ga\ spectrum" describes if it is possible to see the transition in \autoref{fig:gam_dcB}.}
+	\input{Table-data/Gamma-transitions.tex}
+	\label{tab:gamma_trans}
+\end{table}
 
 A typical indication for shape coexistence is $0^+$ states at low energy. 
 In \Sm, there is an indication of two $0^+$ states around 1.6 MeV.
