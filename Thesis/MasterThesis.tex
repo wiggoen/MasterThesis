@@ -242,7 +242,7 @@ To my family, for all their love, support and encouragement!
 
 \begin{acknowledgements}
 
-I would like to thank my supervisors Professor Andreas Görgen and Dr. Katarzyna Hady{\'{n}}ska-Kl{\c{e}}k for giving me the amazing opportunity to do an experiment at CERN-ISOLDE. 
+I would like to thank my supervisors Professor Andreas Görgen and Dr. Katarzyna Hady{\'{n}}ska-Kl{\c{e}}k for giving me the unique opportunity to do an experiment at CERN-ISOLDE. 
 It has been a great experience.
 A special thanks to Andreas for being available for weekly meetings to answer all my questions about the experiment and the physics behind it.
 Thanks for the good advises, help and enriching ideas you provided.
@@ -2505,7 +2505,7 @@ The fact that the $0_2^{(+)}$ state was populated in the present experiment, alr
 A typical indication for shape coexistence is $0^+$ states at low energy. 
 In \Sm, there is an indication of two $0^+$ states around 1.6 MeV.
 The $0_2^{+}$ (1599 keV) and $0_3^{+}$ (1628 keV) states can tell us about the shape of the nucleus, in addition to if there is any shape coexistence in \Sm.  
-One objective of this experiment is to clarify the structure of these $0^+$ states. 
+%One objective of this experiment is to clarify the structure of these $0^+$ states. 
 
 
 \begin{figure}[ht!]
@@ -2522,7 +2522,7 @@ The peak of the 1420 keV ($(1,2)_1 \rightarrow 0_1^+$) transition is quite broad
 This peak might contain the 1402 keV ($(0,1,2) \rightarrow 2_1^+$) transition from 1933 keV, at the left side of the rightmost transition in \autoref{fig:levels}.
 Further, the peak at the energy of 1952 keV is similarly broad, and may contain the sum-peak of the 1933 keV level as well. 
 
-In addition to the transitions visible in the \ga\ spectrum in \autoref{fig:gam_dcB}, a transition from an unknown $3^+$ state is expected.
+In addition to the transitions visible in the \ga\ spectrum in \autoref{fig:gam_dcB}, a transition from an unknown $3^+$ state is predicted.
 This unknown state should predominantly decay into the $2_2^+$ state \cite{Klintefjord2016, Samorajczyk2015}.
 The $3^+$ state is proposed to be a member of the \ga-vibrational band, which is expected to be built on the $2_2^+$ state.
 Theory predicts that the $3^+$ state should lie around 1944 keV.
@@ -2654,7 +2654,7 @@ By further analyzing the 23 CM angle ranges, the precision of the previous measu
 
 
 In this thesis, data from the Coulomb excitation experiment, IS558, at CERN-ISOLDE was analyzed. 
-A beam of \Sm\ ions was accelerated into a target of \Pb\ at 4.65 MeV/u. 
+A beam of \Sm\ ions was accelerated into a target of \Pb.
 ISOLDE developed software was utilized to simulate the Coulomb excitation process, producing the energy input for the calibration.
 The raw data from the experiment was sorted and used to calibrate the particle and \ga-ray detectors.
 
@@ -2673,21 +2673,21 @@ A new transitions at approximately 844 keV is assumed to be the "missing" $3^+$ 
 This new $3^+ \rightarrow 2_2^+$ transition, if verified, will certainly clarify the role of triaxial deformation in \Sm.
 % This Coulomb experiment can help figure out if the triaxial deformation is rigid or soft in \Sm.
 This is an important result that will help to better understand the structure of \Sm. 
-The new state will be a central aspect of the publication that is going to be written about the experiment.
+The new state will be a central aspect of a future publication related to the experiment.
 In addition, we observed a new transition with the \ga-ray energy of approximately 1860 keV. 
 None of the known \ga\ cascades in the level scheme add up to this energy, and there are no known transitions, unaccounted for, with the energy of approximately 1860 keV. 
 From the \ga-spectrum, there are no known candidates for which the 1860 keV transition may decay to.
 Coincidence analysis have to be performed to determine where the 1860 keV transition originates from.
 In the forthcoming work, the produced \ga-\ga\ matrix can be investigated to verify the new transitions, and search for new transitions, extending the level scheme of \Sm. 
-As a last step of the present analysis, a set of singles spectra as a function of scattering angle was produced. These spectra are essential for the future analysis, to obtain the Coulomb excitation cross sections. 
+As a last step of the present analysis, a set of singles spectra as a function of scattering angle was produced. These spectra are essential for the future work, to obtain the Coulomb excitation cross sections. 
 
 There are many possible improvements of the present data analysis. 
 First, an improved, second user calibration of the particle detector may be performed. 
 The shapes of the peaks have to be taken into account to improve the fitting. 
 In the present work, we found that an automatic fitting of the peaks to determine the peak centroids inflicted many issues. 
-For this reason, we propose that a future second calibration should be performed manually for each strip on the front and back side of the CD. 
+For this reason, we propose that a second calibration should be performed manually for each strip on the front and back side of the CD. 
 In addition, the calibration might benefit form a review of the kinematic simulation.
-Second, in the present work, the beam was assumed to be very pure. 
+Second, the beam was assumed to be very pure. 
 In the further analysis, the possibility of beam contaminants should be investigated.
 
 An efficiency calibration was not performed in the present work. 
@@ -2697,7 +2697,7 @@ Each spectrum for the 23 different angular ranges will provide an independent se
 
 In the next step of the Coulomb excitation analysis, a set of electromagnetic matrix elements will be fitted to the \ga-ray intensities in a chi-square ($\chi^2$) procedure. 
 The known transition probabilities from the previous experiment (IS495) and known branching ratios can be used to constrain the fit. 
-Since the present experiment (IS558) provides many more data points compared to the number of free parameters, the experiment will provide both transitional and diagonal matrix elements with good precision. 
+Since the present experiment (IS558) provides many data points compared to the number of free parameters, the experiment will provide both transitional and diagonal matrix elements with good precision. 
 The final step is to compare the $B(E2)$ values and quadrupole moments with theoretical calculations, similar to what was done in \cite{Klintefjord2016}.
 
 %These intensities can then be given as input to a Coulomb excitation code named GOISA \cite{GOSIA}. 
@@ -3243,7 +3243,7 @@ Inserting the variable names from \autoref{fig:scattering} into \autoref{eq:tanT
 
 \section{The main function}
 The main function of \texttt{kinsim3} looks like the following
-\begin{lstlisting}[language=c++]
+\begin{lstlisting}[language=]
 kinsim3(Zb, Zt, Ab, At, thick, Eb, dEb, Ex, res, cd_dist, flat, Nevts, srim_dir)
 \end{lstlisting}
 where \textit{Zb} and \textit{Zt} are the proton number of the beam and target, respectively. 
@@ -3254,7 +3254,7 @@ where \textit{Zb} and \textit{Zt} are the proton number of the beam and target, 
 For the Si dead layer in \texttt{kinsim3}, the SRIM files must have units of MeV/mm. 
 
 To load \texttt{kinsim3} into ROOT, the \textbf{.L $<$filename$>$} command was used
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=]
 $ cd ~/GitHub/Miniball/kinsim
 $ root
 root [0] .L kinsim3.cc++
@@ -3270,7 +3270,7 @@ The plots display simulated counts vs. energy, where the first peak (at lower en
 %In the simulation, the Rutherford cross section was not included. 
 %The relative intensity between the projectile and target peaks is therefore not the same as in the experiment, but the simulated energies are realistic.
 The plots were grabbed from the \textit{.root}-file by the commands
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=]
 $ cd ~/GitHub/MasterThesis/Scripts/plotting
 $ root
 root [0] .L ParticlePlot.cpp++
@@ -3292,7 +3292,7 @@ root [1] simulation_plot("setup_Sm.txt", 0)
 The page following the CD simulation displays the fitting of the CD simulation. 
 The red dotted curves shows the fitting of the peaks, and the vertical black dotted lines indicate the centroids of the peaks.
 The fitting is performed by running the following commands
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=]
 $ cd ~/GitHub/MasterThesis/Scripts/fitting
 $ root
 root [0] .L ParticleFit.cpp++
