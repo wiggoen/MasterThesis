@@ -220,51 +220,18 @@
 
 %%% ABSTRACT
 \begin{abstract}
+In the present work, experimental data of from a Coulomb excitation experiment of \Sm\ was analyzed. The experiment was carried out at the ISOLDE facility at CERN in 2017 to investigate the nuclear structure of \Sm. This isotope is of great importance to explain nuclear shape transitions, as it lies in between a spherical and deformed shape.
 
-In this thesis, experimental data from a Coulomb excitation experiment of \Sm, conducted at CERN-ISOLDE in 2017, has been sorted and analyzed. 
-Excited states up to and including the $8^+$ state at 2970 keV were populated.
-The sorting of the data was performed with a code named \textsl{MiniballCoulexSort}, which is under development at ISOLDE. 
-A fully calibrated data set was obtained, in addition to Doppler corrected \ga\ spectra for \Sm.
+In the experiment, a radioactive ion beam of \Sm\ was accelerated into a \Pb\ target.
+Silicon detectors were utilized to determine the energies and angles of the scattered particles, and germanium detectors to measure the \ga-rays of excited states in \Sm. 
+MiniballCoulexSort, a code which is under development at ISOLDE, was applied to sort the data.
+A fully calibrated data set was obtained, in addition to Doppler corrected \ga\ spectra for \Sm\ with good resolution. 
 
-The results from the analysis revealed a number of previously known \ga\ transitions, in addition to two unknown transitions, one at approximately 844 keV and one at approximately 1860 keV. 
-From \ga-\ga\ coincidences it is a possibility that one of the missing members of the \ga-vibrational band, the $3_1^+$ state, is found. 
-It is assumed that the $3_1^+$ state mostly decay to the $2_2^+$ state.
-%, with a \ga\ transition energy of approximately 844 keV. 
-The intensity of the new 844 keV transition is relatively strong, which makes it a very good candidate for the predicted $3_1^+ \rightarrow 2_2^+$ transition.
-The $3_1^+$ state will especially be important to determine if the triaxial deformation in \Sm\ is static or dynamic.
+As expected, a number of previously known \ga\ transitions were observed in the present experiment.
+Excited states up to and including the $8^+$ state at 2970 keV were populated in \Sm.
+Two peaks in the \ga-ray spectrum does not correspond to any of the known transitions in the level scheme. One peak is observed at approximately 844 keV, and the other at approximately 1860 keV. The results suggests that these peaks are previously unknown transitions. 
 
-Another possible unknown transition at approximately 1860 keV is also observed, but there is no indication of where the transition is decaying to in the known level scheme.
-Further analysis is needed to determine the new transitions, and the transition strengths for all the \ga\ transitions obtained in the data set.
-
-
-\bigskip
-
-
-\textcolor{red}{Alternative:}
-
-This thesis analyzed the experimental data of Coulomb excitation of \Sm.
-
-The experiment was carried out at the ISOLDE facility at CERN in 2017, where recent upgrades
-has provided higher energies and intensities for radioactive ion beams compared to previous experiments.
-Silicon detectors were used to determine the energies and angles of scattered particles, and
-germanium detectors to measure \ga-rays from excited states in \Sm.
-
-Excited states up to and including the 8+ state at 2970 keV were populated in the large dataset.
-\textsl{MiniballCoulexSort}, a code which is under development at ISOLDE, were used to sort the data. 
-A fully calibrated data set was obtained, in addition to Doppler corrected spectra for \Sm.
-
-The results from the analysis revealed a number of previously known \ga\ transitions, in
-addition to two unknown transitions, one at approximately 844 keV and one at approximately 1860
-keV. 
-The relatively strong intensity of the new 844 keV transition could explain the missing $3_1^+$ state of the \ga-vibrational band. 
-In \ga-\ga\ coincidences it is assumed/predicted that the $3_1^+$ state mostly decay to the $2_2^+$ state. 
-\textcolor{blue}{(Utdyp hvorfor denne transition er en god fit med den energien(?))}
-The $3_1^+$ state will especially be important to determine if the triaxial deformation in \Sm\ is static or dynamic. \textcolor{blue}{(og hva konkluderte du med?)}
-
-Further analysis is needed to determine the unknown transition(s) at approximately 1860 keV.
-There is no indication of whether the transition(s) is(are) decaying to in the known level scheme.
-
-
+In particular, the peak at 844 keV may be a member of the \ga-vibrational band, which is theoretically predicted to to be built on the observed $2_2^+$ state at 990 keV. The intensity of the new 844 keV transition is relatively strong and it is observed to arrive in coincidence with the 990 keV ($2_2^+$) state, making it a good candidate for the theoretically predicted $3_1^+$ state. Further analysis is needed to determine if the 844 keV transition identifies as the $3_1^+$ state. If verified, the new $3_1^+$ state will certainly clarify the role of triaxial deformation \Sm. 
 \end{abstract}
 
 
@@ -278,6 +245,10 @@ Supervisors Professor Andreas Görgen and Dr. Katarzyna Hady{\'{n}}ska-Kl{\c{e}}
 
 %First of all, I would like to thank my supervisors for giving me the amazing opportunity to work in fundamental research. Professor Andreas Görgen and Dr. Katarzyna Hady{\'{n}}ska-Kl{\c{e}}k, thanks for the good advices, help, and enriching ideas you provided.
 
+%A special thanks to Andreas for being available for weekly meetings to answer all my questions.
+
+Participants \autoref{tab:participants}, I am so sorry if someone is missing from the list. 
+Also a thanks to the CERN-ISOLDE staff who made this experiment possible.
 
 Nuclear Physics Group
 
@@ -295,10 +266,7 @@ Morten, Alex and Astrid.
 
 Ina, for pushing me towards excellence, I love you.
 
-\subsection*{Collaboration details}
 
-
-ENSAR2: European Nuclear Science and Applications Research - 2 \url{http://www.ensarfp7.eu}, UiO, ISOLDE, \textcolor{red}{other contributors to the experiment?}
 
 
 
@@ -373,7 +341,7 @@ These series of numbers are one of the main features that shell structure is bui
 A single closed shell nucleus is a nucleus where either $Z$ or $N$ are a magic number, while for a doubly closed shell nucleus both $Z$ and $N$ are magic numbers. 
 
 Maria Goeppert Mayer discovered the magic numbers around 1945 from observation of periodicity in binding energy. 
-Around / \textcolor{red}{At} every magic number of neutrons or protons, the binding energy of a nucleus would fall / \textcolor{red}{rise}. 
+At every magic number of neutrons or protons, the binding energy of a nucleus would increase. 
 She noticed that the nuclei with magic numbers had an extra binding energy compared to the predictions of the present model, the semi-empirical mass formula \cite{NR}. 
 The nuclear shell model could explain why nuclei with a magic number of protons or neutrons were unusually stable compared to the neighboring non-magic nuclei \cite{Mayer1964}. 
 She gave Walter Maurice Elsasser credits for being the first to remark that such numbers exists, from an article he wrote in 1933. 
@@ -451,7 +419,6 @@ Shape coexistence is often found near closed shells and is possible for certain 
 A typical indication for shape coexistence is $0^+$ states at low energy. 
 One of the best examples for shape coexistence is the Hg (mercury) isotopes at neutron mid shell, around $^{186}_{~80}$Hg$_{106}$. 
 The Hg isotopes are at $Z = 80$, just below the proton shell closure, $Z = 82$, and at neutron mid shell.
-%\textcolor{red}{Er det noen mer forklaring på hvorfor dette er det beste eksemplet? Påviste $0^+$ tilstander ved lav energi? Hvilke shapes ko-eksisterer? Artikkel?}
 
 $^{140}_{~62}$Sm$_{78}$ is just below the neutron shell closure, $N = 82$, with a proton mid shell at $Z = 62$. 
 In \Sm, there is an indication of two $0^+$ states around 1.6 MeV as seen in \autoref{ch:results}. 
@@ -526,8 +493,6 @@ The remainder of the appendix is referenced when required in the text.
 
 
 \section{Nuclear deformation}\label{sec:deformation}
-%A way to understand nuclear deformation is to imagine a liquid drop vibrating \textcolor{red}{??? and/or rotating ???} at \textcolor{red}{??? high / a ???} frequency. 
-%In this imagined picture, the average shape of the liquid drop nucleus is spherical, but the instantaneous shape is not.
 It is natural to imagine nuclei as tiny spheres.
 Although the nucleus is a fuzzy quantum object, we can still associate a macroscopic shape with it.
 Thus, we can define shape parameters that quantify the degree of deformation in the intrinsic system of the nucleus. 
@@ -1025,6 +990,12 @@ Nuclei with spin $I = 0$ or $I = \tfrac{1}{2}$ can have an intrinsic deformation
 \chapter{Coulomb excitation experiment}\label{ch:experiment}
 \epigraph{\textit{"If I could remember the names of all those particles, I'd be a botanist."}}{\textit{– Enrico Fermi}}
 
+
+The present experiment, IS558, was conducted at the CERN-ISOLDE facility between 8th and 14th of August in 2017. 
+A beam of \Sm\ ions was accelerated into a target of \Pb\ at 4.65 MeV/u with the objective of studying the transitions and deformation of \Sm.
+In the following chapter, the details of the experimental setup utilized in the present work will be outlined. 
+
+
 \section{ISOLDE at CERN}
 ISOLDE is a Radioactive Ion Beam (RIB) facility at CERN in Meyrin, Switzerland. \autoref{fig:accelerators} shows the CERN accelerator complex, where ISOLDE is located beside the Proton Synchrotron Booster (PSB), in the lower right marked by a green box. The acronym ISOLDE stands for Isotope Separator On Line DEvice. The facility can produce over 1000 different radionuclides to be used in a wide variety of experiments in nuclear physics, atomic physics, solid state physics, life sciences and fundamental interactions. Experiments have been performed at ISOLDE since 1967 and since 2001 experiments with post-accelerated RIBs have been conducted  \cite{HIE-ISOLDE, ISOLDE-web, ISOLDE-facility}. 
 The High Intensity and Energy upgrade (HIE-ISOLDE) made it possible to deliver beam energies up to 7.5 MeV/u in July 2017 \cite{CERN-news}. 
@@ -1040,7 +1011,7 @@ Further upgrades, after the present experiment, have made it possible to deliver
 
 In general, it is very challenging to study radioactive, short lived nuclei. 
 The newest edition of the Karlsruhe Nuclide Chart have nuclear data of over 4000 nuclides, and most of these are radioactive \cite{CoN}. 
-In many cases it is not possible produce a target of a radioactive nuclei and to perform experiments due to the short half-life of the involved nucleus. 
+In many cases it is not possible produce a target of a radioactive nuclei and to perform experiments due to the short half-life of the involved nucleus\footnote{The radioactive isotope \Sm\ has a ground state half-life ($T_{1/2}$) of 14.82 min.}. 
 To study these radioactive nuclei, RIBs are accelerated at stable targets. 
 
 The beam at the RIB facilities consists of, as the name implies, radioactive isotopes. 
@@ -1067,20 +1038,6 @@ If the angle between the recoiling nucleus and the \ga-ray can be determined acc
 
 
 \section{Experimental setup}\label{sec:exp_setup}
-The Coulomb excitation experiment was was conducted at the CERN-ISOLDE facility between 8th and 14th of August in 2017. 
-A beam of \Sm\ ions was accelerated into a target of \Pb\ at 4.65 MeV/u.
-The experiment code was IS558 with the title \textit{Shape Transition and Coexistence in Neutron-Deficient Rare Earth Isotopes}.
-\Sm\ is a radioactive isotope with a ground state half-life ($T_{1/2}$) of 14.82 min, and is a neutron-deficient nuclei compared to the line of stability.
-
-%Samarium (Sm) comes from the lanthanide series of chemical elements, which are known as rare-earth elements.
-%\Sm\ is a radioactive isotope with a ground state half-life ($T_{1/2}$) of 14.82 min, and is a neutron-deficient nuclei compared to the line of stability.
-
-\begin{itemize}
-	\item \textcolor{red}{Forskningsgrupper som samarbeidet om eksperimentet?}
-	\item \textcolor{red}{Nevne/minne leser på hva som er målet med eksperimentet og grovt hvordan det gjøres?}
-\end{itemize}
-
-
 \subsection{Beam production}\label{ssec:beam_prod}
 \autoref{fig:Coulex} shows a sketch of the experimental setup of the \Sm\ Coulomb excitation experiment. 
 Accelerated proton beam bunches from the PSB comes into the ISOLDE facility and collide with a thick production target, the primary target. 
@@ -1116,7 +1073,7 @@ The Resonance Ionization Laser Ion Source (RILIS) is based on the method of step
 It is an element-selective process which is used to produce ion beams of the desired element \cite{RILIS}. 
 In this experiment, RILIS was used to select samarium (Sm) with atomic number $Z = 62$. 
 After RILIS has selected Sm, we have a continuous beam of Sm$^{+1}$ ions at an energy of 60 keV  \cite{ISOLDE-web, TIF}. 
-%\textcolor{blue}{The primary target is on a 60 kV high voltage platform.} 
+%The primary target is on a 60 kV high voltage platform.
 
 After the ionization of the beam, the next step in the process is to perform a mass separation.
 The goal of the mass separation is to obtain a beam only containing the isotopes with the desired mass number, and to exclude the contaminants that exits RILIS. 
@@ -1178,10 +1135,6 @@ and from stable isotopes the contaminants can come from:
 \end{itemize}
 More information on contaminants can be found in \cite{HIE-ISOLDE, RILIS, MB-spect}.
 
-%\textcolor{Magenta}{Tilbakemelding: \newline
-%Blir litt lange setninger for en liste øverst. Skriv om til tekst eller del opp i flere setninger. \newline
-%"with an integer multiple of both mass an charge" er litt uforklarlig? \newline
-%}
 
 \subsection{The secondary target}\label{ssec:Pb}
 For the current experiment, a target consisting of \Pb\ with a thickness of 1.4 mg/cm$^2$ was chosen. 
@@ -1199,10 +1152,9 @@ The excitation probability for \Pb\ is maximal if the EM interaction is approxim
 
 \subsection{Miniball spectrometer}
 The Miniball spectrometer consists of a particle detector and a \ga\ detector array.
-In the Coulomb excitation experiment, a silicon detector was used to determine the energies and angles of scattered particles, and germanium detectors were used to measure \ga-rays from excited states in \Sm.
-The target chamber, containing the \Pb\ target, looks like a small ball.
-\autoref{fig:MBSpect} shows an overview picture of the Miniball spectrometer. 
-\textcolor{red}{Tilbakemelding: Legg til en intro setning, overfladisk beskriv hvordan Miniball ser ut og i grove trekk hvilke deler den består av.}
+In the Coulomb excitation experiment, a silicon detector was used to determine the energies and angles of scattered particles, and germanium detectors were utilized to measure \ga-rays related to the excited states of \Sm.
+The target chamber, containing the \Pb\ target, resembles a small ball, hence the name Miniball.
+See \autoref{fig:MBSpect} for an overview picture of the Miniball spectrometer. 
 
 
 \begin{figure}[ht]
@@ -2343,14 +2295,6 @@ A detailed explanation of the input parameters is provided in \autoref{ch:MBCS_R
 \end{figure}
 
 
-%\autoref{tab:DGF}, \textcolor{red}{not sure how to make this table. How is the histogram names and the calibration coefficients linked? Not exactly straightforward.}
-%\begin{table}[ht] 
-%	\centering 
-%	\caption{DGF}
-%	\input{Table-data/DGF.tex}
-%	\label{tab:DGF}
-%\end{table}
-
 %The Miniball spectrometer \cite{MB-spect} \newline
 %p. 8: \newline
 %\textbf{Efficiency and resolution:}
@@ -2467,9 +2411,6 @@ It causes the energy calibration to become negative, and the faulty detector seg
 %It is the way it is usually done for dead CD strips or dead \ga\ detectors. 
 As explained above, this was only done for ring 1 of the CD.
 
-\bigskip
-
-\textcolor{red}{Finn en overgangssetning til kap. 5.}
 
 
 %\begin{figure}[ht]
@@ -2630,9 +2571,7 @@ One objective of this experiment is to clarify the structure of these $0^+$ stat
 	\includegraphics[width=\textwidth]{Images/Level-scheme-140Sm-v2.png}
 	\caption{Level scheme for \Sm\ based on the previous knowledge from \cite{Klintefjord, NNDC-levels}. 
 	The energies for the levels and transitions are in keV and are rounded to the nearest integer.
-	See the text for more information. 
-	\textcolor{red}{Tegn inn de overgangene vi ikke ser med stiplede linjer.}
-	}
+	See the text for more information.}
 	\label{fig:levels}
 \end{figure}
 
@@ -2640,7 +2579,6 @@ One objective of this experiment is to clarify the structure of these $0^+$ stat
 The peak of the 1420 keV ($(1,2)_1 \rightarrow 0_1^+$) transition is quite broad. 
 This peak might contain the 1402 keV ($(0,1,2) \rightarrow 2_1^+$) transition from 1933 keV, at the left side of the rightmost transition in \autoref{fig:levels}.
 Further, the peak at the energy of 1952 keV is similarly broad, and may contain the sum-peak of the 1933 keV level as well. 
-\textcolor{red}{Tegn inn i \autoref{fig:gam_dcB} hvis tid.}
 
 In addition to the transitions visible in the \ga\ spectrum in \autoref{fig:gam_dcB}, a transition from an unknown $3^+$ state is expected.
 This unknown state should predominantly decay into the $2_2^+$ state \cite{Klintefjord2016, Samorajczyk2015}.
@@ -2657,8 +2595,7 @@ The coincidence spectra show two peaks that are clearly shifted in energy, with 
 The new transition places the candidate for the $3^+$ state at 1834 keV, 110 keV below the predicted theoretical energy. 
 We cannot expect to observe a transition down to the ground state from 1834 keV, since it would have been a M3 transition, i.e. the transition is very improbable due to the high magnetic multipolarity.
 
-The intensity of the new 844 keV transition is relatively strong, which makes the transition an excellent candidate for the predicted $3_1^+ \rightarrow 2_2^+$ transition, and a possible member of the \ga-vibrational band. If verified, the new state will, without doubt, help clarify the role of triaxiality in this region of the nuclear chart. 
-\textcolor{red}{Usikker på om det kun gjelder Sm eller om det gjelder nærliggende også.}
+The intensity of the new 844 keV transition is relatively strong, which makes the transition an excellent candidate for the predicted $3_1^+ \rightarrow 2_2^+$ transition, and a possible member of the \ga-vibrational band. If verified, the new state will, without doubt, help clarify the role of triaxiality in \Sm.
 
 
 \begin{figure}[htb]
@@ -2808,20 +2745,22 @@ The new state will be a central aspect of the publication that is going to be wr
 In addition, we observe a new transition with the \ga-ray energy of approximately 1860 keV. 
 None of the known \ga\ cascades in the level scheme add up to this energy, and there are no known transitions, unaccounted for, with the energy of approximately 1860 keV. 
 From the \ga-spectrum, there are no known candidates for which the 1860 keV transition may decay to.
+Coincidence analysis have to be performed to determine where the 1860 keV transition originates from.
 In the forthcoming work, the produced \ga-\ga\ matrix can be investigated to verify the new transitions, and search for new transitions, extending the level scheme of \Sm. 
 As a last step of the present analysis, a set of singles spectra as a function of scattering angle was produced. These spectra are essential for the future analysis, to obtain the Coulomb excitation cross sections. 
 
 There are many possible improvements of the present data analysis. 
-Firstly, an improved, second user calibration of the particle detector may be performed. 
+First, an improved, second user calibration of the particle detector may be performed. 
 The shapes of the peaks have to be taken into account to improve the fitting. 
 In the present work, we found that an automatic fitting of the peaks to determine the peak centroids inflicted many issues. 
 For this reason, we propose that a future second calibration should be performed manually for each strip on the front and back side of the CD. 
 In addition, the calibration might benefit form a review of the kinematic simulation.
-Secondly, in the present work, the beam was assumed to be very pure. 
+Second, in the present work, the beam was assumed to be very pure. 
 In the further analysis, the possibility of beam contaminants should be investigated.
-Thirdly, an efficiency calibration was not performed in the present work. 
+Third, an efficiency calibration was not performed in the present work. 
 This may be achieved by using the $^{133}$Ba and $^{152}$Eu source data.
 
+\textcolor{red}{Fiks... skriv om koble sammen med 5 under her.}\newline
 With the produced \ga\ spectra and the efficiency calibration from the source data, it is possible to extract the intensities for all transitions for all 23 CM scattering angles. 
 These intensities can then be given as input to a Coulomb excitation code named GOISA \cite{GOSIA}. 
 In addition, the experimental input includes the transition strengths of the $2_1^+ \rightarrow 0_1^+$, $4_1^+ \rightarrow 2_1^+$, and $2_2^+ \rightarrow 2_1^+$ from the previous experiment (IS495), together with their uncertainties, and a few known \ga-ray branching ratios. 
@@ -3434,6 +3373,18 @@ root [1] simulation_fit("setup_Sm.txt")
 \includepdf[pages={-}, angle=270]{../Plots/simulation/cd_sim_all.pdf}
 
 \includepdf[pages={-}, angle=270]{../Plots/fitting/Pb_Sm_sim.pdf}
+
+
+% ----------------------------------------------------------------------------------------------------------------------% ----------------------------------------------------------------------------------------------------------------------
+
+\chapter{Participants of the experiment}
+
+\begin{table}[ht] 
+    \centering 
+    \caption{}
+	\input{Table-data/Participants.tex}
+	\label{tab:participants}
+\end{table}
 
 
 \end{appendices}
