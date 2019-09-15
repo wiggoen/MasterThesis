@@ -1108,7 +1108,6 @@ See \autoref{fig:MBSpect} for an overview picture of the Miniball spectrometer.
 	\label{fig:MBSpect}
 \end{figure}
 
-\newpage
 
 \subsubsection{Target chamber}
 The target chamber is a hollow sphere made out of a machined out, single piece of aluminium alloy (AlMg$_3$), with a thin wall and an inner radius of approximately 80 mm. 
@@ -2010,7 +2009,7 @@ The peak values, i.e. the time offsets, may change depending on the amount of da
 Therefore, it is wise to double check the time offsets when more data is added to the \textit{.root}-file. 
 After the peak values have been collected, they should be written into the calibration file together with the updated threshold. 
 Then, the \texttt{Q4S.sh} script with \texttt{TreeBuilder} should be re-run to implement the changes in the calibration file. 
-The time offsets utilized in this experiment was the following
+The time offsets utilized in this experiment was the following \newline
 \begin{lstlisting}[language=sh]
 # ADC time offsets (ticks)
 adc_0.TimeOffset:  0
