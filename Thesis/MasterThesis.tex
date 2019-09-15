@@ -190,7 +190,7 @@
 \author{Trond Wiggo Johansen}
 \title{Coulomb excitation of neutron-deficient $\textnormal{\Sm}$}
 \date{September 2019}
- 
+
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
 %Equations
@@ -247,19 +247,18 @@ It has been a great experience.
 A special thanks to Andreas for being available for weekly meetings to answer all my questions about the experiment and the physics behind it.
 Thanks for the good advises, help and enriching ideas you provided.
 
-I would like to thank the participants of the experiment, listed in \autoref{tab:participants}. 
-I am so sorry if someone is missing from the list. 
+In addition, I would like to thank the participants of the experiment, listed in \autoref{tab:participants}, I hope everyone are included (if not, please let me know!).
 Also, thank you to the CERN-ISOLDE staff who made this experiment possible.
-Thank you Dr. Liam Gaffney for answering all my e-mails regarding the MiniballCoulexSort.
+A special thanks to Dr. Liam Gaffney for answering all my e-mails regarding the MiniballCoulexSort.
 Thank you Ville Virtanen for helping me getting started on the scripts for my thesis. 
 
-I would like to thank the Computational Physics Group for giving me a great work environment, and thank you Professor Morten Hjorth-Jensen for introducing me to the fantastic C++ programming language. 
+I would like to thank the Computational Physics Group for giving me a great working environment, and Professor Morten Hjorth-Jensen for introducing me to the fantastic C++ programming language. 
 
 I am grateful to the Nuclear Physics Group, for gathering students and employees together at meetings and conferences around the world. 
-Thank you for letting me go to summer school in South Africa and to a physics conference in Svalbard. 
-It has been a great experience.
+Thank you for letting me go to the summer school in South Africa and to the physics conference in Svalbard. 
+Thanks to this, I have many adventures to look back to.
 
-Thank you Lillefy, FFU and Fysikkforeningen for making my bachelor a great experience.
+Thank you Lillefy, Fysisk Fagutvalg and Fysikkforeningen for making my physics bachelor a great experience.
 
 A big thanks to my family for all the help, financial and moral support. 
 I would not have been able to do this without you.
@@ -421,6 +420,11 @@ One of the objectives of the present work is to clarify the structure of these $
 %An earlier, similar experiment, with experiment code IS495 titled \textit{Coulomb excitation of} \Sm, was conducted in 2012 at CERN-ISOLDE.
 In 2012, another Coulomb excitation experiment of \Sm, IS495, was conducted at CERN-ISOLDE. 
 The experimental setup at the time was limited to a beam energy\footnote{Beam energies are usually given in keV/u or MeV/u. This originates from MeV/A = MeV/A $\cdot$ A/u = MeV/u. The conversion factor is 1 A = 1 u $\implies$ 1 = A/u, where $A$ is the mass number of the nucleus and $u$ is the atomic mass unit.} of 2.85 MeV/u for \Sm, which gave a lower Coulomb excitation cross section and a lower probability for multi-step excitations, compared to the present experiment. 
+The results of the IS495 experiment indicated a weak quadrupole deformation with a strong triaxiality or \ga-softness in \Sm.
+%In a triaxial shape, all three principal axis of the ellipsoid have different lengths.
+\Sm\ has therefore a transitional character between spherical and deformed shape, and at the same time in between prolate and oblate shape.
+Theoretical models make predictions for nuclei with such symmetries \cite{Iachello2000}, and the present experiment is aiming to test these predictions.
+The current experiment is an extension to the previous experiment. 
 
 %At that time, a secondary target of $^{94}_{42}$Mo$_{52}$ (molybdenum) with a thickness of 2 mg/cm$^2$ was chosen to maximize the cross section at this energy.
 %Excited states up to 1256 keV were populated.
@@ -436,43 +440,35 @@ The experimental setup at the time was limited to a beam energy\footnote{Beam en
 %\ga\ intensities as a function of particle scattering angle was studied to get information about the first and second excited $2^+$ state, in addition to the first $4^+$ state.
 %\Sm\ was thought to have a low-lying $0^+$ state \cite{Firestone}, but this state was shown to be $2^+$ \cite{Samorajczyk2015}, which is discussed in \autoref{ch:results}. 
 
-The results of the IS495 experiment indicated a weak quadrupole deformation with a strong triaxiality or \ga-softness in \Sm.
-%In a triaxial shape, all three principal axis of the ellipsoid have different lengths.
-\Sm\ has therefore a transitional character between spherical and deformed shape, and at the same time in between prolate and oblate shape.
-Theoretical models make predictions for nuclei with such symmetries \cite{Iachello2000}, and the present experiment is aiming to test these predictions.
-
 %Out of the IS495 experiment (and another experiment) came a PhD thesis by Malin Klintefjord, titled \textit{Evolution of deformation and collectivity away from magic numbers} \cite{Klintefjord}, in addition to three articles \cite{Klintefjord2015, Samorajczyk2015, Klintefjord2016} about \Sm.
 
 In 2017, there was an upgrade of the ISOLDE facility, which lead to the possibility of delivering beam energies up to 7.5 MeV/u. 
 This allowed for Coulomb excitation of \Sm\ at higher energies than the previous experiment.
-In turn, this implied that it was possible to choose a high-$Z$ target (\Pb) to give a high COULomb EXcitation (COULEX) cross section, especially for multi-step excitations.
-
-
-
-
-This will give a greater understanding of the low-lying nuclear structure in \Sm.
-With the IS558 experiment, it will also be easier to interpret the nuclear shape of \Sm.
-
-
-
+In turn, this implied that it was possible to choose a high-$Z$ target (\Pb) to give a high Coulomb excitation cross section, especially for multi-step excitations.
 Transition probabilities and quadrupole moments between several excited states in \Sm\ are still unknown.
 With the present experiment we want to measure $B(E2)$ values and quadrupole moments for higher-lying states.
+This will give a greater understanding of the nuclear structure in \Sm.
 Especially transitions from excited $0^+$ states will give information about possible shape coexistence or critical-point symmetry. 
+
+%It is expected to measure the intensities of the known \ga\ transitions. 
+%in \Sm\ to better understand the structure of this nucleus.
+%With the IS558 experiment, it will also be easier to interpret the nuclear shape of \Sm.
 
 %The goal of the master thesis is to analyze Coulomb excitation data of \Sm\ from the IS558 experiment at CERN-ISOLDE in 2017. 
 %The details of the experiment is outlined in \autoref{sec:exp_setup}. 
-Another goal is to document and improve the procedure of the data analysis using a code named \textsl{MiniballCoulexSort} more transparent.
+Another goal is to make the procedure of a data analysis code named \textsl{MiniballCoulexSort} more transparent.
 All scripts and programs developed in this work are available in the authors GitHub repository \cite{GH-repo}.
 
+
 The present thesis is structured in the following way.
-\autoref{ch:theory} outlines the theory of nuclear deformation and the Coulomb excitation method. 
-\autoref{ch:experiment} explains the experimental setup.
-\autoref{ch:DA} explains the data analysis method and the usage of the analysis code named \textsl{MiniballCoulexSort}.
-\autoref{ch:results} reveals the extraordinary experimental results.
-\autoref{ch:SO} makes a summary of the thesis and mentions the future work of the Coulomb excitation analysis of \Sm.
+\autoref{ch:theory} outlines the theory of nuclear deformation and the Coulomb excitation
+method. 
+The ISOLDE facility and the experimental setup utilized to extract particle gamma coincidences will be presented in \autoref{ch:experiment}. 
+By means of the analysis code named \textsl{MiniballCoulexSort}, the data was sorted and calibrated, as explained in in \autoref{ch:DA}.
+In \autoref{ch:results}, the resulting Doppler corrected \ga\ spectrum is presented.
+\autoref{ch:SO} summarizes of the thesis and outlines the future work of the Coulomb excitation analysis of \Sm. 
 \autoref{ch:acronyms} lists acronyms and abbreviations applied in the thesis. 
 The remainder of the appendix is referenced when required in the text.
-
 
 % ----------------------------------------------------------------------------------------------------------------------
 % ----------------------------------------------------------------------------------------------------------------------
